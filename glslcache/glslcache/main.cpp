@@ -13,12 +13,14 @@ int main(int argc, char *argv[])
 		std::cout << "Allowed options : " << std::endl;
 		std::cout << "	-o [name]	output cache file name" << std::endl;
 		std::cout << "	-t [TCS TES]	tessellation shader file path" << std::endl;
+		std::cout << "	-g [GS]		geometry shader file path" << std::endl;
 		return 0;
 	}
 
-	std::string vertPath, fragPath, tcsPath, tesPath;
+	std::string vertPath, fragPath, tcsPath, tesPath, gsPath;
 	std::string outputName = "a.glslcache";
 	bool useTessellation(false);
+	bool useGeometryShader(false);
 
 	for (int i = 1; i < argc; ++i)
 	{
@@ -34,6 +36,10 @@ int main(int argc, char *argv[])
 				tcsPath = argv[++i];
 				tesPath = argv[++i];
 				break;
+			case 'g' :
+				useGeometryShader = true;
+				gsPath = argv[++i];
+				break;
 			default:
 				std::cerr << "given option not exists" << std::endl;
 				break;
@@ -48,13 +54,14 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	std::string vsString, fsString, tesString, tcsString;
+	std::string vsString, fsString, tesString, tcsString, gsString;
 	{
-		std::ifstream vsFile, fsFile, tesFile, tcsFile;
+		std::ifstream vsFile, fsFile, tesFile, tcsFile, gsFile;
 		vsFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 		fsFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 		tesFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 		tcsFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+		gsFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 
 		try
 		{
@@ -86,6 +93,14 @@ int main(int argc, char *argv[])
 					osstr << tcsFile.rdbuf();
 					tcsString = osstr.str();
 				}
+			}
+
+			if (useGeometryShader)
+			{
+				gsFile.open(gsPath);
+				std::ostringstream osstr;
+				osstr << gsFile.rdbuf();
+				gsString = osstr.str();
 			}
 		}
 		catch (std::ifstream::failure e)
@@ -121,7 +136,7 @@ int main(int argc, char *argv[])
 	const char* vsSource = vsString.c_str();
 	const char* fsSource = fsString.c_str();
 
-	GLuint vs, fs, tcs, tes;
+	GLuint vs, fs, tcs, tes, gs;
 
 	int success;
 	char infoLog[512];
@@ -180,14 +195,36 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	if (useGeometryShader)
+	{
+		const char* gsSource = gsString.c_str();
+
+		gs = glCreateShader(GL_TESS_CONTROL_SHADER);
+		glShaderSource(gs, 1, &gsSource, nullptr);
+		glCompileShader(gs);
+
+		glGetShaderiv(gs, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(gs, sizeof(infoLog), nullptr, &infoLog[0]);
+			std::clog << "GEOMETRY SHADER INFOLOG" << std::endl;
+			std::clog << infoLog << std::endl;
+		}
+	}
+
 	GLuint programID = glCreateProgram();
 	
 	glAttachShader(programID, vs);
 	if (useTessellation)
 	{
-		glAttachShader(programID, vs);
-		glAttachShader(programID, vs);
+		glAttachShader(programID, tcs);
+		glAttachShader(programID, tes);
 	}
+	if (useGeometryShader)
+	{
+		glAttachShader(programID, gs);
+	}
+
 	glAttachShader(programID, fs);
 
 	glProgramParameteri(programID, GL_PROGRAM_BINARY_RETRIEVABLE_HINT, GL_TRUE);
