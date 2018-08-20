@@ -41,6 +41,7 @@
 		}
 	};
 	
+	/// locate this macro where you want to check whether if error exists or not.
 	#define CheckError() GLDebugger::CheckError(__FILE__, __LINE__)
 	
 	#endif

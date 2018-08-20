@@ -35,3 +35,932 @@
 [2018-08-20 14:10:34.810] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
 [2018-08-20 14:10:35.685] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
 
+[2018-08-20 14:32:02.468] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:32:02.950] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:39:47.485] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:39:47.589] [setup] [critical] Shader Compile Failed. info log :
+0(12) : error C0000: syntax err
+[2018-08-20 14:39:47.632] [setup] [error] An error occurred while initializing shader file.
+Unknown exception
+[2018-08-20 14:39:47.675] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 14:40:36.728] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:40:36.796] [setup] [critical] Shader Compile Failed. info log :
+0(12) : error C0000: syntax err
+[2018-08-20 14:40:36.840] [setup] [error] An error occurred while initializing shader file.
+Unknown exception
+[2018-08-20 14:40:36.885] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 14:41:04.446] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:41:04.511] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:41:04.555] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:41:04.664] [setup] [info] Program Linking finished.
+[2018-08-20 14:41:04.707] [setup] [info] Linking Program Success.
+[2018-08-20 14:41:06.003] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:42:32.980] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:42:33.029] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:42:33.075] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:42:33.124] [setup] [info] Program Linking finished.
+[2018-08-20 14:42:33.173] [setup] [info] Linking Program Success.
+[2018-08-20 14:42:34.678] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:43:16.477] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:43:16.530] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:43:16.575] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:43:16.619] [setup] [info] Program Linking finished.
+[2018-08-20 14:43:16.662] [setup] [info] Linking Program Success.
+[2018-08-20 14:43:17.900] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:43:30.974] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:43:30.976] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:43:30.977] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:43:30.978] [setup] [info] Program Linking finished.
+[2018-08-20 14:43:30.978] [setup] [info] Linking Program Success.
+[2018-08-20 14:43:33.158] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:56:40.642] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:56:40.665] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:56:40.665] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:56:40.692] [setup] [info] Program Linking finished.
+[2018-08-20 14:56:40.692] [setup] [info] Linking Program Success.
+[2018-08-20 14:56:40.698] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.724] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.735] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.753] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.769] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.786] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.802] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.819] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.836] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.853] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.869] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.886] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.903] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.919] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.936] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.952] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.969] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:40.985] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.002] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.019] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.035] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.052] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.069] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.085] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.102] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.118] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.135] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.151] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.168] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.185] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.201] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.218] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.235] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.252] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.268] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.285] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.302] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.318] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.335] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.352] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.368] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.385] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.402] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.418] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.435] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.451] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.468] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.485] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.506] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.521] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.537] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.552] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.568] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.585] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.602] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.618] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.635] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.652] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.668] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.685] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.702] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.718] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.735] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.751] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.768] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.785] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.801] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.818] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.835] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.851] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.868] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.885] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.902] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.918] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.935] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.951] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.968] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:41.985] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.002] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.020] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.035] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.051] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.068] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.084] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.101] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.118] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.135] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.152] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.168] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.184] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.201] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.218] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.235] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.251] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.268] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.285] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.301] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.318] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.334] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.351] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.368] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.385] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.401] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.418] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.434] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.451] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.468] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.484] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.501] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.518] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.534] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.551] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.568] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.584] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.601] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.618] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.634] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.651] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.668] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.684] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.701] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.718] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.734] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.751] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.768] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.784] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.801] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.818] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.834] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.851] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.868] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.884] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.901] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.917] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.934] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.951] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.967] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:42.984] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.001] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.017] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.034] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.051] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.067] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.084] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.102] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.118] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.135] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.154] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.175] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.186] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.201] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.218] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.234] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.251] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.267] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.284] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.301] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.318] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-20 14:56:43.334] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:56:54.155] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:56:54.178] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:56:54.178] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:56:54.202] [setup] [info] Program Linking finished.
+[2018-08-20 14:56:54.203] [setup] [info] Linking Program Success.
+[2018-08-20 14:56:57.861] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:59:27.714] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:59:27.715] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:59:27.716] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:59:27.716] [setup] [info] Program Linking finished.
+[2018-08-20 14:59:27.717] [setup] [info] Linking Program Success.
+[2018-08-20 14:59:28.243] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 14:59:44.522] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:59:44.523] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 14:59:44.524] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 14:59:44.525] [setup] [info] Program Linking finished.
+[2018-08-20 14:59:44.525] [setup] [info] Linking Program Success.
+[2018-08-20 14:59:47.368] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:00:18.297] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:00:18.298] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:00:18.299] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:00:18.299] [setup] [info] Program Linking finished.
+[2018-08-20 15:00:18.299] [setup] [info] Linking Program Success.
+[2018-08-20 15:00:18.787] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:00:49.927] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:00:49.930] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:00:49.931] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:00:49.932] [setup] [info] Program Linking finished.
+[2018-08-20 15:00:49.932] [setup] [info] Linking Program Success.
+[2018-08-20 15:00:51.472] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:02:32.251] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:02:32.252] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:02:32.252] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:02:32.253] [setup] [info] Program Linking finished.
+[2018-08-20 15:02:32.253] [setup] [info] Linking Program Success.
+[2018-08-20 15:02:32.254] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.256] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.282] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.294] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.311] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.327] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.344] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.361] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.376] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.394] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.420] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.426] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.443] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.460] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.477] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.495] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.510] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.528] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.544] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.578] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.581] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.596] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.615] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.631] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.645] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.659] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.676] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.693] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.709] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.726] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.743] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.759] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.776] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.793] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.810] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.826] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.843] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.860] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.876] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.893] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.909] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.926] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.943] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.959] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.976] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:32.993] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.009] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.026] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.043] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.059] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.076] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.092] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.109] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.126] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.143] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.159] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.176] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.192] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.209] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.226] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.243] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.259] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.277] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.293] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.309] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.326] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.343] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.359] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.376] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.392] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.409] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.426] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.442] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.459] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.476] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.492] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.509] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.526] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.542] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.559] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.575] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.592] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.610] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.626] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.644] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.680] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.684] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.693] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.709] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.726] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.742] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.760] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.777] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.792] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.809] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.826] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.842] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.859] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.876] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.893] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.909] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.925] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.942] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.959] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.975] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:33.992] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:34.009] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:34.025] [setup] [info] -1.07374e+08
+[2018-08-20 15:02:34.059] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:02:56.207] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:02:56.208] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:02:56.208] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:02:56.208] [setup] [info] Program Linking finished.
+[2018-08-20 15:02:56.209] [setup] [info] Linking Program Success.
+[2018-08-20 15:02:56.210] [setup] [info] 0
+[2018-08-20 15:02:56.211] [setup] [info] 0
+[2018-08-20 15:02:56.236] [setup] [info] 0
+[2018-08-20 15:02:56.250] [setup] [info] 0
+[2018-08-20 15:02:56.267] [setup] [info] 0
+[2018-08-20 15:02:56.283] [setup] [info] 0
+[2018-08-20 15:02:56.300] [setup] [info] 0
+[2018-08-20 15:02:56.316] [setup] [info] 0
+[2018-08-20 15:02:56.334] [setup] [info] 0
+[2018-08-20 15:02:56.351] [setup] [info] 0
+[2018-08-20 15:02:56.379] [setup] [info] 0
+[2018-08-20 15:02:56.383] [setup] [info] 0
+[2018-08-20 15:02:56.400] [setup] [info] 0
+[2018-08-20 15:02:56.418] [setup] [info] 0
+[2018-08-20 15:02:56.433] [setup] [info] 0
+[2018-08-20 15:02:56.471] [setup] [info] 0
+[2018-08-20 15:02:56.478] [setup] [info] 0
+[2018-08-20 15:02:56.485] [setup] [info] 0
+[2018-08-20 15:02:56.499] [setup] [info] 0
+[2018-08-20 15:02:56.518] [setup] [info] 0
+[2018-08-20 15:02:56.535] [setup] [info] 0
+[2018-08-20 15:02:56.549] [setup] [info] 0
+[2018-08-20 15:02:56.566] [setup] [info] 0
+[2018-08-20 15:02:56.583] [setup] [info] 0
+[2018-08-20 15:02:56.599] [setup] [info] 0
+[2018-08-20 15:02:56.615] [setup] [info] 0
+[2018-08-20 15:02:56.632] [setup] [info] 0
+[2018-08-20 15:02:56.649] [setup] [info] 0
+[2018-08-20 15:02:56.666] [setup] [info] 0
+[2018-08-20 15:02:56.682] [setup] [info] 0
+[2018-08-20 15:02:56.699] [setup] [info] 0
+[2018-08-20 15:02:56.715] [setup] [info] 0
+[2018-08-20 15:02:56.733] [setup] [info] 0
+[2018-08-20 15:02:56.749] [setup] [info] 0
+[2018-08-20 15:02:56.766] [setup] [info] 0
+[2018-08-20 15:02:56.782] [setup] [info] 0
+[2018-08-20 15:02:56.799] [setup] [info] 0
+[2018-08-20 15:02:56.815] [setup] [info] 0
+[2018-08-20 15:02:56.832] [setup] [info] 0
+[2018-08-20 15:02:56.849] [setup] [info] 0
+[2018-08-20 15:02:56.867] [setup] [info] 0
+[2018-08-20 15:02:56.884] [setup] [info] 0
+[2018-08-20 15:02:56.903] [setup] [info] 0
+[2018-08-20 15:02:56.919] [setup] [info] 0
+[2018-08-20 15:02:56.936] [setup] [info] 0
+[2018-08-20 15:02:56.970] [setup] [info] 0
+[2018-08-20 15:02:56.973] [setup] [info] 0
+[2018-08-20 15:02:56.984] [setup] [info] 0
+[2018-08-20 15:02:57.000] [setup] [info] 0
+[2018-08-20 15:02:57.015] [setup] [info] 0
+[2018-08-20 15:02:57.033] [setup] [info] 0
+[2018-08-20 15:02:57.049] [setup] [info] 0
+[2018-08-20 15:02:57.065] [setup] [info] 0
+[2018-08-20 15:02:57.082] [setup] [info] 0
+[2018-08-20 15:02:57.099] [setup] [info] 0
+[2018-08-20 15:02:57.115] [setup] [info] 0
+[2018-08-20 15:02:57.148] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:04:00.889] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:04:00.890] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:04:00.890] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:04:00.891] [setup] [info] Program Linking finished.
+[2018-08-20 15:04:00.892] [setup] [info] Linking Program Success.
+[2018-08-20 15:04:00.892] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:00.939] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:00.943] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:00.954] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:00.971] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:00.987] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.005] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.020] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.037] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.053] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.070] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.087] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.104] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.120] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.137] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.153] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.170] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.188] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.205] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.221] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.237] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.254] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.270] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.287] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.303] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.324] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.340] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.358] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.370] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.410] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.412] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.421] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.438] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.455] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.471] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.488] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.503] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.520] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.537] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.553] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.570] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.587] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.603] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.620] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.636] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.653] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.670] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.687] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.703] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.720] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.738] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.753] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.770] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.786] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.803] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.820] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.857] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.858] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.873] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.891] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.904] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.923] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.937] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.953] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.969] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:01.986] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.003] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.019] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.036] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.052] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.069] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.086] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.102] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.119] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.136] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.152] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.169] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.186] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.202] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.219] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.236] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.252] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.269] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.286] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.302] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.319] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.336] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.352] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.370] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.386] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.404] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.422] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.438] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.455] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.489] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.493] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.503] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.519] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.536] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.554] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.569] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.612] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.613] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.622] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.638] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.654] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.671] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.688] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.702] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.719] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.736] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.752] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.769] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.785] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.802] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.819] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.835] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.852] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.869] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.886] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.902] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.919] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.935] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.952] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.969] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:02.986] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.002] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.019] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.035] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.052] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.068] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.085] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.102] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.119] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.135] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.152] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.169] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.185] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.202] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.219] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.235] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.252] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.269] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.285] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.302] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.319] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.335] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.352] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.368] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.385] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.402] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.418] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.436] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.455] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.471] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.487] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.522] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.525] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.538] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.552] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.568] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.586] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.602] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.619] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.636] [setup] [info] -1.07374e+08
+[2018-08-20 15:04:03.668] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:04:14.200] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:04:14.202] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:04:14.202] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:04:14.203] [setup] [info] Program Linking finished.
+[2018-08-20 15:04:14.204] [setup] [info] Linking Program Success.
+[2018-08-20 15:04:14.204] [setup] [info] 0
+[2018-08-20 15:04:14.205] [setup] [info] 0
+[2018-08-20 15:04:14.227] [setup] [info] 0
+[2018-08-20 15:04:14.231] [setup] [info] 0
+[2018-08-20 15:04:14.247] [setup] [info] 0
+[2018-08-20 15:04:14.264] [setup] [info] 0
+[2018-08-20 15:04:14.280] [setup] [info] 0
+[2018-08-20 15:04:14.297] [setup] [info] 0
+[2018-08-20 15:04:14.314] [setup] [info] 0
+[2018-08-20 15:04:14.331] [setup] [info] 0
+[2018-08-20 15:04:14.347] [setup] [info] 0
+[2018-08-20 15:04:14.364] [setup] [info] 0
+[2018-08-20 15:04:14.380] [setup] [info] 0
+[2018-08-20 15:04:14.397] [setup] [info] 0
+[2018-08-20 15:04:14.414] [setup] [info] 0
+[2018-08-20 15:04:14.430] [setup] [info] 0
+[2018-08-20 15:04:14.447] [setup] [info] 0
+[2018-08-20 15:04:14.464] [setup] [info] 0
+[2018-08-20 15:04:14.480] [setup] [info] 0
+[2018-08-20 15:04:14.499] [setup] [info] 0
+[2018-08-20 15:04:14.514] [setup] [info] 0
+[2018-08-20 15:04:14.531] [setup] [info] 0
+[2018-08-20 15:04:14.547] [setup] [info] 0
+[2018-08-20 15:04:14.564] [setup] [info] 0
+[2018-08-20 15:04:14.580] [setup] [info] 0
+[2018-08-20 15:04:14.597] [setup] [info] 0
+[2018-08-20 15:04:14.613] [setup] [info] 0
+[2018-08-20 15:04:14.631] [setup] [info] 0
+[2018-08-20 15:04:14.647] [setup] [info] 0
+[2018-08-20 15:04:14.664] [setup] [info] 0
+[2018-08-20 15:04:14.680] [setup] [info] 0
+[2018-08-20 15:04:14.697] [setup] [info] 0
+[2018-08-20 15:04:14.713] [setup] [info] 0
+[2018-08-20 15:04:14.731] [setup] [info] 0
+[2018-08-20 15:04:14.747] [setup] [info] 0
+[2018-08-20 15:04:14.764] [setup] [info] 0
+[2018-08-20 15:04:14.780] [setup] [info] 0
+[2018-08-20 15:04:14.797] [setup] [info] 0
+[2018-08-20 15:04:14.813] [setup] [info] 0
+[2018-08-20 15:04:14.830] [setup] [info] 0
+[2018-08-20 15:04:14.847] [setup] [info] 0
+[2018-08-20 15:04:14.864] [setup] [info] 0
+[2018-08-20 15:04:14.880] [setup] [info] 0
+[2018-08-20 15:04:14.897] [setup] [info] 0
+[2018-08-20 15:04:14.914] [setup] [info] 0
+[2018-08-20 15:04:14.934] [setup] [info] 0
+[2018-08-20 15:04:14.951] [setup] [info] 0
+[2018-08-20 15:04:14.964] [setup] [info] 0
+[2018-08-20 15:04:14.980] [setup] [info] 0
+[2018-08-20 15:04:14.999] [setup] [info] 0
+[2018-08-20 15:04:15.014] [setup] [info] 0
+[2018-08-20 15:04:15.032] [setup] [info] 0
+[2018-08-20 15:04:15.048] [setup] [info] 0
+[2018-08-20 15:04:15.063] [setup] [info] 0
+[2018-08-20 15:04:15.080] [setup] [info] 0
+[2018-08-20 15:04:15.097] [setup] [info] 0
+[2018-08-20 15:04:15.113] [setup] [info] 0
+[2018-08-20 15:04:15.130] [setup] [info] 0
+[2018-08-20 15:04:15.147] [setup] [info] 0
+[2018-08-20 15:04:15.163] [setup] [info] 0
+[2018-08-20 15:04:15.180] [setup] [info] 0
+[2018-08-20 15:04:15.197] [setup] [info] 0
+[2018-08-20 15:04:15.213] [setup] [info] 0
+[2018-08-20 15:04:15.230] [setup] [info] 0
+[2018-08-20 15:04:15.246] [setup] [info] 0
+[2018-08-20 15:04:15.264] [setup] [info] 0
+[2018-08-20 15:04:15.281] [setup] [info] 0
+[2018-08-20 15:04:15.297] [setup] [info] 0
+[2018-08-20 15:04:15.313] [setup] [info] 0
+[2018-08-20 15:04:15.330] [setup] [info] 0
+[2018-08-20 15:04:15.346] [setup] [info] 0
+[2018-08-20 15:04:15.364] [setup] [info] 0
+[2018-08-20 15:04:15.380] [setup] [info] 0
+[2018-08-20 15:04:15.397] [setup] [info] 0
+[2018-08-20 15:04:15.413] [setup] [info] 0
+[2018-08-20 15:04:15.430] [setup] [info] 0
+[2018-08-20 15:04:15.448] [setup] [info] 0
+[2018-08-20 15:04:15.463] [setup] [info] 0
+[2018-08-20 15:04:15.479] [setup] [info] 0
+[2018-08-20 15:04:15.497] [setup] [info] 0
+[2018-08-20 15:04:15.513] [setup] [info] 0
+[2018-08-20 15:04:15.530] [setup] [info] 0
+[2018-08-20 15:04:15.546] [setup] [info] 0
+[2018-08-20 15:04:15.563] [setup] [info] 0
+[2018-08-20 15:04:15.580] [setup] [info] 0
+[2018-08-20 15:04:15.597] [setup] [info] 0
+[2018-08-20 15:04:15.613] [setup] [info] 0
+[2018-08-20 15:04:15.630] [setup] [info] 0
+[2018-08-20 15:04:15.646] [setup] [info] 0
+[2018-08-20 15:04:15.663] [setup] [info] 0
+[2018-08-20 15:04:15.679] [setup] [info] 0
+[2018-08-20 15:04:15.696] [setup] [info] 0
+[2018-08-20 15:04:15.713] [setup] [info] 0
+[2018-08-20 15:04:15.730] [setup] [info] 0
+[2018-08-20 15:04:15.746] [setup] [info] 0
+[2018-08-20 15:04:15.763] [setup] [info] 0
+[2018-08-20 15:04:15.780] [setup] [info] 0
+[2018-08-20 15:04:15.796] [setup] [info] 0
+[2018-08-20 15:04:15.813] [setup] [info] 0
+[2018-08-20 15:04:15.831] [setup] [info] 0
+[2018-08-20 15:04:15.846] [setup] [info] 0
+[2018-08-20 15:04:15.863] [setup] [info] 0
+[2018-08-20 15:04:15.880] [setup] [info] 0
+[2018-08-20 15:04:15.897] [setup] [info] 0
+[2018-08-20 15:04:15.913] [setup] [info] 0
+[2018-08-20 15:04:15.930] [setup] [info] 0
+[2018-08-20 15:04:15.946] [setup] [info] 0
+[2018-08-20 15:04:15.963] [setup] [info] 0
+[2018-08-20 15:04:15.979] [setup] [info] 0
+[2018-08-20 15:04:15.997] [setup] [info] 0
+[2018-08-20 15:04:16.013] [setup] [info] 0
+[2018-08-20 15:04:16.030] [setup] [info] 0
+[2018-08-20 15:04:16.046] [setup] [info] 0
+[2018-08-20 15:04:16.063] [setup] [info] 0
+[2018-08-20 15:04:16.080] [setup] [info] 0
+[2018-08-20 15:04:16.096] [setup] [info] 0
+[2018-08-20 15:04:16.113] [setup] [info] 0
+[2018-08-20 15:04:16.129] [setup] [info] 0
+[2018-08-20 15:04:16.146] [setup] [info] 0
+[2018-08-20 15:04:16.163] [setup] [info] 0
+[2018-08-20 15:04:16.179] [setup] [info] 0
+[2018-08-20 15:04:16.196] [setup] [info] 0
+[2018-08-20 15:04:16.213] [setup] [info] 0
+[2018-08-20 15:04:16.230] [setup] [info] 0
+[2018-08-20 15:04:16.246] [setup] [info] 0
+[2018-08-20 15:04:16.263] [setup] [info] 0
+[2018-08-20 15:04:16.279] [setup] [info] 0
+[2018-08-20 15:04:16.298] [setup] [info] 0
+[2018-08-20 15:04:16.316] [setup] [info] 0
+[2018-08-20 15:04:16.333] [setup] [info] 0
+[2018-08-20 15:04:16.347] [setup] [info] 0
+[2018-08-20 15:04:16.364] [setup] [info] 0
+[2018-08-20 15:04:16.380] [setup] [info] 0
+[2018-08-20 15:04:16.397] [setup] [info] 0
+[2018-08-20 15:04:16.413] [setup] [info] 0
+[2018-08-20 15:04:16.430] [setup] [info] 0
+[2018-08-20 15:04:16.446] [setup] [info] 0
+[2018-08-20 15:04:16.463] [setup] [info] 0
+[2018-08-20 15:04:16.480] [setup] [info] 0
+[2018-08-20 15:04:16.497] [setup] [info] 0
+[2018-08-20 15:04:16.513] [setup] [info] 0
+[2018-08-20 15:04:16.530] [setup] [info] 0
+[2018-08-20 15:04:16.546] [setup] [info] 0
+[2018-08-20 15:04:16.563] [setup] [info] 0
+[2018-08-20 15:04:16.579] [setup] [info] 0
+[2018-08-20 15:04:16.597] [setup] [info] 0
+[2018-08-20 15:04:16.613] [setup] [info] 0
+[2018-08-20 15:04:16.630] [setup] [info] 0
+[2018-08-20 15:04:16.646] [setup] [info] 0
+[2018-08-20 15:04:16.664] [setup] [info] 0
+[2018-08-20 15:04:16.680] [setup] [info] 0
+[2018-08-20 15:04:16.697] [setup] [info] 0
+[2018-08-20 15:04:16.713] [setup] [info] 0
+[2018-08-20 15:04:16.730] [setup] [info] 0
+[2018-08-20 15:04:16.748] [setup] [info] 0
+[2018-08-20 15:04:16.763] [setup] [info] 0
+[2018-08-20 15:04:16.779] [setup] [info] 0
+[2018-08-20 15:04:16.796] [setup] [info] 0
+[2018-08-20 15:04:16.813] [setup] [info] 0
+[2018-08-20 15:04:16.830] [setup] [info] 0
+[2018-08-20 15:04:16.846] [setup] [info] 0
+[2018-08-20 15:04:16.864] [setup] [info] 0
+[2018-08-20 15:04:16.880] [setup] [info] 0
+[2018-08-20 15:04:16.897] [setup] [info] 0
+[2018-08-20 15:04:16.913] [setup] [info] 0
+[2018-08-20 15:04:16.930] [setup] [info] 0
+[2018-08-20 15:04:16.946] [setup] [info] 0
+[2018-08-20 15:04:16.964] [setup] [info] 0
+[2018-08-20 15:04:16.980] [setup] [info] 0
+[2018-08-20 15:04:16.997] [setup] [info] 0
+[2018-08-20 15:04:17.013] [setup] [info] 0
+[2018-08-20 15:04:17.030] [setup] [info] 0
+[2018-08-20 15:04:17.047] [setup] [info] 0
+[2018-08-20 15:04:17.064] [setup] [info] 0
+[2018-08-20 15:04:17.080] [setup] [info] 0
+[2018-08-20 15:04:17.096] [setup] [info] 0
+[2018-08-20 15:04:17.112] [setup] [info] 0
+[2018-08-20 15:04:17.129] [setup] [info] 0
+[2018-08-20 15:04:17.145] [setup] [info] 0
+[2018-08-20 15:04:17.163] [setup] [info] 0
+[2018-08-20 15:04:17.179] [setup] [info] 0
+[2018-08-20 15:04:17.196] [setup] [info] 0
+[2018-08-20 15:04:17.212] [setup] [info] 0
+[2018-08-20 15:04:17.230] [setup] [info] 0
+[2018-08-20 15:04:17.246] [setup] [info] 0
+[2018-08-20 15:04:17.262] [setup] [info] 0
+[2018-08-20 15:04:17.279] [setup] [info] 0
+[2018-08-20 15:04:17.296] [setup] [info] 0
+[2018-08-20 15:04:17.312] [setup] [info] 0
+[2018-08-20 15:04:17.329] [setup] [info] 0
+[2018-08-20 15:04:17.346] [setup] [info] 0
+[2018-08-20 15:04:17.362] [setup] [info] 0
+[2018-08-20 15:04:17.379] [setup] [info] 0
+[2018-08-20 15:04:17.396] [setup] [info] 0
+[2018-08-20 15:04:17.412] [setup] [info] 0
+[2018-08-20 15:04:17.429] [setup] [info] 0
+[2018-08-20 15:04:17.445] [setup] [info] 0
+[2018-08-20 15:04:17.463] [setup] [info] 0
+[2018-08-20 15:04:17.479] [setup] [info] 0
+[2018-08-20 15:04:17.497] [setup] [info] 0
+[2018-08-20 15:04:17.512] [setup] [info] 0
+[2018-08-20 15:04:17.529] [setup] [info] 0
+[2018-08-20 15:04:17.545] [setup] [info] 0
+[2018-08-20 15:04:17.562] [setup] [info] 0
+[2018-08-20 15:04:17.579] [setup] [info] 0
+[2018-08-20 15:04:17.595] [setup] [info] 0
+[2018-08-20 15:04:17.612] [setup] [info] 0
+[2018-08-20 15:04:17.629] [setup] [info] 0
+[2018-08-20 15:04:17.645] [setup] [info] 0
+[2018-08-20 15:04:17.662] [setup] [info] 0
+[2018-08-20 15:04:17.678] [setup] [info] 0
+[2018-08-20 15:04:17.695] [setup] [info] 0
+[2018-08-20 15:04:17.712] [setup] [info] 0
+[2018-08-20 15:04:17.729] [setup] [info] 0
+[2018-08-20 15:04:17.745] [setup] [info] 0
+[2018-08-20 15:04:17.762] [setup] [info] 0
+[2018-08-20 15:04:17.779] [setup] [info] 0
+[2018-08-20 15:04:17.796] [setup] [info] 0
+[2018-08-20 15:04:17.813] [setup] [info] 0
+[2018-08-20 15:04:17.829] [setup] [info] 0
+[2018-08-20 15:04:17.846] [setup] [info] 0
+[2018-08-20 15:04:17.862] [setup] [info] 0
+[2018-08-20 15:04:17.879] [setup] [info] 0
+[2018-08-20 15:04:17.896] [setup] [info] 0
+[2018-08-20 15:04:17.912] [setup] [info] 0
+[2018-08-20 15:04:17.929] [setup] [info] 0
+[2018-08-20 15:04:17.945] [setup] [info] 0
+[2018-08-20 15:04:17.962] [setup] [info] 0
+[2018-08-20 15:04:17.978] [setup] [info] 0
+[2018-08-20 15:04:17.996] [setup] [info] 0
+[2018-08-20 15:04:18.012] [setup] [info] 0
+[2018-08-20 15:04:18.029] [setup] [info] 0
+[2018-08-20 15:04:18.045] [setup] [info] 0
+[2018-08-20 15:04:18.063] [setup] [info] 0
+[2018-08-20 15:04:18.078] [setup] [info] 0
+[2018-08-20 15:04:18.095] [setup] [info] 0
+[2018-08-20 15:04:18.112] [setup] [info] 0
+[2018-08-20 15:04:18.130] [setup] [info] 0
+[2018-08-20 15:04:18.147] [setup] [info] 0
+[2018-08-20 15:04:18.164] [setup] [info] 0
+[2018-08-20 15:04:18.181] [setup] [info] 0
+[2018-08-20 15:04:18.196] [setup] [info] 0
+[2018-08-20 15:04:18.212] [setup] [info] 0
+[2018-08-20 15:04:18.229] [setup] [info] 0
+[2018-08-20 15:04:18.245] [setup] [info] 0
+[2018-08-20 15:04:18.263] [setup] [info] 0
+[2018-08-20 15:04:18.279] [setup] [info] 0
+[2018-08-20 15:04:18.296] [setup] [info] 0
+[2018-08-20 15:04:18.312] [setup] [info] 0
+[2018-08-20 15:04:18.330] [setup] [info] 0
+[2018-08-20 15:04:18.345] [setup] [info] 0
+[2018-08-20 15:04:18.362] [setup] [info] 0
+[2018-08-20 15:04:18.379] [setup] [info] 0
+[2018-08-20 15:04:18.396] [setup] [info] 0
+[2018-08-20 15:04:18.412] [setup] [info] 0
+[2018-08-20 15:04:18.429] [setup] [info] 0
+[2018-08-20 15:04:18.447] [setup] [info] 0
+[2018-08-20 15:04:18.463] [setup] [info] 0
+[2018-08-20 15:04:18.480] [setup] [info] 0
+[2018-08-20 15:04:18.496] [setup] [info] 0
+[2018-08-20 15:04:18.512] [setup] [info] 0
+[2018-08-20 15:04:18.529] [setup] [info] 0
+[2018-08-20 15:04:18.545] [setup] [info] 0
+[2018-08-20 15:04:18.562] [setup] [info] 0
+[2018-08-20 15:04:18.579] [setup] [info] 0
+[2018-08-20 15:04:18.596] [setup] [info] 0
+[2018-08-20 15:04:18.613] [setup] [info] 0
+[2018-08-20 15:04:18.629] [setup] [info] 0
+[2018-08-20 15:04:18.646] [setup] [info] 0
+[2018-08-20 15:04:18.662] [setup] [info] 0
+[2018-08-20 15:04:18.679] [setup] [info] 0
+[2018-08-20 15:04:18.696] [setup] [info] 0
+[2018-08-20 15:04:18.734] [setup] [info] 0
+[2018-08-20 15:04:18.739] [setup] [info] 0
+[2018-08-20 15:04:18.748] [setup] [info] 0
+[2018-08-20 15:04:18.762] [setup] [info] 0
+[2018-08-20 15:04:18.779] [setup] [info] 0
+[2018-08-20 15:04:18.797] [setup] [info] 0
+[2018-08-20 15:04:18.811] [setup] [info] 0
+[2018-08-20 15:04:18.830] [setup] [info] 0
+[2018-08-20 15:04:18.862] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:04:54.186] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:04:54.188] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:04:54.189] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:04:54.190] [setup] [info] Program Linking finished.
+[2018-08-20 15:04:54.190] [setup] [info] Linking Program Success.
+[2018-08-20 15:04:57.777] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:05:08.245] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:05:08.246] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:05:08.247] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:05:08.248] [setup] [info] Program Linking finished.
+[2018-08-20 15:05:08.248] [setup] [info] Linking Program Success.
+[2018-08-20 15:05:17.768] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:05:51.576] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:05:51.577] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:05:51.597] [setup] [critical] Shader Compile Failed. info log :
+0(8) : error C0000: syntax erro
+[2018-08-20 15:05:51.597] [setup] [error] An error occurred while initializing shader file.
+Unknown exception
+[2018-08-20 15:05:51.598] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 15:06:04.319] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:06:04.320] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:06:04.341] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:06:04.366] [setup] [info] Program Linking finished.
+[2018-08-20 15:06:04.367] [setup] [info] Linking Program Success.
+[2018-08-20 15:06:10.361] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:07:39.886] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:07:39.888] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:07:39.888] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:07:39.889] [setup] [info] Program Linking finished.
+[2018-08-20 15:07:39.890] [setup] [info] Linking Program Success.
+[2018-08-20 15:07:43.719] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:08:05.202] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:08:05.203] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:08:05.204] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:08:05.204] [setup] [info] Program Linking finished.
+[2018-08-20 15:08:05.205] [setup] [info] Linking Program Success.
+[2018-08-20 15:08:07.558] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
+[2018-08-20 15:08:15.833] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 15:08:15.834] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-20 15:08:15.835] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-20 15:08:15.836] [setup] [info] Program Linking finished.
+[2018-08-20 15:08:15.836] [setup] [info] Linking Program Success.
+[2018-08-20 15:08:20.435] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+

@@ -21,6 +21,9 @@ class GLShader : public EngineAsset
 {
 private:
 	unsigned int programID;
+	bool useTcs;
+	bool useTes;
+	bool useGs;
 
 	enum class CHECK_TARGET : int;
 
@@ -32,6 +35,8 @@ public:
 	virtual ~GLShader();
 
 	void setupShader(const char* vs_path, const char* tcs_path, const char* tes_path, const char* gs_path, const char* fs_path);
+
+	void reloadAsset(const std::vector<std::string>& assetPath);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

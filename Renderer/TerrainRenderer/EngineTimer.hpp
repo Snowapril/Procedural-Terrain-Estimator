@@ -30,13 +30,13 @@ public:
 	float getTotalTime(void) const;
 	float getDeltaTime(void) const;
 
-	/// this can be called when user want to start timer.
+	/// this can be called when user want to start timer if timer is paused.
 	void start(void);  
-	/// this can be called when user want to stop timer.
+	/// this can be called when user want to stop timer if timer is running.
 	void stop(void);   
 	/// when program is initialized, before entering main loop this method must be called once.
 	void reset(void);  
-	/// this must be called every tick of IndieEngine.
+	/// this must be called every tick of loop.
 	void tick(void);   
 };
 

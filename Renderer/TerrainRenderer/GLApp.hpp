@@ -32,12 +32,14 @@ public:
 public:
 	bool initGLApp(void);
 
+	/// this return opengl window. if you want to set callback function or etc .. , get window from this method.
 	GLFWwindow* getWindow(void) const;
 	inline float getAspectRatio(void) const
 	{
 		return static_cast<float>(clientWidth) / static_cast<float>(clientHeight);
 	};
 
+	/// this run main loop of terrain renderer and finally return exit code.
 	int Run(void);
 
 	//callback functions below.

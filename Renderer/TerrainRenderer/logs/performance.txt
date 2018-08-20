@@ -1,3 +1,3 @@
 Function Name                           Trial   Total Time  Average Time   
-EngineApp::updateScene                  48      0.000198017 4.12536e-06    
-EngineApp::drawScene                    48      7.58519e-05 1.58025e-06    
+EngineApp::updateScene                  276     0.00108891  3.94533e-06    
+EngineApp::drawScene                    276     0.000382906 1.38734e-06    

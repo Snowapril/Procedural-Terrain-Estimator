@@ -14,7 +14,7 @@ enum class GLShader::CHECK_TARGET : int
 };
 
 GLShader::GLShader()
-	: programID(0)
+	: programID(0), useTcs(false), useTes(false), useGs(false)
 {
 }
 
@@ -45,11 +45,20 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	getShaderString(vs_path, vs_string);
 	
 	if (tcs_path != nullptr)
+	{
+		useTcs = true;
 		getShaderString(tcs_path, tcs_string);
+	}
 	if (tes_path != nullptr)
+	{
+		useTes = true;
 		getShaderString(tes_path, tes_string);
+	}
 	if (gs_path != nullptr)
+	{
+		useGs = true;
 		getShaderString(gs_path, gs_string);
+	}
 	
 	getShaderString(fs_path, fs_string);
 
@@ -65,7 +74,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	if (checkStatus(vs, CHECK_TARGET::SHADER))
 		EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", vs_path);
 	else
+	{
+		EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", vs_path);
 		throw std::exception();
+	}
 
 	fs = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fs, 1, &fs_source, nullptr);
@@ -74,7 +86,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	if (checkStatus(fs, CHECK_TARGET::SHADER))
 		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", fs_path);
 	else
+	{
+		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", fs_path);
 		throw std::exception();
+	}
 
 	if (tcs_path != nullptr) {
 		tcs_source = tcs_string.c_str();
@@ -85,7 +100,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 		if (checkStatus(tcs, CHECK_TARGET::SHADER))
 			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", tcs_path);
 		else
+		{
+			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", tcs_path);
 			throw std::exception();
+		}
 	}
 
 	if (tes_path != nullptr) {
@@ -97,7 +115,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 		if (checkStatus(tes, CHECK_TARGET::SHADER))
 			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", tes_path);
 		else
+		{
+			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", tes_path);
 			throw std::exception();
+		}
 	}
 
 	if (gs_path != nullptr) {
@@ -109,7 +130,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 		if (checkStatus(gs, CHECK_TARGET::SHADER))
 			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", gs_path);
 		else
+		{
+			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", gs_path);
 			throw std::exception();
+		}
 	}
 
 	programID = glCreateProgram();
@@ -126,7 +150,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
 		EngineLogger::getConsole()->info("Program Linking finished.");
 	else
+	{
+		EngineLogger::getConsole()->error("Program Linking Failed");
 		throw std::exception();
+	}
 
 	glDetachShader(programID, vs);
 	glDeleteShader(vs);
@@ -149,6 +176,13 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	glDeleteShader(fs);
 
 	EngineLogger::getConsole()->info("Linking Program Success.");
+}
+
+void GLShader::reloadAsset(const std::vector<std::string>& assetPath)
+{
+	std::vector<std::string> temp(5, nullptr);
+
+	temp.push_back()
 }
 
 /**
