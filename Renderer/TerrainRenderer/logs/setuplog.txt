@@ -1,0 +1,37 @@
+[2018-08-20 13:44:24.590] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:44:24.632] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:44:31.937] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:44:31.982] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:44:46.594] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:44:48.367] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:45:35.415] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:45:35.460] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:45:52.586] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:45:56.116] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:46:27.596] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:46:27.638] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:46:54.161] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:47:07.508] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:49:18.469] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:49:18.470] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:50:26.591] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:50:26.633] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:50:48.417] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:50:48.459] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:51:15.726] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:51:15.771] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:51:44.895] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:51:49.606] [setup] [critical] Critical error occurred. program exit.
+[2018-08-20 13:52:11.625] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:52:24.182] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:52:29.196] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 127 )
+
+[2018-08-20 13:54:10.229] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:54:13.712] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 127 )
+
+[2018-08-20 13:57:14.947] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 13:57:16.414] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 128 )
+
+[2018-08-20 14:10:34.810] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-20 14:10:35.685] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+
