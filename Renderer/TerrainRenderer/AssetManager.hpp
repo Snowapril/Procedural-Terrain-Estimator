@@ -3,22 +3,24 @@
 
 #include <vector>
 #include <memory>
+#include <filesystem>
 
 class EngineAsset;
-
-class FileInfo;
-class AssetInfo;
 
 class AssetManager
 {
 private:
-	std::vector<AssetInfo> assets;
+	std::vector<int> assets;
 protected:
 public:
 	AssetManager();
 	~AssetManager();
 
-	void addAsset(std::shared_ptr<EngineAsset> asset, const std::initializer_list<std::string>& assetPath);
+	template <class AssetType>
+	std::shared_ptr<AssetType> addAsset(const std::initializer_list<std::string>& assetPath)
+	{
+
+	}
 	void listenToAssetChanges(void);
 };
 

@@ -1,966 +1,1362 @@
-[2018-08-20 13:44:24.590] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:44:24.632] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:44:31.937] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:44:31.982] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:44:46.594] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:44:48.367] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:45:35.415] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:45:35.460] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:45:52.586] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:45:56.116] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:46:27.596] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:46:27.638] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:46:54.161] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:47:07.508] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:49:18.469] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:49:18.470] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:50:26.591] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:50:26.633] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:50:48.417] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:50:48.459] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:51:15.726] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:51:15.771] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:51:44.895] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:51:49.606] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 13:52:11.625] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:52:24.182] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:52:29.196] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 127 )
+[2018-08-21 17:27:22.064] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 17:27:22.065] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 17:27:22.066] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 17:27:22.067] [setup] [info] Program Linking finished.
+[2018-08-21 17:27:22.067] [setup] [info] Linking Program Success.
+[2018-08-21 17:27:23.700] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
 
-[2018-08-20 13:54:10.229] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:54:13.712] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 127 )
+[2018-08-21 17:28:18.317] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 17:28:18.375] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 17:28:18.376] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 17:28:18.413] [setup] [info] Program Linking finished.
+[2018-08-21 17:28:18.413] [setup] [info] Linking Program Success.
+[2018-08-21 17:28:19.167] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
 
-[2018-08-20 13:57:14.947] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 13:57:16.414] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 128 )
+[2018-08-21 17:31:47.112] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 17:31:47.113] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 17:31:47.114] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 17:31:47.114] [setup] [info] Program Linking finished.
+[2018-08-21 17:31:47.115] [setup] [info] Linking Program Success.
+[2018-08-21 17:31:49.570] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
 
-[2018-08-20 14:10:34.810] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:10:35.685] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 17:32:09.038] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 17:32:09.039] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 17:32:09.039] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 17:32:09.041] [setup] [info] Program Linking finished.
+[2018-08-21 17:32:09.042] [setup] [info] Linking Program Success.
+[2018-08-21 17:32:12.837] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
 
-[2018-08-20 14:32:02.468] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:32:02.950] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 18:07:55.168] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:07:55.169] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 18:07:55.185] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 18:07:55.186] [setup] [info] Program Linking finished.
+[2018-08-21 18:07:55.187] [setup] [info] Linking Program Success.
+[2018-08-21 18:07:59.169] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:39:47.485] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:39:47.589] [setup] [critical] Shader Compile Failed. info log :
-0(12) : error C0000: syntax err
-[2018-08-20 14:39:47.632] [setup] [error] An error occurred while initializing shader file.
+[2018-08-21 18:08:22.321] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:08:22.323] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 18:08:22.324] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 18:08:22.325] [setup] [info] Program Linking finished.
+[2018-08-21 18:08:22.326] [setup] [info] Linking Program Success.
+[2018-08-21 18:08:25.986] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-21 18:12:12.048] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:12:12.052] [setup] [critical] Program Link Failed. info log :
+Program binary could not be loa
+[2018-08-21 18:12:12.053] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.054] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.054] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.058] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.059] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.061] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.072] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.073] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.073] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.089] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.090] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.106] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.107] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.122] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.123] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.123] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.139] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.139] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.140] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.156] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.156] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.172] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.173] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.173] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.189] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.189] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.190] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.206] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.207] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.222] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.223] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.224] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.241] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.242] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.243] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.256] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.257] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.272] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.273] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.274] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.289] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.290] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.291] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.306] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.307] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.322] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.323] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.324] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.339] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.339] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.340] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.356] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.357] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.372] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.373] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.373] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.389] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.389] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.390] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.406] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.407] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.422] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.423] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.423] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.439] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.439] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.440] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.456] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.456] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.472] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.473] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.473] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.489] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.506] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.507] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.522] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.524] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.539] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.540] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.541] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.556] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.557] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.572] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.573] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.573] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.590] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.591] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.606] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.608] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.622] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.623] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.624] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.639] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.640] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.640] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.656] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.658] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.672] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.673] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.674] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.689] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.690] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.691] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.706] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.708] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.722] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.723] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.724] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.739] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.756] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.756] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.757] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.772] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.773] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.775] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.789] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.790] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.791] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.808] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.822] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.823] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.824] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.839] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.842] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.856] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.858] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.872] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.873] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.874] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.889] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.890] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.891] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.906] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.907] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.922] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.923] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.924] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.939] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.940] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.941] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.956] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.958] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.972] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.973] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.974] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:12.989] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:12.990] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:12.991] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.007] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.008] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.022] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.023] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.025] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.039] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.040] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.041] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.056] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.056] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.059] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.072] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.073] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.073] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.089] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.091] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.106] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.107] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.122] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.123] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.124] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.139] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.140] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.141] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.156] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.157] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.172] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.173] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.174] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.189] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.191] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.207] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.222] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.223] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.224] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.240] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.240] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.241] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.256] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.257] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.272] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.273] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.274] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.289] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.289] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.290] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.306] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.306] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.322] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.323] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.324] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.339] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.339] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.346] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.356] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.356] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.372] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.373] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.373] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.389] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.389] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.390] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.406] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.407] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.422] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.423] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.424] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.439] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.439] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.440] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.456] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.457] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.472] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.473] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.474] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.489] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.507] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.522] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.523] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.539] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.540] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.542] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.556] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.557] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.572] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.573] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.574] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.590] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.591] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.608] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.622] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.623] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.624] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.639] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.640] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.641] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.656] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.657] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.672] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.673] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.674] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.689] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.690] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.691] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.706] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.707] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.722] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.723] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.724] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.739] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.756] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.756] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.758] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.772] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.773] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.774] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.789] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.789] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.790] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.806] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.807] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.822] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.823] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.824] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.839] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.841] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.856] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.858] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.872] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.873] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.874] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.889] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.890] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.891] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.906] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.908] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.922] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.923] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.924] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.939] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.940] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.940] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.956] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.957] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.972] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.973] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.975] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:13.989] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:13.990] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:13.991] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.006] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.007] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.022] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.023] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.024] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.039] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.039] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.040] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.056] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.056] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.057] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.072] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.073] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.074] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.089] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.091] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.106] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.107] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.122] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.123] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.123] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.139] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.140] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.141] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.156] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.159] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.172] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.173] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.174] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.189] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.191] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.206] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.207] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.222] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.223] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.224] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.239] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.240] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.241] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.258] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.272] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.273] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.274] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.289] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.290] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.291] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.306] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.307] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.322] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.323] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.324] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.339] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.340] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.340] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.356] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.357] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.372] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.373] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.374] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.389] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.390] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.392] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.406] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.406] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.422] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.423] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.424] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.439] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.439] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.440] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.456] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.457] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.472] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.473] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.474] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.489] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.506] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.507] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.522] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.524] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.539] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.540] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.541] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.556] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.558] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.573] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.573] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.574] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.590] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.592] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.606] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.608] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.622] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.623] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.624] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.639] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.640] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.641] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.657] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.672] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.673] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.674] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.689] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.690] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.691] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.706] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.708] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.722] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.723] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.724] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.739] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.756] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.757] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.758] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.772] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.773] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.774] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.789] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.790] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.791] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.808] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.822] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.823] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.824] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.839] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.841] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.856] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.857] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.872] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.873] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.874] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.889] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.890] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.893] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.906] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.907] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.922] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.923] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.924] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.942] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.943] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.944] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.956] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.957] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.972] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.973] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.974] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:14.989] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:14.990] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:14.992] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.007] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.008] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.022] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.023] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.024] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.039] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.040] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.041] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.056] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.056] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.056] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.072] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.073] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.074] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.089] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.090] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.107] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.122] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.123] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.124] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.139] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.140] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.140] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.156] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.157] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.172] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.173] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.174] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.189] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.190] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.206] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.207] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.222] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.223] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.224] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.239] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.239] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.240] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.256] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.257] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.272] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.273] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.274] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.289] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.290] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.291] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.306] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.307] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.322] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.323] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.324] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.339] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.340] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.344] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.362] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.377] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.379] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.381] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.389] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.390] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.391] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.406] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.407] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.422] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.423] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.423] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.439] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.439] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.440] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.456] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.456] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.472] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.473] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.473] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.489] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.490] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.506] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.507] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.522] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.523] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.539] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.539] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.540] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.556] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.556] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.572] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.573] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.574] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.589] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.590] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.606] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.607] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.622] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.623] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.623] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.639] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.639] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.640] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.656] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.657] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.672] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.673] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.673] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.689] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.689] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.690] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.706] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.707] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.722] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.723] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.725] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.739] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.740] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.756] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.757] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.757] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.772] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.773] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.774] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.789] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.790] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.791] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.806] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.807] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.822] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.823] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.825] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.839] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.841] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.856] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.858] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.872] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.873] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.874] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.889] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.890] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.891] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.906] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.908] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.922] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.923] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.924] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.939] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.940] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.940] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.956] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.958] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.972] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.973] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.974] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:15.989] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:15.990] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:15.992] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:16.006] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+[2018-08-21 18:12:16.006] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-21 18:12:47.483] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:12:47.484] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 50 )
+
+[2018-08-21 18:12:47.485] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 55 )
+
+[2018-08-21 18:12:47.486] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 60 )
+
+[2018-08-21 18:12:47.486] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 63 )
+
+[2018-08-21 18:12:47.486] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 67 )
+
+[2018-08-21 18:12:47.487] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glshader.cpp ( 70 )
+
+[2018-08-21 18:12:47.487] [setup] [critical] Program Link Failed. info log :
+Program binary could not be loa
+[2018-08-21 18:12:47.488] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.488] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.488] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.490] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.490] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.507] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.523] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.526] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.540] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.540] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.541] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.557] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.557] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.573] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.573] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.574] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.590] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.591] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.607] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.623] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.623] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.624] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.639] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.640] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.641] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.657] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.673] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.673] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.674] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.689] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.690] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.690] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.707] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.707] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.723] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.724] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.725] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.740] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.756] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.757] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.757] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.773] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.773] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.774] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.790] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.790] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.793] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.807] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.823] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.824] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.825] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.840] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.842] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.857] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.858] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.873] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.873] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.874] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.890] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.891] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.893] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.907] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.908] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.923] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.924] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.924] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.940] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.940] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.942] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.957] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.957] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.973] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.973] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.974] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:47.990] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:47.990] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:47.992] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.007] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.008] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.023] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.024] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.026] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.039] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.040] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.041] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.056] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.058] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.073] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.073] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.074] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.090] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.093] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.108] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.123] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.123] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.124] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.139] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.140] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.157] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.173] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.174] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.190] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.192] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.207] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.223] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.223] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.224] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.240] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.240] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.242] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.258] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.273] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.274] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.290] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.290] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.291] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.307] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.309] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.323] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.324] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.324] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.339] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.340] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.341] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.359] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.373] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.373] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.374] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.390] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.390] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.391] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.407] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.409] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.423] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.424] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.424] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.440] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.440] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.441] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.457] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.458] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.473] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.474] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.474] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.490] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.508] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.523] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.524] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.539] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.540] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.541] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.557] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.558] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.573] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.574] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.575] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.589] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.590] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.591] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.607] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.623] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.624] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.624] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.640] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.640] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.641] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:12:48.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:12:48.657] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:12:48.673] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:02.963] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:02.965] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:02.971] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:02.972] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:02.972] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:02.973] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:02.974] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:02.974] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:02.990] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:02.991] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:02.994] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.007] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.009] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.023] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.024] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.027] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.040] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.041] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.043] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.057] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.058] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.073] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.074] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.075] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.090] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.091] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.092] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.108] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.123] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.124] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.127] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.140] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.141] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.159] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.173] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.175] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.190] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.191] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.192] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.208] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.223] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.224] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.225] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.240] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.241] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.242] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.260] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.273] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.277] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.290] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.291] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.292] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.307] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.307] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.308] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.323] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.324] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.326] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.340] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.340] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.342] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.357] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.358] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.373] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.374] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.374] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.390] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.391] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.392] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.407] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.410] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.423] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.424] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.425] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.440] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.441] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.441] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.456] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.457] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.459] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.473] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.474] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.475] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.490] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.491] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.492] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.506] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.508] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.523] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.523] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.525] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.540] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.541] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.542] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.556] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.557] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.561] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.573] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.574] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.575] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.590] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.591] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.592] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.606] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.608] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.623] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.624] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.625] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.640] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.641] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.642] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.656] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.660] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.673] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.674] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.675] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.690] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.691] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.692] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.706] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.707] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.708] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.723] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.724] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.724] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.740] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.757] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.757] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.759] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.773] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.774] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.777] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.790] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.790] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.791] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.806] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.808] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.823] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.824] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.824] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.840] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.840] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.841] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.856] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.857] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.860] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.873] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.874] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.875] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.890] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.891] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.892] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.906] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.907] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.909] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.923] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.924] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.925] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.940] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.941] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.943] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.956] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.957] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.959] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.973] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.974] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.975] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:03.990] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:03.991] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:03.993] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.006] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.007] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.008] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.023] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.024] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.025] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.040] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.040] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.041] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.056] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.059] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.073] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.074] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.075] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.090] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.090] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.094] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.106] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.109] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.123] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.124] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.128] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.140] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.141] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.156] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.160] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.173] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.174] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.190] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.192] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.206] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.208] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.223] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.224] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.225] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.240] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.241] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.242] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.256] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.258] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.273] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.275] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.290] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.291] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.293] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.306] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.307] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.308] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.323] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.324] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.325] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.340] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.341] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.343] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.356] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.358] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.373] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.374] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.374] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.390] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.390] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.392] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.406] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.407] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.410] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.423] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.424] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.425] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.440] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.441] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.442] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.457] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.457] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.459] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.473] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.473] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.474] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.490] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.491] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.507] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.508] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.523] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.524] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.524] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:04.540] [setup] [critical] Undefined Uniform Variable Name : model
+[2018-08-21 18:13:04.541] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-08-21 18:13:04.541] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-08-21 18:13:43.706] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:13:43.711] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
+[2018-08-21 18:13:43.712] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
+[2018-08-21 18:13:43.712] [setup] [info] Program Linking finished.
+[2018-08-21 18:13:43.713] [setup] [info] Linking Program Success.
+[2018-08-21 18:13:48.274] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-21 18:14:29.360] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:14:29.376] [setup] [info] Vertex Shader [../resources/shader/simple_vert.glsl] Compile finished.
+[2018-08-21 18:14:29.376] [setup] [info] Fragment Shader [../resources/shader/simple_frag.glsl] Compile finished.
+[2018-08-21 18:14:29.378] [setup] [info] Program Linking finished.
+[2018-08-21 18:14:29.378] [setup] [info] Linking Program Success.
+[2018-08-21 18:14:30.341] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-21 18:56:41.516] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:56:52.372] [setup] [critical] ifstream Failure : ios_base::failbit set: iostream stream error
+[2018-08-21 18:56:52.374] [setup] [critical] ifstream Failure : ios_base::failbit set: iostream stream error
+[2018-08-21 18:56:52.375] [setup] [critical] ifstream Failure : ios_base::failbit set: iostream stream error
+[2018-08-21 18:56:52.375] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 18:56:52.375] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 18:56:52.399] [setup] [info] Tessellation Control Shader [] Compile finished.
+[2018-08-21 18:56:52.400] [setup] [info] Tessellation Evaluation Shader [] Compile finished.
+[2018-08-21 18:56:52.401] [setup] [info] Geometry Shader [] Compile finished.
+[2018-08-21 18:56:52.434] [setup] [critical] Program Link Failed. info log :
+Geometry info
+-------------
+(0)
+[2018-08-21 18:56:52.434] [setup] [error] Program Linking Failed
+[2018-08-21 18:56:52.435] [setup] [error] An error occurred while initializing shader file.
 Unknown exception
-[2018-08-20 14:39:47.675] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 14:40:36.728] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:40:36.796] [setup] [critical] Shader Compile Failed. info log :
-0(12) : error C0000: syntax err
-[2018-08-20 14:40:36.840] [setup] [error] An error occurred while initializing shader file.
-Unknown exception
-[2018-08-20 14:40:36.885] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 14:41:04.446] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:41:04.511] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:41:04.555] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:41:04.664] [setup] [info] Program Linking finished.
-[2018-08-20 14:41:04.707] [setup] [info] Linking Program Success.
-[2018-08-20 14:41:06.003] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 18:56:52.436] [setup] [critical] Critical error occurred. program exit.
+[2018-08-21 18:59:05.008] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 18:59:13.702] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 18:59:13.703] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 18:59:13.704] [setup] [info] Program Linking finished.
+[2018-08-21 18:59:13.704] [setup] [info] Linking Program Success.
+[2018-08-21 18:59:16.297] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:42:32.980] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:42:33.029] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:42:33.075] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:42:33.124] [setup] [info] Program Linking finished.
-[2018-08-20 14:42:33.173] [setup] [info] Linking Program Success.
-[2018-08-20 14:42:34.678] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 19:08:21.587] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 19:08:21.589] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:08:21.589] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:08:21.590] [setup] [info] Program Linking finished.
+[2018-08-21 19:08:21.591] [setup] [info] Linking Program Success.
+[2018-08-21 19:08:22.488] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:43:16.477] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:43:16.530] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:43:16.575] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:43:16.619] [setup] [info] Program Linking finished.
-[2018-08-20 14:43:16.662] [setup] [info] Linking Program Success.
-[2018-08-20 14:43:17.900] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 19:10:25.208] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 19:10:25.209] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:10:25.210] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:10:25.211] [setup] [info] Program Linking finished.
+[2018-08-21 19:10:25.212] [setup] [info] Linking Program Success.
+[2018-08-21 19:10:25.212] [setup] [info] size of shader : 8
+[2018-08-21 19:10:27.990] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:43:30.974] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:43:30.976] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:43:30.977] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:43:30.978] [setup] [info] Program Linking finished.
-[2018-08-20 14:43:30.978] [setup] [info] Linking Program Success.
-[2018-08-20 14:43:33.158] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 19:16:58.063] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 19:16:58.068] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:16:58.069] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:16:58.070] [setup] [info] Program Linking finished.
+[2018-08-21 19:16:58.070] [setup] [info] Linking Program Success.
+[2018-08-21 19:16:58.071] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:16:58.071] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:16:58.072] [setup] [info] Program Linking finished.
+[2018-08-21 19:16:58.072] [setup] [info] Linking Program Success.
+[2018-08-21 19:16:58.779] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:56:40.642] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:56:40.665] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:56:40.665] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:56:40.692] [setup] [info] Program Linking finished.
-[2018-08-20 14:56:40.692] [setup] [info] Linking Program Success.
-[2018-08-20 14:56:40.698] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.724] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.735] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.753] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.769] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.786] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.802] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.819] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.836] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.853] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.869] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.886] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.903] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.919] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.936] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.952] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.969] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:40.985] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.002] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.019] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.035] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.052] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.069] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.085] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.102] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.118] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.135] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.151] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.168] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.185] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.201] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.218] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.235] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.252] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.268] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.285] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.302] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.318] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.335] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.352] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.368] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.385] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.402] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.418] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.435] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.451] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.468] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.485] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.506] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.521] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.537] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.552] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.568] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.585] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.602] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.618] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.635] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.652] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.668] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.685] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.702] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.718] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.735] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.751] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.768] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.785] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.801] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.818] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.835] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.851] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.868] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.885] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.902] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.918] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.935] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.951] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.968] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:41.985] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.002] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.020] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.035] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.051] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.068] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.084] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.101] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.118] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.135] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.152] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.168] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.184] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.201] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.218] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.235] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.251] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.268] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.285] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.301] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.318] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.334] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.351] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.368] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.385] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.401] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.418] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.434] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.451] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.468] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.484] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.501] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.518] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.534] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.551] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.568] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.584] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.601] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.618] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.634] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.651] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.668] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.684] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.701] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.718] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.734] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.751] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.768] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.784] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.801] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.818] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.834] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.851] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.868] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.884] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.901] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.917] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.934] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.951] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.967] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:42.984] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.001] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.017] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.034] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.051] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.067] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.084] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.102] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.118] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.135] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.154] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.175] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.186] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.201] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.218] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.234] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.251] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.267] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.284] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.301] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.318] [setup] [critical] Undefined Uniform Variable Name : project
-[2018-08-20 14:56:43.334] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 19:17:07.301] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 19:17:07.303] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:17:07.303] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:17:07.304] [setup] [info] Program Linking finished.
+[2018-08-21 19:17:07.304] [setup] [info] Linking Program Success.
+[2018-08-21 19:17:10.862] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
-[2018-08-20 14:56:54.155] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:56:54.178] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:56:54.178] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:56:54.202] [setup] [info] Program Linking finished.
-[2018-08-20 14:56:54.203] [setup] [info] Linking Program Success.
-[2018-08-20 14:56:57.861] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 14:59:27.714] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:59:27.715] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:59:27.716] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:59:27.716] [setup] [info] Program Linking finished.
-[2018-08-20 14:59:27.717] [setup] [info] Linking Program Success.
-[2018-08-20 14:59:28.243] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 14:59:44.522] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 14:59:44.523] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 14:59:44.524] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 14:59:44.525] [setup] [info] Program Linking finished.
-[2018-08-20 14:59:44.525] [setup] [info] Linking Program Success.
-[2018-08-20 14:59:47.368] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:00:18.297] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:00:18.298] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:00:18.299] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:00:18.299] [setup] [info] Program Linking finished.
-[2018-08-20 15:00:18.299] [setup] [info] Linking Program Success.
-[2018-08-20 15:00:18.787] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:00:49.927] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:00:49.930] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:00:49.931] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:00:49.932] [setup] [info] Program Linking finished.
-[2018-08-20 15:00:49.932] [setup] [info] Linking Program Success.
-[2018-08-20 15:00:51.472] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:02:32.251] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:02:32.252] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:02:32.252] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:02:32.253] [setup] [info] Program Linking finished.
-[2018-08-20 15:02:32.253] [setup] [info] Linking Program Success.
-[2018-08-20 15:02:32.254] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.256] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.282] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.294] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.311] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.327] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.344] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.361] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.376] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.394] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.420] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.426] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.443] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.460] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.477] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.495] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.510] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.528] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.544] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.578] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.581] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.596] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.615] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.631] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.645] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.659] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.676] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.693] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.709] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.726] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.743] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.759] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.776] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.793] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.810] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.826] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.843] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.860] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.876] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.893] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.909] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.926] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.943] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.959] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.976] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:32.993] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.009] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.026] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.043] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.059] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.076] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.092] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.109] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.126] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.143] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.159] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.176] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.192] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.209] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.226] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.243] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.259] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.277] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.293] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.309] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.326] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.343] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.359] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.376] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.392] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.409] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.426] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.442] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.459] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.476] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.492] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.509] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.526] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.542] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.559] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.575] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.592] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.610] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.626] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.644] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.680] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.684] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.693] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.709] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.726] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.742] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.760] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.777] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.792] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.809] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.826] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.842] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.859] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.876] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.893] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.909] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.925] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.942] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.959] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.975] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:33.992] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:34.009] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:34.025] [setup] [info] -1.07374e+08
-[2018-08-20 15:02:34.059] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:02:56.207] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:02:56.208] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:02:56.208] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:02:56.208] [setup] [info] Program Linking finished.
-[2018-08-20 15:02:56.209] [setup] [info] Linking Program Success.
-[2018-08-20 15:02:56.210] [setup] [info] 0
-[2018-08-20 15:02:56.211] [setup] [info] 0
-[2018-08-20 15:02:56.236] [setup] [info] 0
-[2018-08-20 15:02:56.250] [setup] [info] 0
-[2018-08-20 15:02:56.267] [setup] [info] 0
-[2018-08-20 15:02:56.283] [setup] [info] 0
-[2018-08-20 15:02:56.300] [setup] [info] 0
-[2018-08-20 15:02:56.316] [setup] [info] 0
-[2018-08-20 15:02:56.334] [setup] [info] 0
-[2018-08-20 15:02:56.351] [setup] [info] 0
-[2018-08-20 15:02:56.379] [setup] [info] 0
-[2018-08-20 15:02:56.383] [setup] [info] 0
-[2018-08-20 15:02:56.400] [setup] [info] 0
-[2018-08-20 15:02:56.418] [setup] [info] 0
-[2018-08-20 15:02:56.433] [setup] [info] 0
-[2018-08-20 15:02:56.471] [setup] [info] 0
-[2018-08-20 15:02:56.478] [setup] [info] 0
-[2018-08-20 15:02:56.485] [setup] [info] 0
-[2018-08-20 15:02:56.499] [setup] [info] 0
-[2018-08-20 15:02:56.518] [setup] [info] 0
-[2018-08-20 15:02:56.535] [setup] [info] 0
-[2018-08-20 15:02:56.549] [setup] [info] 0
-[2018-08-20 15:02:56.566] [setup] [info] 0
-[2018-08-20 15:02:56.583] [setup] [info] 0
-[2018-08-20 15:02:56.599] [setup] [info] 0
-[2018-08-20 15:02:56.615] [setup] [info] 0
-[2018-08-20 15:02:56.632] [setup] [info] 0
-[2018-08-20 15:02:56.649] [setup] [info] 0
-[2018-08-20 15:02:56.666] [setup] [info] 0
-[2018-08-20 15:02:56.682] [setup] [info] 0
-[2018-08-20 15:02:56.699] [setup] [info] 0
-[2018-08-20 15:02:56.715] [setup] [info] 0
-[2018-08-20 15:02:56.733] [setup] [info] 0
-[2018-08-20 15:02:56.749] [setup] [info] 0
-[2018-08-20 15:02:56.766] [setup] [info] 0
-[2018-08-20 15:02:56.782] [setup] [info] 0
-[2018-08-20 15:02:56.799] [setup] [info] 0
-[2018-08-20 15:02:56.815] [setup] [info] 0
-[2018-08-20 15:02:56.832] [setup] [info] 0
-[2018-08-20 15:02:56.849] [setup] [info] 0
-[2018-08-20 15:02:56.867] [setup] [info] 0
-[2018-08-20 15:02:56.884] [setup] [info] 0
-[2018-08-20 15:02:56.903] [setup] [info] 0
-[2018-08-20 15:02:56.919] [setup] [info] 0
-[2018-08-20 15:02:56.936] [setup] [info] 0
-[2018-08-20 15:02:56.970] [setup] [info] 0
-[2018-08-20 15:02:56.973] [setup] [info] 0
-[2018-08-20 15:02:56.984] [setup] [info] 0
-[2018-08-20 15:02:57.000] [setup] [info] 0
-[2018-08-20 15:02:57.015] [setup] [info] 0
-[2018-08-20 15:02:57.033] [setup] [info] 0
-[2018-08-20 15:02:57.049] [setup] [info] 0
-[2018-08-20 15:02:57.065] [setup] [info] 0
-[2018-08-20 15:02:57.082] [setup] [info] 0
-[2018-08-20 15:02:57.099] [setup] [info] 0
-[2018-08-20 15:02:57.115] [setup] [info] 0
-[2018-08-20 15:02:57.148] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:04:00.889] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:04:00.890] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:04:00.890] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:04:00.891] [setup] [info] Program Linking finished.
-[2018-08-20 15:04:00.892] [setup] [info] Linking Program Success.
-[2018-08-20 15:04:00.892] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:00.939] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:00.943] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:00.954] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:00.971] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:00.987] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.005] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.020] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.037] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.053] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.070] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.087] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.104] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.120] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.137] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.153] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.170] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.188] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.205] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.221] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.237] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.254] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.270] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.287] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.303] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.324] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.340] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.358] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.370] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.410] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.412] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.421] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.438] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.455] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.471] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.488] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.503] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.520] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.537] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.553] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.570] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.587] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.603] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.620] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.636] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.653] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.670] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.687] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.703] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.720] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.738] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.753] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.770] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.786] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.803] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.820] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.857] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.858] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.873] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.891] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.904] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.923] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.937] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.953] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.969] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:01.986] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.003] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.019] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.036] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.052] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.069] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.086] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.102] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.119] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.136] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.152] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.169] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.186] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.202] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.219] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.236] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.252] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.269] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.286] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.302] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.319] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.336] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.352] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.370] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.386] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.404] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.422] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.438] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.455] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.489] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.493] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.503] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.519] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.536] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.554] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.569] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.612] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.613] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.622] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.638] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.654] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.671] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.688] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.702] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.719] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.736] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.752] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.769] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.785] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.802] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.819] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.835] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.852] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.869] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.886] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.902] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.919] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.935] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.952] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.969] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:02.986] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.002] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.019] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.035] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.052] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.068] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.085] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.102] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.119] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.135] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.152] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.169] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.185] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.202] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.219] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.235] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.252] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.269] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.285] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.302] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.319] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.335] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.352] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.368] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.385] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.402] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.418] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.436] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.455] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.471] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.487] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.522] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.525] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.538] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.552] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.568] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.586] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.602] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.619] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.636] [setup] [info] -1.07374e+08
-[2018-08-20 15:04:03.668] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:04:14.200] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:04:14.202] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:04:14.202] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:04:14.203] [setup] [info] Program Linking finished.
-[2018-08-20 15:04:14.204] [setup] [info] Linking Program Success.
-[2018-08-20 15:04:14.204] [setup] [info] 0
-[2018-08-20 15:04:14.205] [setup] [info] 0
-[2018-08-20 15:04:14.227] [setup] [info] 0
-[2018-08-20 15:04:14.231] [setup] [info] 0
-[2018-08-20 15:04:14.247] [setup] [info] 0
-[2018-08-20 15:04:14.264] [setup] [info] 0
-[2018-08-20 15:04:14.280] [setup] [info] 0
-[2018-08-20 15:04:14.297] [setup] [info] 0
-[2018-08-20 15:04:14.314] [setup] [info] 0
-[2018-08-20 15:04:14.331] [setup] [info] 0
-[2018-08-20 15:04:14.347] [setup] [info] 0
-[2018-08-20 15:04:14.364] [setup] [info] 0
-[2018-08-20 15:04:14.380] [setup] [info] 0
-[2018-08-20 15:04:14.397] [setup] [info] 0
-[2018-08-20 15:04:14.414] [setup] [info] 0
-[2018-08-20 15:04:14.430] [setup] [info] 0
-[2018-08-20 15:04:14.447] [setup] [info] 0
-[2018-08-20 15:04:14.464] [setup] [info] 0
-[2018-08-20 15:04:14.480] [setup] [info] 0
-[2018-08-20 15:04:14.499] [setup] [info] 0
-[2018-08-20 15:04:14.514] [setup] [info] 0
-[2018-08-20 15:04:14.531] [setup] [info] 0
-[2018-08-20 15:04:14.547] [setup] [info] 0
-[2018-08-20 15:04:14.564] [setup] [info] 0
-[2018-08-20 15:04:14.580] [setup] [info] 0
-[2018-08-20 15:04:14.597] [setup] [info] 0
-[2018-08-20 15:04:14.613] [setup] [info] 0
-[2018-08-20 15:04:14.631] [setup] [info] 0
-[2018-08-20 15:04:14.647] [setup] [info] 0
-[2018-08-20 15:04:14.664] [setup] [info] 0
-[2018-08-20 15:04:14.680] [setup] [info] 0
-[2018-08-20 15:04:14.697] [setup] [info] 0
-[2018-08-20 15:04:14.713] [setup] [info] 0
-[2018-08-20 15:04:14.731] [setup] [info] 0
-[2018-08-20 15:04:14.747] [setup] [info] 0
-[2018-08-20 15:04:14.764] [setup] [info] 0
-[2018-08-20 15:04:14.780] [setup] [info] 0
-[2018-08-20 15:04:14.797] [setup] [info] 0
-[2018-08-20 15:04:14.813] [setup] [info] 0
-[2018-08-20 15:04:14.830] [setup] [info] 0
-[2018-08-20 15:04:14.847] [setup] [info] 0
-[2018-08-20 15:04:14.864] [setup] [info] 0
-[2018-08-20 15:04:14.880] [setup] [info] 0
-[2018-08-20 15:04:14.897] [setup] [info] 0
-[2018-08-20 15:04:14.914] [setup] [info] 0
-[2018-08-20 15:04:14.934] [setup] [info] 0
-[2018-08-20 15:04:14.951] [setup] [info] 0
-[2018-08-20 15:04:14.964] [setup] [info] 0
-[2018-08-20 15:04:14.980] [setup] [info] 0
-[2018-08-20 15:04:14.999] [setup] [info] 0
-[2018-08-20 15:04:15.014] [setup] [info] 0
-[2018-08-20 15:04:15.032] [setup] [info] 0
-[2018-08-20 15:04:15.048] [setup] [info] 0
-[2018-08-20 15:04:15.063] [setup] [info] 0
-[2018-08-20 15:04:15.080] [setup] [info] 0
-[2018-08-20 15:04:15.097] [setup] [info] 0
-[2018-08-20 15:04:15.113] [setup] [info] 0
-[2018-08-20 15:04:15.130] [setup] [info] 0
-[2018-08-20 15:04:15.147] [setup] [info] 0
-[2018-08-20 15:04:15.163] [setup] [info] 0
-[2018-08-20 15:04:15.180] [setup] [info] 0
-[2018-08-20 15:04:15.197] [setup] [info] 0
-[2018-08-20 15:04:15.213] [setup] [info] 0
-[2018-08-20 15:04:15.230] [setup] [info] 0
-[2018-08-20 15:04:15.246] [setup] [info] 0
-[2018-08-20 15:04:15.264] [setup] [info] 0
-[2018-08-20 15:04:15.281] [setup] [info] 0
-[2018-08-20 15:04:15.297] [setup] [info] 0
-[2018-08-20 15:04:15.313] [setup] [info] 0
-[2018-08-20 15:04:15.330] [setup] [info] 0
-[2018-08-20 15:04:15.346] [setup] [info] 0
-[2018-08-20 15:04:15.364] [setup] [info] 0
-[2018-08-20 15:04:15.380] [setup] [info] 0
-[2018-08-20 15:04:15.397] [setup] [info] 0
-[2018-08-20 15:04:15.413] [setup] [info] 0
-[2018-08-20 15:04:15.430] [setup] [info] 0
-[2018-08-20 15:04:15.448] [setup] [info] 0
-[2018-08-20 15:04:15.463] [setup] [info] 0
-[2018-08-20 15:04:15.479] [setup] [info] 0
-[2018-08-20 15:04:15.497] [setup] [info] 0
-[2018-08-20 15:04:15.513] [setup] [info] 0
-[2018-08-20 15:04:15.530] [setup] [info] 0
-[2018-08-20 15:04:15.546] [setup] [info] 0
-[2018-08-20 15:04:15.563] [setup] [info] 0
-[2018-08-20 15:04:15.580] [setup] [info] 0
-[2018-08-20 15:04:15.597] [setup] [info] 0
-[2018-08-20 15:04:15.613] [setup] [info] 0
-[2018-08-20 15:04:15.630] [setup] [info] 0
-[2018-08-20 15:04:15.646] [setup] [info] 0
-[2018-08-20 15:04:15.663] [setup] [info] 0
-[2018-08-20 15:04:15.679] [setup] [info] 0
-[2018-08-20 15:04:15.696] [setup] [info] 0
-[2018-08-20 15:04:15.713] [setup] [info] 0
-[2018-08-20 15:04:15.730] [setup] [info] 0
-[2018-08-20 15:04:15.746] [setup] [info] 0
-[2018-08-20 15:04:15.763] [setup] [info] 0
-[2018-08-20 15:04:15.780] [setup] [info] 0
-[2018-08-20 15:04:15.796] [setup] [info] 0
-[2018-08-20 15:04:15.813] [setup] [info] 0
-[2018-08-20 15:04:15.831] [setup] [info] 0
-[2018-08-20 15:04:15.846] [setup] [info] 0
-[2018-08-20 15:04:15.863] [setup] [info] 0
-[2018-08-20 15:04:15.880] [setup] [info] 0
-[2018-08-20 15:04:15.897] [setup] [info] 0
-[2018-08-20 15:04:15.913] [setup] [info] 0
-[2018-08-20 15:04:15.930] [setup] [info] 0
-[2018-08-20 15:04:15.946] [setup] [info] 0
-[2018-08-20 15:04:15.963] [setup] [info] 0
-[2018-08-20 15:04:15.979] [setup] [info] 0
-[2018-08-20 15:04:15.997] [setup] [info] 0
-[2018-08-20 15:04:16.013] [setup] [info] 0
-[2018-08-20 15:04:16.030] [setup] [info] 0
-[2018-08-20 15:04:16.046] [setup] [info] 0
-[2018-08-20 15:04:16.063] [setup] [info] 0
-[2018-08-20 15:04:16.080] [setup] [info] 0
-[2018-08-20 15:04:16.096] [setup] [info] 0
-[2018-08-20 15:04:16.113] [setup] [info] 0
-[2018-08-20 15:04:16.129] [setup] [info] 0
-[2018-08-20 15:04:16.146] [setup] [info] 0
-[2018-08-20 15:04:16.163] [setup] [info] 0
-[2018-08-20 15:04:16.179] [setup] [info] 0
-[2018-08-20 15:04:16.196] [setup] [info] 0
-[2018-08-20 15:04:16.213] [setup] [info] 0
-[2018-08-20 15:04:16.230] [setup] [info] 0
-[2018-08-20 15:04:16.246] [setup] [info] 0
-[2018-08-20 15:04:16.263] [setup] [info] 0
-[2018-08-20 15:04:16.279] [setup] [info] 0
-[2018-08-20 15:04:16.298] [setup] [info] 0
-[2018-08-20 15:04:16.316] [setup] [info] 0
-[2018-08-20 15:04:16.333] [setup] [info] 0
-[2018-08-20 15:04:16.347] [setup] [info] 0
-[2018-08-20 15:04:16.364] [setup] [info] 0
-[2018-08-20 15:04:16.380] [setup] [info] 0
-[2018-08-20 15:04:16.397] [setup] [info] 0
-[2018-08-20 15:04:16.413] [setup] [info] 0
-[2018-08-20 15:04:16.430] [setup] [info] 0
-[2018-08-20 15:04:16.446] [setup] [info] 0
-[2018-08-20 15:04:16.463] [setup] [info] 0
-[2018-08-20 15:04:16.480] [setup] [info] 0
-[2018-08-20 15:04:16.497] [setup] [info] 0
-[2018-08-20 15:04:16.513] [setup] [info] 0
-[2018-08-20 15:04:16.530] [setup] [info] 0
-[2018-08-20 15:04:16.546] [setup] [info] 0
-[2018-08-20 15:04:16.563] [setup] [info] 0
-[2018-08-20 15:04:16.579] [setup] [info] 0
-[2018-08-20 15:04:16.597] [setup] [info] 0
-[2018-08-20 15:04:16.613] [setup] [info] 0
-[2018-08-20 15:04:16.630] [setup] [info] 0
-[2018-08-20 15:04:16.646] [setup] [info] 0
-[2018-08-20 15:04:16.664] [setup] [info] 0
-[2018-08-20 15:04:16.680] [setup] [info] 0
-[2018-08-20 15:04:16.697] [setup] [info] 0
-[2018-08-20 15:04:16.713] [setup] [info] 0
-[2018-08-20 15:04:16.730] [setup] [info] 0
-[2018-08-20 15:04:16.748] [setup] [info] 0
-[2018-08-20 15:04:16.763] [setup] [info] 0
-[2018-08-20 15:04:16.779] [setup] [info] 0
-[2018-08-20 15:04:16.796] [setup] [info] 0
-[2018-08-20 15:04:16.813] [setup] [info] 0
-[2018-08-20 15:04:16.830] [setup] [info] 0
-[2018-08-20 15:04:16.846] [setup] [info] 0
-[2018-08-20 15:04:16.864] [setup] [info] 0
-[2018-08-20 15:04:16.880] [setup] [info] 0
-[2018-08-20 15:04:16.897] [setup] [info] 0
-[2018-08-20 15:04:16.913] [setup] [info] 0
-[2018-08-20 15:04:16.930] [setup] [info] 0
-[2018-08-20 15:04:16.946] [setup] [info] 0
-[2018-08-20 15:04:16.964] [setup] [info] 0
-[2018-08-20 15:04:16.980] [setup] [info] 0
-[2018-08-20 15:04:16.997] [setup] [info] 0
-[2018-08-20 15:04:17.013] [setup] [info] 0
-[2018-08-20 15:04:17.030] [setup] [info] 0
-[2018-08-20 15:04:17.047] [setup] [info] 0
-[2018-08-20 15:04:17.064] [setup] [info] 0
-[2018-08-20 15:04:17.080] [setup] [info] 0
-[2018-08-20 15:04:17.096] [setup] [info] 0
-[2018-08-20 15:04:17.112] [setup] [info] 0
-[2018-08-20 15:04:17.129] [setup] [info] 0
-[2018-08-20 15:04:17.145] [setup] [info] 0
-[2018-08-20 15:04:17.163] [setup] [info] 0
-[2018-08-20 15:04:17.179] [setup] [info] 0
-[2018-08-20 15:04:17.196] [setup] [info] 0
-[2018-08-20 15:04:17.212] [setup] [info] 0
-[2018-08-20 15:04:17.230] [setup] [info] 0
-[2018-08-20 15:04:17.246] [setup] [info] 0
-[2018-08-20 15:04:17.262] [setup] [info] 0
-[2018-08-20 15:04:17.279] [setup] [info] 0
-[2018-08-20 15:04:17.296] [setup] [info] 0
-[2018-08-20 15:04:17.312] [setup] [info] 0
-[2018-08-20 15:04:17.329] [setup] [info] 0
-[2018-08-20 15:04:17.346] [setup] [info] 0
-[2018-08-20 15:04:17.362] [setup] [info] 0
-[2018-08-20 15:04:17.379] [setup] [info] 0
-[2018-08-20 15:04:17.396] [setup] [info] 0
-[2018-08-20 15:04:17.412] [setup] [info] 0
-[2018-08-20 15:04:17.429] [setup] [info] 0
-[2018-08-20 15:04:17.445] [setup] [info] 0
-[2018-08-20 15:04:17.463] [setup] [info] 0
-[2018-08-20 15:04:17.479] [setup] [info] 0
-[2018-08-20 15:04:17.497] [setup] [info] 0
-[2018-08-20 15:04:17.512] [setup] [info] 0
-[2018-08-20 15:04:17.529] [setup] [info] 0
-[2018-08-20 15:04:17.545] [setup] [info] 0
-[2018-08-20 15:04:17.562] [setup] [info] 0
-[2018-08-20 15:04:17.579] [setup] [info] 0
-[2018-08-20 15:04:17.595] [setup] [info] 0
-[2018-08-20 15:04:17.612] [setup] [info] 0
-[2018-08-20 15:04:17.629] [setup] [info] 0
-[2018-08-20 15:04:17.645] [setup] [info] 0
-[2018-08-20 15:04:17.662] [setup] [info] 0
-[2018-08-20 15:04:17.678] [setup] [info] 0
-[2018-08-20 15:04:17.695] [setup] [info] 0
-[2018-08-20 15:04:17.712] [setup] [info] 0
-[2018-08-20 15:04:17.729] [setup] [info] 0
-[2018-08-20 15:04:17.745] [setup] [info] 0
-[2018-08-20 15:04:17.762] [setup] [info] 0
-[2018-08-20 15:04:17.779] [setup] [info] 0
-[2018-08-20 15:04:17.796] [setup] [info] 0
-[2018-08-20 15:04:17.813] [setup] [info] 0
-[2018-08-20 15:04:17.829] [setup] [info] 0
-[2018-08-20 15:04:17.846] [setup] [info] 0
-[2018-08-20 15:04:17.862] [setup] [info] 0
-[2018-08-20 15:04:17.879] [setup] [info] 0
-[2018-08-20 15:04:17.896] [setup] [info] 0
-[2018-08-20 15:04:17.912] [setup] [info] 0
-[2018-08-20 15:04:17.929] [setup] [info] 0
-[2018-08-20 15:04:17.945] [setup] [info] 0
-[2018-08-20 15:04:17.962] [setup] [info] 0
-[2018-08-20 15:04:17.978] [setup] [info] 0
-[2018-08-20 15:04:17.996] [setup] [info] 0
-[2018-08-20 15:04:18.012] [setup] [info] 0
-[2018-08-20 15:04:18.029] [setup] [info] 0
-[2018-08-20 15:04:18.045] [setup] [info] 0
-[2018-08-20 15:04:18.063] [setup] [info] 0
-[2018-08-20 15:04:18.078] [setup] [info] 0
-[2018-08-20 15:04:18.095] [setup] [info] 0
-[2018-08-20 15:04:18.112] [setup] [info] 0
-[2018-08-20 15:04:18.130] [setup] [info] 0
-[2018-08-20 15:04:18.147] [setup] [info] 0
-[2018-08-20 15:04:18.164] [setup] [info] 0
-[2018-08-20 15:04:18.181] [setup] [info] 0
-[2018-08-20 15:04:18.196] [setup] [info] 0
-[2018-08-20 15:04:18.212] [setup] [info] 0
-[2018-08-20 15:04:18.229] [setup] [info] 0
-[2018-08-20 15:04:18.245] [setup] [info] 0
-[2018-08-20 15:04:18.263] [setup] [info] 0
-[2018-08-20 15:04:18.279] [setup] [info] 0
-[2018-08-20 15:04:18.296] [setup] [info] 0
-[2018-08-20 15:04:18.312] [setup] [info] 0
-[2018-08-20 15:04:18.330] [setup] [info] 0
-[2018-08-20 15:04:18.345] [setup] [info] 0
-[2018-08-20 15:04:18.362] [setup] [info] 0
-[2018-08-20 15:04:18.379] [setup] [info] 0
-[2018-08-20 15:04:18.396] [setup] [info] 0
-[2018-08-20 15:04:18.412] [setup] [info] 0
-[2018-08-20 15:04:18.429] [setup] [info] 0
-[2018-08-20 15:04:18.447] [setup] [info] 0
-[2018-08-20 15:04:18.463] [setup] [info] 0
-[2018-08-20 15:04:18.480] [setup] [info] 0
-[2018-08-20 15:04:18.496] [setup] [info] 0
-[2018-08-20 15:04:18.512] [setup] [info] 0
-[2018-08-20 15:04:18.529] [setup] [info] 0
-[2018-08-20 15:04:18.545] [setup] [info] 0
-[2018-08-20 15:04:18.562] [setup] [info] 0
-[2018-08-20 15:04:18.579] [setup] [info] 0
-[2018-08-20 15:04:18.596] [setup] [info] 0
-[2018-08-20 15:04:18.613] [setup] [info] 0
-[2018-08-20 15:04:18.629] [setup] [info] 0
-[2018-08-20 15:04:18.646] [setup] [info] 0
-[2018-08-20 15:04:18.662] [setup] [info] 0
-[2018-08-20 15:04:18.679] [setup] [info] 0
-[2018-08-20 15:04:18.696] [setup] [info] 0
-[2018-08-20 15:04:18.734] [setup] [info] 0
-[2018-08-20 15:04:18.739] [setup] [info] 0
-[2018-08-20 15:04:18.748] [setup] [info] 0
-[2018-08-20 15:04:18.762] [setup] [info] 0
-[2018-08-20 15:04:18.779] [setup] [info] 0
-[2018-08-20 15:04:18.797] [setup] [info] 0
-[2018-08-20 15:04:18.811] [setup] [info] 0
-[2018-08-20 15:04:18.830] [setup] [info] 0
-[2018-08-20 15:04:18.862] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:04:54.186] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:04:54.188] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:04:54.189] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:04:54.190] [setup] [info] Program Linking finished.
-[2018-08-20 15:04:54.190] [setup] [info] Linking Program Success.
-[2018-08-20 15:04:57.777] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:05:08.245] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:05:08.246] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:05:08.247] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:05:08.248] [setup] [info] Program Linking finished.
-[2018-08-20 15:05:08.248] [setup] [info] Linking Program Success.
-[2018-08-20 15:05:17.768] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:05:51.576] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:05:51.577] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:05:51.597] [setup] [critical] Shader Compile Failed. info log :
-0(8) : error C0000: syntax erro
-[2018-08-20 15:05:51.597] [setup] [error] An error occurred while initializing shader file.
-Unknown exception
-[2018-08-20 15:05:51.598] [setup] [critical] Critical error occurred. program exit.
-[2018-08-20 15:06:04.319] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:06:04.320] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:06:04.341] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:06:04.366] [setup] [info] Program Linking finished.
-[2018-08-20 15:06:04.367] [setup] [info] Linking Program Success.
-[2018-08-20 15:06:10.361] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:07:39.886] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:07:39.888] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:07:39.888] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:07:39.889] [setup] [info] Program Linking finished.
-[2018-08-20 15:07:39.890] [setup] [info] Linking Program Success.
-[2018-08-20 15:07:43.719] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:08:05.202] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:08:05.203] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:08:05.204] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:08:05.204] [setup] [info] Program Linking finished.
-[2018-08-20 15:08:05.205] [setup] [info] Linking Program Success.
-[2018-08-20 15:08:07.558] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
-
-[2018-08-20 15:08:15.833] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
-[2018-08-20 15:08:15.834] [setup] [info] Vertex Shader [../resources/shader/vertex_shader.glsl] Compile finished.
-[2018-08-20 15:08:15.835] [setup] [info] Fragment Shader [../resources/shader/fragment_shader.glsl] Compile finished.
-[2018-08-20 15:08:15.836] [setup] [info] Program Linking finished.
-[2018-08-20 15:08:15.836] [setup] [info] Linking Program Success.
-[2018-08-20 15:08:20.435] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 152 )
+[2018-08-21 19:19:37.824] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-21 19:19:37.825] [setup] [info] Vertex Shader [simple_vs.glsl] Compile finished.
+[2018-08-21 19:19:37.826] [setup] [info] Fragment Shader [simple_fs.glsl] Compile finished.
+[2018-08-21 19:19:37.827] [setup] [info] Program Linking finished.
+[2018-08-21 19:19:37.827] [setup] [info] Linking Program Success.
+[2018-08-21 19:19:38.465] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 

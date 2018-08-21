@@ -3,9 +3,14 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <vector>
 #include <memory>
+#include <filesystem>
+
+
 
 std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void) 
 {
+	namespace fs = std::experimental::filesystem;
+	
 	static std::shared_ptr<spdlog::logger> console = nullptr;
 	
 	if (console.get() == nullptr)
@@ -14,10 +19,15 @@ std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void)
 		sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 
 #ifdef _DEBUG
-		system("mkdir logs");
-		system("touch setuplog.txt");
+		
+		constexpr const char* logDir = "./logs";
+		constexpr const char* logPath = "./logs/setuplog.txt";
 
-		sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("./logs/setuplog.txt"));
+		if (!fs::exists(logDir)) {
+			fs::create_directory(logDir);
+		}
+
+		sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(logPath));
 		console = std::make_shared<spdlog::logger>("setup", sinks.begin(), sinks.end());
 		console->set_level(spdlog::level::trace);
 #else

@@ -5,7 +5,6 @@
 #include <fstream>
 #include <sstream>
 #include <glm/gtc/type_ptr.hpp>
-#include <vector>
 
 enum class GLShader::CHECK_TARGET : int
 {
@@ -14,13 +13,14 @@ enum class GLShader::CHECK_TARGET : int
 };
 
 GLShader::GLShader()
-	: programID(0), useTcs(false), useTes(false), useGs(false)
+	: programID(0), directoryPath(), programName()
 {
 }
 
-GLShader::GLShader(const char* vs_path, const char* tcs_path, const char* tes_path, const char* gs_path, const char* fs_path)
+GLShader::GLShader(const std::vector<std::string>& assetPath)
+	: programID(0), directoryPath(), programName()
 {
-	setupShader(vs_path, tcs_path, tes_path, gs_path, fs_path);
+	loadAsset(assetPath);
 }
 
 GLShader::~GLShader()
@@ -38,29 +38,22 @@ GLShader::~GLShader()
 * @ param		geometry shader file path. can be nullptr.
 * @ param		fragment shader file path. must not be nullptr.
 */
-void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char* tes_path, const char* gs_path, const char* fs_path)
+void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 {
+	parseShaderPath(assetPath);
+
 	std::string vs_string, tcs_string, tes_string, gs_string, fs_string;
 
-	getShaderString(vs_path, vs_string);
+	getShaderString(directoryPath + std::string(shaderFileName[VS]) , vs_string);
 	
-	if (tcs_path != nullptr)
-	{
-		useTcs = true;
-		getShaderString(tcs_path, tcs_string);
-	}
-	if (tes_path != nullptr)
-	{
-		useTes = true;
-		getShaderString(tes_path, tes_string);
-	}
-	if (gs_path != nullptr)
-	{
-		useGs = true;
-		getShaderString(gs_path, gs_string);
-	}
+	if (!shaderFileName[TCS].empty())
+		getShaderString(directoryPath + std::string(shaderFileName[TCS]), tcs_string);
+	if (!shaderFileName[TES].empty())
+		getShaderString(directoryPath + std::string(shaderFileName[TES]), tes_string);
+	if (!shaderFileName[GS].empty())
+		getShaderString(directoryPath + std::string(shaderFileName[GS]), gs_string);
 	
-	getShaderString(fs_path, fs_string);
+	getShaderString(directoryPath + std::string(shaderFileName[FS]), fs_string);
 
 	GLuint vs, tcs, tes, gs, fs;
 
@@ -72,10 +65,10 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	glCompileShader(vs);
 
 	if (checkStatus(vs, CHECK_TARGET::SHADER))
-		EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", vs_path);
+		EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", shaderFileName[VS]);
 	else
 	{
-		EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", vs_path);
+		EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", shaderFileName[VS]);
 		throw std::exception();
 	}
 
@@ -84,65 +77,65 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	glCompileShader(fs);
 
 	if (checkStatus(fs, CHECK_TARGET::SHADER))
-		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", fs_path);
+		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", shaderFileName[FS]);
 	else
 	{
-		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", fs_path);
+		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", shaderFileName[FS]);
 		throw std::exception();
 	}
 
-	if (tcs_path != nullptr) {
+	if (!shaderFileName[TCS].empty()) {
 		tcs_source = tcs_string.c_str();
 		tcs = glCreateShader(GL_GEOMETRY_SHADER);
 		glShaderSource(tcs, 1, &tcs_source, nullptr);
 		glCompileShader(tcs);
 
 		if (checkStatus(tcs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", tcs_path);
+			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", shaderFileName[TCS]);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", tcs_path);
+			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", shaderFileName[TCS]);
 			throw std::exception();
 		}
 	}
 
-	if (tes_path != nullptr) {
+	if (!shaderFileName[TES].empty()) {
 		tes_source = gs_string.c_str();
 		tes = glCreateShader(GL_GEOMETRY_SHADER);
 		glShaderSource(tes, 1, &tes_source, nullptr);
 		glCompileShader(tes);
 
 		if (checkStatus(tes, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", tes_path);
+			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", shaderFileName[TES]);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", tes_path);
+			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", shaderFileName[TES]);
 			throw std::exception();
 		}
 	}
 
-	if (gs_path != nullptr) {
+	if (!shaderFileName[GS].empty()) {
 		gs_source = gs_string.c_str();
 		gs = glCreateShader(GL_GEOMETRY_SHADER);
 		glShaderSource(gs, 1, &gs_source, nullptr);
 		glCompileShader(gs);
 
 		if (checkStatus(gs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", gs_path);
+			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", shaderFileName[GS]);
 		else
 		{
-			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", gs_path);
+			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", shaderFileName[GS]);
 			throw std::exception();
 		}
 	}
 
 	programID = glCreateProgram();
 	glAttachShader(programID, vs);
-	if (tcs_path != nullptr)
+	if (!shaderFileName[TCS].empty())
 		glAttachShader(programID, tcs);
-	if (tes_path != nullptr)
+	if (!shaderFileName[TES].empty())
 		glAttachShader(programID, tes);
-	if (gs_path != nullptr)
+	if (!shaderFileName[GS].empty())
 		glAttachShader(programID, gs);
 	glAttachShader(programID, fs);
 	glLinkProgram(programID);
@@ -157,17 +150,17 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 
 	glDetachShader(programID, vs);
 	glDeleteShader(vs);
-	if (tcs_path != nullptr)
+	if (!shaderFileName[TCS].empty())
 	{
 		glDetachShader(programID, tcs);
 		glDeleteShader(tcs);
 	}
-	if (tes_path != nullptr)
+	if (!shaderFileName[TES].empty())
 	{
 		glDetachShader(programID, tes);
 		glDeleteShader(tes);
 	}
-	if (gs_path != nullptr)
+	if (!shaderFileName[GS].empty())
 	{
 		glDetachShader(programID, gs);
 		glDeleteShader(gs);
@@ -178,11 +171,62 @@ void GLShader::setupShader(const char* vs_path, const char* tcs_path, const char
 	EngineLogger::getConsole()->info("Linking Program Success.");
 }
 
-void GLShader::reloadAsset(const std::vector<std::string>& assetPath)
+/**
+* @ brief		parse given asset paths.
+* @ details		parse given asset paths to directory path, shader program name, shader type. note that shader file name (without extension) must be composed with 
+				shader program name and shader type(vs, tcs, tes, gs, fs) separated by delimiter "_". 
+* @ param		initializer list which filled with shader files' path.
+* @ todo		this method may be very unsafe and low performance i think. maybe there are better way to parse.
+*/
+void GLShader::parseShaderPath(const std::vector<std::string>& assetPath)
 {
-	std::vector<std::string> temp(5, nullptr);
+	for (const auto& path : assetPath)
+	{
+		const auto fileNameIdx = path.find_last_of("/"); //before fileNameIdx is directory path.
 
-	temp.push_back()
+		if (directoryPath.empty())
+			directoryPath = path.substr(0, fileNameIdx + 1);
+
+		const std::string fileName = path.substr(fileNameIdx + 1);
+
+		const auto shaderTypeIdx = fileName.find_last_of("_");
+
+		if (programName.empty())
+			programName = fileName.substr(0, shaderTypeIdx);
+
+		const std::string typeAndExtension = fileName.substr(shaderTypeIdx + 1);
+
+		const auto extensionIdx = typeAndExtension.find_last_of(".");
+
+		const std::string shaderType = typeAndExtension.substr(0, extensionIdx);
+
+		if (shaderType == "vs")
+			shaderFileName[VS] = fileName;
+		else if (shaderType == "tcs")
+			shaderFileName[TCS] = fileName;
+		else if (shaderType == "tes")
+			shaderFileName[TES] = fileName;
+		else if (shaderType == "gs")
+			shaderFileName[GS] = fileName;
+		else if (shaderType == "fs")
+			shaderFileName[FS] = fileName;
+		else
+		{
+			EngineLogger::getConsole()->critical("Unknown shader type file is given : {}", path);
+			throw std::exception();
+		}
+	}
+}
+
+/**
+* @ brief		reload shader program.
+* @ details		reload shader context when it need to be refreshed (ex : original file changed).
+*/
+void GLShader::reloadAsset(void)
+{
+	glDeleteProgram(programID);
+
+	loadAsset({}); //with empty initializer list, paths remain unchanged.
 }
 
 /**
@@ -190,7 +234,7 @@ void GLShader::reloadAsset(const std::vector<std::string>& assetPath)
 * @ param		shader file path which you want to get whole string.
 * @ param		string reference, string from shader file will return to this reference.
 */
-void GLShader::getShaderString(const char* path, std::string& ret_string)
+void GLShader::getShaderString(const std::string& path, std::string& ret_string)
 {
 	std::ifstream shaderFile;
 	shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);

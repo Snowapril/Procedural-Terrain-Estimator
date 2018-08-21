@@ -57,9 +57,9 @@ bool EngineApp::initShader(void)
 {
 	try 
 	{
-		simpleShader = std::make_shared<GLShader>("../resources/shader/vertex_shader.glsl", nullptr, nullptr, nullptr, "../resources/shader/fragment_shader.glsl");
+		simpleShader = make_shared_from_list<GLShader, std::string>({ "../resources/shader/simple_vs.glsl", "../resources/shader/simple_fs.glsl" });
 
-		assetManager->addAsset(simpleShader, { "../resources/shader/vertex_shader.glsl", "../resources/shader/fragment_shader.glsl" });
+		//assetManager->addAsset(simpleShader, { "../resources/shader/simple_vert.glsl", "../resources/shader/simple_frag.glsl" });
 	}
 	catch (std::exception e)
 	{
@@ -202,6 +202,7 @@ void EngineApp::drawScene(void) const
 	simpleShader->sendUniform("project", glm::perspective(glm::radians(45.0f), getAspectRatio(), 0.1f, 100.f));
 
 	glBindVertexArray(VAO);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES, 36u, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0u);

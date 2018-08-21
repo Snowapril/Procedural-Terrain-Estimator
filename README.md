@@ -11,7 +11,7 @@ compile given shader's paths and **provide compiled program binary output**.
 
 glslcache vert.glsl frag.glsl
 
-//if you want to set output name, type like this.
+//if you want to set output name, append -o option.
 glslcache vert.glsl frag.glsl -o newname.glslcache
 
 //if you use tessellation, just append -t option.

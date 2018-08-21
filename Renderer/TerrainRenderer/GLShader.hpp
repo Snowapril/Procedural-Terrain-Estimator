@@ -16,27 +16,37 @@
 #include <glm/vec4.hpp>
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
+#include <vector>
+#include <array>
 
 class GLShader : public EngineAsset
 {
 private:
 	unsigned int programID;
-	bool useTcs;
-	bool useTes;
-	bool useGs;
-
+	
 	enum class CHECK_TARGET : int;
+	enum SHADER_TYPE {
+		VS  = 0,
+		TCS = 1,
+		TES = 2,
+		GS  = 3,
+		FS  = 4,
+	};
 
-	static void getShaderString(const char* path, std::string& ret_string);
+	std::array<std::string, 5> shaderFileName;
+	std::string directoryPath;
+	std::string programName;
+
+	void parseShaderPath(const std::vector<std::string>& assetPath);
+	static void getShaderString(const std::string& path, std::string& ret_string);
 	static bool checkStatus(unsigned int target, CHECK_TARGET targetType);
 public:
 	GLShader();
-	GLShader(const char* vs_path, const char* tcs_path, const char* tes_path, const char* gs_path, const char* fs_path);
+	GLShader(const std::vector<std::string>& assetPath);
 	virtual ~GLShader();
 
-	void setupShader(const char* vs_path, const char* tcs_path, const char* tes_path, const char* gs_path, const char* fs_path);
-
-	void reloadAsset(const std::vector<std::string>& assetPath);
+	void loadAsset(const std::vector<std::string>& assetPath);
+	void reloadAsset(void);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

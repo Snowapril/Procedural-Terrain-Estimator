@@ -92,8 +92,11 @@ bool GLApp::initGLConfigure(void)
 		glCullFace(GL_BACK);
 		glFrontFace(GL_CCW);
 	}
+
 	if (ENABLE_4XMSAA)
+	{
 		glEnable(GL_MULTISAMPLE);
+	}
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -136,7 +139,7 @@ int GLApp::Run(void)
 
 		if (!paused)
 		{
-			//calculate frame stats.
+			calculateFrameStats();
 			updateScene(timer.getDeltaTime());
 			drawScene();
 		}
