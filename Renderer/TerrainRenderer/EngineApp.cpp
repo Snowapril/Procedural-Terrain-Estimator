@@ -187,8 +187,8 @@ void EngineApp::drawScene(void) const
 	Profile();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(Color::LightSteelBlue[0], Color::LightSteelBlue[1], Color::LightSteelBlue[2], Color::LightSteelBlue[3]);
-
+	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
+	
 	const float totalTime = timer.getTotalTime();
 
 	simpleShader->useProgram();

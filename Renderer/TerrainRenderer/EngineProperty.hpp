@@ -32,6 +32,9 @@ namespace Color {
 	const float Magenta[4]         = { 1.0f,  0.0f,  1.0f,  1.0f };
 	const float Silver[4]          = { 0.75f, 0.75f, 0.75f, 1.0f };
 	const float LightSteelBlue[4]  = { 0.69f, 0.77f, 0.87f, 1.0f };
+	const float ForestGrren[4]     = { 0.13f, 0.55f, 0.13f, 1.0f };
+	const float SteelBlue[4]       = { 0.31f, 0.58f, 0.80f, 1.0f };
+	const float DarkViolet[4]      = { 0.58f, 0.00f, 0.83f, 1.0f };
 
 }
 

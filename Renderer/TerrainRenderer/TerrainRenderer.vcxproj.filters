@@ -47,6 +47,12 @@
     <ClCompile Include="EngineApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLResources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTerrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -77,6 +83,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EngineApp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTerrain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLResources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -153,9 +153,11 @@
     <ClCompile Include="EngineAsset.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
     <ClCompile Include="EngineProfiler.cpp" />
+    <ClCompile Include="EngineTerrain.cpp" />
     <ClCompile Include="EngineTimer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -166,9 +168,11 @@
     <ClInclude Include="EngineLogger.hpp" />
     <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
+    <ClInclude Include="EngineTerrain.hpp" />
     <ClInclude Include="EngineTimer.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
   </ItemGroup>
   <ItemGroup>
