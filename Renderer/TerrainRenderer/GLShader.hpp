@@ -16,8 +16,6 @@
 #include <glm/vec4.hpp>
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
-#include <vector>
-#include <array>
 
 class GLShader : public EngineAsset
 {
@@ -33,10 +31,6 @@ private:
 		FS  = 4,
 	};
 
-	std::array<std::string, 5> shaderFileName;
-	std::string directoryPath;
-	std::string programName;
-
 	void parseShaderPath(const std::vector<std::string>& assetPath);
 	static void getShaderString(const std::string& path, std::string& ret_string);
 	static bool checkStatus(unsigned int target, CHECK_TARGET targetType);
@@ -47,6 +41,7 @@ public:
 
 	void loadAsset(const std::vector<std::string>& assetPath);
 	void reloadAsset(void);
+	bool listenToAssetChange(void);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

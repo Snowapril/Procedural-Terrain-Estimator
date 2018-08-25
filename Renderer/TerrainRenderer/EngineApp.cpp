@@ -18,6 +18,48 @@ EngineApp::~EngineApp()
 }
 
 /**
+* @ brief		update terrain renderer.
+* @ details		this will be located in main loop. update whole terrain renderer like position, direction, status and etc...
+*/
+void EngineApp::updateScene(float dt)
+{
+	Profile();
+
+	assetManager->refreshDirtyAssets();
+}
+
+/**
+* @ brief		render opengl world!
+* @ details		render opengl world using shaders, other objects and etc ...
+*/
+void EngineApp::drawScene(void) const
+{
+	Profile();
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
+
+	const float totalTime = timer.getTotalTime();
+
+	simpleShader->useProgram();
+
+	glm::mat4 model;
+	model = glm::translate(glm::mat4(1.f), glm::vec3(0.f));
+	model = glm::rotate(model, totalTime, glm::normalize(glm::vec3(0.f, 1.f, 1.f)));
+
+	simpleShader->sendUniform("model", model);
+	simpleShader->sendUniform("view", glm::lookAt(glm::vec3(0.f, 4.f, 6.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f)));
+	simpleShader->sendUniform("project", glm::perspective(glm::radians(45.0f), getAspectRatio(), 0.1f, 100.f));
+
+	glBindVertexArray(VAO);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glDrawElements(GL_TRIANGLES, 36u, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0u);
+	glBindTexture(GL_TEXTURE_2D, 0u);
+}
+
+/**
 * @ brief		deal with whole initialization of Terrain Renderer.
 * @ return		return boolean whether if intializing terrain renderer is successful or not.
 */
@@ -57,9 +99,10 @@ bool EngineApp::initShader(void)
 {
 	try 
 	{
-		simpleShader = make_shared_from_list<GLShader, std::string>({ "../resources/shader/simple_vs.glsl", "../resources/shader/simple_fs.glsl" });
-
-		//assetManager->addAsset(simpleShader, { "../resources/shader/simple_vert.glsl", "../resources/shader/simple_frag.glsl" });
+		simpleShader = assetManager->addAsset<GLShader>({ 
+			"../resources/shader/simple_vs.glsl",
+			"../resources/shader/simple_fs.glsl" 
+		});
 	}
 	catch (std::exception e)
 	{
@@ -165,48 +208,6 @@ bool EngineApp::initGeometryBuffer(void)
 	glBindVertexArray(0u);
 	
 	return true;
-}
-
-/**
-* @ brief		update terrain renderer.
-* @ details		this will be located in main loop. update whole terrain renderer like position, direction, status and etc...
-*/
-void EngineApp::updateScene(float dt)
-{
-	Profile();
-
-	assetManager->listenToAssetChanges();
-}
-
-/**
-* @ brief		render opengl world!
-* @ details		render opengl world using shaders, other objects and etc ... 
-*/
-void EngineApp::drawScene(void) const
-{
-	Profile();
-
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
-	
-	const float totalTime = timer.getTotalTime();
-
-	simpleShader->useProgram();
-
-	glm::mat4 model;
-	model = glm::translate(glm::mat4(1.f), glm::vec3(0.f));
-	model = glm::rotate(model, totalTime, glm::normalize(glm::vec3(0.f, 1.f, 1.f)));
-
-	simpleShader->sendUniform("model", model);
-	simpleShader->sendUniform("view", glm::lookAt(glm::vec3(0.f, 4.f, 6.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f)));
-	simpleShader->sendUniform("project", glm::perspective(glm::radians(45.0f), getAspectRatio(), 0.1f, 100.f));
-
-	glBindVertexArray(VAO);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawElements(GL_TRIANGLES, 36u, GL_UNSIGNED_INT, 0);
-
-	glBindVertexArray(0u);
-	glBindTexture(GL_TEXTURE_2D, 0u);
 }
 
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)

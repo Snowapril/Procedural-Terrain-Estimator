@@ -2,24 +2,29 @@
 #define ENGINE_TERRAIN_HPP
 
 #include <memory>
+#include <initializer_list>
+#include <string>
 
+class AssetManager;
 class GLShader;
 
 class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
-	std::shared_ptr<GLShader> terrainShader;
+
+	std::unique_ptr<AssetManager> assetManager;
+	GLShader* terrainShader;
 public:
 	EngineTerrain();
 	~EngineTerrain();
 
 public:
-	bool init(void);
+	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);
+	bool initWithNoise(int resolutionX, int resolutionY, float aspectRatio);
 
 	void drawTerrain(unsigned int drawMode) const;
 	void bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio);
 };
-
 
 #endif

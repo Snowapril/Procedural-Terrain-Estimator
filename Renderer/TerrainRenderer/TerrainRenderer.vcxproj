@@ -174,10 +174,19 @@
     <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
+    <ClInclude Include="PerlinNoise.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\fragment_shader.glsl" />
-    <None Include="..\resources\shader\vertex_shader.glsl" />
+    <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
+    <None Include="..\resources\shader\bakeNormalMap_vs.glsl" />
+    <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
+    <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
+    <None Include="..\resources\shader\simple_fs.glsl" />
+    <None Include="..\resources\shader\simple_vs.glsl" />
+    <None Include="..\resources\shader\terrain_gs.glsl" />
+    <None Include="..\resources\shader\terrain_tcs.glsl" />
+    <None Include="..\resources\shader\terrain_tes.glsl" />
+    <None Include="..\resources\shader\terrain_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -91,12 +91,39 @@
     <ClInclude Include="GLResources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PerlinNoise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\fragment_shader.glsl">
+    <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
       <Filter>shader</Filter>
     </None>
-    <None Include="..\resources\shader\vertex_shader.glsl">
+    <None Include="..\resources\shader\bakeNormalMap_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\bakeTerrainMap_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\bakeTerrainMap_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\simple_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\simple_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_gs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_tcs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_tes.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #include "EngineTerrain.hpp"
 #include "GLShader.hpp"
 #include "GLResources.hpp"
+#include "AssetManager.hpp"
 
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
@@ -17,6 +18,7 @@ EngineTerrain::~EngineTerrain()
 	glDeleteTextures(1, &terrainMap);
 }
 
+
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
 */
@@ -27,16 +29,53 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 }
 
 /**
-* @ brief		init context for rendering terrain
-* @ details		initialize resources which is needed for rendering terrain.
+* @ brief		init context for rendering terrain with local files(height map, normal map, etc ..)
+* @ details		initialize resources which is needed for rendering terrain with local files pre-compared.
+				advantage of this approach is 'speed', bacause height map and normal map, etc .. are precompared, thus 
+				no need to generate in run-time.
+				disadvantage of this approach is "will generate fixed result".
 * @ return		return boolean whether if initialization is successful or not.
 */
-bool EngineTerrain::init(void)
+bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths)
 {
+	assetManager = std::make_unique<AssetManager>();
 	try
 	{
-		terrainShader = make_shared_from_list<GLShader, std::string>({ "../resources/shader/terrain_vs.glsl", 
-			"../resources/shader/terrain_tcs.glsl", "../resources/shader/terrain_tes.glsl", "../resources/shader/terrain_fs.glsl" });
+		terrainShader = assetManager->addAsset<GLShader>({
+			"../resources/shader/terrain_vs.glsl",
+			"../resources/shader/terrain_tcs.glsl",
+			"../resources/shader/terrain_tes.glsl",
+			"../resources/shader/terrain_fs.glsl"
+		});
+	}
+	catch (std::exception e)
+	{
+		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader)");
+		return false;
+	}
+
+	return true;
+}
+
+
+/**
+* @ brief		init context for rendering terrain with custom algorithm like perlin noise 
+* @ details		initialize resources which is needed for rendering terrain with custom algorithm like perlin noise.
+				advantage of this approach is randomness, because every execution height map and normal map is changed.
+				disadvantage of this approach is 'speed'.
+* @ return		return boolean whether if initialization is successful or not.
+*/
+bool EngineTerrain::initWithNoise(int resolutionX, int resolutionY, float aspectRatio)
+{
+	assetManager = std::make_unique<AssetManager>();
+	try
+	{
+		terrainShader = assetManager->addAsset<GLShader>({ 
+			"../resources/shader/terrain_vs.glsl",
+			"../resources/shader/terrain_tcs.glsl", 
+			"../resources/shader/terrain_tes.glsl", 
+			"../resources/shader/terrain_fs.glsl" 
+		});
 	}
 	catch (std::exception e)
 	{

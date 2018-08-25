@@ -10,7 +10,7 @@ class AssetManager;
 class EngineApp : public GLApp
 {
 private:
-	std::shared_ptr<GLShader> simpleShader; /// for test
+	GLShader* simpleShader; /// for test
 	unsigned int VAO; /// for test
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
 
