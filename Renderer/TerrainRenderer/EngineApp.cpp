@@ -35,7 +35,7 @@ void EngineApp::updateScene(float dt)
 void EngineApp::drawScene(void) const
 {
 	Profile();
-
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
 
@@ -63,9 +63,9 @@ void EngineApp::drawScene(void) const
 * @ brief		deal with whole initialization of Terrain Renderer.
 * @ return		return boolean whether if intializing terrain renderer is successful or not.
 */
-bool EngineApp::initEngine(void)
+bool EngineApp::init(void)
 {
-	if (!GLApp::initGLApp())
+	if (!GLApp::init())
 		return false;
 
 	if (!initAssets())
@@ -86,6 +86,9 @@ bool EngineApp::initAssets(void)
 	assetManager = std::make_unique<AssetManager>();
 
 	if (!initShader())
+		return false;
+
+	if (!initTextures())
 		return false;
 
 	return true;
@@ -114,11 +117,22 @@ bool EngineApp::initShader(void)
 }
 
 /**
+
+*/
+bool EngineApp::initTextures(void)
+{
+	return true;
+}
+
+/**
 * @ brief		initialize geometry buffer in current opengl context.
 * @ return		return boolean whether if initialize geometry buffer is successful or not.
 */
 bool EngineApp::initGeometryBuffer(void)
 {
+	/// below hard coded stuffs are for testing.
+	/// will be replaced to terrain geometry setup.
+
 	typedef struct _vertex
 	{
 		glm::vec3 position;

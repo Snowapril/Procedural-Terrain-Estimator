@@ -6,22 +6,25 @@
 
 
 double EngineProfiler::secondsPerCount = 0.0;
+bool  EngineProfiler::isFirstUse = false;
+
 std::unordered_map<std::string, Cell> EngineProfiler::profileInfo = std::unordered_map<std::string, Cell>();
 
 
-EngineProfiler::EngineProfiler(const std::string& functionName)
+EngineProfiler::EngineProfiler(std::string&& functionName) noexcept
 {
-	if (secondsPerCount == 0.0)
+	if (isFirstUse)
 	{
 		__int64 countsPerSecond;
 		QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSecond);
 		secondsPerCount = 1.0 / countsPerSecond;
+		isFirstUse = false;
 	}
 	
 	__int64 currTime;
 	QueryPerformanceCounter((LARGE_INTEGER*)&currTime);
 	startTime = currTime;
-	currentLabel = functionName;
+	currentLabel = std::move(functionName);
 }
 
 EngineProfiler::~EngineProfiler()
@@ -49,7 +52,7 @@ void EngineProfiler::logging(const std::string& logFileName)
 	logFile << std::left << std::setw(40) << "Function Name" << std::setw(8) << "Trial" << std::setw(12) << "Total Time" << std::setw(15) << "Average Time" << std::endl;
 	for (const auto& cell : profileInfo)
 		logFile << std::left << std::setw(40) << cell.first << std::setw(8) << cell.second.callCount << std::setw(12) <<
-		cell.second.totalTime << std::setw(15) << (cell.second.totalTime / cell.second.callCount) << std::endl;
+				   cell.second.totalTime << std::setw(15) << (cell.second.totalTime / cell.second.callCount) << '\n';
 
 	logFile.close();
 }

@@ -226,7 +226,7 @@ void GLShader::reloadAsset(void)
 	glDeleteProgram(programID);
 
 	EngineLogger::getConsole()->info("Shader source change is detected");
-	loadAsset({}); //with empty initializer list, paths remain unchanged.
+	loadAsset({}); /// with empty initializer list, paths remain unchanged.
 }
 
 /**
@@ -342,6 +342,7 @@ void GLShader::useProgram(void) const
 /**
 * @ brief		location of uniform variable in shader context.
 * @ return		return location of uniform variable in shader context.
+				if program don't have uniform variable with given name, return -1.
 */
 int GLShader::getUniformLocation(const std::string & varName) const
 {

@@ -1,3 +1,12 @@
+/**
+* @file		EngineApp.hpp
+* @author	Shinjihong
+* @date		27 August 2018
+* @version	1.0.0
+* @brief	this representate Renderer itself. provide only initialization method and input method to public.
+* @see		GLApp
+*/
+
 #ifndef ENGINE_APP_HPP
 #define ENGINE_APP_HPP
 
@@ -13,9 +22,9 @@ private:
 	GLShader* simpleShader; /// for test
 	unsigned int VAO; /// for test
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
-
 protected:
 	bool initShader(void);
+	bool initTextures(void);
 	bool initAssets(void);
 	bool initGeometryBuffer(void);
 
@@ -26,7 +35,7 @@ public:
 	virtual ~EngineApp();
 public:
 	/// at the start of program, this method must be called first.
-	bool initEngine(void);
+	virtual bool init(void);
 
 	/// callback functions below.
 	void keyCallback(int key, int scancode, int action, int mode);

@@ -2,8 +2,8 @@
 #include <Windows.h>
 
 EngineTimer::EngineTimer()
-	: deltaTime(0.0), baseTime(0), stopTime(0), pausedTime(0),
-		currTime(0), prevTime(0)
+	: deltaTime(0.0), baseTime(0), stopTime(0), 
+	  pausedTime(0) , currTime(0), prevTime(0)
 {
 	__int64 countsPerSecond;
 	QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSecond);

@@ -1,3 +1,12 @@
+/**
+* @file		GLApp.hpp
+* @author	Shinjihong
+* @date		27 August 2018
+* @version	1.0.0
+* @brief	this represent opengl renderer. GLApp manage opengl features which are needed for Renderer.
+* @see
+*/
+
 #ifndef GL_APP_HPP
 #define GL_APP_HPP
 
@@ -30,7 +39,7 @@ public:
 	GLApp();
 	~GLApp();
 public:
-	bool initGLApp(void);
+	virtual bool init(void);
 
 	/// this return opengl window. if you want to set callback function or etc .. , get window from this method.
 	GLFWwindow* getWindow(void) const;

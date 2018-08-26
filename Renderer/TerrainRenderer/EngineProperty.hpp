@@ -1,9 +1,9 @@
 /**
 * @file		EngineProperty.hpp
 * @author	Shinjihong
-* @date		18 July 2018
+* @date		27 August 2018
 * @version	1.0.0
-* @brief	all Engine properties defined with macro. 
+* @brief	all Engine properties defined with macro.
 * @see
 */
 

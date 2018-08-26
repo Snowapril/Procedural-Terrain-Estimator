@@ -1,7 +1,7 @@
 /**
 * @file		GLDebugger.hpp
 * @author	Shinjihong
-* @date		18 July 2018
+* @date		27 August 2018
 * @version	1.0.0
 * @brief	Debugging static class for OpenGL
 * @details  User can call CheckError() macro where user want to debugging. if errors occurred before CheckError() be called, then all of them will be logged into the console.

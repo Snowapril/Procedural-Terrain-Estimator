@@ -57,35 +57,6 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	return true;
 }
 
-
-/**
-* @ brief		init context for rendering terrain with custom algorithm like perlin noise 
-* @ details		initialize resources which is needed for rendering terrain with custom algorithm like perlin noise.
-				advantage of this approach is randomness, because every execution height map and normal map is changed.
-				disadvantage of this approach is 'speed'.
-* @ return		return boolean whether if initialization is successful or not.
-*/
-bool EngineTerrain::initWithNoise(int resolutionX, int resolutionY, float aspectRatio)
-{
-	assetManager = std::make_unique<AssetManager>();
-	try
-	{
-		terrainShader = assetManager->addAsset<GLShader>({ 
-			"../resources/shader/terrain_vs.glsl",
-			"../resources/shader/terrain_tcs.glsl", 
-			"../resources/shader/terrain_tes.glsl", 
-			"../resources/shader/terrain_fs.glsl" 
-		});
-	}
-	catch (std::exception e)
-	{
-		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader)");
-		return false;
-	}
-
-	return true;
-}
-
 /**
 * @ brief		bake terrain map 
 * @ details		bake terrain map with 4 components( xyz : normal vector, w : height ). 

@@ -1,6 +1,10 @@
 #include "EngineAsset.hpp"
 #include "GLShader.hpp"
 
+EngineAsset::EngineAsset()
+{
+}
+
 EngineAsset::~EngineAsset()
 {
 	assetPaths.clear();

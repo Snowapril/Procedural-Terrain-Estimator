@@ -1,7 +1,7 @@
 /**
 * @file		GLShader.hpp
 * @author	Shinjihong
-* @date		15 July 2018
+* @date		27 August 2018
 * @version	1.0.0
 * @brief	OpenGL GLSL Shader.
 * @details	Initialize shader with given GLSL files' path. user can send uniform from CPU to GPU with this class.

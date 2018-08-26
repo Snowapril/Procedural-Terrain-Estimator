@@ -1,9 +1,9 @@
 /**
 * @file		EngineProfiler.hpp
 * @author	Shinjihong
-* @date		19 July 2018
+* @date		27 August 2018
 * @version	1.0.0
-* @brief	Profiler class for profiling IndieEngine.
+* @brief	Profiler class for profiling Renderer.
 * @details	store all methods' call count and duration. at the last of this program, log all information into txt file.
 * @see		
 */
@@ -14,7 +14,7 @@
 #include <unordered_map>
 
 typedef struct _cellInfo {
-	int callCount;
+	int    callCount;
 	double totalTime;
 } Cell;
 
@@ -23,11 +23,12 @@ class EngineProfiler
 private:
 	static std::unordered_map<std::string, Cell> profileInfo;
 	static double secondsPerCount;
+	static bool isFirstUse;
 
 	std::string currentLabel;
 	__int64 startTime;
 public:
-	EngineProfiler(const std::string& functionName);
+	EngineProfiler(std::string&& functionName) noexcept;
 	~EngineProfiler();
 
 	static void logging(const std::string& logFileName);

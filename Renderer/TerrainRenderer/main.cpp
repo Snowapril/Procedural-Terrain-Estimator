@@ -19,19 +19,20 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 void resizingCallback(GLFWwindow* window, int newWidth, int newHeight);
 
 /// program entry point
-std::unique_ptr<EngineApp> gMainApplication;
+std::unique_ptr<GLApp> gMainApplication;
 int main(void)
 {
 	gMainApplication = std::make_unique<EngineApp>();
 
-	if (!gMainApplication->initEngine())
+	if (!gMainApplication->init())
 	{
 		EngineLogger::getConsole()->critical("Critical error occurred. program exit.");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	GLFWwindow* window = gMainApplication->getWindow();
 
+	/// register callback functions to window which is current context.
 	glfwSetErrorCallback(error);
 	glfwSetKeyCallback(window, keyCallback);
 	glfwSetCursorPosCallback(window, mousePosCallback);

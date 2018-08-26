@@ -1,3 +1,14 @@
+/**
+* @file		EngineTerrain.hpp
+* @author	Shinjihong
+* @date		27 August 2018
+* @version	1.0.0
+* @brief	this represent terrain itself.
+* @details	init with noise map and splat map which will be provided from local (map generator).
+			render with tessellation features which are available after opengl version 4.0.
+* @see		GLShader
+*/
+
 #ifndef ENGINE_TERRAIN_HPP
 #define ENGINE_TERRAIN_HPP
 
@@ -21,7 +32,6 @@ public:
 
 public:
 	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);
-	bool initWithNoise(int resolutionX, int resolutionY, float aspectRatio);
 
 	void drawTerrain(unsigned int drawMode) const;
 	void bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio);

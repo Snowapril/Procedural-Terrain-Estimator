@@ -1,9 +1,9 @@
 /**
 * @file		EngineTimer.hpp
 * @author	Shinjihong
-* @date		15 July 2018
+* @date		27 August 2018
 * @version	1.0.0
-* @brief	Timer class for IndieEngine.
+* @brief	Timer class for Renderer.
 * @details  this only support Window platform. not supported for other platform because of QueryPerformanceCounter or QueryPerformanceFrequency.
 * @see
 */

@@ -1786,3 +1786,90 @@ Unknown exception
 [2018-08-25 16:26:55.778] [setup] [info] Linking Program Success.
 [2018-08-25 16:26:58.650] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
 
+[2018-08-25 19:23:55.357] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-25 19:23:55.360] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 19:23:55.361] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 19:23:55.361] [setup] [info] Program Linking finished.
+[2018-08-25 19:23:55.361] [setup] [info] Linking Program Success.
+[2018-08-25 19:24:29.396] [setup] [info] Shader source change is detected
+[2018-08-25 19:24:29.412] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 19:24:29.414] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 19:24:29.415] [setup] [info] Program Linking finished.
+[2018-08-25 19:24:29.416] [setup] [info] Linking Program Success.
+[2018-08-25 19:24:37.396] [setup] [info] Shader source change is detected
+[2018-08-25 19:24:37.412] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 19:24:37.413] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 19:24:37.414] [setup] [info] Program Linking finished.
+[2018-08-25 19:24:37.415] [setup] [info] Linking Program Success.
+[2018-08-25 19:24:40.412] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-25 19:24:46.468] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-25 19:24:46.471] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 19:24:46.472] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 19:24:46.473] [setup] [info] Program Linking finished.
+[2018-08-25 19:24:46.473] [setup] [info] Linking Program Success.
+[2018-08-25 19:24:47.196] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-25 20:30:24.356] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-25 20:30:24.359] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 20:30:24.360] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 20:30:24.361] [setup] [info] Program Linking finished.
+[2018-08-25 20:30:24.361] [setup] [info] Linking Program Success.
+[2018-08-25 20:30:31.738] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-25 20:31:11.681] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-25 20:31:11.683] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-25 20:31:11.683] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-25 20:31:11.684] [setup] [info] Program Linking finished.
+[2018-08-25 20:31:11.684] [setup] [info] Linking Program Success.
+[2018-08-25 20:31:12.271] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-27 05:40:46.120] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 05:40:46.132] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 05:40:46.132] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 05:40:46.137] [setup] [info] Program Linking finished.
+[2018-08-27 05:40:46.138] [setup] [info] Linking Program Success.
+[2018-08-27 05:40:52.137] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-27 05:50:58.166] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 05:50:58.169] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 05:50:58.170] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 05:50:58.171] [setup] [info] Program Linking finished.
+[2018-08-27 05:50:58.171] [setup] [info] Linking Program Success.
+[2018-08-27 05:50:58.896] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-27 05:52:49.050] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 05:52:49.052] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 05:52:49.053] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 05:52:49.053] [setup] [info] Program Linking finished.
+[2018-08-27 05:52:49.053] [setup] [info] Linking Program Success.
+[2018-08-27 05:52:49.947] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 155 )
+
+[2018-08-27 06:10:49.515] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 06:10:49.518] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 06:10:49.519] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 06:10:49.520] [setup] [info] Program Linking finished.
+[2018-08-27 06:10:49.520] [setup] [info] Linking Program Success.
+[2018-08-27 06:10:50.263] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-08-27 06:23:13.330] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 06:23:13.332] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 06:23:13.334] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 06:23:13.334] [setup] [info] Program Linking finished.
+[2018-08-27 06:23:13.335] [setup] [info] Linking Program Success.
+[2018-08-27 06:23:14.474] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-08-27 06:30:12.986] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 06:30:12.987] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 06:30:12.988] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 06:30:12.988] [setup] [info] Program Linking finished.
+[2018-08-27 06:30:12.988] [setup] [info] Linking Program Success.
+[2018-08-27 06:30:16.447] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-08-27 06:42:03.026] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-27 06:42:03.042] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-27 06:42:03.043] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-27 06:42:03.043] [setup] [info] Program Linking finished.
+[2018-08-27 06:42:03.044] [setup] [info] Linking Program Success.
+[2018-08-27 06:42:03.874] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
