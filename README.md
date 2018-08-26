@@ -23,3 +23,8 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcac
 
 ## RENDERER
 this is for **rendering procedural terrain**. default supported platform is Window. other platform like Linux, OS X will be supported later.
+
+## MEETING
+
+매주 목요일 7시 (장소 미정)/ 금요일 1시 콘텐츠랩
+코드 검수 / 마일스톤 / 방향성 토의
