@@ -19,12 +19,12 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 void resizingCallback(GLFWwindow* window, int newWidth, int newHeight);
 
 /// program entry point
-std::unique_ptr<GLApp> gMainApplication;
+std::unique_ptr<EngineApp> gMainApplication;
 int main(void)
 {
 	gMainApplication = std::make_unique<EngineApp>();
 
-	if (!gMainApplication->init())
+	if (!gMainApplication->initEngine())
 	{
 		EngineLogger::getConsole()->critical("Critical error occurred. program exit.");
 		return EXIT_FAILURE;

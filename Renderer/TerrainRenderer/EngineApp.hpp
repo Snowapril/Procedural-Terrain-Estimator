@@ -19,8 +19,8 @@ class AssetManager;
 class EngineApp : public GLApp
 {
 private:
-	GLShader* simpleShader; /// for test
 	unsigned int VAO; /// for test
+	GLShader* simpleShader; /// for test
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
 protected:
 	bool initShader(void);
@@ -35,7 +35,7 @@ public:
 	virtual ~EngineApp();
 public:
 	/// at the start of program, this method must be called first.
-	virtual bool init(void);
+	bool initEngine(void);
 
 	/// callback functions below.
 	void keyCallback(int key, int scancode, int action, int mode);

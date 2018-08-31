@@ -24,18 +24,44 @@ template <class T, class L> std::unique_ptr<T> make_unique_from_list(std::initia
 	return std::make_unique<T>(std::move(list));
 }
 
+class GLShader;
+
+template <class Type>
 class EngineAsset
 {
 private:
 protected:
 	std::vector<std::pair<int64_t, std::string>> assetPaths;
 public:
-	EngineAsset();
-	virtual ~EngineAsset();
+	EngineAsset()
+	{
+	}
+	virtual ~EngineAsset()
+	{
+		assetPaths.clear();
+	}
+	EngineAsset(const EngineAsset & other)
+		: assetPaths(other.assetPaths)
+	{
+	}
+	EngineAsset & operator=(const EngineAsset & other)
+	{
+		if (&other == this)
+			return *this;
+
+		assetPaths = other.assetPaths;
+
+		return *this;
+	}
 public:
-	virtual void reloadAsset(void) = 0;
-	virtual void loadAsset(const std::vector<std::string>& assetPath) = 0;
-	virtual bool listenToAssetChange(void) = 0;
+	Type & operator~() noexcept
+	{
+		return *static_cast<Type*>(this);
+	}
+	Type const& operator~() const noexcept
+	{
+		return *static_cast<Type const*>(this);
+	}
 };
 
 #endif

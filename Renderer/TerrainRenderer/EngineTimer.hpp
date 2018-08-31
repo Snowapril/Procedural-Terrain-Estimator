@@ -14,7 +14,9 @@
 class EngineTimer
 {
 private:
-	double deltaTime;       
+	bool isStopped;
+
+	double deltaTime;
 	double secondsPerCount;
 
 	__int64 baseTime;
@@ -22,8 +24,6 @@ private:
 	__int64 prevTime;
 	__int64 pausedTime;
 	__int64 stopTime;
-
-	bool isStopped;
 public:
 	EngineTimer();
 

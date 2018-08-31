@@ -24,11 +24,13 @@ class EngineTerrain
 private:
 	unsigned int terrainMap;
 
-	std::unique_ptr<AssetManager> assetManager;
 	GLShader* terrainShader;
+	std::unique_ptr<AssetManager> assetManager;
 public:
 	EngineTerrain();
 	~EngineTerrain();
+	EngineTerrain(const EngineTerrain& other);
+	EngineTerrain& operator=(const EngineTerrain& other);
 
 public:
 	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);

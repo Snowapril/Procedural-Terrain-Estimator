@@ -5,19 +5,18 @@
 #include <string>
 
 
-double EngineProfiler::secondsPerCount = 0.0;
-bool  EngineProfiler::isFirstUse = false;
-
 std::unordered_map<std::string, Cell> EngineProfiler::profileInfo = std::unordered_map<std::string, Cell>();
-
+double EngineProfiler::secondsPerCount = 0.0;
 
 EngineProfiler::EngineProfiler(std::string&& functionName) noexcept
 {
+	static bool isFirstUse = false;
+
 	if (isFirstUse)
 	{
 		__int64 countsPerSecond;
 		QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSecond);
-		secondsPerCount = 1.0 / countsPerSecond;
+		secondsPerCount = 1.0f / countsPerSecond;
 		isFirstUse = false;
 	}
 	

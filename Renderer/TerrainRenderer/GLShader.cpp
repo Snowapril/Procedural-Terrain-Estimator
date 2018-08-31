@@ -26,6 +26,23 @@ GLShader::GLShader(const std::vector<std::string>& assetPath)
 	loadAsset(assetPath);
 }
 
+GLShader::GLShader(const GLShader & other)
+	: programID(other.programID)
+{
+	assetPaths = other.assetPaths;
+}
+
+GLShader & GLShader::operator=(const GLShader & other)
+{
+	if (&other == this)
+		return *this;
+
+	assetPaths = other.assetPaths;
+	programID  = other.programID;
+
+	return *this;
+}
+
 GLShader::~GLShader()
 {
 	glDeleteProgram(programID);

@@ -17,6 +17,33 @@ AssetManager::~AssetManager()
 	assets.clear();
 }
 
+AssetManager::AssetManager(const AssetManager & other)
+{
+	stopListen = true;
+	changeListener.join();
+
+	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
+	stopListen = other.stopListen;
+	//assets = other.assets;
+	//dirtyAssets = other.dirtyAssets;
+}
+
+AssetManager & AssetManager::operator=(const AssetManager & other)
+{
+	if (&other == this)
+		return *this;
+
+	stopListen = true;
+	changeListener.join();
+
+	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
+	stopListen = other.stopListen;
+	//assets = other.assets;
+	//dirtyAssets = other.dirtyAssets;
+
+	return *this;
+}
+
 /**
 * @ brief		reload changed assets
 * @ details		changed assets are pushed into dirtyAssets by listenToAssetChanges method.
@@ -27,7 +54,7 @@ void AssetManager::refreshDirtyAssets(void)
 	/// before reload assets, lock it from the other thread.
 	std::lock_guard<std::mutex> lockGuard(fileChangeMutex);
 	for (auto& asset : dirtyAssets)
-		asset->reloadAsset();
+		(~(*asset)).reloadAsset();
 
 	dirtyAssets.clear();
 }
@@ -40,12 +67,12 @@ void AssetManager::refreshDirtyAssets(void)
 void AssetManager::listenToAssetChanges(void)
 {
 	using namespace std::chrono_literals;
-
+	
 	while (!stopListen)
 	{
 		for (auto& asset : assets)
 		{
-			if (asset->listenToAssetChange())
+			if ((~(*asset)).listenToAssetChange())
 			{
 				dirtyAssets.push_back(asset.get());
 			}

@@ -18,6 +18,25 @@ EngineTerrain::~EngineTerrain()
 	glDeleteTextures(1, &terrainMap);
 }
 
+EngineTerrain::EngineTerrain(const EngineTerrain & other)
+	: terrainMap(other.terrainMap)
+{
+	//assetManager.reset(new AssetManager(*other.assetManager));
+	//terrainShader = assetManager->addAsset()
+}
+
+EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
+{
+	if (&other == this)
+		return *this;
+
+	terrainMap = other.terrainMap;
+	//assetManager.reset(new AssetManager(*other.assetManager));
+	//terrainShader
+
+	return *this;
+}
+
 
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
@@ -94,24 +113,24 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	};
 
 	GLuint quadVAO, quadVBO;
-	glGenVertexArrays(1, &quadVAO);
-	glGenBuffers(1, &quadVBO);
+	glGenVertexArrays(1u, &quadVAO);
+	glGenBuffers(1u, &quadVBO);
 	glBindVertexArray(quadVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)(sizeof(GLfloat) * 3));
-	glBindVertexArray(0);
-
+	glEnableVertexAttribArray(0u);
+	glVertexAttribPointer(0u, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
+	glEnableVertexAttribArray(1u);
+	glVertexAttribPointer(1u, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)(sizeof(GLfloat) * 3));
+	glBindVertexArray(0u);
+	
 	glm::mat4 captureProjection = glm::perspective(glm::radians(90.f), aspectRatio, 0.1f, 10.0f);
 	glm::mat4 captureView = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 	unsigned int captureFBO, captureRBO;
 
-	glGenFramebuffers(1, &captureFBO);
-	glGenRenderbuffers(1, &captureRBO);
+	glGenFramebuffers(1u, &captureFBO);
+	glGenRenderbuffers(1u, &captureRBO);
 
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
 	glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
@@ -126,7 +145,7 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	}
 
 	GLuint normalMap;
-	glGenTextures(1, &normalMap);
+	glGenTextures(1u, &normalMap);
 	glBindTexture(GL_TEXTURE_2D, normalMap);
 	
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, resolutionX, resolutionY, 0, GL_RGB, GL_FLOAT, nullptr);
@@ -147,12 +166,12 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glBindTexture(GL_TEXTURE_2D, heightMap);
 
 	glBindVertexArray(quadVAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4u);
+	glBindVertexArray(0u);
 	
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	glGenTextures(1, &terrainMap);
+	glGenTextures(1u, &terrainMap);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, resolutionX, resolutionY, 0, GL_RGBA, GL_FLOAT, nullptr);
@@ -179,19 +198,19 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glBindTexture(GL_TEXTURE_2D, heightMap);
 
 	glBindVertexArray(quadVAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4u);
+	glBindVertexArray(0u);
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0u);
 
 	//bake texture and save it to file
 	//glBindTexture(GL_TEXTURE_2D, terrainMap);
 	//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, ) 
 
-	glDeleteTextures(1, &heightMap);
-	glDeleteTextures(1, &normalMap);
-	glDeleteRenderbuffers(1, &captureRBO);
-	glDeleteFramebuffers(1, &captureFBO);
-	glDeleteBuffers(1, &quadVBO);
-	glDeleteVertexArrays(1, &quadVAO);
+	glDeleteTextures(1u, &heightMap);
+	glDeleteTextures(1u, &normalMap);
+	glDeleteRenderbuffers(1u, &captureRBO);
+	glDeleteFramebuffers(1u, &captureFBO);
+	glDeleteBuffers(1u, &quadVBO);
+	glDeleteVertexArrays(1u, &quadVAO);
 }

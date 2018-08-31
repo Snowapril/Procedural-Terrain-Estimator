@@ -110,7 +110,7 @@ bool GLApp::initGLConfigure(void)
 * @ brief		deal with whole opengl application initialization.
 * @ return		return boolean whether if intialize opengl is successful or not.
 */
-bool GLApp::init(void)
+bool GLApp::initGLApp(void)
 {
 	if (!initGLWindow(FULL_SCREEN))
 		return false;
@@ -201,7 +201,7 @@ void GLApp::calculateFrameStats(void)
 	if (timer.getTotalTime() - timeElapsed >= 1.0f)
 	{
 		float fps = static_cast<float>(frameCnts);
-		float mspf = 1000.f / fps;
+		float mspf = 1000.0f * (1.0f / fps);
 
 		std::ostringstream outs;
 		outs.precision(6);
@@ -212,6 +212,6 @@ void GLApp::calculateFrameStats(void)
 		glfwSetWindowTitle(window, outs.str().c_str());
 
 		frameCnts = 0;
-		timeElapsed += 1.f;
+		timeElapsed += 1.0f;
 	}
 }

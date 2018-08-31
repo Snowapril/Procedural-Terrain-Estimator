@@ -18,13 +18,12 @@ struct GLFWwindow;
 class GLApp
 {
 protected:
-	GLFWwindow * window;
-	int clientWidth;
-	int clientHeight;
 	bool fullscreen;
 	bool paused;
+	int clientWidth;
+	int clientHeight;
+	GLFWwindow * window;
 	std::string WndCaption;
-
 	EngineTimer timer;
 protected:
 	bool initGLWindow(bool fullscreen);
@@ -32,14 +31,14 @@ protected:
 
 	void calculateFrameStats(void);
 
-	virtual void onResize(int newWidth, int newHeight);
 	virtual void updateScene(float dt) = 0;
 	virtual void drawScene(void) const = 0;
+	virtual void onResize(int newWidth, int newHeight);
 public:
 	GLApp();
-	~GLApp();
+	virtual ~GLApp();
 public:
-	virtual bool init(void);
+	bool initGLApp(void);
 
 	/// this return opengl window. if you want to set callback function or etc .. , get window from this method.
 	GLFWwindow* getWindow(void) const;

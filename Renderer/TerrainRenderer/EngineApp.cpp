@@ -63,9 +63,9 @@ void EngineApp::drawScene(void) const
 * @ brief		deal with whole initialization of Terrain Renderer.
 * @ return		return boolean whether if intializing terrain renderer is successful or not.
 */
-bool EngineApp::init(void)
+bool EngineApp::initEngine(void)
 {
-	if (!GLApp::init())
+	if (!GLApp::initGLApp())
 		return false;
 
 	if (!initAssets())
@@ -186,18 +186,18 @@ bool EngineApp::initGeometryBuffer(void)
 	};
 
 	std::vector<unsigned int> _indices = {
-		0, 1, 2,
-		3, 4, 5,
-		6, 7, 8,
-		9, 10, 11,
-		12, 13, 14,
-		15, 16, 17,
-		18, 19, 20,
-		21, 22, 23,
-		24, 25, 26,
-		27, 28, 29,
-		30, 31, 32,
-		33, 34, 35
+		0u, 1u, 2u,
+		3u, 4u, 5u,
+		6u, 7u, 8u,
+		9u, 10u, 11u,
+		12u, 13u, 14u,
+		15u, 16u, 17u,
+		18u, 19u, 20u,
+		21u, 22u, 23u,
+		24u, 25u, 26u,
+		27u, 28u, 29u,
+		30u, 31u, 32u,
+		33u, 34u, 35u
 	};
 	
 	unsigned int VBO, EBO;

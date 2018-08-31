@@ -23,7 +23,6 @@ class EngineProfiler
 private:
 	static std::unordered_map<std::string, Cell> profileInfo;
 	static double secondsPerCount;
-	static bool isFirstUse;
 
 	std::string currentLabel;
 	__int64 startTime;

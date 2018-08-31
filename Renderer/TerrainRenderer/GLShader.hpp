@@ -17,7 +17,7 @@
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
 
-class GLShader : public EngineAsset
+class GLShader : public EngineAsset<GLShader>
 {
 private:
 	unsigned int programID;
@@ -37,6 +37,8 @@ private:
 public:
 	GLShader();
 	GLShader(const std::vector<std::string>& assetPath);
+	GLShader(const GLShader& other);
+	GLShader& operator=(const GLShader& other);
 	virtual ~GLShader();
 
 	void loadAsset(const std::vector<std::string>& assetPath);

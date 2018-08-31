@@ -17,24 +17,28 @@
 #include "EngineAsset.hpp"
 #include <mutex>
 
+class GLShader;
+
 class AssetManager
 {
 private:
+	volatile bool stopListen;
 	std::thread changeListener;
 	std::mutex fileChangeMutex;
-	bool stopListen;
 
-	std::vector<std::unique_ptr<EngineAsset>> assets;
-	std::vector<EngineAsset*> dirtyAssets; //To be reloaded.
+	std::vector<EngineAsset<GLShader>*> dirtyAssets; //To be reloaded.
+	std::vector<std::unique_ptr<EngineAsset<GLShader>>> assets;
 protected:
 public:
 	AssetManager();
 	~AssetManager();
+	AssetManager(const AssetManager& other);
+	AssetManager& operator=(const AssetManager& other);
 
 	template <class AssetType>
 	AssetType* addAsset(std::initializer_list<std::string>&& assetPath) noexcept
 	{
-		std::unique_ptr<EngineAsset> asset = make_unique_from_list<AssetType, std::string>(std::move(assetPath));
+		auto asset = make_unique_from_list<AssetType, std::string>(std::move(assetPath));
 		AssetType* retPtr = static_cast<AssetType*>(asset.get());
 		
 		assets.emplace_back(std::move(asset));
