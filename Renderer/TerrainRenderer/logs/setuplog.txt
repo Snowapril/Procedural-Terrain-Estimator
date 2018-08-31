@@ -1915,3 +1915,24 @@ Unknown exception
 [2018-08-29 18:03:46.570] [setup] [info] Linking Program Success.
 [2018-08-29 18:03:47.012] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
 
+[2018-08-31 15:16:48.327] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-31 15:16:48.333] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-31 15:16:48.334] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-31 15:16:48.336] [setup] [info] Program Linking finished.
+[2018-08-31 15:16:48.336] [setup] [info] Linking Program Success.
+[2018-08-31 15:17:01.450] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-08-31 15:20:31.062] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-31 15:20:31.065] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-31 15:20:31.066] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-31 15:20:31.067] [setup] [info] Program Linking finished.
+[2018-08-31 15:20:31.068] [setup] [info] Linking Program Success.
+[2018-08-31 15:20:33.802] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-08-31 15:20:49.189] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-08-31 15:20:49.192] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-08-31 15:20:49.193] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-08-31 15:20:49.194] [setup] [info] Program Linking finished.
+[2018-08-31 15:20:49.195] [setup] [info] Linking Program Success.
+[2018-08-31 15:20:52.460] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+

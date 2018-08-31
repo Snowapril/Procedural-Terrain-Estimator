@@ -53,6 +53,9 @@
     <ClCompile Include="EngineTerrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -89,6 +92,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GLResources.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

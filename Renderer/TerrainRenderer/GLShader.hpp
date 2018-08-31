@@ -40,10 +40,9 @@ public:
 	GLShader(const GLShader& other);
 	GLShader& operator=(const GLShader& other);
 	virtual ~GLShader();
-
+public:
 	void loadAsset(const std::vector<std::string>& assetPath);
 	void reloadAsset(void);
-	bool listenToAssetChange(void);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

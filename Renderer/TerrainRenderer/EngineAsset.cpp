@@ -1,4 +1,7 @@
 #include "EngineAsset.hpp"
+#include "GLShader.hpp"
+
+template class EngineAsset<GLShader>;
 
 template <> std::shared_ptr<GLShader> make_shared_from_list(std::initializer_list<std::string>&& list);
 template <> std::shared_ptr<GLShader> make_shared_from_list(std::initializer_list<std::string>&& list);

@@ -247,33 +247,6 @@ void GLShader::reloadAsset(void)
 }
 
 /**
-* @ brief		listen to file change
-* @ details		based on file last modified time, check whether if file is changed or not.
-* @ return		if file is changed, then return true. otherwise, return false.
-*/
-bool GLShader::listenToAssetChange(void)
-{
-	namespace fs = std::experimental::filesystem;
-
-	for (auto& file : assetPaths)
-	{
-		if (!file.second.empty())
-		{
-			auto& lastTime = file.first;
-			const auto newLastTime = fs::last_write_time(file.second).time_since_epoch().count();
-
-			if (newLastTime != lastTime)
-			{
-				lastTime = newLastTime;
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
-/**
 * @ brief		get string from glsl shader file.
 * @ param		shader file path which you want to get whole string.
 * @ param		string reference, string from shader file will return to this reference.

@@ -16,7 +16,7 @@ EngineProfiler::EngineProfiler(std::string&& functionName) noexcept
 	{
 		__int64 countsPerSecond;
 		QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSecond);
-		secondsPerCount = 1.0f / countsPerSecond;
+		secondsPerCount = 1.0 / countsPerSecond;
 		isFirstUse = false;
 	}
 	

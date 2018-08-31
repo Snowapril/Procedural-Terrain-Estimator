@@ -45,7 +45,7 @@ public:
 		
 		return retPtr;
 	}
-
+public:
 	void listenToAssetChanges(void);
 	void refreshDirtyAssets(void);
 };

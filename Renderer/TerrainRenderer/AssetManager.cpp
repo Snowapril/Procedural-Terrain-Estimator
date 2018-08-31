@@ -72,7 +72,7 @@ void AssetManager::listenToAssetChanges(void)
 	{
 		for (auto& asset : assets)
 		{
-			if ((~(*asset)).listenToAssetChange())
+			if (asset->listenToAssetChange())
 			{
 				dirtyAssets.push_back(asset.get());
 			}

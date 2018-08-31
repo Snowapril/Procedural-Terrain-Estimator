@@ -159,6 +159,7 @@
     <ClCompile Include="GLApp.cpp" />
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
+    <ClInclude Include="GLTexture.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />

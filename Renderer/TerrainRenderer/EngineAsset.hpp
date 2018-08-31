@@ -13,6 +13,7 @@
 
 #include <vector>
 #include <memory>
+#include <filesystem>
 
 template <class T, class L> std::shared_ptr<T> make_shared_from_list(std::initializer_list<L>&& list) noexcept
 {
@@ -61,6 +62,33 @@ public:
 	Type const& operator~() const noexcept
 	{
 		return *static_cast<Type const*>(this);
+	}
+public:
+	/**
+	* @ brief		listen to file change
+	* @ details		based on file last modified time, check whether if file is changed or not.
+	* @ return		if file is changed, then return true. otherwise, return false.
+	*/
+	bool listenToAssetChange(void)
+	{
+		namespace fs = std::experimental::filesystem;
+
+		for (auto& file : assetPaths)
+		{
+			if (!file.second.empty())
+			{
+				auto& lastTime = file.first;
+				const auto newLastTime = fs::last_write_time(file.second).time_since_epoch().count();
+
+				if (newLastTime != lastTime)
+				{
+					lastTime = newLastTime;
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 };
 
