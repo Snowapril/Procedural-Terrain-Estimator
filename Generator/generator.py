@@ -2,6 +2,8 @@ import png
 
 import numpy as np
 
+import simplexNoise
+
 # The following import is just for creating an interesting array
 # of data.  It is not necessary for writing a PNG file with PyPNG.
 from scipy.ndimage import gaussian_filter
@@ -28,9 +30,10 @@ def get_grayscale(z):
 
 def main():
     # Make an image in a numpy array for this demonstration.
-    nrows = 240
-    ncols = 320
+    nrows = 1024
+    ncols = 1024
     np.random.seed(12345)
+    # x = simplexNoise.makeNoise(nrows,ncols)
     x = np.random.randn(nrows, ncols, 3)
 
     # y is our floating point demonstration data.
