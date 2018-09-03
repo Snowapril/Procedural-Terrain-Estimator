@@ -1943,3 +1943,37 @@ Unknown exception
 [2018-09-03 10:04:24.503] [setup] [info] Linking Program Success.
 [2018-09-03 10:04:29.871] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
 
+[2018-09-03 21:54:55.937] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-03 21:54:55.942] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-03 21:54:55.942] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-03 21:54:55.943] [setup] [info] Program Linking finished.
+[2018-09-03 21:54:55.943] [setup] [info] Linking Program Success.
+[2018-09-03 21:54:56.985] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 159 )
+
+[2018-09-03 21:59:19.974] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-03 21:59:19.977] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-03 21:59:19.977] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-03 21:59:19.978] [setup] [info] Program Linking finished.
+[2018-09-03 21:59:19.978] [setup] [info] Linking Program Success.
+[2018-09-03 21:59:19.979] [setup] [error] Failed to init EngineTerrain (cannot open shader)
+[2018-09-03 21:59:19.979] [setup] [critical] Critical error occurred. program exit.
+[2018-09-03 22:00:25.504] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-03 22:00:25.506] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-03 22:00:25.507] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-03 22:00:25.508] [setup] [info] Program Linking finished.
+[2018-09-03 22:00:25.508] [setup] [info] Linking Program Success.
+[2018-09-03 22:00:25.557] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-03 22:00:25.561] [setup] [critical] Shader Compile Failed. info log :
+0(22) : error C5052: gl_Positio
+[2018-09-03 22:00:25.561] [setup] [error] Failed to init EngineTerrain (cannot open shader)
+[2018-09-03 22:00:25.562] [setup] [critical] Critical error occurred. program exit.
+[2018-09-03 22:00:57.901] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-03 22:00:57.903] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-03 22:00:57.903] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-03 22:00:57.903] [setup] [info] Program Linking finished.
+[2018-09-03 22:00:57.904] [setup] [info] Linking Program Success.
+[2018-09-03 22:00:57.905] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-03 22:00:57.935] [setup] [critical] Shader Compile Failed. info log :
+0(22) : error C5052: gl_Positio
+[2018-09-03 22:00:57.936] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-03 22:00:57.936] [setup] [critical] Critical error occurred. program exit.

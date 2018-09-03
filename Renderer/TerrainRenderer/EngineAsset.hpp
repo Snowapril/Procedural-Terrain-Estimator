@@ -15,12 +15,12 @@
 #include <memory>
 #include <filesystem>
 
-template <class T, class L> std::shared_ptr<T> make_shared_from_list(std::initializer_list<L>&& list) noexcept
+template <class T, class L> std::shared_ptr<T> make_shared_from_list(std::initializer_list<L>&& list) 
 {
 	return std::make_shared<T>(std::move(list));
 }
 
-template <class T, class L> std::unique_ptr<T> make_unique_from_list(std::initializer_list<L>&& list) noexcept
+template <class T, class L> std::unique_ptr<T> make_unique_from_list(std::initializer_list<L>&& list) 
 {
 	return std::make_unique<T>(std::move(list));
 }

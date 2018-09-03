@@ -27,7 +27,7 @@ private:
 	std::mutex fileChangeMutex;
 
 	std::vector<EngineAsset<GLShader>*> dirtyAssets; //To be reloaded.
-	std::vector<std::unique_ptr<EngineAsset<GLShader>>> assets;
+	std::vector<std::shared_ptr<EngineAsset<GLShader>>> assets;
 protected:
 public:
 	AssetManager();
@@ -36,7 +36,7 @@ public:
 	AssetManager& operator=(const AssetManager& other);
 
 	template <class AssetType>
-	AssetType* addAsset(std::initializer_list<std::string>&& assetPath) noexcept
+	AssetType* addAsset(std::initializer_list<std::string>&& assetPath) 
 	{
 		auto asset = make_unique_from_list<AssetType, std::string>(std::move(assetPath));
 		AssetType* retPtr = static_cast<AssetType*>(asset.get());

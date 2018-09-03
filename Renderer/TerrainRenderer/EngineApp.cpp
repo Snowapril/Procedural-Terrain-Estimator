@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp()
+	: GLApp(), terrain()
 {
 }
 
@@ -72,6 +72,9 @@ bool EngineApp::initEngine(void)
 		return false;
 
 	if (!initGeometryBuffer())
+		return false;
+
+	if (!terrain.initWithLocalFile(GLApp::getAspectRatio(), {}))
 		return false;
 
 	return true;

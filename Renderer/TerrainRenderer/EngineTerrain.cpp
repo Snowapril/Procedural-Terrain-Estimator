@@ -7,33 +7,36 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "EngineLogger.hpp"
+#include "GLMesh.hpp"
+#include "TerrainPatch.hpp"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
+void EngineTerrain::clearTree(const glm::vec3 & originPos) noexcept
+{
+}
+
+void EngineTerrain::createTree(const glm::vec3 & originPos) noexcept
+{
+}
+
+TerrainPatch * EngineTerrain::createNode(const TerrainPatch * parent, TerrainType type, const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight) noexcept
+{
+	return nullptr;
+}
 
 EngineTerrain::EngineTerrain()
-	: terrainMap(0), heightData(nullptr), prevCameraPos(0.0f)
+	: terrainMap(0), width(0), height(0), terrainShader(nullptr)
 {
 }
 
 EngineTerrain::~EngineTerrain()
 {
 	glDeleteTextures(1, &terrainMap);
-
-	if (heightData)
-		stbi_image_free(heightData);
 }
 
 EngineTerrain::EngineTerrain(const EngineTerrain & other)
-	: terrainMap(other.terrainMap), prevCameraPos(other.prevCameraPos)
+	: terrainMap(other.terrainMap), width(other.width), height(other.height), rootPatch(other.rootPatch), 
+		terrainShader(other.terrainShader), assetManager(other.assetManager), prevCameraPos(other.prevCameraPos)
 {
-	//assetManager.reset(new AssetManager(*other.assetManager));
-	//terrainShader = assetManager->addAsset()
-
-	if (heightData)
-		stbi_image_free(heightData);
-
-	//deep copy
 }
 
 EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
@@ -42,14 +45,12 @@ EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
 		return *this;
 
 	terrainMap = other.terrainMap;
-
-	if (heightData)
-		stbi_image_free(heightData);
-
+	width = other.width;
+	height = other.height;
+	rootPatch = other.rootPatch;
+	assetManager = other.assetManager;
+	terrainShader = other.terrainShader;
 	prevCameraPos = other.prevCameraPos;
-
-	//assetManager.reset(new AssetManager(*other.assetManager));
-	//terrainShader
 
 	return *this;
 }
@@ -92,27 +93,22 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
-			"../resources/shader/terrain_fs.glsl"
+			"../resources/shader/terrain_fs.glsl",
+			"../resources/shader/terrain_gs.glsl"
 		});
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader)");
+		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
 		return false;
 	}
 
-	stbi_set_flip_vertically_on_load(true);
-
-	int width, height, nComponents;
-	heightData = stbi_load("../resources/texture/terrain/heightMap.png", &width, &height, &nComponents, 0);
-
-	if (heightData == nullptr || width == 0 || height == 0)
+	/// TODO : manage texture with asset manager.
+	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.png", false)) == 0)
 		return false;
 
-	this->width  = width;
-	this->height = height;
-
-	stbi_set_flip_vertically_on_load(false);
+	if (!quadMesh.initWithFixedShape(MeshShape::QUAD_PATCH))
+		return false;
 
 	return true;
 }

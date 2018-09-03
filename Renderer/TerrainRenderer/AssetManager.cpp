@@ -19,19 +19,17 @@ AssetManager::~AssetManager()
 
 AssetManager::AssetManager(const AssetManager & other)
 {
-	EngineLogger::getConsole()->info("AssetManager copy constructor, address : {}", &other);
 	stopListen = true;
 	changeListener.join();
 
 	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
 	stopListen = other.stopListen;
-	//assets = other.assets;
-	//dirtyAssets = other.dirtyAssets;
+	assets = other.assets;
+	dirtyAssets = other.dirtyAssets;
 }
 
 AssetManager & AssetManager::operator=(const AssetManager & other)
 {
-	EngineLogger::getConsole()->info("AssetManager assignment operator, address : {}", &other);
 	if (&other == this)
 		return *this;
 
@@ -40,8 +38,8 @@ AssetManager & AssetManager::operator=(const AssetManager & other)
 
 	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
 	stopListen = other.stopListen;
-	//assets = other.assets;
-	//dirtyAssets = other.dirtyAssets;
+	assets = other.assets;
+	dirtyAssets = other.dirtyAssets;
 
 	return *this;
 }

@@ -157,10 +157,12 @@
     <ClCompile Include="EngineTimer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLMesh.cpp" />
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TerrainPatch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -173,9 +175,12 @@
     <ClInclude Include="EngineTimer.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLGeometry.hpp" />
+    <ClInclude Include="GLMesh.hpp" />
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
+    <ClInclude Include="TerrainPatch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
@@ -184,10 +189,12 @@
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\simple_fs.glsl" />
     <None Include="..\resources\shader\simple_vs.glsl" />
+    <None Include="..\resources\shader\terrain_fs.glsl" />
     <None Include="..\resources\shader\terrain_gs.glsl" />
     <None Include="..\resources\shader\terrain_tcs.glsl" />
     <None Include="..\resources\shader\terrain_tes.glsl" />
     <None Include="..\resources\shader\terrain_vs.glsl" />
+    <None Include="GLGeometry.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

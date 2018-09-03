@@ -12,6 +12,7 @@
 
 #include "GLApp.hpp"
 #include <memory>
+#include "EngineTerrain.hpp"
 
 class GLShader;
 class AssetManager;
@@ -25,6 +26,8 @@ private:
 	GLTexture* simpleTexture;
 
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
+
+	EngineTerrain terrain;
 protected:
 	bool initShader(void);
 	bool initTextures(void);
