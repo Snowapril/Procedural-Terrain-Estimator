@@ -1,3 +1,3 @@
 Function Name                           Trial   Total Time  Average Time   
-EngineApp::updateScene                  96      0           0              
-EngineApp::drawScene                    96      0           0              
+EngineApp::updateScene                  157     0           0              
+EngineApp::drawScene                    157     0           0              

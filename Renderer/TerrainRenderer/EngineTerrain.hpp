@@ -15,6 +15,7 @@
 #include <memory>
 #include <initializer_list>
 #include <string>
+#include <glm/vec3.hpp>
 
 class AssetManager;
 class GLShader;
@@ -23,9 +24,14 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
+	
+	std::size_t width;
+	std::size_t height;
 
+	unsigned char *heightData;
 	GLShader* terrainShader;
 	std::unique_ptr<AssetManager> assetManager;
+	glm::vec3 prevCameraPos;
 public:
 	EngineTerrain();
 	~EngineTerrain();
@@ -35,6 +41,7 @@ public:
 public:
 	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);
 
+	void buildNonUniformPatch(const glm::vec3& cameraPos) noexcept;
 	void drawTerrain(unsigned int drawMode) const;
 	void bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio);
 };

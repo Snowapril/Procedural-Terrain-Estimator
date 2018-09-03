@@ -19,6 +19,7 @@ AssetManager::~AssetManager()
 
 AssetManager::AssetManager(const AssetManager & other)
 {
+	EngineLogger::getConsole()->info("AssetManager copy constructor, address : {}", &other);
 	stopListen = true;
 	changeListener.join();
 
@@ -30,6 +31,7 @@ AssetManager::AssetManager(const AssetManager & other)
 
 AssetManager & AssetManager::operator=(const AssetManager & other)
 {
+	EngineLogger::getConsole()->info("AssetManager assignment operator, address : {}", &other);
 	if (&other == this)
 		return *this;
 

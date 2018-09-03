@@ -8,21 +8,32 @@
 
 #include "EngineLogger.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
+
 EngineTerrain::EngineTerrain()
-	: terrainMap(0)
+	: terrainMap(0), heightData(nullptr), prevCameraPos(0.0f)
 {
 }
 
 EngineTerrain::~EngineTerrain()
 {
 	glDeleteTextures(1, &terrainMap);
+
+	if (heightData)
+		stbi_image_free(heightData);
 }
 
 EngineTerrain::EngineTerrain(const EngineTerrain & other)
-	: terrainMap(other.terrainMap)
+	: terrainMap(other.terrainMap), prevCameraPos(other.prevCameraPos)
 {
 	//assetManager.reset(new AssetManager(*other.assetManager));
 	//terrainShader = assetManager->addAsset()
+
+	if (heightData)
+		stbi_image_free(heightData);
+
+	//deep copy
 }
 
 EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
@@ -31,12 +42,29 @@ EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
 		return *this;
 
 	terrainMap = other.terrainMap;
+
+	if (heightData)
+		stbi_image_free(heightData);
+
+	prevCameraPos = other.prevCameraPos;
+
 	//assetManager.reset(new AssetManager(*other.assetManager));
 	//terrainShader
 
 	return *this;
 }
 
+
+void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos) noexcept
+{
+	if (cameraPos == prevCameraPos)
+	{
+		prevCameraPos = cameraPos;
+		return;
+	}
+
+	/// build non-uniform patch (with quad tree) here.
+}
 
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
@@ -72,6 +100,19 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader)");
 		return false;
 	}
+
+	stbi_set_flip_vertically_on_load(true);
+
+	int width, height, nComponents;
+	heightData = stbi_load("../resources/texture/terrain/heightMap.png", &width, &height, &nComponents, 0);
+
+	if (heightData == nullptr || width == 0 || height == 0)
+		return false;
+
+	this->width  = width;
+	this->height = height;
+
+	stbi_set_flip_vertically_on_load(false);
 
 	return true;
 }

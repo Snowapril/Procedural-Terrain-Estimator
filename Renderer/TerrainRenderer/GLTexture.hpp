@@ -13,6 +13,7 @@ class GLTexture : public EngineAsset<GLTexture>
 {
 private:
 	std::vector<TEXTURE> textures;
+	
 protected:
 public:
 	GLTexture();

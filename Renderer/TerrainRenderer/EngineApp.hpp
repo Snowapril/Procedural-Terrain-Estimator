@@ -15,12 +15,15 @@
 
 class GLShader;
 class AssetManager;
+class GLTexture;
 
 class EngineApp : public GLApp
 {
 private:
 	unsigned int VAO; /// for test
 	GLShader* simpleShader; /// for test
+	GLTexture* simpleTexture;
+
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
 protected:
 	bool initShader(void);
