@@ -24,6 +24,7 @@ namespace Color {
 
 	const float White[4]           = { 1.0f,  1.0f,  1.0f,  1.0f };
 	const float Black[4]           = { 0.0f,  0.0f,  0.0f,  1.0f };
+	const float DarkBlue[4]        = { 0.0f,  0.0f, 0.39f,  1.0f };
 	const float Red[4]             = { 1.0f,  0.0f,  0.0f,  1.0f };
 	const float Green[4]           = { 0.0f,  1.0f,  0.0f,  1.0f };
 	const float Blue[4]            = { 0.0f,  0.0f,  1.0f,  1.0f };

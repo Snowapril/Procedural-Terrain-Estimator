@@ -10,21 +10,22 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 
-void EngineTerrain::clearTree(const glm::vec3 & originPos) noexcept
+void EngineTerrain::clearTree(const glm::vec3 & originPos) 
 {
 }
 
-void EngineTerrain::createTree(const glm::vec3 & originPos) noexcept
+void EngineTerrain::createTree(const glm::vec3 & originPos) 
 {
 }
 
-TerrainPatch * EngineTerrain::createNode(const TerrainPatch * parent, TerrainType type, const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight) noexcept
+TerrainPatch * EngineTerrain::createNode(const TerrainPatch * parent, TerrainType type, 
+										const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight)
 {
 	return nullptr;
 }
 
 EngineTerrain::EngineTerrain()
-	: terrainMap(0), width(0), height(0), terrainShader(nullptr)
+	: terrainMap(0), width(0), height(0), terrainShader(nullptr), quadMesh()
 {
 }
 
@@ -35,7 +36,7 @@ EngineTerrain::~EngineTerrain()
 
 EngineTerrain::EngineTerrain(const EngineTerrain & other)
 	: terrainMap(other.terrainMap), width(other.width), height(other.height), rootPatch(other.rootPatch), 
-		terrainShader(other.terrainShader), assetManager(other.assetManager), prevCameraPos(other.prevCameraPos)
+		terrainShader(other.terrainShader), assetManager(other.assetManager), prevCameraPos(other.prevCameraPos), quadMesh(other.quadMesh)
 {
 }
 
@@ -51,6 +52,7 @@ EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
 	assetManager = other.assetManager;
 	terrainShader = other.terrainShader;
 	prevCameraPos = other.prevCameraPos;
+	quadMesh = other.quadMesh;
 
 	return *this;
 }
@@ -73,7 +75,7 @@ void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos) noexcept
 void EngineTerrain::drawTerrain(unsigned int drawMode) const
 {
 	terrainShader->useProgram();
-	//draw
+	quadMesh.drawMesh(drawMode);
 }
 
 /**
@@ -93,8 +95,8 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
-			"../resources/shader/terrain_fs.glsl",
-			"../resources/shader/terrain_gs.glsl"
+			"../resources/shader/terrain_fs.glsl"
+			//"../resources/shader/terrain_gs.glsl"
 		});
 	}
 	catch (std::exception e)

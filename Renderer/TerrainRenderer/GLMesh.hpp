@@ -3,11 +3,11 @@
 
 #include <memory>
 
-class GLGeometry;
-
 enum class MeshShape {
 	QUAD_PATCH = 0,
 };
+
+class GLGeometry;
 
 class GLMesh
 {

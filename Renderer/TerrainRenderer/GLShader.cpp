@@ -92,21 +92,9 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		throw std::exception();
 	}
 
-	fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fs_source, nullptr);
-	glCompileShader(fs);
-
-	if (checkStatus(fs, CHECK_TARGET::SHADER))
-		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
-	else
-	{
-		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
-		throw std::exception();
-	}
-
 	if (!assetPaths[TCS].second.empty()) {
 		tcs_source = tcs_string.c_str();
-		tcs = glCreateShader(GL_GEOMETRY_SHADER);
+		tcs = glCreateShader(GL_TESS_CONTROL_SHADER);
 		glShaderSource(tcs, 1, &tcs_source, nullptr);
 		glCompileShader(tcs);
 
@@ -120,8 +108,8 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 	}
 
 	if (!assetPaths[TES].second.empty()) {
-		tes_source = gs_string.c_str();
-		tes = glCreateShader(GL_GEOMETRY_SHADER);
+		tes_source = tes_string.c_str();
+		tes = glCreateShader(GL_TESS_EVALUATION_SHADER);
 		glShaderSource(tes, 1, &tes_source, nullptr);
 		glCompileShader(tes);
 
@@ -147,6 +135,18 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", assetPaths[GS].second);
 			throw std::exception();
 		}
+	}
+
+	fs = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fs, 1, &fs_source, nullptr);
+	glCompileShader(fs);
+
+	if (checkStatus(fs, CHECK_TARGET::SHADER))
+		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
+	else
+	{
+		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
+		throw std::exception();
 	}
 
 	programID = glCreateProgram();
@@ -290,9 +290,8 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				int infoLogLength;
 				glGetShaderiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
-				glGetShaderInfoLog(target, sizeof(infoLog), nullptr, &infoLog[0]);
+				glGetShaderInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
 				EngineLogger::getConsole()->critical("Shader Compile Failed. info log :\n{}", &infoLog[0]);
-				throw std::exception();
 				return false;
 			}
 			break;
@@ -305,7 +304,7 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				int infoLogLength;
 				glGetProgramiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
-				glGetProgramInfoLog(target, sizeof(infoLog), nullptr, &infoLog[0]);
+				glGetProgramInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
 				EngineLogger::getConsole()->critical("Program Link Failed. info log :\n{}", &infoLog[0]);
 				return false;
 			}

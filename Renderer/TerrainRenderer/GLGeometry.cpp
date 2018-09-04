@@ -9,7 +9,7 @@ GLGeometry::GLGeometry()
 
 GLGeometry::~GLGeometry()
 {
-	if (VAO != 0)
+	if (VAO)
 	{
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
@@ -28,9 +28,9 @@ GLGeometry& GLGeometry::operator=(const GLGeometry& other)
 	if (&other == this)
 		return *this;
 
-	VAO = other.VAO;
-	VBO = other.VBO;
-	IBO = other.IBO;
+	VAO			= other.VAO;
+	VBO			= other.VBO;
+	IBO			= other.IBO;
 	numElements = other.numElements;
 
 	return *this;

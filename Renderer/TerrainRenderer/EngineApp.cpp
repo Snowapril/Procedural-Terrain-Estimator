@@ -37,9 +37,13 @@ void EngineApp::drawScene(void) const
 	Profile();
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
+	glClearColor(Color::DarkBlue[0], Color::DarkBlue[1], Color::DarkBlue[2], Color::DarkBlue[3]);
 
 	const float totalTime = timer.getTotalTime();
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	terrain.drawTerrain(GL_PATCHES);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	simpleShader->useProgram();
 
@@ -51,7 +55,7 @@ void EngineApp::drawScene(void) const
 	simpleShader->sendUniform("view", glm::lookAt(glm::vec3(0.f, 4.f, 6.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f)));
 	simpleShader->sendUniform("project", glm::perspective(glm::radians(45.0f), getAspectRatio(), 0.1f, 100.f));
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(VAO);	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES, 36u, GL_UNSIGNED_INT, 0);
 

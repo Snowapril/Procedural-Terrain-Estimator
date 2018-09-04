@@ -2,13 +2,15 @@
 
 layout(vertices = 4) out;
 
-in VS_OUT {
-	vec2 terrainTexCoords;
-} tcs_in;
-
 void main(void)
 {
-    TexCoords = aTexCoords;
+	gl_TessLevelOuter[0] = 16;
+	gl_TessLevelOuter[1] = 16;
+	gl_TessLevelOuter[2] = 16;
+	gl_TessLevelOuter[3] = 16;
 
-    gl_Position = project * view * model * vec4(aPos, 1.0);
+	gl_TessLevelInner[0] = 8;
+	gl_TessLevelInner[1] = 8;
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
 }

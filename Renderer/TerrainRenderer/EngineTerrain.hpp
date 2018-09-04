@@ -39,9 +39,9 @@ private:
 	GLMesh quadMesh;
 private:
 enum class TerrainType : int;
-	void clearTree(const glm::vec3& originPos) noexcept;
-	void createTree(const glm::vec3& originPos) noexcept;
-	TerrainPatch* createNode(const TerrainPatch* parent, TerrainType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight) noexcept;
+	void clearTree(const glm::vec3& originPos) ;
+	void createTree(const glm::vec3& originPos) ;
+	TerrainPatch* createNode(const TerrainPatch* parent, TerrainType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight) ;
 public:
 	EngineTerrain();
 	~EngineTerrain();

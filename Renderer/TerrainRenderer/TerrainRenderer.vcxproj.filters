@@ -62,6 +62,12 @@
     <ClCompile Include="TerrainPatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -112,6 +118,9 @@
     <ClInclude Include="TerrainPatch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EngineCamera.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -146,9 +155,6 @@
     </None>
     <None Include="..\resources\shader\terrain_fs.glsl">
       <Filter>shader</Filter>
-    </None>
-    <None Include="GLGeometry.cpp">
-      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
 </Project>

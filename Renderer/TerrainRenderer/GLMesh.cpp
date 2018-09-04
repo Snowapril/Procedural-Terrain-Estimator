@@ -73,6 +73,8 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(quadIndices), &quadIndices[0], GL_STATIC_DRAW);
 
 		glBindVertexArray(0);
+
+		geometrySrc->numElements = 4;
 	}
 		break;
 	default:

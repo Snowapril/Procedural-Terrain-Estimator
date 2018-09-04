@@ -49,7 +49,7 @@ AssetManager & AssetManager::operator=(const AssetManager & other)
 * @ details		changed assets are pushed into dirtyAssets by listenToAssetChanges method.
 				before reload asset, lock guard is needed because for preventing use of same resource by other thread.
 */
-void AssetManager::refreshDirtyAssets(void)
+void AssetManager::refreshDirtyAssets(void) noexcept
 {
 	/// before reload assets, lock it from the other thread.
 	std::lock_guard<std::mutex> lockGuard(fileChangeMutex);
@@ -64,7 +64,7 @@ void AssetManager::refreshDirtyAssets(void)
 * @ details		before instance of this class is destructed, while loop is continued.
 				check whether if asset is modified or not with 1 second term.
 */
-void AssetManager::listenToAssetChanges(void)
+void AssetManager::listenToAssetChanges(void) noexcept
 {
 	using namespace std::chrono_literals;
 	

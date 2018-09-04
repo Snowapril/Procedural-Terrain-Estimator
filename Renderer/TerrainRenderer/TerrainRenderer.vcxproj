@@ -151,12 +151,14 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
+    <ClCompile Include="EngineCamera.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
     <ClCompile Include="EngineProfiler.cpp" />
     <ClCompile Include="EngineTerrain.cpp" />
     <ClCompile Include="EngineTimer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMesh.cpp" />
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
+    <ClInclude Include="EngineCamera.hpp" />
     <ClInclude Include="EngineLogger.hpp" />
     <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
@@ -194,7 +197,6 @@
     <None Include="..\resources\shader\terrain_tcs.glsl" />
     <None Include="..\resources\shader\terrain_tes.glsl" />
     <None Include="..\resources\shader\terrain_vs.glsl" />
-    <None Include="GLGeometry.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

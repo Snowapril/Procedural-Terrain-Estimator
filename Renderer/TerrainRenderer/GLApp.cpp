@@ -103,6 +103,8 @@ bool GLApp::initGLConfigure(void)
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
+	glPatchParameteri(GL_PATCH_VERTICES, 4);
+
 	return true;
 }
 
