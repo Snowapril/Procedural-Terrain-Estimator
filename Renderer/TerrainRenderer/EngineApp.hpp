@@ -11,6 +11,7 @@
 #define ENGINE_APP_HPP
 
 #include "GLApp.hpp"
+#include "EngineGUI.hpp"
 #include <memory>
 #include "EngineTerrain.hpp"
 
@@ -18,7 +19,7 @@ class GLShader;
 class AssetManager;
 class GLTexture;
 
-class EngineApp : public GLApp
+class EngineApp : public GLApp, EngineGUI
 {
 private:
 	unsigned int VAO; /// for test

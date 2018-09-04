@@ -7,6 +7,8 @@ class TerrainPatch
 {
 	friend class EngineTerrain;
 private:
+	float width;
+	float height;
 	float leftScale;
 	float topScale;
 	float rightScale;

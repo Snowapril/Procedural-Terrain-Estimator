@@ -25,6 +25,8 @@ void EngineApp::updateScene(float dt)
 {
 	Profile();
 
+	terrain.updateScene(dt);
+
 	assetManager->refreshDirtyAssets();
 }
 

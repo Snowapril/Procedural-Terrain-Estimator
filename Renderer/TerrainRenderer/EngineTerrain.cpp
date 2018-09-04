@@ -5,10 +5,13 @@
 
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
-
 #include "EngineLogger.hpp"
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
+
+bool EngineTerrain::isInstanciated = false;
+
+constexpr std::size_t MAX_POOL_SIZE  = 1000;
 
 void EngineTerrain::clearTree(const glm::vec3 & originPos) 
 {
@@ -24,49 +27,43 @@ TerrainPatch * EngineTerrain::createNode(const TerrainPatch * parent, TerrainTyp
 	return nullptr;
 }
 
-EngineTerrain::EngineTerrain()
-	: terrainMap(0), width(0), height(0), terrainShader(nullptr), quadMesh()
+bool TerrainPatch::checkDivide(const TerrainPatch* node, const glm::vec3& cameraPos)
 {
+	return false;
+}
+
+EngineTerrain::EngineTerrain()
+	: terrainMap(0), width(0), height(0), rootPatch(nullptr), tailPatch(nullptr), terrainShader(nullptr)
+{
+	assert(!isInstanciated);
+	isInstanciated = true;
 }
 
 EngineTerrain::~EngineTerrain()
 {
 	glDeleteTextures(1, &terrainMap);
+	isInstanciated = false;
+
+	rootPatch = nullptr;
+	
+	if (tailPatch)
+		delete[] tailPatch;
 }
 
-EngineTerrain::EngineTerrain(const EngineTerrain & other)
-	: terrainMap(other.terrainMap), width(other.width), height(other.height), rootPatch(other.rootPatch), 
-		terrainShader(other.terrainShader), assetManager(other.assetManager), prevCameraPos(other.prevCameraPos), quadMesh(other.quadMesh)
-{
-}
-
-EngineTerrain & EngineTerrain::operator=(const EngineTerrain & other)
-{
-	if (&other == this)
-		return *this;
-
-	terrainMap = other.terrainMap;
-	width = other.width;
-	height = other.height;
-	rootPatch = other.rootPatch;
-	assetManager = other.assetManager;
-	terrainShader = other.terrainShader;
-	prevCameraPos = other.prevCameraPos;
-	quadMesh = other.quadMesh;
-
-	return *this;
-}
-
-
-void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos) noexcept
+void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm::vec3& originPos) noexcept
 {
 	if (cameraPos == prevCameraPos)
-	{
-		prevCameraPos = cameraPos;
 		return;
-	}
 
-	/// build non-uniform patch (with quad tree) here.
+	tailPatch = rootPatch;
+	createTree(originPos);
+
+	prevCameraPos = cameraPos;
+}
+
+void EngineTerrain::updateScene(float dt)
+{
+	assetManager->refreshDirtyAssets();
 }
 
 /**
@@ -75,7 +72,6 @@ void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos) noexcept
 void EngineTerrain::drawTerrain(unsigned int drawMode) const
 {
 	terrainShader->useProgram();
-	quadMesh.drawMesh(drawMode);
 }
 
 /**
@@ -106,11 +102,18 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	}
 
 	/// TODO : manage texture with asset manager.
-	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.png", false)) == 0)
+	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/noiseMap.png", false)) == 0)
 		return false;
 
-	if (!quadMesh.initWithFixedShape(MeshShape::QUAD_PATCH))
+	try 
+	{
+		tailPatch = new TerrainPatch[MAX_POOL_SIZE];
+	}
+	catch (std::bad_alloc e)
+	{
+		EngineLogger::getConsole()->error("Bad alloc is occurred at pre-instanciate terrain patch. size : {}", sizeof(TerrainPatch) * MAX_POOL_SIZE);
 		return false;
+	}
 
 	return true;
 }

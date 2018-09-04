@@ -152,6 +152,7 @@
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
     <ClCompile Include="EngineCamera.cpp" />
+    <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
     <ClCompile Include="EngineProfiler.cpp" />
     <ClCompile Include="EngineTerrain.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
     <ClInclude Include="EngineCamera.hpp" />
+    <ClInclude Include="EngineGUI.hpp" />
     <ClInclude Include="EngineLogger.hpp" />
     <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
