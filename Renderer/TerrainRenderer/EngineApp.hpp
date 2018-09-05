@@ -37,6 +37,7 @@ protected:
 	bool initTextures(void);
 	bool initAssets(void);
 	bool initGeometryBuffer(void);
+	bool initUniformBufferObject(void);
 
 	void updateScene(float dt);
 	void drawScene(void) const;

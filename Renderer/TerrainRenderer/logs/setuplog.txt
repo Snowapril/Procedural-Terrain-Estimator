@@ -2902,3 +2902,813 @@ Tessellation evaluation info
 [2018-09-05 13:50:32.737] [setup] [info] Load Texture noiseMap.png finished
 [2018-09-05 13:50:38.504] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
 
+[2018-09-05 21:49:26.724] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 21:49:26.781] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 21:49:26.781] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 21:49:26.852] [setup] [info] Program Linking finished.
+[2018-09-05 21:49:26.853] [setup] [info] Linking Program Success.
+[2018-09-05 21:49:26.857] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 21:49:26.857] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 21:49:26.861] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 21:49:26.862] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 21:49:26.931] [setup] [info] Program Linking finished.
+[2018-09-05 21:49:26.932] [setup] [info] Linking Program Success.
+[2018-09-05 21:49:26.937] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 21:49:26.949] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:26.949] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.040] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.042] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.048] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.049] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.059] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.074] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.075] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.091] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.092] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.108] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.124] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.126] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.140] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.159] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.175] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.190] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.192] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.208] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.224] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.226] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.241] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.242] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.259] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.275] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.291] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.293] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.307] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.309] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.324] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.326] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.341] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.342] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.359] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.374] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.376] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.391] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.392] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.407] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.409] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.424] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.427] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.441] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.442] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.457] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.459] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.483] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.484] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.490] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.491] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.508] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.524] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.526] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.541] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.542] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.557] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.561] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.574] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.575] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.591] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.593] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.608] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.624] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.625] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.641] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.643] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.659] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.674] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.675] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.691] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.692] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.707] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.708] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.724] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.725] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.740] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.741] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.757] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.759] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.774] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.776] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.791] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.792] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.809] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.824] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.825] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.841] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.842] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.858] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.863] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.874] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.875] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.891] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.893] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.907] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.908] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.924] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.926] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.941] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.942] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.963] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.964] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.974] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.975] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:27.991] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:27.993] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.008] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.010] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.024] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.026] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.041] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.043] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.059] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.074] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.076] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.091] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.092] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.109] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.124] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.126] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.141] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.160] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.176] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.191] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.193] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.208] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.224] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.227] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.241] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.243] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.259] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.276] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.291] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.293] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.307] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.309] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.324] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.326] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.341] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.343] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.357] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.359] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.374] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.376] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.391] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.393] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.407] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.409] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.424] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.426] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.441] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.443] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.457] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.459] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.474] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.477] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.491] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.493] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.507] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.509] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.524] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.526] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.541] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.542] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.557] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.559] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.574] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.576] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.591] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.593] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.607] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.609] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.624] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.626] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.645] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.647] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.657] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.660] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.674] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.676] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.691] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.693] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.707] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.709] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.724] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.727] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.741] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.742] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.758] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.760] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.774] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.775] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.791] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.794] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.807] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.809] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.824] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.826] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.841] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.843] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.857] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.860] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.874] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.875] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.891] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.893] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.907] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.909] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.924] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.926] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.941] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.943] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.958] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.959] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.974] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.975] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:28.991] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:28.993] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.008] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.009] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.025] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.027] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.051] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.053] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.057] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.058] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.074] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.076] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.091] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.092] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.107] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.109] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.124] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.126] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.141] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.142] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.157] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.159] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.174] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.176] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.191] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.192] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.207] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.208] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.224] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.225] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.241] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.242] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.257] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.259] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.274] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.275] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.291] [setup] [critical] Undefined Uniform Variable Name : view
+[2018-09-05 21:49:29.293] [setup] [critical] Undefined Uniform Variable Name : project
+[2018-09-05 21:49:29.307] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+[2018-09-05 21:49:29.308] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 21:49:45.563] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 21:49:45.566] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 21:49:45.566] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 21:49:45.567] [setup] [info] Program Linking finished.
+[2018-09-05 21:49:45.568] [setup] [info] Linking Program Success.
+[2018-09-05 21:49:45.571] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 21:49:45.571] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 21:49:45.572] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 21:49:45.572] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 21:49:45.573] [setup] [info] Program Linking finished.
+[2018-09-05 21:49:45.574] [setup] [info] Linking Program Success.
+[2018-09-05 21:49:45.575] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 21:49:48.474] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+[2018-09-05 21:49:48.475] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 21:54:00.084] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 21:54:00.087] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 21:54:00.087] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 21:54:00.088] [setup] [info] Program Linking finished.
+[2018-09-05 21:54:00.088] [setup] [info] Linking Program Success.
+[2018-09-05 21:54:00.091] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 21:54:00.091] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 21:54:00.092] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 21:54:00.092] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 21:54:00.093] [setup] [info] Program Linking finished.
+[2018-09-05 21:54:00.093] [setup] [info] Linking Program Success.
+[2018-09-05 21:54:00.094] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 21:54:02.594] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 21:54:56.197] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 21:54:56.201] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 21:54:56.202] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 21:54:56.203] [setup] [info] Program Linking finished.
+[2018-09-05 21:54:56.204] [setup] [info] Linking Program Success.
+[2018-09-05 21:54:56.207] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 21:54:56.208] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 21:54:56.208] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 21:54:56.208] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 21:54:56.209] [setup] [info] Program Linking finished.
+[2018-09-05 21:54:56.209] [setup] [info] Linking Program Success.
+[2018-09-05 21:54:56.210] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 21:54:58.495] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 21:55:10.146] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 21:55:10.150] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 21:55:10.151] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 21:55:10.152] [setup] [info] Program Linking finished.
+[2018-09-05 21:55:10.152] [setup] [info] Linking Program Success.
+[2018-09-05 21:55:10.155] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 21:55:10.155] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 21:55:10.156] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 21:55:10.156] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 21:55:10.157] [setup] [info] Program Linking finished.
+[2018-09-05 21:55:10.157] [setup] [info] Linking Program Success.
+[2018-09-05 21:55:10.158] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 21:55:12.562] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:13:50.774] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:13:50.777] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:13:50.777] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:13:50.778] [setup] [info] Program Linking finished.
+[2018-09-05 22:13:50.778] [setup] [info] Linking Program Success.
+[2018-09-05 22:13:50.782] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:13:50.783] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:13:50.784] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:13:50.785] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:13:50.786] [setup] [info] Program Linking finished.
+[2018-09-05 22:13:50.786] [setup] [info] Linking Program Success.
+[2018-09-05 22:13:50.787] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:14:04.895] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:14:09.787] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:14:09.788] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:14:09.788] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:14:09.789] [setup] [info] Program Linking finished.
+[2018-09-05 22:14:09.789] [setup] [info] Linking Program Success.
+[2018-09-05 22:14:09.791] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:14:09.792] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:14:09.792] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:14:09.792] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:14:09.792] [setup] [info] Program Linking finished.
+[2018-09-05 22:14:09.792] [setup] [info] Linking Program Success.
+[2018-09-05 22:14:09.793] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:14:10.379] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:15:24.870] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:15:24.875] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:15:24.875] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:15:24.875] [setup] [info] Program Linking finished.
+[2018-09-05 22:15:24.875] [setup] [info] Linking Program Success.
+[2018-09-05 22:15:24.877] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:15:24.878] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:15:24.878] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:15:24.878] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:15:24.879] [setup] [info] Program Linking finished.
+[2018-09-05 22:15:24.879] [setup] [info] Linking Program Success.
+[2018-09-05 22:15:24.882] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:15:26.480] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:16:54.352] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:16:54.355] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:16:54.356] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:16:54.356] [setup] [info] Program Linking finished.
+[2018-09-05 22:16:54.356] [setup] [info] Linking Program Success.
+[2018-09-05 22:16:54.358] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:16:54.359] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:16:54.359] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:16:54.359] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:16:54.360] [setup] [info] Program Linking finished.
+[2018-09-05 22:16:54.360] [setup] [info] Linking Program Success.
+[2018-09-05 22:16:54.361] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:16:55.615] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:17:51.220] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:17:51.223] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:17:51.223] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:17:51.223] [setup] [info] Program Linking finished.
+[2018-09-05 22:17:51.224] [setup] [info] Linking Program Success.
+[2018-09-05 22:17:51.225] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:17:51.226] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:17:51.226] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:17:51.227] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:17:51.228] [setup] [info] Program Linking finished.
+[2018-09-05 22:17:51.228] [setup] [info] Linking Program Success.
+[2018-09-05 22:17:51.229] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:17:52.549] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:18:46.818] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:18:46.821] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:18:46.821] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:18:46.822] [setup] [info] Program Linking finished.
+[2018-09-05 22:18:46.823] [setup] [info] Linking Program Success.
+[2018-09-05 22:18:46.825] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:18:46.825] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:18:46.826] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:18:46.826] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:18:46.827] [setup] [info] Program Linking finished.
+[2018-09-05 22:18:46.827] [setup] [info] Linking Program Success.
+[2018-09-05 22:18:46.828] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:18:49.316] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:18:55.914] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:18:55.916] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:18:55.916] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:18:55.917] [setup] [info] Program Linking finished.
+[2018-09-05 22:18:55.917] [setup] [info] Linking Program Success.
+[2018-09-05 22:18:55.920] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:18:55.920] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:18:55.921] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:18:55.921] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:18:55.930] [setup] [info] Program Linking finished.
+[2018-09-05 22:18:55.930] [setup] [info] Linking Program Success.
+[2018-09-05 22:18:55.931] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:18:58.133] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:20:29.762] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:20:29.764] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:20:29.764] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:20:29.765] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:29.765] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:29.768] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:20:29.768] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:20:29.768] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:20:29.769] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:20:29.769] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:29.769] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:29.770] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:20:30.434] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:20:47.932] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:20:47.933] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:20:47.934] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:20:47.934] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:47.934] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:47.936] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:20:47.937] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:20:47.937] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:20:47.937] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:20:47.938] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:47.939] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:47.941] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:20:49.101] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:20:57.038] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:20:57.041] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:20:57.041] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:20:57.042] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:57.042] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:57.044] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:20:57.044] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:20:57.044] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:20:57.044] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:20:57.045] [setup] [info] Program Linking finished.
+[2018-09-05 22:20:57.045] [setup] [info] Linking Program Success.
+[2018-09-05 22:20:57.046] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:20:58.368] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:23:08.382] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:23:08.384] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:23:08.384] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:23:08.385] [setup] [info] Program Linking finished.
+[2018-09-05 22:23:08.385] [setup] [info] Linking Program Success.
+[2018-09-05 22:23:08.387] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:23:08.387] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:23:08.416] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:23:08.416] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:23:08.466] [setup] [info] Program Linking finished.
+[2018-09-05 22:23:08.467] [setup] [info] Linking Program Success.
+[2018-09-05 22:23:08.468] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:23:21.404] [setup] [info] Shader source change is detected
+[2018-09-05 22:23:21.421] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:23:21.422] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:23:21.423] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:23:21.423] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:23:21.425] [setup] [info] Program Linking finished.
+[2018-09-05 22:23:21.426] [setup] [info] Linking Program Success.
+[2018-09-05 22:24:24.472] [setup] [info] Shader source change is detected
+[2018-09-05 22:24:24.488] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:24:24.489] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:24:24.491] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:24:24.492] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:24:24.519] [setup] [info] Program Linking finished.
+[2018-09-05 22:24:24.520] [setup] [info] Linking Program Success.
+[2018-09-05 22:24:30.038] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:26:31.612] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:26:31.615] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:26:31.616] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:26:31.617] [setup] [info] Program Linking finished.
+[2018-09-05 22:26:31.617] [setup] [info] Linking Program Success.
+[2018-09-05 22:26:31.619] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:26:31.620] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:26:31.620] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:26:31.620] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:26:31.624] [setup] [info] Program Linking finished.
+[2018-09-05 22:26:31.625] [setup] [info] Linking Program Success.
+[2018-09-05 22:26:31.627] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:26:32.390] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:26:43.880] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:26:43.882] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:26:43.883] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:26:43.884] [setup] [info] Program Linking finished.
+[2018-09-05 22:26:43.884] [setup] [info] Linking Program Success.
+[2018-09-05 22:26:43.886] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:26:43.886] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:26:43.886] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:26:43.887] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:26:43.887] [setup] [info] Program Linking finished.
+[2018-09-05 22:26:43.887] [setup] [info] Linking Program Success.
+[2018-09-05 22:26:43.888] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:26:50.723] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:27:10.708] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:27:10.725] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:27:10.725] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:27:10.726] [setup] [info] Program Linking finished.
+[2018-09-05 22:27:10.726] [setup] [info] Linking Program Success.
+[2018-09-05 22:27:10.728] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:27:10.728] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:27:10.729] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:27:10.729] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:27:10.729] [setup] [info] Program Linking finished.
+[2018-09-05 22:27:10.729] [setup] [info] Linking Program Success.
+[2018-09-05 22:27:10.731] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:27:22.891] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:27:50.086] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:27:50.089] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:27:50.089] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:27:50.089] [setup] [info] Program Linking finished.
+[2018-09-05 22:27:50.090] [setup] [info] Linking Program Success.
+[2018-09-05 22:27:50.091] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:27:50.092] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:27:50.093] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:27:50.095] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:27:50.096] [setup] [info] Program Linking finished.
+[2018-09-05 22:27:50.097] [setup] [info] Linking Program Success.
+[2018-09-05 22:27:50.099] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:27:52.191] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:28:11.742] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:28:11.746] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:28:11.747] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:28:11.748] [setup] [info] Program Linking finished.
+[2018-09-05 22:28:11.749] [setup] [info] Linking Program Success.
+[2018-09-05 22:28:11.751] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:28:11.752] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:28:11.753] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:28:11.753] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:28:11.753] [setup] [info] Program Linking finished.
+[2018-09-05 22:28:11.753] [setup] [info] Linking Program Success.
+[2018-09-05 22:28:11.754] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:28:12.941] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:28:56.710] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:28:56.713] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:28:56.714] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:28:56.715] [setup] [info] Program Linking finished.
+[2018-09-05 22:28:56.716] [setup] [info] Linking Program Success.
+[2018-09-05 22:28:56.717] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:28:56.718] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:28:56.718] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:28:56.719] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:28:56.719] [setup] [info] Program Linking finished.
+[2018-09-05 22:28:56.720] [setup] [info] Linking Program Success.
+[2018-09-05 22:28:56.720] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:28:57.509] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:29:06.081] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:29:06.083] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:29:06.083] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:29:06.084] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:06.084] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:06.086] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:29:06.086] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:29:06.086] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:29:06.086] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:29:06.087] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:06.087] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:06.088] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:29:06.759] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:29:18.285] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:29:18.286] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:29:18.287] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:29:18.287] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:18.287] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:18.289] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:29:18.290] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:29:18.291] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:29:18.291] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:29:18.292] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:18.292] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:18.293] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:29:26.959] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:29:54.024] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:29:54.025] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:29:54.026] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:29:54.026] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:54.027] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:54.030] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:29:54.030] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:29:54.030] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:29:54.031] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:29:54.031] [setup] [info] Program Linking finished.
+[2018-09-05 22:29:54.032] [setup] [info] Linking Program Success.
+[2018-09-05 22:29:54.033] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:30:10.426] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:31:41.878] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:31:41.880] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:31:41.880] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:31:41.882] [setup] [info] Program Linking finished.
+[2018-09-05 22:31:41.883] [setup] [info] Linking Program Success.
+[2018-09-05 22:31:41.886] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:31:41.887] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:31:41.887] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:31:41.888] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:31:41.888] [setup] [info] Program Linking finished.
+[2018-09-05 22:31:41.888] [setup] [info] Linking Program Success.
+[2018-09-05 22:31:41.889] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:32:15.912] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:32:27.390] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:32:27.392] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:32:27.393] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:32:27.394] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:27.394] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:27.396] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:32:27.397] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:32:27.398] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:32:27.399] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:32:27.401] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:27.402] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:27.403] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:32:28.829] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:32:41.320] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:32:41.321] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:32:41.322] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:32:41.322] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:41.323] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:41.326] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:32:41.326] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:32:41.326] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:32:41.326] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:32:41.327] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:41.327] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:41.328] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:32:42.979] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:32:52.336] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:32:52.338] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:32:52.338] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:32:52.339] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:52.340] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:52.342] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:32:52.343] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:32:52.343] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:32:52.343] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:32:52.343] [setup] [info] Program Linking finished.
+[2018-09-05 22:32:52.344] [setup] [info] Linking Program Success.
+[2018-09-05 22:32:52.344] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:32:53.829] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:33:03.839] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:33:03.840] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:33:03.841] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:33:03.841] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:03.841] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:03.843] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:33:03.843] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:33:03.844] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:33:03.844] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:33:03.844] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:03.845] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:03.845] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:33:04.829] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:33:15.510] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:33:15.512] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:33:15.512] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:33:15.513] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:15.513] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:15.517] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:33:15.517] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:33:15.518] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:33:15.518] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:33:15.518] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:15.518] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:15.519] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:33:17.252] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:33:26.261] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:33:26.263] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:33:26.263] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:33:26.264] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:26.264] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:26.268] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:33:26.269] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:33:26.270] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:33:26.271] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:33:26.272] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:26.272] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:26.273] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:33:27.703] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:33:34.928] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:33:34.929] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:33:34.930] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:33:34.930] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:34.931] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:34.934] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:33:34.934] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:33:34.935] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:33:34.935] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:33:34.936] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:34.936] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:34.937] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:33:40.479] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:33:51.090] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:33:51.092] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:33:51.093] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:33:51.094] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:51.094] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:51.096] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:33:51.096] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:33:51.096] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:33:51.096] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:33:51.097] [setup] [info] Program Linking finished.
+[2018-09-05 22:33:51.097] [setup] [info] Linking Program Success.
+[2018-09-05 22:33:51.100] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:33:51.696] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:35:07.805] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:35:07.807] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:35:07.807] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:35:07.808] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:07.809] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:07.811] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:35:07.811] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:35:07.812] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:35:07.812] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:35:07.813] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:07.813] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:07.814] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:35:08.314] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:35:16.527] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:35:16.528] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:35:16.528] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:35:16.529] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:16.529] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:16.531] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:35:16.531] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:35:16.531] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:35:16.532] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:35:16.532] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:16.533] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:16.534] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:35:17.398] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-05 22:35:25.120] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-05 22:35:25.122] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-05 22:35:25.123] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-05 22:35:25.124] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:25.124] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:25.126] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-05 22:35:25.126] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-05 22:35:25.127] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-05 22:35:25.127] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-05 22:35:25.128] [setup] [info] Program Linking finished.
+[2018-09-05 22:35:25.128] [setup] [info] Linking Program Success.
+[2018-09-05 22:35:25.129] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-05 22:35:26.231] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+

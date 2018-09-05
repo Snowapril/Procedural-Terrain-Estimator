@@ -18,6 +18,7 @@
 #include <glm/vec3.hpp>
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
+#include <vector>
 
 class AssetManager;
 class GLShader;
@@ -26,15 +27,20 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
-	
+	unsigned int VBO;
+	unsigned int VAO;
+
 	std::size_t width;
 	std::size_t height;
-
+	
 	std::size_t numPatch;
 	TerrainPatch* rootPatch;
 	TerrainPatch* tailPatch;
 
 	GLShader* terrainShader;
+
+	std::vector<float> vertices;
+
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
 	glm::vec3 terrainCenterPos;
