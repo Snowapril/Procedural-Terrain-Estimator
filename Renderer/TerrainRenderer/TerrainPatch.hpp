@@ -1,12 +1,25 @@
 #ifndef TERRAIN_PATCH_HPP
 #define TERRAIN_PATCH_HPP
 
-#include <glm/vec4.hpp>
+#include <glm/vec3.hpp>
+
 
 class TerrainPatch
 {
 	friend class EngineTerrain;
 private:
+	enum class PatchType : int
+	{
+		ROOT = 0,
+		LEFT_TOP = 1,
+		LEFT_BOTTOM = 2,
+		RIGHT_BOTTOM = 3,
+		RIGHT_TOP = 4,
+		UNKNOWN = 5
+	};
+
+	PatchType type;
+	std::size_t patchDepth;
 	float width;
 	float height;
 	float leftScale;
@@ -14,11 +27,11 @@ private:
 	float rightScale;
 	float bottomScale;
 	TerrainPatch *parent;
-	TerrainPatch *leftAdj;
-	TerrainPatch *topAdj;
-	TerrainPatch *rightAdj;
-	TerrainPatch *bottomAdj;
-	glm::vec4 originPos;
+	TerrainPatch *leftTopAdj;
+	TerrainPatch *rightTopAdj;
+	TerrainPatch *rightBottomAdj;
+	TerrainPatch *leftBottomAdj;
+	glm::vec3 originPos;
 public:
 	TerrainPatch();
 	~TerrainPatch();

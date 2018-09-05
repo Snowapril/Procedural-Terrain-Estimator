@@ -11,25 +11,111 @@
 
 bool EngineTerrain::isInstanciated = false;
 
-constexpr std::size_t MAX_POOL_SIZE  = 1000;
+constexpr std::size_t	MAX_POOL_SIZE		 = 1000;
+constexpr std::size_t	MAX_PATCH_DEPTH		 = 5;
+constexpr float			MAX_DIVIDABLE_LENGTH = 50.0f;
 
-void EngineTerrain::clearTree(const glm::vec3 & originPos) 
+void EngineTerrain::clearTree(void)
 {
+	tailPatch = rootPatch;
+	numPatch  = 0;
 }
 
-void EngineTerrain::createTree(const glm::vec3 & originPos) 
+void EngineTerrain::createTree(const glm::vec3& cameraPos)
 {
+	rootPatch = tailPatch++;
+	++numPatch;
+
+	rootPatch->type				= TerrainPatch::PatchType::ROOT;
+	rootPatch->patchDepth		= 0;
+	rootPatch->originPos		= terrainCenterPos;
+	rootPatch->parent			= nullptr;
+	rootPatch->leftTopAdj		= nullptr;
+	rootPatch->rightBottomAdj	= nullptr;
+	rootPatch->rightTopAdj		= nullptr;
+	rootPatch->leftBottomAdj	= nullptr;
+	rootPatch->leftScale		= 1.0f;
+	rootPatch->rightScale		= 1.0f;
+	rootPatch->topScale			= 1.0f;
+	rootPatch->bottomScale		= 1.0f;
+	rootPatch->width			= this->width;
+	rootPatch->height			= this->height;
+
+	divideNode(rootPatch, cameraPos);
 }
 
-TerrainPatch * EngineTerrain::createNode(const TerrainPatch * parent, TerrainType type, 
-										const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight)
+TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, TerrainPatch::PatchType type, const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight)
 {
-	return nullptr;
+	TerrainPatch* newNode = tailPatch++;
+	++numPatch;
+
+	newNode->type			= type;
+	newNode->patchDepth		= parent->patchDepth + 1;
+	newNode->parent			= parent;
+	newNode->originPos		= originPos;
+	newNode->width			= patchWidth;
+	newNode->height			= patchHeight;
+	newNode->leftBottomAdj	= nullptr;
+	newNode->leftTopAdj		= nullptr;
+	newNode->rightBottomAdj = nullptr;
+	newNode->rightTopAdj	= nullptr;
+	newNode->leftScale		= 1.0f;
+	newNode->topScale		= 1.0f;
+	newNode->rightScale		= 1.0f;
+	newNode->bottomScale	= 1.0f;
+	
+	return newNode;
 }
 
-bool TerrainPatch::checkDivide(const TerrainPatch* node, const glm::vec3& cameraPos)
+void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
 {
-	return false;
+	const float newWidth = node->width * 0.5f;
+	const float newHeight = node->height * 0.5f;
+
+	node->leftTopAdj	 = createNode(node, TerrainPatch::PatchType::LEFT_TOP, node->originPos + 
+						 			glm::vec3(-newWidth * 0.5f, newHeight * 0.5f, 0.0f), newWidth, newHeight);
+						 
+	node->rightTopAdj	 = createNode(node, TerrainPatch::PatchType::RIGHT_TOP, node->originPos + 
+						 			glm::vec3(newWidth * 0.5f, newHeight * 0.5f, 0.0f), newWidth, newHeight);
+						 
+	node->leftBottomAdj	 = createNode(node, TerrainPatch::PatchType::LEFT_BOTTOM, node->originPos + 
+						 			glm::vec3(-newWidth * 0.5f, -newHeight * 0.5f, 0.0f), newWidth, newHeight);
+						 
+	node->rightBottomAdj = createNode(node, TerrainPatch::PatchType::RIGHT_BOTTOM, node->originPos + 
+										glm::vec3(newWidth * 0.5f, -newHeight * 0.5f, 0.0f), newWidth, newHeight);
+
+	if (checkDivide(node->leftTopAdj, cameraPos))
+		divideNode(node->leftTopAdj, cameraPos);
+	else
+		registerToBufferObject(node->leftTopAdj);
+	if (checkDivide(node->rightTopAdj, cameraPos))
+		divideNode(node->rightTopAdj, cameraPos);
+	else
+		registerToBufferObject(node->rightTopAdj);
+	if (checkDivide(node->leftBottomAdj, cameraPos))
+		divideNode(node->leftBottomAdj, cameraPos);
+	else
+		registerToBufferObject(node->leftBottomAdj);
+	if (checkDivide(node->rightBottomAdj, cameraPos))
+		divideNode(node->rightBottomAdj, cameraPos);
+	else
+		registerToBufferObject(node->rightBottomAdj);
+}
+
+void EngineTerrain::registerToBufferObject(const TerrainPatch* patch)
+{
+
+}
+
+bool EngineTerrain::checkDivide(const TerrainPatch * node, const glm::vec3 & cameraPos)
+{
+	if (node->patchDepth >= MAX_PATCH_DEPTH || numPatch + 3 >= MAX_POOL_SIZE)
+		return false;
+
+	if (glm::length(cameraPos - node->originPos) > sqrt(rootPatch->width * rootPatch->width + rootPatch->height * rootPatch->height))
+		return false;
+
+	return true;
 }
 
 EngineTerrain::EngineTerrain()
@@ -44,6 +130,7 @@ EngineTerrain::~EngineTerrain()
 	glDeleteTextures(1, &terrainMap);
 	isInstanciated = false;
 
+	tailPatch = rootPatch;
 	rootPatch = nullptr;
 	
 	if (tailPatch)
@@ -52,11 +139,14 @@ EngineTerrain::~EngineTerrain()
 
 void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm::vec3& originPos) noexcept
 {
-	if (cameraPos == prevCameraPos)
-		return;
+	//if (cameraPos == prevCameraPos)
+	//	return;
 
 	tailPatch = rootPatch;
-	createTree(originPos);
+	terrainCenterPos = originPos;
+
+	clearTree();
+	createTree(cameraPos);
 
 	prevCameraPos = cameraPos;
 }
@@ -101,13 +191,13 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		return false;
 	}
 
-	/// TODO : manage texture with asset manager.
-	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/noiseMap.png", false)) == 0)
+	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/noiseMap.png", width, height, false)) == 0)
 		return false;
 
 	try 
 	{
 		tailPatch = new TerrainPatch[MAX_POOL_SIZE];
+		rootPatch = tailPatch;
 	}
 	catch (std::bad_alloc e)
 	{

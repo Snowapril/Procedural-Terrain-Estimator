@@ -26,6 +26,7 @@ void EngineApp::updateScene(float dt)
 	Profile();
 
 	terrain.updateScene(dt);
+	terrain.buildNonUniformPatch(glm::vec3(1.0f), glm::vec3(0.0f));
 
 	assetManager->refreshDirtyAssets();
 }

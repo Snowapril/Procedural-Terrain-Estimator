@@ -17,38 +17,40 @@
 #include <string>
 #include <glm/vec3.hpp>
 #include "GLMesh.hpp"
+#include "TerrainPatch.hpp"
 
 class AssetManager;
 class GLShader;
-class TerrainPatch;
 
 class EngineTerrain
 {
 private:
-	enum class TerrainType : int;
-
 	unsigned int terrainMap;
 	
 	std::size_t width;
 	std::size_t height;
 
+	std::size_t numPatch;
 	TerrainPatch* rootPatch;
 	TerrainPatch* tailPatch;
 
 	GLShader* terrainShader;
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
-
+	glm::vec3 terrainCenterPos;
 	static bool isInstanciated;
 private:
-enum class TerrainType : int;
-	void clearTree(const glm::vec3& originPos) ;
-	void createTree(const glm::vec3& originPos) ;
-	TerrainPatch* createNode(const TerrainPatch* parent, TerrainType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight) ;
+	void clearTree(void);
+	void createTree(const glm::vec3& cameraPos);
+	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight);
+	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
 	bool checkDivide(const TerrainPatch* node, const glm::vec3& cameraPos);
+	void registerToBufferObject(const TerrainPatch* patch);
 public:
 	EngineTerrain();
 	~EngineTerrain();
+	EngineTerrain(const EngineTerrain& other) = delete;
+	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
 	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);
 
