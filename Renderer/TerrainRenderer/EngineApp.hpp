@@ -14,6 +14,7 @@
 #include "EngineGUI.hpp"
 #include <memory>
 #include "EngineTerrain.hpp"
+#include "EngineCamera.hpp"
 
 class GLShader;
 class AssetManager;
@@ -22,12 +23,14 @@ class GLTexture;
 class EngineApp : public GLApp, EngineGUI
 {
 private:
+	unsigned int vpUBO;
 	unsigned int VAO; /// for test
 	GLShader* simpleShader; /// for test
 	GLTexture* simpleTexture;
 
 	std::unique_ptr<AssetManager> assetManager; /// for hot reload test.
 
+	EngineCamera camera;
 	EngineTerrain terrain;
 protected:
 	bool initShader(void);

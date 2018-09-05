@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp(), terrain()
+	: GLApp(), terrain(), camera()
 {
 }
 
@@ -24,6 +24,11 @@ EngineApp::~EngineApp()
 void EngineApp::updateScene(float dt)
 {
 	Profile();
+
+	camera.processKeyInput();
+	camera.sendVP(vpUBO);
+
+	const glm::vec3 cameraPos = camera.getViewPos();
 
 	terrain.updateScene(dt);
 	terrain.buildNonUniformPatch(glm::vec3(1.0f), glm::vec3(0.0f));
@@ -43,6 +48,8 @@ void EngineApp::drawScene(void) const
 	glClearColor(Color::DarkBlue[0], Color::DarkBlue[1], Color::DarkBlue[2], Color::DarkBlue[3]);
 
 	const float totalTime = timer.getTotalTime();
+
+	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	terrain.drawTerrain(GL_PATCHES);
@@ -64,6 +71,7 @@ void EngineApp::drawScene(void) const
 
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
 }
 
 /**
@@ -242,12 +250,15 @@ void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 
 void EngineApp::mousePosCallback(double xpos, double ypos)
 {
+	camera.processMousePos(xpos, ypos);
 }
 
 void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 {
+	camera.processMousePos(btn, action, mods);
 }
 
 void EngineApp::scrollCallback(double xoffset, double yoffset)
 {
+	camera.processScroll(yoffset);
 }

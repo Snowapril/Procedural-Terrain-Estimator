@@ -84,22 +84,32 @@ void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
 	node->rightBottomAdj = createNode(node, TerrainPatch::PatchType::RIGHT_BOTTOM, node->originPos + 
 										glm::vec3(newWidth * 0.5f, -newHeight * 0.5f, 0.0f), newWidth, newHeight);
 
+
+	bool noDividable = true;
+
 	if (checkDivide(node->leftTopAdj, cameraPos))
+	{
+		noDividable = false;
 		divideNode(node->leftTopAdj, cameraPos);
-	else
-		registerToBufferObject(node->leftTopAdj);
+	}
 	if (checkDivide(node->rightTopAdj, cameraPos))
+	{
+		noDividable = false;
 		divideNode(node->rightTopAdj, cameraPos);
-	else
-		registerToBufferObject(node->rightTopAdj);
+	}
 	if (checkDivide(node->leftBottomAdj, cameraPos))
+	{
+		noDividable = false;
 		divideNode(node->leftBottomAdj, cameraPos);
-	else
-		registerToBufferObject(node->leftBottomAdj);
+	}
 	if (checkDivide(node->rightBottomAdj, cameraPos))
+	{
+		noDividable = false;
 		divideNode(node->rightBottomAdj, cameraPos);
-	else
-		registerToBufferObject(node->rightBottomAdj);
+	}
+
+	if (noDividable)
+		registerToBufferObject(node);
 }
 
 void EngineTerrain::registerToBufferObject(const TerrainPatch* patch)
@@ -139,8 +149,8 @@ EngineTerrain::~EngineTerrain()
 
 void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm::vec3& originPos) noexcept
 {
-	//if (cameraPos == prevCameraPos)
-	//	return;
+	if (cameraPos == prevCameraPos)
+		return;
 
 	tailPatch = rootPatch;
 	terrainCenterPos = originPos;

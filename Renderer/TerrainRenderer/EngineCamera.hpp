@@ -19,6 +19,7 @@ public:
 	void processMousePos(double xpos, double ypos) ;
 	void processKeyInput(void) ;
 	void processScroll(double yoffset) ;
+	void processMousePos(int btn, int action, int mods);
 	void onResize(float aspectRatio) ;
 	void sendVP(unsigned int ubo) ;
 	glm::vec3 getViewPos(void) const ;

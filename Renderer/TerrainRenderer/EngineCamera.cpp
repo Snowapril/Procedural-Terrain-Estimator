@@ -28,6 +28,11 @@ void EngineCamera::processMousePos(double xpos, double ypos)
 {
 }
 
+void EngineCamera::processMousePos(int btn, int action, int mods)
+{
+
+}
+
 void EngineCamera::processKeyInput(void) 
 {
 }
