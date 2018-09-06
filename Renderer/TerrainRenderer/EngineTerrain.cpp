@@ -192,9 +192,13 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 {
 	terrainShader->useProgram();
 
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, terrainMap);
+
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_PATCHES, 0, depths.size());
 	glBindVertexArray(0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 /**
@@ -227,6 +231,9 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/noiseMap.png", width, height, false)) == 0)
 		return false;
 
+	terrainShader->useProgram();
+	terrainShader->sendUniform("terrainMap", 0);
+
 	try 
 	{
 		tailPatch = new TerrainPatch[MAX_POOL_SIZE];
@@ -238,7 +245,7 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		return false;
 	}
 
-	vertices.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 4 * 3);
+	vertices.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 12);
 	depths.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 1);
 
 	glGenVertexArrays(1, &VAO);
@@ -254,8 +261,8 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
 	glBufferData(GL_ARRAY_BUFFER, depths.capacity() * sizeof(unsigned int), nullptr, GL_DYNAMIC_DRAW);
 
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(unsigned int), (void*)0);
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(unsigned int), (void*)0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 

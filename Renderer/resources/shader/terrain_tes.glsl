@@ -9,7 +9,19 @@ layout (std140) uniform VP
 };
 
 in uint tcs_tessLevel[];
+in vec2 tcs_texCoords[];
+
 flat out uint tes_tessLevel;
+
+uniform sampler2D terrainMap;
+
+vec2 interpolate(vec2 v0, vec2 v1, vec2 v2, vec2 v3)
+{
+	vec2 a = mix(v0, v1, gl_TessCoord.x);
+	vec2 b = mix(v3, v2, gl_TessCoord.x);
+
+	return mix(a, b, gl_TessCoord.y);
+}
 
 void main(void)
 {
@@ -18,5 +30,11 @@ void main(void)
 
 	tes_tessLevel = tcs_tessLevel[0];
 
-	gl_Position = project * view * mix(a, b, gl_TessCoord.y);
+	vec2 terrainTexCoords = interpolate(tcs_texCoords[0], tcs_texCoords[1], tcs_texCoords[2], tcs_texCoords[3]);
+	float height = texture(terrainMap, terrainTexCoords).r;
+
+	gl_Position = mix(a, b, gl_TessCoord.y);
+	gl_Position.y = height;
+
+	gl_Position = project * view * gl_Position;
 }
