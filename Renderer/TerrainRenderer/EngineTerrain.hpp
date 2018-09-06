@@ -27,7 +27,7 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
-	unsigned int VBO;
+	unsigned int VBO[2];
 	unsigned int VAO;
 
 	std::size_t width;
@@ -40,6 +40,7 @@ private:
 	GLShader* terrainShader;
 
 	std::vector<float> vertices;
+	std::vector<unsigned int> depths;
 
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;

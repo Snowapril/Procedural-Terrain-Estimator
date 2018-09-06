@@ -3712,3 +3712,1011 @@ Tessellation evaluation info
 [2018-09-05 22:35:25.129] [setup] [info] Load Texture noiseMap.png finished
 [2018-09-05 22:35:26.231] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
 
+[2018-09-06 07:43:53.043] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 07:43:53.046] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 07:43:53.046] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 07:43:53.047] [setup] [info] Program Linking finished.
+[2018-09-06 07:43:53.047] [setup] [info] Linking Program Success.
+[2018-09-06 07:43:53.050] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 07:43:53.050] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 07:43:53.050] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 07:43:53.051] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 07:43:53.052] [setup] [info] Program Linking finished.
+[2018-09-06 07:43:53.052] [setup] [info] Linking Program Success.
+[2018-09-06 07:43:53.053] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 07:43:53.199] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 09:53:06.866] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 09:53:06.872] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 09:53:06.872] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 09:53:06.875] [setup] [info] Program Linking finished.
+[2018-09-06 09:53:06.876] [setup] [info] Linking Program Success.
+[2018-09-06 09:53:06.885] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 09:53:06.886] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 09:53:06.887] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 09:53:06.887] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 09:53:06.891] [setup] [info] Program Linking finished.
+[2018-09-06 09:53:06.894] [setup] [info] Linking Program Success.
+[2018-09-06 09:53:06.896] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 09:53:09.636] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 09:53:29.532] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 09:53:29.538] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 09:53:29.538] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 09:53:29.540] [setup] [info] Program Linking finished.
+[2018-09-06 09:53:29.540] [setup] [info] Linking Program Success.
+[2018-09-06 09:53:29.549] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 09:53:29.550] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 09:53:29.551] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 09:53:29.551] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 09:53:29.552] [setup] [info] Program Linking finished.
+[2018-09-06 09:53:29.553] [setup] [info] Linking Program Success.
+[2018-09-06 09:53:29.556] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 09:57:40.663] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:11:36.716] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:11:36.719] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:11:36.719] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:11:36.720] [setup] [info] Program Linking finished.
+[2018-09-06 11:11:36.720] [setup] [info] Linking Program Success.
+[2018-09-06 11:11:36.722] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:11:36.722] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:11:36.722] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:11:36.722] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:11:36.723] [setup] [info] Program Linking finished.
+[2018-09-06 11:11:36.723] [setup] [info] Linking Program Success.
+[2018-09-06 11:11:36.724] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:11:36.727] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.740] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.820] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.829] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.840] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.856] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.876] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.890] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.922] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.931] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.942] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.957] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.973] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:36.993] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.006] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.023] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.040] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.056] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.073] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.089] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.106] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.123] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.140] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.156] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.173] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.189] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.206] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.223] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.240] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.256] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.274] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.290] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.306] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.325] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.340] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.356] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.373] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.392] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.406] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.423] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.440] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.456] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.473] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.489] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.506] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.523] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.539] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.556] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.573] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.589] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.606] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.623] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.639] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.656] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.673] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.690] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.706] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.723] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.742] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:37.756] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.308] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.317] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.327] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.339] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.356] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.372] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.389] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.408] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.424] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.439] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.456] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.472] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.489] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.506] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.523] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.539] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.556] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.572] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.589] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.606] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.625] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.639] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.655] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.672] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.689] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.705] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.722] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.739] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.755] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.772] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.789] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.805] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.822] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.839] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.855] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.872] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.889] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.906] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.922] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.939] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.956] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.973] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:38.989] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.007] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.023] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.039] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.056] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.073] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.089] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.106] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.124] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.139] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.156] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.172] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.189] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.205] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.222] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.239] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.255] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.272] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.289] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.307] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.324] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.339] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.356] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.372] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.389] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.406] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.423] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.439] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.455] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.472] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.489] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.505] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.522] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.538] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.555] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.572] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.588] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.605] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.622] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.638] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.655] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.672] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.688] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.705] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.721] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.739] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.755] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.772] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.788] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.805] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.822] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.838] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.855] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.872] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.888] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.905] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.922] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.938] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.955] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.972] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:39.988] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.005] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.022] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.038] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.055] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.071] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.088] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.105] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.122] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.138] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.155] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.171] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.188] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.205] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.222] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.238] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.255] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.271] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.288] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.305] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.321] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.338] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.355] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.371] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.388] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.405] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.422] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.438] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.455] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.471] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.488] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.505] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.521] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.538] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.555] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.571] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.588] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.605] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.621] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.638] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.655] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.672] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.688] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.705] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.721] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.738] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:40.755] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.771] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.788] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.804] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.821] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.838] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.854] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.871] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.888] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.904] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.922] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.938] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.955] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.971] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:40.988] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.004] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.021] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.038] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.054] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.071] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.088] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.104] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.121] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.138] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.154] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.171] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.188] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.205] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.222] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.238] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.254] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.271] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.288] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.305] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.321] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.338] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.354] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:41.372] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.388] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.404] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.421] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.437] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.454] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.471] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.488] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.504] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.521] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.538] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.555] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.571] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:41.588] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.604] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.621] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.637] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.654] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.671] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.688] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.704] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.721] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.738] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.754] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.771] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.787] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.804] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.821] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.837] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.854] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.871] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.887] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.904] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.921] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.938] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.954] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.970] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:41.987] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.004] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.021] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.038] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.054] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.071] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.087] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.104] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.121] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.137] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.154] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.171] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.188] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.204] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.222] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.238] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.254] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.273] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.287] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.304] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.320] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.337] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.354] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.370] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.387] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.404] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.421] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.437] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.454] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.470] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.488] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.504] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.520] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:42.537] [setup] [info] Pressed key number : 3
+[2018-09-06 11:11:42.555] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.570] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.587] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.604] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.621] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.637] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.654] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.670] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.688] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.704] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.720] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.737] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.754] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.770] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.787] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.804] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.820] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.837] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.854] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.870] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.887] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.904] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.920] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.937] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.954] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.970] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:42.987] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.003] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.020] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.037] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.053] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.070] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.087] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.103] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.121] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.137] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.153] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.171] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.187] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.206] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.221] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.237] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.253] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.270] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.289] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.303] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.320] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.337] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.354] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.370] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.387] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.403] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.420] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.437] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.453] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.470] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.487] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.505] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.520] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.539] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.553] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.570] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.587] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.603] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.620] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.637] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.654] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.670] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.687] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.703] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.722] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.737] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.753] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.770] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.787] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.803] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.820] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.837] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.855] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.870] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.887] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.903] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.920] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.936] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.953] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.970] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:43.987] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.003] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.020] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.037] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.053] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.070] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.086] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.103] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.120] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.138] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.153] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.170] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.187] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.203] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.220] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.236] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.253] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.270] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.287] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.303] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.320] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.336] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.355] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.370] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.387] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.404] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.420] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.436] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.455] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.469] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.486] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.503] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.519] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.536] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.553] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.569] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.586] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.603] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.619] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.638] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.653] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.670] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.686] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.703] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.719] [setup] [info] Pressed key number : 4
+[2018-09-06 11:11:44.738] [setup] [info] Pressed key number : 2
+[2018-09-06 11:11:44.753] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:44.769] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:44.786] [setup] [info] Pressed key number : 1
+[2018-09-06 11:11:44.803] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.819] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.836] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.853] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.869] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.886] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.903] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.919] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.936] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.953] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.969] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:44.986] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:45.003] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:45.019] [setup] [info] Pressed key number : 0
+[2018-09-06 11:11:45.052] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:19:56.288] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:19:56.290] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:19:56.290] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:19:56.291] [setup] [info] Program Linking finished.
+[2018-09-06 11:19:56.291] [setup] [info] Linking Program Success.
+[2018-09-06 11:19:56.293] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:19:56.293] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:19:56.293] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:19:56.294] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:19:56.294] [setup] [info] Program Linking finished.
+[2018-09-06 11:19:56.294] [setup] [info] Linking Program Success.
+[2018-09-06 11:19:56.295] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:20:03.993] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:20:25.062] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:20:25.063] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:20:25.064] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:20:25.065] [setup] [info] Program Linking finished.
+[2018-09-06 11:20:25.065] [setup] [info] Linking Program Success.
+[2018-09-06 11:20:25.070] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:20:25.071] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:20:25.071] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:20:25.071] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:20:25.072] [setup] [info] Program Linking finished.
+[2018-09-06 11:20:25.072] [setup] [info] Linking Program Success.
+[2018-09-06 11:20:25.073] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:20:28.532] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:21:04.812] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:21:04.814] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:21:04.814] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:21:04.815] [setup] [info] Program Linking finished.
+[2018-09-06 11:21:04.815] [setup] [info] Linking Program Success.
+[2018-09-06 11:21:04.817] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:21:04.818] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:21:04.818] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:21:04.818] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:21:04.819] [setup] [info] Program Linking finished.
+[2018-09-06 11:21:04.819] [setup] [info] Linking Program Success.
+[2018-09-06 11:21:04.820] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:21:10.296] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:34:31.297] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:34:31.300] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:34:31.300] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:34:31.301] [setup] [info] Program Linking finished.
+[2018-09-06 11:34:31.301] [setup] [info] Linking Program Success.
+[2018-09-06 11:34:31.303] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:34:31.303] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:34:31.303] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:34:31.304] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:34:31.304] [setup] [info] Program Linking finished.
+[2018-09-06 11:34:31.304] [setup] [info] Linking Program Success.
+[2018-09-06 11:34:31.305] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:34:38.763] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:45:09.674] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:45:09.676] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:45:09.676] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:45:09.677] [setup] [info] Program Linking finished.
+[2018-09-06 11:45:09.678] [setup] [info] Linking Program Success.
+[2018-09-06 11:45:09.680] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:45:09.681] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:45:09.681] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:45:09.682] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:45:09.682] [setup] [info] Program Linking finished.
+[2018-09-06 11:45:09.684] [setup] [info] Linking Program Success.
+[2018-09-06 11:45:09.684] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:45:19.472] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:46:39.290] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:46:39.292] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:46:39.292] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:46:39.293] [setup] [info] Program Linking finished.
+[2018-09-06 11:46:39.293] [setup] [info] Linking Program Success.
+[2018-09-06 11:46:39.296] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:46:39.296] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:46:39.296] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:46:39.296] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:46:39.297] [setup] [info] Program Linking finished.
+[2018-09-06 11:46:39.297] [setup] [info] Linking Program Success.
+[2018-09-06 11:46:39.298] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:46:59.327] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:47:09.022] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:47:09.024] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:47:09.025] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:47:09.026] [setup] [info] Program Linking finished.
+[2018-09-06 11:47:09.027] [setup] [info] Linking Program Success.
+[2018-09-06 11:47:09.029] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:47:09.029] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:47:09.030] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:47:09.030] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:47:09.030] [setup] [info] Program Linking finished.
+[2018-09-06 11:47:09.030] [setup] [info] Linking Program Success.
+[2018-09-06 11:47:09.031] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:47:11.638] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:58:34.002] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:58:34.004] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:58:34.004] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:58:34.005] [setup] [info] Program Linking finished.
+[2018-09-06 11:58:34.005] [setup] [info] Linking Program Success.
+[2018-09-06 11:58:34.007] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:58:34.007] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:58:34.007] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:58:34.007] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:58:34.008] [setup] [info] Program Linking finished.
+[2018-09-06 11:58:34.008] [setup] [info] Linking Program Success.
+[2018-09-06 11:58:34.009] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:58:49.821] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 11:59:47.493] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 11:59:47.494] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 11:59:47.495] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 11:59:47.496] [setup] [info] Program Linking finished.
+[2018-09-06 11:59:47.496] [setup] [info] Linking Program Success.
+[2018-09-06 11:59:47.499] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 11:59:47.499] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 11:59:47.500] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 11:59:47.500] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 11:59:47.500] [setup] [info] Program Linking finished.
+[2018-09-06 11:59:47.500] [setup] [info] Linking Program Success.
+[2018-09-06 11:59:47.501] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 11:59:52.709] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:00:56.187] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:00:56.191] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:00:56.191] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:00:56.192] [setup] [info] Program Linking finished.
+[2018-09-06 12:00:56.193] [setup] [info] Linking Program Success.
+[2018-09-06 12:00:56.195] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:00:56.196] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:00:56.196] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:00:56.196] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:00:56.198] [setup] [info] Program Linking finished.
+[2018-09-06 12:00:56.198] [setup] [info] Linking Program Success.
+[2018-09-06 12:00:56.199] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:01:11.457] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:02:24.904] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:02:24.905] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:02:24.905] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:02:24.906] [setup] [info] Program Linking finished.
+[2018-09-06 12:02:24.906] [setup] [info] Linking Program Success.
+[2018-09-06 12:02:24.908] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:02:24.909] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:02:24.909] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:02:24.909] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:02:24.909] [setup] [info] Program Linking finished.
+[2018-09-06 12:02:24.910] [setup] [info] Linking Program Success.
+[2018-09-06 12:02:24.910] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:02:30.971] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:06:30.035] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:06:30.036] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:06:30.036] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:06:30.037] [setup] [info] Program Linking finished.
+[2018-09-06 12:06:30.037] [setup] [info] Linking Program Success.
+[2018-09-06 12:06:30.039] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:06:30.039] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:06:30.039] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:06:30.039] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:06:30.040] [setup] [info] Program Linking finished.
+[2018-09-06 12:06:30.040] [setup] [info] Linking Program Success.
+[2018-09-06 12:06:30.041] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:06:53.585] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:07:40.109] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:07:40.110] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:07:40.111] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:07:40.112] [setup] [info] Program Linking finished.
+[2018-09-06 12:07:40.112] [setup] [info] Linking Program Success.
+[2018-09-06 12:07:40.114] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:07:40.114] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:07:40.115] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:07:40.116] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:07:40.117] [setup] [info] Program Linking finished.
+[2018-09-06 12:07:40.117] [setup] [info] Linking Program Success.
+[2018-09-06 12:07:40.118] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:07:58.456] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:08:49.399] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:08:49.401] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:08:49.402] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:08:49.403] [setup] [info] Program Linking finished.
+[2018-09-06 12:08:49.403] [setup] [info] Linking Program Success.
+[2018-09-06 12:08:49.405] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:08:49.405] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:08:49.406] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:08:49.406] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:08:49.406] [setup] [info] Program Linking finished.
+[2018-09-06 12:08:49.406] [setup] [info] Linking Program Success.
+[2018-09-06 12:08:49.407] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:08:59.028] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:09:54.152] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:09:54.154] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:09:54.155] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:09:54.157] [setup] [info] Program Linking finished.
+[2018-09-06 12:09:54.157] [setup] [info] Linking Program Success.
+[2018-09-06 12:09:54.159] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:09:54.159] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:09:54.160] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:09:54.160] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:09:54.160] [setup] [info] Program Linking finished.
+[2018-09-06 12:09:54.161] [setup] [info] Linking Program Success.
+[2018-09-06 12:09:54.161] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:10:11.329] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:10:44.730] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:10:44.732] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:10:44.733] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:10:44.733] [setup] [info] Program Linking finished.
+[2018-09-06 12:10:44.734] [setup] [info] Linking Program Success.
+[2018-09-06 12:10:44.735] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:10:44.736] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:10:44.736] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:10:44.736] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:10:44.736] [setup] [info] Program Linking finished.
+[2018-09-06 12:10:44.736] [setup] [info] Linking Program Success.
+[2018-09-06 12:10:44.737] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:10:52.477] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:26:14.087] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:26:14.089] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:26:14.090] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:26:14.090] [setup] [info] Program Linking finished.
+[2018-09-06 12:26:14.091] [setup] [info] Linking Program Success.
+[2018-09-06 12:26:14.093] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:26:14.116] [setup] [critical] Shader Compile Failed. info log :
+0(9) : error C1008: undefined variable "depths"
+
+[2018-09-06 12:26:14.116] [setup] [error] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile failed.
+[2018-09-06 12:26:14.118] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:26:14.118] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:26:21.993] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:26:21.995] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:26:21.996] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:26:21.997] [setup] [info] Program Linking finished.
+[2018-09-06 12:26:21.997] [setup] [info] Linking Program Success.
+[2018-09-06 12:26:21.998] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:26:22.020] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:26:22.021] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:26:22.021] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:26:22.060] [setup] [critical] Program Link Failed. info log :
+Tessellation control info
+-------------------------
+0(5) : error C7544: OpenGL requires tessellation control inputs to be arrays
+
+[2018-09-06 12:26:22.061] [setup] [error] Program Linking Failed
+[2018-09-06 12:26:22.061] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:26:22.062] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:26:37.046] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:26:37.048] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:26:37.048] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:26:37.049] [setup] [info] Program Linking finished.
+[2018-09-06 12:26:37.050] [setup] [info] Linking Program Success.
+[2018-09-06 12:26:37.052] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:26:37.077] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:26:37.078] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:26:37.079] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:26:37.125] [setup] [info] Program Linking finished.
+[2018-09-06 12:26:37.126] [setup] [info] Linking Program Success.
+[2018-09-06 12:26:37.127] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:27:11.883] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:31:17.756] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:31:17.758] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:31:17.758] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:31:17.759] [setup] [info] Program Linking finished.
+[2018-09-06 12:31:17.759] [setup] [info] Linking Program Success.
+[2018-09-06 12:31:17.762] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:31:17.762] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:31:17.763] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:31:17.763] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:31:17.764] [setup] [info] Program Linking finished.
+[2018-09-06 12:31:17.764] [setup] [info] Linking Program Success.
+[2018-09-06 12:31:17.765] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:31:35.380] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:32:38.466] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:32:38.467] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:32:38.467] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:32:38.468] [setup] [info] Program Linking finished.
+[2018-09-06 12:32:38.469] [setup] [info] Linking Program Success.
+[2018-09-06 12:32:38.471] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:32:38.472] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:32:38.472] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:32:38.473] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:32:38.473] [setup] [info] Program Linking finished.
+[2018-09-06 12:32:38.473] [setup] [info] Linking Program Success.
+[2018-09-06 12:32:38.474] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:32:41.600] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:32:52.552] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:32:52.554] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:32:52.554] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:32:52.555] [setup] [info] Program Linking finished.
+[2018-09-06 12:32:52.555] [setup] [info] Linking Program Success.
+[2018-09-06 12:32:52.557] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:32:52.558] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:32:52.558] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:32:52.558] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:32:52.559] [setup] [info] Program Linking finished.
+[2018-09-06 12:32:52.559] [setup] [info] Linking Program Success.
+[2018-09-06 12:32:52.559] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:33:03.773] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:33:08.102] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:33:08.105] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:33:08.105] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:33:08.107] [setup] [info] Program Linking finished.
+[2018-09-06 12:33:08.108] [setup] [info] Linking Program Success.
+[2018-09-06 12:33:08.110] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:33:08.111] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:33:08.111] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:33:08.111] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:33:08.112] [setup] [info] Program Linking finished.
+[2018-09-06 12:33:08.112] [setup] [info] Linking Program Success.
+[2018-09-06 12:33:08.113] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:34:00.647] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:35:18.697] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:35:18.700] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:35:18.701] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:35:18.701] [setup] [info] Program Linking finished.
+[2018-09-06 12:35:18.702] [setup] [info] Linking Program Success.
+[2018-09-06 12:35:18.705] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:35:18.705] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:35:18.705] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:35:18.706] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:35:18.706] [setup] [info] Program Linking finished.
+[2018-09-06 12:35:18.707] [setup] [info] Linking Program Success.
+[2018-09-06 12:35:18.708] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:35:45.217] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:38:21.536] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:38:21.537] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:38:21.537] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:38:21.538] [setup] [info] Program Linking finished.
+[2018-09-06 12:38:21.538] [setup] [info] Linking Program Success.
+[2018-09-06 12:38:21.540] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:38:21.540] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:38:21.541] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:38:21.541] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:38:21.542] [setup] [info] Program Linking finished.
+[2018-09-06 12:38:21.542] [setup] [info] Linking Program Success.
+[2018-09-06 12:38:21.543] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:38:28.942] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-06 12:41:32.722] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:41:32.723] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:41:32.724] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:41:32.724] [setup] [info] Program Linking finished.
+[2018-09-06 12:41:32.725] [setup] [info] Linking Program Success.
+[2018-09-06 12:41:32.727] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:41:32.748] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:41:32.748] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:41:32.749] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:41:32.791] [setup] [critical] Program Link Failed. info log :
+Tessellation control info
+-------------------------
+0(6) : error C7544: OpenGL requires tessellation control outputs to be arrays
+
+Fragment info
+-------------
+0(4) : error C5215: Integer varying lod must be flat
+
+[2018-09-06 12:41:32.792] [setup] [error] Program Linking Failed
+[2018-09-06 12:41:32.793] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:41:32.793] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:41:45.639] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:41:45.641] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:41:45.641] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:41:45.642] [setup] [info] Program Linking finished.
+[2018-09-06 12:41:45.642] [setup] [info] Linking Program Success.
+[2018-09-06 12:41:45.644] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:41:45.665] [setup] [critical] Shader Compile Failed. info log :
+0(12) : error C1035: assignment of incompatible types
+
+[2018-09-06 12:41:45.665] [setup] [error] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile failed.
+[2018-09-06 12:41:45.665] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:41:45.666] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:41:53.353] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:41:53.356] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:41:53.356] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:41:53.357] [setup] [info] Program Linking finished.
+[2018-09-06 12:41:53.357] [setup] [info] Linking Program Success.
+[2018-09-06 12:41:53.359] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:41:53.381] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:41:53.382] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:41:53.383] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:41:53.428] [setup] [critical] Program Link Failed. info log :
+Tessellation control info
+-------------------------
+0(12) : error C5147: tessellation control output write to 'lod' must be indexed by gl_InvocationID
+
+Fragment info
+-------------
+0(4) : error C5215: Integer varying lod must be flat
+
+[2018-09-06 12:41:53.429] [setup] [error] Program Linking Failed
+[2018-09-06 12:41:53.429] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:41:53.429] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:45:16.448] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:45:16.449] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:45:16.450] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:45:16.450] [setup] [info] Program Linking finished.
+[2018-09-06 12:45:16.451] [setup] [info] Linking Program Success.
+[2018-09-06 12:45:16.474] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:45:16.476] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:45:16.478] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:45:16.479] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:45:16.534] [setup] [critical] Program Link Failed. info log :
+Fragment info
+-------------
+0(4) : error C5215: Integer varying tes_tessLevel must be flat
+
+[2018-09-06 12:45:16.534] [setup] [error] Program Linking Failed
+[2018-09-06 12:45:16.535] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:45:16.535] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:45:23.660] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:45:23.662] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:45:23.662] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:45:23.663] [setup] [info] Program Linking finished.
+[2018-09-06 12:45:23.663] [setup] [info] Linking Program Success.
+[2018-09-06 12:45:23.665] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:45:23.665] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:45:23.665] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:45:23.665] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:45:23.713] [setup] [critical] Program Link Failed. info log :
+Fragment info
+-------------
+0(4) : error C5215: Integer varying tes_tessLevel must be flat
+
+[2018-09-06 12:45:23.714] [setup] [error] Program Linking Failed
+[2018-09-06 12:45:23.714] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:45:23.714] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:46:06.932] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:46:06.935] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:46:06.935] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:46:06.936] [setup] [info] Program Linking finished.
+[2018-09-06 12:46:06.936] [setup] [info] Linking Program Success.
+[2018-09-06 12:46:06.939] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:46:06.939] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:46:06.960] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:46:06.960] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:46:07.010] [setup] [critical] Program Link Failed. info log :
+Fragment info
+-------------
+0(4) : error C5215: Integer varying tes_tessLevel must be flat
+
+[2018-09-06 12:46:07.010] [setup] [error] Program Linking Failed
+[2018-09-06 12:46:07.011] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:46:07.011] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:46:37.302] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:46:37.304] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:46:37.304] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:46:37.305] [setup] [info] Program Linking finished.
+[2018-09-06 12:46:37.305] [setup] [info] Linking Program Success.
+[2018-09-06 12:46:37.328] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:46:37.329] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:46:37.331] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:46:37.331] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:46:37.383] [setup] [critical] Program Link Failed. info log :
+Fragment info
+-------------
+0(4) : error C5215: Integer varying tes_tessLevel must be flat
+
+[2018-09-06 12:46:37.383] [setup] [error] Program Linking Failed
+[2018-09-06 12:46:37.384] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-06 12:46:37.384] [setup] [critical] Critical error occurred. program exit.
+[2018-09-06 12:46:52.127] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-06 12:46:52.129] [setup] [info] Vertex Shader [../resources/shader/simple_vs.glsl] Compile finished.
+[2018-09-06 12:46:52.129] [setup] [info] Fragment Shader [../resources/shader/simple_fs.glsl] Compile finished.
+[2018-09-06 12:46:52.130] [setup] [info] Program Linking finished.
+[2018-09-06 12:46:52.130] [setup] [info] Linking Program Success.
+[2018-09-06 12:46:52.133] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-06 12:46:52.133] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-06 12:46:52.134] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-06 12:46:52.157] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-06 12:46:52.209] [setup] [info] Program Linking finished.
+[2018-09-06 12:46:52.210] [setup] [info] Linking Program Success.
+[2018-09-06 12:46:52.211] [setup] [info] Load Texture noiseMap.png finished
+[2018-09-06 12:48:16.276] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+

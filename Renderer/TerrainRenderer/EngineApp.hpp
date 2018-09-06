@@ -49,6 +49,7 @@ public:
 	bool initEngine(void);
 
 	/// callback functions below.
+	void processKeyInput(float dt);
 	void keyCallback(int key, int scancode, int action, int mode);
 	void mousePosCallback(double xpos, double ypos);
 	void mouseBtnCallback(int btn, int action, int mods);

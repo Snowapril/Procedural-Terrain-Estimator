@@ -25,7 +25,9 @@ void EngineApp::updateScene(float dt)
 {
 	Profile();
 
-	camera.processKeyInput();
+	processKeyInput(dt);
+	camera.onUpdate(dt);
+
 	camera.sendVP(vpUBO, GLApp::getAspectRatio());
 
 	const glm::vec3 cameraPos = camera.getViewPos();
@@ -267,10 +269,34 @@ void EngineApp::mousePosCallback(double xpos, double ypos)
 
 void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 {
-	camera.processMousePos(btn, action, mods);
+	unsigned int keyFlag = 0;
+
+	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+		keyFlag |= CAMERA_LEFT_BTN;
+
+	if (btn == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+		keyFlag |= CAMERA_RIGHT_BTN;
+
+	camera.processMouseBtn(keyFlag);
 }
 
 void EngineApp::scrollCallback(double xoffset, double yoffset)
 {
 	camera.processScroll(yoffset);
+}
+
+void EngineApp::processKeyInput(float dt)
+{
+	unsigned int keyFlag = 0;
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		keyFlag |= CAMERA_UP;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		keyFlag |= CAMERA_LEFT;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		keyFlag |= CAMERA_DOWN;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		keyFlag |= CAMERA_RIGHT;
+
+	camera.processKeyInput(keyFlag, dt);
 }
