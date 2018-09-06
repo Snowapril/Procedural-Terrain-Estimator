@@ -47,7 +47,7 @@ void EngineApp::drawScene(void) const
 	Profile();
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(Color::DarkBlue[0], Color::DarkBlue[1], Color::DarkBlue[2], Color::DarkBlue[3]);
+	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
 

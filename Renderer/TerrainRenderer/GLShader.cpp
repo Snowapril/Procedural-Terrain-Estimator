@@ -392,6 +392,23 @@ void GLShader::sendUniform(const std::string & varName, bool b) const
 }
 
 /**
+* @ brief		send vector variable with 2 elements to uniform location with name "varName(param)".
+* @ details		get uniform location with name "varName(param)" from getUniformLocation method. if given location(varName) is wrong,
+print critical log.
+*/
+void GLShader::sendUniform(const std::string& varName, const glm::vec2& vec) const
+{
+	int loc = getUniformLocation(varName);
+
+	if (loc == -1) {
+		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+	}
+	else {
+		glUniform2fv(loc, 1, &vec[0]);
+	}
+}
+
+/**
 * @ brief		send vector variable with 3 elements to uniform location with name "varName(param)".
 * @ details		get uniform location with name "varName(param)" from getUniformLocation method. if given location(varName) is wrong,
 				print critical log.

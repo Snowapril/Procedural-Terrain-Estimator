@@ -16,7 +16,7 @@
 #define ENABLE_4XMSAA		true
 #define CAMERA_MIN_FOV		35.0f
 #define CAMERA_MAX_FOV		50.0f
-#define ENABLE_CULLING		false
+#define ENABLE_CULLING		true
 #define MOUSE_SENSITIVITY	0.1f
 #define CAMERA_SPEED		5.0f
 

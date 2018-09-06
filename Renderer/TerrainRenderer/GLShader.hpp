@@ -12,6 +12,7 @@
 #define GL_SHADER_HPP
 
 #include <string>
+#include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/matrix.hpp>
@@ -50,6 +51,7 @@ public:
 	void sendUniform(const std::string& varName, int i) const;
 	void sendUniform(const std::string& varName, float f) const;
 	void sendUniform(const std::string& varName, bool b) const;
+	void sendUniform(const std::string& varName, const glm::vec2& vec) const;
 	void sendUniform(const std::string& varName, const glm::vec3& vec) const;
 	void sendUniform(const std::string& varName, const glm::vec4& vec) const;
 	void sendUniform(const std::string& varName, const glm::mat4& mat) const;

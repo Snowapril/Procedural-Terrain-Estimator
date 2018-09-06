@@ -5,7 +5,6 @@ layout(vertices = 4) out;
 in uint vs_tessLevel[];
 in vec2 vs_texCoords[];
 
-out uint tcs_tessLevel[];
 out vec2 tcs_texCoords[];
 
 void main(void)

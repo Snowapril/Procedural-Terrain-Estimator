@@ -51,7 +51,7 @@ private:
 	void createTree(const glm::vec3& cameraPos);
 	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight);
 	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
-	bool checkDivide(const TerrainPatch* node, const glm::vec3& cameraPos);
+	bool checkDivide(const TerrainPatch* node, glm::vec3 cameraPos);
 	void registerToBufferObject(const TerrainPatch* patch);
 public:
 	EngineTerrain();
