@@ -1,9 +1,9 @@
 #version 430 core
 
 layout(location = 0) in vec3 aPos;
-layout(location = 1) in uint aTessLevel;
+layout(location = 1) in float aTessLevel;
 
-out uint vs_tessLevel;
+out float vs_tessLevel;
 out vec2 vs_texCoords;
 
 uniform vec3 originPos;

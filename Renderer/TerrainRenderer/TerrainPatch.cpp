@@ -1,7 +1,7 @@
 #include "TerrainPatch.hpp"
 
 TerrainPatch::TerrainPatch()
-	: type(PatchType::UNKNOWN), patchDepth(0), leftScale(0.0f), topScale(0.0f), rightScale(0.0f), bottomScale(0.0f),
+	: type(PatchType::UNKNOWN), patchDepth(0.0f), leftScale(0.0f), topScale(0.0f), rightScale(0.0f), bottomScale(0.0f),
 		parent(nullptr), leftTopAdj(nullptr), rightTopAdj(nullptr), rightBottomAdj(nullptr), leftBottomAdj(nullptr), originPos(0.0f)
 {
 

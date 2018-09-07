@@ -21,7 +21,6 @@ void EngineTerrain::clearTree(void)
 	numPatch  = 0;
 
 	vertices.clear();
-	depths.clear();
 }
 
 void EngineTerrain::createTree(const glm::vec3& cameraPos)
@@ -30,7 +29,7 @@ void EngineTerrain::createTree(const glm::vec3& cameraPos)
 	++numPatch;
 
 	rootPatch->type				= TerrainPatch::PatchType::ROOT;
-	rootPatch->patchDepth		= 0;
+	rootPatch->patchDepth		= 0.0f;
 	rootPatch->originPos		= terrainCenterPos;
 	rootPatch->parent			= nullptr;
 	rootPatch->leftTopAdj		= nullptr;
@@ -53,7 +52,7 @@ TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, TerrainPatch::Pa
 	++numPatch;
 
 	newNode->type			= type;
-	newNode->patchDepth		= parent->patchDepth + 1;
+	newNode->patchDepth		= parent->patchDepth + 1.0f;
 	newNode->parent			= parent;
 	newNode->originPos		= originPos;
 	newNode->width			= patchWidth;
@@ -99,14 +98,17 @@ void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
 		divideNode(node->leftTopAdj, cameraPos);
 	else
 		registerToBufferObject(node->leftTopAdj);
+
 	if (rightTopDividable)
 		divideNode(node->rightTopAdj, cameraPos);
 	else
 		registerToBufferObject(node->rightTopAdj);
+
 	if (leftBottomDividable)
 		divideNode(node->leftBottomAdj, cameraPos);
 	else
 		registerToBufferObject(node->leftBottomAdj);
+
 	if (rightBottomDividable)
 		divideNode(node->rightBottomAdj, cameraPos);
 	else
@@ -130,9 +132,8 @@ void EngineTerrain::registerToBufferObject(const TerrainPatch* patch)
 		vertices.push_back(patchVertices[i].x);
 		vertices.push_back(patchVertices[i].y);
 		vertices.push_back(patchVertices[i].z);
+		vertices.push_back(patch->patchDepth);
 	}
-
-	depths.push_back(patch->patchDepth);
 }
 
 bool EngineTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
@@ -180,7 +181,7 @@ void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm:
 	terrainShader->useProgram();
 	terrainShader->sendUniform("originPos", originPos);
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", 5.0f);
+	terrainShader->sendUniform("terrainMaxHeight", 50.0f);
 	terrainShader->sendUniform("terrainHeightOffset", 0.0f);
 
 	tailPatch = rootPatch;
@@ -190,10 +191,8 @@ void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm:
 	createTree(cameraPos);
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * vertices.size(), &vertices[0]);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(unsigned int) * depths.size(), &depths[0]);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
@@ -216,7 +215,7 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_PATCHES, 0, depths.size());
+	glDrawArrays(GL_PATCHES, 0, vertices.size() / 16);
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -265,24 +264,20 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		return false;
 	}
 
-	vertices.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 12);
-	depths.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 1);
+	vertices.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 16);
 
 	glGenVertexArrays(1, &VAO);
-	glGenBuffers(2, &VBO[0]);
+	glGenBuffers(1, &VBO);
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, vertices.capacity() * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
 		
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, (void*)0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
-	glBufferData(GL_ARRAY_BUFFER, depths.capacity() * sizeof(unsigned int), nullptr, GL_DYNAMIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(unsigned int), (void*)0);
+	glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 3));
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 

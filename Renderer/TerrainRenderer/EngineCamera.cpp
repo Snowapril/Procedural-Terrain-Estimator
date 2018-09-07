@@ -6,13 +6,13 @@
 
 EngineCamera::EngineCamera()
 	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-	pitch(0.0f), yaw(0.0f), speed(10.0f), position(0.0f), direction(0.0f, 0.0f, 1.0f)
+	pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(0.0f), direction(0.0f, 0.0f, 1.0f)
 {
 }
 
 EngineCamera::EngineCamera(const glm::vec3 & pos, const glm::vec3 & dir)
 	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		pitch(0.0f), yaw(0.0f), speed(10.0f), position(pos), direction(dir)
+		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(pos), direction(dir)
 {
 }
 

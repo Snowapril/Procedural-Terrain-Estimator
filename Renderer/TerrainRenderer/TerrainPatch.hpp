@@ -19,7 +19,7 @@ private:
 	};
 
 	PatchType type;
-	std::size_t patchDepth;
+	float patchDepth;
 	float width;
 	float height;
 	float leftScale;
