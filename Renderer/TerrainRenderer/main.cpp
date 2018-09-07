@@ -27,15 +27,16 @@ int main(void)
 	if (!gMainApplication->initEngine())
 	{
 		EngineLogger::getConsole()->critical("Critical error occurred. program exit.");
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	GLFWwindow* window = gMainApplication->getWindow();
 
+	/// register callback functions to window which is current context.
 	glfwSetErrorCallback(error);
 	glfwSetKeyCallback(window, keyCallback);
 	glfwSetCursorPosCallback(window, mousePosCallback);
-	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetMouseButtonCallback(window, mouseBtnCallback);
 	glfwSetScrollCallback(window, scrollCallback);
 	glfwSetFramebufferSizeCallback(window, resizingCallback);

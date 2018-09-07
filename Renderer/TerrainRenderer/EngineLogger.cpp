@@ -2,13 +2,14 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <vector>
-#include <memory>
 #include <filesystem>
 
 
 
 std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void) 
 {
+	/// I prefer using static class than using Singleton pattern
+
 	namespace fs = std::experimental::filesystem;
 	
 	static std::shared_ptr<spdlog::logger> console = nullptr;
@@ -23,15 +24,18 @@ std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void)
 		constexpr const char* logDir = "./logs";
 		constexpr const char* logPath = "./logs/setuplog.txt";
 
-		if (!fs::exists(logDir)) {
+		if (!fs::exists(logDir))
+		{
 			fs::create_directory(logDir);
 		}
 
 		sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(logPath));
 		console = std::make_shared<spdlog::logger>("setup", sinks.begin(), sinks.end());
+		/// at debug mode, print all level of log.
 		console->set_level(spdlog::level::trace);
 #else
 		console = std::make_shared<spdlog::logger>("setup", sinks.begin(), sinks.end());
+		/// if not at debug mode, print log which level is equal or larger than info level.
 		console->set_level(spdlog::level::info);
 #endif
 	}

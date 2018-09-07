@@ -1,3 +1,14 @@
+/**
+* @file		AssetManager.hpp
+* @author	Shinjihong
+* @date		27 August 2018
+* @version	1.0.0
+* @brief	this class manage all assets for renderer. 
+* @details	only AssetManager can have life cycle of all assets. with additional thread, listen to file modifying.
+			if file modifying detected, then reload that asset without giving harm.
+* @see		EngineAsset
+*/
+
 #ifndef ASSET_MANAGER_HPP
 #define ASSET_MANAGER_HPP
 
@@ -6,32 +17,37 @@
 #include "EngineAsset.hpp"
 #include <mutex>
 
+class GLShader;
+
 class AssetManager
 {
 private:
+	volatile bool stopListen;
 	std::thread changeListener;
 	std::mutex fileChangeMutex;
-	bool stopListen;
 
-	std::vector<std::shared_ptr<EngineAsset>> assets;
-	std::vector<std::shared_ptr<EngineAsset>> dirtyAssets; //To be reloaded.
+	std::vector<EngineAsset<GLShader>*> dirtyAssets; //To be reloaded.
+	std::vector<std::shared_ptr<EngineAsset<GLShader>>> assets;
 protected:
 public:
 	AssetManager();
 	~AssetManager();
+	AssetManager(const AssetManager& other);
+	AssetManager& operator=(const AssetManager& other);
 
 	template <class AssetType>
-	AssetType* addAsset(std::initializer_list<std::string>&& assetPath)
+	AssetType* addAsset(std::initializer_list<std::string>&& assetPath) 
 	{
-		std::shared_ptr<EngineAsset> asset = make_shared_from_list<AssetType, std::string>(std::move(assetPath));
+		auto asset = make_unique_from_list<AssetType, std::string>(std::move(assetPath));
 		AssetType* retPtr = static_cast<AssetType*>(asset.get());
-
-		assets.push_back(asset);
+		
+		assets.emplace_back(std::move(asset));
 		
 		return retPtr;
 	}
-	void listenToAssetChanges(void);
-	void refreshDirtyAssets(void);
+public:
+	void listenToAssetChanges(void) noexcept;
+	void refreshDirtyAssets(void) noexcept;
 };
 
 #endif

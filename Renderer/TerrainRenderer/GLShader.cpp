@@ -26,6 +26,23 @@ GLShader::GLShader(const std::vector<std::string>& assetPath)
 	loadAsset(assetPath);
 }
 
+GLShader::GLShader(const GLShader & other)
+	: programID(other.programID)
+{
+	assetPaths = other.assetPaths;
+}
+
+GLShader & GLShader::operator=(const GLShader & other)
+{
+	if (&other == this)
+		return *this;
+
+	assetPaths = other.assetPaths;
+	programID  = other.programID;
+
+	return *this;
+}
+
 GLShader::~GLShader()
 {
 	glDeleteProgram(programID);
@@ -75,21 +92,9 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		throw std::exception();
 	}
 
-	fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fs_source, nullptr);
-	glCompileShader(fs);
-
-	if (checkStatus(fs, CHECK_TARGET::SHADER))
-		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
-	else
-	{
-		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
-		throw std::exception();
-	}
-
 	if (!assetPaths[TCS].second.empty()) {
 		tcs_source = tcs_string.c_str();
-		tcs = glCreateShader(GL_GEOMETRY_SHADER);
+		tcs = glCreateShader(GL_TESS_CONTROL_SHADER);
 		glShaderSource(tcs, 1, &tcs_source, nullptr);
 		glCompileShader(tcs);
 
@@ -103,8 +108,8 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 	}
 
 	if (!assetPaths[TES].second.empty()) {
-		tes_source = gs_string.c_str();
-		tes = glCreateShader(GL_GEOMETRY_SHADER);
+		tes_source = tes_string.c_str();
+		tes = glCreateShader(GL_TESS_EVALUATION_SHADER);
 		glShaderSource(tes, 1, &tes_source, nullptr);
 		glCompileShader(tes);
 
@@ -130,6 +135,18 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", assetPaths[GS].second);
 			throw std::exception();
 		}
+	}
+
+	fs = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fs, 1, &fs_source, nullptr);
+	glCompileShader(fs);
+
+	if (checkStatus(fs, CHECK_TARGET::SHADER))
+		EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
+	else
+	{
+		EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
+		throw std::exception();
 	}
 
 	programID = glCreateProgram();
@@ -226,34 +243,7 @@ void GLShader::reloadAsset(void)
 	glDeleteProgram(programID);
 
 	EngineLogger::getConsole()->info("Shader source change is detected");
-	loadAsset({}); //with empty initializer list, paths remain unchanged.
-}
-
-/**
-* @ brief		listen to file change
-* @ details		based on file last modified time, check whether if file is changed or not.
-* @ return		if file is changed, then return true. otherwise, return false.
-*/
-bool GLShader::listenToAssetChange(void)
-{
-	namespace fs = std::experimental::filesystem;
-
-	for (auto& file : assetPaths)
-	{
-		if (!file.second.empty())
-		{
-			auto& lastTime = file.first;
-			const auto newLastTime = fs::last_write_time(file.second).time_since_epoch().count();
-
-			if (newLastTime != lastTime)
-			{
-				lastTime = newLastTime;
-				return true;
-			}
-		}
-	}
-
-	return false;
+	loadAsset({}); /// with empty initializer list, paths remain unchanged.
 }
 
 /**
@@ -300,9 +290,8 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				int infoLogLength;
 				glGetShaderiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
-				glGetShaderInfoLog(target, sizeof(infoLog), nullptr, &infoLog[0]);
+				glGetShaderInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
 				EngineLogger::getConsole()->critical("Shader Compile Failed. info log :\n{}", &infoLog[0]);
-				throw std::exception();
 				return false;
 			}
 			break;
@@ -315,7 +304,7 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				int infoLogLength;
 				glGetProgramiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
-				glGetProgramInfoLog(target, sizeof(infoLog), nullptr, &infoLog[0]);
+				glGetProgramInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
 				EngineLogger::getConsole()->critical("Program Link Failed. info log :\n{}", &infoLog[0]);
 				return false;
 			}
@@ -342,6 +331,7 @@ void GLShader::useProgram(void) const
 /**
 * @ brief		location of uniform variable in shader context.
 * @ return		return location of uniform variable in shader context.
+				if program don't have uniform variable with given name, return -1.
 */
 int GLShader::getUniformLocation(const std::string & varName) const
 {
@@ -398,6 +388,23 @@ void GLShader::sendUniform(const std::string & varName, bool b) const
 	}
 	else {
 		glUniform1i(loc, b);
+	}
+}
+
+/**
+* @ brief		send vector variable with 2 elements to uniform location with name "varName(param)".
+* @ details		get uniform location with name "varName(param)" from getUniformLocation method. if given location(varName) is wrong,
+print critical log.
+*/
+void GLShader::sendUniform(const std::string& varName, const glm::vec2& vec) const
+{
+	int loc = getUniformLocation(varName);
+
+	if (loc == -1) {
+		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+	}
+	else {
+		glUniform2fv(loc, 1, &vec[0]);
 	}
 }
 

@@ -1,9 +1,9 @@
 /**
 * @file		EngineTimer.hpp
 * @author	Shinjihong
-* @date		15 July 2018
+* @date		27 August 2018
 * @version	1.0.0
-* @brief	Timer class for IndieEngine.
+* @brief	Timer class for Renderer.
 * @details  this only support Window platform. not supported for other platform because of QueryPerformanceCounter or QueryPerformanceFrequency.
 * @see
 */
@@ -14,7 +14,9 @@
 class EngineTimer
 {
 private:
-	double deltaTime;       
+	bool isStopped;
+
+	double deltaTime;
 	double secondsPerCount;
 
 	__int64 baseTime;
@@ -22,8 +24,6 @@ private:
 	__int64 prevTime;
 	__int64 pausedTime;
 	__int64 stopTime;
-
-	bool isStopped;
 public:
 	EngineTimer();
 

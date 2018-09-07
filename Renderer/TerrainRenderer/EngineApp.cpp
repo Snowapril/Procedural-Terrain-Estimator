@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp()
+	: GLApp(), terrain(), camera()
 {
 }
 
@@ -25,6 +25,16 @@ void EngineApp::updateScene(float dt)
 {
 	Profile();
 
+	processKeyInput(dt);
+	camera.onUpdate(dt);
+
+	camera.sendVP(vpUBO, GLApp::getAspectRatio());
+
+	const glm::vec3 cameraPos = camera.getViewPos();
+
+	terrain.updateScene(dt);
+	terrain.buildNonUniformPatch(cameraPos, glm::vec3(0.0f));
+
 	assetManager->refreshDirtyAssets();
 }
 
@@ -35,11 +45,17 @@ void EngineApp::updateScene(float dt)
 void EngineApp::drawScene(void) const
 {
 	Profile();
-
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(Color::SteelBlue[0], Color::SteelBlue[1], Color::SteelBlue[2], Color::SteelBlue[3]);
+	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
+
+	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	terrain.drawTerrain(GL_PATCHES);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	simpleShader->useProgram();
 
@@ -48,15 +64,14 @@ void EngineApp::drawScene(void) const
 	model = glm::rotate(model, totalTime, glm::normalize(glm::vec3(0.f, 1.f, 1.f)));
 
 	simpleShader->sendUniform("model", model);
-	simpleShader->sendUniform("view", glm::lookAt(glm::vec3(0.f, 4.f, 6.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f)));
-	simpleShader->sendUniform("project", glm::perspective(glm::radians(45.0f), getAspectRatio(), 0.1f, 100.f));
 
-	glBindVertexArray(VAO);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glBindVertexArray(VAO);	
+	
 	glDrawElements(GL_TRIANGLES, 36u, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
 }
 
 /**
@@ -74,6 +89,23 @@ bool EngineApp::initEngine(void)
 	if (!initGeometryBuffer())
 		return false;
 
+	if (!initUniformBufferObject())
+		return false;
+
+	if (!terrain.initWithLocalFile(GLApp::getAspectRatio(), {}))
+		return false;
+
+	return true;
+}
+
+bool EngineApp::initUniformBufferObject(void)
+{
+	glGenBuffers(1, &vpUBO);
+	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, nullptr, GL_STATIC_DRAW);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+	glBindBufferRange(GL_UNIFORM_BUFFER, 0, vpUBO, 0, sizeof(glm::mat4) * 2);
+
 	return true;
 }
 
@@ -86,6 +118,9 @@ bool EngineApp::initAssets(void)
 	assetManager = std::make_unique<AssetManager>();
 
 	if (!initShader())
+		return false;
+
+	if (!initTextures())
 		return false;
 
 	return true;
@@ -114,11 +149,22 @@ bool EngineApp::initShader(void)
 }
 
 /**
+
+*/
+bool EngineApp::initTextures(void)
+{
+	return true;
+}
+
+/**
 * @ brief		initialize geometry buffer in current opengl context.
 * @ return		return boolean whether if initialize geometry buffer is successful or not.
 */
 bool EngineApp::initGeometryBuffer(void)
 {
+	/// below hard coded stuffs are for testing.
+	/// will be replaced to terrain geometry setup.
+
 	typedef struct _vertex
 	{
 		glm::vec3 position;
@@ -172,18 +218,18 @@ bool EngineApp::initGeometryBuffer(void)
 	};
 
 	std::vector<unsigned int> _indices = {
-		0, 1, 2,
-		3, 4, 5,
-		6, 7, 8,
-		9, 10, 11,
-		12, 13, 14,
-		15, 16, 17,
-		18, 19, 20,
-		21, 22, 23,
-		24, 25, 26,
-		27, 28, 29,
-		30, 31, 32,
-		33, 34, 35
+		0u, 1u, 2u,
+		3u, 4u, 5u,
+		6u, 7u, 8u,
+		9u, 10u, 11u,
+		12u, 13u, 14u,
+		15u, 16u, 17u,
+		18u, 19u, 20u,
+		21u, 22u, 23u,
+		24u, 25u, 26u,
+		27u, 28u, 29u,
+		30u, 31u, 32u,
+		33u, 34u, 35u
 	};
 	
 	unsigned int VBO, EBO;
@@ -218,12 +264,39 @@ void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 
 void EngineApp::mousePosCallback(double xpos, double ypos)
 {
+	camera.processMousePos(xpos, ypos);
 }
 
 void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 {
+	unsigned int keyFlag = 0;
+
+	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+		keyFlag |= CAMERA_LEFT_BTN;
+
+	if (btn == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+		keyFlag |= CAMERA_RIGHT_BTN;
+
+	camera.processMouseBtn(keyFlag);
 }
 
 void EngineApp::scrollCallback(double xoffset, double yoffset)
 {
+	camera.processScroll(yoffset);
+}
+
+void EngineApp::processKeyInput(float dt)
+{
+	unsigned int keyFlag = 0;
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		keyFlag |= CAMERA_UP;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		keyFlag |= CAMERA_LEFT;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		keyFlag |= CAMERA_DOWN;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		keyFlag |= CAMERA_RIGHT;
+
+	camera.processKeyInput(keyFlag, dt);
 }
