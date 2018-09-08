@@ -43,6 +43,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -151,20 +152,28 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
+    <ClCompile Include="EngineCamera.cpp" />
+    <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
     <ClCompile Include="EngineProfiler.cpp" />
     <ClCompile Include="EngineTerrain.cpp" />
     <ClCompile Include="EngineTimer.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLGeometry.cpp" />
+    <ClCompile Include="GLMesh.cpp" />
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TerrainPatch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
+    <ClInclude Include="EngineCamera.hpp" />
+    <ClInclude Include="EngineGUI.hpp" />
     <ClInclude Include="EngineLogger.hpp" />
     <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
@@ -172,9 +181,12 @@
     <ClInclude Include="EngineTimer.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLGeometry.hpp" />
+    <ClInclude Include="GLMesh.hpp" />
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
-    <ClInclude Include="PerlinNoise.hpp" />
+    <ClInclude Include="GLTexture.hpp" />
+    <ClInclude Include="TerrainPatch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
@@ -183,6 +195,7 @@
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\simple_fs.glsl" />
     <None Include="..\resources\shader\simple_vs.glsl" />
+    <None Include="..\resources\shader\terrain_fs.glsl" />
     <None Include="..\resources\shader\terrain_gs.glsl" />
     <None Include="..\resources\shader\terrain_tcs.glsl" />
     <None Include="..\resources\shader\terrain_tes.glsl" />

@@ -32,12 +32,13 @@ bool GLApp::initGLWindow(bool fullscreen)
 		return false;
 	}
 	
+	/// use opengl version 4.3 (tessellation is enabled after opengl 4.0)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	if (ENABLE_4XMSAA) glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-#ifdef __APPLE__
+#ifdef __APPLE__ /// this is enabled when apple computer run this program.
 	glfwWindowHint(GLFW_OPENGL_COMPAT_PROFILE, GLFW_OPENGL_FORWARD_COMPAT);
 #endif
 
@@ -55,12 +56,13 @@ bool GLApp::initGLWindow(bool fullscreen)
 
 	window = glfwCreateWindow(clientWidth, clientHeight, WndCaption.c_str(), fullscreen ? glfwMonitor : nullptr, nullptr);
 
-	if (!window)
+	if (!window) 
 	{
 		glfwTerminate();
 		EngineLogger::getConsole()->error("GLFW Window Creating failed.");
 		return false;
 	}
+
 	glfwMakeContextCurrent(window);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -101,6 +103,8 @@ bool GLApp::initGLConfigure(void)
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
+	glPatchParameteri(GL_PATCH_VERTICES, 4);
+
 	return true;
 }
 
@@ -135,6 +139,7 @@ int GLApp::Run(void)
 
 	while (!glfwWindowShouldClose(window))
 	{
+		/// timer should tick every frame. tick update delta time and total time.
 		timer.tick();
 
 		if (!paused)
@@ -152,11 +157,12 @@ int GLApp::Run(void)
 		glfwPollEvents();
 	}
 
+	/// at debug mode, this will log any error about opengl context.
 	CheckError();
 
 	EngineProfiler::logging("./logs/performance.txt");
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 /**
@@ -197,17 +203,17 @@ void GLApp::calculateFrameStats(void)
 	if (timer.getTotalTime() - timeElapsed >= 1.0f)
 	{
 		float fps = static_cast<float>(frameCnts);
-		float mspf = 1000.f / fps;
+		float mspf = 1000.0f * (1.0f / fps);
 
 		std::ostringstream outs;
 		outs.precision(6);
-		outs << WndCaption << "   "
-			<< "FPS: " << fps << "   "
-			<< "Frame Time: " << mspf << " (ms)";
+		outs << WndCaption             << "   "
+			 << "FPS: "        << fps  << "   "
+			 << "Frame Time: " << mspf << " (ms)";
 
 		glfwSetWindowTitle(window, outs.str().c_str());
 
 		frameCnts = 0;
-		timeElapsed += 1.f;
+		timeElapsed += 1.0f;
 	}
 }

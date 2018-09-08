@@ -1,3 +1,12 @@
+/**
+* @file		GLApp.hpp
+* @author	Shinjihong
+* @date		27 August 2018
+* @version	1.0.0
+* @brief	this represent opengl renderer. GLApp manage opengl features which are needed for Renderer.
+* @see
+*/
+
 #ifndef GL_APP_HPP
 #define GL_APP_HPP
 
@@ -9,13 +18,12 @@ struct GLFWwindow;
 class GLApp
 {
 protected:
-	GLFWwindow * window;
-	int clientWidth;
-	int clientHeight;
 	bool fullscreen;
 	bool paused;
+	int clientWidth;
+	int clientHeight;
+	GLFWwindow * window;
 	std::string WndCaption;
-
 	EngineTimer timer;
 protected:
 	bool initGLWindow(bool fullscreen);
@@ -23,12 +31,12 @@ protected:
 
 	void calculateFrameStats(void);
 
-	virtual void onResize(int newWidth, int newHeight);
 	virtual void updateScene(float dt) = 0;
 	virtual void drawScene(void) const = 0;
+	virtual void onResize(int newWidth, int newHeight);
 public:
 	GLApp();
-	~GLApp();
+	virtual ~GLApp();
 public:
 	bool initGLApp(void);
 

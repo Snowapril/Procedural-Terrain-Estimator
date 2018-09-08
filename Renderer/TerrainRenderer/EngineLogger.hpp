@@ -1,9 +1,9 @@
 /**
 * @file		EngineLogger.hpp
 * @author	Shinjihong
-* @date		15 July 2018
+* @date		27 August 2018
 * @version	1.0.0
-* @brief	Logger static class for IndieEngine.
+* @brief	Logger static class for Renderer.
 * @details	provide all logging features using spdlog open source library .
 * @see		
 */

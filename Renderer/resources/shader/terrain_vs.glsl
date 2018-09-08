@@ -1,9 +1,23 @@
 #version 430 core
 
-in vec2 TexCoords;
-out vec4 fragColors;
+layout(location = 0) in vec3 aPos;
+layout(location = 1) in float aTessLevel;
+
+out float vs_tessLevel;
+out vec2 vs_texCoords;
+
+uniform vec3 originPos;
+uniform vec2 terrainScale;
+
+vec2 calculateTexCoords(vec3 vertex)
+{
+	return ( vec2(vertex.x, vertex.z) + originPos.xz ) / terrainScale;
+}
 
 void main(void)
 {
-    fragColors = vec4(vec3((TexCoords.x + TexCoords.y) / 2.0), 1.0);
+	vs_texCoords = calculateTexCoords(aPos);
+	vs_tessLevel = aTessLevel;
+
+	gl_Position = vec4(aPos, 1.0);
 }

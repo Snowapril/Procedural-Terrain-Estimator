@@ -1,23 +1,27 @@
 #version 430 core
-layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 aNormal;
-layout (location = 2) in vec2 aTexCoords;
 
-//layout (std140) uniform VP 
-//{
-//    mat4 view;
-//    mat4 project;
-//};
+layout(vertices = 4) out;
 
-uniform mat4 view;
-uniform mat4 project;
-uniform mat4 model;
+in float vs_tessLevel[];
+in vec2 vs_texCoords[];
 
-out vec2 TexCoords;
+out vec2 tcs_texCoords[];
+out float tcs_tessLevel[];
 
 void main(void)
 {
-    TexCoords = aTexCoords;
+	float tessLevelOuter = pow(2.0, vs_tessLevel[gl_InvocationID]);
 
-    gl_Position = project * view * model * vec4(aPos, 1.0);
+	gl_TessLevelOuter[0] = tessLevelOuter;
+	gl_TessLevelOuter[1] = tessLevelOuter;
+	gl_TessLevelOuter[2] = tessLevelOuter;
+	gl_TessLevelOuter[3] = tessLevelOuter;
+
+	gl_TessLevelInner[0] = (gl_TessLevelOuter[0] + gl_TessLevelOuter[3]) * 0.5;
+	gl_TessLevelInner[1] = (gl_TessLevelOuter[1] + gl_TessLevelOuter[2]) * 0.5;
+
+	tcs_texCoords[gl_InvocationID] = vs_texCoords[gl_InvocationID];
+	tcs_tessLevel[gl_InvocationID] = vs_tessLevel[gl_InvocationID];
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
 }

@@ -4,7 +4,6 @@
 #include "GLShader.hpp"
 
 AssetManager::AssetManager()
-	: assets(0), fileChangeMutex()
 {
 	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
 	stopListen = false;
@@ -12,10 +11,37 @@ AssetManager::AssetManager()
 
 AssetManager::~AssetManager()
 {
-	stopListen = true;
+	stopListen = true; /// if not set this to true, change listener's loop will be never ended.
 	changeListener.join();
 
 	assets.clear();
+}
+
+AssetManager::AssetManager(const AssetManager & other)
+{
+	stopListen = true;
+	changeListener.join();
+
+	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
+	stopListen = other.stopListen;
+	assets = other.assets;
+	dirtyAssets = other.dirtyAssets;
+}
+
+AssetManager & AssetManager::operator=(const AssetManager & other)
+{
+	if (&other == this)
+		return *this;
+
+	stopListen = true;
+	changeListener.join();
+
+	changeListener = std::thread(&AssetManager::listenToAssetChanges, this);
+	stopListen = other.stopListen;
+	assets = other.assets;
+	dirtyAssets = other.dirtyAssets;
+
+	return *this;
 }
 
 /**
@@ -23,11 +49,12 @@ AssetManager::~AssetManager()
 * @ details		changed assets are pushed into dirtyAssets by listenToAssetChanges method.
 				before reload asset, lock guard is needed because for preventing use of same resource by other thread.
 */
-void AssetManager::refreshDirtyAssets(void)
+void AssetManager::refreshDirtyAssets(void) noexcept
 {
+	/// before reload assets, lock it from the other thread.
 	std::lock_guard<std::mutex> lockGuard(fileChangeMutex);
 	for (auto& asset : dirtyAssets)
-		asset->reloadAsset();
+		(~(*asset)).reloadAsset();
 
 	dirtyAssets.clear();
 }
@@ -37,16 +64,17 @@ void AssetManager::refreshDirtyAssets(void)
 * @ details		before instance of this class is destructed, while loop is continued.
 				check whether if asset is modified or not with 1 second term.
 */
-void AssetManager::listenToAssetChanges(void)
+void AssetManager::listenToAssetChanges(void) noexcept
 {
 	using namespace std::chrono_literals;
+	
 	while (!stopListen)
 	{
 		for (auto& asset : assets)
 		{
 			if (asset->listenToAssetChange())
 			{
-				dirtyAssets.push_back(asset);
+				dirtyAssets.push_back(asset.get());
 			}
 		}
 

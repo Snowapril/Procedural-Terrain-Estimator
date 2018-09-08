@@ -1,7 +1,7 @@
 /**
 * @file		GLShader.hpp
 * @author	Shinjihong
-* @date		15 July 2018
+* @date		27 August 2018
 * @version	1.0.0
 * @brief	OpenGL GLSL Shader.
 * @details	Initialize shader with given GLSL files' path. user can send uniform from CPU to GPU with this class.
@@ -12,12 +12,13 @@
 #define GL_SHADER_HPP
 
 #include <string>
+#include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
 
-class GLShader : public EngineAsset
+class GLShader : public EngineAsset<GLShader>
 {
 private:
 	unsigned int programID;
@@ -37,11 +38,12 @@ private:
 public:
 	GLShader();
 	GLShader(const std::vector<std::string>& assetPath);
+	GLShader(const GLShader& other);
+	GLShader& operator=(const GLShader& other);
 	virtual ~GLShader();
-
+public:
 	void loadAsset(const std::vector<std::string>& assetPath);
 	void reloadAsset(void);
-	bool listenToAssetChange(void);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;
@@ -49,6 +51,7 @@ public:
 	void sendUniform(const std::string& varName, int i) const;
 	void sendUniform(const std::string& varName, float f) const;
 	void sendUniform(const std::string& varName, bool b) const;
+	void sendUniform(const std::string& varName, const glm::vec2& vec) const;
 	void sendUniform(const std::string& varName, const glm::vec3& vec) const;
 	void sendUniform(const std::string& varName, const glm::vec4& vec) const;
 	void sendUniform(const std::string& varName, const glm::mat4& mat) const;
