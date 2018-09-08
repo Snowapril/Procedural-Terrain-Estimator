@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "EngineLogger.hpp"
-
+#include "GLResources.hpp"
 /// for optimus feature enablement, below code must be provided.
 extern "C"
 {
@@ -23,6 +23,7 @@ std::unique_ptr<EngineApp> gMainApplication;
 int main(void)
 {
 	gMainApplication = std::make_unique<EngineApp>();
+	//GLResources::CreateSimplexNoise2D(512, 512, 10);
 
 	if (!gMainApplication->initEngine())
 	{

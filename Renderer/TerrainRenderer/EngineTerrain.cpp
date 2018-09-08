@@ -12,150 +12,10 @@
 bool EngineTerrain::isInstanciated = false;
 
 constexpr std::size_t	MAX_POOL_SIZE		 = 5000;
-constexpr std::size_t	MAX_PATCH_DEPTH		 = 6;
-constexpr float			MAX_DIVIDABLE_LENGTH = 100.0f;
-
-void EngineTerrain::clearTree(void)
-{
-	tailPatch = rootPatch;
-	numPatch  = 0;
-
-	vertices.clear();
-}
-
-void EngineTerrain::createTree(const glm::vec3& cameraPos)
-{
-	rootPatch = tailPatch++;
-	++numPatch;
-
-	rootPatch->type				= TerrainPatch::PatchType::ROOT;
-	rootPatch->patchDepth		= 0.0f;
-	rootPatch->originPos		= terrainCenterPos;
-	rootPatch->parent			= nullptr;
-	rootPatch->leftTopAdj		= nullptr;
-	rootPatch->rightBottomAdj	= nullptr;
-	rootPatch->rightTopAdj		= nullptr;
-	rootPatch->leftBottomAdj	= nullptr;
-	rootPatch->leftScale		= 1.0f;
-	rootPatch->rightScale		= 1.0f;
-	rootPatch->topScale			= 1.0f;
-	rootPatch->bottomScale		= 1.0f;
-	rootPatch->width			= this->width;
-	rootPatch->height			= this->height;
-	
-	divideNode(rootPatch, cameraPos);
-}
-
-TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, TerrainPatch::PatchType type, const glm::vec3 & originPos, std::size_t patchWidth, std::size_t patchHeight)
-{
-	TerrainPatch* newNode = tailPatch++;
-	++numPatch;
-
-	newNode->type			= type;
-	newNode->patchDepth		= parent->patchDepth + 1.0f;
-	newNode->parent			= parent;
-	newNode->originPos		= originPos;
-	newNode->width			= patchWidth;
-	newNode->height			= patchHeight;
-	newNode->leftBottomAdj	= nullptr;
-	newNode->leftTopAdj		= nullptr;
-	newNode->rightBottomAdj = nullptr;
-	newNode->rightTopAdj	= nullptr;
-	newNode->leftScale		= 1.0f;
-	newNode->topScale		= 1.0f;
-	newNode->rightScale		= 1.0f;
-	newNode->bottomScale	= 1.0f;
-	
-	return newNode;
-}
-
-void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
-{
-	const float newWidth = node->width * 0.5f;
-	const float newHeight = node->height * 0.5f;
-
-	node->leftTopAdj	 = createNode(node, TerrainPatch::PatchType::LEFT_TOP, node->originPos + 
-						 			glm::vec3(-newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
-						 
-	node->rightTopAdj	 = createNode(node, TerrainPatch::PatchType::RIGHT_TOP, node->originPos + 
-						 			glm::vec3(newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
-						 
-	node->leftBottomAdj	 = createNode(node, TerrainPatch::PatchType::LEFT_BOTTOM, node->originPos + 
-						 			glm::vec3(-newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
-						 
-	node->rightBottomAdj = createNode(node, TerrainPatch::PatchType::RIGHT_BOTTOM, node->originPos + 
-										glm::vec3(newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
-
-
-	bool leftTopDividable(checkDivide(node->leftTopAdj, cameraPos));
-	bool rightTopDividable(checkDivide(node->rightTopAdj, cameraPos));
-	bool leftBottomDividable(checkDivide(node->leftBottomAdj, cameraPos));
-	bool rightBottomDividable(checkDivide(node->rightBottomAdj, cameraPos));
-
-	//bool dividable = leftTopDividable || rightTopDividable || leftBottomDividable || rightBottomDividable;
-
-	if (leftTopDividable)
-		divideNode(node->leftTopAdj, cameraPos);
-	else
-		registerToBufferObject(node->leftTopAdj);
-
-	if (rightTopDividable)
-		divideNode(node->rightTopAdj, cameraPos);
-	else
-		registerToBufferObject(node->rightTopAdj);
-
-	if (leftBottomDividable)
-		divideNode(node->leftBottomAdj, cameraPos);
-	else
-		registerToBufferObject(node->leftBottomAdj);
-
-	if (rightBottomDividable)
-		divideNode(node->rightBottomAdj, cameraPos);
-	else
-		registerToBufferObject(node->rightBottomAdj);
-
-	//if (!dividable)
-	//	registerToBufferObject(node);
-}
-
-void EngineTerrain::registerToBufferObject(const TerrainPatch* patch)
-{
-	glm::vec3 patchVertices[] = {
-		patch->originPos + glm::vec3(patch->width / 2.0f, 0.0f, patch->height / 2.0f),
-		patch->originPos + glm::vec3(patch->width / 2.0f, 0.0f, -patch->height / 2.0f),
-		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, patch->height / 2.0f),
-		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, -patch->height / 2.0f)
-	};
-
-	for (std::size_t i = 0; i < 4; ++i)
-	{
-		vertices.push_back(patchVertices[i].x);
-		vertices.push_back(patchVertices[i].y);
-		vertices.push_back(patchVertices[i].z);
-		vertices.push_back(patch->patchDepth);
-	}
-}
-
-bool EngineTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
-{
-	if (node->patchDepth >= MAX_PATCH_DEPTH || numPatch + 4 >= MAX_POOL_SIZE)
-		return false;
-
-	if (node->width / 2.f < 1.0f || node->height / 2.f < 1.0f)
-		return false;
-
-	cameraPos.y = node->originPos.y;
-
-	const float huddle = std::sqrt(std::pow(node->width * 1.0f, 2.0f) + std::pow(node->height * 1.0f, 2.0f));
-
-	if (glm::length(cameraPos - node->originPos) > huddle)
-		return false;
-
-	return true;
-}
+constexpr float			MIN_PATCH_LENGTH	 = 124.0f;
 
 EngineTerrain::EngineTerrain()
-	: terrainMap(0), width(0), height(0), rootPatch(nullptr), tailPatch(nullptr), terrainShader(nullptr)
+	: terrainMap(0), width(0), height(0), rootPatch(nullptr), tailPatch(nullptr), terrainShader(nullptr), prevCameraPos(-1.0f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -180,15 +40,14 @@ void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm:
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("originPos", originPos);
-	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", 50.0f);
-	terrainShader->sendUniform("terrainHeightOffset", 0.0f);
 
 	tailPatch = rootPatch;
 	terrainCenterPos = originPos;
 
 	clearTree();
 	createTree(cameraPos);
+
+	traverseQuadtree(rootPatch);
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -215,9 +74,197 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
 	glBindVertexArray(VAO);
-	glDrawArrays(GL_PATCHES, 0, vertices.size() / 16);
+	glDrawArrays(GL_PATCHES, 0, vertices.size() / 4);
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+
+void EngineTerrain::clearTree(void)
+{
+	tailPatch = rootPatch;
+	numPatch = 0;
+
+	vertices.clear();
+}
+
+void EngineTerrain::createTree(const glm::vec3& cameraPos)
+{
+	rootPatch = tailPatch++;
+	++numPatch;
+
+	rootPatch->type = TerrainPatch::PatchType::ROOT;
+	rootPatch->originPos = terrainCenterPos;
+	rootPatch->leftTopAdj = nullptr;
+	rootPatch->rightBottomAdj = nullptr;
+	rootPatch->rightTopAdj = nullptr;
+	rootPatch->leftBottomAdj = nullptr;
+	rootPatch->width = this->width;
+	rootPatch->height = this->height;
+	rootPatch->scaleNegativeX = 1.0f;
+	rootPatch->scaleNegativeZ = 1.0f;
+	rootPatch->scalePositiveX = 1.0f;
+	rootPatch->scalePositiveZ = 1.0f;
+
+	divideNode(rootPatch, cameraPos);
+}
+
+TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, TerrainPatch::PatchType type, const glm::vec3 & originPos, float patchWidth, float patchHeight)
+{
+	TerrainPatch* newNode = tailPatch++;
+	++numPatch;
+
+	newNode->type = type;
+	newNode->originPos = originPos;
+	newNode->width = patchWidth;
+	newNode->height = patchHeight;
+	newNode->leftBottomAdj = nullptr;
+	newNode->leftTopAdj = nullptr;
+	newNode->rightBottomAdj = nullptr;
+	newNode->rightTopAdj = nullptr;
+	newNode->scaleNegativeX = 1.0f;
+	newNode->scaleNegativeZ = 1.0f;
+	newNode->scalePositiveX = 1.0f;
+	newNode->scalePositiveZ = 1.0f;
+
+	return newNode;
+}
+
+void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
+{
+	const float newWidth = node->width * 0.5f;
+	const float newHeight = node->height * 0.5f;
+
+	node->leftTopAdj = createNode(node, TerrainPatch::PatchType::LEFT_TOP, node->originPos +
+		glm::vec3(-newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
+
+	node->rightTopAdj = createNode(node, TerrainPatch::PatchType::RIGHT_TOP, node->originPos +
+		glm::vec3(newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
+
+	node->leftBottomAdj = createNode(node, TerrainPatch::PatchType::LEFT_BOTTOM, node->originPos +
+		glm::vec3(-newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
+
+	node->rightBottomAdj = createNode(node, TerrainPatch::PatchType::RIGHT_BOTTOM, node->originPos +
+		glm::vec3(newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
+
+	bool leftTopDividable(checkDivide(node->leftTopAdj, cameraPos));
+	bool rightTopDividable(checkDivide(node->rightTopAdj, cameraPos));
+	bool leftBottomDividable(checkDivide(node->leftBottomAdj, cameraPos));
+	bool rightBottomDividable(checkDivide(node->rightBottomAdj, cameraPos));
+
+	if (rightTopDividable)
+		divideNode(node->rightTopAdj, cameraPos);
+	if (leftTopDividable)
+		divideNode(node->leftTopAdj, cameraPos);
+	if (leftBottomDividable)
+		divideNode(node->leftBottomAdj, cameraPos);
+	if (rightBottomDividable)
+		divideNode(node->rightBottomAdj, cameraPos);
+}
+
+TerrainPatch* EngineTerrain::findPatch(TerrainPatch* patch, const glm::vec3& targetPos)
+{
+	if (patch->originPos == targetPos)
+		return patch;
+
+	if (!patch->leftBottomAdj && !patch->leftTopAdj && !patch->rightBottomAdj && !patch->rightTopAdj)
+		return patch;
+
+	if (patch->originPos.x < targetPos.x && patch->originPos.z < targetPos.z && patch->rightTopAdj)
+		return findPatch(patch->rightTopAdj, targetPos);
+
+	if (patch->originPos.x > targetPos.x && patch->originPos.z < targetPos.z && patch->leftTopAdj)
+		return findPatch(patch->leftTopAdj, targetPos);
+
+	if (patch->originPos.x > targetPos.x && patch->originPos.z > targetPos.z && patch->leftBottomAdj)
+		return findPatch(patch->leftBottomAdj, targetPos);
+
+	if (patch->originPos.x < targetPos.x && patch->originPos.z > targetPos.z && patch->rightBottomAdj)
+		return findPatch(patch->rightBottomAdj, targetPos);
+
+	return patch;
+}
+
+void EngineTerrain::calculateTessLevel(TerrainPatch* patch)
+{
+	TerrainPatch* tempPatch;
+
+	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(-patch->width, 0.0f, 0.0f)); //left adj search
+	if (tempPatch->height > patch->height)
+		patch->scaleNegativeX = 2.0f;
+	
+	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(patch->width, 0.0f, 0.0f)); //right adj search
+	if (tempPatch->height > patch->height)
+		patch->scalePositiveX = 2.0f;
+
+	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(0.0f, 0.0f, patch->height)); //top adj search
+	if (tempPatch->width > patch->width)
+		patch->scalePositiveZ = 2.0f;
+
+	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(0.0f, 0.0f, -patch->height)); //bottom adj search
+	if (tempPatch->width > patch->width)
+		patch->scaleNegativeZ = 2.0f;
+}
+
+void EngineTerrain::traverseQuadtree(TerrainPatch* patch)
+{
+	if (!patch->leftBottomAdj && !patch->leftTopAdj && !patch->rightBottomAdj && !patch->rightTopAdj)
+		registerToBufferObject(patch);
+
+	if (patch->leftBottomAdj)
+		traverseQuadtree(patch->leftBottomAdj);
+
+	if (patch->rightBottomAdj)
+		traverseQuadtree(patch->rightBottomAdj);
+
+	if (patch->leftTopAdj)
+		traverseQuadtree(patch->leftTopAdj);
+
+	if (patch->rightTopAdj)
+		traverseQuadtree(patch->rightTopAdj);
+}
+
+void EngineTerrain::registerToBufferObject(TerrainPatch* patch)
+{
+	calculateTessLevel(patch);
+
+	glm::vec3 patchVertices[] = {
+		patch->originPos + glm::vec3(patch->width / 2.0f, 0.0f, patch->height / 2.0f),
+		patch->originPos + glm::vec3(patch->width / 2.0f, 0.0f, -patch->height / 2.0f),
+		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, patch->height / 2.0f),
+		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, -patch->height / 2.0f),
+	};
+
+	float patchLevels[] = {
+		patch->scalePositiveZ,
+		patch->scalePositiveX,
+		patch->scaleNegativeX,
+		patch->scaleNegativeZ,
+	};
+
+	for (std::size_t i = 0; i < 4; ++i)
+	{
+		vertices.push_back(patchVertices[i].x);
+		vertices.push_back(patchVertices[i].y);
+		vertices.push_back(patchVertices[i].z);
+		vertices.push_back(patchLevels[i]);
+	}
+}
+
+bool EngineTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
+{
+	if (min(node->width, node->height) < MIN_PATCH_LENGTH || numPatch + 4 >= MAX_POOL_SIZE)
+		return false;
+
+	if (node->width / 2.f < 1.0f || node->height / 2.f < 1.0f)
+		return false;
+
+	const float huddle = 2.5f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
+
+	if (glm::length(cameraPos - node->originPos) > huddle)
+		return false;
+
+	return true;
 }
 
 /**
@@ -241,6 +288,7 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 			//"../resources/shader/terrain_gs.glsl"
 		});
 	}
+	
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
@@ -252,6 +300,9 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMap", 0);
+	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
+	terrainShader->sendUniform("terrainMaxHeight", 30.0f);
+	terrainShader->sendUniform("terrainHeightOffset", 0.0f);
 
 	try 
 	{
@@ -264,7 +315,7 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		return false;
 	}
 
-	vertices.reserve(MAX_POOL_SIZE * MAX_PATCH_DEPTH * 16);
+	vertices.reserve(MAX_POOL_SIZE * 16);
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
