@@ -1,8 +1,8 @@
 #include "TerrainPatch.hpp"
 
 TerrainPatch::TerrainPatch()
-	: type(PatchType::UNKNOWN), patchDepth(0.0f), leftScale(0.0f), topScale(0.0f), rightScale(0.0f), bottomScale(0.0f),
-		parent(nullptr), leftTopAdj(nullptr), rightTopAdj(nullptr), rightBottomAdj(nullptr), leftBottomAdj(nullptr), originPos(0.0f)
+	: type(PatchType::UNKNOWN), width(0.0f), height(0.0f), scaleNegativeX(0.0f), scalePositiveX(0.0f), scaleNegativeZ(0.0f), scalePositiveZ(0.0f),
+		leftTopAdj(nullptr), rightTopAdj(nullptr), rightBottomAdj(nullptr), leftBottomAdj(nullptr), originPos(0.0f)
 {
 
 }
@@ -13,8 +13,9 @@ TerrainPatch::~TerrainPatch()
 }
 
 TerrainPatch::TerrainPatch(const TerrainPatch& other)
-	: type(other.type), patchDepth(other.patchDepth), leftScale(other.leftScale), topScale(other.topScale), rightScale(other.rightScale), bottomScale(other.bottomScale), parent(other.parent),
-	rightTopAdj(other.rightTopAdj), leftTopAdj(other.leftTopAdj), leftBottomAdj(other.leftBottomAdj), rightBottomAdj(other.rightBottomAdj), originPos(other.originPos)
+	: type(other.type), width(other.width), height(other.height), scaleNegativeX(other.scaleNegativeX), scalePositiveX(other.scalePositiveX), 
+		scaleNegativeZ(other.scaleNegativeZ), scalePositiveZ(other.scalePositiveZ), rightTopAdj(other.rightTopAdj), leftTopAdj(other.leftTopAdj), 
+		leftBottomAdj(other.leftBottomAdj), rightBottomAdj(other.rightBottomAdj), originPos(other.originPos)
 {
 
 }
@@ -25,12 +26,12 @@ TerrainPatch& TerrainPatch::operator=(const TerrainPatch& other)
 		return *this;
 
 	type			= other.type;
-	patchDepth		= other.patchDepth;
-	leftScale		= other.leftScale;
-	topScale		= other.topScale;
-	rightScale		= other.rightScale;
-	bottomScale		= other.bottomScale;
-	parent			= other.parent;
+	width			= other.width;
+	height			= other.height;
+	scaleNegativeX	= other.scaleNegativeX;
+	scalePositiveX	= other.scalePositiveX;
+	scaleNegativeZ	= other.scaleNegativeZ;
+	scalePositiveZ	= other.scalePositiveZ;
 	rightTopAdj		= other.rightTopAdj;
 	leftTopAdj		= other.leftTopAdj;
 	leftBottomAdj	= other.leftBottomAdj;

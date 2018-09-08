@@ -19,14 +19,12 @@ private:
 	};
 
 	PatchType type;
-	float patchDepth;
 	float width;
 	float height;
-	float leftScale;
-	float topScale;
-	float rightScale;
-	float bottomScale;
-	TerrainPatch *parent;
+	float scaleNegativeX;
+	float scalePositiveX;
+	float scaleNegativeZ;
+	float scalePositiveZ;
 	TerrainPatch *leftTopAdj;
 	TerrainPatch *rightTopAdj;
 	TerrainPatch *rightBottomAdj;

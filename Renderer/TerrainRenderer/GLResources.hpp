@@ -17,6 +17,7 @@ class GLResources
 public:
 	static unsigned int CreateTexture2D(const std::string& path, bool gamma);
 	static unsigned int CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma);
+	static void CreateSimplexNoise2D(int width, int height, unsigned int seed);
 };
 
 #endif

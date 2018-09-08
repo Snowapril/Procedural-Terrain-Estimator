@@ -48,10 +48,13 @@ private:
 private:
 	void clearTree(void);
 	void createTree(const glm::vec3& cameraPos);
-	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, std::size_t patchWidth, std::size_t patchHeight);
+	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, float patchWidth, float patchHeight);
 	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
 	bool checkDivide(const TerrainPatch* node, glm::vec3 cameraPos);
-	void registerToBufferObject(const TerrainPatch* patch);
+	void registerToBufferObject(TerrainPatch* patch);
+	void calculateTessLevel(TerrainPatch* patch);
+	TerrainPatch* findPatch(TerrainPatch* patch, const glm::vec3& targetPos);
+	void traverseQuadtree(TerrainPatch* patch);
 public:
 	EngineTerrain();
 	~EngineTerrain();
