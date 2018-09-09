@@ -25,5 +25,5 @@ void main(void)
 	vs_texCoords = calculateTexCoords(aPos);
 	vs_tessLevel = aTessLevel;
 
-	gl_Position = vec4(aPos , 1.0);
+	gl_Position = vec4(aPos, 1.0);
 }

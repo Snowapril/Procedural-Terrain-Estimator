@@ -11,8 +11,10 @@
 
 bool EngineTerrain::isInstanciated = false;
 
-constexpr std::size_t	MAX_POOL_SIZE		 = 5000;
-constexpr float			MIN_PATCH_LENGTH	 = 124.0f;
+constexpr std::size_t	MAX_POOL_SIZE		 = 2500;
+constexpr float			MIN_PATCH_LENGTH	 = 64.0f;
+constexpr float			TERRAIN_MAX_HEIGHT	 = 40.0f;
+constexpr float			TERRAIN_OFFSET		 = 0.0f;
 
 EngineTerrain::EngineTerrain()
 	: terrainMap(0), width(0), height(0), rootPatch(nullptr), tailPatch(nullptr), terrainShader(nullptr), prevCameraPos(-1.0f)
@@ -93,7 +95,6 @@ void EngineTerrain::createTree(const glm::vec3& cameraPos)
 	rootPatch = tailPatch++;
 	++numPatch;
 
-	rootPatch->type = TerrainPatch::PatchType::ROOT;
 	rootPatch->originPos = terrainCenterPos;
 	rootPatch->leftTopAdj = nullptr;
 	rootPatch->rightBottomAdj = nullptr;
@@ -109,12 +110,11 @@ void EngineTerrain::createTree(const glm::vec3& cameraPos)
 	divideNode(rootPatch, cameraPos);
 }
 
-TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, TerrainPatch::PatchType type, const glm::vec3 & originPos, float patchWidth, float patchHeight)
+TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent,  const glm::vec3 & originPos, float patchWidth, float patchHeight)
 {
 	TerrainPatch* newNode = tailPatch++;
 	++numPatch;
 
-	newNode->type = type;
 	newNode->originPos = originPos;
 	newNode->width = patchWidth;
 	newNode->height = patchHeight;
@@ -135,16 +135,16 @@ void EngineTerrain::divideNode(TerrainPatch * node, const glm::vec3 & cameraPos)
 	const float newWidth = node->width * 0.5f;
 	const float newHeight = node->height * 0.5f;
 
-	node->leftTopAdj = createNode(node, TerrainPatch::PatchType::LEFT_TOP, node->originPos +
+	node->leftTopAdj = createNode(node, node->originPos +
 		glm::vec3(-newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
 
-	node->rightTopAdj = createNode(node, TerrainPatch::PatchType::RIGHT_TOP, node->originPos +
+	node->rightTopAdj = createNode(node, node->originPos +
 		glm::vec3(newWidth * 0.5f, 0.0f, newHeight * 0.5f), newWidth, newHeight);
 
-	node->leftBottomAdj = createNode(node, TerrainPatch::PatchType::LEFT_BOTTOM, node->originPos +
+	node->leftBottomAdj = createNode(node, node->originPos +
 		glm::vec3(-newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
 
-	node->rightBottomAdj = createNode(node, TerrainPatch::PatchType::RIGHT_BOTTOM, node->originPos +
+	node->rightBottomAdj = createNode(node, node->originPos +
 		glm::vec3(newWidth * 0.5f, 0.0f, -newHeight * 0.5f), newWidth, newHeight);
 
 	bool leftTopDividable(checkDivide(node->leftTopAdj, cameraPos));
@@ -259,7 +259,7 @@ bool EngineTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 	if (node->width / 2.f < 1.0f || node->height / 2.f < 1.0f)
 		return false;
 
-	const float huddle = 2.5f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
+	const float huddle = 2.0f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
 
 	if (glm::length(cameraPos - node->originPos) > huddle)
 		return false;
@@ -301,8 +301,8 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMap", 0);
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", 30.0f);
-	terrainShader->sendUniform("terrainHeightOffset", 0.0f);
+	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
+	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
 
 	try 
 	{

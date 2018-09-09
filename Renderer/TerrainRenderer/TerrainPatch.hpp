@@ -8,17 +8,6 @@ class TerrainPatch
 {
 	friend class EngineTerrain;
 private:
-	enum class PatchType : int
-	{
-		ROOT = 0,
-		LEFT_TOP = 1,
-		LEFT_BOTTOM = 2,
-		RIGHT_BOTTOM = 3,
-		RIGHT_TOP = 4,
-		UNKNOWN = 5
-	};
-
-	PatchType type;
 	float width;
 	float height;
 	float scaleNegativeX;

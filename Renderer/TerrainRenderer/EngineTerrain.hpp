@@ -48,7 +48,7 @@ private:
 private:
 	void clearTree(void);
 	void createTree(const glm::vec3& cameraPos);
-	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, float patchWidth, float patchHeight);
+	TerrainPatch* createNode(TerrainPatch* parent, const glm::vec3& originPos, float patchWidth, float patchHeight);
 	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
 	bool checkDivide(const TerrainPatch* node, glm::vec3 cameraPos);
 	void registerToBufferObject(TerrainPatch* patch);
