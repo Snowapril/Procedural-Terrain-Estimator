@@ -27,8 +27,8 @@ float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 	vec4 view0 = view * p0;
 	vec4 view1 = view * p1;
 
-	float MinDepth = 0.1;
-	float MaxDepth = 5000.0;
+	float MinDepth = 1.0;
+	float MaxDepth = 500.0;
 
 	float d0 = clamp((abs(p0.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0); 
 	float d1 = clamp((abs(p1.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0);
@@ -90,4 +90,4 @@ void main(void)
 	tcs_texCoords[gl_InvocationID] = vs_texCoords[gl_InvocationID];
 
 	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
-}
+}	

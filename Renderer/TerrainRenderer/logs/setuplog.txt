@@ -27613,3 +27613,705 @@ Tessellation control info
 [2018-09-09 16:51:59.214] [setup] [info] Load Texture heightMap.jpg finished
 [2018-09-09 16:52:01.711] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
 
+[2018-09-10 12:42:07.227] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 12:42:07.236] [setup] [error] An error occurred while initializing shader file.
+last_write_time(p): invalid argument: operation not permitted
+[2018-09-10 12:42:07.237] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 12:42:36.769] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 12:42:36.775] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 12:42:36.776] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 12:42:36.776] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 12:42:36.777] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 12:42:36.778] [setup] [info] Program Linking finished.
+[2018-09-10 12:42:36.779] [setup] [info] Linking Program Success.
+[2018-09-10 12:42:36.788] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 12:42:49.290] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 12:56:06.872] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 12:56:06.876] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 12:56:06.905] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 12:56:06.905] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 12:56:06.906] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 12:56:06.966] [setup] [info] Program Linking finished.
+[2018-09-10 12:56:06.966] [setup] [info] Linking Program Success.
+[2018-09-10 12:56:06.971] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 12:56:12.442] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 12:56:17.985] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 12:56:17.988] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 12:56:17.988] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 12:56:17.988] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 12:56:17.989] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 12:56:17.990] [setup] [info] Program Linking finished.
+[2018-09-10 12:56:17.990] [setup] [info] Linking Program Success.
+[2018-09-10 12:56:17.995] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 12:56:21.371] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 13:00:07.495] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 13:00:07.497] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 13:00:07.497] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 13:00:07.524] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 13:00:07.525] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 13:00:07.577] [setup] [info] Program Linking finished.
+[2018-09-10 13:00:07.578] [setup] [info] Linking Program Success.
+[2018-09-10 13:00:07.583] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 13:00:07.585] [setup] [critical] Undefined Uniform Variable Name : terrainMaxHeight
+[2018-09-10 13:00:13.699] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 13:00:36.042] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 13:00:36.044] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 13:00:36.045] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 13:00:36.045] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 13:00:36.066] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 13:00:36.120] [setup] [info] Program Linking finished.
+[2018-09-10 13:00:36.120] [setup] [info] Linking Program Success.
+[2018-09-10 13:00:36.126] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 13:00:36.128] [setup] [critical] Undefined Uniform Variable Name : terrainMap
+[2018-09-10 13:00:36.128] [setup] [critical] Undefined Uniform Variable Name : terrainMaxHeight
+[2018-09-10 13:01:10.973] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 13:01:22.265] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 13:01:22.267] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 13:01:22.289] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 13:01:22.290] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 13:01:22.291] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 13:01:22.343] [setup] [info] Program Linking finished.
+[2018-09-10 13:01:22.344] [setup] [info] Linking Program Success.
+[2018-09-10 13:01:22.349] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 13:01:22.351] [setup] [critical] Undefined Uniform Variable Name : terrainMap
+[2018-09-10 13:01:22.352] [setup] [critical] Undefined Uniform Variable Name : terrainMaxHeight
+[2018-09-10 13:01:43.775] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 16:31:13.127] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 16:31:13.133] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 16:31:13.134] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 16:31:13.134] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 16:31:13.135] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 16:31:13.137] [setup] [info] Program Linking finished.
+[2018-09-10 16:31:13.144] [setup] [info] Linking Program Success.
+[2018-09-10 16:31:13.156] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 16:31:13.157] [setup] [error] Cannot load texture from ../resources/texture/terrain/splatMap.jpg
+[2018-09-10 16:31:13.158] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 16:32:39.793] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 16:32:39.798] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 16:32:39.799] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 16:32:39.799] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 16:32:39.863] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 16:32:39.999] [setup] [info] Program Linking finished.
+[2018-09-10 16:32:40.000] [setup] [info] Linking Program Success.
+[2018-09-10 16:32:40.015] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 16:32:40.037] [setup] [info] Load Texture splatMap.png finished
+[2018-09-10 16:32:43.826] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 16:33:02.504] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 16:33:02.509] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 16:33:02.510] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 16:33:02.510] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 16:33:02.553] [setup] [critical] Shader Compile Failed. info log :
+0(12) : error C1068: too much data in type constructor
+
+[2018-09-10 16:33:02.554] [setup] [error] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile failed.
+[2018-09-10 16:33:02.557] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 16:33:02.558] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 18:59:16.311] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 18:59:16.319] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 18:59:16.321] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 18:59:16.388] [setup] [critical] Shader Compile Failed. info log :
+0(43) : error C7011: implicit cast from "vec3" to "vec2"
+
+[2018-09-10 18:59:16.389] [setup] [error] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile failed.
+[2018-09-10 18:59:16.390] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 18:59:16.391] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 18:59:28.942] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 18:59:28.945] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 18:59:28.945] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 18:59:28.968] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 18:59:28.969] [setup] [critical] Shader Compile Failed. info log :
+0(16) : error C1038: declaration of "grass" conflicts with previous declaration at 0(14)
+0(16) : error C7623: implicit narrowing of type from "vec3" to "float"
+0(19) : error C1115: unable to find compatible overloaded function "mix(float, vec3, float)"
+
+[2018-09-10 18:59:28.969] [setup] [error] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile failed.
+[2018-09-10 18:59:28.970] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 18:59:28.970] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 18:59:35.717] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 18:59:35.720] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 18:59:35.720] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 18:59:35.721] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 18:59:35.742] [setup] [critical] Shader Compile Failed. info log :
+0(16) : error C1038: declaration of "grass" conflicts with previous declaration at 0(14)
+0(16) : error C7623: implicit narrowing of type from "vec3" to "float"
+0(19) : error C1115: unable to find compatible overloaded function "mix(float, vec3, float)"
+
+[2018-09-10 18:59:35.743] [setup] [error] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile failed.
+[2018-09-10 18:59:35.743] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 18:59:35.743] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 19:00:33.069] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 19:00:33.073] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 19:00:33.073] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 19:00:33.073] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 19:00:33.102] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 19:00:33.194] [setup] [info] Program Linking finished.
+[2018-09-10 19:00:33.194] [setup] [info] Linking Program Success.
+[2018-09-10 19:00:33.202] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 19:00:33.218] [setup] [info] Load Texture splatMap.png finished
+[2018-09-10 19:00:34.279] [setup] [info] Load Texture grass.png finished
+[2018-09-10 19:00:34.550] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-10 19:00:42.947] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 19:01:05.720] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 19:01:05.723] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 19:01:05.723] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 19:01:05.723] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 19:01:05.724] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 19:01:05.725] [setup] [info] Program Linking finished.
+[2018-09-10 19:01:05.725] [setup] [info] Linking Program Success.
+[2018-09-10 19:01:05.731] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 19:01:05.745] [setup] [info] Load Texture splatMap.png finished
+[2018-09-10 19:01:06.767] [setup] [info] Load Texture grass.png finished
+[2018-09-10 19:01:06.986] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-10 19:01:45.981] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 19:03:33.283] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 19:03:33.286] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 19:03:33.286] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 19:03:33.309] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 19:03:33.310] [setup] [critical] Shader Compile Failed. info log :
+0(27) : error C1068: too much data in type constructor
+
+[2018-09-10 19:03:33.310] [setup] [error] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile failed.
+[2018-09-10 19:03:33.311] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 19:03:33.311] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 19:03:48.837] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 19:03:48.841] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 19:03:48.842] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 19:03:48.843] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 19:03:48.872] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 19:03:48.948] [setup] [info] Program Linking finished.
+[2018-09-10 19:03:48.948] [setup] [info] Linking Program Success.
+[2018-09-10 19:03:48.954] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 19:03:48.965] [setup] [info] Load Texture splatMap.png finished
+[2018-09-10 19:03:49.980] [setup] [info] Load Texture grass.png finished
+[2018-09-10 19:03:50.200] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-10 19:03:50.223] [setup] [critical] Undefined Uniform Variable Name : splatMap
+[2018-09-10 19:03:50.224] [setup] [critical] Undefined Uniform Variable Name : grassTexture
+[2018-09-10 19:03:50.224] [setup] [critical] Undefined Uniform Variable Name : dirtTexture
+[2018-09-10 19:03:53.967] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 19:04:35.565] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 19:04:35.567] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 19:04:35.567] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 19:04:35.567] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 19:04:35.596] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 19:04:35.658] [setup] [info] Program Linking finished.
+[2018-09-10 19:04:35.659] [setup] [info] Linking Program Success.
+[2018-09-10 19:04:35.665] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 19:04:40.601] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 22:18:17.255] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:18:17.264] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:18:17.277] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:18:17.278] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:18:17.305] [setup] [critical] Shader Compile Failed. info log :
+0(14) : error C7011: implicit cast from "vec4" to "vec3"
+0(15) : error C7011: implicit cast from "vec4" to "vec3"
+
+[2018-09-10 22:18:17.305] [setup] [error] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile failed.
+[2018-09-10 22:18:17.306] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 22:18:17.306] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 22:18:36.585] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:18:36.589] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:18:36.589] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:18:36.589] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:18:36.625] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-10 22:18:36.626] [setup] [critical] Shader Compile Failed. info log :
+0(21) : error C1035: assignment of incompatible types
+
+[2018-09-10 22:18:36.626] [setup] [error] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile failed.
+[2018-09-10 22:18:36.627] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 22:18:36.627] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 22:18:50.881] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:18:50.884] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:18:50.884] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:18:50.885] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:18:50.885] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-10 22:18:50.916] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:18:51.002] [setup] [critical] Program Link Failed. info log :
+Geometry info
+-------------
+0(6) : error C7544: OpenGL requires geometry inputs to be arrays
+
+[2018-09-10 22:18:51.011] [setup] [error] Program Linking Failed
+[2018-09-10 22:18:51.011] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-10 22:18:51.011] [setup] [critical] Critical error occurred. program exit.
+[2018-09-10 22:19:21.304] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:19:21.306] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:19:21.306] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:19:21.307] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:19:21.338] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-10 22:19:21.338] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:19:21.404] [setup] [info] Program Linking finished.
+[2018-09-10 22:19:21.404] [setup] [info] Linking Program Success.
+[2018-09-10 22:19:21.411] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 22:19:21.418] [setup] [critical] Undefined Uniform Variable Name : terrainMaxHeight
+[2018-09-10 22:19:21.418] [setup] [critical] Undefined Uniform Variable Name : terrainHeightOffset
+[2018-09-10 22:19:26.658] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 22:20:09.164] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:20:09.167] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:20:09.167] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:20:09.168] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:20:09.168] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:20:09.168] [setup] [info] Program Linking finished.
+[2018-09-10 22:20:09.169] [setup] [info] Linking Program Success.
+[2018-09-10 22:20:09.176] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 22:20:42.126] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 22:20:53.501] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:20:53.506] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:20:53.506] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:20:53.507] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:20:53.507] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:20:53.508] [setup] [info] Program Linking finished.
+[2018-09-10 22:20:53.508] [setup] [info] Linking Program Success.
+[2018-09-10 22:20:53.515] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 22:21:24.944] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 22:32:06.793] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:32:06.797] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:32:06.822] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:32:06.823] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:32:06.824] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:32:06.885] [setup] [info] Program Linking finished.
+[2018-09-10 22:32:06.886] [setup] [info] Linking Program Success.
+[2018-09-10 22:32:06.892] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 22:32:42.120] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-10 22:42:07.775] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-10 22:42:07.777] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-10 22:42:07.806] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-10 22:42:07.806] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-10 22:42:07.807] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-10 22:42:07.908] [setup] [info] Program Linking finished.
+[2018-09-10 22:42:07.918] [setup] [info] Linking Program Success.
+[2018-09-10 22:42:07.932] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-10 22:42:42.763] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 11:50:58.595] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 11:50:58.601] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 11:50:58.653] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 11:50:58.654] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 11:50:58.655] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 11:50:58.823] [setup] [info] Program Linking finished.
+[2018-09-11 11:50:58.825] [setup] [info] Linking Program Success.
+[2018-09-11 11:50:58.843] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 11:51:18.330] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:29:04.662] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:29:04.668] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:29:04.668] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:29:04.710] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:29:04.711] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:29:04.811] [setup] [info] Program Linking finished.
+[2018-09-11 12:29:04.811] [setup] [info] Linking Program Success.
+[2018-09-11 12:29:04.822] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:29:17.196] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:29:46.936] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:29:46.941] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:29:46.942] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:29:46.990] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:29:46.991] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:29:47.094] [setup] [info] Program Linking finished.
+[2018-09-11 12:29:47.095] [setup] [info] Linking Program Success.
+[2018-09-11 12:29:47.106] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:30:53.352] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:36:28.729] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:36:28.733] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:36:28.734] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:36:28.772] [setup] [critical] Shader Compile Failed. info log :
+0(48) : error C1008: undefined variable "tes_normal"
+0(49) : error C1008: undefined variable "tes_normal"
+0(50) : error C1008: undefined variable "tes_normal"
+0(52) : error C1008: undefined variable "tes_normal"
+0(52) : error C1008: undefined variable "tes_normal"
+
+[2018-09-11 12:36:28.772] [setup] [error] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile failed.
+[2018-09-11 12:36:28.773] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-11 12:36:28.773] [setup] [critical] Critical error occurred. program exit.
+[2018-09-11 12:36:39.610] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:36:39.616] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:36:39.617] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:36:39.654] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:36:39.658] [setup] [critical] Shader Compile Failed. info log :
+0(12) : error C1008: undefined variable "gs_texCoords"
+0(12) : error C1008: undefined variable "tes_texCoords"
+
+[2018-09-11 12:36:39.659] [setup] [error] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile failed.
+[2018-09-11 12:36:39.659] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-11 12:36:39.660] [setup] [critical] Critical error occurred. program exit.
+[2018-09-11 12:36:52.951] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:36:52.955] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:36:52.956] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:36:52.956] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:36:53.005] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:36:53.007] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:36:53.109] [setup] [info] Program Linking finished.
+[2018-09-11 12:36:53.110] [setup] [info] Linking Program Success.
+[2018-09-11 12:36:53.120] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:37:37.086] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:40:05.683] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:40:05.687] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:40:05.688] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:40:05.726] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:40:05.729] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:40:05.731] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:40:05.849] [setup] [info] Program Linking finished.
+[2018-09-11 12:40:05.851] [setup] [info] Linking Program Success.
+[2018-09-11 12:40:05.862] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:40:38.604] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:41:20.773] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:41:20.777] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:41:20.777] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:41:20.817] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:41:20.820] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:41:20.821] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:41:20.937] [setup] [info] Program Linking finished.
+[2018-09-11 12:41:20.938] [setup] [info] Linking Program Success.
+[2018-09-11 12:41:20.950] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:41:23.783] [setup] [info] Shader source change is detected
+[2018-09-11 12:41:23.818] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:41:23.819] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:41:23.820] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:41:23.821] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:41:23.821] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:41:23.887] [setup] [info] Program Linking finished.
+[2018-09-11 12:41:23.888] [setup] [info] Linking Program Success.
+[2018-09-11 12:41:31.596] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:41:34.509] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:41:34.513] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:41:34.513] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:41:34.514] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:41:34.515] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:41:34.517] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:41:34.520] [setup] [info] Program Linking finished.
+[2018-09-11 12:41:34.520] [setup] [info] Linking Program Success.
+[2018-09-11 12:41:34.539] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:41:57.401] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:42:58.178] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:42:58.183] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:42:58.229] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:42:58.230] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:42:58.231] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:42:58.232] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:42:58.358] [setup] [info] Program Linking finished.
+[2018-09-11 12:42:58.359] [setup] [info] Linking Program Success.
+[2018-09-11 12:42:58.372] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:43:52.516] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:46:57.215] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:46:57.220] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:46:57.221] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:46:57.260] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:46:57.263] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:46:57.265] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:46:57.363] [setup] [critical] Program Link Failed. info log :
+Geometry info
+-------------
+0(12) : error C7544: OpenGL requires geometry inputs to be arrays
+
+[2018-09-11 12:46:57.364] [setup] [error] Program Linking Failed
+[2018-09-11 12:46:57.364] [setup] [error] Failed to init EngineTerrain (cannot open shader or compile failed)
+[2018-09-11 12:46:57.365] [setup] [critical] Critical error occurred. program exit.
+[2018-09-11 12:47:09.536] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:47:09.540] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:47:09.541] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:47:09.542] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:47:09.580] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:47:09.581] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:47:09.684] [setup] [info] Program Linking finished.
+[2018-09-11 12:47:09.685] [setup] [info] Linking Program Success.
+[2018-09-11 12:47:09.696] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:47:14.691] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:47:24.073] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:47:24.077] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:47:24.078] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:47:24.078] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:47:24.079] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:47:24.118] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:47:24.244] [setup] [info] Program Linking finished.
+[2018-09-11 12:47:24.245] [setup] [info] Linking Program Success.
+[2018-09-11 12:47:24.256] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:47:28.668] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:47:44.330] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:47:44.336] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:47:44.336] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:47:44.337] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:47:44.338] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:47:44.339] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:47:44.341] [setup] [info] Program Linking finished.
+[2018-09-11 12:47:44.343] [setup] [info] Linking Program Success.
+[2018-09-11 12:47:44.356] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:48:03.918] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:48:34.946] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:48:34.951] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:48:35.014] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:48:35.015] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:48:35.016] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:48:35.016] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:48:35.166] [setup] [info] Program Linking finished.
+[2018-09-11 12:48:35.167] [setup] [info] Linking Program Success.
+[2018-09-11 12:48:35.179] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:48:39.935] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:48:44.342] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:48:44.347] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:48:44.347] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:48:44.348] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:48:44.349] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:48:44.349] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:48:44.351] [setup] [info] Program Linking finished.
+[2018-09-11 12:48:44.355] [setup] [info] Linking Program Success.
+[2018-09-11 12:48:44.366] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:48:54.462] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 12:59:10.189] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 12:59:10.196] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 12:59:10.197] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 12:59:10.197] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 12:59:10.198] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 12:59:10.200] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 12:59:10.203] [setup] [info] Program Linking finished.
+[2018-09-11 12:59:10.203] [setup] [info] Linking Program Success.
+[2018-09-11 12:59:10.217] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 12:59:17.779] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+[2018-09-11 12:59:17.781] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+
+[2018-09-11 13:01:39.242] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:01:39.289] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:01:39.293] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:01:39.295] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:01:39.297] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:01:39.299] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:01:39.403] [setup] [info] Program Linking finished.
+[2018-09-11 13:01:39.404] [setup] [info] Linking Program Success.
+[2018-09-11 13:01:39.418] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:01:41.164] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+[2018-09-11 13:01:41.166] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+
+[2018-09-11 13:01:48.214] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:01:48.219] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:01:48.219] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:01:48.220] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:01:48.221] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:01:48.221] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:01:48.223] [setup] [info] Program Linking finished.
+[2018-09-11 13:01:48.225] [setup] [info] Linking Program Success.
+[2018-09-11 13:01:48.236] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:01:48.594] [setup] [debug] Error [ INVALID_OPERATION ] || c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+[2018-09-11 13:01:48.596] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 170 )
+
+[2018-09-11 13:02:23.490] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:02:23.495] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:02:23.496] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:02:23.496] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:02:23.497] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:02:23.498] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:02:23.500] [setup] [info] Program Linking finished.
+[2018-09-11 13:02:23.502] [setup] [info] Linking Program Success.
+[2018-09-11 13:02:23.518] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:02:24.362] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 13:05:13.679] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:05:13.683] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:05:13.684] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:05:13.685] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:05:13.686] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:05:13.687] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:05:13.689] [setup] [info] Program Linking finished.
+[2018-09-11 13:05:13.690] [setup] [info] Linking Program Success.
+[2018-09-11 13:05:13.704] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:05:17.084] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 13:17:04.180] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:17:04.184] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:17:04.185] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:17:04.186] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:17:04.187] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:17:04.187] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:17:04.189] [setup] [info] Program Linking finished.
+[2018-09-11 13:17:04.189] [setup] [info] Linking Program Success.
+[2018-09-11 13:17:04.201] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:17:08.127] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 13:18:13.849] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:18:13.853] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:18:13.854] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:18:13.854] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:18:13.855] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:18:13.891] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:18:14.006] [setup] [info] Program Linking finished.
+[2018-09-11 13:18:14.007] [setup] [info] Linking Program Success.
+[2018-09-11 13:18:14.019] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:18:18.928] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 13:19:05.377] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:19:05.382] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:19:05.383] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:19:05.383] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:19:05.384] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:19:05.385] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:19:05.387] [setup] [info] Program Linking finished.
+[2018-09-11 13:19:05.388] [setup] [info] Linking Program Success.
+[2018-09-11 13:19:05.402] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:19:40.525] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 13:20:24.476] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 13:20:24.481] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 13:20:24.482] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 13:20:24.482] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 13:20:24.483] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 13:20:24.484] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 13:20:24.485] [setup] [info] Program Linking finished.
+[2018-09-11 13:20:24.487] [setup] [info] Linking Program Success.
+[2018-09-11 13:20:24.498] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 13:20:32.551] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:09:40.416] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:09:40.433] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:09:40.433] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:09:40.433] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:09:40.434] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:09:40.434] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:09:40.439] [setup] [info] Program Linking finished.
+[2018-09-11 15:09:40.439] [setup] [info] Linking Program Success.
+[2018-09-11 15:09:40.448] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 15:09:57.619] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:10:47.805] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:10:47.807] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:10:47.808] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:10:47.808] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:10:47.808] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:10:47.808] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:10:47.810] [setup] [info] Program Linking finished.
+[2018-09-11 15:10:47.810] [setup] [info] Linking Program Success.
+[2018-09-11 15:10:47.816] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 15:11:19.099] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:11:41.385] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:11:41.387] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:11:41.388] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:11:41.389] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:11:41.389] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:11:41.389] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:11:41.391] [setup] [info] Program Linking finished.
+[2018-09-11 15:11:41.391] [setup] [info] Linking Program Success.
+[2018-09-11 15:11:41.396] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 15:12:19.738] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:12:34.059] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:12:34.062] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:12:34.062] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:12:34.062] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:12:34.063] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:12:34.063] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:12:34.064] [setup] [info] Program Linking finished.
+[2018-09-11 15:12:34.064] [setup] [info] Linking Program Success.
+[2018-09-11 15:12:34.073] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 15:12:58.570] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:13:09.279] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:13:09.281] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:13:09.282] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:13:09.282] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:13:09.283] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:13:09.283] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:13:09.285] [setup] [info] Program Linking finished.
+[2018-09-11 15:13:09.285] [setup] [info] Linking Program Success.
+[2018-09-11 15:13:09.291] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-11 15:13:46.165] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:39:53.009] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:39:53.015] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:39:53.015] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:39:53.016] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:39:53.016] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:39:53.016] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:39:53.018] [setup] [info] Program Linking finished.
+[2018-09-11 15:39:53.020] [setup] [info] Linking Program Success.
+[2018-09-11 15:39:53.023] [setup] [error] Failed to bake terrain map (open shader fail)
+[2018-09-11 15:40:08.931] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:41:00.162] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:41:00.165] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:41:00.166] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:41:00.166] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:41:00.167] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:41:00.167] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:41:00.168] [setup] [info] Program Linking finished.
+[2018-09-11 15:41:00.168] [setup] [info] Linking Program Success.
+[2018-09-11 15:41:00.169] [setup] [error] Failed to bake terrain map (open shader fail)
+[2018-09-11 15:41:05.155] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:44:15.743] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:44:15.745] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:44:15.746] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:44:15.746] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:44:15.746] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:44:15.746] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:44:15.747] [setup] [info] Program Linking finished.
+[2018-09-11 15:44:15.748] [setup] [info] Linking Program Success.
+[2018-09-11 15:44:15.748] [setup] [error] Failed to bake terrain map (open shader fail) : last_write_time(p): invalid argument: operation not permitted
+[2018-09-11 15:45:22.856] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:45:22.859] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:45:22.860] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:45:22.860] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:45:22.860] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:45:22.861] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:45:22.862] [setup] [info] Program Linking finished.
+[2018-09-11 15:45:22.862] [setup] [info] Linking Program Success.
+[2018-09-11 15:45:22.863] [setup] [error] Failed to bake terrain map (open shader fail) : last_write_time(p): invalid argument: operation not permitted
+[2018-09-11 15:46:15.032] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:47:49.777] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:47:49.779] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:47:49.780] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:47:49.780] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:47:49.781] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:47:49.781] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:47:49.782] [setup] [info] Program Linking finished.
+[2018-09-11 15:47:49.782] [setup] [info] Linking Program Success.
+[2018-09-11 15:47:49.783] [setup] [error] Failed to bake terrain map (open shader fail) : last_write_time(p): invalid argument: operation not permitted
+[2018-09-11 15:47:50.471] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 15:52:57.179] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 15:52:57.181] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 15:52:57.182] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 15:52:57.182] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 15:52:57.182] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 15:52:57.183] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 15:52:57.185] [setup] [info] Program Linking finished.
+[2018-09-11 15:52:57.185] [setup] [info] Linking Program Success.
+[2018-09-11 15:52:57.186] [setup] [error] Failed to bake terrain map (open shader fail) : last_write_time(p): invalid argument: operation not permitted
+[2018-09-11 15:52:59.331] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-11 16:03:01.179] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-11 16:03:01.181] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-11 16:03:01.181] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-11 16:03:01.181] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-11 16:03:01.182] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-09-11 16:03:01.182] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-11 16:03:01.183] [setup] [info] Program Linking finished.
+[2018-09-11 16:03:01.183] [setup] [info] Linking Program Success.
+[2018-09-11 16:03:01.183] [setup] [error] Failed to bake terrain map (open shader fail) : last_write_time(p): invalid argument: operation not permitted
+[2018-09-11 16:04:26.203] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+

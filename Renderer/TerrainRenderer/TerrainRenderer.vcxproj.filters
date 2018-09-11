@@ -141,12 +141,6 @@
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl">
       <Filter>shader</Filter>
     </None>
-    <None Include="..\resources\shader\simple_fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\simple_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
     <None Include="..\resources\shader\terrain_gs.glsl">
       <Filter>shader</Filter>
     </None>

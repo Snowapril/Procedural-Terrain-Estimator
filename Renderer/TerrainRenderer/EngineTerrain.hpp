@@ -27,6 +27,9 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
+	//unsigned int splatMap;
+	//unsigned int grassTexture;
+	//unsigned int dirtTexture;
 	unsigned int VBO;
 	unsigned int VAO;
 

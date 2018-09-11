@@ -9,10 +9,12 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 
+#include "EngineProperty.hpp"
+
 bool EngineTerrain::isInstanciated = false;
 
-constexpr std::size_t	MAX_POOL_SIZE		 = 2500;
-constexpr float			MIN_PATCH_LENGTH	 = 64.0f;
+constexpr std::size_t	MAX_POOL_SIZE		 = 3000;
+constexpr float			MIN_PATCH_LENGTH	 = 2.0f;
 constexpr float			TERRAIN_MAX_HEIGHT	 = 40.0f;
 constexpr float			TERRAIN_OFFSET		 = 0.0f;
 
@@ -74,8 +76,22 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
+	//glActiveTexture(GL_TEXTURE1);
+	//glBindTexture(GL_TEXTURE_2D, splatMap);
+	//glActiveTexture(GL_TEXTURE2);
+	//glBindTexture(GL_TEXTURE_2D, grassTexture);
+	//glActiveTexture(GL_TEXTURE3);
+	//glBindTexture(GL_TEXTURE_2D, dirtTexture);
 
 	glBindVertexArray(VAO);
+
+	glLineWidth(1.5f);
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	terrainShader->sendUniform("wireColor", glm::vec3(0.0, 0.0, 0.0));
+	glDrawArrays(GL_PATCHES, 0, vertices.size() / 4);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	terrainShader->sendUniform("wireColor", glm::vec3(1.0, 1.0, 1.0));
 	glDrawArrays(GL_PATCHES, 0, vertices.size() / 4);
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -284,8 +300,8 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
-			"../resources/shader/terrain_fs.glsl"
-			//"../resources/shader/terrain_gs.glsl"
+			"../resources/shader/terrain_fs.glsl",
+			"../resources/shader/terrain_gs.glsl",
 		});
 	}
 	
@@ -295,11 +311,27 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 		return false;
 	}
 
-	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
-		return false;
+	//if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
+	//	return false;
+
+	//TODO : this must be changed
+	bakeTerrainMap(CLIENT_WIDTH, CLIENT_HEIGHT, aspectRatio);
+
+	//if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
+	//	return false;
+	//
+	//if ((grassTexture = GLResources::CreateTexture2D("../resources/texture/terrain/grass.png", false)) == 0)
+	//	return false;
+	//
+	//if ((dirtTexture = GLResources::CreateTexture2D("../resources/texture/terrain/dirt.jpg", false)) == 0)
+	//	return false;
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMap", 0);
+	//terrainShader->sendUniform("splatMap", 1);
+	//terrainShader->sendUniform("grassTexture", 2);
+	//terrainShader->sendUniform("dirtTexture", 3);
+
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
 	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
 	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
@@ -345,22 +377,19 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 */
 void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio)
 {
-	GLShader bakeNormalMap, bakeTerrainMap;
+	GLShader bakeTerrainMap;
 
 	try
 	{
-		bakeNormalMap.loadAsset({ "../resources/shader/bakeNormalMap_vs.glsl", "../resource/shader/bakeNormalMap_fs.glsl" });
 		bakeTerrainMap.loadAsset({ "../resources/shader/bakeTerrainMap_vs.glsl", "../resource/shader/bakeTerrainMap_fs.glsl" });
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to bake terrain map (open shader fail)");
+		EngineLogger::getConsole()->error("Failed to bake terrain map (open shader fail) : {}", e.what());
 		return;
 	}
 
-	bakeNormalMap.sendUniform("heightMap", 0);
-	bakeTerrainMap.sendUniform("normalMap", 0);
-	bakeTerrainMap.sendUniform("heightMap", 1);
+	bakeTerrainMap.sendUniform("heightMap", 0);
 
 	//simple quad for baking
 	GLfloat vertices[] = 
@@ -403,33 +432,6 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 		return;
 	}
 
-	GLuint normalMap;
-	glGenTextures(1u, &normalMap);
-	glBindTexture(GL_TEXTURE_2D, normalMap);
-	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, resolutionX, resolutionY, 0, GL_RGB, GL_FLOAT, nullptr);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, normalMap, 0);
-
-	glViewport(0, 0, resolutionX, resolutionY);
-	bakeNormalMap.useProgram();
-	bakeNormalMap.sendUniform("view", captureView);
-	bakeNormalMap.sendUniform("projection", captureProjection);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, heightMap);
-
-	glBindVertexArray(quadVAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4u);
-	glBindVertexArray(0u);
-	
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
 	glGenTextures(1u, &terrainMap);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
@@ -452,8 +454,6 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, normalMap);
-	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, heightMap);
 
 	glBindVertexArray(quadVAO);
@@ -467,7 +467,6 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, ) 
 
 	glDeleteTextures(1u, &heightMap);
-	glDeleteTextures(1u, &normalMap);
 	glDeleteRenderbuffers(1u, &captureRBO);
 	glDeleteFramebuffers(1u, &captureFBO);
 	glDeleteBuffers(1u, &quadVBO);
