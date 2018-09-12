@@ -2,8 +2,13 @@
 
 layout(quads, fractional_even_spacing) in;
 
-in vec2 tcs_texCoords[];
+layout(std140) uniform VP
+{
+	mat4 view;
+	mat4 project;
+};
 
+in vec2 tcs_texCoords[];
 out vec2 tes_texCoords;
 
 uniform sampler2D terrainMap;
@@ -35,4 +40,5 @@ void main(void)
 
 	gl_Position = interpolate4(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position, gl_in[3].gl_Position);
 	gl_Position.y = height * terrainMaxHeight + terrainHeightOffset;
+	gl_Position = project * view * gl_Position;
 }

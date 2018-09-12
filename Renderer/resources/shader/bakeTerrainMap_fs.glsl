@@ -12,10 +12,10 @@ void main(void)
 	const ivec3 offset = ivec3(-1, 0, 1);
 	const vec2 size = vec2(2.0, 0.0);
 
-	float hL = textureOffset(heightMap, TexCoords, offset.xy);
-	float hR = textureOffset(heightMap, TexCoords, offset.zy);
-	float hD = textureOffset(heightMap, TexCoords, offset.yx);
-	float hU = textureOffset(heightMap, TexCoords, offset.yz);
+	float hL = textureOffset(heightMap, TexCoords, offset.xy).r;
+	float hR = textureOffset(heightMap, TexCoords, offset.zy).r;
+	float hD = textureOffset(heightMap, TexCoords, offset.yx).r;
+	float hU = textureOffset(heightMap, TexCoords, offset.yz).r;
 	
 	vec3 va = normalize(vec3(size.xy, hR - hL));
 	vec3 vb = normalize(vec3(size.yx, hU - hD));

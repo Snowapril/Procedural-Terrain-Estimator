@@ -27,6 +27,7 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
+	unsigned int heightMap;
 	//unsigned int splatMap;
 	//unsigned int grassTexture;
 	//unsigned int dirtTexture;
@@ -70,7 +71,7 @@ public:
 	void updateScene(float dt);
 
 	void drawTerrain(unsigned int drawMode) const;
-	void bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio);
+	void bakeTerrainMap(float aspectRatio);
 };
 
 #endif

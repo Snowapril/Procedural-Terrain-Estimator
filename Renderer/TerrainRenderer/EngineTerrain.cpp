@@ -9,14 +9,12 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 
-#include "EngineProperty.hpp"
-
 bool EngineTerrain::isInstanciated = false;
 
-constexpr std::size_t	MAX_POOL_SIZE		 = 3000;
-constexpr float			MIN_PATCH_LENGTH	 = 2.0f;
-constexpr float			TERRAIN_MAX_HEIGHT	 = 40.0f;
-constexpr float			TERRAIN_OFFSET		 = 0.0f;
+constexpr std::size_t	MAX_POOL_SIZE = 2500;
+constexpr float			MIN_PATCH_LENGTH = 64.0f;
+constexpr float			TERRAIN_MAX_HEIGHT = 40.0f;
+constexpr float			TERRAIN_OFFSET = 0.0f;
 
 EngineTerrain::EngineTerrain()
 	: terrainMap(0), width(0), height(0), rootPatch(nullptr), tailPatch(nullptr), terrainShader(nullptr), prevCameraPos(-1.0f)
@@ -32,7 +30,7 @@ EngineTerrain::~EngineTerrain()
 
 	tailPatch = rootPatch;
 	rootPatch = nullptr;
-	
+
 	if (tailPatch)
 		delete[] tailPatch;
 }
@@ -76,22 +74,8 @@ void EngineTerrain::drawTerrain(unsigned int drawMode) const
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
-	//glActiveTexture(GL_TEXTURE1);
-	//glBindTexture(GL_TEXTURE_2D, splatMap);
-	//glActiveTexture(GL_TEXTURE2);
-	//glBindTexture(GL_TEXTURE_2D, grassTexture);
-	//glActiveTexture(GL_TEXTURE3);
-	//glBindTexture(GL_TEXTURE_2D, dirtTexture);
 
 	glBindVertexArray(VAO);
-
-	glLineWidth(1.5f);
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	terrainShader->sendUniform("wireColor", glm::vec3(0.0, 0.0, 0.0));
-	glDrawArrays(GL_PATCHES, 0, vertices.size() / 4);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	terrainShader->sendUniform("wireColor", glm::vec3(1.0, 1.0, 1.0));
 	glDrawArrays(GL_PATCHES, 0, vertices.size() / 4);
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -126,7 +110,7 @@ void EngineTerrain::createTree(const glm::vec3& cameraPos)
 	divideNode(rootPatch, cameraPos);
 }
 
-TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent,  const glm::vec3 & originPos, float patchWidth, float patchHeight)
+TerrainPatch * EngineTerrain::createNode(TerrainPatch * parent, const glm::vec3 & originPos, float patchWidth, float patchHeight)
 {
 	TerrainPatch* newNode = tailPatch++;
 	++numPatch;
@@ -208,7 +192,7 @@ void EngineTerrain::calculateTessLevel(TerrainPatch* patch)
 	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(-patch->width, 0.0f, 0.0f)); //left adj search
 	if (tempPatch->height > patch->height)
 		patch->scaleNegativeX = 2.0f;
-	
+
 	tempPatch = findPatch(rootPatch, patch->originPos + glm::vec3(patch->width, 0.0f, 0.0f)); //right adj search
 	if (tempPatch->height > patch->height)
 		patch->scalePositiveX = 2.0f;
@@ -286,9 +270,9 @@ bool EngineTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 /**
 * @ brief		init context for rendering terrain with local files(height map, normal map, etc ..)
 * @ details		initialize resources which is needed for rendering terrain with local files pre-compared.
-				advantage of this approach is 'speed', bacause height map and normal map, etc .. are precompared, thus 
-				no need to generate in run-time.
-				disadvantage of this approach is "will generate fixed result".
+advantage of this approach is 'speed', bacause height map and normal map, etc .. are precompared, thus
+no need to generate in run-time.
+disadvantage of this approach is "will generate fixed result".
 * @ return		return boolean whether if initialization is successful or not.
 */
 bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths)
@@ -300,43 +284,29 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
-			"../resources/shader/terrain_fs.glsl",
-			"../resources/shader/terrain_gs.glsl",
-		});
+			"../resources/shader/terrain_fs.glsl"
+			//"../resources/shader/terrain_gs.glsl"
+			});
 	}
-	
+
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
 		return false;
 	}
 
-	//if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
-	//	return false;
+	if ((terrainMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
+		return false;
 
-	//TODO : this must be changed
-	bakeTerrainMap(CLIENT_WIDTH, CLIENT_HEIGHT, aspectRatio);
-
-	//if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
-	//	return false;
-	//
-	//if ((grassTexture = GLResources::CreateTexture2D("../resources/texture/terrain/grass.png", false)) == 0)
-	//	return false;
-	//
-	//if ((dirtTexture = GLResources::CreateTexture2D("../resources/texture/terrain/dirt.jpg", false)) == 0)
-	//	return false;
+	//bakeTerrainMap
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMap", 0);
-	//terrainShader->sendUniform("splatMap", 1);
-	//terrainShader->sendUniform("grassTexture", 2);
-	//terrainShader->sendUniform("dirtTexture", 3);
-
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
 	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
 	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
 
-	try 
+	try
 	{
 		tailPatch = new TerrainPatch[MAX_POOL_SIZE];
 		rootPatch = tailPatch;
@@ -355,7 +325,7 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, vertices.capacity() * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
-		
+
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)0);
 
@@ -375,13 +345,12 @@ bool EngineTerrain::initWithLocalFile(float aspectRatio, std::initializer_list<s
 * @ param		aspectRatio is needed for getting perspective matrix.
 * @ todo		save baked texture to file which can have float value.
 */
-void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio)
+void EngineTerrain::bakeTerrainMap(float aspectRatio)
 {
 	GLShader bakeTerrainMap;
-
 	try
 	{
-		bakeTerrainMap.loadAsset({ "../resources/shader/bakeTerrainMap_vs.glsl", "../resource/shader/bakeTerrainMap_fs.glsl" });
+		bakeTerrainMap.loadAsset({ "../resources/shader/bakeTerrainMap_vs.glsl", "../resources/shader/bakeTerrainMap_fs.glsl" });
 	}
 	catch (std::exception e)
 	{
@@ -389,6 +358,7 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 		return;
 	}
 
+	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform("heightMap", 0);
 
 	//simple quad for baking
@@ -411,7 +381,7 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glEnableVertexAttribArray(1u);
 	glVertexAttribPointer(1u, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)(sizeof(GLfloat) * 3));
 	glBindVertexArray(0u);
-	
+
 	glm::mat4 captureProjection = glm::perspective(glm::radians(90.f), aspectRatio, 0.1f, 10.0f);
 	glm::mat4 captureView = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
@@ -420,13 +390,7 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glGenFramebuffers(1u, &captureFBO);
 	glGenRenderbuffers(1u, &captureRBO);
 
-	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
-	glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, resolutionX, resolutionY);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
-	
-	GLuint heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.png", false)) == 0)
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
 	{
 		EngineLogger::getConsole()->error("Failed to Bake terrain map (cannot open heightMap)");
 		return;
@@ -435,18 +399,19 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glGenTextures(1u, &terrainMap);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, resolutionX, resolutionY, 0, GL_RGBA, GL_FLOAT, nullptr);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_FLOAT, nullptr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	
+
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
 	glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, resolutionX, resolutionY);
-	glFramebufferTexture2D(GL_TEXTURE_2D, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, terrainMap, 0);
-	
-	glViewport(0, 0, resolutionX, resolutionY);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, width, height);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, terrainMap, 0);
+
+	glViewport(0, 0, width, height);
 	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform("view", captureView);
 	bakeTerrainMap.sendUniform("projection", captureProjection);
@@ -460,13 +425,12 @@ void EngineTerrain::bakeTerrainMap(int resolutionX, int resolutionY, float aspec
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4u);
 	glBindVertexArray(0u);
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0u);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	//bake texture and save it to file
 	//glBindTexture(GL_TEXTURE_2D, terrainMap);
 	//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, ) 
-
-	glDeleteTextures(1u, &heightMap);
+	
 	glDeleteRenderbuffers(1u, &captureRBO);
 	glDeleteFramebuffers(1u, &captureFBO);
 	glDeleteBuffers(1u, &quadVBO);
