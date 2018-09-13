@@ -66,5 +66,5 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 
 ## MEETING
 
-매주 목요일 7시 (중앙도서관 스터디룸)/ 금요일 1시 콘텐츠랩
+매주 화요일 7시 (중앙도서관 스터디룸)/ 금요일 1시 콘텐츠랩
 코드 검수 / 마일스톤 / 방향성 토의
