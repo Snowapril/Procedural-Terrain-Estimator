@@ -142,6 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -153,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="DynamicTerrain.cpp" />
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
     <ClCompile Include="EngineCamera.cpp" />
@@ -173,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="DynamicTerrain.hpp" />
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
     <ClInclude Include="EngineCamera.hpp" />

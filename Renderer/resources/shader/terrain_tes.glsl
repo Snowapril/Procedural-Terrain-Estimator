@@ -2,9 +2,16 @@
 
 layout(quads, fractional_even_spacing) in;
 
+layout(std140) uniform VP
+{
+	mat4 view;
+	mat4 project;
+};
+
 in vec2 tcs_texCoords[];
 
 out vec2 tes_texCoords;
+out vec2 tes_tessCoords;
 
 uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
@@ -29,10 +36,12 @@ vec2 interpolate2(vec2 v0, vec2 v1, vec2 v2, vec2 v3)
 void main(void)
 {
 	vec2 terrainTexCoords = interpolate2(tcs_texCoords[0], tcs_texCoords[1], tcs_texCoords[2], tcs_texCoords[3]);
-	float height = texture(terrainMap, terrainTexCoords).r;
+	float height = texture(terrainMap, terrainTexCoords).a;
 
 	tes_texCoords = terrainTexCoords;
+	tes_tessCoords = gl_TessCoord.xy;
 
 	gl_Position = interpolate4(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position, gl_in[3].gl_Position);
 	gl_Position.y = height * terrainMaxHeight + terrainHeightOffset;
+	gl_Position = project * view * gl_Position;
 }

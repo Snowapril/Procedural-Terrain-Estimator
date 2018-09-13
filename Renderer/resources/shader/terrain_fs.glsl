@@ -1,32 +1,43 @@
 #version 430 core
 
-//uniform sampler2D terrainMap;
-//uniform sampler2D splatMap;
-//uniform sampler2D grassTexture;
-//uniform sampler2D dirtTexture;
-
-in vec3 gs_normal;
-in vec2 gs_texCoords;
-//in vec2 tes_tessCoords;
+in vec2 tes_texCoords;
+in vec2 tes_tessCoords;
 
 out vec4 fragColor;
 
+uniform float terrainMaxHeight;
+uniform float terrainHeightOffset;
+
 uniform sampler2D terrainMap;
-uniform vec3 wireColor;
+uniform sampler2D splatMap;
+uniform sampler2D dirtTexture;
+uniform sampler2D rockTexture;
+uniform sampler2D grassTexture;
 
 void main(void)
 {
-	//vec3 grass = texture(grassTexture, tes_tessCoords).rgb;
-	//vec3 dirt = texture(dirtTexture, tes_tessCoords).rgb;
-	//
-	//vec3 color = mix(grass, dirt, texture(splatMap, tes_texCoords).g);
-
-	float height = texture(terrainMap, gs_texCoords).r;
+	vec4 terrain = texture(terrainMap, tes_texCoords);
 	
-	vec3 blue = vec3(0.0f, 0.0f, 0.9f);
-	vec3 red = vec3(0.9f, 0.35f, 0.0f);
-	
-	vec3 color = mix(blue, red, height) + gs_normal * 0.0;
+	float height = terrain.w;
+	vec3 normal = normalize(terrain.xyz);
 
-	fragColor = vec4(color * wireColor, 1.0);
+	vec4 mixmap = texture(splatMap, tes_texCoords);
+	
+	vec3 dirt = texture(dirtTexture, tes_tessCoords).rgb;
+	vec3 rock = texture(rockTexture, tes_tessCoords).rgb;
+	vec3 water = texture(grassTexture, tes_tessCoords).rgb;
+	
+	vec3 finalColor = mix(dirt, water, mixmap.b);
+	finalColor = mix(finalColor, rock, mixmap.r);
+
+	vec3 lightDir = normalize(vec3(1.f, 1.f, 0.f));
+	vec3 lightDiffuse = vec3(0.9);
+	float diff = max(dot(lightDir, normal), 0.0);
+	
+	vec3 diffuse = diff * lightDiffuse;
+	vec3 ambient = vec3(0.35);
+
+	finalColor = (ambient + diffuse) * finalColor;
+
+	fragColor = vec4(finalColor, 1.0);
 }

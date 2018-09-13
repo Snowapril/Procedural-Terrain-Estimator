@@ -19,9 +19,9 @@ uniform float terrainHeightOffset;
 
 float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 {
-	float height = texture(terrainMap, t0).r;
+	float height = texture(terrainMap, t0).a;
 	p0.y = height * terrainMaxHeight + terrainHeightOffset;
-	height = texture(terrainMap, t1).r;
+	height = texture(terrainMap, t1).a;
 	p1.y = height * terrainMaxHeight + terrainHeightOffset;
 
 	vec4 view0 = view * p0;

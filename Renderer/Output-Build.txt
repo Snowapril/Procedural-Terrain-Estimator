@@ -1,0 +1,22 @@
+﻿1>------ Build started: Project: TerrainRenderer, Configuration: Debug x64 ------
+1>EngineTerrain.cpp
+1>c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\engineterrain.cpp(123): warning C4244: '=': conversion from '::size_t' to 'float', possible loss of data
+1>c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\engineterrain.cpp(124): warning C4244: '=': conversion from '::size_t' to 'float', possible loss of data
+1>   Creating library C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\TerrainRenderer.lib and object C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\TerrainRenderer.exp
+1>glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(vulkan.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(vulkan.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_monitor.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_time.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_time.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_tls.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_tls.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(egl_context.obj)' or at 'C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\glfw.pdb'; linking object as if no debug info
+1>TerrainRenderer.vcxproj -> C:\Users\User\Desktop\Github\Procedural-Terrain-Estimator\Renderer\x64\Debug\TerrainRenderer.exe
+1>Done building project "TerrainRenderer.vcxproj".
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
