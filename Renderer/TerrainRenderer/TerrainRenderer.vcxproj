@@ -196,8 +196,6 @@
     <None Include="..\resources\shader\bakeNormalMap_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
-    <None Include="..\resources\shader\simple_fs.glsl" />
-    <None Include="..\resources\shader\simple_vs.glsl" />
     <None Include="..\resources\shader\terrain_fs.glsl" />
     <None Include="..\resources\shader\terrain_gs.glsl" />
     <None Include="..\resources\shader\terrain_tcs.glsl" />

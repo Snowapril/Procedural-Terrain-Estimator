@@ -1,9 +1,32 @@
 #version 430 core
 
-in vec2 TexCoords;
-out vec4 fragColors;
+layout(triangles) in;
+layout(triangle_strip, max_vertices = 3) out;
+
+layout(std140) uniform VP
+{
+	mat4 view;
+	mat4 project;
+};
+
+in vec2 tes_texCoords[];
+
+out vec3 gs_normal;
+out vec2 gs_texCoords;
 
 void main(void)
 {
-    fragColors = vec4(vec3((TexCoords.x + TexCoords.y) / 2.0), 1.0);
+	vec3 a = gl_in[1].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+	vec3 b = gl_in[2].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+	vec3 resultN = normalize(cross(b, a));
+	
+	mat4 vp = project * view;
+
+	for (int i = 0; i < 3; i++)
+	{
+		gl_Position = vp * gl_in[i].gl_Position;
+		gs_normal = resultN;
+		gs_texCoords = tes_texCoords[i];
+		EmitVertex();
+	}
 }	

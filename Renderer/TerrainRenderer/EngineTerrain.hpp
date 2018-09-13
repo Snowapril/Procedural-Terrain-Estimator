@@ -27,6 +27,10 @@ class EngineTerrain
 {
 private:
 	unsigned int terrainMap;
+	unsigned int heightMap;
+	//unsigned int splatMap;
+	//unsigned int grassTexture;
+	//unsigned int dirtTexture;
 	unsigned int VBO;
 	unsigned int VAO;
 
@@ -48,7 +52,7 @@ private:
 private:
 	void clearTree(void);
 	void createTree(const glm::vec3& cameraPos);
-	TerrainPatch* createNode(TerrainPatch* parent, TerrainPatch::PatchType type, const glm::vec3& originPos, float patchWidth, float patchHeight);
+	TerrainPatch* createNode(TerrainPatch* parent, const glm::vec3& originPos, float patchWidth, float patchHeight);
 	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
 	bool checkDivide(const TerrainPatch* node, glm::vec3 cameraPos);
 	void registerToBufferObject(TerrainPatch* patch);
@@ -67,7 +71,7 @@ public:
 	void updateScene(float dt);
 
 	void drawTerrain(unsigned int drawMode) const;
-	void bakeTerrainMap(int resolutionX, int resolutionY, float aspectRatio);
+	void bakeTerrainMap(float aspectRatio);
 };
 
 #endif
