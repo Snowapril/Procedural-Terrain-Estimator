@@ -19,12 +19,12 @@ void main(void)
 	float hD = textureOffset(heightMap, TexCoords, offset.yx).r * terrainMaxHeight + terrainHeightOffset;
 	float hU = textureOffset(heightMap, TexCoords, offset.yz).r * terrainMaxHeight + terrainHeightOffset;
 	
-	vec3 va = normalize(vec3(size.xy, hR - hL));
-	vec3 vb = normalize(vec3(size.yx, hU - hD));
-		
-	vec3 normal = normalize(cross(va, vb));
+	//vec3 va = normalize(vec3(size.xy, hR - hL));
+	//vec3 vb = normalize(vec3(size.yx, hU - hD));
+	//	
+	//vec3 normal = normalize(cross(va, vb));
 
-	//vec3 normal = normalize(vec3(hR - hL, -2, hU - hD));
+	vec3 normal = normalize(vec3(hL - hR, 2, hD - hU));
 
 	fragColors = vec4(normal, height); 
-}
+}		

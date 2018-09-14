@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp(), camera(glm::vec3(0.0f, 30.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f))
+	: GLApp(), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
 {
 }
 

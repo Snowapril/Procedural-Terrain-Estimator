@@ -35,11 +35,19 @@ EngineTerrain::~EngineTerrain()
 
 void EngineTerrain::buildNonUniformPatch(const glm::vec3 & cameraPos, const glm::vec3& originPos) noexcept
 {
-	if (cameraPos == prevCameraPos)
-		return;
+	//if (cameraPos == prevCameraPos)
+	//	return;
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("originPos", originPos);
+	terrainShader->sendUniform("terrainMap", 0);
+	terrainShader->sendUniform("splatMap", 1);
+	terrainShader->sendUniform("dirtTexture", 2);
+	terrainShader->sendUniform("rockTexture", 3);
+	terrainShader->sendUniform("grassTexture", 4);
+	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
+	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
+	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
 
 	updateTerrain(cameraPos, originPos);
 
@@ -64,6 +72,8 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures.applyTexture();
 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	drawTerrain(drawMode);
 }
 
@@ -99,13 +109,6 @@ bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
 
-	terrainShader->useProgram();
-	terrainShader->sendUniform("terrainMap", 0);
-	terrainShader->sendUniform("splatMap", 1);
-	terrainShader->sendUniform("dirtTexture", 2);
-	terrainShader->sendUniform("rockTexture", 3);
-	terrainShader->sendUniform("grassTexture", 4);
-
 	try 
 	{
 		tileTextures.loadAsset({ std::make_pair<unsigned int, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
@@ -115,11 +118,7 @@ bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to initialize EngineTerrain");
-	}
-	
-	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
-	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
+	}	
 
 	if (!initDynamicTerrain())
 		return false;
@@ -183,7 +182,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	glGenRenderbuffers(1u, &captureRBO);
 
 	unsigned int heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.png", width, height, false)) == 0)
 	{
 		EngineLogger::getConsole()->error("Failed to Bake terrain map (cannot open heightMap)");
 		return;

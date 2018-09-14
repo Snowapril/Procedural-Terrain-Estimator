@@ -44,7 +44,7 @@ bool DynamicTerrain::initDynamicTerrain(void)
 		return false;
 	}
 
-	vertices.reserve(MAX_POOL_SIZE * 16);
+	vertices.reserve(MAX_POOL_SIZE * 24);
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -54,10 +54,13 @@ bool DynamicTerrain::initDynamicTerrain(void)
 	glBufferData(GL_ARRAY_BUFFER, vertices.capacity() * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 3));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 3));
+
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 5));
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -87,7 +90,6 @@ void DynamicTerrain::drawTerrain(unsigned int drawMode) const
 	glDrawArrays(drawMode, 0, vertices.size() / 4);
 
 	glBindVertexArray(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void DynamicTerrain::clearTree(void)
@@ -243,6 +245,13 @@ void DynamicTerrain::registerToBufferObject(TerrainPatch* patch)
 		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, -patch->height / 2.0f),
 	};
 
+	glm::vec2 patchTexCoords[] = {
+		glm::vec2(1.0f, 1.0f),
+		glm::vec2(1.0f, 0.0f),
+		glm::vec2(0.0f, 1.0f),
+		glm::vec2(0.0f, 0.0f)
+	};
+	
 	float patchLevels[] = {
 		patch->scalePositiveZ,
 		patch->scalePositiveX,
@@ -255,6 +264,8 @@ void DynamicTerrain::registerToBufferObject(TerrainPatch* patch)
 		vertices.push_back(patchVertices[i].x);
 		vertices.push_back(patchVertices[i].y);
 		vertices.push_back(patchVertices[i].z);
+		vertices.push_back(patchTexCoords[i].x);
+		vertices.push_back(patchTexCoords[i].y);
 		vertices.push_back(patchLevels[i]);
 	}
 }
@@ -267,7 +278,9 @@ bool DynamicTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 	if (node->width / 2.f < 1.0f || node->height / 2.f < 1.0f)
 		return false;
 
-	const float huddle = 2.5f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
+	cameraPos.y = 0.0f;
+
+	const float huddle = 2.7f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
 		
 	if (glm::length(cameraPos - node->originPos) > huddle)
 		return false;

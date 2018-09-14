@@ -18,7 +18,7 @@ constexpr float CAMERA_MIN_FOV		= 35.0f;
 constexpr float CAMERA_MAX_FOV		= 50.0f;
 constexpr bool	ENABLE_CULLING		= true;
 constexpr float MOUSE_SENSITIVITY	= 0.1f;
-constexpr float CAMERA_SPEED		= 12.0f;
+constexpr float CAMERA_SPEED		= 30.0f;
 
 namespace Color {
 
