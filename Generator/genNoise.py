@@ -4,6 +4,7 @@ import math
 
 import noise
 
+
 def makeNoise(_width, _height):
     ret = np.zeros((_width, _height, 3))
     

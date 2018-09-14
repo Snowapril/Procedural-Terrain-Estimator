@@ -181,7 +181,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	glGenRenderbuffers(1u, &captureRBO);
 
 	unsigned int heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.png", width, height, false)) == 0)
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/fbMnoise.png", width, height, false)) == 0)
 	{
 		EngineLogger::getConsole()->error("Failed to Bake terrain map (cannot open heightMap)");
 		return;
