@@ -144,7 +144,7 @@ void EngineCamera::sendVP(unsigned int ubo, float aspectRatio)
 	glBindBuffer(GL_UNIFORM_BUFFER, ubo);
 	
 	glm::mat4 view = glm::lookAt(position, position + direction, glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 project = glm::perspective(glm::radians(fov), aspectRatio, 3.0f, 500.0f);
+	glm::mat4 project = glm::perspective(glm::radians(fov), aspectRatio, 3.0f, 1000.0f);
 
 	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(view));
 	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(project));

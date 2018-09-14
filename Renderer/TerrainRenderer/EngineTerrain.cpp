@@ -12,7 +12,7 @@
 bool EngineTerrain::isInstanciated = false;
 
 constexpr float			TERRAIN_MAX_HEIGHT	 = 50.0f;
-constexpr float			TERRAIN_OFFSET		 = 0.0f;
+constexpr float			TERRAIN_OFFSET			= 0.0f;
 
 EngineTerrain::EngineTerrain(std::initializer_list<std::string>&& paths)
 	: DynamicTerrain(), terrainMap(0), terrainShader(nullptr), prevCameraPos(-1.f)
@@ -70,7 +70,7 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures.applyTexture();
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	drawTerrain(drawMode);
 }
