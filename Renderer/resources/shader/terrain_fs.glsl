@@ -10,6 +10,7 @@ uniform float terrainMaxHeight;
 uniform float terrainHeightOffset;
 
 uniform sampler2D terrainMap;
+
 uniform sampler2D splatMap;
 uniform sampler2D dirtTexture;
 uniform sampler2D rockTexture;

@@ -44,7 +44,27 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 * Decal volume
 * Post-processing
 
+## GENERATOR  
+
+### Already Implemented
+* Simplex-noise based height map generator
+
+### To be implemented
+* Voronoi function
+* Noise composition process
+* Weight distribution 
+* GUI interface
+
+## ESTIMATOR
+
+### To be implemented
+* Terrain type distribution by height and near tiles condition
+* Vally / basin distinct function from gradient-descent method and flood fill
+* Coast terrain generation by constant subtraction
+* Island terrain generation by invert function
+* etc...
+
 ## MEETING
 
-매주 목요일 7시 (중앙도서관 스터디룸)/ 금요일 1시 콘텐츠랩
+매주 화요일 7시 (중앙도서관 스터디룸)/ 금요일 1시 콘텐츠랩
 코드 검수 / 마일스톤 / 방향성 토의

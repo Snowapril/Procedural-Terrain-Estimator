@@ -9,8 +9,6 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 
-#include "EngineProperty.hpp"
-
 bool EngineTerrain::isInstanciated = false;
 
 constexpr float			TERRAIN_MAX_HEIGHT	 = 50.0f;
@@ -77,12 +75,13 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	drawTerrain(drawMode);
 }
 
+
 /**
 * @ brief		init context for rendering terrain with local files(height map, normal map, etc ..)
 * @ details		initialize resources which is needed for rendering terrain with local files pre-compared.
-				advantage of this approach is 'speed', bacause height map and normal map, etc .. are precompared, thus 
-				no need to generate in run-time.
-				disadvantage of this approach is "will generate fixed result".
+advantage of this approach is 'speed', bacause height map and normal map, etc .. are precompared, thus
+no need to generate in run-time.
+disadvantage of this approach is "will generate fixed result".
 * @ return		return boolean whether if initialization is successful or not.
 */
 bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
@@ -97,7 +96,7 @@ bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
 			"../resources/shader/terrain_fs.glsl",
 		});
 	}
-	
+
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
@@ -109,7 +108,7 @@ bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
 
-	try 
+	try
 	{
 		tileTextures.loadAsset({ std::make_pair<unsigned int, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
 								 std::make_pair<unsigned int, std::string>(3, "../resources/texture/terrain/rock.jpg"),
@@ -118,7 +117,7 @@ bool EngineTerrain::initTerrain(std::initializer_list<std::string>&& paths)
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to initialize EngineTerrain");
-	}	
+	}
 
 	if (!initDynamicTerrain())
 		return false;
