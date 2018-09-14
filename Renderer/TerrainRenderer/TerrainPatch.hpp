@@ -6,7 +6,7 @@
 
 class TerrainPatch
 {
-	friend class EngineTerrain;
+	friend class DynamicTerrain;
 private:
 	float width;
 	float height;

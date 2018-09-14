@@ -9,7 +9,11 @@ layout(std140) uniform VP
 };
 
 in vec2 tcs_texCoords[];
+in vec2 tcs_tileCoords[];
+
 out vec2 tes_texCoords;
+out vec2 tes_tessCoords;
+out vec2 tes_tileCoords;
 
 uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
@@ -34,9 +38,12 @@ vec2 interpolate2(vec2 v0, vec2 v1, vec2 v2, vec2 v3)
 void main(void)
 {
 	vec2 terrainTexCoords = interpolate2(tcs_texCoords[0], tcs_texCoords[1], tcs_texCoords[2], tcs_texCoords[3]);
-	float height = texture(terrainMap, terrainTexCoords).r;
+	float height = texture(terrainMap, terrainTexCoords).a;
 
 	tes_texCoords = terrainTexCoords;
+	tes_tessCoords = gl_TessCoord.xy;
+
+	tes_tileCoords = interpolate2(tcs_tileCoords[0], tcs_tileCoords[1], tcs_tileCoords[2], tcs_tileCoords[3]);
 
 	gl_Position = interpolate4(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position, gl_in[3].gl_Position);
 	gl_Position.y = height * terrainMaxHeight + terrainHeightOffset;

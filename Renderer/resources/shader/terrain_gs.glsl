@@ -3,11 +3,7 @@
 layout(triangles) in;
 layout(triangle_strip, max_vertices = 3) out;
 
-layout(std140) uniform VP
-{
-	mat4 view;
-	mat4 project;
-};
+
 
 in vec2 tes_texCoords[];
 

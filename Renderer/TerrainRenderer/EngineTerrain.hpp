@@ -19,59 +19,38 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 #include <vector>
+#include "GLTexture.hpp"
+#include "DynamicTerrain.hpp"
 
 class AssetManager;
 class GLShader;
 
-class EngineTerrain
+class EngineTerrain : public DynamicTerrain
 {
 private:
 	unsigned int terrainMap;
-	unsigned int heightMap;
-	//unsigned int splatMap;
-	//unsigned int grassTexture;
-	//unsigned int dirtTexture;
-	unsigned int VBO;
-	unsigned int VAO;
-
-	std::size_t width;
-	std::size_t height;
-	
-	std::size_t numPatch;
-	TerrainPatch* rootPatch;
-	TerrainPatch* tailPatch;
+	unsigned int splatMap;
 
 	GLShader* terrainShader;
-
-	std::vector<float> vertices;
-
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
-	glm::vec3 terrainCenterPos;
+
+	GLTexture tileTextures;
 	static bool isInstanciated;
-private:
-	void clearTree(void);
-	void createTree(const glm::vec3& cameraPos);
-	TerrainPatch* createNode(TerrainPatch* parent, const glm::vec3& originPos, float patchWidth, float patchHeight);
-	void divideNode(TerrainPatch* node, const glm::vec3 & cameraPos);
-	bool checkDivide(const TerrainPatch* node, glm::vec3 cameraPos);
-	void registerToBufferObject(TerrainPatch* patch);
-	void calculateTessLevel(TerrainPatch* patch);
-	TerrainPatch* findPatch(TerrainPatch* patch, const glm::vec3& targetPos);
-	void traverseQuadtree(TerrainPatch* patch);
 public:
-	EngineTerrain();
-	~EngineTerrain();
+	EngineTerrain() = default;
+	EngineTerrain(std::initializer_list<std::string>&& paths);
+	virtual ~EngineTerrain();
 	EngineTerrain(const EngineTerrain& other) = delete;
 	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
-	bool initWithLocalFile(float aspectRatio, std::initializer_list<std::string>&& paths);
+	bool initTerrain(std::initializer_list<std::string>&& paths);
 
 	void buildNonUniformPatch(const glm::vec3& cameraPos, const glm::vec3& originPos) noexcept;
 	void updateScene(float dt);
 
-	void drawTerrain(unsigned int drawMode) const;
-	void bakeTerrainMap(float aspectRatio);
+	void drawScene(unsigned int drawMode) const;
+	void bakeTerrainMap(void);
 };
 
 #endif

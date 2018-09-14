@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp(), terrain(), camera(glm::vec3(0.0f, 30.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f))
+	: GLApp(), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -50,9 +50,11 @@ void EngineApp::drawScene(void) const
 	const float totalTime = timer.getTotalTime();
 
 	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
+	/// draw call here.
+	
+	terrain.drawScene(GL_PATCHES);
 
-	terrain.drawTerrain(GL_PATCHES);
-
+	/// end of draw call
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
@@ -76,12 +78,19 @@ bool EngineApp::initEngine(void)
 	if (!initUniformBufferObject())
 		return false;
 
-	if (!terrain.initWithLocalFile(GLApp::getAspectRatio(), {}))
+	if (!terrain.initTerrain({}))
 		return false;
+
+	onResize(clientWidth, clientHeight);
 
 	return true;
 }
 
+/**
+* @ brief		initialize uniform buffer object
+* @ details		uniform buffer object is useful when many shader use common uniform variable.
+* @ return		return boolean whether if initializing uniform buffer object is successful or not.
+*/
 bool EngineApp::initUniformBufferObject(void)
 {
 	glGenBuffers(1, &vpUBO);
@@ -128,7 +137,8 @@ bool EngineApp::initShader(void)
 }
 
 /**
-
+* @ brief		load textures and register to OpenGL Context.
+* @ return		return boolean whether if loading and registering texture are successful or not.
 */
 bool EngineApp::initTextures(void)
 {
