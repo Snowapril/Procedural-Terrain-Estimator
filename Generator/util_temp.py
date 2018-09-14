@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import noise
 
 def fract1(x) :
     return x - int(x)
@@ -45,3 +46,25 @@ def fbm2(x, y, num_octaves = 5) :
         a *= 0.5
 
     return v
+
+def fract(n):
+    return n-np.floor(n)
+
+def hash3(n):
+    return fract(np.sin(n+np.array([0.0,13.1,31.3]))*158.5453123)
+
+def vnoise(y, x, u, v):
+    p = np.array([y,x])
+    k = 1.0 + 63.0*pow(1.0-v,4.0)
+    va = 0.0
+    wt = 0.0
+    for j in range([-2,2]):
+        for i in range([-2,2]):
+            g = np.array([i,j])
+            o = hash3(p+g)*np.array([u,u,1.0])
+            r = g + np.array([o[0],o[1]])
+            d = np.dot(r,r)
+            w = math.pow(1.0-smoothstep(0.0,1.414,math.sqrt(d)),k)
+            va += w*o[2]
+            wt += w
+    return va/wt
