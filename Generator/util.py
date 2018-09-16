@@ -58,8 +58,8 @@ def vnoise(y, x, u, v):
     k = 1.0 + 63.0*pow(1.0-v,4.0)
     va = 0.0
     wt = 0.0
-    for j in range([-2,2]):
-        for i in range([-2,2]):
+    for j in range(-2,3):
+        for i in range(-2,3):
             g = np.array([i,j])
             o = hash3(p+g)*np.array([u,u,1.0])
             r = g + np.array([o[0],o[1]])
