@@ -34,22 +34,22 @@ private:
 	GLShader* terrainShader;
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
+	glm::vec3 terrainOriginPos;
 
 	GLTexture tileTextures;
 	static bool isInstanciated;
 public:
 	EngineTerrain() = default;
-	EngineTerrain(std::initializer_list<std::string>&& paths);
+	EngineTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths);
 	virtual ~EngineTerrain();
 	EngineTerrain(const EngineTerrain& other) = delete;
 	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
-	bool initTerrain(std::initializer_list<std::string>&& paths);
+	bool initTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths);
 
-	void buildNonUniformPatch(const glm::vec3& cameraPos, const glm::vec3& originPos) noexcept;
-	void updateScene(float dt);
-
+	void updateScene(float dt, const glm::vec3& cameraPos);
 	void drawScene(unsigned int drawMode) const;
+
 	void bakeTerrainMap(void);
 };
 

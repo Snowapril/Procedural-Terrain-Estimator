@@ -44,7 +44,7 @@ bool DynamicTerrain::initDynamicTerrain(void)
 		return false;
 	}
 
-	vertices.reserve(MAX_POOL_SIZE * 24);
+	vertices.reserve(MAX_POOL_SIZE * 16);
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -54,13 +54,10 @@ bool DynamicTerrain::initDynamicTerrain(void)
 	glBufferData(GL_ARRAY_BUFFER, vertices.capacity() * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 3));
-
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(sizeof(float) * 5));
+	glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 3));
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -244,13 +241,6 @@ void DynamicTerrain::registerToBufferObject(TerrainPatch* patch)
 		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, patch->height / 2.0f),
 		patch->originPos + glm::vec3(-patch->width / 2.0f, 0.0f, -patch->height / 2.0f),
 	};
-
-	glm::vec2 patchTexCoords[] = {
-		glm::vec2(1.0f, 1.0f),
-		glm::vec2(1.0f, 0.0f),
-		glm::vec2(0.0f, 1.0f),
-		glm::vec2(0.0f, 0.0f)
-	};
 	
 	float patchLevels[] = {
 		patch->scalePositiveZ,
@@ -264,8 +254,6 @@ void DynamicTerrain::registerToBufferObject(TerrainPatch* patch)
 		vertices.push_back(patchVertices[i].x);
 		vertices.push_back(patchVertices[i].y);
 		vertices.push_back(patchVertices[i].z);
-		vertices.push_back(patchTexCoords[i].x);
-		vertices.push_back(patchTexCoords[i].y);
 		vertices.push_back(patchLevels[i]);
 	}
 }

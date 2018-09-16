@@ -35,7 +35,7 @@ float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 	float d0 = clamp((abs(p0.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0); 
 	float d1 = clamp((abs(p1.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0);
 
-	float t = mix(64, 2, (d0 + d1) * 0.5);
+	float t = mix(32, 4, (d0 + d1) * 0.5);
 
 	/*
 	if (t <= 2.0)

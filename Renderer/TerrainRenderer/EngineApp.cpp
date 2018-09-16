@@ -32,8 +32,9 @@ void EngineApp::updateScene(float dt)
 
 	const glm::vec3 cameraPos = camera.getViewPos();
 
-	terrain.updateScene(dt);
-	terrain.buildNonUniformPatch(cameraPos, glm::vec3(0.0f));
+	terrain.updateScene(dt, cameraPos);
+	
+	//EngineGUI::updateGUI(dt, clientHeight);
 }
 
 /**
@@ -58,6 +59,8 @@ void EngineApp::drawScene(void) const
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
+
+	//EngineGUI::renderGUI();
 }
 
 /**
@@ -69,6 +72,9 @@ bool EngineApp::initEngine(void)
 	if (!GLApp::initGLApp())
 		return false;
 
+	if (!EngineGUI::initGUI(window))
+		return false;
+
 	if (!initAssets())
 		return false;
 
@@ -78,7 +84,7 @@ bool EngineApp::initEngine(void)
 	if (!initUniformBufferObject())
 		return false;
 
-	if (!terrain.initTerrain({}))
+	if (!terrain.initTerrain(glm::vec3(0.0f), {}))
 		return false;
 
 	onResize(clientWidth, clientHeight);
