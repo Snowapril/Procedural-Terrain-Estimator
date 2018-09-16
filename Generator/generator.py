@@ -7,7 +7,7 @@ import genNoise
 from scipy.ndimage import gaussian_filter
 
 def main():
-    f = open('foo.png', 'wb')      # binary mode is important
+    f = open('foo_voronoi.png', 'wb')      # binary mode is important
     w = png.Writer(1024, 1024, bitdepth=16)
     # x = genNoise.makeNoise(1024,1024)
     x = genNoise.getVoronoi(1024, 1024)
