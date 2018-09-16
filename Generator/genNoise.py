@@ -1,6 +1,6 @@
 import util
 import numpy as np
-
+import time
 
 def getfbM(_width, _height) :
     ret = np.zeros((_width, _height, 3))
@@ -33,12 +33,15 @@ def getSimplex(_width, _height):
 
 def getVoronoi(_width, _height):
     ret = np.zeros((_width, _height, 3))
+    t0 = time.clock()
     for i in range(0, _width):
-        print(str(i))
+        # print(str(i))
         for j in range(0, _height):
-            x = util.vnoise(i / 1000.0, j / 1000.0, 1, 1)
+            x = util.vnoise2(i/100.0, j/100.0)
             for k in range(0,3):
                 ret[i][j][k] += x
+    t1 = time.clock()
+    print("%.8f" % (t1-t0))
     return ret
 
 

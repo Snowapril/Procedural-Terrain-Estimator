@@ -1,6 +1,7 @@
 import numpy as np
 import math
 import noise
+import time
 
 def fract1(x) :
     return x - int(x)
@@ -16,10 +17,6 @@ def rand2(n) :
 
 def mix(x, y, a) :
     return x * (1 - a) + y * a
-
-def smoothstep(edge0, edge1, x):
-    t = np.clip(((x - edge0) / (edge1 - edge0)), 0.0, 1.0)
-    return t * t * (3.0 - 2.0 * t)
 
 def noise2(x, y) :
     n = np.array([x, y], dtype=np.float32)
@@ -37,8 +34,11 @@ def fbm2(x, y, num_octaves = 5) :
     v = 0.0
     a = 0.5
 
+    coscos = math.cos(0.5)
+    sinsin = math.sin(0.5)
+
     shift = np.array([100, 100])
-    rot = np.array([[math.cos(0.5), math.sin(0.5)], [-math.sin(0.5), math.cos(0.5)]])
+    rot = np.array([[coscos,sinsin ], [-sinsin, coscos]])
 
     for i in range(num_octaves) :
         v += a * noise2(n[0], n[1])
@@ -50,24 +50,28 @@ def fbm2(x, y, num_octaves = 5) :
 def fract(n):
     return n-np.floor(n)
 
-def hash3(n):
-    q = np.array([np.dot(n,np.array([127.1,311.7])), 
-				  np.dot(n,np.array([269.5,183.3])), 
-				  np.dot(n,np.array([419.2,371.9]))])
-    return fract(np.sin(q)*43758.5453)
+def vnoise2(x, y) :
+    t0 = time.clock()
+    n = np.array([x, y]).astype(np.float32)
 
-def vnoise(y, x, u, v):
-    p = np.array([y,x])
-    k = 1.0 + 63.0*pow(1.0-v,4.0)
-    va = 0.0
-    wt = 0.0
-    for j in range(-2,3):
-        for i in range(-2,3):
-            g = np.array([i,j])
-            o = hash3(p+g)*np.array([u,u,1.0])
-            r = g + np.array([o[0],o[1]])
-            d = np.dot(r,r)
-            w = math.pow(1.0-smoothstep(0.0,1.414,math.sqrt(d)),k)
-            va += w*o[2]
-            wt += w
-    return va/wt
+    F1 = 8.0
+
+    for j in range(-1, 2) :
+        for i in range(-1, 2) :
+            g = np.array([i, j]).astype(np.float32)
+            p = n+g
+            o = fract2(np.sin(np.array([np.dot(p, np.array([127.1, 311.7])), np.dot(p, np.array([269.5, 183.3]))])) * 43758.5453)
+            o = 0.5 + 0.41 * np.sin(6.2831 * o)
+            r = g + o
+
+            d = np.dot(r, r)
+
+            if (d < F1) :
+                F1 = d
+
+    c = F1
+
+    t1 = time.clock()
+    # print("%.8f" % (t1-t0))
+
+    return c
