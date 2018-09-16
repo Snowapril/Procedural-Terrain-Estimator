@@ -18,6 +18,10 @@ def rand2(n) :
 def mix(x, y, a) :
     return x * (1 - a) + y * a
 
+def smoothstep(edge0, edge1, x):
+   t = ((x - edge0) / (edge1 - edge0)).clip(0.0, 1.0)
+   return t * t * (3.0 - 2.0 * t)
+
 def noise2(x, y) :
     n = np.array([x, y], dtype=np.float32)
     d = np.array([0.0, 1.0], dtype=np.float32)
@@ -75,3 +79,15 @@ def vnoise2(x, y) :
     # print("%.8f" % (t1-t0))
 
     return c
+
+def voronoiWorker(_x, _y, _width, _height) :
+    ret = np.zeros((_width, _height, 3))
+
+    for i in range(_x, _width):
+        # print(str(i))
+        for j in range(_y, _height):
+            x = vnoise2(i / 100.0, j / 100.0)
+            for k in range(0, 3):
+                ret[i][j][k] += x
+
+    return ret

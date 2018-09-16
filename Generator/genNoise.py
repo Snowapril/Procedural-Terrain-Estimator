@@ -1,6 +1,7 @@
 import util
 import numpy as np
 import time
+import concurrent.futures
 
 def getfbM(_width, _height) :
     ret = np.zeros((_width, _height, 3))
@@ -34,12 +35,19 @@ def getSimplex(_width, _height):
 def getVoronoi(_width, _height):
     ret = np.zeros((_width, _height, 3))
     t0 = time.clock()
-    for i in range(0, _width):
-        # print(str(i))
-        for j in range(0, _height):
-            x = util.vnoise2(i/100.0, j/100.0)
-            for k in range(0,3):
-                ret[i][j][k] += x
+
+    with ThreadPoolExecuter() as pool :
+        fs = []
+
+        workerWidth = _width / 4
+        workerHeight = _height / 4
+
+        for i in range(0, 4) :
+            for j in range(0, 4) :
+                fs.append(pool.submit(util.voronoiWorker(j * workerWidth, i * workerHeight, workerWidth, workerHeight)))
+
+        pool.wait(fs)
+
     t1 = time.clock()
     print("%.8f" % (t1-t0))
     return ret
