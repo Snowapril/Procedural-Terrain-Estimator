@@ -18,7 +18,7 @@ def mix(x, y, a) :
     return x * (1 - a) + y * a
 
 def smoothstep(edge0, edge1, x):
-    t = ((x - edge0) / (edge1 - edge0)).clip(0.0, 1.0)
+    t = np.clip(((x - edge0) / (edge1 - edge0)), 0.0, 1.0)
     return t * t * (3.0 - 2.0 * t)
 
 def noise2(x, y) :
@@ -51,15 +51,18 @@ def fract(n):
     return n-np.floor(n)
 
 def hash3(n):
-    return fract(np.sin(n+np.array([0.0,13.1,31.3]))*158.5453123)
+    q = np.array([np.dot(n,np.array([127.1,311.7])), 
+				  np.dot(n,np.array([269.5,183.3])), 
+				  np.dot(n,np.array([419.2,371.9]))])
+    return fract(np.sin(q)*43758.5453)
 
 def vnoise(y, x, u, v):
     p = np.array([y,x])
     k = 1.0 + 63.0*pow(1.0-v,4.0)
     va = 0.0
     wt = 0.0
-    for j in range([-2,2]):
-        for i in range([-2,2]):
+    for j in range(-2,3):
+        for i in range(-2,3):
             g = np.array([i,j])
             o = hash3(p+g)*np.array([u,u,1.0])
             r = g + np.array([o[0],o[1]])
