@@ -7,8 +7,9 @@ def getfbM(_width, _height) :
 
     for i in range(0, _width) :
         for j in range(0, _height) :
+            x = util.fbm2(i / 100.0, j / 100.0)
             for k in range(0, 3) :
-                ret[i][j][k] += util.fbm2(i / 100.0, j / 100.0)
+                ret[i][j][k] += x
 
     return ret
 
@@ -16,24 +17,28 @@ def getPerlin(_width, _height):
     ret = np.zeros((_width, _height, 3))
     for i in range(0, _width):
         for j in range(0, _height):
+            x = util.noise.snoise2(i / 100.0, j / 100.0, 2)
             for k in range(0,3):
-                ret[i][j][k] = util.noise.snoise2(i / 100.0, j / 100.0, 2)
+                ret[i][j][k] = x
     return ret
 
 def getSimplex(_width, _height):
     ret = np.zeros((_width, _height, 3))
     for i in range(0, _width):
         for j in range(0, _height):
+            x = util.noise.pnoise2(i / 100.0, j / 100.0, 2)
             for k in range(0,3):
-                ret[i][j][k] += util.noise.pnoise2(i / 100.0, j / 100.0, 2)
+                ret[i][j][k] += x
     return ret
 
 def getVoronoi(_width, _height):
     ret = np.zeros((_width, _height, 3))
     for i in range(0, _width):
+        print(str(i))
         for j in range(0, _height):
+            x = util.vnoise(i / 1000.0, j / 1000.0, 1, 1)
             for k in range(0,3):
-                ret[i][j][k] += util.vnoise(i / 100.0, j / 100.0, 1, 1)
+                ret[i][j][k] += x
     return ret
 
 
