@@ -6,9 +6,6 @@ in vec2 tes_tileCoords;
 
 out vec4 fragColor;
 
-uniform float terrainMaxHeight;
-uniform float terrainHeightOffset;
-
 uniform sampler2D terrainMap;
 
 uniform sampler2D splatMap;
@@ -36,7 +33,7 @@ void main(void)
 	vec3 mixColor = mix(blue, red, height);
 
 	vec3 finalColor = mix(dirt, water, mixmap.b);
-	finalColor = mix(finalColor, rock, mixmap.r) * 0.0 + mixColor;
+	finalColor = mix(finalColor, rock, mixmap.r) * 1.0 + 0.0 * mixColor;
 
 	vec3 lightDir = normalize(vec3(1.f, 1.f, 0.f));
 	vec3 lightDiffuse = vec3(0.9);

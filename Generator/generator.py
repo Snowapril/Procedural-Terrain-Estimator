@@ -10,7 +10,7 @@ def main():
     f = open('foo_voronoi.png', 'wb')      # binary mode is important
     w = png.Writer(1024, 1024, bitdepth=16)
     # x = genNoise.makeNoise(1024,1024)
-    x = genNoise.getVoronoi(1024, 1024)
+    x = genNoise.getNoise(1024, 1024, num_thread=16, noise_func=genNoise.getVoronoi)
     # print(x)
     z = (65535*((x - x.min())/x.ptp())).astype(np.uint16)
     # print(z)
