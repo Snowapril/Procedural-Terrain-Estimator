@@ -31,10 +31,10 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 * Non-uniform patch with quad tree
 * Tessellated terrain with height map
 * Dynamic Level of Detal
-
-### To be implemented
 * Splat map
 * Terrain map
+* 
+### To be implemented
 * Water rendering
 * Water reflection & Skybox
 * Lighting & Shading
