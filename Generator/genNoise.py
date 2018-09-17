@@ -4,57 +4,49 @@ import time
 import math
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 
-def getfbM(_x, _y, _width, _height) :
+def getfbM(ret,_x, _y, _width, _height) :
     ret = np.zeros((_width, _height, 3))
 
     for i in range(0, _width) :
         for j in range(0, _height) :
             x = util.fbm2((_x + i) / 100.0, (_y + j) / 100.0)
-            for k in range(0, 3) :
-                ret[i][j][k] += x
+            ret[_x+i][_y+j][0:3] = [x, x, x]
 
     return ret
 
-def getPerlin(_x, _y, _width, _height):
+def getPerlin(ret,_x, _y, _width, _height):
     ret = np.zeros((_width, _height, 3))
     for i in range(0, _width):
         for j in range(0, _height):
             x = util.noise.snoise2((_x + i) / 100.0, (_y + j) / 100.0, 2)
-            for k in range(0,3):
-                ret[i][j][k] = x
+            ret[_x+i][_y+j][0:3] = [x, x, x]
 
     return ret
 
-def getSimplex(_x, _y, _width, _height):
+def getSimplex(ret,_x, _y, _width, _height):
     ret = np.zeros((_width, _height, 3))
     for i in range(0, _width):
         for j in range(0, _height):
             x = util.noise.pnoise2((i + _x) / 100.0, (j + _y) / 100.0, 2)
-            for k in range(0,3):
-                ret[i][j][k] += x
-    return ret
+            ret[_x+i][_y+j][0:3] = [x, x, x]
 
-def getVoronoi(_x, _y, _width, _height):
-    ret = np.zeros((_width, _height, 3))
+def getVoronoi(ret,_x, _y, _width, _height):
     for i in range(0, _width):
         for j in range(0, _height):
             x = util.vnoise2((_x + i) / 100.0, (_y + j) / 100.0)
-            ret[i][j][0:3] = [x, x, x]
-
+            ret[_x+i][_y+j][0:3] = [x, x, x]
     print (ret)
-    return ret
 
 def getNoise(_width, _height, num_thread, noise_func) :
+    ret = np.zeros((_width, _height, 3))
     bandwidth = math.sqrt(num_thread)
 
     if math.isclose(bandwidth, int(bandwidth)) == False :
         raise Exception("num thread argument must be square of two")
 
     startTime = time.clock()
-    result = None
 
     with ThreadPoolExecutor(max_workers=num_thread) as pool :
-        fs = []
 
         bandwidth = int(bandwidth)
 
@@ -63,28 +55,14 @@ def getNoise(_width, _height, num_thread, noise_func) :
 
         for i in range(0, bandwidth) :
             for j in range(0, bandwidth) :
-                fs.append(pool.submit(noise_func, j * workerWidth, i * workerHeight, workerWidth, workerHeight))
+                pool.submit(noise_func, ret, j * workerWidth, i * workerHeight, workerWidth, workerHeight)
 
         pool.shutdown()
-
-        first = False
-        for i in range(0, bandwidth) :
-            oneRow = fs[i * bandwidth].result()
-            for j in range(1, bandwidth):
-                rowTuple = (oneRow, fs[i * bandwidth + j].result())
-                oneRow = np.concatenate(rowTuple)
-
-            if first == False:
-                result = oneRow
-                first = True
-            else :
-                colTuple = (result, oneRow)
-                result = np.concatenate(colTuple, axis=1)
 
     endTime = time.clock()
     print (endTime - startTime, "second")
 
-    return result
+    return ret
 
 
 def makeNoise(_width, _height):
