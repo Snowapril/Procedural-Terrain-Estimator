@@ -2,7 +2,7 @@ import util
 import numpy as np
 import time
 import math
-from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
+from multiprocessing import Process
 
 def getfbM(ret,_x, _y, _width, _height) :
     ret = np.zeros((_width, _height, 3))
@@ -39,25 +39,27 @@ def getVoronoi(ret,_x, _y, _width, _height):
 
 def getNoise(_width, _height, num_thread, noise_func) :
     ret = np.zeros((_width, _height, 3))
-    bandwidth = math.sqrt(num_thread)
+    bandwidth = int(math.sqrt(num_thread))
 
-    if math.isclose(bandwidth, int(bandwidth)) == False :
-        raise Exception("num thread argument must be square of two")
+    if bandwidth % 2 != 0 :
+        raise Exception("num processes argument must be square of even number")
 
     startTime = time.clock()
 
-    with ThreadPoolExecutor(max_workers=num_thread) as pool :
+    bandwidth = int(bandwidth)
 
-        bandwidth = int(bandwidth)
+    workerWidth = int(_width / bandwidth)
+    workerHeight = int(_height / bandwidth)
 
-        workerWidth = int(_width / bandwidth)
-        workerHeight = int(_height / bandwidth)
+    processes = []
+    for i in range(0, bandwidth):
+        for j in range(0, bandwidth):
+            process = Process(target=noise_func, args=(ret, j * workerWidth, i * workerHeight, workerWidth, workerHeight, ))
+            process.start()
+            processes.append(process)
 
-        for i in range(0, bandwidth) :
-            for j in range(0, bandwidth) :
-                pool.submit(noise_func, ret, j * workerWidth, i * workerHeight, workerWidth, workerHeight)
-
-        pool.shutdown()
+    for process in processes:
+        process.join()
 
     endTime = time.clock()
     print (endTime - startTime, "second")
@@ -80,7 +82,7 @@ def makeNoise(_width, _height):
     return ret
 
 def main():
-    x = getNoise(1024, 1024, 16, getVoronoi)
+    x = getNoise(1024, 1024, 4, getVoronoi)
     print(x)
 
 if __name__ == "__main__":

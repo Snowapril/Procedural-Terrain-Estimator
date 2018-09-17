@@ -31,6 +31,8 @@ private:
 	unsigned int terrainMap;
 	unsigned int splatMap;
 
+	float maxHeight;
+
 	GLShader* terrainShader;
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
@@ -45,6 +47,8 @@ public:
 	EngineTerrain(const EngineTerrain& other) = delete;
 	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
+	static float getProperMaxHeight(std::size_t width, std::size_t height);
+
 	bool initTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);

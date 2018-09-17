@@ -6,7 +6,7 @@
 
 EngineCamera::EngineCamera()
 	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-	pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(0.0f), direction(0.0f, -1.0f, 0.0f)
+		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(0.0f), direction(0.0f, -1.0f, 0.0f)
 {
 }
 
