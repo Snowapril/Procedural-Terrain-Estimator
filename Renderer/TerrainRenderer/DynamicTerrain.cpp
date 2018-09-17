@@ -245,8 +245,8 @@ void DynamicTerrain::registerToBufferObject(TerrainPatch* patch)
 	float patchLevels[] = {
 		patch->scalePositiveZ,
 		patch->scalePositiveX,
-		patch->scaleNegativeX,
 		patch->scaleNegativeZ,
+		patch->scaleNegativeX,
 	};
 
 	for (std::size_t i = 0; i < 4; ++i)

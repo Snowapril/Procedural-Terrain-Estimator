@@ -48,10 +48,10 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 	terrainShader->sendUniform("rockTexture", 3);
 	terrainShader->sendUniform("grassTexture", 4);
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
+	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
 
-	updateTerrain(cameraPos, terrainOriginPos);
+	DynamicTerrain::updateTerrain(cameraPos, terrainOriginPos);
 
 	prevCameraPos = cameraPos;
 }
@@ -71,7 +71,7 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
-	drawTerrain(drawMode);
+	DynamicTerrain::drawTerrain(drawMode);
 }
 
 
@@ -103,6 +103,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& terrainOriginPos, std::initiali
 
 	bakeTerrainMap();
 	this->terrainOriginPos = terrainOriginPos;
+	maxHeight = getProperMaxHeight(this->width, this->height);
 
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
@@ -171,7 +172,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	glVertexAttribPointer(1u, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)(sizeof(GLfloat) * 3));
 	glBindVertexArray(0u);
 
-	glm::mat4 captureProjection = glm::perspective(glm::radians(45.f), 1.0f, 0.1f, 10.0f);
+	glm::mat4 captureProjection = glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, 10.0f);
 	glm::mat4 captureView = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 	unsigned int captureFBO, captureRBO;
@@ -235,7 +236,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
 	
 	unsigned int heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/fbMnoise.jpg", width, height, false)) == 0)
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMapLake.png", width, height, false)) == 0)
 		return;
 
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
@@ -284,4 +285,11 @@ void EngineTerrain::bakeTerrainMap(void)
 	glDeleteBuffers(1u, &quadVBO);
 	glDeleteVertexArrays(1u, &quadVAO);
 	glDeleteTextures(1u, &heightMap);
+}
+
+float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)
+{
+	float multiplier = std::log2(min(width, height));
+
+	return static_cast<float>(multiplier * multiplier);
 }
