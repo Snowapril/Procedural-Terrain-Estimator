@@ -5,6 +5,8 @@
 #include <glad/glad.h>
 #include "GLResources.hpp"
 
+#include "GLDebugger.hpp"
+
 EngineSkybox::EngineSkybox()
 	: cubeMap(0)
 {
@@ -16,7 +18,7 @@ EngineSkybox::~EngineSkybox()
 		glDeleteTextures(1, &cubeMap);
 }
 
-bool EngineSkybox::initSkybox(const std::string& skyboxDir)
+bool EngineSkybox::initSkybox(const std::string& skyboxDir, const std::string& extension)
 {
 	assetManager = std::make_unique<AssetManager>();
 	
@@ -33,10 +35,12 @@ bool EngineSkybox::initSkybox(const std::string& skyboxDir)
 		return false;
 	}
 
+	skyboxShader->sendUniform("cubeMap", 0);
+
 	if (!skyboxMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLES))
 		return false;
 
-	if ((cubeMap = GLResources::CreateCubeMap(skyboxDir)) == 0)
+	if ((cubeMap = GLResources::CreateCubeMap(skyboxDir, extension)) == 0)
 		return false;
 
 	return true;
@@ -44,7 +48,10 @@ bool EngineSkybox::initSkybox(const std::string& skyboxDir)
 
 void EngineSkybox::drawScene(unsigned int drawMode) const
 {
+	skyboxShader->useProgram();
+
 	glDepthFunc(GL_LEQUAL);
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);
 

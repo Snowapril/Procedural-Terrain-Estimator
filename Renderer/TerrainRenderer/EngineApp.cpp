@@ -54,13 +54,12 @@ void EngineApp::drawScene(void) const
 	/// draw call here.
 	
 	terrain.drawScene(GL_PATCHES);
+	skybox.drawScene(GL_TRIANGLES);
 
 	/// end of draw call
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
-
-	skybox.drawScene(GL_TRIANGLES);
 
 	//EngineGUI::renderGUI();
 }
@@ -91,7 +90,7 @@ bool EngineApp::initEngine(void)
 
 	onResize(clientWidth, clientHeight);
 
-	if (!skybox.initSkybox("../resources/texture/skybox/sea/"))
+	if (!skybox.initSkybox("../resources/texture/skybox/interstella/", "png"))
 		return false;
 
 	return true;

@@ -19,7 +19,7 @@ public:
 	EngineSkybox();
 	~EngineSkybox();
 public:
-    bool initSkybox(const std::string& skyboxDir);
+    bool initSkybox(const std::string& skyboxDir, const std::string& extension);
     void drawScene(unsigned int drawMode) const;
 };
 

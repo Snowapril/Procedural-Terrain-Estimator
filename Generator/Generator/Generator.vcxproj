@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>../dependencies;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>../dependencies;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>../dependencies/Debug/x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,11 +121,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="Generator.cpp" />
+    <ClCompile Include="glad.c" />
+    <ClCompile Include="GLApp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EngineProperty.hpp" />
+    <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GLApp.hpp" />
+    <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="NoiseGenerator.hpp" />
     <ClInclude Include="Util.hpp" />
   </ItemGroup>

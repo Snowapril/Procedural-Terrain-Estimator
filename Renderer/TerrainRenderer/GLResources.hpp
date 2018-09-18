@@ -20,7 +20,7 @@ public:
 	static unsigned int CreateTexture2D(const std::string& path, bool gamma);
 	static unsigned int CreateTexture2DApplying3x3AverageFilter(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma);
 	static unsigned int CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma);
-	static unsigned int CreateCubeMap(const std::string& skyboxDir);
+	static unsigned int CreateCubeMap(const std::string& skyboxDir, const std::string& extension);
 };
 
 #endif

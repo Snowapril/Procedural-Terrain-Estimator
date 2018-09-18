@@ -69,9 +69,10 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures.applyTexture();
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	DynamicTerrain::drawTerrain(drawMode);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 
@@ -179,61 +180,6 @@ void EngineTerrain::bakeTerrainMap(void)
 
 	glGenFramebuffers(1u, &captureFBO);
 	glGenRenderbuffers(1u, &captureRBO);
-
-	/*stbi_set_flip_vertically_on_load(true);
-
-	int _width, _height, _nChannels;
-	unsigned char *data = stbi_load("../resources/texture/terrain/fbMnoise.png", &_width, &_height, &_nChannels, 0);
-	if (data == nullptr || _width == 0 || _height == 0 || _nChannels == 0)
-	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", "../resources/texture/terrain/fbMnoise.png");
-		return;
-	}
-
-	std::vector<unsigned short> avgData;
-	avgData.reserve(_width * _height);
-
-	auto getIndex = [&_width, &_height](int i, int j) -> int {
-		return i + j * _width;
-	};
-
-	auto isInBound = [&_width, &_height, &data](int i, int j) -> bool {
-
-		return i >= 0 && i < _width && j >= 0 && j < _height;
-	};
-
-	for (int i = 0; i < _width; ++i)
-		for (int j = 0; j < _height; ++j)
-		{
-			int count = 0;
-			int sum = 0;
-
-			for (int r = -1; r <= 1; ++r)
-				for (int c = -1; c <= 1; ++c)
-				{
-					if (isInBound(i + r, j + c))
-					{
-						++count;
-						sum += data[getIndex(i + r, j + c)];
-					}
-				}
-
-			sum = sum / static_cast<float>(count);
-			avgData.push_back(sum);
-		}
-
-	this->width = _width;
-	this->height = _height;
-
-	unsigned int heightMap;
-	glGenTextures(1u, &heightMap);
-	glBindTexture(GL_TEXTURE_2D, heightMap);
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_R16UI, _width, _height, 0, GL_RED_INTEGER, GL_UNSIGNED_SHORT, &avgData[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
 	
 	unsigned int heightMap;
 	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMapLake.png", width, height, false)) == 0)

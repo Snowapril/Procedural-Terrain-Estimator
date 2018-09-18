@@ -27,9 +27,7 @@ void GLMesh::drawMesh(unsigned int drawMode) const noexcept
 
 bool GLMesh::initWithFixedShape(MeshShape shape)
 {
-	unsigned int VAO;
-	unsigned int VBO;
-	unsigned int IBO;
+	unsigned int VAO, VBO, IBO;
 	std::size_t numElements;
 
 	switch (shape)
@@ -64,13 +62,50 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = 4;
+			numElements = sizeof(quadIndices) / sizeof(unsigned int);
 		}
 		break;
 
 		case MeshShape::QUAD_TRIANGLES :
 		{
+			GLfloat quadVertices[] =
+			{
+				-1.0f, -1.0f, -1.0f,
+				1.0f, -1.0f, -1.0f,
+				1.0f, 1.0f, -1.0f,
+				-1.0f, 1.0f, -1.0f,
+				-1.0f, -1.0f, 1.0f,
+				1.0f, -1.0f, 1.0f,
+				1.0f, 1.0f, 1.0f,
+				-1.0f, 1.0f, 1.0f,
+			};
 
+			unsigned int quadIndices[] =
+			{
+				0, 1, 3, 3, 1, 2,
+				1, 5, 2, 2, 5, 6,
+				5, 4, 6, 6, 4, 7,
+				4, 0, 7, 7, 0, 3,
+				3, 2, 7, 7, 2, 6,
+				4, 5, 0, 0, 5, 1
+			};
+
+			glGenVertexArrays(1, &VAO);
+			glGenBuffers(1, &VBO);
+			glGenBuffers(1, &IBO);
+
+			glBindVertexArray(VAO);
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices[0], GL_STATIC_DRAW);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 3, (void*)0);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(quadIndices), &quadIndices[0], GL_STATIC_DRAW);
+
+			glBindVertexArray(0);
+
+			numElements = sizeof(quadIndices) / sizeof(unsigned int);
 		}
 		break;
 
