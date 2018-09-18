@@ -86,6 +86,9 @@
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="EngineSkybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -145,6 +148,9 @@
     <ClInclude Include="DynamicTerrain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EngineSkybox.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -172,6 +178,12 @@
       <Filter>shader</Filter>
     </None>
     <None Include="..\resources\shader\terrain_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\skybox_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\skybox_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

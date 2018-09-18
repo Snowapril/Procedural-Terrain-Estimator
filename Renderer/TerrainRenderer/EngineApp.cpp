@@ -60,6 +60,8 @@ void EngineApp::drawScene(void) const
 	glBindTexture(GL_TEXTURE_2D, 0u);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
 
+	skybox.drawScene(GL_TRIANGLES);
+
 	//EngineGUI::renderGUI();
 }
 
@@ -88,6 +90,9 @@ bool EngineApp::initEngine(void)
 		return false;
 
 	onResize(clientWidth, clientHeight);
+
+	if (!skybox.initSkybox("../resources/texture/skybox/sea/"))
+		return false;
 
 	return true;
 }

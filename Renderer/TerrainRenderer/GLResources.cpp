@@ -164,7 +164,7 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 					}
 				}
 
-			sum = sum / static_cast<float>(count);
+			sum = sum / count;
 			avgData.push_back(sum);
 		}
 	
@@ -212,4 +212,10 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 
 
 	return texture;
+}
+
+unsigned int GLResources::CreateCubeMap(const std::string& skyboxDir)
+{
+	EngineLogger::getConsole()->error("Cannot load texture from {}", skyboxDir);
+	return 0;
 }

@@ -15,6 +15,7 @@
 #include <memory>
 #include "EngineTerrain.hpp"
 #include "EngineCamera.hpp"
+#include "EngineSkybox.hpp"
 
 class GLShader;
 class AssetManager;
@@ -25,6 +26,7 @@ class EngineApp : public GLApp, EngineGUI
 private:
 	unsigned int vpUBO;
 
+	EngineSkybox skybox;
 	EngineCamera camera;
 	EngineTerrain terrain;
 protected:

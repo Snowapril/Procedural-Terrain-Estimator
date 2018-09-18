@@ -7,6 +7,11 @@ GLGeometry::GLGeometry()
 
 }
 
+GLGeometry::GLGeometry(unsigned int _vao, unsigned int _vbo, unsigned int _ibo, std::size_t _numElements)
+{
+	setGeometry(_vao, _vbo, _ibo, _numElements);
+}
+
 GLGeometry::~GLGeometry()
 {
 	if (VAO)
@@ -34,4 +39,11 @@ GLGeometry& GLGeometry::operator=(const GLGeometry& other)
 	numElements = other.numElements;
 
 	return *this;
+}
+
+void GLGeometry::drawGeometry(unsigned int drawMode) const noexcept
+{
+	glBindVertexArray(VAO);
+	glDrawElements(drawMode, numElements, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }

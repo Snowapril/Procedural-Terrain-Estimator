@@ -5,6 +5,7 @@
 
 enum class MeshShape {
 	QUAD_PATCH = 0,
+	QUAD_TRIANGLES = 1,
 };
 
 class GLGeometry;
@@ -14,8 +15,8 @@ class GLMesh
 private:
 	std::shared_ptr<GLGeometry> geometrySrc;
 public:
-	GLMesh();
-	~GLMesh();
+	GLMesh() = default;
+	~GLMesh() = default;
 	GLMesh(const GLMesh& other);
 	GLMesh& operator=(const GLMesh& other);
 public:
