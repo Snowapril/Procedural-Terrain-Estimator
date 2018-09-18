@@ -168,7 +168,7 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 			avgData.push_back(sum);
 		}
 	
-	retWidth = width;
+	retWidth  = width;
 	retHeight = height;
 
 	unsigned int texture;
@@ -209,7 +209,6 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 	const std::string filename = path.substr(dirIdx + 1);
 
 	EngineLogger::getConsole()->info("Load Texture {} finished", filename);
-
 
 	return texture;
 }
