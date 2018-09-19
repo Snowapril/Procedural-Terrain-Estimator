@@ -94,16 +94,6 @@ bool GLApp::initGLConfigure(void)
 		glFrontFace(GL_CCW);
 	}
 
-	if (ENABLE_4XMSAA)
-	{
-		glEnable(GL_MULTISAMPLE);
-	}
-
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-
-	glPatchParameteri(GL_PATCH_VERTICES, 4);
-
 	return true;
 }
 

@@ -69,10 +69,8 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures.applyTexture();
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	DynamicTerrain::drawTerrain(drawMode);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 

@@ -7,6 +7,11 @@ class Generator : public GLApp
 {
 private:
 	bool isGUIOpen;
+
+	unsigned int VAO;
+	unsigned int VBO;
+	unsigned int framebuffer;
+	unsigned int framebufferTexture;
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
@@ -14,6 +19,8 @@ protected:
 
 	bool initGUI(void);
 	void updateGUI(float height);
+
+	bool saveCurrentTexture(const std::string& path);
 public:
 	Generator();
 	virtual ~Generator();
