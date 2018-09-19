@@ -4,6 +4,7 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw_gl3.h>
 #include <imgui/imgui_internal.h>
+#include "EngineProperty.hpp"
 
 using namespace ImGui;
 
@@ -24,7 +25,13 @@ void Generator::updateScene(void)
 
 void Generator::drawScene(void) const
 {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
+
+	glViewport(0, 0, 400, clientHeight);
 	ImGui::Render();
+
+	glViewport(400, 0, clientWidth - 400, clientHeight);
 }
 
 void Generator::onResize(int newWidth, int newHeight)
@@ -43,23 +50,44 @@ bool Generator::initGUI(void)
 void Generator::updateGUI(float height)
 {
 	ImGui_ImplGlfwGL3_NewFrame();
-
-	ImGui::Begin("Generator & Estimator", &isGUIOpen, ImVec2(0, 0), 0.5f, ImGuiWindowFlags_AlwaysUseWindowPadding | ImGuiWindowFlags_NoSavedSettings);
+	
+	ImGui::Begin("Generator & Estimator", &isGUIOpen, ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysUseWindowPadding | ImGuiWindowFlags_NoSavedSettings);
 	ImGui::SetWindowSize(ImVec2(400, height));
 
-	if (ImGui::CollapsingHeader("Noise Blending", 0, true, true))
+	if (ImGui::TreeNode("Perlin Noise"))
 	{
-		float a = 0.0f, b = 0.0f, c = 0.0f, d = 0.0f;
-		
-		ImGui::SliderFloat("Perlin Noise", &a, 0.0f, 1.0f);
-		ImGui::SliderFloat("Simplex Noise", &b, 0.0f, 1.0f);
-		ImGui::SliderFloat("Voronoi Noise", &c, 0.0f, 1.0f);
-		ImGui::SliderFloat("fbM Noise", &d, 0.0f, 1.0f);
+		float blend = 0.0f;
 
-		if (ImGui::Button("Set"))
-		{
-			
-		}
+		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+
+		ImGui::TreePop();
+	}
+
+	if (ImGui::TreeNode("Simplex Noise"))
+	{
+		float blend = 0.0f;
+
+		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+
+		ImGui::TreePop();
+	}
+
+	if (ImGui::TreeNode("Voronoi Noise"))
+	{
+		float blend = 0.0f;
+
+		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+
+		ImGui::TreePop();
+	}
+
+	if (ImGui::TreeNode("fbM Noise"))
+	{
+		float blend = 0.0f;
+
+		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+
+		ImGui::TreePop();
 	}
 
 	if (ImGui::CollapsingHeader("Key Support", 0, true, true))
