@@ -89,6 +89,12 @@
     <ClCompile Include="EngineSkybox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GLFramebuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -151,6 +157,12 @@
     <ClInclude Include="EngineSkybox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLFramebuffer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWater.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -184,6 +196,12 @@
       <Filter>shader</Filter>
     </None>
     <None Include="..\resources\shader\skybox_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\water_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\water_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

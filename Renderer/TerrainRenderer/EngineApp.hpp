@@ -16,6 +16,7 @@
 #include "EngineTerrain.hpp"
 #include "EngineCamera.hpp"
 #include "EngineSkybox.hpp"
+#include "EngineWater.hpp"
 
 class GLShader;
 class AssetManager;
@@ -25,15 +26,13 @@ class EngineApp : public GLApp, EngineGUI
 {
 private:
 	unsigned int vpUBO;
+	unsigned int polygonMode;
 
 	EngineSkybox skybox;
 	EngineCamera camera;
+	EngineWater water;
 	EngineTerrain terrain;
 protected:
-	bool initShader(void);
-	bool initTextures(void);
-	bool initAssets(void);
-	bool initGeometryBuffer(void);
 	bool initUniformBufferObject(void);
 
 	void updateScene(float dt);

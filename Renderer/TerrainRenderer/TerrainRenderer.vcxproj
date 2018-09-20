@@ -167,8 +167,10 @@
     <ClCompile Include="EngineSkybox.cpp" />
     <ClCompile Include="EngineTerrain.cpp" />
     <ClCompile Include="EngineTimer.cpp" />
+    <ClCompile Include="EngineWater.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLFramebuffer.cpp" />
     <ClCompile Include="GLGeometry.cpp" />
     <ClCompile Include="GLMesh.cpp" />
     <ClCompile Include="GLResources.cpp" />
@@ -190,8 +192,10 @@
     <ClInclude Include="EngineSkybox.hpp" />
     <ClInclude Include="EngineTerrain.hpp" />
     <ClInclude Include="EngineTimer.hpp" />
+    <ClInclude Include="EngineWater.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLFramebuffer.hpp" />
     <ClInclude Include="GLGeometry.hpp" />
     <ClInclude Include="GLMesh.hpp" />
     <ClInclude Include="GLResources.hpp" />
@@ -211,6 +215,8 @@
     <None Include="..\resources\shader\terrain_tcs.glsl" />
     <None Include="..\resources\shader\terrain_tes.glsl" />
     <None Include="..\resources\shader\terrain_vs.glsl" />
+    <None Include="..\resources\shader\water_fs.glsl" />
+    <None Include="..\resources\shader\water_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

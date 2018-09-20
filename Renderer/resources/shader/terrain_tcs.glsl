@@ -17,14 +17,13 @@ out vec2 tcs_tileCoords[];
 
 uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
-uniform float terrainHeightOffset;
 
 float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 {
 	float height = texture(terrainMap, t0).a;
-	p0.y = height * terrainMaxHeight + terrainHeightOffset;
+	p0.y = height * terrainMaxHeight;
 	height = texture(terrainMap, t1).a;
-	p1.y = height * terrainMaxHeight + terrainHeightOffset;
+	p1.y = height * terrainMaxHeight;
 
 	vec4 view0 = view * p0;
 	vec4 view1 = view * p1;

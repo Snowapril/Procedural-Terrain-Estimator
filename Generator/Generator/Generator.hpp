@@ -15,16 +15,29 @@ private:
 	unsigned int framebuffer;
 	unsigned int framebufferTexture;
 
+	std::unique_ptr<GLShader> generatorShader;
+	std::unique_ptr<GLShader> screenShader;
+
 	struct Voronoi {
 		float blend;
+		float frequency;
 		float function;
 		float distance_type;
 		bool multiply_by_F1;
 		bool inverse;
 	} voronoiConfigure;
 
-	std::unique_ptr<GLShader> generatorShader;
-	std::unique_ptr<GLShader> screenShader;
+	struct Simplex {
+		float blend;
+		float frequency;
+	} simplexConfigure;
+
+	struct FBM {
+		int numOctaves;
+		float blend;
+		float frequency;
+	} fbMConfigure;
+
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
@@ -35,7 +48,7 @@ protected:
 	bool initGUI(void);
 	void updateGUI(float height);
 
-	bool saveCurrentTexture(const std::string& path);
+	bool saveCurrentTexture(const std::string& path, int width, int height);
 public:
 	Generator();
 	virtual ~Generator();

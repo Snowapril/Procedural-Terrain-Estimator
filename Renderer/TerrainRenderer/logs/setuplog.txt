@@ -1152,3 +1152,141 @@
 [2018-09-18 21:57:21.633] [setup] [critical] Undefined Uniform Variable Name : grassTexture
 [2018-09-18 21:57:21.646] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
 
+[2018-09-20 17:29:53.919] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-20 17:29:53.922] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-20 17:29:53.948] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-20 17:29:53.950] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-20 17:29:53.951] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-20 17:29:54.007] [setup] [info] Program Linking finished.
+[2018-09-20 17:29:54.008] [setup] [info] Linking Program Success.
+[2018-09-20 17:29:54.009] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-09-20 17:29:54.013] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-09-20 17:29:54.019] [setup] [info] Program Linking finished.
+[2018-09-20 17:29:54.020] [setup] [info] Linking Program Success.
+[2018-09-20 17:29:54.026] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-20 17:29:54.041] [setup] [info] Load Texture splatMap.png finished
+[2018-09-20 17:29:54.228] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-20 17:29:54.359] [setup] [info] Load Texture rock.jpg finished
+[2018-09-20 17:29:55.291] [setup] [info] Load Texture grass.png finished
+[2018-09-20 17:29:55.317] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-09-20 17:29:55.318] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-09-20 17:29:55.319] [setup] [info] Program Linking finished.
+[2018-09-20 17:29:55.319] [setup] [info] Linking Program Success.
+[2018-09-20 17:29:55.864] [setup] [info] Load Cubemap ../resources/texture/skybox/interstella/ finished
+[2018-09-20 17:29:55.867] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 95 )
+
+[2018-09-20 17:29:55.867] [setup] [critical] Critical error occurred. program exit.
+[2018-09-20 17:30:45.695] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-20 17:30:45.698] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-20 17:30:45.698] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-20 17:30:45.699] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-20 17:30:45.699] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-20 17:30:45.700] [setup] [info] Program Linking finished.
+[2018-09-20 17:30:45.701] [setup] [info] Linking Program Success.
+[2018-09-20 17:30:45.701] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-09-20 17:30:45.702] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-09-20 17:30:45.702] [setup] [info] Program Linking finished.
+[2018-09-20 17:30:45.702] [setup] [info] Linking Program Success.
+[2018-09-20 17:30:45.708] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-20 17:30:45.721] [setup] [info] Load Texture splatMap.png finished
+[2018-09-20 17:30:45.900] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-20 17:30:46.037] [setup] [info] Load Texture rock.jpg finished
+[2018-09-20 17:30:46.962] [setup] [info] Load Texture grass.png finished
+[2018-09-20 17:30:46.990] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-09-20 17:30:46.991] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-09-20 17:30:46.991] [setup] [info] Program Linking finished.
+[2018-09-20 17:30:46.992] [setup] [info] Linking Program Success.
+[2018-09-20 17:30:47.524] [setup] [info] Load Cubemap ../resources/texture/skybox/interstella/ finished
+[2018-09-20 17:30:47.528] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 95 )
+
+[2018-09-20 17:30:47.528] [setup] [critical] Critical error occurred. program exit.
+[2018-09-20 17:33:23.916] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-20 17:33:23.919] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-20 17:33:23.919] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-20 17:33:23.919] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-20 17:33:23.919] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-20 17:33:23.920] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:23.920] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:23.921] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-09-20 17:33:23.921] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-09-20 17:33:23.922] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:23.922] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:23.927] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-20 17:33:23.941] [setup] [info] Load Texture splatMap.png finished
+[2018-09-20 17:33:24.126] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-20 17:33:24.262] [setup] [info] Load Texture rock.jpg finished
+[2018-09-20 17:33:25.201] [setup] [info] Load Texture grass.png finished
+[2018-09-20 17:33:25.231] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-09-20 17:33:25.232] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-09-20 17:33:25.233] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:25.233] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:25.781] [setup] [info] Load Cubemap ../resources/texture/skybox/interstella/ finished
+[2018-09-20 17:33:25.785] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 91 )
+
+[2018-09-20 17:33:25.785] [setup] [error] Reflection Framebuffer is not completed
+[2018-09-20 17:33:25.785] [setup] [critical] Critical error occurred. program exit.
+[2018-09-20 17:33:39.840] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-20 17:33:39.843] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-20 17:33:39.844] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-20 17:33:39.844] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-20 17:33:39.844] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-20 17:33:39.846] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:39.846] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:39.847] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-09-20 17:33:39.847] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-09-20 17:33:39.847] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:39.848] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:39.853] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-20 17:33:39.866] [setup] [info] Load Texture splatMap.png finished
+[2018-09-20 17:33:40.063] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-20 17:33:40.203] [setup] [info] Load Texture rock.jpg finished
+[2018-09-20 17:33:41.157] [setup] [info] Load Texture grass.png finished
+[2018-09-20 17:33:41.184] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-09-20 17:33:41.184] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-09-20 17:33:41.185] [setup] [info] Program Linking finished.
+[2018-09-20 17:33:41.185] [setup] [info] Linking Program Success.
+[2018-09-20 17:33:41.720] [setup] [info] Load Cubemap ../resources/texture/skybox/interstella/ finished
+[2018-09-20 17:33:41.724] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 91 )
+
+[2018-09-20 17:33:41.726] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 91 )
+
+[2018-09-20 17:33:41.726] [setup] [info] initializing Water framebuffers finished
+[2018-09-20 17:33:41.727] [setup] [info] Initializing Water finished
+[2018-09-20 17:33:41.728] [setup] [critical] Undefined Uniform Variable Name : splatMap
+[2018-09-20 17:33:41.728] [setup] [critical] Undefined Uniform Variable Name : dirtTexture
+[2018-09-20 17:33:41.728] [setup] [critical] Undefined Uniform Variable Name : rockTexture
+[2018-09-20 17:33:41.729] [setup] [critical] Undefined Uniform Variable Name : grassTexture
+[2018-09-20 17:33:48.737] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 161 )
+
+[2018-09-20 17:43:22.370] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-09-20 17:43:22.374] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-09-20 17:43:22.375] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-09-20 17:43:22.375] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-09-20 17:43:22.375] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-09-20 17:43:22.376] [setup] [info] Program Linking finished.
+[2018-09-20 17:43:22.377] [setup] [info] Linking Program Success.
+[2018-09-20 17:43:22.380] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-09-20 17:43:22.381] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-09-20 17:43:22.381] [setup] [info] Program Linking finished.
+[2018-09-20 17:43:22.381] [setup] [info] Linking Program Success.
+[2018-09-20 17:43:22.390] [setup] [info] Load Texture heightMap.jpg finished
+[2018-09-20 17:43:22.406] [setup] [info] Load Texture splatMap.png finished
+[2018-09-20 17:43:22.587] [setup] [info] Load Texture dirt.jpg finished
+[2018-09-20 17:43:22.721] [setup] [info] Load Texture rock.jpg finished
+[2018-09-20 17:43:23.627] [setup] [info] Load Texture grass.png finished
+[2018-09-20 17:43:23.652] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-09-20 17:43:23.653] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-09-20 17:43:23.654] [setup] [info] Program Linking finished.
+[2018-09-20 17:43:23.654] [setup] [info] Linking Program Success.
+[2018-09-20 17:43:24.209] [setup] [info] Load Cubemap ../resources/texture/skybox/interstella/ finished
+[2018-09-20 17:43:24.212] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 92 )
+
+[2018-09-20 17:43:24.214] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 92 )
+
+[2018-09-20 17:43:24.214] [setup] [info] initializing Water framebuffers finished
+[2018-09-20 17:43:24.233] [setup] [critical] Shader Compile Failed. info log :
+0(7) : error C0000: syntax error, unexpected '{', expecting reserved word or reserved word "in" or reserved word "out" or reserved word "uniform" at token "{"
+0(10) : error C0000: syntax error, unexpected '}' at token "}"
+
+[2018-09-20 17:43:24.234] [setup] [error] Vertex Shader [../resources/shader/water_vs.glsl] Compile failed.
+[2018-09-20 17:43:24.236] [setup] [critical] Critical error occurred. program exit.

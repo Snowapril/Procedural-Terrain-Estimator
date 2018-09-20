@@ -5,16 +5,22 @@
 #include <imgui/imgui_impl_glfw_gl3.h>
 #include <imgui/imgui_internal.h>
 #include "EngineProperty.hpp"
-
+#include <vector>
 #include "GLDebugger.hpp"
 #include "GLShader.hpp"
+#include <iostream>
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb/stb_image_write.h>
 
 using namespace ImGui;
 
 Generator::Generator()
 	: isGUIOpen(true)
 {
-	voronoiConfigure = { 1.0f, 0.0f, 0.0f, false, false };
+	voronoiConfigure = { 1.0f, 2.0f, 0.0f, 0.0f, false, false };
+	simplexConfigure = { 0.0f, 2.0f };
+	fbMConfigure	 = { 5, 0.0f, 2.0f };
 }
 
 Generator::~Generator()
@@ -29,6 +35,23 @@ Generator::~Generator()
 void Generator::updateScene(void)
 {
 	updateGUI(clientHeight);
+
+	generatorShader->useProgram();
+	generatorShader->sendUniform("systemTime", static_cast<float>(glfwGetTime()));
+
+	generatorShader->sendUniform("simplex.blend", simplexConfigure.blend);
+	generatorShader->sendUniform("simplex.frequency", simplexConfigure.frequency);
+
+	generatorShader->sendUniform("voronoi.blend", voronoiConfigure.blend);
+	generatorShader->sendUniform("voronoi.frequency", voronoiConfigure.frequency);
+	generatorShader->sendUniform("voronoi.function", voronoiConfigure.function);
+	generatorShader->sendUniform("voronoi.distance_type", voronoiConfigure.distance_type);
+	generatorShader->sendUniform("voronoi.multiply_by_F1", voronoiConfigure.multiply_by_F1);
+	generatorShader->sendUniform("voronoi.inverse", voronoiConfigure.inverse);
+
+	generatorShader->sendUniform("fbM.num_octaves", fbMConfigure.numOctaves);
+	generatorShader->sendUniform("fbM.blend", fbMConfigure.blend);
+	generatorShader->sendUniform("fbM.frequency", fbMConfigure.frequency);
 }
 
 void Generator::drawScene(void) const
@@ -39,13 +62,6 @@ void Generator::drawScene(void) const
 	glViewport(0, 0, clientWidth, clientHeight);
 
 	generatorShader->useProgram();
-	generatorShader->sendUniform("systemTime", static_cast<float>(glfwGetTime()));
-	generatorShader->sendUniform("voronoi.blend", voronoiConfigure.blend);
-	generatorShader->sendUniform("voronoi.function", voronoiConfigure.function);
-	generatorShader->sendUniform("voronoi.distance_type", voronoiConfigure.distance_type);
-	generatorShader->sendUniform("voronoi.multiply_by_F1", voronoiConfigure.multiply_by_F1);
-	generatorShader->sendUniform("voronoi.inverse", voronoiConfigure.inverse);
-
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
@@ -88,38 +104,35 @@ void Generator::updateGUI(float height)
 
 	if (ImGui::TreeNode("Perlin Noise"))
 	{
-		ImGui::SliderFloat("Blend", &voronoiConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Function", &voronoiConfigure.function, 0.5f, 3.5f);
-		ImGui::SliderFloat("Distance Type", &voronoiConfigure.distance_type, 0.5f, 3.5f);
-		ImGui::Checkbox("Multiply", &voronoiConfigure.multiply_by_F1);
-		ImGui::Checkbox("Inverse", &voronoiConfigure.inverse);
 		
 		ImGui::TreePop();
 	}
 
 	if (ImGui::TreeNode("Simplex Noise"))
 	{
-		float blend = 0.0f;
-
-		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+		ImGui::SliderFloat("Blend", &simplexConfigure.blend, 0.0f, 1.0f);
+		ImGui::SliderFloat("Frequency", &simplexConfigure.frequency, 1.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
 
 	if (ImGui::TreeNode("Voronoi Noise"))
 	{
-		float blend = 0.0f;
-
-		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+		ImGui::SliderFloat("Blend", &voronoiConfigure.blend, 0.0f, 1.0f);
+		ImGui::SliderFloat("Frequency", &voronoiConfigure.frequency, 1.0f, 30.0f);
+		ImGui::SliderFloat("Function", &voronoiConfigure.function, 0.5f, 3.5f);
+		ImGui::SliderFloat("Distance Type", &voronoiConfigure.distance_type, 0.5f, 3.5f);
+		ImGui::Checkbox("Multiply", &voronoiConfigure.multiply_by_F1);
+		ImGui::Checkbox("Inverse", &voronoiConfigure.inverse);
 
 		ImGui::TreePop();
 	}
 
 	if (ImGui::TreeNode("fbM Noise"))
 	{
-		float blend = 0.0f;
-
-		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
+		ImGui::SliderInt("Num Octaves", &fbMConfigure.numOctaves, 1, 5);
+		ImGui::SliderFloat("Blend", &fbMConfigure.blend, 0.0f, 1.0f);
+		ImGui::SliderFloat("Frequency", &fbMConfigure.frequency, 1.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
@@ -148,6 +161,11 @@ void Generator::updateGUI(float height)
 		ImGui::Text("Email: sinjihng@pusan.ac.kr");
 	}
 
+	if (ImGui::Button("Save as image"))
+	{
+		saveCurrentTexture("../resources/noiseMap.png", clientWidth - 400, clientHeight);
+	}
+
 	ImGui::End();
 }
 
@@ -170,7 +188,10 @@ bool Generator::initShaders(void)
 		return false;
 	}
 
+	screenShader->useProgram();
 	screenShader->sendUniform("framebufferTexture", 0);
+	
+	CheckError();
 
 	return true;
 }
@@ -253,7 +274,15 @@ void Generator::scrollCallback(double xoffset, double yoffset)
 {
 }
 
-bool Generator::saveCurrentTexture(const std::string& path)
+bool Generator::saveCurrentTexture(const std::string& path, int width, int height)
 {
+	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
+	std::vector<unsigned char> data(width * height * 3);
+
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)&data[0]);
+
+	stbi_write_png(path.c_str(), height, width, 3, &data[0], 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
 	return true;
 }
