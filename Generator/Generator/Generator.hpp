@@ -3,6 +3,8 @@
 
 #include "GLApp.hpp"
 
+class GLShader;
+
 class Generator : public GLApp
 {
 private:
@@ -12,11 +14,24 @@ private:
 	unsigned int VBO;
 	unsigned int framebuffer;
 	unsigned int framebufferTexture;
+
+	struct Voronoi {
+		float blend;
+		float function;
+		float distance_type;
+		bool multiply_by_F1;
+		bool inverse;
+	} voronoiConfigure;
+
+	std::unique_ptr<GLShader> generatorShader;
+	std::unique_ptr<GLShader> screenShader;
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
 	void onResize(int newWidth, int newHeight);
 
+	bool initFramebuffer(int width, int height);
+	bool initShaders(void);
 	bool initGUI(void);
 	void updateGUI(float height);
 

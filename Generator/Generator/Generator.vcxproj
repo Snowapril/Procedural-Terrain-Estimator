@@ -90,6 +90,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,6 +128,7 @@
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -135,8 +137,15 @@
     <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="NoiseGenerator.hpp" />
     <ClInclude Include="Util.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\shader\generator_fs.glsl" />
+    <None Include="..\resources\shader\generator_vs.glsl" />
+    <None Include="..\resources\shader\offscreen_fs.glsl" />
+    <None Include="..\resources\shader\offscreen_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

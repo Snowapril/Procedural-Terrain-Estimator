@@ -16,7 +16,7 @@ constexpr bool	FULL_SCREEN = false;
 constexpr bool	ENABLE_4XMSAA = true;
 constexpr float CAMERA_MIN_FOV = 35.0f;
 constexpr float CAMERA_MAX_FOV = 50.0f;
-constexpr bool	ENABLE_CULLING = true;
+constexpr bool	ENABLE_CULLING = false;
 constexpr float MOUSE_SENSITIVITY = 0.1f;
 constexpr float CAMERA_SPEED = 30.0f;
 
