@@ -13,16 +13,13 @@
 
 bool EngineTerrain::isInstanciated = false;
 
-constexpr float			TERRAIN_MAX_HEIGHT		= 100.0f;
-constexpr float			TERRAIN_OFFSET			= 0.0f;
-
-EngineTerrain::EngineTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths)
+EngineTerrain::EngineTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths)
 	: DynamicTerrain(), terrainMap(0), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
 
-	initTerrain(terrainOriginPos, std::move(paths));
+	initTerrain(position, std::move(paths));
 }
 
 EngineTerrain::~EngineTerrain()
@@ -37,8 +34,8 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 {
 	assetManager->refreshDirtyAssets();
 
-	//if (cameraPos == prevCameraPos)
-	//	return;
+	if (cameraPos == prevCameraPos)
+		return;
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("originPos", this->terrainOriginPos);
@@ -49,9 +46,8 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 	terrainShader->sendUniform("grassTexture", 4);
 	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
 	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
-	terrainShader->sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
 
-	DynamicTerrain::updateTerrain(cameraPos, terrainOriginPos);
+	DynamicTerrain::updateTerrain(cameraPos);
 
 	prevCameraPos = cameraPos;
 }
@@ -69,7 +65,6 @@ void EngineTerrain::drawScene(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures.applyTexture();
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	DynamicTerrain::drawTerrain(drawMode);
 }
@@ -83,7 +78,7 @@ no need to generate in run-time.
 disadvantage of this approach is "will generate fixed result".
 * @ return		return boolean whether if initialization is successful or not.
 */
-bool EngineTerrain::initTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths)
+bool EngineTerrain::initTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths)
 {
 	assetManager = std::make_unique<AssetManager>();
 	try
@@ -102,9 +97,6 @@ bool EngineTerrain::initTerrain(const glm::vec3& terrainOriginPos, std::initiali
 	}
 
 	bakeTerrainMap();
-	this->terrainOriginPos = terrainOriginPos;
-	maxHeight = getProperMaxHeight(this->width, this->height);
-
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
 
@@ -119,7 +111,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& terrainOriginPos, std::initiali
 		EngineLogger::getConsole()->error("Failed to initialize EngineTerrain");
 	}
 
-	if (!initDynamicTerrain())
+	if (!initDynamicTerrain(position))
 		return false;
 
 	return true;
@@ -148,8 +140,13 @@ void EngineTerrain::bakeTerrainMap(void)
 
 	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform("heightMap", 0);
-	bakeTerrainMap.sendUniform("terrainMaxHeight", TERRAIN_MAX_HEIGHT);
-	bakeTerrainMap.sendUniform("terrainHeightOffset", TERRAIN_OFFSET);
+
+	unsigned int heightMap;
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
+		return;
+	
+	maxHeight = getProperMaxHeight(width, height);
+	bakeTerrainMap.sendUniform("terrainMaxHeight", maxHeight);
 
 	//simple quad for baking
 	GLfloat vertices[] =
@@ -179,65 +176,6 @@ void EngineTerrain::bakeTerrainMap(void)
 
 	glGenFramebuffers(1u, &captureFBO);
 	glGenRenderbuffers(1u, &captureRBO);
-
-	/*stbi_set_flip_vertically_on_load(true);
-
-	int _width, _height, _nChannels;
-	unsigned char *data = stbi_load("../resources/texture/terrain/fbMnoise.png", &_width, &_height, &_nChannels, 0);
-	if (data == nullptr || _width == 0 || _height == 0 || _nChannels == 0)
-	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", "../resources/texture/terrain/fbMnoise.png");
-		return;
-	}
-
-	std::vector<unsigned short> avgData;
-	avgData.reserve(_width * _height);
-
-	auto getIndex = [&_width, &_height](int i, int j) -> int {
-		return i + j * _width;
-	};
-
-	auto isInBound = [&_width, &_height, &data](int i, int j) -> bool {
-
-		return i >= 0 && i < _width && j >= 0 && j < _height;
-	};
-
-	for (int i = 0; i < _width; ++i)
-		for (int j = 0; j < _height; ++j)
-		{
-			int count = 0;
-			int sum = 0;
-
-			for (int r = -1; r <= 1; ++r)
-				for (int c = -1; c <= 1; ++c)
-				{
-					if (isInBound(i + r, j + c))
-					{
-						++count;
-						sum += data[getIndex(i + r, j + c)];
-					}
-				}
-
-			sum = sum / static_cast<float>(count);
-			avgData.push_back(sum);
-		}
-
-	this->width = _width;
-	this->height = _height;
-
-	unsigned int heightMap;
-	glGenTextures(1u, &heightMap);
-	glBindTexture(GL_TEXTURE_2D, heightMap);
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_R16UI, _width, _height, 0, GL_RED_INTEGER, GL_UNSIGNED_SHORT, &avgData[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
-	
-	unsigned int heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMapLake.png", width, height, false)) == 0)
-		return;
 
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
 	glBindRenderbuffer(GL_RENDERBUFFER, captureRBO);
@@ -275,10 +213,6 @@ void EngineTerrain::bakeTerrainMap(void)
 	glBindVertexArray(0u);
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	//bake texture and save it to file
-	//glBindTexture(GL_TEXTURE_2D, terrainMap);
-	//glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, ) 
 
 	glDeleteRenderbuffers(1u, &captureRBO);
 	glDeleteFramebuffers(1u, &captureFBO);

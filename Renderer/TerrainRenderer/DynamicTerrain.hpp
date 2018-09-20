@@ -35,8 +35,8 @@ protected:
 
 	glm::vec3 terrainCenterPos;
 protected:
-	bool initDynamicTerrain(void);
-	void updateTerrain(const glm::vec3& cameraPos, const glm::vec3& originPos);
+	bool initDynamicTerrain(const glm::vec3& position);
+	void updateTerrain(const glm::vec3& cameraPos);
 	void drawTerrain(unsigned int drawMode) const;
 public:
 	DynamicTerrain();

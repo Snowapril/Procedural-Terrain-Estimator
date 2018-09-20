@@ -31,7 +31,7 @@ DynamicTerrain::~DynamicTerrain()
 		delete[] tailPatch;
 }
 
-bool DynamicTerrain::initDynamicTerrain(void)
+bool DynamicTerrain::initDynamicTerrain(const glm::vec3& position)
 {
 	try
 	{
@@ -45,6 +45,7 @@ bool DynamicTerrain::initDynamicTerrain(void)
 	}
 
 	vertices.reserve(MAX_POOL_SIZE * 16);
+	terrainCenterPos = position;
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -64,10 +65,9 @@ bool DynamicTerrain::initDynamicTerrain(void)
 	return true;
 }
 
-void DynamicTerrain::updateTerrain(const glm::vec3& cameraPos, const glm::vec3& originPos)
+void DynamicTerrain::updateTerrain(const glm::vec3& cameraPos)
 {
 	tailPatch = rootPatch;
-	terrainCenterPos = originPos;
 
 	clearTree();
 	createTree(cameraPos);

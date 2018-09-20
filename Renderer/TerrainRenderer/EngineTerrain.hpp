@@ -40,21 +40,21 @@ private:
 
 	GLTexture tileTextures;
 	static bool isInstanciated;
+protected:
+	void bakeTerrainMap(void);
 public:
 	EngineTerrain() = default;
-	EngineTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths);
+	EngineTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths);
 	virtual ~EngineTerrain();
 	EngineTerrain(const EngineTerrain& other) = delete;
 	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
 	static float getProperMaxHeight(std::size_t width, std::size_t height);
 
-	bool initTerrain(const glm::vec3& terrainOriginPos, std::initializer_list<std::string>&& paths);
+	bool initTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
 	void drawScene(unsigned int drawMode) const;
-
-	void bakeTerrainMap(void);
 };
 
 #endif

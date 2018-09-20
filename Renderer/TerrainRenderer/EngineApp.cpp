@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp(), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
+	: GLApp(), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -52,8 +52,10 @@ void EngineApp::drawScene(void) const
 
 	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 	/// draw call here.
-	
+	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
+
 	terrain.drawScene(GL_PATCHES);
+	skybox.drawScene(GL_TRIANGLES);
 
 	/// end of draw call
 	glBindVertexArray(0u);
@@ -75,20 +77,22 @@ bool EngineApp::initEngine(void)
 	if (!EngineGUI::initGUI(window))
 		return false;
 
-	if (!initAssets())
-		return false;
-
-	if (!initGeometryBuffer())
-		return false;
-
 	if (!initUniformBufferObject())
 		return false;
 
-	if (!terrain.initTerrain(glm::vec3(0.0f), {}))
+	if (!terrain.initTerrain(glm::vec3(0.0f, 0.0f, 0.0f), {}))
 		return false;
 
 	onResize(clientWidth, clientHeight);
 
+	if (!skybox.initSkybox("../resources/texture/skybox/interstella/", "png"))
+		return false;
+
+	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
+		return false;
+	
+	water.setTransform(glm::vec3(0.0f), glm::vec3(clientWidth, clientHeight, 1.0f));
+	
 	return true;
 }
 
@@ -108,66 +112,13 @@ bool EngineApp::initUniformBufferObject(void)
 	return true;
 }
 
-/**
-* @ brief		initialize asset resources.
-* @ return		return boolean whether if loading and initializing assets are successful or not.
-*/
-bool EngineApp::initAssets(void)
-{
-	if (!initShader())
-		return false;
-
-	if (!initTextures())
-		return false;
-
-	return true;
-}
-
-/** 
-* @ brief		initialize shaders.
-* @ return		return boolean whether if initializing shader is successful or not.
-*/
-bool EngineApp::initShader(void)
-{
-	try 
-	{
-
-	}
-	catch (std::exception e)
-	{
-		EngineLogger::getConsole()->error("An error occurred while initializing shader file.\n{}", e.what());
-		return false;
-	}
-
-	return true;
-}
-
-/**
-* @ brief		load textures and register to OpenGL Context.
-* @ return		return boolean whether if loading and registering texture are successful or not.
-*/
-bool EngineApp::initTextures(void)
-{
-	return true;
-}
-
-/**
-* @ brief		initialize geometry buffer in current opengl context.
-* @ return		return boolean whether if initialize geometry buffer is successful or not.
-*/
-bool EngineApp::initGeometryBuffer(void)
-{
-	/// below hard coded stuffs are for testing.
-	/// will be replaced to terrain geometry setup.
-
-	
-	return true;
-}
-
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
+
+	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
+		polygonMode = polygonMode == GL_LINE ? GL_FILL : GL_LINE;
 }
 
 void EngineApp::mousePosCallback(double xpos, double ypos)
