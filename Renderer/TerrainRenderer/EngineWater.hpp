@@ -41,11 +41,23 @@ public:
 	{
 		refractionFBO.bindFramebuffer(width, height);
 	}
+	inline float getWaterHeight(void) const {
+		return position.y;
+	}
+	inline unsigned int getReflectionTexture(void) const {
+		return reflectionFBO.getColorTexture();
+	}
+	inline unsigned int getRefractionTexture(void) const {
+		return refractionFBO.getColorTexture();
+	}
 
 	void unbindCurrentFramebuffer(int width, int height) const;
 	
 	bool initWater(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight);
 	void setTransform(glm::vec3 pos, glm::vec3 scale);
+
+	void updateWater(float dt);
+	void drawWater(unsigned int drawMode) const;
 };
 
 

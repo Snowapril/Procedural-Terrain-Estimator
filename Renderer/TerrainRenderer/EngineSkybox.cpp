@@ -37,7 +37,7 @@ bool EngineSkybox::initSkybox(const std::string& skyboxDir, const std::string& e
 
 	skyboxShader->sendUniform("cubeMap", 0);
 
-	if (!skyboxMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLES))
+	if (!skyboxMesh.initWithFixedShape(MeshShape::CUBE_TRIANGLES))
 		return false;
 
 	if ((cubeMap = GLResources::CreateCubeMap(skyboxDir, extension)) == 0)

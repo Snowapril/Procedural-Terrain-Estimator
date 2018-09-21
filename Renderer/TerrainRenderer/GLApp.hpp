@@ -32,7 +32,7 @@ protected:
 	void calculateFrameStats(void);
 
 	virtual void updateScene(float dt) = 0;
-	virtual void drawScene(void) const = 0;
+	virtual void drawScene(void)  = 0;
 	virtual void onResize(int newWidth, int newHeight);
 public:
 	GLApp();

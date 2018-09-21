@@ -95,6 +95,9 @@
     <ClCompile Include="EngineWater.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextureViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -163,6 +166,9 @@
     <ClInclude Include="EngineWater.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextureViewer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -202,6 +208,12 @@
       <Filter>shader</Filter>
     </None>
     <None Include="..\resources\shader\water_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\viewer_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\viewer_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

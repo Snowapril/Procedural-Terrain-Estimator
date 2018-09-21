@@ -72,6 +72,7 @@ void GLFramebuffer::bindFramebuffer(int width, int height) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 	glViewport(0, 0, width, height);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void GLFramebuffer::unbindFramebuffer(int width, int height) const

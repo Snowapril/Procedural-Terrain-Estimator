@@ -54,7 +54,9 @@ public:
 	bool initTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
-	void drawScene(unsigned int drawMode) const;
+	void drawScene(unsigned int drawMode, const glm::vec4& clipPlane) const;
+
+	glm::vec3 getTerrainScale(void) const;
 };
 
 #endif
