@@ -7,6 +7,7 @@
 #include "EngineProperty.hpp"
 #include <vector>
 #include "GLDebugger.hpp"
+#include "Estimator.hpp"
 #include "GLShader.hpp"
 #include <iostream>
 
@@ -280,6 +281,18 @@ bool Generator::saveCurrentTexture(const std::string& path, int width, int heigh
 	std::vector<unsigned char> data(width * height * 3);
 
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)&data[0]);
+	FILE *arrOut = fopen("../Mapdata.pte", "w");
+	fprintf(arrOut, "%d %d\n", height, width);
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			fprintf(arrOut,"%d ", data[i*width + j * 3]);
+		}
+		fprintf(arrOut,"\n");
+	}
+	fclose(arrOut);
+
+	Estimator::mapDataInit(data, height, width);
+	Estimator::dumpMapData(height, width);
 
 	stbi_write_png(path.c_str(), height, width, 3, &data[0], 0);
 	glBindTexture(GL_TEXTURE_2D, 0);

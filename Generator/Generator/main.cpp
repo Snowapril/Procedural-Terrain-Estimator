@@ -1,4 +1,5 @@
 #include "Generator.hpp"
+#include "Estimator.hpp"
 #include <memory>
 #include <iostream>
 
