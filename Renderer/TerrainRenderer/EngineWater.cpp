@@ -6,11 +6,16 @@
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/mat4x4.hpp>
+#include "GLResources.hpp"
 
 bool EngineWater::isInstanciated = false;
 
+constexpr float		WAVE_SPEED		= 0.04f;
+constexpr glm::vec3 LIGHT_POSITION	= glm::vec3(500.0f, 100.0f, 500.0f);
+constexpr glm::vec3 LIGHT_COLOR		= glm::vec3(0.8f, 0.8f, 0.8f);
+
 EngineWater::EngineWater()
-	: position(0.0f), scale(100.0f, 1.0f, 100.0f)
+	: moveFactor(0.0f), position(0.0f), scale(100.0f, 1.0f, 100.0f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -36,13 +41,27 @@ bool EngineWater::initWater(int reflectionWidth, int reflectionHeight, int refra
 	if (!initShaders())
 		return false;
 
+	if ((dudvMap = GLResources::CreateTexture2D("../resources/texture/water/dudvMap.png", false)) == 0)
+		return false;
+
+	if ((normalMap = GLResources::CreateTexture2D("../resources/texture/water/normalMap.png", false)) == 0)
+		return false;
+
 	EngineLogger::getConsole()->info("Initializing Water finished");
 	return true;
 }
 
-void EngineWater::updateWater(float dt)
+void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
 {
+	moveFactor += WAVE_SPEED * dt;
+	if (moveFactor > 1.0f)
+		moveFactor -= 1.0f;
 
+	waterShader->useProgram();
+	waterShader->sendUniform("moveFactor", moveFactor);
+	waterShader->sendUniform("viewPos", cameraPos);
+	waterShader->sendUniform("lightPosition", LIGHT_POSITION);
+	waterShader->sendUniform("lightColor", LIGHT_COLOR);
 }
 
 void EngineWater::drawWater(unsigned int drawMode) const
@@ -58,8 +77,19 @@ void EngineWater::drawWater(unsigned int drawMode) const
 	glBindTexture(GL_TEXTURE_2D, reflectionFBO.getColorTexture());
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, refractionFBO.getColorTexture());
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, dudvMap);
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, normalMap);
+	glActiveTexture(GL_TEXTURE4);
+	glBindTexture(GL_TEXTURE_2D, refractionFBO.getDepthTexture());
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	waterMesh.drawMesh(GL_TRIANGLE_STRIP);
+
+	glDisable(GL_BLEND);
 }
 
 bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight)
@@ -110,6 +140,9 @@ bool EngineWater::initShaders()
 	waterShader->useProgram();
 	waterShader->sendUniform("reflectionTexture", 0);
 	waterShader->sendUniform("refractionTexture", 1);
+	waterShader->sendUniform("dudvMap", 2);
+	waterShader->sendUniform("normalMap", 3);
+	waterShader->sendUniform("depthMap", 4);
 
 	if (!waterMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP))
 		return false;

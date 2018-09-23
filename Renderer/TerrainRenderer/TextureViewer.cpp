@@ -46,6 +46,7 @@ void TextureViewer::renderViewer(void) const
 {
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glDisable(GL_CULL_FACE);
+	glDisable(GL_DEPTH_TEST);
 
 	viewShader->useProgram();
 	glActiveTexture(GL_TEXTURE0);
@@ -64,4 +65,5 @@ void TextureViewer::renderViewer(void) const
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 }

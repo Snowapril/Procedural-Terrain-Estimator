@@ -33,7 +33,7 @@ void EngineApp::updateScene(float dt)
 	const glm::vec3 cameraPos = camera.getViewPos();
 
 	terrain.updateScene(dt, cameraPos);
-	water.updateWater(dt);
+	water.updateWater(dt, cameraPos);
 
 	//EngineGUI::updateGUI(dt, clientHeight);
 }
@@ -63,7 +63,7 @@ void EngineApp::drawScene(void)
 	camera.flipVertically(waterHeight);
 	camera.sendVP(vpUBO, getAspectRatio());
 	skybox.drawScene(GL_TRIANGLES);
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight));
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 0.5f));
 	camera.flipVertically(waterHeight);
 	camera.sendVP(vpUBO, getAspectRatio());
 
@@ -83,6 +83,7 @@ void EngineApp::drawScene(void)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
+		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), water.getRefractionDepthTexture());
 		textureViewer.renderViewer();
 		textureViewer.clearViewer();
 	}
