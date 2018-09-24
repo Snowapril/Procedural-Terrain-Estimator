@@ -2,6 +2,8 @@
 #include <queue>
 #include <map>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -68,8 +70,29 @@ bool Estimator::hasCrator() {
 }
 
 void Estimator::makeCoast(bool needCoast) {
+	srand(time(NULL));
 	int coastLine = width / 10;
-
-
+	int curCoast = coastLine;
+	int probLeft = 40, probStay = 60;
+	for (int i = 0; i < height; i++) {
+		int prob = rand() % 100;
+		if (prob < probLeft) {
+			probLeft -= 8;
+			probStay += 4;
+			curCoast--;
+		}
+		else if (prob < probStay) {
+			probLeft += 4;
+			probStay -= 8;
+		}
+		else {
+			probLeft += 4;
+			probStay += 4;
+			curCoast++;
+		}
+		for (int j = curCoast; j < width; j++) {
+			mapData[i][j] = 0;
+		}
+	}
 	
 }
