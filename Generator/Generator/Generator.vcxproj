@@ -83,7 +83,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\2018 2학기 수업자료\창의프로젝트\Procedural-Terrain-Estimator\Generator\dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\2018 2학기 수업자료\창의프로젝트\Procedural-Terrain-Estimator\Generator\dependencies\Debug\x86;D:\2018 2학기 수업자료\창의프로젝트\Procedural-Terrain-Estimator\Generator\dependencies\Debug\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -134,6 +140,7 @@
     <ClCompile Include="..\dependencies\imgui\imgui.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="Estimator.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
@@ -143,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineProperty.hpp" />
+    <ClInclude Include="Estimator.hpp" />
     <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
