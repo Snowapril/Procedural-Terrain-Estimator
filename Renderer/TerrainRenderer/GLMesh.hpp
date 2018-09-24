@@ -4,8 +4,9 @@
 #include <memory>
 
 enum class MeshShape {
-	QUAD_PATCH = 0,
-	QUAD_TRIANGLES = 1,
+	CUBE_PATCH = 0,
+	CUBE_TRIANGLES = 1,
+	QUAD_TRIANGLE_STRIP = 2,
 };
 
 class GLGeometry;

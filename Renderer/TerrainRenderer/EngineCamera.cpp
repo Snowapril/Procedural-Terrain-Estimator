@@ -152,6 +152,20 @@ void EngineCamera::sendVP(unsigned int ubo, float aspectRatio)
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
+void EngineCamera::flipVertically(float yaxis)
+{
+	float distance = 2 * (position.y - yaxis);
+	position.y -= distance;
+
+	pitch = -pitch;
+
+	direction.x = glm::cos(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
+	direction.y = glm::sin(glm::radians(pitch));
+	direction.z = glm::sin(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
+
+	direction = glm::normalize(direction);
+}
+
 glm::vec3 EngineCamera::getViewPos(void) const 
 {
 	return position;

@@ -17,6 +17,7 @@
 #include "EngineCamera.hpp"
 #include "EngineSkybox.hpp"
 #include "EngineWater.hpp"
+#include "TextureViewer.hpp"
 
 class GLShader;
 class AssetManager;
@@ -25,9 +26,11 @@ class GLTexture;
 class EngineApp : public GLApp, EngineGUI
 {
 private:
+	bool debuggerMode;
 	unsigned int vpUBO;
 	unsigned int polygonMode;
 
+	TextureViewer textureViewer;
 	EngineSkybox skybox;
 	EngineCamera camera;
 	EngineWater water;
@@ -36,7 +39,7 @@ protected:
 	bool initUniformBufferObject(void);
 
 	void updateScene(float dt);
-	void drawScene(void) const;
+	void drawScene(void) ;
 public:
 	EngineApp();
 	virtual ~EngineApp();

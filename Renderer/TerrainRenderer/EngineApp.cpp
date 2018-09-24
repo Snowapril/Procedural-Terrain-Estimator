@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 EngineApp::EngineApp()
-	: GLApp(), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
+	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -33,7 +33,8 @@ void EngineApp::updateScene(float dt)
 	const glm::vec3 cameraPos = camera.getViewPos();
 
 	terrain.updateScene(dt, cameraPos);
-	
+	water.updateWater(dt, cameraPos);
+
 	//EngineGUI::updateGUI(dt, clientHeight);
 }
 
@@ -41,7 +42,7 @@ void EngineApp::updateScene(float dt)
 * @ brief		render opengl world!
 * @ details		render opengl world using shaders, other objects and etc ...
 */
-void EngineApp::drawScene(void) const
+void EngineApp::drawScene(void) 
 {
 	Profile();
 	
@@ -49,13 +50,43 @@ void EngineApp::drawScene(void) const
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
+	float waterHeight = water.getWaterHeight();
 
 	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 	/// draw call here.
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
-	terrain.drawScene(GL_PATCHES);
+	water.bindReflectionFramebuffer(clientWidth, clientHeight);
+	glEnable(GL_CLIP_DISTANCE0);
+	glDisable(GL_CULL_FACE);
+
+	camera.flipVertically(waterHeight);
+	camera.sendVP(vpUBO, getAspectRatio());
 	skybox.drawScene(GL_TRIANGLES);
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 0.5f));
+	camera.flipVertically(waterHeight);
+	camera.sendVP(vpUBO, getAspectRatio());
+
+	water.bindRefractionFramebuffer(clientWidth, clientHeight);
+	skybox.drawScene(GL_TRIANGLES);
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+
+	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
+	glDisable(GL_CLIP_DISTANCE0);
+	glEnable(GL_CULL_FACE);
+
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+	skybox.drawScene(GL_TRIANGLES);
+	water.drawWater(GL_TRIANGLE_STRIP);
+
+	if (debuggerMode)
+	{
+		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
+		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
+		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), water.getRefractionDepthTexture());
+		textureViewer.renderViewer();
+		textureViewer.clearViewer();
+	}
 
 	/// end of draw call
 	glBindVertexArray(0u);
@@ -80,6 +111,9 @@ bool EngineApp::initEngine(void)
 	if (!initUniformBufferObject())
 		return false;
 
+	if (!textureViewer.initTextureViewer())
+		return false;
+
 	if (!terrain.initTerrain(glm::vec3(0.0f, 0.0f, 0.0f), {}))
 		return false;
 
@@ -91,7 +125,8 @@ bool EngineApp::initEngine(void)
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
 		return false;
 	
-	water.setTransform(glm::vec3(0.0f), glm::vec3(clientWidth, clientHeight, 1.0f));
+	glm::vec3 terrainScale = terrain.getTerrainScale() - 100.0f;
+	water.setTransform(glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
 	return true;
 }
@@ -119,6 +154,9 @@ void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 
 	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
 		polygonMode = polygonMode == GL_LINE ? GL_FILL : GL_LINE;
+
+	if (key == GLFW_KEY_F2 && action == GLFW_PRESS)
+		debuggerMode = !debuggerMode;
 }
 
 void EngineApp::mousePosCallback(double xpos, double ypos)

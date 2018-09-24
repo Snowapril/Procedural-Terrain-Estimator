@@ -49,7 +49,7 @@ void GLFramebuffer::attachDepthTexture(int width, int height, unsigned int inter
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture, 0);
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthTexture, 0);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -58,12 +58,14 @@ void GLFramebuffer::attachDepthTexture(int width, int height, unsigned int inter
 void GLFramebuffer::attachDepthbuffer(int width, int height)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+	glBindTexture(GL_TEXTURE_2D, depthTexture);
 	glGenRenderbuffers(1, &RBO);
 	glBindRenderbuffer(GL_RENDERBUFFER, RBO);
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
 	
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, RBO);
 
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
@@ -72,6 +74,7 @@ void GLFramebuffer::bindFramebuffer(int width, int height) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 	glViewport(0, 0, width, height);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void GLFramebuffer::unbindFramebuffer(int width, int height) const

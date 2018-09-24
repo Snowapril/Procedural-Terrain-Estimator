@@ -43,6 +43,8 @@ public:
 	void processMouseBtn(unsigned int keyFlag);
 	void onUpdate(float dt);
 	void sendVP(unsigned int ubo, float aspectRatio) ;
+	void flipVertically(float yaxis);
+
 	glm::vec3 getViewPos(void) const ;
 };
 

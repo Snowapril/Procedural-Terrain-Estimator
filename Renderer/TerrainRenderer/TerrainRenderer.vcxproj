@@ -178,6 +178,7 @@
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainPatch.cpp" />
+    <ClCompile Include="TextureViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
+    <ClInclude Include="TextureViewer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
@@ -215,6 +217,8 @@
     <None Include="..\resources\shader\terrain_tcs.glsl" />
     <None Include="..\resources\shader\terrain_tes.glsl" />
     <None Include="..\resources\shader\terrain_vs.glsl" />
+    <None Include="..\resources\shader\viewer_fs.glsl" />
+    <None Include="..\resources\shader\viewer_vs.glsl" />
     <None Include="..\resources\shader\water_fs.glsl" />
     <None Include="..\resources\shader\water_vs.glsl" />
   </ItemGroup>

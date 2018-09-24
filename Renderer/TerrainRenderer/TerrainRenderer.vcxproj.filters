@@ -29,9 +29,6 @@
     <ClCompile Include="EngineProfiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EngineTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -93,6 +90,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EngineWater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -163,6 +166,9 @@
     <ClInclude Include="EngineWater.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextureViewer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -202,6 +208,12 @@
       <Filter>shader</Filter>
     </None>
     <None Include="..\resources\shader\water_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\viewer_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\viewer_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

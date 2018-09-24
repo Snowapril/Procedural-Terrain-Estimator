@@ -5,6 +5,8 @@ struct GLFWwindow;
 
 enum class RenderMode : int;
 
+#include <vector>
+
 class EngineGUI
 {
 protected:

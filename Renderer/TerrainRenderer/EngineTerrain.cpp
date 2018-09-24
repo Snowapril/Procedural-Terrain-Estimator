@@ -55,9 +55,10 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
 */
-void EngineTerrain::drawScene(unsigned int drawMode) const
+void EngineTerrain::drawScene(unsigned int drawMode, const glm::vec4& clipPlane) const
 {
 	terrainShader->useProgram();
+	terrainShader->sendUniform("clipPlane", clipPlane);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
@@ -142,7 +143,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	bakeTerrainMap.sendUniform("heightMap", 0);
 
 	unsigned int heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", width, height, false)) == 0)
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/lakeMap.jpg", width, height, false)) == 0)
 		return;
 	
 	maxHeight = getProperMaxHeight(width, height);
@@ -226,4 +227,9 @@ float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)
 	float multiplier = std::log2(min(width, height));
 
 	return static_cast<float>(multiplier * multiplier);
+}
+
+glm::vec3 EngineTerrain::getTerrainScale(void) const
+{
+	return glm::vec3(width, maxHeight, height);
 }
