@@ -21,6 +21,7 @@ void main(void)
 	
 	float height = terrain.w;
 	vec3 normal = normalize(terrain.xyz);
+	normal.xz = normal.xz * 2.0 - 1.0;
 
 	vec4 mixmap = texture(splatMap, tes_texCoords);
 	

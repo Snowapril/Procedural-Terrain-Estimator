@@ -47,7 +47,7 @@ public:
 	}
 public:
 	void listenToAssetChanges(void) noexcept;
-	void refreshDirtyAssets(void) noexcept;
+	bool refreshDirtyAssets(void) noexcept;
 };
 
 #endif

@@ -50,7 +50,8 @@ void EngineApp::drawScene(void)
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
-	float waterHeight = water.getWaterHeight();
+	const float waterHeight = water.getWaterHeight();
+	const float ratio = getAspectRatio();
 
 	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 	/// draw call here.
@@ -61,15 +62,15 @@ void EngineApp::drawScene(void)
 	glDisable(GL_CULL_FACE);
 
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, getAspectRatio());
+	camera.sendVP(vpUBO, ratio);
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
 	skybox.drawScene(GL_TRIANGLES);
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 0.5f));
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, getAspectRatio());
+	camera.sendVP(vpUBO, ratio);
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	skybox.drawScene(GL_TRIANGLES);
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+	skybox.drawScene(GL_TRIANGLES);
 
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 	glDisable(GL_CLIP_DISTANCE0);
@@ -83,10 +84,12 @@ void EngineApp::drawScene(void)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
-		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), water.getRefractionDepthTexture());
 		textureViewer.renderViewer();
 		textureViewer.clearViewer();
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+		camera.flipVertically(waterHeight);
 
 	/// end of draw call
 	glBindVertexArray(0u);

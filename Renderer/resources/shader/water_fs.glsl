@@ -16,7 +16,7 @@ uniform float moveFactor;
 
 uniform vec3 lightColor;
 
-const float distortionStrength	= 0.02;
+const float distortionStrength	= 0.05;
 const float shineDamper			= 20.0;
 const float reflectivity		= 0.6;
 
@@ -39,7 +39,7 @@ void main(void)
 
 	vec2 distortedTexCoords = texture(dudvMap, vec2(texCoords.x + moveFactor, texCoords.y)).rg * 0.1;
 	distortedTexCoords = texCoords + vec2(distortedTexCoords.x, distortedTexCoords.y + moveFactor);
-	vec2 totalDistortion = (texture(dudvMap, distortedTexCoords).rg * 2.0 - 1.0) * distortionStrength;// *clamp(waterDepth / 20.0, 0.0, 1.0);
+	vec2 totalDistortion = (texture(dudvMap, distortedTexCoords).rg * 2.0 - 1.0) * distortionStrength * clamp(waterDepth / 20.0, 0.0, 1.0);
 
 	vec4 normalColor = texture(normalMap, distortedTexCoords);
 	vec3 normal = normalize(vec3(normalColor.r * 2.0 - 1.0, normalColor.b * 3.0, normalColor.g * 2.0 - 1.0));
@@ -62,9 +62,9 @@ void main(void)
 	vec3 reflectedLight = reflect(normalize(toLightVector), normal);
 	float specular = max(dot(reflectedLight, viewVector), 0.0);
 	specular = pow(specular, shineDamper);
-	vec3 specularHighlight = lightColor * specular * reflectivity;// *clamp(waterDepth / 5.0, 0.0, 1.0);
+	vec3 specularHighlight = lightColor * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
 
 	fragColors = mix(reflection, refraction, reflectionFactor);
 	fragColors = mix(fragColors, vec4(0.0, 0.3, 0.5, 1.0), 0.2) + vec4(specularHighlight, 1.0);
-	//fragColors.a = clamp(waterDepth / 5.0, 0.0, 1.0);
+	fragColors.a = clamp(waterDepth / 5.0, 0.0, 1.0);
 }

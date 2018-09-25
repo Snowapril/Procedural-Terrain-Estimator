@@ -32,20 +32,21 @@ EngineTerrain::~EngineTerrain()
 
 void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 {
-	assetManager->refreshDirtyAssets();
+	if (assetManager->refreshDirtyAssets())
+	{
+		terrainShader->useProgram();
+		terrainShader->sendUniform("originPos", this->terrainOriginPos);
+		terrainShader->sendUniform("terrainMap", 0);
+		terrainShader->sendUniform("splatMap", 1);
+		terrainShader->sendUniform("dirtTexture", 2);
+		terrainShader->sendUniform("rockTexture", 3);
+		terrainShader->sendUniform("grassTexture", 4);
+		terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
+		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
+	}
 
 	if (cameraPos == prevCameraPos)
 		return;
-
-	terrainShader->useProgram();
-	terrainShader->sendUniform("originPos", this->terrainOriginPos);
-	terrainShader->sendUniform("terrainMap", 0);
-	terrainShader->sendUniform("splatMap", 1);
-	terrainShader->sendUniform("dirtTexture", 2);
-	terrainShader->sendUniform("rockTexture", 3);
-	terrainShader->sendUniform("grassTexture", 4);
-	terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
-	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 
 	DynamicTerrain::updateTerrain(cameraPos);
 

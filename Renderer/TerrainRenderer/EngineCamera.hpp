@@ -16,7 +16,7 @@ enum CameraKey
 
 class EngineCamera
 {
-private:
+public:
 	bool updateFov;
 	bool toggleZoom;
 

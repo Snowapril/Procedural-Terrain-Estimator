@@ -19,10 +19,10 @@ constexpr float CAMERA_MAX_FOV		= 50.0f;
 constexpr bool	ENABLE_CULLING		= true;
 constexpr float MOUSE_SENSITIVITY	= 0.1f;
 constexpr float CAMERA_SPEED		= 30.0f;
-constexpr float REFLECTION_WIDTH	= 640.0f;
-constexpr float REFLECTION_HEIGHT	= 320.0f;
-constexpr float REFRACTION_WIDTH	= 1600.0f;
-constexpr float REFRACTION_HEIGHT	= 900.0f;
+constexpr float REFLECTION_WIDTH	= CLIENT_WIDTH;
+constexpr float REFLECTION_HEIGHT	= CLIENT_HEIGHT;
+constexpr float REFRACTION_WIDTH	= CLIENT_WIDTH;
+constexpr float REFRACTION_HEIGHT	= CLIENT_HEIGHT;
 
 namespace Color {
 

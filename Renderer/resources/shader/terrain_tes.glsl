@@ -48,7 +48,7 @@ void main(void)
 	gl_Position = interpolate4(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position, gl_in[3].gl_Position);
 	gl_Position.y = height * terrainMaxHeight;
 
-	gl_ClipDistance[0] = dot(gl_Position, clipPlane); // 이걸 vertex shader로 옮기면 performance는 오르겠지만 visual artifact의 가능성
+	gl_ClipDistance[0] = dot(gl_Position, clipPlane); 
 	 
 	gl_Position = project * view * gl_Position;
 }

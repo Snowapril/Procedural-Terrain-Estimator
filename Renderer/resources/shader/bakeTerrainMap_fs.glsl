@@ -24,6 +24,7 @@ void main(void)
 	//vec3 normal = normalize(cross(va, vb));
 
 	vec3 normal = normalize(vec3(hL - hR, 2, hD - hU));
+	normal.xz = normal.xz * 0.5 + 0.5;
 
 	fragColors = vec4(normal, height); 
 }		
