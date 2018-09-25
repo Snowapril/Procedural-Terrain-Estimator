@@ -38,5 +38,7 @@ public:
 	bool hasCrator();
 
 	void makeCoast(bool needCoast);
+
+	void makeIsland(bool needIsland, int radius);
 };
 #endif

@@ -4,10 +4,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-
+#include <algorithm>
 using namespace std;
-
-
 
 Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : height(_height), width(_width) {
 	mapData.resize(height,vector<unsigned char>(width,0));
@@ -27,6 +25,18 @@ void Estimator::dumpMapData() {
 	}
 }
 
+vector <pii> gscan() {
+	vector <pii> stk;
+	int ss = stk.size();
+	for (int i = 0; i < piis.size(); i++) {
+		while (ss >= 2 && ccw(stk[ss - 2], stk.back(), piis[i]) <= 0) {
+			stk.pop_back();
+			ss--;
+		}
+		stk.push_back(piis[i]);
+	}
+	return stk;
+}
 
 pii Estimator::descent(int y,int x) {
 	pii& ans = descentTable[y][x];
@@ -70,6 +80,7 @@ bool Estimator::hasCrator() {
 }
 
 void Estimator::makeCoast(bool needCoast) {
+	if (!needCoast) return;
 	srand(time(NULL));
 	int coastLine = width / 10;
 	int curCoast = coastLine;
@@ -90,9 +101,40 @@ void Estimator::makeCoast(bool needCoast) {
 			probStay += 4;
 			curCoast++;
 		}
+		for (int j = curCoast - 1; j > curCoast - 10; j++) {
+			mapData[i][j] = mapData[i][j] / 10 * (curCoast - j);
+		}
 		for (int j = curCoast; j < width; j++) {
 			mapData[i][j] = 0;
 		}
+	}	
+}
+
+void Estimator::makeIsland(bool needIsland, int radius = 0) {
+	if (!needIsland) return;
+	int probUp = 20, probDown = 40;
+	int cut = radius / 10;
+	srand(time(NULL));
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			int y = i - height / 2, x = j - width / 2;
+			if (i*i + j * j > radius*radius) {
+				mapData[i][j] = 0;
+				int prob = rand() % 100;
+				if (prob < probUp) {
+					cut++;
+					probUp -= 4;
+				}
+				else if (prob < probDown) {
+					cut--;
+					probUp += 4;
+				}
+
+				for (int k = i - cut; k <= i + cut; k++) {
+					if (k < 0 || k >= height) continue;
+					mapData[k][j] = 0;
+				}
+			}
+		}
 	}
-	
 }
