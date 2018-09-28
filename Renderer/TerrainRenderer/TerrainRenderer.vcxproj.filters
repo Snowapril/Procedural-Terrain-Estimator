@@ -258,6 +258,18 @@
     <ClInclude Include="EngineTerrain.hpp">
       <Filter>Terrain\public</Filter>
     </ClInclude>
+    <ClInclude Include="TerrainShaderCode.hpp">
+      <Filter>Terrain\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterShaderCode.hpp">
+      <Filter>Water\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyboxShaderCode.hpp">
+      <Filter>Skybox\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewerShaderCode.hpp">
+      <Filter>GUI\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">

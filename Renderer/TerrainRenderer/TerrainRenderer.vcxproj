@@ -206,8 +206,12 @@
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
+    <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
+    <ClInclude Include="TerrainShaderCode.hpp" />
     <ClInclude Include="TextureViewer.hpp" />
+    <ClInclude Include="ViewerShaderCode.hpp" />
+    <ClInclude Include="WaterShaderCode.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
