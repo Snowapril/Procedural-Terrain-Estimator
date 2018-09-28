@@ -5,234 +5,305 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="EngineFramework">
+      <UniqueIdentifier>{863a6077-f26d-4c62-82e7-53659a10300a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="glad">
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{df48e6d3-2b33-44f6-97e6-66822a26964b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{fdd6719e-bd91-479d-b0cf-78b5983c4280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{2df0f703-9a6d-4547-be82-bd397c0d42b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\imgui">
+      <UniqueIdentifier>{0dc9f8e0-4d52-4d7f-b3a6-2c39f1e43cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFramework\glad">
       <UniqueIdentifier>{08ac5eb7-40f9-48e3-9be8-f4fffd2ee65e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shader">
-      <UniqueIdentifier>{a072ddbf-202f-429b-9022-138456f9e6d9}</UniqueIdentifier>
+    <Filter Include="Terrain">
+      <UniqueIdentifier>{34247fb4-fbbe-4729-9a73-9cd34b46ba64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{0dc9f8e0-4d52-4d7f-b3a6-2c39f1e43cae}</UniqueIdentifier>
+    <Filter Include="Util">
+      <UniqueIdentifier>{ffebe455-9b47-4029-a67a-ff6e7d3fc0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Water">
+      <UniqueIdentifier>{88db51d5-e27f-4d3b-bb3e-ec0630103de0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skybox">
+      <UniqueIdentifier>{70da3c6f-7158-4265-beee-61215c29ec3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFramework\private">
+      <UniqueIdentifier>{03a1cf22-752e-40e6-984c-7e0fc13c2b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFramework\public">
+      <UniqueIdentifier>{39ab18fe-2c65-4687-b224-781e8b11d6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\private">
+      <UniqueIdentifier>{14428271-35f9-4b49-b529-ad32f9460688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\public">
+      <UniqueIdentifier>{3533b277-0ebd-4c2a-a820-fc360249f799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\private">
+      <UniqueIdentifier>{1d749da4-dccb-4336-8b5c-8c6db1d51033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\public">
+      <UniqueIdentifier>{63c1b33e-ffc6-4b7f-a587-8824ff0346a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\private">
+      <UniqueIdentifier>{81a0fd5e-0256-4faa-ab37-53bcc2f25cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\public">
+      <UniqueIdentifier>{6214e953-9166-4e93-b025-20c6ac6f0faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\shader">
+      <UniqueIdentifier>{69a2a6cf-fdcf-44b6-b439-55a4c6b5608c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skybox\private">
+      <UniqueIdentifier>{67053e5e-39dc-4ef7-8552-b1f2e5cd4e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skybox\public">
+      <UniqueIdentifier>{86b07cc7-cec9-4ca9-bb50-9e1b3984480b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skybox\shader">
+      <UniqueIdentifier>{5358121e-04e4-43f9-a119-3cd471ab0c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Water\private">
+      <UniqueIdentifier>{051b481f-4646-4497-b47e-c6ae692dc362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Water\public">
+      <UniqueIdentifier>{5b6e5189-2a61-4dc0-a7d4-d72ef5ee72f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Water\shader">
+      <UniqueIdentifier>{406fbe14-8005-4527-9669-f2f63aa9da77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\private">
+      <UniqueIdentifier>{2f135a63-270e-4319-93b5-7857295d7526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\public">
+      <UniqueIdentifier>{c34d4c2f-5d32-4e3f-be1e-ad417cc60b1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\private">
+      <UniqueIdentifier>{0295bbac-7aff-4cad-a462-2cac5ee10de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\public">
+      <UniqueIdentifier>{bd7c78f4-db00-4fa0-8d10-321504f4f6ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\shader">
+      <UniqueIdentifier>{549ddc6d-b113-4027-89a7-ae1fe58e17c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EngineLogger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineProfiler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="glad.c">
-      <Filter>glad</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLResources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineTerrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLMesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TerrainPatch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GLGeometry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineGUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicTerrain.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>EngineFramework\glad</Filter>
     </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui.cpp">
-      <Filter>imgui</Filter>
+      <Filter>GUI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp">
-      <Filter>imgui</Filter>
+      <Filter>GUI\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp">
-      <Filter>imgui</Filter>
+      <Filter>GUI\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="EngineSkybox.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EngineApp.cpp">
+      <Filter>EngineFramework\private</Filter>
     </ClCompile>
-    <ClCompile Include="GLFramebuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineWater.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureViewer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EngineCamera.cpp">
+      <Filter>EngineFramework\private</Filter>
     </ClCompile>
     <ClCompile Include="EngineTimer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>EngineFramework\private</Filter>
     </ClCompile>
-    <ClCompile Include="EngineCubeMap.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GLApp.cpp">
+      <Filter>EngineFramework\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLGeometry.cpp">
+      <Filter>Geometry\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLMesh.cpp">
+      <Filter>Geometry\private</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Assets\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineAsset.cpp">
+      <Filter>Assets\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLShader.cpp">
+      <Filter>Assets\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTexture.cpp">
+      <Filter>Assets\private</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureViewer.cpp">
+      <Filter>GUI\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineGUI.cpp">
+      <Filter>GUI\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSkybox.cpp">
+      <Filter>Skybox\private</Filter>
     </ClCompile>
     <ClCompile Include="EngineHDREnvMap.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Skybox\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineCubeMap.cpp">
+      <Filter>Skybox\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWater.cpp">
+      <Filter>Water\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineLogger.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineProfiler.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFramebuffer.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="GLResources.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicTerrain.cpp">
+      <Filter>Terrain\private</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTerrain.cpp">
+      <Filter>Terrain\private</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainPatch.cpp">
+      <Filter>Terrain\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EngineLogger.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineProfiler.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineProperty.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineTimer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GLDebugger.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLShader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineAsset.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLApp.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>EngineFramework\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineApp.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineTerrain.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLResources.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLTexture.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLMesh.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLGeometry.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TerrainPatch.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>EngineFramework\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineCamera.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>EngineFramework\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTimer.hpp">
+      <Filter>EngineFramework\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLApp.hpp">
+      <Filter>EngineFramework\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLMesh.hpp">
+      <Filter>Geometry\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLGeometry.hpp">
+      <Filter>Geometry\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.hpp">
+      <Filter>Assets\public</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.hpp">
+      <Filter>Assets\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineAsset.hpp">
+      <Filter>Assets\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShader.hpp">
+      <Filter>Assets\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineGUI.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicTerrain.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineSkybox.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLFramebuffer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineWater.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>GUI\public</Filter>
     </ClInclude>
     <ClInclude Include="TextureViewer.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>GUI\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineCubeMap.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Skybox\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineHDREnvMap.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Skybox\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSkybox.hpp">
+      <Filter>Skybox\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWater.hpp">
+      <Filter>Water\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLResources.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineLogger.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineProfiler.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineProperty.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFramebuffer.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainPatch.hpp">
+      <Filter>Terrain\public</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicTerrain.hpp">
+      <Filter>Terrain\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTerrain.hpp">
+      <Filter>Terrain\public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\bakeNormalMap_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\bakeTerrainMap_fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\bakeTerrainMap_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\terrain_gs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\terrain_tcs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\terrain_tes.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\terrain_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\terrain_fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\skybox_fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\skybox_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\water_fs.glsl">
-      <Filter>shader</Filter>
-    </None>
-    <None Include="..\resources\shader\water_vs.glsl">
-      <Filter>shader</Filter>
-    </None>
     <None Include="..\resources\shader\viewer_fs.glsl">
-      <Filter>shader</Filter>
+      <Filter>GUI\shader</Filter>
     </None>
     <None Include="..\resources\shader\viewer_vs.glsl">
-      <Filter>shader</Filter>
+      <Filter>GUI\shader</Filter>
     </None>
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl">
-      <Filter>shader</Filter>
+      <Filter>Skybox\shader</Filter>
     </None>
     <None Include="..\resources\shader\equiRectangularMapToCubemap_vs.glsl">
-      <Filter>shader</Filter>
+      <Filter>Skybox\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\skybox_fs.glsl">
+      <Filter>Skybox\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\skybox_vs.glsl">
+      <Filter>Skybox\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\water_vs.glsl">
+      <Filter>Water\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\water_fs.glsl">
+      <Filter>Water\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\bakeTerrainMap_fs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\bakeTerrainMap_vs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_vs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_tes.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_tcs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_gs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_fs.glsl">
+      <Filter>Terrain\shader</Filter>
     </None>
   </ItemGroup>
 </Project>

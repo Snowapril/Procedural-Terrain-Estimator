@@ -20,14 +20,14 @@ GLMesh & GLMesh::operator=(const GLMesh & other)
 
 
 
-void GLMesh::drawMesh(unsigned int drawMode) const noexcept
+void GLMesh::drawMesh(uint32_t drawMode) const noexcept
 {
 	geometrySrc->drawGeometry(drawMode);
 }
 
 bool GLMesh::initWithFixedShape(MeshShape shape)
 {
-	unsigned int VAO, VBO, IBO;
+	uint32_t VAO, VBO, IBO;
 	std::size_t numElements;
 
 	switch (shape)
@@ -41,7 +41,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 				-1.0f, 0.0f,  1.0f, 0.0f, 1.0f,
 			};
 
-			unsigned int quadIndices[] = {
+			uint32_t quadIndices[] = {
 				0, 1, 2, 3
 			};
 
@@ -62,7 +62,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(quadIndices) / sizeof(unsigned int);
+			numElements = sizeof(quadIndices) / sizeof(uint32_t);
 		}
 		break;
 
@@ -80,7 +80,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 				-1.0f, 1.0f, 1.0f,
 			};
 
-			unsigned int cubeIndices[] =
+			uint32_t cubeIndices[] =
 			{
 				0, 1, 3, 3, 1, 2,
 				1, 5, 2, 2, 5, 6,
@@ -105,7 +105,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(cubeIndices) / sizeof(unsigned int);
+			numElements = sizeof(cubeIndices) / sizeof(uint32_t);
 		}
 		break;
 		case MeshShape::QUAD_TRIANGLE_STRIP :
@@ -117,7 +117,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 				 1.0f,  1.0f, 1.0f, 1.0f,
 			};
 
-			unsigned int quadIndices[] =
+			uint32_t quadIndices[] =
 			{
 				0, 1, 2, 3
 			};
@@ -139,7 +139,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(quadIndices) / sizeof(unsigned int);
+			numElements = sizeof(quadIndices) / sizeof(uint32_t);
 		}
 		break;
 		default:

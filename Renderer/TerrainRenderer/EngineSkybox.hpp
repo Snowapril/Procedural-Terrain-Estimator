@@ -11,7 +11,7 @@ public:
 	virtual ~EngineSkybox();
 public:
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
-	virtual void drawScene(unsigned int drawMode) const;
+	virtual void drawScene(uint32_t drawMode) const;
 };
 
 #endif

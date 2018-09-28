@@ -210,8 +210,6 @@
     <ClInclude Include="TextureViewer.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
-    <None Include="..\resources\shader\bakeNormalMap_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl" />

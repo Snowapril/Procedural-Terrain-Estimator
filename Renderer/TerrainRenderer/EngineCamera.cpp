@@ -105,7 +105,7 @@ void EngineCamera::processMousePos(double xpos, double ypos)
 	direction = glm::normalize(direction);
 }
 
-void EngineCamera::processMouseBtn(unsigned int keyFlag)
+void EngineCamera::processMouseBtn(uint32_t keyFlag)
 {
 	if (keyFlag & CAMERA_RIGHT_BTN)
 	{
@@ -114,7 +114,7 @@ void EngineCamera::processMouseBtn(unsigned int keyFlag)
 	}
 }
 
-void EngineCamera::processKeyInput(unsigned int keyFlag, float dt) 
+void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 {
 	const float movement = speed * dt;
 	int pressedKey = 0;
@@ -139,7 +139,7 @@ void EngineCamera::processScroll(double yoffset)
 		fov = CAMERA_MAX_FOV;
 }
 
-void EngineCamera::sendVP(unsigned int ubo, float aspectRatio)
+void EngineCamera::sendVP(uint32_t ubo, float aspectRatio)
 {
 	glBindBuffer(GL_UNIFORM_BUFFER, ubo);
 	

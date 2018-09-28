@@ -178,7 +178,7 @@ void EngineApp::mousePosCallback(double xpos, double ypos)
 
 void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 {
-	unsigned int keyFlag = 0;
+	uint32_t keyFlag = 0;
 
 	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 		keyFlag |= CAMERA_LEFT_BTN;
@@ -196,7 +196,7 @@ void EngineApp::scrollCallback(double xoffset, double yoffset)
 
 void EngineApp::processKeyInput(float dt)
 {
-	unsigned int keyFlag = 0;
+	uint32_t keyFlag = 0;
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		keyFlag |= CAMERA_UP;

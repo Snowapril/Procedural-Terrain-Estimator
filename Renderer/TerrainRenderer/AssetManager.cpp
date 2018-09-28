@@ -56,7 +56,7 @@ bool AssetManager::refreshDirtyAssets(void) noexcept
 
 	std::lock_guard<std::mutex> lockGuard(fileChangeMutex);
 	for (auto& asset : dirtyAssets)
-		(~(*asset)).reloadAsset();
+		asset->reloadAsset();
 
 	dirtyAssets.clear();
 
@@ -86,4 +86,5 @@ void AssetManager::listenToAssetChanges(void) noexcept
 	}
 }
 
-template <> GLShader* AssetManager::addAsset(std::initializer_list<std::string>&& assetPath);
+template <> GLShader* AssetManager::addAsset(iList<std::string>&& assetPath);
+template <> GLShader* AssetManager::addAsset(iList<std::pair<uint32_t, std::string>>&& assetPath);

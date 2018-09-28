@@ -18,10 +18,10 @@
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
 
-class GLShader : public EngineAsset<GLShader>
+class GLShader : public EngineAsset
 {
 private:
-	unsigned int programID;
+	uint32_t programID;
 	
 	enum class CHECK_TARGET : int;
 	enum SHADER_TYPE {
@@ -34,7 +34,7 @@ private:
 
 	void parseShaderPath(const std::vector<std::string>& assetPath);
 	static void getShaderString(const std::string& path, std::string& ret_string);
-	static bool checkStatus(unsigned int target, CHECK_TARGET targetType);
+	static bool checkStatus(uint32_t target, CHECK_TARGET targetType);
 public:
 	GLShader();
 	GLShader(const std::vector<std::string>& assetPath);
@@ -43,7 +43,7 @@ public:
 	virtual ~GLShader();
 public:
 	void loadAsset(const std::vector<std::string>& assetPath);
-	void reloadAsset(void);
+	virtual void reloadAsset(void);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

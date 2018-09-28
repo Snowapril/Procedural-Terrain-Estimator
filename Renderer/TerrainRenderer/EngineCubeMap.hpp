@@ -11,7 +11,7 @@ class AssetManager;
 class EngineCubeMap
 {
 protected:
-	unsigned int cubeMap;
+	uint32_t cubeMap;
 	GLShader* skyboxShader;
 	std::unique_ptr<AssetManager> assetManager;
 	GLMesh skyboxMesh;
@@ -21,7 +21,7 @@ public:
 	virtual ~EngineCubeMap();
 public:
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
-	virtual void drawScene(unsigned int drawMode) const = 0;
+	virtual void drawScene(uint32_t drawMode) const = 0;
 };
 
 #endif

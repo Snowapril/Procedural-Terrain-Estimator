@@ -74,7 +74,7 @@ void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
 	waterShader->sendUniform("lightColor", LIGHT_COLOR);
 }
 
-void EngineWater::drawWater(unsigned int drawMode) const
+void EngineWater::drawWater(uint32_t drawMode) const
 {
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, position);
@@ -136,7 +136,7 @@ bool EngineWater::initShaders()
 	
 	try
 	{
-		waterShader = assetManager->addAsset<GLShader>({
+		waterShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/water_vs.glsl",
 			"../resources/shader/water_fs.glsl",
 		});

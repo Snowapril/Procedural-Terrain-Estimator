@@ -30,7 +30,7 @@ bool EngineSkybox::initCubeMap(const std::string& cubeMapDir, const std::string&
 	return true;
 }
 
-void EngineSkybox::drawScene(unsigned int drawMode) const
+void EngineSkybox::drawScene(uint32_t drawMode) const
 {
 	skyboxShader->useProgram();
 

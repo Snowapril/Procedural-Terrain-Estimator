@@ -39,7 +39,7 @@ void GLFramebuffer::attachColorTexture(int width, int height)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void GLFramebuffer::attachDepthTexture(int width, int height, unsigned int internalformat, unsigned int format)
+void GLFramebuffer::attachDepthTexture(int width, int height, uint32_t internalformat, uint32_t format)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 

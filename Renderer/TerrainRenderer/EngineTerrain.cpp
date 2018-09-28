@@ -2,6 +2,7 @@
 #include "GLShader.hpp"
 #include "GLResources.hpp"
 #include "AssetManager.hpp"
+#include "GLTexture.hpp"
 
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
@@ -13,7 +14,19 @@
 
 bool EngineTerrain::isInstanciated = false;
 
-EngineTerrain::EngineTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths)
+/*
+constexpr const char TERRAINPATH_VS[] = "../resources/shader/terrain_vs.glsl";
+constexpr const char TERRAINPATH_TCS[] = "../resources/shader/terrain_tcs.glsl";
+constexpr const char TERRAINPATH_TES[] = "../resources/shader/terrain_tes.glsl";
+constexpr const char TERRAINPATH_FS[] = "../resources/shader/terrain_fs.glsl";
+
+constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/splatMap.png";
+constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/dirt.jpg";
+constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/rock.jpg";
+constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/grass.png";
+*/
+
+EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
 	: DynamicTerrain(), terrainMap(0), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
@@ -56,16 +69,16 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
 */
-void EngineTerrain::drawScene(unsigned int drawMode, const glm::vec4& clipPlane) const
+void EngineTerrain::drawScene(uint32_t drawMode, const glm::vec4& clipPlane) const
 {
 	terrainShader->useProgram();
 	terrainShader->sendUniform("clipPlane", clipPlane);
-
+	
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, splatMap);
-	tileTextures.applyTexture();
+	tileTextures->applyTexture();
 
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 
@@ -81,12 +94,12 @@ no need to generate in run-time.
 disadvantage of this approach is "will generate fixed result".
 * @ return		return boolean whether if initialization is successful or not.
 */
-bool EngineTerrain::initTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths)
+bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& paths)
 {
 	assetManager = std::make_unique<AssetManager>();
 	try
 	{
-		terrainShader = assetManager->addAsset<GLShader>({
+		terrainShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
@@ -98,20 +111,25 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, std::initializer_list
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
 		return false;
 	}
+	//xv6
+	if (!bakeTerrainMap())
+		return false;
 
-	bakeTerrainMap();
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
 
 	try
 	{
-		tileTextures.loadAsset({ std::make_pair<unsigned int, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
-								 std::make_pair<unsigned int, std::string>(3, "../resources/texture/terrain/rock.jpg"),
-								 std::make_pair<unsigned int, std::string>(4, "../resources/texture/terrain/grass.png") });
+		tileTextures = assetManager->addAsset<GLTexture, std::pair<uint32_t, std::string>>({
+			std::make_pair<uint32_t, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
+			std::make_pair<uint32_t, std::string>(3, "../resources/texture/terrain/rock.jpg"),
+			std::make_pair<uint32_t, std::string>(4, "../resources/texture/terrain/grass.png"),
+		});
 	}
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to initialize EngineTerrain");
+		return false;
 	}
 
 	if (!initDynamicTerrain(position))
@@ -128,7 +146,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, std::initializer_list
 * @ param		aspectRatio is needed for getting perspective matrix.
 * @ todo		save baked texture to file which can have float value.
 */
-void EngineTerrain::bakeTerrainMap(void)
+bool EngineTerrain::bakeTerrainMap(void)
 {
 	GLShader bakeTerrainMap;
 	try
@@ -138,15 +156,15 @@ void EngineTerrain::bakeTerrainMap(void)
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to bake terrain map (open shader fail) : {}", e.what());
-		return;
+		return false;
 	}
 
 	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform("heightMap", 0);
 
-	unsigned int heightMap;
+	uint32_t heightMap;
 	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/lakeMap.jpg", width, height, false)) == 0)
-		return;
+		return false;
 	
 	maxHeight = getProperMaxHeight(width, height);
 	bakeTerrainMap.sendUniform("terrainMaxHeight", maxHeight);
@@ -175,7 +193,7 @@ void EngineTerrain::bakeTerrainMap(void)
 	glm::mat4 captureProjection = glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, 10.0f);
 	glm::mat4 captureView = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-	unsigned int captureFBO, captureRBO;
+	uint32_t captureFBO, captureRBO;
 
 	glGenFramebuffers(1u, &captureFBO);
 	glGenRenderbuffers(1u, &captureRBO);
@@ -222,6 +240,8 @@ void EngineTerrain::bakeTerrainMap(void)
 	glDeleteBuffers(1u, &quadVBO);
 	glDeleteVertexArrays(1u, &quadVAO);
 	glDeleteTextures(1u, &heightMap);
+
+	return true;
 }
 
 float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)

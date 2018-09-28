@@ -1,14 +1,16 @@
 #ifndef GL_FRAMEBUFFER_HPP
 #define GL_FRAMEBUFFER_HPP
 
+#include <stdint.h>
+
 //this is framebuffer wrapper class.
 class GLFramebuffer
 {
 private:
-	unsigned int FBO;
-	unsigned int RBO;
-	unsigned int depthTexture;
-	unsigned int colorTexture;
+	uint32_t FBO;
+	uint32_t RBO;
+	uint32_t depthTexture;
+	uint32_t colorTexture;
 public:
 	GLFramebuffer();
 	~GLFramebuffer();
@@ -17,7 +19,7 @@ public:
 public:
 	void initFramebuffer(void);
 	void attachColorTexture(int width, int height);
-	void attachDepthTexture(int width, int height, unsigned int internalformat, unsigned int format);
+	void attachDepthTexture(int width, int height, uint32_t internalformat, uint32_t format);
 	void attachDepthbuffer(int width, int height);
 
 	void bindFramebuffer(int width, int height) const;
@@ -25,11 +27,11 @@ public:
 
 	bool checkFramebufferStatus(void) const;
 
-	inline unsigned int getColorTexture(void) const {
+	inline uint32_t getColorTexture(void) const {
 		return colorTexture;
 	}
 
-	inline unsigned int getDepthTexture(void) const {
+	inline uint32_t getDepthTexture(void) const {
 		return depthTexture;
 	}
 };

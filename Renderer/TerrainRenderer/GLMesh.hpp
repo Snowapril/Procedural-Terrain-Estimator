@@ -21,7 +21,7 @@ public:
 	GLMesh(const GLMesh& other);
 	GLMesh& operator=(const GLMesh& other);
 public:
-	void drawMesh(unsigned int drawMode) const noexcept;
+	void drawMesh(uint32_t drawMode) const noexcept;
 	bool initWithFixedShape(MeshShape shape);
 };
 

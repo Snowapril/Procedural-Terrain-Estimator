@@ -29,7 +29,7 @@ bool EngineCubeMap::initCubeMap(const std::string& cubeMapDir, const std::string
 
 	try
 	{
-		skyboxShader = assetManager->addAsset<GLShader>({
+		skyboxShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/skybox_vs.glsl",
 			"../resources/shader/skybox_fs.glsl"
 			});

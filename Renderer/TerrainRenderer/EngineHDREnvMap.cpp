@@ -27,7 +27,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 {
 	EngineCubeMap::initCubeMap(cubeMapDir, extension);
 
-	unsigned int hdrMap;
+	uint32_t hdrMap;
 
 	if ((hdrMap = GLResources::CreateHDREnvMap(cubeMapDir + extension)) == 0)
 		return false;
@@ -65,7 +65,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 		glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f))
 	};
 
-	unsigned int captureFBO, captureRBO;
+	uint32_t captureFBO, captureRBO;
 
 	glGenFramebuffers(1, &captureFBO);
 	glGenRenderbuffers(1, &captureRBO);
@@ -78,7 +78,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	glGenTextures(1, &cubeMap);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);
 
-	for (unsigned int i = 0; i < 6; ++i)
+	for (uint32_t i = 0; i < 6; ++i)
 		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB16F, HDR_RESOLUTION, HDR_RESOLUTION, 0, GL_RGB, GL_FLOAT, nullptr);
 
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -99,7 +99,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	glViewport(0, 0, HDR_RESOLUTION, HDR_RESOLUTION);
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
 
-	for (unsigned int i = 0; i < 6; ++i)
+	for (uint32_t i = 0; i < 6; ++i)
 	{
 		bakeShader.sendUniform("view", captureViews[i]);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, cubeMap, 0);
@@ -112,7 +112,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	return true;
 }
 
-void EngineHDREnvMap::drawScene(unsigned int drawMode) const
+void EngineHDREnvMap::drawScene(uint32_t drawMode) const
 {
 	skyboxShader->useProgram();
 

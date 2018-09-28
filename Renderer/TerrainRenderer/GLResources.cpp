@@ -11,7 +11,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb/stb_image_write.h>
 
-unsigned int GLResources::CreateTexture2D(const std::string& path, bool gamma)
+uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
 
@@ -23,7 +23,7 @@ unsigned int GLResources::CreateTexture2D(const std::string& path, bool gamma)
 		return 0;
 	}
 
-	unsigned int texture;
+	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -66,7 +66,7 @@ unsigned int GLResources::CreateTexture2D(const std::string& path, bool gamma)
 }
 
 
-unsigned int GLResources::CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma)
+uint32_t GLResources::CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
 
@@ -81,7 +81,7 @@ unsigned int GLResources::CreateTexture2D(const std::string& path, std::size_t& 
 	retWidth  = width;
 	retHeight = height;
 
-	unsigned int texture;
+	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -124,7 +124,8 @@ unsigned int GLResources::CreateTexture2D(const std::string& path, std::size_t& 
 	return texture;
 }
 
-unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma)
+#ifdef _DEBUG
+uint32_t GLResources::CreateTexture2DApplying3x3AverageFilter(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
 
@@ -171,7 +172,7 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 	retWidth  = width;
 	retHeight = height;
 
-	unsigned int texture;
+	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -212,8 +213,9 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 
 	return texture;
 }
+#endif
 
-unsigned int GLResources::CreateSkybox(const std::string& skyboxDir, const std::string& extension)
+uint32_t GLResources::CreateSkybox(const std::string& skyboxDir, const std::string& extension)
 {	
 	std::string paths[] = {
 		"right.",
@@ -224,7 +226,7 @@ unsigned int GLResources::CreateSkybox(const std::string& skyboxDir, const std::
 		"front.",
 	};
 
-	unsigned int texture;
+	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
@@ -258,11 +260,11 @@ unsigned int GLResources::CreateSkybox(const std::string& skyboxDir, const std::
 	return texture;
 }
 
-unsigned int GLResources::CreateHDREnvMap(const std::string& path)
+uint32_t GLResources::CreateHDREnvMap(const std::string& path)
 {
 	stbi_set_flip_vertically_on_load(true);
 
-	unsigned int texture;
+	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 

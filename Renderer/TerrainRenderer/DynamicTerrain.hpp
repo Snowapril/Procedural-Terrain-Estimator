@@ -9,8 +9,8 @@ class TerrainPatch;
 class DynamicTerrain
 {
 private:
-	unsigned int VBO;
-	unsigned int VAO;
+	uint32_t VBO;
+	uint32_t VAO;
 
 	TerrainPatch* rootPatch;
 	TerrainPatch* tailPatch;
@@ -37,7 +37,7 @@ protected:
 protected:
 	bool initDynamicTerrain(const glm::vec3& position);
 	void updateTerrain(const glm::vec3& cameraPos);
-	void drawTerrain(unsigned int drawMode) const;
+	void drawTerrain(uint32_t drawMode) const;
 public:
 	DynamicTerrain();
 	virtual ~DynamicTerrain();

@@ -27,8 +27,8 @@ class EngineApp : public GLApp, EngineGUI
 {
 private:
 	bool debuggerMode;
-	unsigned int vpUBO;
-	unsigned int polygonMode;
+	uint32_t vpUBO;
+	uint32_t polygonMode;
 
 	std::unique_ptr<EngineCubeMap> skybox;
 

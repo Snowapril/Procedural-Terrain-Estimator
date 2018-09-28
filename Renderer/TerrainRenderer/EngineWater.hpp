@@ -11,8 +11,8 @@ class AssetManager;
 class EngineWater
 {
 private:
-	unsigned int dudvMap;
-	unsigned int normalMap;
+	uint32_t dudvMap;
+	uint32_t normalMap;
 
 	float moveFactor;
 
@@ -49,13 +49,13 @@ public:
 	inline float getWaterHeight(void) const {
 		return position.y;
 	}
-	inline unsigned int getReflectionTexture(void) const {
+	inline uint32_t getReflectionTexture(void) const {
 		return reflectionFBO.getColorTexture();
 	}
-	inline unsigned int getRefractionTexture(void) const {
+	inline uint32_t getRefractionTexture(void) const {
 		return refractionFBO.getColorTexture();	
 	}
-	inline unsigned int getRefractionDepthTexture(void) const {
+	inline uint32_t getRefractionDepthTexture(void) const {
 		return refractionFBO.getDepthTexture();
 	}
 
@@ -65,7 +65,7 @@ public:
 	void setTransform(glm::vec3 pos, glm::vec3 scale);
 
 	void updateWater(float dt, const glm::vec3& cameraPos);
-	void drawWater(unsigned int drawMode) const;
+	void drawWater(uint32_t drawMode) const;
 };
 
 
