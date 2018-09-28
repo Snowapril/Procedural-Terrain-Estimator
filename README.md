@@ -33,11 +33,18 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 * Dynamic Level of Detal
 * Splat map
 * Terrain map
-* 
-### To be implemented
 * Water rendering
 * Water reflection & Skybox
+* HDR Environment Map
 * Lighting & Shading
+
+### To be implemented
+
+* Depth Of Field
+* Screen Space Displacement Mapping
+* Screen Space Ambient Occlusion
+* Tone mapping
+* Frustum Culling
 * Shadow mapping
 * Cliff
 * Fog
@@ -48,12 +55,13 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 
 ### Already Implemented
 * Simplex-noise based height map generator
-
-### To be implemented
-* Voronoi function
-* Noise composition process
-* Weight distribution 
 * GUI interface
+* Voronoi function
+ 
+### To be implemented
+* Noise combination process
+* Weight distribution 
+
 
 ## ESTIMATOR
 
@@ -66,5 +74,5 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 
 ## MEETING
 
-매주 화요일 7시 (중앙도서관 스터디룸)/ 금요일 1시 콘텐츠랩
+매주 금요일 1시 콘텐츠랩 / 토요일 오전10시 온라인 개발
 코드 검수 / 마일스톤 / 방향성 토의
