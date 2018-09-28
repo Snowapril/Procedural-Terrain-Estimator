@@ -4,7 +4,7 @@
 #include <memory>
 
 enum class MeshShape {
-	CUBE_PATCH = 0,
+	QUAD_PATCH = 0,
 	CUBE_TRIANGLES = 1,
 	QUAD_TRIANGLE_STRIP = 2,
 };

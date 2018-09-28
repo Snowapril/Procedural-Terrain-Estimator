@@ -68,6 +68,7 @@ void EngineTerrain::drawScene(unsigned int drawMode, const glm::vec4& clipPlane)
 	tileTextures.applyTexture();
 
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
+
 	DynamicTerrain::drawTerrain(drawMode);
 }
 

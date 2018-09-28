@@ -3,8 +3,6 @@
 layout(triangles) in;
 layout(triangle_strip, max_vertices = 3) out;
 
-
-
 in vec2 tes_texCoords[];
 
 out vec3 gs_normal;

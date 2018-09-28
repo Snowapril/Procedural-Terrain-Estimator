@@ -7,6 +7,7 @@
 #include "GLShader.hpp"
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
+#include "EngineHDREnvMap.hpp"
 
 EngineApp::EngineApp()
 	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
@@ -64,20 +65,20 @@ void EngineApp::drawScene(void)
 	camera.flipVertically(waterHeight);
 	camera.sendVP(vpUBO, ratio);
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
-	skybox.drawScene(GL_TRIANGLES);
+	skybox->drawScene(GL_TRIANGLES);
 	camera.flipVertically(waterHeight);
 	camera.sendVP(vpUBO, ratio);
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-	skybox.drawScene(GL_TRIANGLES);
+	skybox->drawScene(GL_TRIANGLES);
 
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-	skybox.drawScene(GL_TRIANGLES);
+	skybox->drawScene(GL_TRIANGLES);
 	water.drawWater(GL_TRIANGLE_STRIP);
 
 	if (debuggerMode)
@@ -122,8 +123,16 @@ bool EngineApp::initEngine(void)
 
 	onResize(clientWidth, clientHeight);
 
-	if (!skybox.initSkybox("../resources/texture/skybox/interstella/", "png"))
+	try
+	{
+		skybox = std::make_unique<EngineHDREnvMap>("../resources/texture/hdr/beach.", "hdr");
+	}
+	catch (std::exception e)
+	{
 		return false;
+	}
+
+	onResize(clientWidth, clientHeight);
 
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
 		return false;

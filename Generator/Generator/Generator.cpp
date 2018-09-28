@@ -7,7 +7,7 @@
 #include "EngineProperty.hpp"
 #include <vector>
 #include "GLDebugger.hpp"
-#include "Estimator.hpp"
+//#include "Estimator.hpp"
 #include "GLShader.hpp"
 #include <iostream>
 
@@ -291,8 +291,8 @@ bool Generator::saveCurrentTexture(const std::string& path, int width, int heigh
 	}
 	fclose(arrOut);
 
-	Estimator::mapDataInit(data, height, width);
-	Estimator::dumpMapData(height, width);
+	//Estimator::mapDataInit(data, height, width);
+	//Estimator::dumpMapData(height, width);
 
 	stbi_write_png(path.c_str(), height, width, 3, &data[0], 0);
 	glBindTexture(GL_TEXTURE_2D, 0);

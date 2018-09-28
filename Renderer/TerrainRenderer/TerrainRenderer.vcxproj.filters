@@ -98,6 +98,12 @@
     <ClCompile Include="EngineTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EngineCubeMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineHDREnvMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineLogger.hpp">
@@ -169,6 +175,12 @@
     <ClInclude Include="TextureViewer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EngineCubeMap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineHDREnvMap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\bakeNormalMap.fs.glsl">
@@ -214,6 +226,12 @@
       <Filter>shader</Filter>
     </None>
     <None Include="..\resources\shader\viewer_vs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\equiRectangularMapToCubemap_vs.glsl">
       <Filter>shader</Filter>
     </None>
   </ItemGroup>

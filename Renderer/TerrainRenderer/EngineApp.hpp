@@ -15,7 +15,7 @@
 #include <memory>
 #include "EngineTerrain.hpp"
 #include "EngineCamera.hpp"
-#include "EngineSkybox.hpp"
+#include "EngineCubeMap.hpp"
 #include "EngineWater.hpp"
 #include "TextureViewer.hpp"
 
@@ -30,8 +30,9 @@ private:
 	unsigned int vpUBO;
 	unsigned int polygonMode;
 
+	std::unique_ptr<EngineCubeMap> skybox;
+
 	TextureViewer textureViewer;
-	EngineSkybox skybox;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;

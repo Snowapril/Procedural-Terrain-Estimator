@@ -3,6 +3,7 @@
 in vec2 tes_texCoords;
 in vec2 tes_tessCoords;
 in vec2 tes_tileCoords;
+in float visibility;
 
 out vec4 fragColor;
 
@@ -14,6 +15,8 @@ uniform sampler2D rockTexture;
 uniform sampler2D grassTexture;
 
 uniform vec3 wireColor;
+
+const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 
 void main(void)
 {
@@ -42,8 +45,9 @@ void main(void)
 	
 	vec3 diffuse = diff * lightDiffuse;
 	vec3 ambient = vec3(0.35);
-
+	
 	finalColor = (ambient + diffuse) * finalColor;
 
 	fragColor = vec4(finalColor * wireColor, 1.0);
+	//fragColor = mix(skycolor, fragColor, visibility);
 }

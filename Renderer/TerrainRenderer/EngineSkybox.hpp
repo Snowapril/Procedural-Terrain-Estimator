@@ -1,26 +1,17 @@
 #ifndef ENGINE_SKYBOX_HPP
 #define ENGINE_SKYBOX_HPP
 
-#include "GLMesh.hpp"
-#include <memory>
-#include <string>
+#include "EngineCubeMap.hpp"
 
-class GLShader;
-class AssetManager;
-
-class EngineSkybox 
+class EngineSkybox : public EngineCubeMap
 {
-private:
-	unsigned int cubeMap;
-    GLShader* skyboxShader;
-    std::unique_ptr<AssetManager> assetManager;
-    GLMesh skyboxMesh;
 public:
 	EngineSkybox();
-	~EngineSkybox();
+	EngineSkybox(const std::string& cubeMapDir, const std::string& extension);
+	virtual ~EngineSkybox();
 public:
-    bool initSkybox(const std::string& skyboxDir, const std::string& extension);
-    void drawScene(unsigned int drawMode) const;
+	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
+	virtual void drawScene(unsigned int drawMode) const;
 };
 
 #endif

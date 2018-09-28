@@ -213,7 +213,7 @@ unsigned int GLResources::CreateTexture2DApplying3x3AverageFilter(const std::str
 	return texture;
 }
 
-unsigned int GLResources::CreateCubeMap(const std::string& skyboxDir, const std::string& extension)
+unsigned int GLResources::CreateSkybox(const std::string& skyboxDir, const std::string& extension)
 {	
 	std::string paths[] = {
 		"right.",
@@ -255,5 +255,40 @@ unsigned int GLResources::CreateCubeMap(const std::string& skyboxDir, const std:
 
 	EngineLogger::getConsole()->info("Load Cubemap {} finished", skyboxDir);
 	
+	return texture;
+}
+
+unsigned int GLResources::CreateHDREnvMap(const std::string& path)
+{
+	stbi_set_flip_vertically_on_load(true);
+
+	unsigned int texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	int width, height, nChannels;
+
+	float* data = stbi_loadf(path.c_str(), &width, &height, &nChannels, 0);
+
+	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
+	{
+		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+		stbi_image_free(data);
+
+		return 0;
+	}
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, data);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	stbi_image_free(data);
+
+	EngineLogger::getConsole()->info("Load Cubemap {} finished", path);
+	stbi_set_flip_vertically_on_load(false);
+
 	return texture;
 }
