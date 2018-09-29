@@ -161,7 +161,9 @@
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
     <ClCompile Include="EngineCamera.cpp" />
+    <ClCompile Include="EngineCubeMap.cpp" />
     <ClCompile Include="EngineGUI.cpp" />
+    <ClCompile Include="EngineHDREnvMap.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
     <ClCompile Include="EngineProfiler.cpp" />
     <ClCompile Include="EngineSkybox.cpp" />
@@ -186,7 +188,9 @@
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
     <ClInclude Include="EngineCamera.hpp" />
+    <ClInclude Include="EngineCubeMap.hpp" />
     <ClInclude Include="EngineGUI.hpp" />
+    <ClInclude Include="EngineHDREnvMap.hpp" />
     <ClInclude Include="EngineLogger.hpp" />
     <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
@@ -202,14 +206,18 @@
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
+    <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
+    <ClInclude Include="TerrainShaderCode.hpp" />
     <ClInclude Include="TextureViewer.hpp" />
+    <ClInclude Include="ViewerShaderCode.hpp" />
+    <ClInclude Include="WaterShaderCode.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\bakeNormalMap.fs.glsl" />
-    <None Include="..\resources\shader\bakeNormalMap_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
+    <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl" />
+    <None Include="..\resources\shader\equiRectangularMapToCubemap_vs.glsl" />
     <None Include="..\resources\shader\skybox_fs.glsl" />
     <None Include="..\resources\shader\skybox_vs.glsl" />
     <None Include="..\resources\shader\terrain_fs.glsl" />

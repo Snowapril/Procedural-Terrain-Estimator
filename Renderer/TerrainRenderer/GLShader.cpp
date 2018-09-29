@@ -278,7 +278,7 @@ void GLShader::getShaderString(const std::string& path, std::string& ret_string)
 * @ param		type of target. there are two types, SHADER and PROGRAM.
 * @ return		if status is not "fail", return true. if not, return false;
 */
-bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
+bool GLShader::checkStatus(uint32_t  target, CHECK_TARGET targetType)
 {
 	switch (targetType)
 	{

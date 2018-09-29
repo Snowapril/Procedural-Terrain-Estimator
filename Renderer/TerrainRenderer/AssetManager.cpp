@@ -49,14 +49,18 @@ AssetManager & AssetManager::operator=(const AssetManager & other)
 * @ details		changed assets are pushed into dirtyAssets by listenToAssetChanges method.
 				before reload asset, lock guard is needed because for preventing use of same resource by other thread.
 */
-void AssetManager::refreshDirtyAssets(void) noexcept
+bool AssetManager::refreshDirtyAssets(void) noexcept
 {
 	/// before reload assets, lock it from the other thread.
+	const bool isEmpty = dirtyAssets.empty();
+
 	std::lock_guard<std::mutex> lockGuard(fileChangeMutex);
 	for (auto& asset : dirtyAssets)
-		(~(*asset)).reloadAsset();
+		asset->reloadAsset();
 
 	dirtyAssets.clear();
+
+	return isEmpty;
 }
 
 /**
@@ -82,4 +86,5 @@ void AssetManager::listenToAssetChanges(void) noexcept
 	}
 }
 
-template <> GLShader* AssetManager::addAsset(std::initializer_list<std::string>&& assetPath);
+template <> GLShader* AssetManager::addAsset(iList<std::string>&& assetPath);
+template <> GLShader* AssetManager::addAsset(iList<std::pair<uint32_t, std::string>>&& assetPath);

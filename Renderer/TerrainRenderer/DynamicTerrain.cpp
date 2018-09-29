@@ -81,7 +81,7 @@ void DynamicTerrain::updateTerrain(const glm::vec3& cameraPos)
 	glBindVertexArray(0);
 }
 
-void DynamicTerrain::drawTerrain(unsigned int drawMode) const
+void DynamicTerrain::drawTerrain(uint32_t drawMode) const
 {
 	glBindVertexArray(VAO);
 	glDrawArrays(drawMode, 0, vertices.size() / 4);

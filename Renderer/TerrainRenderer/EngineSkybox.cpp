@@ -8,45 +8,29 @@
 #include "GLDebugger.hpp"
 
 EngineSkybox::EngineSkybox()
-	: cubeMap(0)
 {
+}
+
+EngineSkybox::EngineSkybox(const std::string& cubeMapDir, const std::string& extension)
+{
+	initCubeMap(cubeMapDir, extension);
 }
 
 EngineSkybox::~EngineSkybox()
 {
-	if (cubeMap)
-		glDeleteTextures(1, &cubeMap);
 }
 
-bool EngineSkybox::initSkybox(const std::string& skyboxDir, const std::string& extension)
+bool EngineSkybox::initCubeMap(const std::string& cubeMapDir, const std::string& extension)
 {
-	assetManager = std::make_unique<AssetManager>();
-	
-	try
-	{
-		skyboxShader = assetManager->addAsset<GLShader>({
-			"../resources/shader/skybox_vs.glsl",
-			"../resources/shader/skybox_fs.glsl" 
-		});
-	}
-	catch (std::exception e)
-	{
-		EngineLogger::getConsole()->error("Intializing Skybox failed. ({})", e.what());
-		return false;
-	}
+	EngineCubeMap::initCubeMap(cubeMapDir, extension);
 
-	skyboxShader->sendUniform("cubeMap", 0);
-
-	if (!skyboxMesh.initWithFixedShape(MeshShape::CUBE_TRIANGLES))
-		return false;
-
-	if ((cubeMap = GLResources::CreateCubeMap(skyboxDir, extension)) == 0)
+	if ((cubeMap = GLResources::CreateSkybox(cubeMapDir, extension)) == 0)
 		return false;
 
 	return true;
 }
 
-void EngineSkybox::drawScene(unsigned int drawMode) const
+void EngineSkybox::drawScene(uint32_t drawMode) const
 {
 	skyboxShader->useProgram();
 

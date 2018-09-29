@@ -7,6 +7,7 @@
 #include "GLShader.hpp"
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
+#include "EngineHDREnvMap.hpp"
 
 EngineApp::EngineApp()
 	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
@@ -50,7 +51,8 @@ void EngineApp::drawScene(void)
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
-	float waterHeight = water.getWaterHeight();
+	const float waterHeight = water.getWaterHeight();
+	const float ratio = getAspectRatio();
 
 	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 	/// draw call here.
@@ -61,32 +63,34 @@ void EngineApp::drawScene(void)
 	glDisable(GL_CULL_FACE);
 
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, getAspectRatio());
-	skybox.drawScene(GL_TRIANGLES);
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 0.5f));
+	camera.sendVP(vpUBO, ratio);
+	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
+	skybox->drawScene(GL_TRIANGLES);
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, getAspectRatio());
+	camera.sendVP(vpUBO, ratio);
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	skybox.drawScene(GL_TRIANGLES);
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+	skybox->drawScene(GL_TRIANGLES);
 
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-	skybox.drawScene(GL_TRIANGLES);
+	skybox->drawScene(GL_TRIANGLES);
 	water.drawWater(GL_TRIANGLE_STRIP);
 
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
-		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), water.getRefractionDepthTexture());
 		textureViewer.renderViewer();
 		textureViewer.clearViewer();
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
+		camera.flipVertically(waterHeight);
 
 	/// end of draw call
 	glBindVertexArray(0u);
@@ -119,8 +123,16 @@ bool EngineApp::initEngine(void)
 
 	onResize(clientWidth, clientHeight);
 
-	if (!skybox.initSkybox("../resources/texture/skybox/interstella/", "png"))
+	try
+	{
+		skybox = std::make_unique<EngineHDREnvMap>("../resources/texture/hdr/beach.", "hdr");
+	}
+	catch (std::exception e)
+	{
 		return false;
+	}
+
+	onResize(clientWidth, clientHeight);
 
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
 		return false;
@@ -166,7 +178,7 @@ void EngineApp::mousePosCallback(double xpos, double ypos)
 
 void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 {
-	unsigned int keyFlag = 0;
+	uint32_t keyFlag = 0;
 
 	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 		keyFlag |= CAMERA_LEFT_BTN;
@@ -184,7 +196,7 @@ void EngineApp::scrollCallback(double xoffset, double yoffset)
 
 void EngineApp::processKeyInput(float dt)
 {
-	unsigned int keyFlag = 0;
+	uint32_t keyFlag = 0;
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		keyFlag |= CAMERA_UP;

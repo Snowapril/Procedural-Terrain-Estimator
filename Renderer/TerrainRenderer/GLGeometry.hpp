@@ -2,29 +2,30 @@
 #define GL_GEOMETRY_HPP
 
 #include <cstdlib>
+#include <stdint.h>
 
 class GLGeometry
 {
 private:
-	unsigned int VAO;
-	unsigned int VBO;
-	unsigned int IBO;
+	uint32_t VAO;
+	uint32_t VBO;
+	uint32_t IBO;
 	std::size_t numElements;
 public:
 	GLGeometry();
-	GLGeometry(unsigned int _vao, unsigned int _vbo, unsigned int _ibo, std::size_t _numElements);
+	GLGeometry(uint32_t _vao, uint32_t _vbo, uint32_t _ibo, std::size_t _numElements);
 	~GLGeometry();
 	GLGeometry(const GLGeometry& other);
 	GLGeometry& operator=(const GLGeometry& other);
 public:
-	inline void setGeometry(unsigned int _vao, unsigned int _vbo, unsigned int _ibo, std::size_t _numElements) noexcept
+	inline void setGeometry(uint32_t _vao, uint32_t _vbo, uint32_t _ibo, std::size_t _numElements) noexcept
 	{
 		VAO			= _vao;
 		VBO			= _vbo;
 		IBO			= _ibo;
 		numElements = _numElements;
 	}
-	void drawGeometry(unsigned int drawMode) const noexcept;
+	void drawGeometry(uint32_t drawMode) const noexcept;
 };
 
 #endif

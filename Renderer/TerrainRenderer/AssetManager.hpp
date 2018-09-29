@@ -17,7 +17,6 @@
 #include "EngineAsset.hpp"
 #include <mutex>
 
-class GLShader;
 
 class AssetManager
 {
@@ -26,8 +25,8 @@ private:
 	std::thread changeListener;
 	std::mutex fileChangeMutex;
 
-	std::vector<EngineAsset<GLShader>*> dirtyAssets; //To be reloaded.
-	std::vector<std::shared_ptr<EngineAsset<GLShader>>> assets;
+	std::vector<EngineAsset*> dirtyAssets; //To be reloaded.
+	std::vector<std::shared_ptr<EngineAsset>> assets;
 protected:
 public:
 	AssetManager();
@@ -35,10 +34,10 @@ public:
 	AssetManager(const AssetManager& other);
 	AssetManager& operator=(const AssetManager& other);
 
-	template <class AssetType>
-	AssetType* addAsset(std::initializer_list<std::string>&& assetPath) 
+	template <class AssetType, typename ParamType>
+	AssetType* addAsset(iList<ParamType>&& assetPath)
 	{
-		auto asset = make_unique_from_list<AssetType, std::string>(std::move(assetPath));
+		auto asset = make_unique_from_list<AssetType, ParamType>(std::move(assetPath));
 		AssetType* retPtr = static_cast<AssetType*>(asset.get());
 		
 		assets.emplace_back(std::move(asset));
@@ -47,7 +46,7 @@ public:
 	}
 public:
 	void listenToAssetChanges(void) noexcept;
-	void refreshDirtyAssets(void) noexcept;
+	bool refreshDirtyAssets(void) noexcept;
 };
 
 #endif

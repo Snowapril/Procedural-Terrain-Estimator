@@ -37,7 +37,7 @@ bool TextureViewer::initTextureViewer(void)
 	return true;
 }
 
-void TextureViewer::addTextureView(glm::vec2 centerPos, glm::vec2 scale, unsigned int textureID)
+void TextureViewer::addTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_t textureID)
 {
 	textureViews.push_back({ std::move(centerPos), std::move(scale), textureID });
 }

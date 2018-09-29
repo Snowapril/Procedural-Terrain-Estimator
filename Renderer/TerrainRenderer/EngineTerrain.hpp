@@ -19,17 +19,20 @@
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
 #include <vector>
-#include "GLTexture.hpp"
 #include "DynamicTerrain.hpp"
+
+template <typename T>
+using iList = std::initializer_list<T>;
 
 class AssetManager;
 class GLShader;
+class GLTexture;
 
 class EngineTerrain : public DynamicTerrain
 {
 private:
-	unsigned int terrainMap;
-	unsigned int splatMap;
+	uint32_t terrainMap;
+	uint32_t splatMap;
 
 	float maxHeight;
 
@@ -38,23 +41,23 @@ private:
 	glm::vec3 prevCameraPos;
 	glm::vec3 terrainOriginPos;
 
-	GLTexture tileTextures;
+	GLTexture* tileTextures;
 	static bool isInstanciated;
 protected:
-	void bakeTerrainMap(void);
+	bool bakeTerrainMap(void);
 public:
 	EngineTerrain() = default;
-	EngineTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths);
+	EngineTerrain(const glm::vec3& position, iList<std::string>&& paths);
 	virtual ~EngineTerrain();
 	EngineTerrain(const EngineTerrain& other) = delete;
 	EngineTerrain& operator=(const EngineTerrain& other) = delete;
 public:
 	static float getProperMaxHeight(std::size_t width, std::size_t height);
 
-	bool initTerrain(const glm::vec3& position, std::initializer_list<std::string>&& paths);
+	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
-	void drawScene(unsigned int drawMode, const glm::vec4& clipPlane) const;
+	void drawScene(uint32_t drawMode, const glm::vec4& clipPlane) const;
 
 	glm::vec3 getTerrainScale(void) const;
 };

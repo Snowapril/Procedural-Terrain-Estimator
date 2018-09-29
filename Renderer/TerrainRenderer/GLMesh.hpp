@@ -4,7 +4,7 @@
 #include <memory>
 
 enum class MeshShape {
-	CUBE_PATCH = 0,
+	QUAD_PATCH = 0,
 	CUBE_TRIANGLES = 1,
 	QUAD_TRIANGLE_STRIP = 2,
 };
@@ -21,7 +21,7 @@ public:
 	GLMesh(const GLMesh& other);
 	GLMesh& operator=(const GLMesh& other);
 public:
-	void drawMesh(unsigned int drawMode) const noexcept;
+	void drawMesh(uint32_t drawMode) const noexcept;
 	bool initWithFixedShape(MeshShape shape);
 };
 

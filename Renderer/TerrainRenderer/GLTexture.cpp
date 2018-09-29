@@ -1,12 +1,13 @@
 #include "GLTexture.hpp"
 #include <glad/glad.h>
 #include "GLResources.hpp"
+#include <filesystem>
 
 GLTexture::GLTexture()
 {
 }
 
-GLTexture::GLTexture(const std::vector<std::pair<unsigned int, std::string>>& assetPaths)
+GLTexture::GLTexture(const std::vector<std::pair<uint32_t, std::string>>& assetPaths)
 {
 	loadAsset(assetPaths);
 }
@@ -37,7 +38,7 @@ GLTexture::~GLTexture()
 * @ details		load asset from given paths, if paths not exist or not image form then CreateTexture2D return 0.
 				if get 0 from CreateTexture2D, throw std::exception. 
 */
-void GLTexture::loadAsset(const std::vector<std::pair<unsigned int, std::string>>& assetPath)
+void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& assetPath)
 {
 	namespace fs = std::experimental::filesystem;
 
@@ -47,7 +48,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<unsigned int, std::string>
 	{
 		for (const auto& pair : assetPaths)
 		{
-			const unsigned int texture = GLResources::CreateTexture2D(pair.second, false);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, false);
 
 			if (texture == 0)
 				throw std::exception();
@@ -67,7 +68,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<unsigned int, std::string>
 
 		for (const auto& pair : assetPath)
 		{
-			const unsigned int texture = GLResources::CreateTexture2D(pair.second, false);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, false);
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 
 			if (texture == 0)

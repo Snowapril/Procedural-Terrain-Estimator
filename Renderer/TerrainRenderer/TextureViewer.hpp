@@ -11,7 +11,7 @@ struct TextureView
 {
 	glm::vec2 position;
 	glm::vec2 scale;
-	unsigned int textureID;
+	uint32_t textureID;
 };
 
 class TextureViewer
@@ -28,7 +28,7 @@ public:
 public:
 	bool initTextureViewer(void);
 
-	void addTextureView(glm::vec2 centerPos, glm::vec2 scale, unsigned int textureID);
+	void addTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_t textureID);
 	void renderViewer(void) const;
 	
 	inline void clearViewer(void) 

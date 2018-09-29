@@ -16,7 +16,7 @@ enum CameraKey
 
 class EngineCamera
 {
-private:
+public:
 	bool updateFov;
 	bool toggleZoom;
 
@@ -38,11 +38,11 @@ public:
 	EngineCamera& operator=(const EngineCamera& other);
 public:
 	void processMousePos(double xpos, double ypos) ;
-	void processKeyInput(unsigned int keyFlag, float dt) ;
+	void processKeyInput(uint32_t keyFlag, float dt) ;
 	void processScroll(double yoffset) ;
-	void processMouseBtn(unsigned int keyFlag);
+	void processMouseBtn(uint32_t keyFlag);
 	void onUpdate(float dt);
-	void sendVP(unsigned int ubo, float aspectRatio) ;
+	void sendVP(uint32_t ubo, float aspectRatio) ;
 	void flipVertically(float yaxis);
 
 	glm::vec3 getViewPos(void) const ;

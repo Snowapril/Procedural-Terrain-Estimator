@@ -15,7 +15,7 @@
 #include <memory>
 #include "EngineTerrain.hpp"
 #include "EngineCamera.hpp"
-#include "EngineSkybox.hpp"
+#include "EngineCubeMap.hpp"
 #include "EngineWater.hpp"
 #include "TextureViewer.hpp"
 
@@ -27,11 +27,12 @@ class EngineApp : public GLApp, EngineGUI
 {
 private:
 	bool debuggerMode;
-	unsigned int vpUBO;
-	unsigned int polygonMode;
+	uint32_t vpUBO;
+	uint32_t polygonMode;
+
+	std::unique_ptr<EngineCubeMap> skybox;
 
 	TextureViewer textureViewer;
-	EngineSkybox skybox;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;

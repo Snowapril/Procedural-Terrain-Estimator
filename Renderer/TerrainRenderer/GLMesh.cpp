@@ -20,28 +20,28 @@ GLMesh & GLMesh::operator=(const GLMesh & other)
 
 
 
-void GLMesh::drawMesh(unsigned int drawMode) const noexcept
+void GLMesh::drawMesh(uint32_t drawMode) const noexcept
 {
 	geometrySrc->drawGeometry(drawMode);
 }
 
 bool GLMesh::initWithFixedShape(MeshShape shape)
 {
-	unsigned int VAO, VBO, IBO;
+	uint32_t VAO, VBO, IBO;
 	std::size_t numElements;
 
 	switch (shape)
 	{
-		case MeshShape::CUBE_PATCH:
+		case MeshShape::QUAD_PATCH:
 		{
-			GLfloat cubeVertices[] = {
+			GLfloat quadVertices[] = {
 				-1.0f, 0.0f, -1.0f, 0.0f, 0.0f,
 				1.0f, 0.0f, -1.0f, 1.0f, 0.0f,
 				1.0f, 0.0f,  1.0f, 1.0f, 1.0f,
 				-1.0f, 0.0f,  1.0f, 0.0f, 1.0f,
 			};
 
-			unsigned int cubeIndices[] = {
+			uint32_t quadIndices[] = {
 				0, 1, 2, 3
 			};
 
@@ -51,18 +51,18 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(VAO);
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), &cubeVertices[0], GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices[0], GL_STATIC_DRAW);
 			glEnableVertexAttribArray(0);
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
 			glEnableVertexAttribArray(1);
 			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)(sizeof(GLfloat) * 3));
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), &cubeIndices[0], GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(quadIndices), &quadIndices[0], GL_STATIC_DRAW);
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(cubeIndices) / sizeof(unsigned int);
+			numElements = sizeof(quadIndices) / sizeof(uint32_t);
 		}
 		break;
 
@@ -80,7 +80,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 				-1.0f, 1.0f, 1.0f,
 			};
 
-			unsigned int cubeIndices[] =
+			uint32_t cubeIndices[] =
 			{
 				0, 1, 3, 3, 1, 2,
 				1, 5, 2, 2, 5, 6,
@@ -105,7 +105,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(cubeIndices) / sizeof(unsigned int);
+			numElements = sizeof(cubeIndices) / sizeof(uint32_t);
 		}
 		break;
 		case MeshShape::QUAD_TRIANGLE_STRIP :
@@ -117,7 +117,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 				 1.0f,  1.0f, 1.0f, 1.0f,
 			};
 
-			unsigned int quadIndices[] =
+			uint32_t quadIndices[] =
 			{
 				0, 1, 2, 3
 			};
@@ -139,7 +139,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			glBindVertexArray(0);
 
-			numElements = sizeof(quadIndices) / sizeof(unsigned int);
+			numElements = sizeof(quadIndices) / sizeof(uint32_t);
 		}
 		break;
 		default:

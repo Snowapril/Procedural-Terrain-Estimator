@@ -53,6 +53,16 @@ bool EngineWater::initWater(int reflectionWidth, int reflectionHeight, int refra
 
 void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
 {
+	if (assetManager->refreshDirtyAssets())
+	{
+		waterShader->useProgram();
+		waterShader->sendUniform("reflectionTexture", 0);
+		waterShader->sendUniform("refractionTexture", 1);
+		waterShader->sendUniform("dudvMap", 2);
+		waterShader->sendUniform("normalMap", 3);
+		waterShader->sendUniform("depthMap", 4);
+	}
+	
 	moveFactor += WAVE_SPEED * dt;
 	if (moveFactor > 1.0f)
 		moveFactor -= 1.0f;
@@ -64,7 +74,7 @@ void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
 	waterShader->sendUniform("lightColor", LIGHT_COLOR);
 }
 
-void EngineWater::drawWater(unsigned int drawMode) const
+void EngineWater::drawWater(uint32_t drawMode) const
 {
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, position);
@@ -96,9 +106,9 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 {
 	reflectionFBO.initFramebuffer();
 	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight);
-	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 	reflectionFBO.attachDepthbuffer(reflectionWidth, reflectionHeight);
-	
+	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
+
 	if (!reflectionFBO.checkFramebufferStatus())
 	{
 		EngineLogger::getConsole()->error("Reflection Framebuffer is not completed");
@@ -107,8 +117,8 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 
 	refractionFBO.initFramebuffer();
 	refractionFBO.attachColorTexture(refractionWidth, refractionHeight);
-	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 	refractionFBO.attachDepthbuffer(refractionWidth, refractionHeight);
+	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
 	if (!refractionFBO.checkFramebufferStatus())
 	{
@@ -126,7 +136,7 @@ bool EngineWater::initShaders()
 	
 	try
 	{
-		waterShader = assetManager->addAsset<GLShader>({
+		waterShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/water_vs.glsl",
 			"../resources/shader/water_fs.glsl",
 		});
