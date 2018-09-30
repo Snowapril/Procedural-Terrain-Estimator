@@ -19,7 +19,6 @@ constexpr const char TERRAINPATH_VS[] = "../resources/shader/terrain_vs.glsl";
 constexpr const char TERRAINPATH_TCS[] = "../resources/shader/terrain_tcs.glsl";
 constexpr const char TERRAINPATH_TES[] = "../resources/shader/terrain_tes.glsl";
 constexpr const char TERRAINPATH_FS[] = "../resources/shader/terrain_fs.glsl";
-
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/splatMap.png";
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/dirt.jpg";
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/rock.jpg";
@@ -73,7 +72,7 @@ void EngineTerrain::drawScene(uint32_t drawMode, const glm::vec4& clipPlane) con
 {
 	terrainShader->useProgram();
 	terrainShader->sendUniform("clipPlane", clipPlane);
-	
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 	glActiveTexture(GL_TEXTURE1);
@@ -104,7 +103,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
 			"../resources/shader/terrain_fs.glsl",
-		});
+			});
 	}
 	catch (std::exception e)
 	{
@@ -124,7 +123,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			std::make_pair<uint32_t, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
 			std::make_pair<uint32_t, std::string>(3, "../resources/texture/terrain/rock.jpg"),
 			std::make_pair<uint32_t, std::string>(4, "../resources/texture/terrain/grass.png"),
-		});
+			});
 	}
 	catch (std::exception e)
 	{
@@ -165,7 +164,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 	uint32_t heightMap;
 	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/lakeMap.jpg", width, height, false)) == 0)
 		return false;
-	
+
 	maxHeight = getProperMaxHeight(width, height);
 	bakeTerrainMap.sendUniform("terrainMaxHeight", maxHeight);
 
@@ -241,7 +240,6 @@ bool EngineTerrain::bakeTerrainMap(void)
 	glDeleteVertexArrays(1u, &quadVAO);
 	glDeleteTextures(1u, &heightMap);
 
-	return true;
 }
 
 float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)

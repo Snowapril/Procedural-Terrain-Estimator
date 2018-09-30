@@ -61,6 +61,7 @@ bool DynamicTerrain::initDynamicTerrain(const glm::vec3& position)
 	glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 3));
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	return true;
 }

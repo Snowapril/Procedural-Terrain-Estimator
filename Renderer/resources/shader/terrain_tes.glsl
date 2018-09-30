@@ -52,8 +52,8 @@ void main(void)
 	gl_Position = interpolate4(gl_in[0].gl_Position, gl_in[1].gl_Position, gl_in[2].gl_Position, gl_in[3].gl_Position);
 	gl_Position.y = height * terrainMaxHeight;
 
-	gl_ClipDistance[0] = dot(gl_Position, clipPlane); 
-	 
+	gl_ClipDistance[0] = dot(gl_Position, clipPlane);
+
 	vec4 positionRelativeToCam = view * gl_Position;
 	gl_Position = project * positionRelativeToCam;
 
