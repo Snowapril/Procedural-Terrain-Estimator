@@ -11,12 +11,14 @@ int main() {
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			int k;
 			scanf("%d", &M[i*width + j]);
 		}
 	}
 
 	Estimator E(M,height,width);
+
+	E.makeCoast(true);
+	freopen("outHeight.txt", "w", stdout);
 
 	E.dumpMapData();
 

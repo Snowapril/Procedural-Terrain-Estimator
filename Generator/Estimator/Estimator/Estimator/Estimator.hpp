@@ -4,41 +4,41 @@
 #include <vector>
 using namespace std;
 
-typedef pair<int, int> pii;
+typedef pair<int,int> pii;
 
+struct pixel {
+	unsigned char r, g, b, a;
+};
 
 class Estimator
 {
 public:
-	vector < vector < unsigned char > > mapData;
+	vector < vector < unsigned char > > HmapData;
+	vector < vector < pixel > > BmapData;
 	vector < vector < pii > > descentTable;
 	int height;
 	int width;
-	// operator overloading
-	vector < unsigned char >& operator [](int i);
-	vector < unsigned char > const& operator[](int i) const;
+
+
 	// methods
 
 	Estimator(vector<unsigned char>& data, int _height, int _width);
 
-	// operator overloading
-	/*
-	vector < unsigned char >& operator [](int i) {
-		return mapData[i];
-	}
-	vector < unsigned char > const& operator[](int i) const {
-		return mapData[i];
-	}
-	*/
 	
 	void dumpMapData();
 
 	pii descent(int y, int x);
 
-	bool hasCrator();
+	int descentTabling();
 
 	void makeCoast(bool needCoast);
 
 	void makeIsland(bool needIsland, int radius);
+
+	void blendmapColoring();
+
+	vector <unsigned char> getHeightMap();
+	vector <unsigned char> getBlendMap();
+
 };
 #endif
