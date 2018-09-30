@@ -27,6 +27,8 @@ class EngineApp : public GLApp, EngineGUI
 {
 private:
 	bool debuggerMode;
+	bool useDepthOfField;
+
 	uint32_t vpUBO;
 	uint32_t polygonMode;
 
@@ -54,6 +56,7 @@ public:
 	void mousePosCallback(double xpos, double ypos);
 	void mouseBtnCallback(int btn, int action, int mods);
 	void scrollCallback(double xoffset, double yoffset);
+
 };
 
 #endif

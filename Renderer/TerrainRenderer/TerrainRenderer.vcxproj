@@ -178,9 +178,11 @@
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTexture.cpp" />
+    <ClCompile Include="GLTextureWrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainPatch.cpp" />
     <ClCompile Include="TextureViewer.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -206,10 +208,12 @@
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
+    <ClInclude Include="GLTextureWrapper.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
     <ClInclude Include="TerrainShaderCode.hpp" />
     <ClInclude Include="TextureViewer.hpp" />
+    <ClInclude Include="Util.hpp" />
     <ClInclude Include="ViewerShaderCode.hpp" />
     <ClInclude Include="WaterShaderCode.hpp" />
   </ItemGroup>
