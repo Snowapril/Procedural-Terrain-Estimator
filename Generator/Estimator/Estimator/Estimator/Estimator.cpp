@@ -7,11 +7,19 @@
 #include <algorithm>
 using namespace std;
 
+bool visit[1024][1024];
+
+const int DY[8] = { -1, -1, -1, 0, 1, 1, 1, 0 }, DX[8] = { -1, 0, 1, 1, 1, 0, -1, -1 };
+
+const unsigned char NEAR_GAP_ALLOWED = 3;
+const unsigned char TOTAL_GAP_ALLOWED = 5;
+const int MINIMUM_BASIN_AREA = 25;
+
 Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : height(_height), width(_width) {
-	mapData.resize(height,vector<unsigned char>(width,0));
+	HmapData.resize(height,vector<unsigned char>(width,0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			mapData[i][j] = data[i*width + j];
+			HmapData[i][j] = data[i*width + j];
 		}
 	}
 }
@@ -19,23 +27,10 @@ Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : heig
 void Estimator::dumpMapData() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			printf("%d ", mapData[i][j]);
+			printf("%d ", HmapData[i][j]);
 		}
 		printf("\n");
 	}
-}
-
-vector <pii> gscan() {
-	vector <pii> stk;
-	int ss = stk.size();
-	for (int i = 0; i < piis.size(); i++) {
-		while (ss >= 2 && ccw(stk[ss - 2], stk.back(), piis[i]) <= 0) {
-			stk.pop_back();
-			ss--;
-		}
-		stk.push_back(piis[i]);
-	}
-	return stk;
 }
 
 pii Estimator::descent(int y,int x) {
@@ -43,18 +38,16 @@ pii Estimator::descent(int y,int x) {
 
 	if (ans.first != -1) return ans;
 
-	const int dy[8] = { -1, -1, -1, 0, 1, 1, 1, 0 }, dx[8] = { -1, 0, 1, 1, 1, 0, -1, -1};
-
 	for (int i = 0; i < 4; i++) {
-		int Y = y + dy[i], X = x + dx[i];
+		int Y = y + DY[i], X = x + DX[i];
 		if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
-		if (mapData[Y][X] <= mapData[y][x]) {
+		if (HmapData[Y][X] <= HmapData[y][x]) {
 			pii temp = descent(Y, X);
 			if (ans.first == -1) {
 				ans = temp;
 			}
 			else {
-				if (mapData[ans.first][ans.second] >= mapData[temp.first][temp.second]) {
+				if (HmapData[ans.first][ans.second] >= HmapData[temp.first][temp.second]) {
 					ans = temp;
 				}
 			}
@@ -65,27 +58,67 @@ pii Estimator::descent(int y,int x) {
 	return ans;
 }
 
-bool Estimator::hasCrator() {
+int Estimator::descentTabling() {
 	descentTable.resize(height, vector<pii>(width, { -1,-1 }));
 	vector < vector < int > > cnt(height, vector<int>(width, 0));
+	vector < pii> localMinima;
 	int curMax = 0;
+	int ret = 0;
 	pii target;
+
+	// 수정할것 : local minima가 아니라 global minima를 구하고 있으므로 descent table을 다 채운 다음 for문 돌면서 주변에 자기보다 큰 값이 없는 애를 local minima로 집어넣어야함
+
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			pii temp = descent(i, j);
 			cnt[temp.first][temp.second]++;
+			int curVal = cnt[temp.first][temp.second];
+			if ( curVal > curMax) {
+				localMinima.clear();
+				localMinima.push_back(temp);
+				curMax = cnt[temp.first][temp.second];
+			}
+			else if (curVal == curMax) {
+				localMinima.push_back(temp);
+			}
 		}
 	}		
-	return true;
+	
+	memset(visit, 0, sizeof(visit));
+
+	for (const pii curPoint : localMinima) {
+		int sy = curPoint.first;
+		int sx = curPoint.second;
+		if (visit[sy][sx]) continue;
+		int cnt = 0;
+		visit[sy][sx] = true;
+		queue < pii > Q;
+		Q.push({ sy,sx });
+		while (!Q.empty()) {
+			cnt++;
+			int y = Q.front().first, x = Q.front().second;
+			Q.pop();
+			for (int i = 0; i < 8; i++) {
+				int Y = y + DY[i], X = x + DX[i];
+				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
+				if (!visit[Y][X] && abs(HmapData[Y][X] - HmapData[y][x]) < NEAR_GAP_ALLOWED && abs(HmapData[Y][X] - HmapData[sy][sx]) < TOTAL_GAP_ALLOWED) {
+					Q.push({ Y,X });
+					visit[Y][X] = true;
+				}
+			}
+		}
+		if (cnt > MINIMUM_BASIN_AREA) ret++;
+	}
+	return ret;
 }
 
-void Estimator::makeCoast(bool needCoast) {
+void Estimator::makeCoast(const bool needCoast) {
 	if (!needCoast) return;
 	srand(time(NULL));
-	int coastLine = width / 10;
-	int curCoast = coastLine;
+	int curCoast = width - width / 10;
 	int probLeft = 40, probStay = 60;
 	for (int i = 0; i < height; i++) {
+		// printf("%d loop\n", i);
 		int prob = rand() % 100;
 		if (prob < probLeft) {
 			probLeft -= 8;
@@ -101,16 +134,16 @@ void Estimator::makeCoast(bool needCoast) {
 			probStay += 4;
 			curCoast++;
 		}
-		for (int j = curCoast - 1; j > curCoast - 10; j++) {
-			mapData[i][j] = mapData[i][j] / 10 * (curCoast - j);
+		for (int j = curCoast - 1; j > curCoast - 10; j--) {
+			HmapData[i][j] = HmapData[i][j] / 10 * (curCoast - j);
 		}
 		for (int j = curCoast; j < width; j++) {
-			mapData[i][j] = 0;
+			HmapData[i][j] = 0;
 		}
 	}	
 }
 
-void Estimator::makeIsland(bool needIsland, int radius = 0) {
+void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 	if (!needIsland) return;
 	int probUp = 20, probDown = 40;
 	int cut = radius / 10;
@@ -118,8 +151,8 @@ void Estimator::makeIsland(bool needIsland, int radius = 0) {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			int y = i - height / 2, x = j - width / 2;
-			if (i*i + j * j > radius*radius) {
-				mapData[i][j] = 0;
+			if (y*y + x * x > radius*radius) {
+				HmapData[i][j] = 0;
 				int prob = rand() % 100;
 				if (prob < probUp) {
 					cut++;
@@ -132,9 +165,56 @@ void Estimator::makeIsland(bool needIsland, int radius = 0) {
 
 				for (int k = i - cut; k <= i + cut; k++) {
 					if (k < 0 || k >= height) continue;
-					mapData[k][j] = 0;
+					HmapData[k][j] = 0;
 				}
 			}
 		}
 	}
+}
+
+vector<unsigned char> Estimator::getHeightMap() {
+	vector <unsigned char> ret;
+	for (auto curVec : HmapData) {
+		for (auto p : curVec) {
+			ret.push_back(p); // R channel
+			ret.push_back(p); // G channel
+			ret.push_back(p); // B channel
+		}
+	}
+	return ret;
+}
+
+vector<unsigned char> Estimator::getBlendMap() {
+	vector <unsigned char> ret;
+	for (auto curVec : BmapData) {
+		for (auto p : curVec) {
+			ret.push_back(p.r); // R channel
+			ret.push_back(p.g); // G channel
+			ret.push_back(p.b); // B channel
+			ret.push_back(p.a); // A channel
+		}
+	}
+	return ret;
+}
+
+void Estimator::blendmapColoring() {
+
+	const pixel ROCK = { 255,0,0,0 };// 255 0 0 0 : ROCK
+	const pixel DIRT = { 0,255,0,0 };	// 0 255 0 0 : DIRT
+	const pixel MUD = { 0,0,255,0 };// 0 0 255 0 : MUD
+	const pixel SAND = { 0,0,0,255 };// 0 0 0 255 : SAND
+
+	BmapData.resize(height, vector<pixel>(width, { 0,0,0,0 }));
+	
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+
+			//근처의 local minima와의 거리에 따라서 물이 고이는 정도가 달라짐
+			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
+			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
+
+			//고려 후보 : 절대높이, local minima와의 거리, 특정 범위 내에 인접한 물 타일
+		}
+	}
+
 }
