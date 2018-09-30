@@ -8,9 +8,10 @@
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include "EngineHDREnvMap.hpp"
+#include "Util.hpp"
 
 EngineApp::EngineApp()
-	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
+	: GLApp(), debuggerMode(false), useDepthOfField(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -72,7 +73,7 @@ void EngineApp::drawScene(void)
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
 	skybox->drawScene(GL_TRIANGLES);
-
+	
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
@@ -80,6 +81,13 @@ void EngineApp::drawScene(void)
 	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 	skybox->drawScene(GL_TRIANGLES);
 	water.drawWater(GL_TRIANGLE_STRIP);
+
+	//this need to be modified.
+	const float zNear = 3.0f;
+	const float zFar = 1000.0f;
+
+	if (useDepthOfField)
+		Util::ApplyDepthOfField(0, clientWidth, clientHeight, zNear, zFar);
 
 	if (debuggerMode)
 	{

@@ -181,6 +181,12 @@
     <ClCompile Include="TerrainPatch.cpp">
       <Filter>Terrain\private</Filter>
     </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Util\public</Filter>
+    </ClCompile>
+    <ClCompile Include="GLTextureWrapper.cpp">
+      <Filter>Assets\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLDebugger.hpp">
@@ -269,6 +275,12 @@
     </ClInclude>
     <ClInclude Include="ViewerShaderCode.hpp">
       <Filter>GUI\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.hpp">
+      <Filter>Util\private</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTextureWrapper.hpp">
+      <Filter>Assets\public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
