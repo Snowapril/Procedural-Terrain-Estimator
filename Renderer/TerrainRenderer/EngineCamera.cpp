@@ -3,16 +3,17 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "EngineProperty.hpp"
+#include "GLShader.hpp"
 
 EngineCamera::EngineCamera()
 	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(0.0f), direction(0.0f, -1.0f, 0.0f)
+		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH), position(0.0f), direction(0.0f, -1.0f, 0.0f)
 {
 }
 
 EngineCamera::EngineCamera(const glm::vec3 & pos, const glm::vec3 & dir)
 	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), position(pos), direction(dir)
+		pitch(0.0f), yaw(180.0f), speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH), position(pos), direction(dir)
 {
 }
 
@@ -139,12 +140,9 @@ void EngineCamera::processScroll(double yoffset)
 		fov = CAMERA_MAX_FOV;
 }
 
-void EngineCamera::sendVP(uint32_t ubo, float aspectRatio)
+void EngineCamera::sendVP(uint32_t ubo) const
 {
 	glBindBuffer(GL_UNIFORM_BUFFER, ubo);
-	
-	glm::mat4 view = glm::lookAt(position, position + direction, glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 project = glm::perspective(glm::radians(fov), aspectRatio, 3.0f, 1000.0f);
 
 	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(view));
 	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(project));
@@ -166,7 +164,20 @@ void EngineCamera::flipVertically(float yaxis)
 	direction = glm::normalize(direction);
 }
 
-glm::vec3 EngineCamera::getViewPos(void) const 
+void EngineCamera::sendVP(const GLShader& shader, bool remove_transition) const
 {
-	return position;
+	shader.useProgram();
+
+	shader.sendUniform("view", remove_transition ? glm::mat4(glm::mat3(view)) : view);
+	shader.sendUniform("project", project);
+}
+
+void EngineCamera::updateView(void)
+{
+	view = glm::lookAt(position, position + direction, glm::vec3(0.0f, 1.0f, 0.0f));
+}
+
+void EngineCamera::updateProject(float aspectRatio)
+{
+	project = glm::perspective(glm::radians(fov), aspectRatio, minDepth, maxDepth);
 }

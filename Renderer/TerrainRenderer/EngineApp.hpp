@@ -18,28 +18,37 @@
 #include "EngineCubeMap.hpp"
 #include "EngineWater.hpp"
 #include "TextureViewer.hpp"
+#include "LightSourceWrapper.hpp"
 
 class GLShader;
 class AssetManager;
 class GLTexture;
 
-class EngineApp : public GLApp, EngineGUI
+class EngineApp : public GLApp
 {
 private:
 	bool debuggerMode;
-	bool useDepthOfField;
 
 	uint32_t vpUBO;
 	uint32_t polygonMode;
 
+	GLShader* hdrShader;
+	
 	std::unique_ptr<EngineCubeMap> skybox;
+	std::unique_ptr<AssetManager> assetManager;
 
+	GLMesh framebufferMesh;
+	GLFramebuffer hdrFramebuffer;
+	LightSourceWrapper lightWrapper;
 	TextureViewer textureViewer;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;
+
+	EngineGUI GUI;
 protected:
 	bool initUniformBufferObject(void);
+	bool initAssets(void);
 
 	void updateScene(float dt);
 	void drawScene(void) ;

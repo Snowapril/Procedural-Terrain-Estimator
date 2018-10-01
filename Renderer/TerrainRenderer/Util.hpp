@@ -6,7 +6,9 @@
 class Util
 {
 public:
+#ifdef _DEBUG
 	static void ApplyDepthOfField(uint32_t framebuffer, int width, int height, float zNear, float zFar);
+#endif
 };
 
 #endif

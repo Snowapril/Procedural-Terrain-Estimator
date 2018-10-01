@@ -3,6 +3,7 @@
 
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
+#include <glm/mat4x4.hpp>
 
 enum CameraKey
 {
@@ -13,6 +14,8 @@ enum CameraKey
 	CAMERA_LEFT_BTN  = 0x10,
 	CAMERA_RIGHT_BTN = 0x20,
 };
+
+class GLShader;
 
 class EngineCamera
 {
@@ -25,9 +28,15 @@ public:
 	float yaw;
 	float speed;
 
+	float minDepth;
+	float maxDepth;
+
 	glm::vec3 position;
 	glm::vec3 direction;
 	glm::dvec2 prevMousePos;
+
+	glm::mat4 view;
+	glm::mat4 project;
 private:
 
 public:
@@ -42,10 +51,24 @@ public:
 	void processScroll(double yoffset) ;
 	void processMouseBtn(uint32_t keyFlag);
 	void onUpdate(float dt);
-	void sendVP(uint32_t ubo, float aspectRatio) ;
+	void sendVP(uint32_t ubo) const;
+	void sendVP(const GLShader& shader, bool remove_transition = false) const;
 	void flipVertically(float yaxis);
+	void updateView(void);
+	void updateProject(float aspectRatio);
 
-	glm::vec3 getViewPos(void) const ;
+	inline glm::vec3 getViewPos(void) const
+	{
+		return position;
+	}
+	inline float getMinDepth(void) const
+	{
+		return minDepth;
+	}
+	inline float getMaxDepth(void) const
+	{
+		return maxDepth;
+	}
 };
 
 

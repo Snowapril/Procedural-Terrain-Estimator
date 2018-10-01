@@ -2,26 +2,23 @@
 
 layout(quads, fractional_even_spacing) in;
 
-layout(std140) uniform VP
-{
-	mat4 view;
-	mat4 project;
-};
+uniform mat4 view;
+uniform mat4 project;
 
 in vec2 tcs_texCoords[];
 in vec2 tcs_tileCoords[];
 
 out vec2 tes_texCoords;
-out vec2 tes_tessCoords;
 out vec2 tes_tileCoords;
+out vec3 tes_fragPos;
 out float visibility;
 
 uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
 uniform vec4 clipPlane;
 
-const float density = 0.007;
-const float gradient = 1.5;
+const float density = 0.00025;
+const float gradient = 2.4;
 
 vec4 interpolate4(vec4 v0, vec4 v1, vec4 v2, vec4 v3)
 {
@@ -45,7 +42,6 @@ void main(void)
 	float height = texture(terrainMap, terrainTexCoords).a;
 
 	tes_texCoords = terrainTexCoords;
-	tes_tessCoords = gl_TessCoord.xy;
 
 	tes_tileCoords = interpolate2(tcs_tileCoords[0], tcs_tileCoords[1], tcs_tileCoords[2], tcs_tileCoords[3]);
 
@@ -53,6 +49,8 @@ void main(void)
 	gl_Position.y = height * terrainMaxHeight;
 
 	gl_ClipDistance[0] = dot(gl_Position, clipPlane);
+
+	tes_fragPos = gl_Position.xyz;
 
 	vec4 positionRelativeToCam = view * gl_Position;
 	gl_Position = project * positionRelativeToCam;

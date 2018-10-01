@@ -24,13 +24,13 @@ void GLFramebuffer::initFramebuffer(void)
 	glGenFramebuffers(1, &FBO);
 }
 
-void GLFramebuffer::attachColorTexture(int width, int height)
+void GLFramebuffer::attachColorTexture(int width, int height, bool hdr)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 
 	glGenTextures(1, &colorTexture);
 	glBindTexture(GL_TEXTURE_2D, colorTexture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+	glTexImage2D(GL_TEXTURE_2D, 0, hdr ? GL_RGBA16F : GL_RGB, width, height, 0, hdr ? GL_RGBA : GL_RGB, hdr ? GL_FLOAT : GL_UNSIGNED_BYTE, nullptr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	

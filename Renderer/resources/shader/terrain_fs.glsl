@@ -1,8 +1,8 @@
 #version 430 core
 
 in vec2 tes_texCoords;
-in vec2 tes_tessCoords;
 in vec2 tes_tileCoords;
+in vec3 tes_fragPos;
 in float visibility;
 
 out vec4 fragColor;
@@ -13,6 +13,14 @@ uniform sampler2D splatMap;
 uniform sampler2D dirtTexture;
 uniform sampler2D rockTexture;
 uniform sampler2D grassTexture;
+uniform sampler2D wetDirtTexture;
+
+struct DirLight {
+	vec3 position;
+	vec3 color;
+};
+
+uniform DirLight dirLight;
 
 uniform vec3 wireColor;
 
@@ -28,38 +36,33 @@ void main(void)
 	vec4 terrain = texture(terrainMap, tes_texCoords);
 
 	float height = terrain.w;
-	vec3 normal = normalize(terrain.xyz);
+	vec3 normal = terrain.xzy;
 	normal.xz = normal.xz * 2.0 - 1.0;
+
+	normal = normalize(normal);
 
 	vec4 mixmap = texture(splatMap, tes_texCoords);
 
 	vec3 dirt = texture(dirtTexture, tes_tileCoords).rgb;
 	vec3 rock = texture(rockTexture, tes_tileCoords).rgb;
-	vec3 water = texture(grassTexture, tes_tileCoords).rgb;
+	vec3 grass = texture(grassTexture, tes_tileCoords).rgb;
+	vec3 wetDirt = texture(wetDirtTexture, tes_tileCoords).rgb;
 
-	vec3 red = vec3(1.0, 0.0, 0.0);
-	vec3 blue = vec3(0.0, 0.0, 1.0);
-	vec3 mixColor = mix(blue, red, height);
+	vec3 finalColor = mix(dirt, grass, mixmap.g);
+	finalColor = mix(finalColor, wetDirt, mixmap.b);
+	finalColor = mix(finalColor, rock, mixmap.r);
+	vec3 ambient = 0.005 * finalColor;
 
-	vec3 finalColor = mix(dirt, water, mixmap.b);
-	finalColor = mix(finalColor, rock, mixmap.r);// *0.0 + 1.0 * mixColor;
-
-	vec3 lightDir = normalize(vec3(1.f, 1.f, 0.f));
-	vec3 lightDiffuse = vec3(0.9);
+	vec3 lightDir = normalize(dirLight.position - tes_fragPos);
 	float diff = max(dot(lightDir, normal), 0.0);
+	vec3 diffuse = dirLight.color * diff * finalColor;
+	
+	// attenuation (use quadratic as we have gamma correction)
+	// float distance = length(tes_fragPos - dirLight.position);
+	// diffuse *= 1.0 / (distance * distance);
 
-	vec3 diffuse = diff * lightDiffuse;
-	vec3 ambient = vec3(0.35);
-
-	finalColor = (ambient + diffuse) * finalColor * wireColor;
-
-	//const float GAMMA = 2.2;
-	//
-	//finalColor = finalColor / (finalColor + vec3(1.0));
-	//finalColor = pow(finalColor, vec3(1.0 / GAMMA));
-
-	fragColor = vec4(finalColor, 1.0);
-	//fragColor = mix(skycolor, fragColor, visibility);
+	fragColor = vec4((ambient + diffuse) * wireColor, 1.0);
+	fragColor = mix(skycolor, fragColor, visibility);
 }
 
 /*

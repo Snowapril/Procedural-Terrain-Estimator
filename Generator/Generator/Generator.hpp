@@ -33,7 +33,7 @@ protected:
 	bool initFramebuffer(int width, int height);
 	bool initShaders(void);
 
-	bool saveCurrentTexture(const std::string& path, int width, int height);
+	bool saveCurrentTexture(const std::string& path, int width, int height) const;
 
 	void updateBrushTexture(void);
 	void applyBrush(double xoffset, double yoffset);

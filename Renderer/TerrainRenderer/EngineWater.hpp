@@ -7,6 +7,14 @@
 
 class GLShader;
 class AssetManager;
+class LightSourceWrapper;
+class EngineCamera;
+
+enum WaterKey
+{
+	WATER_UP = 0x01,
+	WATER_DOWN = 0x02,
+};
 
 class EngineWater
 {
@@ -14,6 +22,7 @@ private:
 	uint32_t dudvMap;
 	uint32_t normalMap;
 
+	float tiling;
 	float moveFactor;
 
 	glm::vec3 position;
@@ -64,8 +73,10 @@ public:
 	bool initWater(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight);
 	void setTransform(glm::vec3 pos, glm::vec3 scale);
 
-	void updateWater(float dt, const glm::vec3& cameraPos);
-	void drawWater(uint32_t drawMode) const;
+	void updateWater(float dt);
+	void drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const;
+
+	void processKeyInput(uint32_t keyFlag);
 };
 
 

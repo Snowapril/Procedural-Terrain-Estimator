@@ -18,7 +18,7 @@ public:
 	GLFramebuffer& operator=(const GLFramebuffer& other) = delete;
 public:
 	void initFramebuffer(void);
-	void attachColorTexture(int width, int height);
+	void attachColorTexture(int width, int height, bool hdr);
 	void attachDepthTexture(int width, int height, uint32_t internalformat, uint32_t format);
 	void attachDepthbuffer(int width, int height);
 

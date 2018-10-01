@@ -21,12 +21,15 @@
 #include <vector>
 #include "DynamicTerrain.hpp"
 
+class EngineCamera;
+
 template <typename T>
 using iList = std::initializer_list<T>;
 
 class AssetManager;
 class GLShader;
 class GLTexture;
+class LightSourceWrapper;
 
 class EngineTerrain : public DynamicTerrain
 {
@@ -57,7 +60,7 @@ public:
 	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
-	void drawScene(uint32_t drawMode, const glm::vec4& clipPlane) const;
+	void drawScene(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const;
 
 	glm::vec3 getTerrainScale(void) const;
 };

@@ -30,6 +30,7 @@ private:
 		TES = 2,
 		GS  = 3,
 		FS  = 4,
+		CS  = 5,
 	};
 
 	void parseShaderPath(const std::vector<std::string>& assetPath);

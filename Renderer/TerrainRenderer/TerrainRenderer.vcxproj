@@ -179,6 +179,7 @@
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="GLTextureWrapper.cpp" />
+    <ClCompile Include="LightSourceWrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TerrainPatch.cpp" />
     <ClCompile Include="TextureViewer.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
     <ClInclude Include="GLTextureWrapper.hpp" />
+    <ClInclude Include="LightSourceWrapper.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
     <ClInclude Include="TerrainShaderCode.hpp" />
@@ -218,6 +220,8 @@
     <ClInclude Include="WaterShaderCode.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\resources\shader\hdr_fs.glsl" />
+    <None Include="..\resources\shader\hdr_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl" />

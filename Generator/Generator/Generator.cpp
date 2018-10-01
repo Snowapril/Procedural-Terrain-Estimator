@@ -57,8 +57,6 @@ void Generator::updateScene(void)
 	generatorShader->sendUniform("fbM.blend", fbMConfigure.blend);
 	generatorShader->sendUniform("fbM.frequency", fbMConfigure.frequency);
 
-	if (isSaveButtonPushed)
-		saveCurrentTexture("../resources/noiseMap.png", clientWidth - 400, clientHeight);
 
 	if (isScreenClicked)
 	{
@@ -71,7 +69,7 @@ void Generator::drawScene(void) const
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
-	glViewport(0, 0, clientWidth, clientHeight);
+	glViewport(0, 0, 2048, 2048);
 
 	generatorShader->useProgram();
 	glActiveTexture(GL_TEXTURE0);
@@ -79,6 +77,9 @@ void Generator::drawScene(void) const
 
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+	if (isSaveButtonPushed)
+		saveCurrentTexture("../resources/noiseMap.png", 2048, 2048);
 
 	glBindVertexArray(0);
 
@@ -161,7 +162,7 @@ bool Generator::initFramebuffer(int width, int height)
 	glGenTextures(1, &framebufferTexture);
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2048, 2048, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -283,21 +284,21 @@ void Generator::applyBrush(double xoffset, double yoffset)
 	}
 }
 
-bool Generator::saveCurrentTexture(const std::string& path, int width, int height)
+bool Generator::saveCurrentTexture(const std::string& path, int width, int height) const
 {
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 	std::vector<unsigned char> data(width * height * 3);
 
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)&data[0]);
-	FILE *arrOut = fopen("../Mapdata.pte", "w");
-	fprintf(arrOut, "%d %d\n", height, width);
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
-			fprintf(arrOut,"%d ", data[i*width + j * 3]);
-		}
-		fprintf(arrOut,"\n");
-	}
-	fclose(arrOut);
+	//FILE *arrOut = fopen("../Mapdata.pte", "w");
+	//fprintf(arrOut, "%d %d\n", height, width);
+	//for (int i = 0; i < height; i++) {
+	//	for (int j = 0; j < width; j++) {
+	//		fprintf(arrOut,"%d ", data[i*width + j * 3]);
+	//	}
+	//	fprintf(arrOut,"\n");
+	//}
+	//fclose(arrOut);
 
 	//Estimator::mapDataInit(data, height, width);
 	//Estimator::dumpMapData(height, width);

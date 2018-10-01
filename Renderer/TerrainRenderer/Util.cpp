@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 
+#ifdef _DEBUG
 void Util::ApplyDepthOfField(uint32_t framebuffer, int width, int height, float zNear, float zFar)
 {
 	std::vector<float> currentFB(width * height * 3);
@@ -23,3 +24,4 @@ void Util::ApplyDepthOfField(uint32_t framebuffer, int width, int height, float 
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
+#endif

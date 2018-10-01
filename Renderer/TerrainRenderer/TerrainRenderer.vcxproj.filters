@@ -95,6 +95,12 @@
     <Filter Include="Terrain\shader">
       <UniqueIdentifier>{549ddc6d-b113-4027-89a7-ae1fe58e17c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Util\shader">
+      <UniqueIdentifier>{c5d790cf-1d11-455e-9266-a087cea4172b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineFramework\shader">
+      <UniqueIdentifier>{dc7570b5-b60b-436e-aa4b-098aef80a8f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -186,6 +192,9 @@
     </ClCompile>
     <ClCompile Include="GLTextureWrapper.cpp">
       <Filter>Assets\private</Filter>
+    </ClCompile>
+    <ClCompile Include="LightSourceWrapper.cpp">
+      <Filter>Util\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +291,9 @@
     <ClInclude Include="GLTextureWrapper.hpp">
       <Filter>Assets\public</Filter>
     </ClInclude>
+    <ClInclude Include="LightSourceWrapper.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">
@@ -328,6 +340,12 @@
     </None>
     <None Include="..\resources\shader\terrain_fs.glsl">
       <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\hdr_vs.glsl">
+      <Filter>EngineFramework\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\hdr_fs.glsl">
+      <Filter>EngineFramework\shader</Filter>
     </None>
   </ItemGroup>
 </Project>
