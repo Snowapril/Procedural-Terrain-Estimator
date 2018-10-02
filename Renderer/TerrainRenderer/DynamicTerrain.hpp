@@ -34,10 +34,13 @@ protected:
 	std::size_t numPatch;
 
 	glm::vec3 terrainCenterPos;
-protected:
+public:
 	bool initDynamicTerrain(const glm::vec3& position);
 	void updateTerrain(const glm::vec3& cameraPos);
 	void drawTerrain(uint32_t drawMode) const;
+
+	glm::vec2 getTerrainScale(void) const;
+	void setTerrainScale(std::size_t _width, std::size_t _height);
 public:
 	DynamicTerrain();
 	virtual ~DynamicTerrain();

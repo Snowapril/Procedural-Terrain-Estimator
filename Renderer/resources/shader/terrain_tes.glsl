@@ -18,7 +18,7 @@ uniform float terrainMaxHeight;
 uniform vec4 clipPlane;
 
 const float density = 0.00025;
-const float gradient = 2.4;
+const float gradient = 2.2;
 
 vec4 interpolate4(vec4 v0, vec4 v1, vec4 v2, vec4 v3)
 {

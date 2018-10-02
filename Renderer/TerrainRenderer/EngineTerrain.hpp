@@ -21,17 +21,16 @@
 #include <vector>
 #include "DynamicTerrain.hpp"
 
-class EngineCamera;
-
 template <typename T>
 using iList = std::initializer_list<T>;
 
+class EngineCamera;
 class AssetManager;
 class GLShader;
 class GLTexture;
 class LightSourceWrapper;
 
-class EngineTerrain : public DynamicTerrain
+class EngineTerrain
 {
 private:
 	uint32_t terrainMap;
@@ -45,6 +44,9 @@ private:
 	glm::vec3 terrainOriginPos;
 
 	GLTexture* tileTextures;
+
+	std::unique_ptr<DynamicTerrain> dynamicPatch;
+
 	static bool isInstanciated;
 protected:
 	bool bakeTerrainMap(void);

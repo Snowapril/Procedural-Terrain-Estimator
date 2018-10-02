@@ -6,48 +6,66 @@
 #include "GLShader.hpp"
 
 EngineCamera::EngineCamera()
-	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		pitch(0.0f), yaw(0.0f), speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH), position(0.0f), direction(0.0f, -1.0f, 0.0f)
+	: updateFov(false), toggleZoom(false), cameraAutoMode(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
+	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 EngineCamera::EngineCamera(const glm::vec3 & pos, const glm::vec3 & dir)
-	: updateFov(false), toggleZoom(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		pitch(0.0f), yaw(180.0f), speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH), position(pos), direction(dir)
+	: updateFov(false), toggleZoom(false), cameraAutoMode(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
+	initCamera(pos, dir);
 }
 
-EngineCamera::~EngineCamera()
+bool EngineCamera::initCamera(const glm::vec3& position, const  glm::vec3& direction)
 {
-}
+	this->position  = position;
+	this->direction = glm::normalize(direction);
 
-EngineCamera::EngineCamera(const EngineCamera & other)
-	: updateFov(other.updateFov), toggleZoom(other.toggleZoom),prevMousePos(other.prevMousePos),
-		pitch(other.pitch), yaw(other.yaw), fov(other.fov), speed(other.speed), position(other.position), direction(other.direction)
-{
+	constexpr float EPSILON = 0.001f;
 
-}
+	pitch = glm::degrees(glm::asin(direction.y));
+	pitch = Util::clamp(pitch, -89.0f, 89.0f);
+	
+	yaw = glm::degrees(glm::atan(direction.z / (direction.x + EPSILON)));
+	yaw = Util::clamp(yaw, -180.0f, 180.0f);
 
-EngineCamera & EngineCamera::operator=(const EngineCamera & other)
-{
-	if (&other == this)
-		return *this;
+	posAutomator.setDuration(30.0f);
+	posAutomator.addAutomation(glm::vec3(-294.819f, 286.892f, -64.2064f));
+	posAutomator.addAutomation(glm::vec3(150.45f, 240.167f, -139.416f));
+	posAutomator.addAutomation(glm::vec3(353.321f, 173.672f, 220.698f));
+	posAutomator.addAutomation(glm::vec3(488.665f, 281.219f, -277.539f));
+	posAutomator.addAutomation(glm::vec3(570.037f, 261.345f, -496.412f));
+	posAutomator.addAutomation(glm::vec3(311.954f, 264.521f, -525.097f));
+	posAutomator.addAutomation(glm::vec3(-50.6334f, 215.02f, -396.81f));
+	posAutomator.addAutomation(glm::vec3(-248.504f, 173.338f, -264.229f));
 
-	updateFov	 = other.updateFov;
-	toggleZoom	 = other.toggleZoom;
-	prevMousePos = other.prevMousePos;
-	fov			 = other.fov;
-	pitch		 = other.pitch;
-	yaw			 = other.yaw;
-	speed		 = other.speed;
-	position	 = other.position;
-	direction	 = other.direction;
+	dirAutomator.setDuration(30.0f);
+	dirAutomator.addAutomation(glm::vec2(234.8f, -23.7f));
+	dirAutomator.addAutomation(glm::vec2(119.3f, -21.4f));
+	dirAutomator.addAutomation(glm::vec2(-13.999f, -16.6f));
+	dirAutomator.addAutomation(glm::vec2(18.6f, -27.9f));
+	dirAutomator.addAutomation(glm::vec2(-137.5f, -25.9f));
+	dirAutomator.addAutomation(glm::vec2(-59.999f, -32.2f));
+	dirAutomator.addAutomation(glm::vec2(-123.4f, -20.9f));
+	dirAutomator.addAutomation(glm::vec2(-171.7f, -16.5f));
 
-	return *this;
+	return true;
 }
 
 void EngineCamera::onUpdate(float dt)
 {
+	if (cameraAutoMode)
+	{
+		position = posAutomator.getAutomatedValue(dt);
+		
+		glm::vec2 dir = dirAutomator.getAutomatedValue(dt);
+		yaw = dir.x;
+		pitch = dir.y;
+	}
+
 	if (!updateFov)
 		return;
 
@@ -77,6 +95,9 @@ void EngineCamera::processMousePos(double xpos, double ypos)
 {
 	static bool isFirstUse = true;
 
+	if (cameraAutoMode)
+		return;
+
 	if (isFirstUse)
 	{
 		isFirstUse = false;
@@ -94,10 +115,7 @@ void EngineCamera::processMousePos(double xpos, double ypos)
 	yaw		+= xoffset;
 	pitch	+= yoffset;
 
-	if (pitch > 89.0f)
-		pitch = 89.0f;
-	if (pitch < -89.0f)
-		pitch = -89.0f;
+	pitch = Util::clamp(pitch, -89.0f, 89.0f);
 
 	direction.x = glm::cos(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
 	direction.y = glm::sin(glm::radians(pitch));
@@ -128,6 +146,9 @@ void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 		position += movement * direction;
 	if (keyFlag & CAMERA_DOWN)
 		position -= movement * direction;
+
+	if (keyFlag & CAMERA_AUTO)
+		cameraAutoMode = !cameraAutoMode;
 }
 
 void EngineCamera::processScroll(double yoffset) 

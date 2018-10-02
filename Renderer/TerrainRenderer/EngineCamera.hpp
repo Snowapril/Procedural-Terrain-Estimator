@@ -4,6 +4,7 @@
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
+#include "Automator.hpp"
 
 enum CameraKey
 {
@@ -13,6 +14,7 @@ enum CameraKey
 	CAMERA_DOWN		 = 0x08,
 	CAMERA_LEFT_BTN  = 0x10,
 	CAMERA_RIGHT_BTN = 0x20,
+	CAMERA_AUTO  = 0x40,
 };
 
 class GLShader;
@@ -22,6 +24,7 @@ class EngineCamera
 public:
 	bool updateFov;
 	bool toggleZoom;
+	bool cameraAutoMode;
 
 	float fov;
 	float pitch;
@@ -33,18 +36,18 @@ public:
 
 	glm::vec3 position;
 	glm::vec3 direction;
+
+	Automator<glm::vec3> posAutomator;
+	Automator<glm::vec2> dirAutomator;
+
 	glm::dvec2 prevMousePos;
 
 	glm::mat4 view;
 	glm::mat4 project;
 private:
-
 public:
 	EngineCamera();
 	EngineCamera(const glm::vec3& pos, const glm::vec3& dir);
-	~EngineCamera();
-	EngineCamera(const EngineCamera& other);
-	EngineCamera& operator=(const EngineCamera& other);
 public:
 	void processMousePos(double xpos, double ypos) ;
 	void processKeyInput(uint32_t keyFlag, float dt) ;
@@ -56,6 +59,8 @@ public:
 	void flipVertically(float yaxis);
 	void updateView(void);
 	void updateProject(float aspectRatio);
+
+	bool initCamera(const glm::vec3& position, const  glm::vec3& direction);
 
 	inline glm::vec3 getViewPos(void) const
 	{

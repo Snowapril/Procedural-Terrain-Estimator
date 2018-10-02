@@ -17,12 +17,15 @@
 #include <glm/vec4.hpp>
 #include <glm/matrix.hpp>
 #include "EngineAsset.hpp"
+#include <unordered_map>
 
 class GLShader : public EngineAsset
 {
 private:
 	uint32_t programID;
-	
+#ifdef _DEBUG
+	std::unordered_map<std::string, uint32_t> uniformLocationMap;
+#endif
 	enum class CHECK_TARGET : int;
 	enum SHADER_TYPE {
 		VS  = 0,

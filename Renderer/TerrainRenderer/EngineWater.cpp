@@ -176,16 +176,3 @@ void EngineWater::setTransform(glm::vec3 pos, glm::vec3 scale)
 	this->position	= std::move(pos);
 	this->scale		= std::move(scale);
 }
-
-void EngineWater::processKeyInput(uint32_t keyFlag)
-{
-	if (keyFlag & WATER_UP)
-		tiling += 0.1f;
-	if (keyFlag & WATER_DOWN)
-		tiling -= 0.1f;
-
-	if (tiling > 16.0f)
-		tiling = 16.0f;
-	if (tiling < 0.0f)
-		tiling = 0.0f;
-}

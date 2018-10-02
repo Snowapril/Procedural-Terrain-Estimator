@@ -157,6 +157,7 @@
     <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Automator.cpp" />
     <ClCompile Include="DynamicTerrain.cpp" />
     <ClCompile Include="EngineApp.cpp" />
     <ClCompile Include="EngineAsset.cpp" />
@@ -187,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="Automator.hpp" />
     <ClInclude Include="DynamicTerrain.hpp" />
     <ClInclude Include="EngineApp.hpp" />
     <ClInclude Include="EngineAsset.hpp" />
@@ -201,6 +203,7 @@
     <ClInclude Include="EngineTerrain.hpp" />
     <ClInclude Include="EngineTimer.hpp" />
     <ClInclude Include="EngineWater.hpp" />
+    <ClInclude Include="EventHandler.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="GLFramebuffer.hpp" />

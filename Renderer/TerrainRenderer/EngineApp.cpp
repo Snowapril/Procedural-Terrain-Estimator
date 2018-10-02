@@ -266,15 +266,8 @@ void EngineApp::processKeyInput(float dt)
 		keyFlag |= CAMERA_DOWN;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT;
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		keyFlag |= CAMERA_AUTO;
 
 	camera.processKeyInput(keyFlag, dt);
-
-	keyFlag = 0;
-
-	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
-		keyFlag |= WATER_UP;
-	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-		keyFlag |= WATER_DOWN;
-
-	water.processKeyInput(keyFlag);
 }

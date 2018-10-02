@@ -196,6 +196,9 @@
     <ClCompile Include="LightSourceWrapper.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
+    <ClCompile Include="Automator.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLDebugger.hpp">
@@ -293,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="LightSourceWrapper.hpp">
       <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="Automator.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.hpp">
+      <Filter>EngineFramework\public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

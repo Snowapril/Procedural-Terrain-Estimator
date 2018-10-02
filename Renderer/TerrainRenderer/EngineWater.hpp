@@ -10,12 +10,6 @@ class AssetManager;
 class LightSourceWrapper;
 class EngineCamera;
 
-enum WaterKey
-{
-	WATER_UP = 0x01,
-	WATER_DOWN = 0x02,
-};
-
 class EngineWater
 {
 private:
@@ -75,8 +69,6 @@ public:
 
 	void updateWater(float dt);
 	void drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const;
-
-	void processKeyInput(uint32_t keyFlag);
 };
 
 

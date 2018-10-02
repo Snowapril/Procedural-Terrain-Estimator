@@ -276,3 +276,14 @@ bool DynamicTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 
 	return true;
 }
+
+glm::vec2 DynamicTerrain::getTerrainScale(void) const
+{
+	return glm::uvec2(width, height);
+}
+
+void DynamicTerrain::setTerrainScale(std::size_t _width, std::size_t _height)
+{
+	width = _width;
+	height = _height;
+}

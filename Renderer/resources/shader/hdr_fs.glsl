@@ -12,7 +12,7 @@ void main(void)
 
 	vec3 result = hdrColor / (hdrColor + vec3(1.0));
 
-	result = pow(result, vec3(1.0 / GAMMA));
+	result = pow(hdrColor, vec3(1.0 / GAMMA));
 
 	fragColors = vec4(result, 1.0);
 }
