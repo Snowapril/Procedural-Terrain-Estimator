@@ -36,7 +36,7 @@ std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void)
 #else
 		console = std::make_shared<spdlog::logger>("setup", sinks.begin(), sinks.end());
 		/// if not at debug mode, print log which level is equal or larger than info level.
-		console->set_level(spdlog::level::info);
+		console->set_level(spdlog::level::warn);
 #endif
 	}
 

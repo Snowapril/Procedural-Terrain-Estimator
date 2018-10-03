@@ -16,13 +16,15 @@ constexpr bool	FULL_SCREEN			= false;
 constexpr bool	ENABLE_4XMSAA		= true;
 constexpr float CAMERA_MIN_FOV		= 35.0f;
 constexpr float CAMERA_MAX_FOV		= 50.0f;
+constexpr float CAMERA_MIN_DEPTH	= 3.0f;
+constexpr float CAMERA_MAX_DEPTH	= 3000.0f;
 constexpr bool	ENABLE_CULLING		= true;
 constexpr float MOUSE_SENSITIVITY	= 0.1f;
-constexpr float CAMERA_SPEED		= 30.0f;
-constexpr float REFLECTION_WIDTH	= CLIENT_WIDTH;
-constexpr float REFLECTION_HEIGHT	= CLIENT_HEIGHT;
-constexpr float REFRACTION_WIDTH	= CLIENT_WIDTH;
-constexpr float REFRACTION_HEIGHT	= CLIENT_HEIGHT;
+constexpr float CAMERA_SPEED		= 80.0f;
+constexpr int	REFLECTION_WIDTH	= CLIENT_WIDTH;
+constexpr int	REFLECTION_HEIGHT	= CLIENT_HEIGHT;
+constexpr int	REFRACTION_WIDTH	= CLIENT_WIDTH;
+constexpr int	REFRACTION_HEIGHT	= CLIENT_HEIGHT;
 
 namespace Color {
 

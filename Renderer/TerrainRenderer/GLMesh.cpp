@@ -119,7 +119,7 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 
 			uint32_t quadIndices[] =
 			{
-				0, 1, 2, 3
+				0, 1, 2, 3,
 			};
 
 			glGenVertexArrays(1, &VAO);

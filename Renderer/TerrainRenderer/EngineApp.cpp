@@ -11,7 +11,7 @@
 #include "Util.hpp"
 
 EngineApp::EngineApp()
-	: GLApp(), debuggerMode(false), useDepthOfField(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 100.0f, 0.0f), glm::vec3(-1.0f, 0.0f, 0.0f))
+	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -30,14 +30,19 @@ void EngineApp::updateScene(float dt)
 	processKeyInput(dt);
 	camera.onUpdate(dt);
 
-	camera.sendVP(vpUBO, GLApp::getAspectRatio());
+	camera.updateProject(getAspectRatio());
 
 	const glm::vec3 cameraPos = camera.getViewPos();
 
 	terrain.updateScene(dt, cameraPos);
-	water.updateWater(dt, cameraPos);
+	water.updateWater(dt);
 
-	//EngineGUI::updateGUI(dt, clientHeight);
+	if (assetManager->refreshDirtyAssets())
+	{
+		hdrShader->useProgram();
+		hdrShader->sendUniform("hdrBuffer", 0);
+	}
+	//GUI.updateGUI(dt, clientHeight);
 }
 
 /**
@@ -47,65 +52,73 @@ void EngineApp::updateScene(float dt)
 void EngineApp::drawScene(void) 
 {
 	Profile();
-	
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
 
 	const float totalTime = timer.getTotalTime();
 	const float waterHeight = water.getWaterHeight();
 	const float ratio = getAspectRatio();
 
-	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
 	/// draw call here.
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_CLIP_DISTANCE0);
 	glDisable(GL_CULL_FACE);
 
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, ratio);
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
-	skybox->drawScene(GL_TRIANGLES);
+	camera.updateView();
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
+	skybox->drawScene(camera);
 	camera.flipVertically(waterHeight);
-	camera.sendVP(vpUBO, ratio);
+	camera.updateView();
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-	skybox->drawScene(GL_TRIANGLES);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+	skybox->drawScene(camera);
 	
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
+	
+	hdrFramebuffer.bindFramebuffer(clientWidth, clientHeight);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
-	terrain.drawScene(GL_PATCHES, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-	skybox->drawScene(GL_TRIANGLES);
-	water.drawWater(GL_TRIANGLE_STRIP);
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+	skybox->drawScene(camera);
+	water.drawWater(camera, lightWrapper);
+
+	hdrFramebuffer.unbindFramebuffer(clientWidth, clientHeight);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	hdrShader->useProgram();
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, hdrFramebuffer.getColorTexture());
+	
+	glDisable(GL_CULL_FACE);
+	framebufferMesh.drawMesh(GL_TRIANGLE_STRIP);
+	glEnable(GL_CULL_FACE);
 
 	//this need to be modified.
 	const float zNear = 3.0f;
 	const float zFar = 1000.0f;
 
-	if (useDepthOfField)
-		Util::ApplyDepthOfField(0, clientWidth, clientHeight, zNear, zFar);
-
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
+		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), hdrFramebuffer.getColorTexture());
 		textureViewer.renderViewer();
 		textureViewer.clearViewer();
 	}
 
-	if (glfwGetKey(window, GLFW_KEY_F3) == GLFW_PRESS)
-		camera.flipVertically(waterHeight);
-
 	/// end of draw call
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
-	glBindBuffer(GL_UNIFORM_BUFFER, 0u);
 
-	//EngineGUI::renderGUI();
+	//GUI.renderGUI();
 }
 
 /**
@@ -117,7 +130,7 @@ bool EngineApp::initEngine(void)
 	if (!GLApp::initGLApp())
 		return false;
 
-	if (!EngineGUI::initGUI(window))
+	if (!GUI.initGUI(window))
 		return false;
 
 	if (!initUniformBufferObject())
@@ -145,9 +158,48 @@ bool EngineApp::initEngine(void)
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
 		return false;
 	
-	glm::vec3 terrainScale = terrain.getTerrainScale() - 100.0f;
-	water.setTransform(glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+	glm::vec3 terrainScale = terrain.getTerrainScale() * 0.5f;
+	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
+	if (!initAssets())
+		return false;
+	
+	return true;
+}
+
+bool EngineApp::initAssets(void)
+{
+	lightWrapper.addDirLight(glm::vec3(-100.0f, 500.0f, 100.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+
+	assetManager = std::make_unique<AssetManager>();
+	try
+	{
+		hdrShader = assetManager->addAsset<GLShader, std::string>({
+			"../resources/shader/hdr_vs.glsl",
+			"../resources/shader/hdr_fs.glsl",
+		});
+	}
+	catch (std::exception e)
+	{
+		EngineLogger::getConsole()->error("Initializing HDR Shader Failed");
+		return false;
+	}
+
+	hdrShader->useProgram();
+	hdrShader->sendUniform("hdrBuffer", 0);
+
+	framebufferMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
+
+	hdrFramebuffer.initFramebuffer();
+	hdrFramebuffer.attachColorTexture(clientWidth, clientHeight, true);
+	hdrFramebuffer.attachDepthbuffer(clientWidth, clientHeight);
+	
+	if (!hdrFramebuffer.checkFramebufferStatus())
+	{
+		EngineLogger::getConsole()->error("HDR Framebuffer is not completed");
+		return false;
+	}
+
 	return true;
 }
 
@@ -214,6 +266,8 @@ void EngineApp::processKeyInput(float dt)
 		keyFlag |= CAMERA_DOWN;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT;
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		keyFlag |= CAMERA_AUTO;
 
 	camera.processKeyInput(keyFlag, dt);
 }

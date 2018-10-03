@@ -7,6 +7,7 @@
 
 class GLShader;
 class AssetManager;
+class EngineCamera;
 
 class EngineCubeMap
 {
@@ -21,7 +22,7 @@ public:
 	virtual ~EngineCubeMap();
 public:
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
-	virtual void drawScene(uint32_t drawMode) const = 0;
+	virtual void drawScene(const EngineCamera& camera) const = 0;
 };
 
 #endif

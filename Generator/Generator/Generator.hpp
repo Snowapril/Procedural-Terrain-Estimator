@@ -2,42 +2,29 @@
 #define GENERATOR_HPP
 
 #include "GLApp.hpp"
+#include "NoiseGUI.hpp"
+#include <glm/vec2.hpp>
+#include <vector>
+#include <stdint.h>
 
 class GLShader;
 
-class Generator : public GLApp
+class Generator : public GLApp, NoiseGUI
 {
 private:
-	bool isGUIOpen;
+	bool isScreenClicked;
+	
+	uint32_t VAO;
+	uint32_t VBO;
+	uint32_t framebuffer;
+	uint32_t framebufferTexture;
+	uint32_t brushTexture;
 
-	unsigned int VAO;
-	unsigned int VBO;
-	unsigned int framebuffer;
-	unsigned int framebufferTexture;
+	std::vector<float> brushFilter;
+	std::vector<float> brushBoard;
 
 	std::unique_ptr<GLShader> generatorShader;
 	std::unique_ptr<GLShader> screenShader;
-
-	struct Voronoi {
-		float blend;
-		float frequency;
-		float function;
-		float distance_type;
-		bool multiply_by_F1;
-		bool inverse;
-	} voronoiConfigure;
-
-	struct Simplex {
-		float blend;
-		float frequency;
-	} simplexConfigure;
-
-	struct FBM {
-		int numOctaves;
-		float blend;
-		float frequency;
-	} fbMConfigure;
-
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
@@ -45,10 +32,11 @@ protected:
 
 	bool initFramebuffer(int width, int height);
 	bool initShaders(void);
-	bool initGUI(void);
-	void updateGUI(float height);
 
-	bool saveCurrentTexture(const std::string& path, int width, int height);
+	bool saveCurrentTexture(const std::string& path, int width, int height) const;
+
+	void updateBrushTexture(void);
+	void applyBrush(double xoffset, double yoffset);
 public:
 	Generator();
 	virtual ~Generator();

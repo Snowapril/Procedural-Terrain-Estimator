@@ -9,6 +9,8 @@
 #include "EngineLogger.hpp"
 #include "GLMesh.hpp"
 #include "TerrainPatch.hpp"
+#include "LightSourceWrapper.hpp"
+#include "EngineCamera.hpp"
 
 #include <stb/stb_image.h>
 
@@ -19,7 +21,6 @@ constexpr const char TERRAINPATH_VS[] = "../resources/shader/terrain_vs.glsl";
 constexpr const char TERRAINPATH_TCS[] = "../resources/shader/terrain_tcs.glsl";
 constexpr const char TERRAINPATH_TES[] = "../resources/shader/terrain_tes.glsl";
 constexpr const char TERRAINPATH_FS[] = "../resources/shader/terrain_fs.glsl";
-
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/splatMap.png";
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/dirt.jpg";
 constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/rock.jpg";
@@ -27,7 +28,7 @@ constexpr const char TEXTUREPATH_[] = "../resources/texture/terrain/grass.png";
 */
 
 EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
-	: DynamicTerrain(), terrainMap(0), terrainShader(nullptr), prevCameraPos(-1.f)
+	: terrainMap(0), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -54,26 +55,26 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 		terrainShader->sendUniform("dirtTexture", 2);
 		terrainShader->sendUniform("rockTexture", 3);
 		terrainShader->sendUniform("grassTexture", 4);
-		terrainShader->sendUniform("terrainScale", glm::vec2(width, height));
+		terrainShader->sendUniform("wetDirtTexture", 5);
+		terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 	}
 
-	if (cameraPos == prevCameraPos)
-		return;
-
-	DynamicTerrain::updateTerrain(cameraPos);
-
-	prevCameraPos = cameraPos;
+	if (cameraPos != prevCameraPos)
+	{
+		dynamicPatch->updateTerrain(cameraPos);
+		prevCameraPos = cameraPos;
+	}
 }
 
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
 */
-void EngineTerrain::drawScene(uint32_t drawMode, const glm::vec4& clipPlane) const
+void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const
 {
 	terrainShader->useProgram();
 	terrainShader->sendUniform("clipPlane", clipPlane);
-	
+
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 	glActiveTexture(GL_TEXTURE1);
@@ -81,8 +82,14 @@ void EngineTerrain::drawScene(uint32_t drawMode, const glm::vec4& clipPlane) con
 	tileTextures->applyTexture();
 
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
+	terrainShader->sendUniform("minDepth", camera.getMinDepth());
+	terrainShader->sendUniform("maxDepth", camera.getMaxDepth());
 
-	DynamicTerrain::drawTerrain(drawMode);
+	lightWrapper.sendLightSources(*terrainShader);
+
+	camera.sendVP(*terrainShader, false);
+
+	dynamicPatch->drawTerrain(GL_PATCHES);
 }
 
 
@@ -104,16 +111,13 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
 			"../resources/shader/terrain_fs.glsl",
-		});
+			});
 	}
 	catch (std::exception e)
 	{
 		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
 		return false;
 	}
-	//xv6
-	if (!bakeTerrainMap())
-		return false;
 
 	if ((splatMap = GLResources::CreateTexture2D("../resources/texture/terrain/splatMap.png", false)) == 0)
 		return false;
@@ -124,7 +128,8 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			std::make_pair<uint32_t, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
 			std::make_pair<uint32_t, std::string>(3, "../resources/texture/terrain/rock.jpg"),
 			std::make_pair<uint32_t, std::string>(4, "../resources/texture/terrain/grass.png"),
-		});
+			std::make_pair<uint32_t, std::string>(5, "../resources/texture/terrain/wetDirt.jpg"),
+			});
 	}
 	catch (std::exception e)
 	{
@@ -132,7 +137,12 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 		return false;
 	}
 
-	if (!initDynamicTerrain(position))
+	dynamicPatch = std::make_unique<DynamicTerrain>();
+
+	if (!dynamicPatch->initDynamicTerrain(position))
+		return false;
+
+	if (!bakeTerrainMap())
 		return false;
 
 	return true;
@@ -163,19 +173,22 @@ bool EngineTerrain::bakeTerrainMap(void)
 	bakeTerrainMap.sendUniform("heightMap", 0);
 
 	uint32_t heightMap;
-	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/lakeMap.jpg", width, height, false)) == 0)
+	std::size_t width, height;
+	if ((heightMap = GLResources::CreateTexture2D("../resources/texture/terrain/height16bit2.png", width, height, false)) == 0)
 		return false;
-	
+
+	dynamicPatch->setTerrainScale(width, height);
 	maxHeight = getProperMaxHeight(width, height);
+	
 	bakeTerrainMap.sendUniform("terrainMaxHeight", maxHeight);
 
 	//simple quad for baking
 	GLfloat vertices[] =
 	{
-		-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
-		-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-		1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
-		1.0f, -1.0f, 0.0f, 1.0f, 0.0f
+		-1.0f,  1.0f, 0.0f, 0.02f, 0.98f,
+		-1.0f, -1.0f, 0.0f, 0.02f, 0.02f,
+		1.0f,  1.0f, 0.0f, 0.98f, 0.98f,
+		1.0f, -1.0f, 0.0f, 0.98f, 0.02f,
 	};
 
 	GLuint quadVAO, quadVBO;
@@ -248,10 +261,12 @@ float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)
 {
 	float multiplier = std::log2(min(width, height));
 
-	return static_cast<float>(multiplier * multiplier);
+	//return static_cast<float>(multiplier * multiplier);
+	return static_cast<float>(min(width, height) / 8);
 }
 
 glm::vec3 EngineTerrain::getTerrainScale(void) const
 {
-	return glm::vec3(width, maxHeight, height);
+	glm::vec2 scale = dynamicPatch->getTerrainScale();
+	return glm::vec3(scale.x, maxHeight, scale.y);
 }

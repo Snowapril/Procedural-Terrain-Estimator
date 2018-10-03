@@ -145,6 +145,7 @@
     <ClCompile Include="GLApp.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NoiseGUI.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="NoiseGenerator.hpp" />
+    <ClInclude Include="NoiseGUI.hpp" />
     <ClInclude Include="Util.hpp" />
   </ItemGroup>
   <ItemGroup>

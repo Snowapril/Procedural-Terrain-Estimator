@@ -48,7 +48,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 	{
 		for (const auto& pair : assetPaths)
 		{
-			const uint32_t texture = GLResources::CreateTexture2D(pair.second, false);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
 
 			if (texture == 0)
 				throw std::exception();
@@ -68,7 +68,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 
 		for (const auto& pair : assetPath)
 		{
-			const uint32_t texture = GLResources::CreateTexture2D(pair.second, false);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 
 			if (texture == 0)

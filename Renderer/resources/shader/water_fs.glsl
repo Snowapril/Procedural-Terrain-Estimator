@@ -3,7 +3,8 @@
 in vec4 clipPosition;
 in vec2 texCoords;
 in vec3 toCameraVector;
-in vec3 toLightVector;
+in vec3 fragPos;
+//in float visibility;
 out vec4 fragColors;
 
 uniform sampler2D reflectionTexture;
@@ -14,11 +15,18 @@ uniform sampler2D depthMap;
 
 uniform float moveFactor;
 
-uniform vec3 lightColor;
+struct DirLight {
+	vec3 position;
+	vec3 color;
+};
+
+uniform DirLight dirLight;
 
 const float distortionStrength	= 0.05;
 const float shineDamper			= 20.0;
 const float reflectivity		= 0.6;
+
+//const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 
 void main(void)
 {
@@ -59,12 +67,13 @@ void main(void)
 	float reflectionFactor = dot(viewVector, normal);
 	reflectionFactor = pow(reflectionFactor, 3.0);
 
-	vec3 reflectedLight = reflect(normalize(toLightVector), normal);
+	vec3 reflectedLight = reflect(normalize(fragPos - dirLight.position), normal);
 	float specular = max(dot(reflectedLight, viewVector), 0.0);
 	specular = pow(specular, shineDamper);
-	vec3 specularHighlight = lightColor * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
+	vec3 specularHighlight = dirLight.color * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
 
 	fragColors = mix(reflection, refraction, reflectionFactor);
 	fragColors = mix(fragColors, vec4(0.0, 0.3, 0.5, 1.0), 0.2) + vec4(specularHighlight, 1.0);
+	//fragColors = mix(skycolor, fragColors, visibility);
 	fragColors.a = clamp(waterDepth / 5.0, 0.0, 1.0);
 }

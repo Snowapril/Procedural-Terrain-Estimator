@@ -7,8 +7,9 @@
 #include "EngineProperty.hpp"
 #include "GLDebugger.hpp"
 #include <glm/gtc/matrix_transform.hpp>
+#include "EngineCamera.hpp"
 
-constexpr float HDR_RESOLUTION = 512.0f;
+constexpr float HDR_RESOLUTION = CLIENT_WIDTH;
 
 EngineHDREnvMap::EngineHDREnvMap()
 {
@@ -79,7 +80,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);
 
 	for (uint32_t i = 0; i < 6; ++i)
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB16F, HDR_RESOLUTION, HDR_RESOLUTION, 0, GL_RGB, GL_FLOAT, nullptr);
+		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB32F, HDR_RESOLUTION, HDR_RESOLUTION, 0, GL_RGB, GL_FLOAT, nullptr);
 
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -112,15 +113,17 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	return true;
 }
 
-void EngineHDREnvMap::drawScene(uint32_t drawMode) const
+void EngineHDREnvMap::drawScene(const EngineCamera& camera) const
 {
 	skyboxShader->useProgram();
 
 	glDepthFunc(GL_LEQUAL);
+	
+	camera.sendVP(*skyboxShader, true);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);
 
-	skyboxMesh.drawMesh(drawMode);
+	skyboxMesh.drawMesh(GL_TRIANGLES);
 	glDepthFunc(GL_LESS);
 }

@@ -7,6 +7,8 @@ out vec4 fragColors;
 
 uniform float systemTime;
 
+uniform sampler2D brushBoard;
+
 struct Voronoi {
 	float frequency;
 	float blend;
@@ -130,13 +132,20 @@ float fbm(vec2 x) {
 	return v;
 }
 
+vec2 calculateTexCoords(vec2 pos)
+{
+	return pos * 0.5 + 0.5;
+}
+
 void main(void)
 {
+	float brushValue = texture(brushBoard, calculateTexCoords(noisePos)).r;
+
     float voronoiValue = voronoiNoise(noisePos * vec2(voronoi.frequency));
 	float simplexValue = snoise(noisePos * vec2(simplex.frequency));
 	float fbMvalue = fbm(noisePos * vec2(fbM.frequency));
 
-	float combinedNoise = voronoiValue * voronoi.blend + simplexValue * simplex.blend + fbMvalue * fbM.blend;
+	float combinedNoise = voronoiValue * voronoi.blend * brushValue + simplexValue * simplex.blend + fbMvalue * fbM.blend;
 
-    fragColors = vec4(vec3(combinedNoise), 1.0);
+    fragColors = vec4(vec3(combinedNoise) , 1.0);
 }

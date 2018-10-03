@@ -15,12 +15,17 @@
 
 using namespace ImGui;
 
+constexpr uint32_t BRUSH_WIDTH = 50;
+constexpr uint32_t BRUSH_HEIGHT = 50;
+
+constexpr uint32_t HALF_BRUSH_WIDTH = BRUSH_WIDTH / 2;
+constexpr uint32_t HALF_BRUSH_HEIGHT = BRUSH_HEIGHT / 2;
+
+constexpr float BRUSH_DECAL = 0.002f;
+
 Generator::Generator()
-	: isGUIOpen(true)
+	: isScreenClicked(false)
 {
-	voronoiConfigure = { 1.0f, 2.0f, 0.0f, 0.0f, false, false };
-	simplexConfigure = { 0.0f, 2.0f };
-	fbMConfigure	 = { 5, 0.0f, 2.0f };
 }
 
 Generator::~Generator()
@@ -29,7 +34,6 @@ Generator::~Generator()
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteTextures(1, &framebufferTexture);
 	glDeleteFramebuffers(1, &framebuffer);
-	ImGui_ImplGlfwGL3_Shutdown();
 }
 
 void Generator::updateScene(void)
@@ -52,6 +56,12 @@ void Generator::updateScene(void)
 	generatorShader->sendUniform("fbM.num_octaves", fbMConfigure.numOctaves);
 	generatorShader->sendUniform("fbM.blend", fbMConfigure.blend);
 	generatorShader->sendUniform("fbM.frequency", fbMConfigure.frequency);
+
+
+	if (isScreenClicked)
+	{
+		updateBrushTexture();
+	}
 }
 
 void Generator::drawScene(void) const
@@ -59,12 +69,20 @@ void Generator::drawScene(void) const
 	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
-	glViewport(0, 0, clientWidth, clientHeight);
+	glViewport(0, 0, 2048, 2048);
 
 	generatorShader->useProgram();
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, brushTexture);
+
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+	if (isSaveButtonPushed)
+		saveCurrentTexture("../resources/noiseMap.png", 2048, 2048);
+
 	glBindVertexArray(0);
+
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -79,94 +97,13 @@ void Generator::drawScene(void) const
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	glViewport(0, 0, 400, clientHeight);
+	
 	ImGui::Render();
 }
 
 void Generator::onResize(int newWidth, int newHeight)
 {
 	GLApp::onResize(newWidth, newHeight);
-}
-
-bool Generator::initGUI(void)
-{
-	if (!ImGui_ImplGlfwGL3_Init(window, true))
-		return false;
-
-	return true;
-}
-
-void Generator::updateGUI(float height)
-{
-	ImGui_ImplGlfwGL3_NewFrame();
-	
-	ImGui::Begin("Generator & Estimator", &isGUIOpen, ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysUseWindowPadding | ImGuiWindowFlags_NoSavedSettings);
-	ImGui::SetWindowSize(ImVec2(400, height));
-
-	if (ImGui::TreeNode("Perlin Noise"))
-	{
-		
-		ImGui::TreePop();
-	}
-
-	if (ImGui::TreeNode("Simplex Noise"))
-	{
-		ImGui::SliderFloat("Blend", &simplexConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &simplexConfigure.frequency, 1.0f, 30.0f);
-
-		ImGui::TreePop();
-	}
-
-	if (ImGui::TreeNode("Voronoi Noise"))
-	{
-		ImGui::SliderFloat("Blend", &voronoiConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &voronoiConfigure.frequency, 1.0f, 30.0f);
-		ImGui::SliderFloat("Function", &voronoiConfigure.function, 0.5f, 3.5f);
-		ImGui::SliderFloat("Distance Type", &voronoiConfigure.distance_type, 0.5f, 3.5f);
-		ImGui::Checkbox("Multiply", &voronoiConfigure.multiply_by_F1);
-		ImGui::Checkbox("Inverse", &voronoiConfigure.inverse);
-
-		ImGui::TreePop();
-	}
-
-	if (ImGui::TreeNode("fbM Noise"))
-	{
-		ImGui::SliderInt("Num Octaves", &fbMConfigure.numOctaves, 1, 5);
-		ImGui::SliderFloat("Blend", &fbMConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &fbMConfigure.frequency, 1.0f, 30.0f);
-
-		ImGui::TreePop();
-	}
-
-	if (ImGui::CollapsingHeader("Key Support", 0, true, true))
-	{
-		ImGui::Text("ESC   : Quit Program");
-	}
-
-	if (ImGui::CollapsingHeader("Application Info", 0, true, true))
-	{
-		char* glInfos = (char*)glGetString(GL_VERSION);
-		char* hardwareInfos = (char*)glGetString(GL_RENDERER);
-
-		ImGui::Text("OpenGL Version :");
-		ImGui::Text(glInfos);
-		ImGui::Text("Hardware Informations :");
-		ImGui::Text(hardwareInfos);
-		ImGui::Text("\nFramerate %.2f FPS / Frametime %.4f ms", ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
-	}
-
-	if (ImGui::CollapsingHeader("About", 0, true, true))
-	{
-		ImGui::Text("Procedrual Terrain Estimator");
-		ImGui::Text("Map Generator by snowapril");
-		ImGui::Text("Email: sinjihng@pusan.ac.kr");
-	}
-
-	if (ImGui::Button("Save as image"))
-	{
-		saveCurrentTexture("../resources/noiseMap.png", clientWidth - 400, clientHeight);
-	}
-
-	ImGui::End();
 }
 
 bool Generator::initShaders(void)
@@ -187,6 +124,9 @@ bool Generator::initShaders(void)
 		std::cerr << "Initializing Shader Failed" << std::endl;
 		return false;
 	}
+
+	generatorShader->useProgram();
+	generatorShader->sendUniform("brushBoard", 0);
 
 	screenShader->useProgram();
 	screenShader->sendUniform("framebufferTexture", 0);
@@ -222,7 +162,7 @@ bool Generator::initFramebuffer(int width, int height)
 	glGenTextures(1, &framebufferTexture);
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2048, 2048, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -234,6 +174,34 @@ bool Generator::initFramebuffer(int width, int height)
 		std::cerr << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+	glGenTextures(1, &brushTexture);
+	glBindTexture(GL_TEXTURE_2D, brushTexture);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, clientWidth, clientHeight, 0, GL_RED, GL_FLOAT, nullptr);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	brushBoard.resize(clientWidth * clientHeight, 0);
+	
+	brushFilter.resize(BRUSH_WIDTH * BRUSH_HEIGHT);
+
+	constexpr int centerX = BRUSH_WIDTH / 2;
+	constexpr int centerY = BRUSH_HEIGHT / 2;
+
+	for (int r = 0; r < BRUSH_WIDTH; ++r)
+	{
+		for (int c = 0; c < BRUSH_HEIGHT; ++c)
+		{
+			float distance = std::sqrt((centerX - r) * (centerX - r) + (centerY - c) * (centerY - c));
+			
+			brushFilter[r * BRUSH_HEIGHT + c] = std::exp(-distance * distance * BRUSH_DECAL);
+		}
+	}
+
 	CheckError();
 
 	return true;
@@ -244,7 +212,7 @@ bool Generator::initGenerator(void)
 	if (!GLApp::initGLApp())
 		return false;
 
-	if (!initGUI())
+	if (!initGUI(window))
 		return false;
 	
 	if (!initFramebuffer(clientWidth - 400, clientHeight))
@@ -260,35 +228,77 @@ void Generator::keyCallback(int key, int scancode, int action, int mode)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+
+	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
+	{
+		std::fill(brushBoard.begin(), brushBoard.end(), 0.0f);
+		updateBrushTexture();
+	}
 }
 
 void Generator::mousePosCallback(double xpos, double ypos)
 {
+	if (isScreenClicked && 400.0 <= xpos && xpos < clientWidth && ypos >= 0.0 && ypos < clientHeight)
+		applyBrush(xpos - 400, clientHeight - ypos);
 }
 
 void Generator::mouseBtnCallback(int btn, int action, int mods)
 {
+	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+		isScreenClicked = true;
+	if (btn == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+		isScreenClicked = false;
 }
 
 void Generator::scrollCallback(double xoffset, double yoffset)
 {
 }
 
-bool Generator::saveCurrentTexture(const std::string& path, int width, int height)
+void Generator::updateBrushTexture(void)
+{
+	glBindTexture(GL_TEXTURE_2D, brushTexture);
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, clientWidth, clientHeight, GL_RED, GL_FLOAT, &brushBoard[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+bool isInRange(int width, int height, int i, int j)
+{
+	return i >= 0 && i < width && j >= 0 && j < height;
+}
+
+void Generator::applyBrush(double xoffset, double yoffset)
+{
+	//TODO : main target of performance upgrade
+	for (int r = 0; r < BRUSH_WIDTH; ++r)
+	{
+		for (int c = 0; c < BRUSH_HEIGHT; ++c)
+		{
+			if (isInRange(clientWidth, clientHeight, r - HALF_BRUSH_WIDTH + yoffset, c - HALF_BRUSH_HEIGHT + xoffset))
+			{
+				const uint32_t idx = (r - HALF_BRUSH_WIDTH + yoffset) * clientWidth + (c - HALF_BRUSH_HEIGHT + xoffset);
+				brushBoard[idx] += brushFilter[r * BRUSH_HEIGHT + c];
+
+				brushBoard[idx] = brushBoard[idx] > 1.0f ? 1.0f : brushBoard[idx];
+			}
+		}
+	}
+}
+
+bool Generator::saveCurrentTexture(const std::string& path, int width, int height) const
 {
 	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
 	std::vector<unsigned char> data(width * height * 3);
 
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)&data[0]);
-	FILE *arrOut = fopen("../Mapdata.pte", "w");
-	fprintf(arrOut, "%d %d\n", height, width);
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
-			fprintf(arrOut,"%d ", data[i*width + j * 3]);
-		}
-		fprintf(arrOut,"\n");
-	}
-	fclose(arrOut);
+	//FILE *arrOut = fopen("../Mapdata.pte", "w");
+	//fprintf(arrOut, "%d %d\n", height, width);
+	//for (int i = 0; i < height; i++) {
+	//	for (int j = 0; j < width; j++) {
+	//		fprintf(arrOut,"%d ", data[i*width + j * 3]);
+	//	}
+	//	fprintf(arrOut,"\n");
+	//}
+	//fclose(arrOut);
 
 	//Estimator::mapDataInit(data, height, width);
 	//Estimator::dumpMapData(height, width);

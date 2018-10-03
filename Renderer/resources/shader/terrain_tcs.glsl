@@ -2,11 +2,8 @@
 
 layout(vertices = 4) out;
 
-layout (std140) uniform VP
-{
-	mat4 view;
-	mat4 project;
-};
+uniform mat4 view;
+uniform mat4 project;
 
 in float vs_tessLevel[];
 in vec2 vs_texCoords[];
@@ -18,6 +15,9 @@ out vec2 tcs_tileCoords[];
 uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
 
+uniform float minDepth;
+uniform float maxDepth;
+
 float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 {
 	float height = texture(terrainMap, t0).a;
@@ -28,13 +28,10 @@ float dlodCameraDistance(vec4 p0, vec4 p1, vec2 t0, vec2 t1)
 	vec4 view0 = view * p0;
 	vec4 view1 = view * p1;
 
-	float MinDepth = 1.0;
-	float MaxDepth = 1000.0;
+	float d0 = clamp((abs(p0.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
+	float d1 = clamp((abs(p1.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
 
-	float d0 = clamp((abs(p0.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0); 
-	float d1 = clamp((abs(p1.z) - MinDepth) / (MaxDepth - MinDepth), 0.0, 1.0);
-
-	float t = mix(32, 4, (d0 + d1) * 0.5);
+	float t = mix(64, 4, (d0 + d1) * 0.5);
 
 	/*
 	if (t <= 2.0)

@@ -61,6 +61,7 @@ bool DynamicTerrain::initDynamicTerrain(const glm::vec3& position)
 	glVertexAttribPointer(1, 1, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 3));
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	return true;
 }
@@ -274,4 +275,15 @@ bool DynamicTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 		return false;
 
 	return true;
+}
+
+glm::vec2 DynamicTerrain::getTerrainScale(void) const
+{
+	return glm::uvec2(width, height);
+}
+
+void DynamicTerrain::setTerrainScale(std::size_t _width, std::size_t _height)
+{
+	width = _width;
+	height = _height;
 }

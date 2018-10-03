@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/mat4x4.hpp>
 #include "GLResources.hpp"
+#include "LightSourceWrapper.hpp"
+#include "EngineCamera.hpp"
 
 bool EngineWater::isInstanciated = false;
 
@@ -15,7 +17,7 @@ constexpr glm::vec3 LIGHT_POSITION	= glm::vec3(500.0f, 100.0f, 500.0f);
 constexpr glm::vec3 LIGHT_COLOR		= glm::vec3(0.8f, 0.8f, 0.8f);
 
 EngineWater::EngineWater()
-	: moveFactor(0.0f), position(0.0f), scale(100.0f, 1.0f, 100.0f)
+	: moveFactor(0.0f), tiling(6.0f), position(0.0f), scale(100.0f, 1.0f, 100.0f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -51,7 +53,7 @@ bool EngineWater::initWater(int reflectionWidth, int reflectionHeight, int refra
 	return true;
 }
 
-void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
+void EngineWater::updateWater(float dt)
 {
 	if (assetManager->refreshDirtyAssets())
 	{
@@ -69,12 +71,10 @@ void EngineWater::updateWater(float dt, const glm::vec3& cameraPos)
 
 	waterShader->useProgram();
 	waterShader->sendUniform("moveFactor", moveFactor);
-	waterShader->sendUniform("viewPos", cameraPos);
-	waterShader->sendUniform("lightPosition", LIGHT_POSITION);
-	waterShader->sendUniform("lightColor", LIGHT_COLOR);
+	waterShader->sendUniform("tiling", tiling);
 }
 
-void EngineWater::drawWater(uint32_t drawMode) const
+void EngineWater::drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const
 {
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, position);
@@ -82,6 +82,7 @@ void EngineWater::drawWater(uint32_t drawMode) const
 
 	waterShader->useProgram();
 	waterShader->sendUniform("model", model);
+	waterShader->sendUniform("viewPos", camera.getViewPos());
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, reflectionFBO.getColorTexture());
@@ -97,6 +98,9 @@ void EngineWater::drawWater(uint32_t drawMode) const
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	lightWrapper.sendLightSources(*waterShader);
+
+	camera.sendVP(*waterShader, false);
 	waterMesh.drawMesh(GL_TRIANGLE_STRIP);
 
 	glDisable(GL_BLEND);
@@ -105,7 +109,7 @@ void EngineWater::drawWater(uint32_t drawMode) const
 bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight)
 {
 	reflectionFBO.initFramebuffer();
-	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight);
+	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight, false);
 	reflectionFBO.attachDepthbuffer(reflectionWidth, reflectionHeight);
 	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
@@ -116,7 +120,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 	}
 
 	refractionFBO.initFramebuffer();
-	refractionFBO.attachColorTexture(refractionWidth, refractionHeight);
+	refractionFBO.attachColorTexture(refractionWidth, refractionHeight, false);
 	refractionFBO.attachDepthbuffer(refractionWidth, refractionHeight);
 	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
