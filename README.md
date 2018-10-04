@@ -37,17 +37,16 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 * Water reflection & Skybox
 * HDR Environment Map
 * Lighting & Shading
+* Tone mapping
+* Fog
+* Shadow mapping
 
 ### To be implemented
-
 * Depth Of Field
 * Screen Space Displacement Mapping
 * Screen Space Ambient Occlusion
-* Tone mapping
 * Frustum Culling
-* Shadow mapping
 * Cliff
-* Fog
 * Decal volume
 * Post-processing
 
