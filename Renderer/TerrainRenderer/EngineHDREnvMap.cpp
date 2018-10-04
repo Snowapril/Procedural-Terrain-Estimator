@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "EngineCamera.hpp"
 
-constexpr float HDR_RESOLUTION = CLIENT_WIDTH;
+constexpr int HDR_RESOLUTION = CLIENT_WIDTH;
 
 EngineHDREnvMap::EngineHDREnvMap()
 {

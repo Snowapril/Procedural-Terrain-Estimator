@@ -18,6 +18,8 @@ class TextureViewer
 {
 private:
 	std::vector <TextureView> textureViews;
+	std::vector <TextureView> depthTextureViews;
+
 	std::unique_ptr <GLShader> viewShader;
 	GLMesh mesh;
 public:
@@ -29,11 +31,14 @@ public:
 	bool initTextureViewer(void);
 
 	void addTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_t textureID);
-	void renderViewer(void) const;
+	void addDepthTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_t textureID);
+
+	void renderViewer(float zNear, float zFar) const;
 	
 	inline void clearViewer(void) 
 	{
 		textureViews.clear();
+		depthTextureViews.clear();
 	}
 };
 

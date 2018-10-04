@@ -184,9 +184,6 @@
     <ClCompile Include="EngineTerrain.cpp">
       <Filter>Terrain\private</Filter>
     </ClCompile>
-    <ClCompile Include="TerrainPatch.cpp">
-      <Filter>Terrain\private</Filter>
-    </ClCompile>
     <ClCompile Include="Util.cpp">
       <Filter>Util\public</Filter>
     </ClCompile>
@@ -355,6 +352,12 @@
     </None>
     <None Include="..\resources\shader\hdr_fs.glsl">
       <Filter>EngineFramework\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_depth_pass_fs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain_depth_pass_tes.glsl">
+      <Filter>Terrain\shader</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -3,20 +3,22 @@
 in vec2 tes_texCoords;
 in vec2 tes_tileCoords;
 in vec3 tes_fragPos;
+in vec3 tes_shadowCoords;
+
 in float visibility;
 
 out vec4 fragColor;
 
 uniform sampler2D terrainMap;
-
 uniform sampler2D splatMap;
 uniform sampler2D dirtTexture;
 uniform sampler2D rockTexture;
 uniform sampler2D grassTexture;
 uniform sampler2D wetDirtTexture;
+uniform sampler2D shadowMap;
 
 struct DirLight {
-	vec3 position;
+	vec3 direction;
 	vec3 color;
 };
 
@@ -30,6 +32,8 @@ const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 //float GeometrySchlickGGX(float NdotV, float roughness);
 //float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness);
 //vec3 fresnelSchlickRoughness(float cosTheta, vec3 F0, float roughness);
+
+float calculateShadow(vec3 shadowCoords);
 
 void main(void)
 {
@@ -53,7 +57,7 @@ void main(void)
 	finalColor = mix(finalColor, rock, mixmap.r);
 	vec3 ambient = 0.005 * finalColor;
 
-	vec3 lightDir = normalize(dirLight.position - tes_fragPos);
+	vec3 lightDir = normalize(dirLight.direction);
 	float diff = max(dot(lightDir, normal), 0.0);
 	vec3 diffuse = dirLight.color * diff * finalColor;
 	
@@ -61,8 +65,20 @@ void main(void)
 	// float distance = length(tes_fragPos - dirLight.position);
 	// diffuse *= 1.0 / (distance * distance);
 
-	fragColor = vec4((ambient + diffuse) * wireColor, 1.0);
+	float shadow = calculateShadow(tes_shadowCoords);
+
+	fragColor = vec4(shadow * (ambient + diffuse) * wireColor, 1.0);
 	fragColor = mix(skycolor, fragColor, visibility);
+}
+
+float calculateShadow(vec3 shadowCoords)
+{
+	float shadow = 1.0;
+
+	if (texture(shadowMap, shadowCoords.xy).z < shadowCoords.z)
+		shadow = 0.1f;
+
+	return shadow;
 }
 
 /*

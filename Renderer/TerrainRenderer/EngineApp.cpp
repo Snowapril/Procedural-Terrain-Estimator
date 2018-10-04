@@ -79,7 +79,15 @@ void EngineApp::drawScene(void)
 	skybox->drawScene(camera);
 	
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
-	
+
+	// depth pass here.
+	lightWrapper.bindDepthPassBuffer(clientWidth, clientHeight);
+
+	terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+
+	lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
+	// depth pass end
+
 	hdrFramebuffer.bindFramebuffer(clientWidth, clientHeight);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -101,16 +109,13 @@ void EngineApp::drawScene(void)
 	framebufferMesh.drawMesh(GL_TRIANGLE_STRIP);
 	glEnable(GL_CULL_FACE);
 
-	//this need to be modified.
-	const float zNear = 3.0f;
-	const float zFar = 1000.0f;
-
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), hdrFramebuffer.getColorTexture());
-		textureViewer.renderViewer();
+		textureViewer.addDepthTextureView(glm::vec2(0.8f, -0.4f), glm::vec2(0.15f, 0.15f), lightWrapper.getDepthTexture());
+		textureViewer.renderViewer(camera.getMinDepth(), camera.getMaxDepth());
 		textureViewer.clearViewer();
 	}
 
@@ -169,7 +174,10 @@ bool EngineApp::initEngine(void)
 
 bool EngineApp::initAssets(void)
 {
-	lightWrapper.addDirLight(glm::vec3(-100.0f, 500.0f, 100.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+	if (!lightWrapper.initDepthPassBuffer(clientWidth, clientHeight))
+		return false;
+
+	lightWrapper.addDirLight(glm::vec3(0.05f, 1.0f, 0.05f), glm::vec3(1.0f, 0.85f, 0.56f));
 
 	assetManager = std::make_unique<AssetManager>();
 	try
@@ -194,7 +202,7 @@ bool EngineApp::initAssets(void)
 	hdrFramebuffer.attachColorTexture(clientWidth, clientHeight, true);
 	hdrFramebuffer.attachDepthbuffer(clientWidth, clientHeight);
 	
-	if (!hdrFramebuffer.checkFramebufferStatus())
+	if (!hdrFramebuffer.configureFramebuffer())
 	{
 		EngineLogger::getConsole()->error("HDR Framebuffer is not completed");
 		return false;

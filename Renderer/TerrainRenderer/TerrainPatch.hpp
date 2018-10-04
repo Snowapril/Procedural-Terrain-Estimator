@@ -20,10 +20,7 @@ private:
 	TerrainPatch *leftBottomAdj;
 	glm::vec3 originPos;
 public:
-	TerrainPatch();
-	~TerrainPatch();
-	TerrainPatch(const TerrainPatch& other);
-	TerrainPatch& operator=(const TerrainPatch& other);
+	TerrainPatch() = default;
 };
 
 #endif

@@ -11,7 +11,7 @@
 #include "TerrainPatch.hpp"
 #include "LightSourceWrapper.hpp"
 #include "EngineCamera.hpp"
-
+#include "EngineProperty.hpp"
 #include <stb/stb_image.h>
 
 bool EngineTerrain::isInstanciated = false;
@@ -56,6 +56,13 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 		terrainShader->sendUniform("rockTexture", 3);
 		terrainShader->sendUniform("grassTexture", 4);
 		terrainShader->sendUniform("wetDirtTexture", 5);
+		terrainShader->sendUniform("shadowMap", 6);
+		terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
+		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
+
+		terrainShader->useProgram();
+		terrainShader->sendUniform("originPos", this->terrainOriginPos);
+		terrainShader->sendUniform("terrainMap", 0);
 		terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 	}
@@ -66,6 +73,35 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 		prevCameraPos = cameraPos;
 	}
 }
+
+
+void EngineTerrain::drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const
+{
+	depthPassShader->useProgram();
+	depthPassShader->sendUniform("clipPlane", clipPlane);
+	depthPassShader->sendUniform("minDepth", camera.getMinDepth());
+	depthPassShader->sendUniform("maxDepth", camera.getMaxDepth());
+	
+	//camera.sendVP(*depthPassShader, false);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, terrainMap);
+
+	glm::vec2 scale = dynamicPatch->getTerrainScale();
+	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
+	glm::mat4 view;
+
+	const auto& dirLights = lightWrapper.getDirLights();
+	
+	for (const auto& dirLight : dirLights)
+	{
+		view = glm::lookAt(dirLight.direction, terrainOriginPos, glm::vec3(0.0f, 1.0f, 0.0f));
+		
+		depthPassShader->sendUniform("sunMVPMatrix", project * view);
+		dynamicPatch->drawTerrain(GL_PATCHES);
+	}
+}
+
 
 /**
 * @ brief		draw Terrain with tessellation (LODing technique)
@@ -80,18 +116,30 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, splatMap);
 	tileTextures->applyTexture();
+	glActiveTexture(GL_TEXTURE6);
+	glBindTexture(GL_TEXTURE_2D, lightWrapper.getDepthTexture());
 
 	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	terrainShader->sendUniform("minDepth", camera.getMinDepth());
 	terrainShader->sendUniform("maxDepth", camera.getMaxDepth());
-
 	lightWrapper.sendLightSources(*terrainShader);
-
 	camera.sendVP(*terrainShader, false);
 
-	dynamicPatch->drawTerrain(GL_PATCHES);
-}
+	glm::vec2 scale = dynamicPatch->getTerrainScale();
+	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
+	glm::mat4 depthBiasMatrix = biasMatrix * project;
+	glm::mat4 view;
 
+	const auto& dirLights = lightWrapper.getDirLights();
+
+	for (const auto& dirLight : dirLights)
+	{
+		view = glm::lookAt(dirLight.direction, terrainOriginPos, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		terrainShader->sendUniform("sunMVPMatrix", depthBiasMatrix * view);
+		dynamicPatch->drawTerrain(GL_PATCHES);
+	}
+}
 
 /**
 * @ brief		init context for rendering terrain with local files(height map, normal map, etc ..)
@@ -103,6 +151,8 @@ disadvantage of this approach is "will generate fixed result".
 */
 bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& paths)
 {
+	glPatchParameteri(GL_PATCH_VERTICES, 4);
+
 	assetManager = std::make_unique<AssetManager>();
 	try
 	{
@@ -111,7 +161,14 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
 			"../resources/shader/terrain_fs.glsl",
-			});
+		});
+
+		depthPassShader = assetManager->addAsset<GLShader, std::string>({
+			"../resources/shader/terrain_vs.glsl",
+			"../resources/shader/terrain_tcs.glsl",
+			"../resources/shader/terrain_depth_pass_tes.glsl",
+			"../resources/shader/terrain_depth_pass_fs.glsl",
+		});
 	}
 	catch (std::exception e)
 	{
@@ -145,6 +202,13 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 	if (!bakeTerrainMap())
 		return false;
 
+	biasMatrix = glm::mat4(
+		0.5f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.5f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.5f, 0.0f,
+		0.5f, 0.5f, 0.5f, 1.0f
+	);
+
 	return true;
 }
 
@@ -158,10 +222,19 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 */
 bool EngineTerrain::bakeTerrainMap(void)
 {
-	GLShader bakeTerrainMap;
+	GLShader bakeTerrainMap, bakeShadowMap;
 	try
 	{
-		bakeTerrainMap.loadAsset({ "../resources/shader/bakeTerrainMap_vs.glsl", "../resources/shader/bakeTerrainMap_fs.glsl" });
+		bakeTerrainMap.loadAsset({
+			"../resources/shader/bakeTerrainMap_vs.glsl", 
+			"../resources/shader/bakeTerrainMap_fs.glsl" 
+		});
+		bakeShadowMap.loadAsset({ 
+			"../resources/shader/terrain_vs.glsl",
+			"../resources/shader/terrain_tcs.glsl",
+			"../resources/shader/terrain_tes.glsl",
+			"../resources/shader/terrain_depth_pass_fs.glsl",
+		});
 	}
 	catch (std::exception e)
 	{
@@ -254,15 +327,14 @@ bool EngineTerrain::bakeTerrainMap(void)
 	glDeleteVertexArrays(1u, &quadVAO);
 	glDeleteTextures(1u, &heightMap);
 
+	//Shadow Map Create here
+
 	return true;
 }
 
 float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)
 {
-	float multiplier = std::log2(min(width, height));
-
-	//return static_cast<float>(multiplier * multiplier);
-	return static_cast<float>(min(width, height) / 8);
+	return static_cast<float>(min(width, height) * 0.125f);
 }
 
 glm::vec3 EngineTerrain::getTerrainScale(void) const

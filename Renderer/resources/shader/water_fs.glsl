@@ -16,7 +16,7 @@ uniform sampler2D depthMap;
 uniform float moveFactor;
 
 struct DirLight {
-	vec3 position;
+	vec3 direction;
 	vec3 color;
 };
 
@@ -67,7 +67,7 @@ void main(void)
 	float reflectionFactor = dot(viewVector, normal);
 	reflectionFactor = pow(reflectionFactor, 3.0);
 
-	vec3 reflectedLight = reflect(normalize(fragPos - dirLight.position), normal);
+	vec3 reflectedLight = reflect(normalize(dirLight.direction), normal);
 	float specular = max(dot(reflectedLight, viewVector), 0.0);
 	specular = pow(specular, shineDamper);
 	vec3 specularHighlight = dirLight.color * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
