@@ -23,9 +23,9 @@ class GLShader : public EngineAsset
 {
 private:
 	uint32_t programID;
-#ifdef _DEBUG
-	std::unordered_map<std::string, uint32_t> uniformLocationMap;
-#endif
+
+	mutable std::unordered_map<std::string, int> uniformLocationMap;
+
 	enum class CHECK_TARGET : int;
 	enum SHADER_TYPE {
 		VS  = 0,

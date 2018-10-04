@@ -42,16 +42,37 @@ void TextureViewer::addTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_
 	textureViews.push_back({ std::move(centerPos), std::move(scale), textureID });
 }
 
-void TextureViewer::renderViewer(void) const
+void TextureViewer::addDepthTextureView(glm::vec2 centerPos, glm::vec2 scale, uint32_t textureID)
+{
+	depthTextureViews.push_back({ std::move(centerPos), std::move(scale), textureID });
+}
+
+void TextureViewer::renderViewer(float zNear, float zFar) const
 {
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
 
 	viewShader->useProgram();
+	viewShader->sendUniform("zNear", zNear);
+	viewShader->sendUniform("zFar", zFar);
 	glActiveTexture(GL_TEXTURE0);
 	
+	viewShader->sendUniform("depthRender", false);
 	for (const TextureView& view : textureViews)
+	{
+		glm::mat4 model(1.0f);
+
+		model = glm::translate(model, glm::vec3(view.position.x, view.position.y, 0.0f));
+		model = glm::scale(model, glm::vec3(view.scale.x, view.scale.y, 1.0f));
+
+		viewShader->sendUniform("model", model);
+		glBindTexture(GL_TEXTURE_2D, view.textureID);
+		mesh.drawMesh(GL_TRIANGLE_STRIP);
+	}
+
+	viewShader->sendUniform("depthRender", true);
+	for (const TextureView& view : depthTextureViews)
 	{
 		glm::mat4 model(1.0f);
 

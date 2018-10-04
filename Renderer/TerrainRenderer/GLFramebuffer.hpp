@@ -25,7 +25,7 @@ public:
 	void bindFramebuffer(int width, int height) const;
 	void unbindFramebuffer(int width, int height) const;
 
-	bool checkFramebufferStatus(void) const;
+	bool configureFramebuffer(void) const;
 
 	inline uint32_t getColorTexture(void) const {
 		return colorTexture;

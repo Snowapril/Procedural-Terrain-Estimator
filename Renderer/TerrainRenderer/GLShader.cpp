@@ -288,6 +288,9 @@ void GLShader::reloadAsset(void)
 
 	EngineLogger::getConsole()->info("Shader source change is detected");
 	loadAsset({}); /// with empty initializer list, paths remain unchanged.
+
+	for (auto& pair : uniformLocationMap)
+		pair.second = glGetUniformLocation(programID, (const GLchar *)pair.first.c_str());
 }
 
 /**
@@ -379,9 +382,10 @@ void GLShader::useProgram(void) const
 */
 int GLShader::getUniformLocation(const std::string & varName) const
 {
-	int loc = glGetUniformLocation(programID, (const GLchar *)varName.c_str());
-
-	return loc;
+	if (uniformLocationMap.find(varName) == uniformLocationMap.end())
+		uniformLocationMap.insert({ varName, glGetUniformLocation(programID, (const GLchar *)varName.c_str()) });
+	
+	return uniformLocationMap[varName];
 }
 
 /**

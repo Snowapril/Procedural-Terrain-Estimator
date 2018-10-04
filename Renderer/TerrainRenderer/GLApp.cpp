@@ -49,6 +49,7 @@ bool GLApp::initGLWindow(bool fullscreen)
 	glfwWindowHint(GLFW_GREEN_BITS, glfwMode->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, glfwMode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, glfwMode->refreshRate);
+	//glfwWindowHint(GLFW_SRGB_CAPABLE, GLFW_TRUE);
 
 	this->fullscreen = fullscreen;
 	clientWidth  = fullscreen ? glfwMode->width  : CLIENT_WIDTH;

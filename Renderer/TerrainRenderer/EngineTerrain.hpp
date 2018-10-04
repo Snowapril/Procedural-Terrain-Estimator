@@ -20,6 +20,7 @@
 #include "TerrainPatch.hpp"
 #include <vector>
 #include "DynamicTerrain.hpp"
+#include <glm/mat4x4.hpp>
 
 template <typename T>
 using iList = std::initializer_list<T>;
@@ -39,12 +40,15 @@ private:
 	float maxHeight;
 
 	GLShader* terrainShader;
+	GLShader* depthPassShader;
+
 	std::unique_ptr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
 	glm::vec3 terrainOriginPos;
 
 	GLTexture* tileTextures;
 
+	glm::mat4 biasMatrix;
 	std::unique_ptr<DynamicTerrain> dynamicPatch;
 
 	static bool isInstanciated;
@@ -62,6 +66,8 @@ public:
 	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
+
+	void drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const;
 	void drawScene(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const;
 
 	glm::vec3 getTerrainScale(void) const;

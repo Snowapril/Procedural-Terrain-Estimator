@@ -4,6 +4,7 @@ layout(quads, fractional_even_spacing) in;
 
 uniform mat4 view;
 uniform mat4 project;
+uniform mat4 sunMVPMatrix;
 
 in vec2 tcs_texCoords[];
 in vec2 tcs_tileCoords[];
@@ -11,6 +12,8 @@ in vec2 tcs_tileCoords[];
 out vec2 tes_texCoords;
 out vec2 tes_tileCoords;
 out vec3 tes_fragPos;
+out vec3 tes_shadowCoords;
+
 out float visibility;
 
 uniform sampler2D terrainMap;
@@ -51,6 +54,8 @@ void main(void)
 	gl_ClipDistance[0] = dot(gl_Position, clipPlane);
 
 	tes_fragPos = gl_Position.xyz;
+
+	tes_shadowCoords = (sunMVPMatrix * gl_Position).xyz;
 
 	vec4 positionRelativeToCam = view * gl_Position;
 	gl_Position = project * positionRelativeToCam;

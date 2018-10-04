@@ -113,7 +113,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 	reflectionFBO.attachDepthbuffer(reflectionWidth, reflectionHeight);
 	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
-	if (!reflectionFBO.checkFramebufferStatus())
+	if (!reflectionFBO.configureFramebuffer())
 	{
 		EngineLogger::getConsole()->error("Reflection Framebuffer is not completed");
 		return false;
@@ -124,7 +124,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 	refractionFBO.attachDepthbuffer(refractionWidth, refractionHeight);
 	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
-	if (!refractionFBO.checkFramebufferStatus())
+	if (!refractionFBO.configureFramebuffer())
 	{
 		EngineLogger::getConsole()->error("Refraction Framebuffer is not completed");
 		return false;

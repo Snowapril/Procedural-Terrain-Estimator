@@ -182,7 +182,6 @@
     <ClCompile Include="GLTextureWrapper.cpp" />
     <ClCompile Include="LightSourceWrapper.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TerrainPatch.cpp" />
     <ClCompile Include="TextureViewer.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -231,6 +230,8 @@
     <None Include="..\resources\shader\equiRectangularMapToCubemap_vs.glsl" />
     <None Include="..\resources\shader\skybox_fs.glsl" />
     <None Include="..\resources\shader\skybox_vs.glsl" />
+    <None Include="..\resources\shader\terrain_depth_pass_fs.glsl" />
+    <None Include="..\resources\shader\terrain_depth_pass_tes.glsl" />
     <None Include="..\resources\shader\terrain_fs.glsl" />
     <None Include="..\resources\shader\terrain_gs.glsl" />
     <None Include="..\resources\shader\terrain_tcs.glsl" />
