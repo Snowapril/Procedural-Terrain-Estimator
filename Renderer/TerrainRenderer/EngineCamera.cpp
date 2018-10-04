@@ -146,7 +146,10 @@ void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 		position += movement * direction;
 	if (keyFlag & CAMERA_DOWN)
 		position -= movement * direction;
+}
 
+void EngineCamera::processKeyCallback(uint32_t keyFlag)
+{
 	if (keyFlag & CAMERA_AUTO)
 		cameraAutoMode = !cameraAutoMode;
 }

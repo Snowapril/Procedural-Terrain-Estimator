@@ -22,11 +22,6 @@ float EngineTimer::getTotalTime(void) const
 	}
 }
 
-float EngineTimer::getDeltaTime(void) const
-{
-	return static_cast<float>(deltaTime);
-}
-
 void EngineTimer::start(void)
 {
 	__int64 _startTime;

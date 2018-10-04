@@ -19,6 +19,7 @@
 #include "EngineWater.hpp"
 #include "TextureViewer.hpp"
 #include "LightSourceWrapper.hpp"
+#include "Godrays.hpp"
 
 class GLShader;
 class AssetManager;
@@ -41,6 +42,7 @@ private:
 	GLFramebuffer hdrFramebuffer;
 	LightSourceWrapper lightWrapper;
 	TextureViewer textureViewer;
+	Godrays rayEffect;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;

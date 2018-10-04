@@ -25,7 +25,7 @@ void GLMesh::drawMesh(uint32_t drawMode) const noexcept
 	geometrySrc->drawGeometry(drawMode);
 }
 
-bool GLMesh::initWithFixedShape(MeshShape shape)
+bool GLMesh::initWithFixedShape(MeshShape shape, float scale)
 {
 	uint32_t VAO, VBO, IBO;
 	std::size_t numElements;
@@ -35,10 +35,10 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 		case MeshShape::QUAD_PATCH:
 		{
 			GLfloat quadVertices[] = {
-				-1.0f, 0.0f, -1.0f, 0.0f, 0.0f,
-				1.0f, 0.0f, -1.0f, 1.0f, 0.0f,
-				1.0f, 0.0f,  1.0f, 1.0f, 1.0f,
-				-1.0f, 0.0f,  1.0f, 0.0f, 1.0f,
+				-1.0f * scale, 0.0f, -1.0f * scale, 0.0f, 0.0f,
+				1.0f * scale, 0.0f, -1.0f * scale, 1.0f, 0.0f,
+				1.0f * scale, 0.0f,  1.0f * scale, 1.0f, 1.0f,
+				-1.0f * scale, 0.0f,  1.0f * scale, 0.0f, 1.0f,
 			};
 
 			uint32_t quadIndices[] = {
@@ -70,14 +70,14 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 		{
 			GLfloat cubeVertices[] =
 			{
-				-1.0f, -1.0f, -1.0f,
-				1.0f, -1.0f, -1.0f,
-				1.0f, 1.0f, -1.0f,
-				-1.0f, 1.0f, -1.0f,
-				-1.0f, -1.0f, 1.0f,
-				1.0f, -1.0f, 1.0f,
-				1.0f, 1.0f, 1.0f,
-				-1.0f, 1.0f, 1.0f,
+				-1.0f * scale, -1.0f * scale, -1.0f * scale,
+				1.0f * scale, -1.0f * scale, -1.0f * scale,
+				1.0f * scale, 1.0f * scale, -1.0f * scale,
+				-1.0f * scale, 1.0f * scale, -1.0f * scale,
+				-1.0f * scale, -1.0f * scale, 1.0f * scale,
+				1.0f * scale, -1.0f * scale, 1.0f * scale,
+				1.0f * scale, 1.0f * scale, 1.0f * scale,
+				-1.0f * scale, 1.0f * scale, 1.0f * scale,
 			};
 
 			uint32_t cubeIndices[] =
@@ -111,10 +111,10 @@ bool GLMesh::initWithFixedShape(MeshShape shape)
 		case MeshShape::QUAD_TRIANGLE_STRIP :
 		{
 			GLfloat quadVertices[] = {
-				-1.0f, -1.0f, 0.0f, 0.0f,
-				-1.0f,  1.0f, 0.0f, 1.0f,
-				 1.0f, -1.0f, 1.0f, 0.0f,
-				 1.0f,  1.0f, 1.0f, 1.0f,
+				-1.0f * scale, -1.0f * scale, 0.0f, 0.0f,
+				-1.0f * scale,  1.0f * scale, 0.0f, 1.0f,
+				 1.0f * scale, -1.0f * scale, 1.0f, 0.0f,
+				 1.0f * scale,  1.0f * scale, 1.0f, 1.0f,
 			};
 
 			uint32_t quadIndices[] =

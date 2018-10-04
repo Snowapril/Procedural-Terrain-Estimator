@@ -196,6 +196,9 @@
     <ClCompile Include="Automator.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
+    <ClCompile Include="Godrays.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLDebugger.hpp">
@@ -300,6 +303,9 @@
     <ClInclude Include="EventHandler.hpp">
       <Filter>EngineFramework\public</Filter>
     </ClInclude>
+    <ClInclude Include="Godrays.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">
@@ -358,6 +364,24 @@
     </None>
     <None Include="..\resources\shader\terrain_depth_pass_tes.glsl">
       <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\sun_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\sun_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\godrays_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\godrays_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\flare_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\flare_vs.glsl">
+      <Filter>Util\shader</Filter>
     </None>
   </ItemGroup>
 </Project>

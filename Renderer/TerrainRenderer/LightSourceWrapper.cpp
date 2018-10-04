@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include "GLShader.hpp"
 #include <glm/gtc/matrix_transform.hpp>
+#include "GLResources.hpp"
+#include "EngineCamera.hpp"
 
 constexpr uint32_t MAX_DIR_LIGHT = 5;
 
@@ -23,6 +25,19 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 	if (!depthPassBuffer->configureFramebuffer())
 		return false;
 
+	sunShader = make_unique_from_list<GLShader, std::string>({
+		"../resources/shader/sun_vs.glsl",
+		"../resources/shader/sun_fs.glsl",
+	});
+
+	sunShader->useProgram();
+	sunShader->sendUniform("effectTexture", 0);
+
+	sunMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 300.0f);
+
+	if ((sunTexture = GLResources::CreateTexture2D("../resources/texture/lensFlare/sun.png", true)) == 0)
+		return false;
+
 	return true;
 }
 
@@ -34,6 +49,28 @@ bool LightSourceWrapper::addDirLight(const glm::vec3 & dir, const glm::vec3 & co
 	dirLights.push_back({ dir, color });
 
 	return true;
+}
+
+void LightSourceWrapper::renderSun(const EngineCamera& camera) const
+{
+	sunShader->useProgram();
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, sunTexture);
+
+	camera.sendVP(*sunShader);
+
+	glm::mat4 model(1.0f);
+	model = glm::translate(model, -dirLights[0].direction);
+
+	sunShader->sendUniform("model", model);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	sunMesh.drawMesh(GL_TRIANGLE_STRIP);
+
+	glDisable(GL_BLEND);
 }
 
 void LightSourceWrapper::sendLightSources(const GLShader & shader) const

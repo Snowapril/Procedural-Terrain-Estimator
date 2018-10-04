@@ -10,8 +10,10 @@
 #include "EngineCamera.hpp"
 
 constexpr int HDR_RESOLUTION = CLIENT_WIDTH;
+constexpr float ROTATION_SPEED = 1.3f;
 
 EngineHDREnvMap::EngineHDREnvMap()
+	: rotation(0.0f)
 {
 }
 
@@ -27,6 +29,8 @@ EngineHDREnvMap::~EngineHDREnvMap()
 bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::string& extension)
 {
 	EngineCubeMap::initCubeMap(cubeMapDir, extension);
+
+	rotation = 0.0f;
 
 	uint32_t hdrMap;
 
@@ -113,13 +117,26 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	return true;
 }
 
+void EngineHDREnvMap::updateScene(float dt)
+{
+	rotation += dt * ROTATION_SPEED;
+}
+
 void EngineHDREnvMap::drawScene(const EngineCamera& camera) const
 {
 	skyboxShader->useProgram();
 
 	glDepthFunc(GL_LEQUAL);
 	
-	camera.sendVP(*skyboxShader, true);
+	glm::mat4 project = camera.getProjectMatrix();
+	glm::mat4 view = camera.getViewMatrix(true);
+	
+	view = glm::rotate(view, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
+
+	skyboxShader->sendUniform("project", project);
+	skyboxShader->sendUniform("view", view);
+	
+	//camera.sendVP(*skyboxShader, true);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);

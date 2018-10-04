@@ -182,6 +182,15 @@ void GLApp::errorCallback(int error, const char * description) const
 	EngineLogger::getConsole()->error("Error code {}, description :\n{}", error, description);
 }
 
+void GLApp::keyCallback(int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+		if (timer.isTimerPaused())
+			timer.start();
+		else
+			timer.stop();
+}
+
 void GLApp::resizingCallback(int newWidth, int newHeight)
 {
 	if (newWidth  == 0) newWidth  = 1;

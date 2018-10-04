@@ -5,9 +5,18 @@ out vec4 fragColor;
 
 uniform samplerCube cubeMap;
 
+const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
+
+const float lowerLimit = 0.0;
+const float upperLimit = 0.1;
+
 void main(void)
 {
-	vec3 envColor = texture(cubeMap, texCoords).rgb;
+	vec4 envColor = texture(cubeMap, texCoords);
 
-	fragColor = vec4(envColor, 1.0);
+	float factor = (texCoords.y - lowerLimit) / (upperLimit - lowerLimit);
+
+	factor = clamp(factor, 0.0, 1.0);
+	
+	fragColor = mix(skycolor, envColor, factor);
 }

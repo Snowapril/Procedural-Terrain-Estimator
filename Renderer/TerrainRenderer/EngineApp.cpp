@@ -7,7 +7,7 @@
 #include "GLShader.hpp"
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
-#include "EngineHDREnvMap.hpp"
+#include "EngineSkybox.hpp"
 #include "Util.hpp"
 
 EngineApp::EngineApp()
@@ -36,6 +36,8 @@ void EngineApp::updateScene(float dt)
 
 	terrain.updateScene(dt, cameraPos);
 	water.updateWater(dt);
+	
+	skybox->updateScene(dt);
 
 	if (assetManager->refreshDirtyAssets())
 	{
@@ -74,7 +76,7 @@ void EngineApp::drawScene(void)
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
 	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-	skybox->drawScene(camera);
+	//skybox->drawScene(camera);
 	
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 
@@ -98,6 +100,8 @@ void EngineApp::drawScene(void)
 	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 	skybox->drawScene(camera);
 	water.drawWater(camera, lightWrapper);
+	lightWrapper.renderSun(camera);
+	rayEffect.drawLensFlare(camera, lightWrapper, glm::vec2(0.0f));
 
 	hdrFramebuffer.unbindFramebuffer(clientWidth, clientHeight);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -109,6 +113,7 @@ void EngineApp::drawScene(void)
 	glDisable(GL_CULL_FACE);
 	framebufferMesh.drawMesh(GL_TRIANGLE_STRIP);
 	glEnable(GL_CULL_FACE);
+
 
 	if (debuggerMode)
 	{
@@ -152,7 +157,7 @@ bool EngineApp::initEngine(void)
 
 	try
 	{
-		skybox = std::make_unique<EngineHDREnvMap>("../resources/texture/hdr/beach.", "hdr");
+		skybox = std::make_unique<EngineSkybox>("../resources/texture/skybox/cloud/", "jpg");
 	}
 	catch (std::exception e)
 	{
@@ -175,13 +180,11 @@ bool EngineApp::initEngine(void)
 
 bool EngineApp::initAssets(void)
 {
-	const glm::vec3& scale = terrain.getTerrainScale();
-
-	if (!lightWrapper.initDepthPassBuffer(scale.x, scale.z))
+	if (!lightWrapper.initDepthPassBuffer(SHADOW_RESOLUTION_X, SHADOW_RESOLUTION_Y))
 		return false;
 
-	const glm::vec3 sumPosition(10.0f, 2.0f, 6.0f);
-	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f));
+	const glm::vec3 sumPosition(0.0f, 500.0f, 2000.0f);
+	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.5f);
 
 	assetManager = std::make_unique<AssetManager>();
 	try
@@ -212,6 +215,9 @@ bool EngineApp::initAssets(void)
 		return false;
 	}
 
+	if (!rayEffect.initLensFlare(0.1f, 9))
+		return false;
+
 	return true;
 }
 
@@ -233,6 +239,8 @@ bool EngineApp::initUniformBufferObject(void)
 
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 {
+	GLApp::keyCallback(key, scancode, action, mode);
+
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 
@@ -241,6 +249,9 @@ void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 
 	if (key == GLFW_KEY_F2 && action == GLFW_PRESS)
 		debuggerMode = !debuggerMode;
+
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+		camera.processKeyCallback(CAMERA_AUTO);
 }
 
 void EngineApp::mousePosCallback(double xpos, double ypos)
@@ -257,7 +268,7 @@ void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 
 	if (btn == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT_BTN;
-
+	
 	camera.processMouseBtn(keyFlag);
 }
 
@@ -278,8 +289,6 @@ void EngineApp::processKeyInput(float dt)
 		keyFlag |= CAMERA_DOWN;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT;
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
-		keyFlag |= CAMERA_AUTO;
 
 	camera.processKeyInput(keyFlag, dt);
 }

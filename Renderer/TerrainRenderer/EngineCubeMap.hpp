@@ -21,6 +21,7 @@ public:
 	EngineCubeMap(const std::string& cubeMapDir, const std::string& extension);
 	virtual ~EngineCubeMap();
 public:
+	virtual void updateScene(float dt) = 0;
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
 	virtual void drawScene(const EngineCamera& camera) const = 0;
 };

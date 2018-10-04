@@ -5,6 +5,8 @@
 
 class EngineHDREnvMap : public EngineCubeMap
 {
+private:
+	float rotation;
 public:
 	EngineHDREnvMap();
 	EngineHDREnvMap(const std::string& cubeMapDir, const std::string& extension);
@@ -12,6 +14,7 @@ public:
 public:
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
 	virtual void drawScene(const EngineCamera& camera) const;
+	virtual void updateScene(float dt);
 };
 
 #endif
