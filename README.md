@@ -65,11 +65,15 @@ this is for **rendering procedural terrain**. default supported platform is Wind
 
 ## ESTIMATOR
 
-### To be implemented
-* Terrain type distribution by height and near tiles condition
+### Already Implemented
+
 * Vally / basin distinct function from gradient-descent method and flood fill
 * Coast terrain generation by constant subtraction
 * Island terrain generation by invert function
+
+### To be implemented
+* Terrain type distribution by height and near tiles condition
+* Blend map generation
 * etc...
 
 ## MEETING
