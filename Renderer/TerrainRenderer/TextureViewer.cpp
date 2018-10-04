@@ -54,8 +54,7 @@ void TextureViewer::renderViewer(float zNear, float zFar) const
 	glDisable(GL_DEPTH_TEST);
 
 	viewShader->useProgram();
-	viewShader->sendUniform("zNear", zNear);
-	viewShader->sendUniform("zFar", zFar);
+
 	glActiveTexture(GL_TEXTURE0);
 	
 	viewShader->sendUniform("depthRender", false);

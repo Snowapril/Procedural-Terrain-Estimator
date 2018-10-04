@@ -60,11 +60,11 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 		terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 
-		terrainShader->useProgram();
-		terrainShader->sendUniform("originPos", this->terrainOriginPos);
-		terrainShader->sendUniform("terrainMap", 0);
-		terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
-		terrainShader->sendUniform("terrainMaxHeight", maxHeight);
+		depthPassShader->useProgram();
+		depthPassShader->sendUniform("originPos", this->terrainOriginPos);
+		depthPassShader->sendUniform("terrainMap", 0);
+		depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
+		depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
 	}
 
 	if (cameraPos != prevCameraPos)
@@ -81,11 +81,11 @@ void EngineTerrain::drawScene_DepthPass(const EngineCamera& camera, const LightS
 	depthPassShader->sendUniform("clipPlane", clipPlane);
 	depthPassShader->sendUniform("minDepth", camera.getMinDepth());
 	depthPassShader->sendUniform("maxDepth", camera.getMaxDepth());
-	
-	//camera.sendVP(*depthPassShader, false);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
+
+	//camera.sendVP(*depthPassShader, false);
 
 	glm::vec2 scale = dynamicPatch->getTerrainScale();
 	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
@@ -119,7 +119,6 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	glActiveTexture(GL_TEXTURE6);
 	glBindTexture(GL_TEXTURE_2D, lightWrapper.getDepthTexture());
 
-	terrainShader->sendUniform("wireColor", glm::vec3(1.0f, 1.0f, 1.0f));
 	terrainShader->sendUniform("minDepth", camera.getMinDepth());
 	terrainShader->sendUniform("maxDepth", camera.getMaxDepth());
 	lightWrapper.sendLightSources(*terrainShader);

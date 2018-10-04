@@ -24,8 +24,6 @@ struct DirLight {
 
 uniform DirLight dirLight;
 
-uniform vec3 wireColor;
-
 const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 
 //float DistributionGGX(vec3 N, vec3 H, float roughness);
@@ -67,16 +65,17 @@ void main(void)
 
 	float shadow = calculateShadow(tes_shadowCoords);
 
-	fragColor = vec4(shadow * (ambient + diffuse) * wireColor, 1.0);
+	fragColor = vec4((ambient + shadow * diffuse), 1.0);
 	fragColor = mix(skycolor, fragColor, visibility);
 }
 
 float calculateShadow(vec3 shadowCoords)
 {
+	const float bias = 0.005;
+	
 	float shadow = 1.0;
-
-	if (texture(shadowMap, shadowCoords.xy).z < shadowCoords.z)
-		shadow = 0.1f;
+	if (texture(shadowMap, shadowCoords.xy).z < shadowCoords.z - bias)
+		shadow = 0.5;
 
 	return shadow;
 }

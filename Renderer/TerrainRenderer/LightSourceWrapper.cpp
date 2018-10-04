@@ -18,7 +18,7 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 	depthPassBuffer = std::make_unique<GLFramebuffer>();
 
 	depthPassBuffer->initFramebuffer();
-	depthPassBuffer->attachDepthTexture(width, height, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT);
+	depthPassBuffer->attachDepthTexture(width, height, GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT);
 
 	if (!depthPassBuffer->configureFramebuffer())
 		return false;
@@ -31,7 +31,7 @@ bool LightSourceWrapper::addDirLight(const glm::vec3 & dir, const glm::vec3 & co
 	if (dirLights.size() >= MAX_DIR_LIGHT)
 		return false;
 
-	dirLights.push_back({ glm::normalize(dir), color });
+	dirLights.push_back({ dir, color });
 
 	return true;
 }

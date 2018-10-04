@@ -76,6 +76,14 @@ void GLFramebuffer::bindFramebuffer(int width, int height) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 	glViewport(0, 0, width, height);
+	
+	//uint32_t clearFlag = 0;
+	//
+	//if (colorTexture)
+	//	clearFlag |= GL_COLOR_BUFFER_BIT;
+	//if (depthTexture)
+	//	clearFlag |= GL_DEPTH_BUFFER_BIT;
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

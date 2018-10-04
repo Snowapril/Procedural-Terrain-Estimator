@@ -62,7 +62,6 @@ void EngineApp::drawScene(void)
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_CLIP_DISTANCE0);
 	glDisable(GL_CULL_FACE);
 
@@ -74,25 +73,27 @@ void EngineApp::drawScene(void)
 	camera.updateView();
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
 	skybox->drawScene(camera);
 	
 	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 
+	glDisable(GL_CLIP_DISTANCE0);
+	glEnable(GL_CULL_FACE);
+
 	// depth pass here.
-	lightWrapper.bindDepthPassBuffer(clientWidth, clientHeight);
+
+	const glm::vec3& scale = terrain.getTerrainScale();
+	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
+	glCullFace(GL_FRONT);
 
 	terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 
+	glCullFace(GL_BACK);
 	lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
 	// depth pass end
 
 	hdrFramebuffer.bindFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	glDisable(GL_CLIP_DISTANCE0);
-	glEnable(GL_CULL_FACE);
 
 	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 	skybox->drawScene(camera);
@@ -174,10 +175,13 @@ bool EngineApp::initEngine(void)
 
 bool EngineApp::initAssets(void)
 {
-	if (!lightWrapper.initDepthPassBuffer(clientWidth, clientHeight))
+	const glm::vec3& scale = terrain.getTerrainScale();
+
+	if (!lightWrapper.initDepthPassBuffer(scale.x, scale.z))
 		return false;
 
-	lightWrapper.addDirLight(glm::vec3(0.05f, 1.0f, 0.05f), glm::vec3(1.0f, 0.85f, 0.56f));
+	const glm::vec3 sumPosition(10.0f, 2.0f, 6.0f);
+	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f));
 
 	assetManager = std::make_unique<AssetManager>();
 	try
