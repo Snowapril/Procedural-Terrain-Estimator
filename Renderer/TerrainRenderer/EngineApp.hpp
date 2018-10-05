@@ -35,7 +35,6 @@ private:
 	uint32_t testQuery;
 #endif
 
-	uint32_t vpUBO;
 	uint32_t polygonMode;
 	
 	uPtr<EngineCubeMap> skybox;
@@ -50,11 +49,11 @@ private:
 
 	EngineGUI GUI;
 protected:
-	bool initUniformBufferObject(void);
 	bool initAssets(void);
 
 	void updateScene(float dt);
 	void drawScene(void) ;
+	void onResize(int newWidth, int newHeight);
 public:
 	EngineApp();
 	virtual ~EngineApp();

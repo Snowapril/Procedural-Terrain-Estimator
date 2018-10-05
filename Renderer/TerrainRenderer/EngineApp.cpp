@@ -114,7 +114,6 @@ void EngineApp::drawScene(void)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
-		textureViewer.addDepthTextureView(glm::vec2(0.8f, -0.4f), glm::vec2(0.15f, 0.15f), lightWrapper.getDepthTexture());
 		textureViewer.renderViewer(camera.getMinDepth(), camera.getMaxDepth());
 		textureViewer.clearViewer();
 	}
@@ -136,9 +135,6 @@ bool EngineApp::initEngine(void)
 		return false;
 
 	if (!GUI.initGUI(window))
-		return false;
-
-	if (!initUniformBufferObject())
 		return false;
 
 	if (!textureViewer.initTextureViewer())
@@ -191,20 +187,11 @@ bool EngineApp::initAssets(void)
 	return true;
 }
 
-/**
-* @ brief		initialize uniform buffer object
-* @ details		uniform buffer object is useful when many shader use common uniform variable.
-* @ return		return boolean whether if initializing uniform buffer object is successful or not.
-*/
-bool EngineApp::initUniformBufferObject(void)
+void EngineApp::onResize(int newWidth, int newHeight)
 {
-	glGenBuffers(1, &vpUBO);
-	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, nullptr, GL_STATIC_DRAW);
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
-	glBindBufferRange(GL_UNIFORM_BUFFER, 0, vpUBO, 0, sizeof(glm::mat4) * 2);
+	GLApp::onResize(newWidth, newHeight);
 
-	return true;
+	camera.setViewportSize(newWidth, newHeight);
 }
 
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)

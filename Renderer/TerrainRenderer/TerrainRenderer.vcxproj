@@ -240,6 +240,8 @@
     <None Include="..\resources\shader\skybox_vs.glsl" />
     <None Include="..\resources\shader\sun_fs.glsl" />
     <None Include="..\resources\shader\sun_vs.glsl" />
+    <None Include="..\resources\shader\terrain2_fs.glsl" />
+    <None Include="..\resources\shader\terrain2_tes.glsl" />
     <None Include="..\resources\shader\terrain_depth_pass_fs.glsl" />
     <None Include="..\resources\shader\terrain_depth_pass_tes.glsl" />
     <None Include="..\resources\shader\terrain_fs.glsl" />

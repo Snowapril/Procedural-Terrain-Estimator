@@ -389,5 +389,11 @@
     <None Include="..\resources\shader\postprocess_fs.glsl">
       <Filter>Util\shader</Filter>
     </None>
+    <None Include="..\resources\shader\terrain2_tes.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain2_fs.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

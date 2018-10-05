@@ -34,6 +34,8 @@ public:
 	float minDepth;
 	float maxDepth;
 
+	glm::vec2 viewportSize;
+
 	glm::vec3 position;
 	glm::vec3 direction;
 
@@ -62,9 +64,14 @@ public:
 	void flipVertically(float yaxis);
 	void updateView(void);
 	void updateProject(float aspectRatio);
+	void setViewportSize(int width, int height);
 
 	bool initCamera(const glm::vec3& position, const  glm::vec3& direction);
 
+	inline glm::vec2 getViewportSize(void) const
+	{
+		return viewportSize;
+	}
 	inline glm::mat4 getViewMatrix(bool remove_transition = false) const
 	{
 		return remove_transition ? glm::mat4(glm::mat3(view)) : view;

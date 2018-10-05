@@ -209,3 +209,8 @@ void EngineCamera::updateProject(float aspectRatio)
 {
 	project = glm::perspective(glm::radians(fov), aspectRatio, minDepth, maxDepth);
 }
+
+void EngineCamera::setViewportSize(int width, int height)
+{
+	viewportSize = glm::vec2(width, height);
+}

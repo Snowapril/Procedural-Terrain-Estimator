@@ -124,6 +124,10 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	lightWrapper.sendLightSources(*terrainShader);
 	camera.sendVP(*terrainShader, false);
 
+	glm::vec2 viewportScale = camera.getViewportSize();
+	terrainShader->sendUniform("viewportSize", viewportScale);
+	terrainShader->sendUniform("enableWireframe", true);
+
 	glm::vec2 scale = dynamicPatch->getTerrainScale();
 	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
 	glm::mat4 depthBiasMatrix = biasMatrix * project;
@@ -159,6 +163,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 			"../resources/shader/terrain_vs.glsl",
 			"../resources/shader/terrain_tcs.glsl",
 			"../resources/shader/terrain_tes.glsl",
+			"../resources/shader/terrain_gs.glsl",
 			"../resources/shader/terrain_fs.glsl",
 		});
 

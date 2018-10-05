@@ -1,13 +1,11 @@
 #version 430 core
 
+in vec2 tes_texCoords;
+in vec2 tes_tileCoords;
+in vec3 tes_fragPos;
+in vec3 tes_shadowCoords;
 
-in vec2 gs_texCoords;
-in vec2 gs_tileCoords;
-in vec3 gs_fragPos;
-in vec3 gs_shadowCoords;
-in vec3 gs_distToEdges;
-
-in float gs_visibility;
+in float visibility;
 
 out vec4 fragColor;
 
@@ -18,7 +16,6 @@ uniform sampler2D rockTexture;
 uniform sampler2D grassTexture;
 uniform sampler2D wetDirtTexture;
 uniform sampler2D shadowMap;
-uniform bool enableWireframe;
 
 struct DirLight {
 	vec3 direction;
@@ -38,7 +35,7 @@ float calculateShadow(vec3 shadowCoords);
 
 void main(void)
 {
-	vec4 terrain = texture(terrainMap, gs_texCoords);
+	vec4 terrain = texture(terrainMap, tes_texCoords);
 
 	float height = terrain.w;
 	vec3 normal = terrain.xzy;
@@ -46,12 +43,12 @@ void main(void)
 
 	normal = normalize(normal);
 
-	vec4 mixmap = texture(splatMap, gs_texCoords);
+	vec4 mixmap = texture(splatMap, tes_texCoords);
 
-	vec3 dirt = texture(dirtTexture, gs_tileCoords).rgb;
-	vec3 rock = texture(rockTexture, gs_tileCoords).rgb;
-	vec3 grass = texture(grassTexture, gs_tileCoords).rgb;
-	vec3 wetDirt = texture(wetDirtTexture, gs_tileCoords).rgb;
+	vec3 dirt = texture(dirtTexture, tes_tileCoords).rgb;
+	vec3 rock = texture(rockTexture, tes_tileCoords).rgb;
+	vec3 grass = texture(grassTexture, tes_tileCoords).rgb;
+	vec3 wetDirt = texture(wetDirtTexture, tes_tileCoords).rgb;
 
 	vec3 finalColor = mix(dirt, grass, mixmap.g);
 	finalColor = mix(finalColor, wetDirt, mixmap.b);
@@ -66,25 +63,10 @@ void main(void)
 	// float distance = length(tes_fragPos - dirLight.position);
 	// diffuse *= 1.0 / (distance * distance);
 
-	float shadow = calculateShadow(gs_shadowCoords);
+	float shadow = calculateShadow(tes_shadowCoords);
 
 	fragColor = vec4((ambient + shadow * diffuse), 1.0);
-	fragColor = mix(skycolor, fragColor, gs_visibility);
-
-	if (enableWireframe)
-	{
-		const vec4 WIREFRAME_COLOR = vec4(0.0);
-		const float WIREFRAME_THICKNESS = 1.5;
-
-		float wireframeStrength = 0.0;
-
-		float minDistToEdge = min(gs_distToEdges.x, min(gs_distToEdges.y, gs_distToEdges.z));
-		if (minDistToEdge <= WIREFRAME_THICKNESS) {
-			wireframeStrength = smoothstep(0.0, 1.0, 1.0 - (minDistToEdge / WIREFRAME_THICKNESS));
-		}
-
-		fragColor = WIREFRAME_COLOR * wireframeStrength + (1.0 - wireframeStrength) * fragColor;
-	}
+	fragColor = mix(skycolor, fragColor, visibility);
 }
 
 float calculateShadow(vec3 shadowCoords)
