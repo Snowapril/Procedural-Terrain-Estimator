@@ -23,6 +23,9 @@
 #include <glm/mat4x4.hpp>
 
 template <typename T>
+using uPtr = std::unique_ptr<T>;
+
+template <typename T>
 using iList = std::initializer_list<T>;
 
 class EngineCamera;
@@ -42,14 +45,14 @@ private:
 	GLShader* terrainShader;
 	GLShader* depthPassShader;
 
-	std::unique_ptr<AssetManager> assetManager;
+	uPtr<AssetManager> assetManager;
 	glm::vec3 prevCameraPos;
 	glm::vec3 terrainOriginPos;
 
 	GLTexture* tileTextures;
 
 	glm::mat4 biasMatrix;
-	std::unique_ptr<DynamicTerrain> dynamicPatch;
+	uPtr<DynamicTerrain> dynamicPatch;
 
 	static bool isInstanciated;
 protected:

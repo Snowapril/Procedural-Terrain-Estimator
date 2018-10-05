@@ -19,7 +19,7 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 void resizingCallback(GLFWwindow* window, int newWidth, int newHeight);
 
 /// program entry point
-std::unique_ptr<EngineApp> gMainApplication;
+uPtr<EngineApp> gMainApplication;
 int main(void)
 {
 	gMainApplication = std::make_unique<EngineApp>();

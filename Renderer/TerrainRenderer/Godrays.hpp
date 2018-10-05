@@ -12,6 +12,9 @@ class GLShader;
 class EngineCamera;
 class LightSourceWrapper;
 
+template <typename T>
+using uPtr = std::unique_ptr<T>;
+
 class Godrays
 {
 private:
@@ -20,8 +23,8 @@ private:
 	GLShader* flareShader;
     GLShader* effectShader;
 
-    std::unique_ptr<GLFramebuffer> screenBuffer;
-    std::unique_ptr<AssetManager> assetManager;
+    uPtr<GLFramebuffer> screenBuffer;
+    uPtr<AssetManager> assetManager;
 
 	std::vector<uint32_t> flareTextures;
 

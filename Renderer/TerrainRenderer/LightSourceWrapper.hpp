@@ -9,6 +9,9 @@
 #include "GLMesh.hpp"
 #include <stdint.h>
 
+template <typename T>
+using uPtr = std::unique_ptr<T>;
+
 class GLShader;
 class EngineCamera;
 
@@ -24,8 +27,8 @@ private:
 
 	std::vector<DirectionLight> dirLights;
 
-	std::unique_ptr<GLFramebuffer> depthPassBuffer;
-	std::unique_ptr<GLShader> sunShader;
+	uPtr<GLFramebuffer> depthPassBuffer;
+	uPtr<GLShader> sunShader;
 	
 	GLMesh sunMesh;
 public:

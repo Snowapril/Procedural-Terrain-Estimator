@@ -199,6 +199,9 @@
     <ClCompile Include="Godrays.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
+    <ClCompile Include="PostProcessing.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLDebugger.hpp">
@@ -306,6 +309,9 @@
     <ClInclude Include="Godrays.hpp">
       <Filter>Util\public</Filter>
     </ClInclude>
+    <ClInclude Include="PostProcessing.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">
@@ -353,12 +359,6 @@
     <None Include="..\resources\shader\terrain_fs.glsl">
       <Filter>Terrain\shader</Filter>
     </None>
-    <None Include="..\resources\shader\hdr_vs.glsl">
-      <Filter>EngineFramework\shader</Filter>
-    </None>
-    <None Include="..\resources\shader\hdr_fs.glsl">
-      <Filter>EngineFramework\shader</Filter>
-    </None>
     <None Include="..\resources\shader\terrain_depth_pass_fs.glsl">
       <Filter>Terrain\shader</Filter>
     </None>
@@ -381,6 +381,12 @@
       <Filter>Util\shader</Filter>
     </None>
     <None Include="..\resources\shader\flare_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\postprocess_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\postprocess_fs.glsl">
       <Filter>Util\shader</Filter>
     </None>
   </ItemGroup>

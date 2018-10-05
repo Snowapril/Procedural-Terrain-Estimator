@@ -13,5 +13,6 @@ void main(void)
 {
 	texCoords = aTexCoords;
 
-    gl_Position = project * view * model * vec4(aPos, 0.0, 1.0);
+    vec4 position = project * view * model * vec4(aPos, 0.0, 1.0);
+	gl_Position = position.xyww;
 }

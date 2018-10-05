@@ -44,6 +44,8 @@ public:
 
 	glm::mat4 view;
 	glm::mat4 project;
+
+	glm::mat4 previousVP;
 private:
 public:
 	EngineCamera();
@@ -70,6 +72,10 @@ public:
 	inline glm::mat4 getProjectMatrix(void) const
 	{
 		return project;
+	}
+	inline glm::mat4 getPreviousVP(void) const
+	{
+		return previousVP;
 	}
 	inline glm::vec3 getViewPos(void) const
 	{

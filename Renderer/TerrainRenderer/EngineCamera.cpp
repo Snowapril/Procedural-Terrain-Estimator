@@ -66,6 +66,8 @@ void EngineCamera::onUpdate(float dt)
 		pitch = dir.y;
 	}
 
+	previousVP = project * view;
+
 	if (!updateFov)
 		return;
 
@@ -186,6 +188,8 @@ void EngineCamera::flipVertically(float yaxis)
 	direction.z = glm::sin(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
 
 	direction = glm::normalize(direction);
+
+	updateView();
 }
 
 void EngineCamera::sendVP(const GLShader& shader, bool remove_transition) const

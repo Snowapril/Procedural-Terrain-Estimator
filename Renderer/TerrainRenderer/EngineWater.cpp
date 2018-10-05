@@ -109,7 +109,7 @@ void EngineWater::drawWater(const EngineCamera& camera, const LightSourceWrapper
 bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight)
 {
 	reflectionFBO.initFramebuffer();
-	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight, false);
+	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight, GL_REPEAT, false);
 	reflectionFBO.attachDepthbuffer(reflectionWidth, reflectionHeight);
 	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
@@ -120,7 +120,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 	}
 
 	refractionFBO.initFramebuffer();
-	refractionFBO.attachColorTexture(refractionWidth, refractionHeight, false);
+	refractionFBO.attachColorTexture(refractionWidth, refractionHeight, GL_REPEAT, false);
 	refractionFBO.attachDepthbuffer(refractionWidth, refractionHeight);
 	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 

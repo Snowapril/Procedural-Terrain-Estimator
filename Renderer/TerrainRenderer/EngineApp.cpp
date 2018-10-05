@@ -39,11 +39,8 @@ void EngineApp::updateScene(float dt)
 	
 	skybox->updateScene(dt);
 
-	if (assetManager->refreshDirtyAssets())
-	{
-		hdrShader->useProgram();
-		hdrShader->sendUniform("hdrBuffer", 0);
-	}
+	postprocess.updateScene(dt);
+	
 	//GUI.updateGUI(dt, clientHeight);
 }
 
@@ -64,21 +61,21 @@ void EngineApp::drawScene(void)
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
-	glEnable(GL_CLIP_DISTANCE0);
-	glDisable(GL_CULL_FACE);
+		glEnable(GL_CLIP_DISTANCE0);
+		glDisable(GL_CULL_FACE);
 
-	camera.flipVertically(waterHeight);
-	camera.updateView();
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
-	skybox->drawScene(camera);
-	camera.flipVertically(waterHeight);
-	camera.updateView();
+		camera.flipVertically(waterHeight);
+		
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
+		skybox->drawScene(camera);
+		
+		camera.flipVertically(waterHeight);
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-	//skybox->drawScene(camera);
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+		//skybox->drawScene(camera);
 	
-	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
+		water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
@@ -87,39 +84,36 @@ void EngineApp::drawScene(void)
 
 	const glm::vec3& scale = terrain.getTerrainScale();
 	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
-	glCullFace(GL_FRONT);
+		glCullFace(GL_FRONT);
 
-	terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 
-	glCullFace(GL_BACK);
-	lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
+		glCullFace(GL_BACK);
+		lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
 	// depth pass end
 
-	hdrFramebuffer.bindFramebuffer(clientWidth, clientHeight);
+	postprocess.bindPostprocessing(clientWidth, clientHeight);
 
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-	skybox->drawScene(camera);
-	water.drawWater(camera, lightWrapper);
-	lightWrapper.renderSun(camera);
-	rayEffect.drawLensFlare(camera, lightWrapper, glm::vec2(0.0f));
+		//glDepthMask(GL_FALSE);
+		//glBeginQuery(GL_ANY_SAMPLES_PASSED, testQuery);
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		//glEndQuery(GL_ANY_SAMPLES_PASSED);
+		//glDepthMask(GL_TRUE);
 
-	hdrFramebuffer.unbindFramebuffer(clientWidth, clientHeight);
+		skybox->drawScene(camera);
+		water.drawWater(camera, lightWrapper);
+		lightWrapper.renderSun(camera);
+		rayEffect.drawLensFlare(camera, lightWrapper, glm::vec2(0.0f));
+
+		postprocess.unbindPostprocessing(clientWidth, clientHeight);
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	hdrShader->useProgram();
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, hdrFramebuffer.getColorTexture());
-	
-	glDisable(GL_CULL_FACE);
-	framebufferMesh.drawMesh(GL_TRIANGLE_STRIP);
-	glEnable(GL_CULL_FACE);
-
-
+	postprocess.drawScene(camera);
+	   
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
-		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), hdrFramebuffer.getColorTexture());
 		textureViewer.addDepthTextureView(glm::vec2(0.8f, -0.4f), glm::vec2(0.15f, 0.15f), lightWrapper.getDepthTexture());
 		textureViewer.renderViewer(camera.getMinDepth(), camera.getMaxDepth());
 		textureViewer.clearViewer();
@@ -166,12 +160,17 @@ bool EngineApp::initEngine(void)
 
 	onResize(clientWidth, clientHeight);
 
+	//glGenQueries(1, &testQuery);
+
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
-		return false;
+		return false;	
 	
 	glm::vec3 terrainScale = terrain.getTerrainScale() * 0.5f;
 	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
+	if (!postprocess.initPostProcessing(clientWidth, clientHeight))
+		return false;
+
 	if (!initAssets())
 		return false;
 	
@@ -183,37 +182,8 @@ bool EngineApp::initAssets(void)
 	if (!lightWrapper.initDepthPassBuffer(SHADOW_RESOLUTION_X, SHADOW_RESOLUTION_Y))
 		return false;
 
-	const glm::vec3 sumPosition(0.0f, 500.0f, 2000.0f);
-	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.5f);
-
-	assetManager = std::make_unique<AssetManager>();
-	try
-	{
-		hdrShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/hdr_vs.glsl",
-			"../resources/shader/hdr_fs.glsl",
-		});
-	}
-	catch (std::exception e)
-	{
-		EngineLogger::getConsole()->error("Initializing HDR Shader Failed");
-		return false;
-	}
-
-	hdrShader->useProgram();
-	hdrShader->sendUniform("hdrBuffer", 0);
-
-	framebufferMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
-
-	hdrFramebuffer.initFramebuffer();
-	hdrFramebuffer.attachColorTexture(clientWidth, clientHeight, true);
-	hdrFramebuffer.attachDepthbuffer(clientWidth, clientHeight);
-	
-	if (!hdrFramebuffer.configureFramebuffer())
-	{
-		EngineLogger::getConsole()->error("HDR Framebuffer is not completed");
-		return false;
-	}
+	const glm::vec3 sumPosition(0.0f, 800.0f, 5000.0f);
+	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.7f);
 
 	if (!rayEffect.initLensFlare(0.1f, 9))
 		return false;

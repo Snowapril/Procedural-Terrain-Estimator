@@ -60,16 +60,20 @@ void LightSourceWrapper::renderSun(const EngineCamera& camera) const
 
 	camera.sendVP(*sunShader);
 
+	const DirectionLight& dirLight = dirLights[0];
+
 	glm::mat4 model(1.0f);
-	model = glm::translate(model, -dirLights[0].direction);
+	model = glm::translate(model, -dirLight.direction);
 
 	sunShader->sendUniform("model", model);
-
+	sunShader->sendUniform("sunColor", dirLight.color);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDepthFunc(GL_LEQUAL);
 
 	sunMesh.drawMesh(GL_TRIANGLE_STRIP);
 
+	glDepthFunc(GL_LESS);
 	glDisable(GL_BLEND);
 }
 

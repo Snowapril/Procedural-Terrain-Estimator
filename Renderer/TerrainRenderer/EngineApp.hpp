@@ -20,6 +20,7 @@
 #include "TextureViewer.hpp"
 #include "LightSourceWrapper.hpp"
 #include "Godrays.hpp"
+#include "PostProcessing.hpp"
 
 class GLShader;
 class AssetManager;
@@ -30,16 +31,16 @@ class EngineApp : public GLApp
 private:
 	bool debuggerMode;
 
+#ifdef _DEBUG
+	uint32_t testQuery;
+#endif
+
 	uint32_t vpUBO;
 	uint32_t polygonMode;
-
-	GLShader* hdrShader;
 	
-	std::unique_ptr<EngineCubeMap> skybox;
-	std::unique_ptr<AssetManager> assetManager;
+	uPtr<EngineCubeMap> skybox;
 
-	GLMesh framebufferMesh;
-	GLFramebuffer hdrFramebuffer;
+	PostProcessing postprocess;
 	LightSourceWrapper lightWrapper;
 	TextureViewer textureViewer;
 	Godrays rayEffect;

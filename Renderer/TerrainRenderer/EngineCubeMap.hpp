@@ -5,6 +5,9 @@
 #include <memory>
 #include <string>
 
+template <typename T>
+using uPtr = std::unique_ptr<T>;
+
 class GLShader;
 class AssetManager;
 class EngineCamera;
@@ -14,7 +17,7 @@ class EngineCubeMap
 protected:
 	uint32_t cubeMap;
 	GLShader* skyboxShader;
-	std::unique_ptr<AssetManager> assetManager;
+	uPtr<AssetManager> assetManager;
 	GLMesh skyboxMesh;
 public:
 	EngineCubeMap();

@@ -8,10 +8,10 @@ template <> std::shared_ptr<GLShader>  make_shared_from_list(iList<std::string>&
 template <> std::shared_ptr<GLTexture> make_shared_from_list(iList<std::string>&& list);
 template <> std::shared_ptr<GLTexture> make_shared_from_list(iList<std::string>&& list);
 
-template <> std::unique_ptr<GLShader>  make_unique_from_list(iList<std::string>&& list);
-template <> std::unique_ptr<GLShader>  make_unique_from_list(iList<std::string>&& list);
-template <> std::unique_ptr<GLTexture> make_unique_from_list(iList<std::string>&& list);
-template <> std::unique_ptr<GLTexture> make_unique_from_list(iList<std::string>&& list);
+template <> uPtr<GLShader>  make_unique_from_list(iList<std::string>&& list);
+template <> uPtr<GLShader>  make_unique_from_list(iList<std::string>&& list);
+template <> uPtr<GLTexture> make_unique_from_list(iList<std::string>&& list);
+template <> uPtr<GLTexture> make_unique_from_list(iList<std::string>&& list);
 
 EngineAsset::EngineAsset()
 {

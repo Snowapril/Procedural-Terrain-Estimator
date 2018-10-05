@@ -5,6 +5,9 @@
 #include <glm/vec2.hpp>
 #include "GLMesh.hpp"
 
+template <typename T>
+using uPtr = std::unique_ptr<T>;
+
 class GLShader;
 
 struct TextureView
@@ -20,7 +23,7 @@ private:
 	std::vector <TextureView> textureViews;
 	std::vector <TextureView> depthTextureViews;
 
-	std::unique_ptr <GLShader> viewShader;
+	uPtr <GLShader> viewShader;
 	GLMesh mesh;
 public:
 	TextureViewer();

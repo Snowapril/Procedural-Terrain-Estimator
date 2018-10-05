@@ -10,6 +10,9 @@ class AssetManager;
 class LightSourceWrapper;
 class EngineCamera;
 
+template <typename T>
+using uPtr = std::unique_ptr<T>;
+
 class EngineWater
 {
 private:
@@ -25,7 +28,7 @@ private:
 	GLMesh waterMesh;
 	
 	GLShader* waterShader;
-	std::unique_ptr<AssetManager> assetManager;
+	uPtr<AssetManager> assetManager;
 
 	GLFramebuffer reflectionFBO;
 	GLFramebuffer refractionFBO;

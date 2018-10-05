@@ -183,6 +183,7 @@
     <ClCompile Include="Godrays.cpp" />
     <ClCompile Include="LightSourceWrapper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PostProcessing.cpp" />
     <ClCompile Include="TextureViewer.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -215,6 +216,7 @@
     <ClInclude Include="GLTextureWrapper.hpp" />
     <ClInclude Include="Godrays.hpp" />
     <ClInclude Include="LightSourceWrapper.hpp" />
+    <ClInclude Include="PostProcessing.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
     <ClInclude Include="TerrainShaderCode.hpp" />
@@ -228,8 +230,8 @@
     <None Include="..\resources\shader\flare_vs.glsl" />
     <None Include="..\resources\shader\godrays_fs.glsl" />
     <None Include="..\resources\shader\godrays_vs.glsl" />
-    <None Include="..\resources\shader\hdr_fs.glsl" />
-    <None Include="..\resources\shader\hdr_vs.glsl" />
+    <None Include="..\resources\shader\postprocess_fs.glsl" />
+    <None Include="..\resources\shader\postprocess_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl" />

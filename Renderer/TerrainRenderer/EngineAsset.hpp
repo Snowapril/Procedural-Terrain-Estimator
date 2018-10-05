@@ -15,6 +15,9 @@
 #include <memory>
 
 template <typename T>
+using uPtr = std::unique_ptr<T>;
+
+template <typename T>
 using iList = std::initializer_list<T>;
 
 template <class T, class L> std::shared_ptr<T> make_shared_from_list(iList<L>&& list)
