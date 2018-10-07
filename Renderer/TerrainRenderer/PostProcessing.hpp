@@ -11,13 +11,27 @@ using uPtr = std::unique_ptr<T>;
 class AssetManager;
 class GLShader;
 class EngineCamera;
+class LightSourceWrapper;
 
 class PostProcessing
 {
 private:
-	GLShader* postprocessingShader;
 
+	float blurStrength;
+	int numSamples;
+	float gamma;
+	
+	float decay;
+	int godRaysSamples;
+	float exposure;
+	float weight;
+
+#ifdef _DEBUG
 	uPtr<AssetManager> assetManager;
+	GLShader* postprocessingShader;
+#else
+	uPtr<GLShader> postprocessingShader;
+#endif
 	uPtr<GLFramebuffer> postprocessingBuffer;
 
 	GLMesh framebufferMesh;
@@ -27,8 +41,8 @@ public:
 	bool initPostProcessing(int width, int height);
 
 	void updateScene(float dt);
-	void drawScene(const EngineCamera& camera) const;
-
+	void drawScene(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, uint32_t occludeTexture) const;
+	void updateGUI(void);
 	inline void bindPostprocessing(int width, int height) const
 	{
 		postprocessingBuffer->bindFramebuffer(width, height);

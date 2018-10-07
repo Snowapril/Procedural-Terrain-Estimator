@@ -18,23 +18,16 @@ using uPtr = std::unique_ptr<T>;
 class Godrays
 {
 private:
-	float spacing;
-
-	GLShader* flareShader;
-    GLShader* effectShader;
-
     uPtr<GLFramebuffer> screenBuffer;
-    uPtr<AssetManager> assetManager;
-
-	std::vector<uint32_t> flareTextures;
-
-	GLMesh flareMesh;
 public:
     Godrays();
     ~Godrays();
 public:
-	bool initLensFlare(float spacing, size_t numTextures);
     bool initGodrays(int width, int height);
+
+#ifdef _DEBUG
+
+#endif
 
     inline void bindGodrayBuffer(int width, int height) const
     {
@@ -46,8 +39,10 @@ public:
         screenBuffer->unbindFramebuffer(width, height);
     }
 	
-	void drawLensFlare(const EngineCamera& camera, const LightSourceWrapper& lightSource, const glm::vec2& centerScreen) const;
-    void drawGodrays(void) const ;
+	inline uint32_t getColorTexture(void) const
+	{
+		return screenBuffer->getColorTexture();
+	}
 };
 
 #endif

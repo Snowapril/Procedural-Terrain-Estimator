@@ -4,6 +4,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "GLResources.hpp"
 #include "EngineCamera.hpp"
+#include <imgui/imgui.h>
+
+#ifndef _DEBUG
+#include "PostprocessShaderCode.hpp"
+#endif
 
 constexpr uint32_t MAX_DIR_LIGHT = 5;
 
@@ -20,15 +25,20 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 	depthPassBuffer = std::make_unique<GLFramebuffer>();
 
 	depthPassBuffer->initFramebuffer();
-	depthPassBuffer->attachDepthTexture(width, height, GL_DEPTH_COMPONENT16, GL_DEPTH_COMPONENT);
+	depthPassBuffer->attachDepthbuffer(width, height);
 
 	if (!depthPassBuffer->configureFramebuffer())
 		return false;
 
+#ifdef _DEBUG
 	sunShader = make_unique_from_list<GLShader, std::string>({
 		"../resources/shader/sun_vs.glsl",
 		"../resources/shader/sun_fs.glsl",
 	});
+#else
+	sunShader = std::make_unique<GLShader>();
+	sunShader->loadAssetRaw(SUN_VS, SUN_FS);
+#endif
 
 	sunShader->useProgram();
 	sunShader->sendUniform("effectTexture", 0);
@@ -93,5 +103,16 @@ void LightSourceWrapper::sendLightSources(const GLShader & shader) const
 			shader.sendUniform("dirLight[" + std::to_string(i) + "].direction", dirLights[i].direction);
 			shader.sendUniform("dirLight[" + std::to_string(i) + "].color", dirLights[i].color);
 		}
+	}
+}
+
+void LightSourceWrapper::updateGUI(void)
+{
+	if (ImGui::TreeNode("Light Property"))
+	{
+		ImGui::DragFloat3("Direction", &dirLights[0].direction[0], 10.0f, -5000.0f, 5000.0f);
+		ImGui::ColorEdit3("Light Color", &dirLights[0].color[0]);
+
+		ImGui::TreePop();
 	}
 }

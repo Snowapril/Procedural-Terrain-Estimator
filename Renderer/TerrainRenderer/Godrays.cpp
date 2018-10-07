@@ -10,7 +10,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 Godrays::Godrays()
-	: spacing(0.0f)
 {
 
 }
@@ -20,6 +19,25 @@ Godrays::~Godrays()
 
 }
 
+
+bool Godrays::initGodrays(int width, int height)
+{
+    screenBuffer = std::make_unique<GLFramebuffer>();
+
+    screenBuffer->initFramebuffer();
+	screenBuffer->attachColorTexture(width, height, GL_REPEAT, false);
+
+    if (!screenBuffer->configureFramebuffer())
+        return false;
+
+    return true;
+}
+
+/*
+
+
+
+#ifdef _DEBUG
 bool Godrays::initLensFlare(float spacing, size_t numTextures)
 {
 	const std::string basePath = "../resources/texture/lensFlare/tex";
@@ -36,7 +54,7 @@ bool Godrays::initLensFlare(float spacing, size_t numTextures)
 			EngineLogger::getConsole()->error("Lens Flare Initialization Failed");
 			return false;
 		}
-		
+
 		flareTextures.push_back(texture);
 	}
 
@@ -48,7 +66,7 @@ bool Godrays::initLensFlare(float spacing, size_t numTextures)
 		flareShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/flare_vs.glsl",
 			"../resources/shader/flare_fs.glsl",
-		});
+			});
 	}
 	catch (std::exception e)
 	{
@@ -59,44 +77,16 @@ bool Godrays::initLensFlare(float spacing, size_t numTextures)
 	flareShader->useProgram();
 	flareShader->sendUniform("effectTexture", 0);
 
-	flareMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
+	flareMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 0.3f);
 
 	return true;
 }
-
-bool Godrays::initGodrays(int width, int height)
-{
-	if (!assetManager)
-	    assetManager = std::make_unique<AssetManager>();
-
-    try
-    {
-        effectShader = assetManager->addAsset<GLShader, std::string>({
-            "../resources/shader/viewer_vs.glsl",
-            "../resources/shader/viewer_fs.glsl",
-        });
-    }
-    catch (std::exception e) 
-    {
-        EngineLogger::getConsole()->error("Godrays initialization failed");
-        return false; 
-    }
-
-    screenBuffer = std::make_unique<GLFramebuffer>();
-
-    screenBuffer->initFramebuffer();
-    screenBuffer->attachDepthTexture(width, height, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT);
-    
-    if (!screenBuffer->configureFramebuffer())
-        return false;
-
-    return true;
-}
-
+#endif
+#ifdef _DEBUG
 void Godrays::drawLensFlare(const EngineCamera& camera, const LightSourceWrapper& lightSource, const glm::vec2& centerScreen) const
 {
 	flareShader->useProgram();
-	
+
 	const auto& dirLights = lightSource.getDirLights();
 	glm::vec4 position = glm::vec4(-dirLights[0].direction, 1.0);
 
@@ -117,28 +107,26 @@ void Godrays::drawLensFlare(const EngineCamera& camera, const LightSourceWrapper
 	{
 		flareShader->sendUniform("brightness", brightness);
 		glActiveTexture(GL_TEXTURE0);
-		
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+		glDisable(GL_CULL_FACE);
 		for (size_t i = 0; i < flareTextures.size(); ++i)
 		{
 			glm::vec3 flarePosition(sunToCenter * static_cast<float>(i), 0.0f);
-			
+
 			glm::mat4 model(1.0f);
 			model = glm::translate(model, flarePosition);
 
 			flareShader->sendUniform("model", model);
-			
+
 			glBindTexture(GL_TEXTURE_2D, flareTextures[i]);
 			flareMesh.drawMesh(GL_TRIANGLE_STRIP);
 		}
-
+		glEnable(GL_CULL_FACE);
 		glDisable(GL_BLEND);
 	}
 }
+#endif
 
-void Godrays::drawGodrays(void) const
-{
-
-}
+*/

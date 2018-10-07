@@ -11,6 +11,11 @@ uniform sampler2D terrainMap;
 uniform float terrainMaxHeight;
 uniform vec4 clipPlane;
 
+uniform mat4 view;
+uniform mat4 project;
+
+uniform bool enableVP;
+
 vec4 interpolate4(vec4 v0, vec4 v1, vec4 v2, vec4 v3)
 {
 	vec4 a = mix(v0, v1, gl_TessCoord.x);
@@ -37,5 +42,12 @@ void main(void)
 
 	gl_ClipDistance[0] = dot(gl_Position, clipPlane);
 
-	gl_Position = sunMVPMatrix  * gl_Position;
+	if (enableVP)
+	{
+		gl_Position = project * view * gl_Position;
+	}
+	else
+	{
+		gl_Position = sunMVPMatrix * gl_Position;
+	}
 }

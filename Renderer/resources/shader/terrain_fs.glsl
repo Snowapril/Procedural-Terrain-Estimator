@@ -27,7 +27,7 @@ struct DirLight {
 
 uniform DirLight dirLight;
 
-const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
+uniform vec3 skycolor = vec3(0.5, 0.5, 0.5);
 
 //float DistributionGGX(vec3 N, vec3 H, float roughness);
 //float GeometrySchlickGGX(float NdotV, float roughness);
@@ -69,7 +69,7 @@ void main(void)
 	float shadow = calculateShadow(gs_shadowCoords);
 
 	fragColor = vec4((ambient + shadow * diffuse), 1.0);
-	fragColor = mix(skycolor, fragColor, gs_visibility);
+	fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
 
 	if (enableWireframe)
 	{

@@ -217,6 +217,7 @@
     <ClInclude Include="Godrays.hpp" />
     <ClInclude Include="LightSourceWrapper.hpp" />
     <ClInclude Include="PostProcessing.hpp" />
+    <ClInclude Include="PostprocessShaderCode.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
     <ClInclude Include="TerrainShaderCode.hpp" />

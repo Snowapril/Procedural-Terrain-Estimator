@@ -10,7 +10,7 @@ out vec2 vs_tileCoords;
 uniform vec3 originPos;
 uniform vec2 terrainScale;
 
-const float TILE_SIZE = 16.0;
+uniform float tileSize = 32.0;
 
 vec2 calculateTexCoords(vec3 vertex)
 {
@@ -21,7 +21,7 @@ void main(void)
 {
 	vs_texCoords = calculateTexCoords(aPos);
 	vs_tessLevel = aTessLevel;
-	vs_tileCoords = (aPos.xz / terrainScale + 0.5) * TILE_SIZE;
+	vs_tileCoords = (aPos.xz / terrainScale + 0.5) * tileSize;
 
 	gl_Position = vec4(aPos, 1.0);
 }

@@ -37,6 +37,7 @@ public:
 public:
 	bool initDepthPassBuffer(int width, int height);
 
+	void updateGUI(void);
 	void renderSun(const EngineCamera& camera) const;
 	bool addDirLight(const glm::vec3& dir, const glm::vec3& color);
 	void sendLightSources(const GLShader& shader) const;
@@ -54,6 +55,10 @@ public:
 	inline uint32_t getDepthTexture(void) const
 	{
 		return depthPassBuffer->getDepthTexture();
+	}
+	inline uint32_t getColorTexture(void) const
+	{
+		return depthPassBuffer->getColorTexture();
 	}
 
 	inline const std::vector<DirectionLight> & getDirLights(void) const

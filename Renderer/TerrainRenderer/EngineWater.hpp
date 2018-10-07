@@ -20,6 +20,9 @@ private:
 	uint32_t normalMap;
 
 	float tiling;
+	float distortionStrength;
+	float shineDamper;
+	float reflectivity;
 	float moveFactor;
 
 	glm::vec3 position;
@@ -27,8 +30,12 @@ private:
 	
 	GLMesh waterMesh;
 	
+#ifdef _DEBUG
 	GLShader* waterShader;
 	uPtr<AssetManager> assetManager;
+#else
+	uPtr<GLShader> waterShader;
+#endif
 
 	GLFramebuffer reflectionFBO;
 	GLFramebuffer refractionFBO;
@@ -70,6 +77,7 @@ public:
 	bool initWater(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight);
 	void setTransform(glm::vec3 pos, glm::vec3 scale);
 
+	void updateGUI(void);
 	void updateWater(float dt);
 	void drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const;
 };

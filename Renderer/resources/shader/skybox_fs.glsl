@@ -5,10 +5,10 @@ out vec4 fragColor;
 
 uniform samplerCube cubeMap;
 
-const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
+uniform vec3 skycolor = vec3(0.5, 0.5, 0.5);
 
-const float lowerLimit = 0.0;
-const float upperLimit = 0.1;
+uniform float lowerLimit = 0.0;
+uniform float upperLimit = 0.1;
 
 void main(void)
 {
@@ -18,5 +18,5 @@ void main(void)
 
 	factor = clamp(factor, 0.0, 1.0);
 	
-	fragColor = mix(skycolor, envColor, factor);
+	fragColor = mix(vec4(skycolor, 1.0), envColor, factor);
 }

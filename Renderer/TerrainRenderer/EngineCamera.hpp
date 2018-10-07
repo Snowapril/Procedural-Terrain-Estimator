@@ -25,6 +25,8 @@ public:
 	bool updateFov;
 	bool toggleZoom;
 	bool cameraAutoMode;
+	bool isGrabbed;
+	bool isFirstUse;
 
 	float fov;
 	float pitch;
@@ -66,6 +68,7 @@ public:
 	void updateProject(float aspectRatio);
 	void setViewportSize(int width, int height);
 
+	void updateGUI(void);
 	bool initCamera(const glm::vec3& position, const  glm::vec3& direction);
 
 	inline glm::vec2 getViewportSize(void) const

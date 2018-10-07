@@ -109,12 +109,6 @@
     <ClCompile Include="glad.c">
       <Filter>EngineFramework\glad</Filter>
     </ClCompile>
-    <ClCompile Include="..\dependencies\imgui\imgui.cpp">
-      <Filter>GUI\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp">
-      <Filter>GUI\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp">
       <Filter>GUI\imgui</Filter>
     </ClCompile>
@@ -201,6 +195,12 @@
     </ClCompile>
     <ClCompile Include="PostProcessing.cpp">
       <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp">
+      <Filter>GUI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dependencies\imgui\imgui.cpp">
+      <Filter>GUI\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +311,9 @@
     </ClInclude>
     <ClInclude Include="PostProcessing.hpp">
       <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PostprocessShaderCode.hpp">
+      <Filter>Util\shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

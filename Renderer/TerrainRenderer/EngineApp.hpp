@@ -30,10 +30,7 @@ class EngineApp : public GLApp
 {
 private:
 	bool debuggerMode;
-
-#ifdef _DEBUG
-	uint32_t testQuery;
-#endif
+	bool enableVsync;
 
 	uint32_t polygonMode;
 	
@@ -42,7 +39,7 @@ private:
 	PostProcessing postprocess;
 	LightSourceWrapper lightWrapper;
 	TextureViewer textureViewer;
-	Godrays rayEffect;
+	Godrays godray;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;
@@ -51,6 +48,7 @@ private:
 protected:
 	bool initAssets(void);
 
+	void updateGUI(float dt);
 	void updateScene(float dt);
 	void drawScene(void) ;
 	void onResize(int newWidth, int newHeight);

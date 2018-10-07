@@ -9,9 +9,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "EngineSkybox.hpp"
 #include "Util.hpp"
+#include <imgui/imgui.h>
 
 EngineApp::EngineApp()
-	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
+	: GLApp(), debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -27,6 +28,11 @@ void EngineApp::updateScene(float dt)
 {
 	Profile();
 
+	if (enableVsync)
+		glfwSwapInterval(1);
+	else
+		glfwSwapInterval(0);
+
 	processKeyInput(dt);
 	camera.onUpdate(dt);
 
@@ -41,7 +47,27 @@ void EngineApp::updateScene(float dt)
 
 	postprocess.updateScene(dt);
 	
-	//GUI.updateGUI(dt, clientHeight);
+	updateGUI(dt);
+}
+
+void EngineApp::updateGUI(float dt)
+{
+	GUI.startUpdateGUI(dt, clientHeight);
+
+	terrain.updateGUI();
+	water.updateGUI();
+	postprocess.updateGUI();
+	skybox->updateGUI();
+	camera.updateGUI();
+	lightWrapper.updateGUI();
+
+	if (ImGui::CollapsingHeader("Rendering Property"))
+	{
+		ImGui::Checkbox("Debugger Mode", &debuggerMode);
+		ImGui::Checkbox("V-sync", &enableVsync);
+	}
+
+	GUI.endUpdateGUI(dt);
 }
 
 /**
@@ -84,13 +110,16 @@ void EngineApp::drawScene(void)
 
 	const glm::vec3& scale = terrain.getTerrainScale();
 	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
-		glCullFace(GL_FRONT);
 
-		terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		terrain.drawScene_DepthPass(camera, lightWrapper, false, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 
-		glCullFace(GL_BACK);
 		lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
 	// depth pass end
+
+	godray.bindGodrayBuffer(clientWidth, clientHeight);
+		lightWrapper.renderSun(camera);
+		terrain.drawScene_DepthPass(camera, lightWrapper, true, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		godray.unbindGodrayBuffer(clientWidth, clientHeight);
 
 	postprocess.bindPostprocessing(clientWidth, clientHeight);
 
@@ -103,17 +132,17 @@ void EngineApp::drawScene(void)
 		skybox->drawScene(camera);
 		water.drawWater(camera, lightWrapper);
 		lightWrapper.renderSun(camera);
-		rayEffect.drawLensFlare(camera, lightWrapper, glm::vec2(0.0f));
 
 		postprocess.unbindPostprocessing(clientWidth, clientHeight);
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	postprocess.drawScene(camera);
+	postprocess.drawScene(camera, lightWrapper, godray.getColorTexture());
 	   
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
+		textureViewer.addDepthTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), postprocess.getOffscreenDepthTexture());
 		textureViewer.renderViewer(camera.getMinDepth(), camera.getMaxDepth());
 		textureViewer.clearViewer();
 	}
@@ -122,7 +151,7 @@ void EngineApp::drawScene(void)
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 
-	//GUI.renderGUI();
+	GUI.renderGUI();
 }
 
 /**
@@ -181,7 +210,7 @@ bool EngineApp::initAssets(void)
 	const glm::vec3 sumPosition(0.0f, 800.0f, 5000.0f);
 	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.7f);
 
-	if (!rayEffect.initLensFlare(0.1f, 9))
+	if (!godray.initGodrays(clientWidth, clientHeight))
 		return false;
 
 	return true;
@@ -200,15 +229,6 @@ void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
-
-	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
-		polygonMode = polygonMode == GL_LINE ? GL_FILL : GL_LINE;
-
-	if (key == GLFW_KEY_F2 && action == GLFW_PRESS)
-		debuggerMode = !debuggerMode;
-
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-		camera.processKeyCallback(CAMERA_AUTO);
 }
 
 void EngineApp::mousePosCallback(double xpos, double ypos)

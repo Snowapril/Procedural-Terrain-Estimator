@@ -1,7 +1,7 @@
 #ifndef TERRAIN_SHADER_CODE
 #define TERRAIN_SHADER_CODE
 
-#ifdef _DEBUG
+#ifndef _DEBUG
 
 constexpr const char WATER_VS[] = R"glsl(
 #version 430 core
@@ -13,29 +13,34 @@ uniform vec3 viewPos;
 out vec4 clipPosition;
 out vec2 texCoords;
 out vec3 toCameraVector;
-out vec3 toLightVector;
+out vec3 fragPos;
+//out float visibility;
 
 uniform vec3 lightPosition;
 
-layout (std140) uniform VP 
-{
-    mat4 view;
-    mat4 project;
-};
+uniform mat4 view;
+uniform mat4 project;
 
 uniform mat4 model;
 
-const float tiling = 6.0;
+uniform float tiling = 6.0;
+//const float density = 0.0001;
+//const float gradient = 2.4;
 
 void main(void) 
 {
 	vec4 worldPosition = model * vec4(aPos.x, 0.0, aPos.y, 1.0);
-	clipPosition = project * view * worldPosition;
+	vec4 positionRelativeToCam = view * worldPosition;
+	clipPosition = project * positionRelativeToCam;
 	gl_Position = clipPosition;
 
 	texCoords = (aPos * 0.5 + 0.5) * tiling;
 	toCameraVector = viewPos - worldPosition.xyz;
-	toLightVector = worldPosition.xyz - lightPosition;
+	fragPos = worldPosition.xyz;
+
+	//float distance = length(positionRelativeToCam);
+	//visibility = exp(-pow(distance * density, gradient));
+	//visibility = clamp(visibility, 0.0, 1.0);
 }
 )glsl";
 
@@ -45,7 +50,8 @@ constexpr const char WATER_FS[] = R"glsl(
 in vec4 clipPosition;
 in vec2 texCoords;
 in vec3 toCameraVector;
-in vec3 toLightVector;
+in vec3 fragPos;
+//in float visibility;
 out vec4 fragColors;
 
 uniform sampler2D reflectionTexture;
@@ -56,11 +62,18 @@ uniform sampler2D depthMap;
 
 uniform float moveFactor;
 
-uniform vec3 lightColor;
+struct DirLight {
+	vec3 direction;
+	vec3 color;
+};
 
-const float distortionStrength	= 0.05;
-const float shineDamper			= 20.0;
-const float reflectivity		= 0.6;
+uniform DirLight dirLight;
+
+uniform float distortionStrength	= 0.05;
+uniform float shineDamper			= 20.0;
+uniform float reflectivity		= 0.6;
+
+//const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 
 void main(void)
 {
@@ -101,13 +114,14 @@ void main(void)
 	float reflectionFactor = dot(viewVector, normal);
 	reflectionFactor = pow(reflectionFactor, 3.0);
 
-	vec3 reflectedLight = reflect(normalize(toLightVector), normal);
+	vec3 reflectedLight = reflect(normalize(dirLight.direction), normal);
 	float specular = max(dot(reflectedLight, viewVector), 0.0);
 	specular = pow(specular, shineDamper);
-	vec3 specularHighlight = lightColor * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
+	vec3 specularHighlight = dirLight.color * specular * reflectivity * clamp(waterDepth / 5.0, 0.0, 1.0);
 
 	fragColors = mix(reflection, refraction, reflectionFactor);
 	fragColors = mix(fragColors, vec4(0.0, 0.3, 0.5, 1.0), 0.2) + vec4(specularHighlight, 1.0);
+	//fragColors = mix(skycolor, fragColors, visibility);
 	fragColors.a = clamp(waterDepth / 5.0, 0.0, 1.0);
 }
 )glsl";

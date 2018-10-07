@@ -37,15 +37,26 @@ class LightSourceWrapper;
 class EngineTerrain
 {
 private:
+	bool enableWireFrame;
+	
 	uint32_t terrainMap;
 	uint32_t splatMap;
 
 	float maxHeight;
+	float tileSize;
+	float fogGradient;
 
+#ifdef _DEBUG
 	GLShader* terrainShader;
 	GLShader* depthPassShader;
+#else
+	uPtr<GLShader> terrainShader;
+	uPtr<GLShader> depthPassShader;
+#endif
 
 	uPtr<AssetManager> assetManager;
+
+	glm::vec3 skycolor;
 	glm::vec3 prevCameraPos;
 	glm::vec3 terrainOriginPos;
 
@@ -69,8 +80,9 @@ public:
 	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
 	void updateScene(float dt, const glm::vec3& cameraPos);
+	void updateGUI(void);
 
-	void drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const;
+	void drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, bool occludePass, const glm::vec4& clipPlane) const;
 	void drawScene(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, const glm::vec4& clipPlane) const;
 
 	glm::vec3 getTerrainScale(void) const;

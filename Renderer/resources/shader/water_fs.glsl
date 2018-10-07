@@ -22,9 +22,9 @@ struct DirLight {
 
 uniform DirLight dirLight;
 
-const float distortionStrength	= 0.05;
-const float shineDamper			= 20.0;
-const float reflectivity		= 0.6;
+uniform float distortionStrength	= 0.05;
+uniform float shineDamper			= 20.0;
+uniform float reflectivity		= 0.6;
 
 //const vec4 skycolor = vec4(0.5, 0.5, 0.5, 1.0);
 
