@@ -68,7 +68,7 @@ int Estimator::descentTabling() {
 	int ret = 0;
 	pii target;
 
-	// 수정할것 : local minima가 아니라 global minima를 구하고 있으므로 descent table을 다 채운 다음 for문 돌면서 주변에 자기보다 큰 값이 없는 애를 local minima로 집어넣어야함
+	// ?�정?�것 : local minima가 ?�니??global minima�?구하�??�으므�?descent table????채운 ?�음 for�??�면??주�????�기보다 ??값이 ?�는 ?��? local minima�?집어?�어?�함
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
@@ -123,24 +123,25 @@ void Estimator::makeCoast(const bool needCoast) {
 		// printf("%d loop\n", i);
 		int prob = rand() % 100;
 		if (prob < probLeft) {
-			probLeft -=2;
-			probStay ++;
-			curCoast--;
+			probLeft -=4;
+			probStay +=2;
+			curCoast-=3;
 		}
 		else if (prob < probStay) {
-			probLeft++;
-			probStay -= 2;
+			probLeft+=2;
+			probStay -= 4;
 		}
 		else {
-			probLeft++;
-			probStay++;
-			curCoast++;
+			probLeft+=2;
+			probStay+=2;
+			curCoast+=3;
 		}
-		for (int j = curCoast - 1; j > curCoast - 10; j--) {
-			HmapData[i][j] = HmapData[i][j] / 10 * (curCoast - j);
+		for (int j = 9; j > 0; j--) {
+			int k = curCoast - j;
+			HmapData[i][k] = HmapData[i][k] * j / 10;
 		}
 		for (int j = curCoast; j < width; j++) {
-			HmapData[i][j]/=10;
+			HmapData[i][j]/=4;
 		}
 	}	
 }
@@ -149,25 +150,30 @@ void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 	if (!needIsland) return;
 	int probUp = 20, probDown = 40;
 	int cut = radius / 10;
+	vector < vector <bool> > visited(height, vector<bool>(width, false));
 	srand(time(NULL));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			int y = i - height / 2, x = j - width / 2;
 			if (y*y + x * x > radius*radius) {
-				HmapData[i][j]/=10;
+				HmapData[i][j]/=4;
 				int prob = rand() % 100;
 				if (prob < probUp) {
-					cut++;
+					cut+=20;
 					probUp --;
 				}
 				else if (prob < probDown) {
-					cut--;
+					cut-=20;
 					probUp ++;
 				}
 
 				for (int k = i - cut; k <= i + cut; k++) {
 					if (k < 0 || k >= height) continue;
-					HmapData[k][j] /= 10;
+					int yy = k - height / 2;
+					if (yy*yy + x * x > radius*radius) continue;
+					if (visited[k][j]) continue;
+					HmapData[k][j] /= 4;
+					visited[k][j] = true;
 				}
 			}
 		}
@@ -211,7 +217,7 @@ pixel randFill(int areaHeight, int wetDistance, int y,int x) {
 	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
 	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
 
-	// Height : 특정 타일이 존재하는 높이의 시작
+	// Height : ?�정 ?�?�이 존재?�는 ?�이???�작
 
 	int startHeight[DATA_NUM] = { 125,75,75, };
 	const int ROCK_HEIGHT = 100;
@@ -251,12 +257,12 @@ void Estimator::blendmapColoring() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			//근처의 local minima와의 거리차, 높이차에 따라서 물이 고이는 정도가 달라짐
+			//근처??local minima?�??거리�? ?�이차에 ?�라??물이 고이???�도가 ?�라�?
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
 
-			//고려 후보 :  local minima와의 거리차, local minima와의 높이차
-			//wet_dist가 커질수록 암석지형
+			//고려 ?�보 :  local minima?�??거리�? local minima?�???�이�?
+			//wet_dist가 커질?�록 ?�석지??
 			
 			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
 

@@ -16,7 +16,7 @@ int main() {
 
 	Estimator E(M,height,width);
 
-	E.makeCoast(true);
+	E.makeIsland(true,1000);
 	freopen("outHeight2.txt", "w", stdout);
 
 	E.dumpMapData();
