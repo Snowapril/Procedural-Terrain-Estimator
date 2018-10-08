@@ -52,7 +52,7 @@ public:
 
 	//callback functions below.
 	void errorCallback(int error, const char* description) const;
-	virtual void keyCallback(int key, int scancode, int action, int mode) = 0;
+	virtual void keyCallback(int key, int scancode, int action, int mode);
 	virtual void mousePosCallback(double xpos, double ypos) = 0;
 	virtual void mouseBtnCallback(int btn, int action, int mods) = 0;
 	virtual void scrollCallback(double xoffset, double yoffset) = 0;

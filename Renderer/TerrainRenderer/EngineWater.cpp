@@ -9,6 +9,11 @@
 #include "GLResources.hpp"
 #include "LightSourceWrapper.hpp"
 #include "EngineCamera.hpp"
+#include <imgui/imgui.h>
+
+#ifndef _DEBUG
+#include "WaterShaderCode.hpp"
+#endif
 
 bool EngineWater::isInstanciated = false;
 
@@ -17,7 +22,7 @@ constexpr glm::vec3 LIGHT_POSITION	= glm::vec3(500.0f, 100.0f, 500.0f);
 constexpr glm::vec3 LIGHT_COLOR		= glm::vec3(0.8f, 0.8f, 0.8f);
 
 EngineWater::EngineWater()
-	: moveFactor(0.0f), tiling(6.0f), position(0.0f), scale(100.0f, 1.0f, 100.0f)
+	: moveFactor(0.0f), tiling(6.0f), distortionStrength(0.05f), shineDamper(20.0f), reflectivity(0.6f), position(0.0f), scale(100.0f, 1.0f, 100.0f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -55,6 +60,7 @@ bool EngineWater::initWater(int reflectionWidth, int reflectionHeight, int refra
 
 void EngineWater::updateWater(float dt)
 {
+#ifdef _DEBUG
 	if (assetManager->refreshDirtyAssets())
 	{
 		waterShader->useProgram();
@@ -64,6 +70,7 @@ void EngineWater::updateWater(float dt)
 		waterShader->sendUniform("normalMap", 3);
 		waterShader->sendUniform("depthMap", 4);
 	}
+#endif
 	
 	moveFactor += WAVE_SPEED * dt;
 	if (moveFactor > 1.0f)
@@ -72,6 +79,23 @@ void EngineWater::updateWater(float dt)
 	waterShader->useProgram();
 	waterShader->sendUniform("moveFactor", moveFactor);
 	waterShader->sendUniform("tiling", tiling);
+	waterShader->sendUniform("distortionStrength", distortionStrength);
+	waterShader->sendUniform("shineDamper", shineDamper);
+	waterShader->sendUniform("reflectivity", reflectivity);
+}
+
+void EngineWater::updateGUI(void)
+{
+	if (ImGui::TreeNode("Water Setting"))
+	{
+		ImGui::SliderFloat("Tiling", &tiling, 0.0f, 30.0f, "Size = %.1f");
+		ImGui::InputFloat("Distortion", &distortionStrength, 0.01f);
+		distortionStrength = Util::clamp(distortionStrength, 0.0f, 1.0f);
+		ImGui::SliderFloat("Shine Damper", &shineDamper, 0.0f, 50.0f, "%.3f");
+		ImGui::SliderFloat("Reflectivity", &reflectivity, 0.0f, 1.0f, "ratio = %.3f");
+
+		ImGui::TreePop();
+	}
 }
 
 void EngineWater::drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const
@@ -109,7 +133,7 @@ void EngineWater::drawWater(const EngineCamera& camera, const LightSourceWrapper
 bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight)
 {
 	reflectionFBO.initFramebuffer();
-	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight, false);
+	reflectionFBO.attachColorTexture(reflectionWidth, reflectionHeight, GL_REPEAT, false);
 	reflectionFBO.attachDepthbuffer(reflectionWidth, reflectionHeight);
 	reflectionFBO.attachDepthTexture(reflectionWidth, reflectionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
@@ -120,7 +144,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 	}
 
 	refractionFBO.initFramebuffer();
-	refractionFBO.attachColorTexture(refractionWidth, refractionHeight, false);
+	refractionFBO.attachColorTexture(refractionWidth, refractionHeight, GL_REPEAT, false);
 	refractionFBO.attachDepthbuffer(refractionWidth, refractionHeight);
 	refractionFBO.attachDepthTexture(refractionWidth, refractionHeight, GL_DEPTH_COMPONENT32, GL_DEPTH_COMPONENT);
 
@@ -136,14 +160,20 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 
 bool EngineWater::initShaders()
 {
+#ifdef _DEBUG
 	assetManager = std::make_unique<AssetManager>();
-	
+#endif	
 	try
 	{
+#ifdef _DEBUG
 		waterShader = assetManager->addAsset<GLShader, std::string>({
 			"../resources/shader/water_vs.glsl",
 			"../resources/shader/water_fs.glsl",
 		});
+#else
+		waterShader = std::make_unique<GLShader>();
+		waterShader->loadAssetRaw(WATER_VS, WATER_FS);
+#endif
 	}
 	catch (std::exception e)
 	{

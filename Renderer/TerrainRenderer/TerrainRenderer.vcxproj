@@ -180,8 +180,10 @@
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="GLTextureWrapper.cpp" />
+    <ClCompile Include="Godrays.cpp" />
     <ClCompile Include="LightSourceWrapper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PostProcessing.cpp" />
     <ClCompile Include="TextureViewer.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -212,7 +214,10 @@
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
     <ClInclude Include="GLTextureWrapper.hpp" />
+    <ClInclude Include="Godrays.hpp" />
     <ClInclude Include="LightSourceWrapper.hpp" />
+    <ClInclude Include="PostProcessing.hpp" />
+    <ClInclude Include="PostprocessShaderCode.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
     <ClInclude Include="TerrainPatch.hpp" />
     <ClInclude Include="TerrainShaderCode.hpp" />
@@ -222,14 +227,22 @@
     <ClInclude Include="WaterShaderCode.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resources\shader\hdr_fs.glsl" />
-    <None Include="..\resources\shader\hdr_vs.glsl" />
+    <None Include="..\resources\shader\flare_fs.glsl" />
+    <None Include="..\resources\shader\flare_vs.glsl" />
+    <None Include="..\resources\shader\godrays_fs.glsl" />
+    <None Include="..\resources\shader\godrays_vs.glsl" />
+    <None Include="..\resources\shader\postprocess_fs.glsl" />
+    <None Include="..\resources\shader\postprocess_vs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_fs.glsl" />
     <None Include="..\resources\shader\bakeTerrainMap_vs.glsl" />
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl" />
     <None Include="..\resources\shader\equiRectangularMapToCubemap_vs.glsl" />
     <None Include="..\resources\shader\skybox_fs.glsl" />
     <None Include="..\resources\shader\skybox_vs.glsl" />
+    <None Include="..\resources\shader\sun_fs.glsl" />
+    <None Include="..\resources\shader\sun_vs.glsl" />
+    <None Include="..\resources\shader\terrain2_fs.glsl" />
+    <None Include="..\resources\shader\terrain2_tes.glsl" />
     <None Include="..\resources\shader\terrain_depth_pass_fs.glsl" />
     <None Include="..\resources\shader\terrain_depth_pass_tes.glsl" />
     <None Include="..\resources\shader\terrain_fs.glsl" />

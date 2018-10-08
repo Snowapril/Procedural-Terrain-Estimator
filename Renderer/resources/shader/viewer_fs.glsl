@@ -2,26 +2,27 @@
 
 uniform sampler2D textureView;
 uniform bool depthRender;
-uniform float zNear;
-uniform float zFar;
+uniform float near;
+uniform float far;
 
 in vec2 texCoords;
 out vec4 fragColors;
 
-float depthLinearize(float depth)
+float LinearizeDepth(float depth)
 {
-	float z = depth * 2.0 - 1.0;
-	return (2.0 * zNear * zFar) / (zFar + zNear - z * (zFar - zNear));
+	float z = depth * 2.0 - 1.0; // back to NDC 
+	return (2.0 * near * far) / (far + near - z * (far - near));
 }
 
 void main(void)
 {
 	vec3 color;
+
 	if (depthRender)
 	{
 		float depth = texture(textureView, texCoords).r;
-		depth = depthLinearize(depth);
-		
+		depth = LinearizeDepth(depth);
+
 		color = vec3(depth);
 	}
 	else

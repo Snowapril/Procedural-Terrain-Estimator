@@ -28,7 +28,10 @@ public:
 	EngineTimer();
 
 	float getTotalTime(void) const;
-	float getDeltaTime(void) const;
+	inline float getDeltaTime(void) const
+	{
+		return static_cast<float>(deltaTime);
+	}
 
 	/// this can be called when user want to start timer if timer is paused.
 	void start(void);  
@@ -38,6 +41,11 @@ public:
 	void reset(void);  
 	/// this must be called every tick of loop.
 	void tick(void);   
+
+	inline bool isTimerPaused(void) const
+	{
+		return isStopped;
+	}
 };
 
 

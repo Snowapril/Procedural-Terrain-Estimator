@@ -46,6 +46,7 @@ public:
 	GLShader& operator=(const GLShader& other);
 	virtual ~GLShader();
 public:
+	void loadAssetRaw(const char* vsSource, const char* fsSource, const char* gsSource = nullptr, const char* tcsSource = nullptr, const char* tesSource = nullptr);
 	void loadAsset(const std::vector<std::string>& assetPath);
 	virtual void reloadAsset(void);
 

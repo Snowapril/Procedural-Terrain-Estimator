@@ -6,8 +6,14 @@
 #include <memory>
 #include <stdint.h>
 #include "GLFramebuffer.hpp"
+#include "GLMesh.hpp"
+#include <stdint.h>
+
+template <typename T>
+using uPtr = std::unique_ptr<T>;
 
 class GLShader;
+class EngineCamera;
 
 struct DirectionLight {
 	glm::vec3 direction;
@@ -17,15 +23,22 @@ struct DirectionLight {
 class LightSourceWrapper
 {
 private:
+	uint32_t sunTexture;
+
 	std::vector<DirectionLight> dirLights;
 
-	std::unique_ptr<GLFramebuffer> depthPassBuffer;
+	uPtr<GLFramebuffer> depthPassBuffer;
+	uPtr<GLShader> sunShader;
+	
+	GLMesh sunMesh;
 public:
 	LightSourceWrapper();
 	~LightSourceWrapper();
 public:
 	bool initDepthPassBuffer(int width, int height);
 
+	void updateGUI(void);
+	void renderSun(const EngineCamera& camera) const;
 	bool addDirLight(const glm::vec3& dir, const glm::vec3& color);
 	void sendLightSources(const GLShader& shader) const;
 
@@ -42,6 +55,10 @@ public:
 	inline uint32_t getDepthTexture(void) const
 	{
 		return depthPassBuffer->getDepthTexture();
+	}
+	inline uint32_t getColorTexture(void) const
+	{
+		return depthPassBuffer->getColorTexture();
 	}
 
 	inline const std::vector<DirectionLight> & getDirLights(void) const

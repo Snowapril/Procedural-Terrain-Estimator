@@ -1,25 +1,22 @@
 #ifndef TERRAIN_SHADER_CODE
 #define TERRAIN_SHADER_CODE
 
-#ifdef _DEBUG
+#ifndef _DEBUG
 
 constexpr const char SKYBOX_VS[] = R"glsl(
 #version 430 core
 
 layout (location = 0) in vec3 aPos;
 
-layout (std140) uniform VP {
-    mat4 view;
-    mat4 project;
-};
+uniform mat4 view;
+uniform mat4 project;
 
 out vec3 texCoords;
 
 void main(void)
 {
     texCoords = aPos;
-    mat4 view_no_translate = mat4(mat3(view));
-    vec4 position = project * view_no_translate * vec4(aPos, 1.0);
+    vec4 position = project * view * vec4(aPos, 1.0);
     gl_Position = position.xyww;
 }
 )glsl";
@@ -32,16 +29,20 @@ out vec4 fragColor;
 
 uniform samplerCube cubeMap;
 
-const float GAMMA = 2.2;
+uniform vec3 skycolor = vec3(0.5, 0.5, 0.5);
+
+uniform float lowerLimit = 0.0;
+uniform float upperLimit = 0.1;
 
 void main(void)
 {
-	vec3 envColor = texture(cubeMap, texCoords).rgb;
+	vec4 envColor = texture(cubeMap, texCoords);
 
-	envColor = envColor / (envColor + vec3(1.0));
-	envColor = pow(envColor, vec3(1.0 / GAMMA));
+	float factor = (texCoords.y - lowerLimit) / (upperLimit - lowerLimit);
 
-	fragColor = vec4(envColor, 1.0);
+	factor = clamp(factor, 0.0, 1.0);
+	
+	fragColor = mix(vec4(skycolor, 1.0), envColor, factor);
 }
 )glsl";
 

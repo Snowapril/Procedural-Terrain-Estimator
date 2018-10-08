@@ -9,9 +9,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "EngineCamera.hpp"
 
+#ifndef _DEBUG
+#include "SkyboxShaderCode.hpp"
+#endif
+
 constexpr int HDR_RESOLUTION = CLIENT_WIDTH;
+constexpr float ROTATION_SPEED = 1.3f;
 
 EngineHDREnvMap::EngineHDREnvMap()
+	: rotation(0.0f)
 {
 }
 
@@ -28,6 +34,8 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 {
 	EngineCubeMap::initCubeMap(cubeMapDir, extension);
 
+	rotation = 0.0f;
+
 	uint32_t hdrMap;
 
 	if ((hdrMap = GLResources::CreateHDREnvMap(cubeMapDir + extension)) == 0)
@@ -36,10 +44,14 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	GLShader bakeShader;
 	try
 	{
+#ifdef _DEBUG
 		bakeShader.loadAsset({
 			"../resources/shader/equiRectangularMapToCubemap_vs.glsl",
 			"../resources/shader/equiRectangularMapToCubemap_fs.glsl",
 		});
+#else
+		bakeShader.loadAssetRaw(EQUIRECTMAPTOCUBEMAP_VS, EQUIRECTMAPTOCUBEMAP_FS);
+#endif
 	}
 	catch (std::exception e)
 	{
@@ -113,13 +125,28 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	return true;
 }
 
+void EngineHDREnvMap::updateScene(float dt)
+{
+	EngineCubeMap::updateScene(dt);
+
+	rotation += dt * ROTATION_SPEED;
+}
+
 void EngineHDREnvMap::drawScene(const EngineCamera& camera) const
 {
 	skyboxShader->useProgram();
 
 	glDepthFunc(GL_LEQUAL);
 	
-	camera.sendVP(*skyboxShader, true);
+	glm::mat4 project = camera.getProjectMatrix();
+	glm::mat4 view = camera.getViewMatrix(true);
+	
+	view = glm::rotate(view, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
+
+	skyboxShader->sendUniform("project", project);
+	skyboxShader->sendUniform("view", view);
+	
+	//camera.sendVP(*skyboxShader, true);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap);

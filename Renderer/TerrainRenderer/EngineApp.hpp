@@ -19,6 +19,8 @@
 #include "EngineWater.hpp"
 #include "TextureViewer.hpp"
 #include "LightSourceWrapper.hpp"
+#include "Godrays.hpp"
+#include "PostProcessing.hpp"
 
 class GLShader;
 class AssetManager;
@@ -28,30 +30,28 @@ class EngineApp : public GLApp
 {
 private:
 	bool debuggerMode;
+	bool enableVsync;
 
-	uint32_t vpUBO;
 	uint32_t polygonMode;
-
-	GLShader* hdrShader;
 	
-	std::unique_ptr<EngineCubeMap> skybox;
-	std::unique_ptr<AssetManager> assetManager;
+	uPtr<EngineCubeMap> skybox;
 
-	GLMesh framebufferMesh;
-	GLFramebuffer hdrFramebuffer;
+	PostProcessing postprocess;
 	LightSourceWrapper lightWrapper;
 	TextureViewer textureViewer;
+	Godrays godray;
 	EngineCamera camera;
 	EngineWater water;
 	EngineTerrain terrain;
 
 	EngineGUI GUI;
 protected:
-	bool initUniformBufferObject(void);
 	bool initAssets(void);
 
+	void updateGUI(float dt);
 	void updateScene(float dt);
 	void drawScene(void) ;
+	void onResize(int newWidth, int newHeight);
 public:
 	EngineApp();
 	virtual ~EngineApp();

@@ -4,16 +4,18 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "EngineProperty.hpp"
 #include "GLShader.hpp"
+#include <GLFW/glfw3.h>
+#include <imgui/imgui.h>
 
 EngineCamera::EngineCamera()
-	: updateFov(false), toggleZoom(false), cameraAutoMode(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+	: updateFov(false), toggleZoom(false), cameraAutoMode(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
 		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
 	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 EngineCamera::EngineCamera(const glm::vec3 & pos, const glm::vec3 & dir)
-	: updateFov(false), toggleZoom(false), cameraAutoMode(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+	: updateFov(false), toggleZoom(false), cameraAutoMode(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
 		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
 	initCamera(pos, dir);
@@ -66,6 +68,8 @@ void EngineCamera::onUpdate(float dt)
 		pitch = dir.y;
 	}
 
+	previousVP = project * view;
+
 	if (!updateFov)
 		return;
 
@@ -93,9 +97,7 @@ void EngineCamera::onUpdate(float dt)
 
 void EngineCamera::processMousePos(double xpos, double ypos) 
 {
-	static bool isFirstUse = true;
-
-	if (cameraAutoMode)
+	if (cameraAutoMode || !isGrabbed)
 		return;
 
 	if (isFirstUse)
@@ -126,10 +128,30 @@ void EngineCamera::processMousePos(double xpos, double ypos)
 
 void EngineCamera::processMouseBtn(uint32_t keyFlag)
 {
+	if (keyFlag & CAMERA_LEFT_BTN)
+	{
+		isFirstUse = true;
+		isGrabbed = true;
+	}
+	else
+		isGrabbed = false;
+
 	if (keyFlag & CAMERA_RIGHT_BTN)
 	{
 		updateFov  = true;
 		toggleZoom = !toggleZoom;
+	}
+}
+
+void EngineCamera::updateGUI(void)
+{
+	if (ImGui::TreeNode("Camera Settings"))
+	{
+		ImGui::Checkbox("Auto Camera", &cameraAutoMode);
+		ImGui::SliderFloat("Speed", &speed, 30.0f, 300.0f, "%.3f");
+		ImGui::SliderFloat("Z Near", &minDepth, 1.0f, 50.0f, "%.3f");
+		ImGui::SliderFloat("Z Far", &maxDepth, 2000.0f, 5000.0f, "%.3f");
+		ImGui::TreePop();
 	}
 }
 
@@ -146,7 +168,10 @@ void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 		position += movement * direction;
 	if (keyFlag & CAMERA_DOWN)
 		position -= movement * direction;
+}
 
+void EngineCamera::processKeyCallback(uint32_t keyFlag)
+{
 	if (keyFlag & CAMERA_AUTO)
 		cameraAutoMode = !cameraAutoMode;
 }
@@ -183,6 +208,8 @@ void EngineCamera::flipVertically(float yaxis)
 	direction.z = glm::sin(glm::radians(yaw)) * glm::cos(glm::radians(pitch));
 
 	direction = glm::normalize(direction);
+
+	updateView();
 }
 
 void EngineCamera::sendVP(const GLShader& shader, bool remove_transition) const
@@ -201,4 +228,9 @@ void EngineCamera::updateView(void)
 void EngineCamera::updateProject(float aspectRatio)
 {
 	project = glm::perspective(glm::radians(fov), aspectRatio, minDepth, maxDepth);
+}
+
+void EngineCamera::setViewportSize(int width, int height)
+{
+	viewportSize = glm::vec2(width, height);
 }

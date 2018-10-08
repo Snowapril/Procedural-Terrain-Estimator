@@ -1,7 +1,7 @@
 #ifndef TERRAIN_SHADER_CODE
 #define TERRAIN_SHADER_CODE
 
-#ifdef _DEBUG
+#ifndef _DEBUG
 
 constexpr const char VIEWER_VS[] = R"glsl(
 #version 430 core
@@ -25,12 +25,36 @@ constexpr const char VIEWER_FS[] = R"glsl(
 #version 430 core
 
 uniform sampler2D textureView;
+uniform bool depthRender;
+uniform float near;
+uniform float far;
+
 in vec2 texCoords;
 out vec4 fragColors;
 
+float LinearizeDepth(float depth)
+{
+	float z = depth * 2.0 - 1.0; // back to NDC 
+	return (2.0 * near * far) / (far + near - z * (far - near));
+}
+
 void main(void)
 {
-    fragColors = texture(textureView, texCoords);    
+	vec3 color;
+
+	if (depthRender)
+	{
+		float depth = texture(textureView, texCoords).r;
+		depth = LinearizeDepth(depth);
+
+		color = vec3(depth);
+	}
+	else
+	{
+		color = texture(textureView, texCoords).rgb;
+	}
+
+	fragColors = vec4(color, 1.0);
 }
 )glsl";
 

@@ -233,6 +233,131 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 	EngineLogger::getConsole()->info("Linking Program Success.");
 }
 
+void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const char* gsSource, const char* tcsSource, const char* tesSource)
+{
+	GLuint vs, fs, gs, tcs, tes;
+	if (vsSource)
+	{
+		vs = glCreateShader(GL_VERTEX_SHADER);
+		glShaderSource(vs, 1, &vsSource, nullptr);
+		glCompileShader(vs);
+
+		if (checkStatus(vs, CHECK_TARGET::SHADER))
+			EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", assetPaths[VS].second);
+		else
+		{
+			EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", assetPaths[VS].second);
+			throw std::exception();
+		}
+	}
+
+	if (tcsSource) {
+		tcs = glCreateShader(GL_TESS_CONTROL_SHADER);
+		glShaderSource(tcs, 1, &tcsSource, nullptr);
+		glCompileShader(tcs);
+
+		if (checkStatus(tcs, CHECK_TARGET::SHADER))
+			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", assetPaths[TCS].second);
+		else
+		{
+			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", assetPaths[TCS].second);
+			throw std::exception();
+		}
+	}
+
+	if (tesSource) {
+		tes = glCreateShader(GL_TESS_EVALUATION_SHADER);
+		glShaderSource(tes, 1, &tesSource, nullptr);
+		glCompileShader(tes);
+
+		if (checkStatus(tes, CHECK_TARGET::SHADER))
+			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", assetPaths[TES].second);
+		else
+		{
+			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", assetPaths[TES].second);
+			throw std::exception();
+		}
+	}
+
+	if (gsSource) {
+		gs = glCreateShader(GL_GEOMETRY_SHADER);
+		glShaderSource(gs, 1, &gsSource, nullptr);
+		glCompileShader(gs);
+
+		if (checkStatus(gs, CHECK_TARGET::SHADER))
+			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", assetPaths[GS].second);
+		else
+		{
+			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", assetPaths[GS].second);
+			throw std::exception();
+		}
+	}
+
+	if (fsSource)
+	{
+		fs = glCreateShader(GL_FRAGMENT_SHADER);
+		glShaderSource(fs, 1, &fsSource, nullptr);
+		glCompileShader(fs);
+
+		if (checkStatus(fs, CHECK_TARGET::SHADER))
+			EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
+		else
+		{
+			EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
+			throw std::exception();
+		}
+	}
+
+	programID = glCreateProgram();
+	if (vsSource)
+		glAttachShader(programID, vs);
+	if (tcsSource)
+		glAttachShader(programID, tcs);
+	if (tesSource)
+		glAttachShader(programID, tes);
+	if (gsSource)
+		glAttachShader(programID, gs);
+	if (fsSource)
+		glAttachShader(programID, fs);
+	glLinkProgram(programID);
+
+	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
+		EngineLogger::getConsole()->info("Program Linking finished.");
+	else
+	{
+		EngineLogger::getConsole()->error("Program Linking Failed");
+		throw std::exception();
+	}
+
+	if (vsSource)
+	{
+		glDetachShader(programID, vs);
+		glDeleteShader(vs);
+	}
+	if (tcsSource)
+	{
+		glDetachShader(programID, tcs);
+		glDeleteShader(tcs);
+	}
+	if (tesSource)
+	{
+		glDetachShader(programID, tes);
+		glDeleteShader(tes);
+	}
+	if (gsSource)
+	{
+		glDetachShader(programID, gs);
+		glDeleteShader(gs);
+	}
+	if (fsSource)
+	{
+		glDetachShader(programID, fs);
+		glDeleteShader(fs);
+	}
+
+	EngineLogger::getConsole()->info("Linking Program Success.");
+}
+
 /**
 * @ brief		parse given asset paths.
 * @ details		parse given asset paths to directory path, shader program name, shader type. note that shader file name (without extension) must be composed with 

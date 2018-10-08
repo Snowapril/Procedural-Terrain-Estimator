@@ -5,6 +5,10 @@
 
 class EngineSkybox : public EngineCubeMap
 {
+private:
+	float rotation;
+	float speed;
+
 public:
 	EngineSkybox();
 	EngineSkybox(const std::string& cubeMapDir, const std::string& extension);
@@ -12,6 +16,8 @@ public:
 public:
 	virtual bool initCubeMap(const std::string& cubeMapDir, const std::string& extension);
 	virtual void drawScene(const EngineCamera& camera) const;
+	virtual void updateScene(float dt);
+	virtual void updateGUI(void);
 };
 
 #endif

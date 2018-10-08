@@ -109,12 +109,6 @@
     <ClCompile Include="glad.c">
       <Filter>EngineFramework\glad</Filter>
     </ClCompile>
-    <ClCompile Include="..\dependencies\imgui\imgui.cpp">
-      <Filter>GUI\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp">
-      <Filter>GUI\imgui</Filter>
-    </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp">
       <Filter>GUI\imgui</Filter>
     </ClCompile>
@@ -195,6 +189,18 @@
     </ClCompile>
     <ClCompile Include="Automator.cpp">
       <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Godrays.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessing.cpp">
+      <Filter>Util\private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp">
+      <Filter>GUI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dependencies\imgui\imgui.cpp">
+      <Filter>GUI\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +306,15 @@
     <ClInclude Include="EventHandler.hpp">
       <Filter>EngineFramework\public</Filter>
     </ClInclude>
+    <ClInclude Include="Godrays.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessing.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="PostprocessShaderCode.hpp">
+      <Filter>Util\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">
@@ -347,16 +362,40 @@
     <None Include="..\resources\shader\terrain_fs.glsl">
       <Filter>Terrain\shader</Filter>
     </None>
-    <None Include="..\resources\shader\hdr_vs.glsl">
-      <Filter>EngineFramework\shader</Filter>
-    </None>
-    <None Include="..\resources\shader\hdr_fs.glsl">
-      <Filter>EngineFramework\shader</Filter>
-    </None>
     <None Include="..\resources\shader\terrain_depth_pass_fs.glsl">
       <Filter>Terrain\shader</Filter>
     </None>
     <None Include="..\resources\shader\terrain_depth_pass_tes.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\sun_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\sun_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\godrays_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\godrays_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\flare_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\flare_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\postprocess_vs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\postprocess_fs.glsl">
+      <Filter>Util\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain2_tes.glsl">
+      <Filter>Terrain\shader</Filter>
+    </None>
+    <None Include="..\resources\shader\terrain2_fs.glsl">
       <Filter>Terrain\shader</Filter>
     </None>
   </ItemGroup>

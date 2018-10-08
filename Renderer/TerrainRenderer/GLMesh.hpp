@@ -22,7 +22,7 @@ public:
 	GLMesh& operator=(const GLMesh& other);
 public:
 	void drawMesh(uint32_t drawMode) const noexcept;
-	bool initWithFixedShape(MeshShape shape);
+	bool initWithFixedShape(MeshShape shape, float scale = 1.0f);
 };
 
 #endif

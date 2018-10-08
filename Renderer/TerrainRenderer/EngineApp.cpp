@@ -7,11 +7,12 @@
 #include "GLShader.hpp"
 #include "AssetManager.hpp"
 #include <glm/gtc/matrix_transform.hpp>
-#include "EngineHDREnvMap.hpp"
+#include "EngineSkybox.hpp"
 #include "Util.hpp"
+#include <imgui/imgui.h>
 
 EngineApp::EngineApp()
-	: GLApp(), debuggerMode(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
+	: GLApp(), debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -27,6 +28,11 @@ void EngineApp::updateScene(float dt)
 {
 	Profile();
 
+	if (enableVsync)
+		glfwSwapInterval(1);
+	else
+		glfwSwapInterval(0);
+
 	processKeyInput(dt);
 	camera.onUpdate(dt);
 
@@ -36,13 +42,32 @@ void EngineApp::updateScene(float dt)
 
 	terrain.updateScene(dt, cameraPos);
 	water.updateWater(dt);
+	
+	skybox->updateScene(dt);
 
-	if (assetManager->refreshDirtyAssets())
+	postprocess.updateScene(dt);
+	
+	updateGUI(dt);
+}
+
+void EngineApp::updateGUI(float dt)
+{
+	GUI.startUpdateGUI(dt, clientHeight);
+
+	terrain.updateGUI();
+	water.updateGUI();
+	postprocess.updateGUI();
+	skybox->updateGUI();
+	camera.updateGUI();
+	lightWrapper.updateGUI();
+
+	if (ImGui::CollapsingHeader("Rendering Property"))
 	{
-		hdrShader->useProgram();
-		hdrShader->sendUniform("hdrBuffer", 0);
+		ImGui::Checkbox("Debugger Mode", &debuggerMode);
+		ImGui::Checkbox("V-sync", &enableVsync);
 	}
-	//GUI.updateGUI(dt, clientHeight);
+
+	GUI.endUpdateGUI(dt);
 }
 
 /**
@@ -62,59 +87,62 @@ void EngineApp::drawScene(void)
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glEnable(GL_CLIP_DISTANCE0);
-	glDisable(GL_CULL_FACE);
+		glEnable(GL_CLIP_DISTANCE0);
+		glDisable(GL_CULL_FACE);
 
-	camera.flipVertically(waterHeight);
-	camera.updateView();
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
-	skybox->drawScene(camera);
-	camera.flipVertically(waterHeight);
-	camera.updateView();
+		camera.flipVertically(waterHeight);
+		
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
+		skybox->drawScene(camera);
+		
+		camera.flipVertically(waterHeight);
 
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-	skybox->drawScene(camera);
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+		//skybox->drawScene(camera);
 	
-	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
-
-	// depth pass here.
-	lightWrapper.bindDepthPassBuffer(clientWidth, clientHeight);
-
-	terrain.drawScene_DepthPass(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-
-	lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
-	// depth pass end
-
-	hdrFramebuffer.bindFramebuffer(clientWidth, clientHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		water.unbindCurrentFramebuffer(clientWidth, clientHeight);
 
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
-	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-	skybox->drawScene(camera);
-	water.drawWater(camera, lightWrapper);
+	// depth pass here.
 
-	hdrFramebuffer.unbindFramebuffer(clientWidth, clientHeight);
+	const glm::vec3& scale = terrain.getTerrainScale();
+	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
+
+		terrain.drawScene_DepthPass(camera, lightWrapper, false, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+
+		lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
+	// depth pass end
+
+	godray.bindGodrayBuffer(clientWidth, clientHeight);
+		lightWrapper.renderSun(camera);
+		terrain.drawScene_DepthPass(camera, lightWrapper, true, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		godray.unbindGodrayBuffer(clientWidth, clientHeight);
+
+	postprocess.bindPostprocessing(clientWidth, clientHeight);
+
+		//glDepthMask(GL_FALSE);
+		//glBeginQuery(GL_ANY_SAMPLES_PASSED, testQuery);
+		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		//glEndQuery(GL_ANY_SAMPLES_PASSED);
+		//glDepthMask(GL_TRUE);
+
+		skybox->drawScene(camera);
+		water.drawWater(camera, lightWrapper);
+		lightWrapper.renderSun(camera);
+
+		postprocess.unbindPostprocessing(clientWidth, clientHeight);
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	hdrShader->useProgram();
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, hdrFramebuffer.getColorTexture());
-	
-	glDisable(GL_CULL_FACE);
-	framebufferMesh.drawMesh(GL_TRIANGLE_STRIP);
-	glEnable(GL_CULL_FACE);
-
+	postprocess.drawScene(camera, lightWrapper, godray.getColorTexture());
+	   
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.4f), glm::vec2(0.15f, 0.15f), water.getRefractionTexture());
-		textureViewer.addTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), hdrFramebuffer.getColorTexture());
-		textureViewer.addDepthTextureView(glm::vec2(0.8f, -0.4f), glm::vec2(0.15f, 0.15f), lightWrapper.getDepthTexture());
+		textureViewer.addDepthTextureView(glm::vec2(0.8f, 0.0f), glm::vec2(0.15f, 0.15f), postprocess.getOffscreenDepthTexture());
 		textureViewer.renderViewer(camera.getMinDepth(), camera.getMaxDepth());
 		textureViewer.clearViewer();
 	}
@@ -123,7 +151,7 @@ void EngineApp::drawScene(void)
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 
-	//GUI.renderGUI();
+	GUI.renderGUI();
 }
 
 /**
@@ -138,9 +166,6 @@ bool EngineApp::initEngine(void)
 	if (!GUI.initGUI(window))
 		return false;
 
-	if (!initUniformBufferObject())
-		return false;
-
 	if (!textureViewer.initTextureViewer())
 		return false;
 
@@ -151,7 +176,7 @@ bool EngineApp::initEngine(void)
 
 	try
 	{
-		skybox = std::make_unique<EngineHDREnvMap>("../resources/texture/hdr/beach.", "hdr");
+		skybox = std::make_unique<EngineSkybox>("../resources/texture/skybox/cloud/", "jpg");
 	}
 	catch (std::exception e)
 	{
@@ -160,12 +185,17 @@ bool EngineApp::initEngine(void)
 
 	onResize(clientWidth, clientHeight);
 
+	//glGenQueries(1, &testQuery);
+
 	if (!water.initWater(REFLECTION_WIDTH, REFLECTION_HEIGHT, REFRACTION_WIDTH, REFRACTION_HEIGHT))
-		return false;
+		return false;	
 	
 	glm::vec3 terrainScale = terrain.getTerrainScale() * 0.5f;
 	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
+	if (!postprocess.initPostProcessing(clientWidth, clientHeight))
+		return false;
+
 	if (!initAssets())
 		return false;
 	
@@ -174,69 +204,31 @@ bool EngineApp::initEngine(void)
 
 bool EngineApp::initAssets(void)
 {
-	if (!lightWrapper.initDepthPassBuffer(clientWidth, clientHeight))
+	if (!lightWrapper.initDepthPassBuffer(SHADOW_RESOLUTION_X, SHADOW_RESOLUTION_Y))
 		return false;
 
-	lightWrapper.addDirLight(glm::vec3(0.05f, 1.0f, 0.05f), glm::vec3(1.0f, 0.85f, 0.56f));
+	const glm::vec3 sumPosition(0.0f, 800.0f, 5000.0f);
+	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.7f);
 
-	assetManager = std::make_unique<AssetManager>();
-	try
-	{
-		hdrShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/hdr_vs.glsl",
-			"../resources/shader/hdr_fs.glsl",
-		});
-	}
-	catch (std::exception e)
-	{
-		EngineLogger::getConsole()->error("Initializing HDR Shader Failed");
+	if (!godray.initGodrays(clientWidth, clientHeight))
 		return false;
-	}
-
-	hdrShader->useProgram();
-	hdrShader->sendUniform("hdrBuffer", 0);
-
-	framebufferMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
-
-	hdrFramebuffer.initFramebuffer();
-	hdrFramebuffer.attachColorTexture(clientWidth, clientHeight, true);
-	hdrFramebuffer.attachDepthbuffer(clientWidth, clientHeight);
-	
-	if (!hdrFramebuffer.configureFramebuffer())
-	{
-		EngineLogger::getConsole()->error("HDR Framebuffer is not completed");
-		return false;
-	}
 
 	return true;
 }
 
-/**
-* @ brief		initialize uniform buffer object
-* @ details		uniform buffer object is useful when many shader use common uniform variable.
-* @ return		return boolean whether if initializing uniform buffer object is successful or not.
-*/
-bool EngineApp::initUniformBufferObject(void)
+void EngineApp::onResize(int newWidth, int newHeight)
 {
-	glGenBuffers(1, &vpUBO);
-	glBindBuffer(GL_UNIFORM_BUFFER, vpUBO);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, nullptr, GL_STATIC_DRAW);
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
-	glBindBufferRange(GL_UNIFORM_BUFFER, 0, vpUBO, 0, sizeof(glm::mat4) * 2);
+	GLApp::onResize(newWidth, newHeight);
 
-	return true;
+	camera.setViewportSize(newWidth, newHeight);
 }
 
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 {
+	GLApp::keyCallback(key, scancode, action, mode);
+
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
-
-	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
-		polygonMode = polygonMode == GL_LINE ? GL_FILL : GL_LINE;
-
-	if (key == GLFW_KEY_F2 && action == GLFW_PRESS)
-		debuggerMode = !debuggerMode;
 }
 
 void EngineApp::mousePosCallback(double xpos, double ypos)
@@ -253,7 +245,7 @@ void EngineApp::mouseBtnCallback(int btn, int action, int mods)
 
 	if (btn == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT_BTN;
-
+	
 	camera.processMouseBtn(keyFlag);
 }
 
@@ -274,8 +266,6 @@ void EngineApp::processKeyInput(float dt)
 		keyFlag |= CAMERA_DOWN;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		keyFlag |= CAMERA_RIGHT;
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
-		keyFlag |= CAMERA_AUTO;
 
 	camera.processKeyInput(keyFlag, dt);
 }

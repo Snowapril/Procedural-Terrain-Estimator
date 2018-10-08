@@ -182,10 +182,26 @@ void GLApp::errorCallback(int error, const char * description) const
 	EngineLogger::getConsole()->error("Error code {}, description :\n{}", error, description);
 }
 
+void GLApp::keyCallback(int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+		if (timer.isTimerPaused())
+			timer.start();
+		else
+			timer.stop();
+
+	if (key == GLFW_KEY_U && action == GLFW_PRESS)
+		glfwSwapInterval(0);
+
+	if (key == GLFW_KEY_I && action == GLFW_PRESS)
+		glfwSwapInterval(1);
+}
+
 void GLApp::resizingCallback(int newWidth, int newHeight)
 {
 	if (newWidth  == 0) newWidth  = 1;
 	if (newHeight == 0) newHeight = 1;
+
 
 	onResize(newWidth, newHeight);
 }

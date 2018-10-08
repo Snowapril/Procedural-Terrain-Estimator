@@ -5,6 +5,10 @@
 #include "EngineAsset.hpp"
 #include "GLShader.hpp"
 
+#ifndef _DEBUG
+#include "ViewerShaderCode.hpp"
+#endif
+
 TextureViewer::TextureViewer()
 {
 }
@@ -17,10 +21,15 @@ bool TextureViewer::initTextureViewer(void)
 {
 	try
 	{
+#ifdef _DEBUG
 		viewShader = make_unique_from_list<GLShader, std::string>({
 			"../resources/shader/viewer_vs.glsl",
 			"../resources/shader/viewer_fs.glsl",
 		});
+#else
+		viewShader = std::make_unique<GLShader>();
+		viewShader->loadAssetRaw(VIEWER_VS, VIEWER_FS);
+#endif
 	}
 	catch(std::exception e)
 	{
@@ -54,8 +63,9 @@ void TextureViewer::renderViewer(float zNear, float zFar) const
 	glDisable(GL_DEPTH_TEST);
 
 	viewShader->useProgram();
-	viewShader->sendUniform("zNear", zNear);
-	viewShader->sendUniform("zFar", zFar);
+	viewShader->sendUniform("near", zNear);
+	viewShader->sendUniform("far", zFar);
+
 	glActiveTexture(GL_TEXTURE0);
 	
 	viewShader->sendUniform("depthRender", false);

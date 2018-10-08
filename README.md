@@ -22,35 +22,6 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -o newname.glslcache
 glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcache
 ```
 
-## RENDERER
-this is for **rendering procedural terrain**. default supported platform is Window. other platform like Linux, OS X will be supported later.
-
-![Tessellated Terrain](tessellated_terrain.jpg)
-
-### Already Implemented
-* Non-uniform patch with quad tree
-* Tessellated terrain with height map
-* Dynamic Level of Detal
-* Splat map
-* Terrain map
-* Water rendering
-* Water reflection & Skybox
-* HDR Environment Map
-* Lighting & Shading
-
-### To be implemented
-
-* Depth Of Field
-* Screen Space Displacement Mapping
-* Screen Space Ambient Occlusion
-* Tone mapping
-* Frustum Culling
-* Shadow mapping
-* Cliff
-* Fog
-* Decal volume
-* Post-processing
-
 ## GENERATOR  
 
 ### Already Implemented
