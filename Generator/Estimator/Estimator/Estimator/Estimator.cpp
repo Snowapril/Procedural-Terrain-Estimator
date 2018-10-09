@@ -1,3 +1,4 @@
+// coding : utf-8
 #include "Estimator.hpp"
 #include <queue>
 #include <map>
@@ -68,7 +69,7 @@ int Estimator::descentTabling() {
 	int ret = 0;
 	pii target;
 
-	// ?�정?�것 : local minima가 ?�니??global minima�?구하�??�으므�?descent table????채운 ?�음 for�??�면??주�????�기보다 ??값이 ?�는 ?��? local minima�?집어?�어?�함
+	// ?˜ì •? ê²ƒ : local minimaê°€ ?„ë‹ˆ??global minimaë¥?êµ¬í•˜ê³??ˆìœ¼ë¯€ë¡?descent table????ì±„ìš´ ?¤ìŒ forë¬??Œë©´??ì£¼ë????ê¸°ë³´ë‹¤ ??ê°’ì´ ?†ëŠ” ? ë? local minimaë¡?ì§‘ì–´?£ì–´?¼í•¨
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
@@ -217,7 +218,7 @@ pixel randFill(int areaHeight, int wetDistance, int y,int x) {
 	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
 	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
 
-	// Height : ?�정 ?�?�이 존재?�는 ?�이???�작
+	// Height : ?¹ì • ?€?¼ì´ ì¡´ìž¬?˜ëŠ” ?’ì´???œìž‘
 
 	int startHeight[DATA_NUM] = { 125,75,75, };
 	const int ROCK_HEIGHT = 100;
@@ -257,12 +258,12 @@ void Estimator::blendmapColoring() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			//근처??local minima?�??거리�? ?�이차에 ?�라??물이 고이???�도가 ?�라�?
+			//ê·¼ì²˜??local minima?€??ê±°ë¦¬ì°? ?’ì´ì°¨ì— ?°ë¼??ë¬¼ì´ ê³ ì´???•ë„ê°€ ?¬ë¼ì§?
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
 
-			//고려 ?�보 :  local minima?�??거리�? local minima?�???�이�?
-			//wet_dist가 커질?�록 ?�석지??
+			//ê³ ë ¤ ?„ë³´ :  local minima?€??ê±°ë¦¬ì°? local minima?€???’ì´ì°?
+			//wet_distê°€ ì»¤ì§ˆ?˜ë¡ ?”ì„ì§€??
 			
 			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
 
