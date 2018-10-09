@@ -1,10 +1,12 @@
 #include "Estimator.hpp"
 #include <queue>
 #include <map>
+#include <cmath>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <cstring>
 using namespace std;
 
 bool visit[1024][1024];
@@ -66,7 +68,7 @@ int Estimator::descentTabling() {
 	int ret = 0;
 	pii target;
 
-	// ¼öÁ¤ÇÒ°Í : local minima°¡ ¾Æ´Ï¶ó global minima¸¦ ±¸ÇÏ°í ÀÖÀ¸¹Ç·Î descent tableÀ» ´Ù Ã¤¿î ´ÙÀ½ for¹® µ¹¸é¼­ ÁÖº¯¿¡ ÀÚ±âº¸´Ù Å« °ªÀÌ ¾ø´Â ¾Ö¸¦ local minima·Î Áı¾î³Ö¾î¾ßÇÔ
+	// ?˜ì •? ê²ƒ : local minimaê°€ ?„ë‹ˆ??global minimaë¥?êµ¬í•˜ê³??ˆìœ¼ë¯€ë¡?descent table????ì±„ìš´ ?¤ìŒ forë¬??Œë©´??ì£¼ë????ê¸°ë³´ë‹¤ ??ê°’ì´ ?†ëŠ” ? ë? local minimaë¡?ì§‘ì–´?£ì–´?¼í•¨
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
@@ -121,24 +123,25 @@ void Estimator::makeCoast(const bool needCoast) {
 		// printf("%d loop\n", i);
 		int prob = rand() % 100;
 		if (prob < probLeft) {
-			probLeft -= 8;
-			probStay += 4;
-			curCoast--;
+			probLeft -=4;
+			probStay +=2;
+			curCoast-=3;
 		}
 		else if (prob < probStay) {
-			probLeft += 4;
-			probStay -= 8;
+			probLeft+=2;
+			probStay -= 4;
 		}
 		else {
-			probLeft += 4;
-			probStay += 4;
-			curCoast++;
+			probLeft+=2;
+			probStay+=2;
+			curCoast+=3;
 		}
-		for (int j = curCoast - 1; j > curCoast - 10; j--) {
-			HmapData[i][j] = HmapData[i][j] / 10 * (curCoast - j);
+		for (int j = 9; j > 0; j--) {
+			int k = curCoast - j;
+			HmapData[i][k] = HmapData[i][k] * j / 10;
 		}
 		for (int j = curCoast; j < width; j++) {
-			HmapData[i][j] = 0;
+			HmapData[i][j]/=4;
 		}
 	}	
 }
@@ -147,25 +150,30 @@ void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 	if (!needIsland) return;
 	int probUp = 20, probDown = 40;
 	int cut = radius / 10;
+	vector < vector <bool> > visited(height, vector<bool>(width, false));
 	srand(time(NULL));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			int y = i - height / 2, x = j - width / 2;
 			if (y*y + x * x > radius*radius) {
-				HmapData[i][j] = 0;
+				HmapData[i][j]/=4;
 				int prob = rand() % 100;
 				if (prob < probUp) {
-					cut++;
-					probUp -= 4;
+					cut+=20;
+					probUp --;
 				}
 				else if (prob < probDown) {
-					cut--;
-					probUp += 4;
+					cut-=20;
+					probUp ++;
 				}
 
 				for (int k = i - cut; k <= i + cut; k++) {
 					if (k < 0 || k >= height) continue;
-					HmapData[k][j] = 0;
+					int yy = k - height / 2;
+					if (yy*yy + x * x > radius*radius) continue;
+					if (visited[k][j]) continue;
+					HmapData[k][j] /= 4;
+					visited[k][j] = true;
 				}
 			}
 		}
@@ -197,7 +205,47 @@ vector<unsigned char> Estimator::getBlendMap() {
 	return ret;
 }
 
+pixel randFill(int areaHeight, int wetDistance, int y,int x) {
+
+	const unsigned char DATA_NUM = 4;
+	pixel tile[DATA_NUM];
+	pixel ret;
+	int prob[DATA_NUM] = { 0, };
+
+	tile[0] = { 255,0,0,0 };// 255 0 0 0 : ROCK
+	tile[1] = { 0,255,0,0 };// 0 255 0 0 : DIRT
+	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
+	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
+
+	// Height : ?¹ì • ?€?¼ì´ ì¡´ì¬?˜ëŠ” ?’ì´???œì‘
+
+	int startHeight[DATA_NUM] = { 125,75,75, };
+	const int ROCK_HEIGHT = 100;
+	const int DIRT_HEIGHT = 75;
+	const int SAND_HEIGHT = 75;
+
+
+	int sum_prob = 0;
+	for (int i = 0; i < DATA_NUM; i++) {
+		sum_prob += prob[i];
+		prob[i] += prob[i - 1];
+	}
+	int prand = rand() % sum_prob;
+
+	for (int i = 0; i < DATA_NUM; i++) {
+		if (prand < prob[i]) {
+			ret = tile[i];
+			break;
+		}
+	}
+
+	return ret;
+}
+
+
 void Estimator::blendmapColoring() {
+
+	srand(time(NULL));
 
 	const pixel ROCK = { 255,0,0,0 };// 255 0 0 0 : ROCK
 	const pixel DIRT = { 0,255,0,0 };	// 0 255 0 0 : DIRT
@@ -209,11 +257,15 @@ void Estimator::blendmapColoring() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			//±ÙÃ³ÀÇ local minima¿ÍÀÇ °Å¸®¿¡ µû¶ó¼­ ¹°ÀÌ °íÀÌ´Â Á¤µµ°¡ ´Ş¶óÁü
+			//ê·¼ì²˜??local minima?€??ê±°ë¦¬ì°? ?’ì´ì°¨ì— ?°ë¼??ë¬¼ì´ ê³ ì´???•ë„ê°€ ?¬ë¼ì§?
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
 
-			//°í·Á ÈÄº¸ : Àı´ë³ôÀÌ, local minima¿ÍÀÇ °Å¸®, Æ¯Á¤ ¹üÀ§ ³»¿¡ ÀÎÁ¢ÇÑ ¹° Å¸ÀÏ
+			//ê³ ë ¤ ?„ë³´ :  local minima?€??ê±°ë¦¬ì°? local minima?€???’ì´ì°?
+			//wet_distê°€ ì»¤ì§ˆ?˜ë¡ ?”ì„ì§€??
+			
+			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
+
 		}
 	}
 

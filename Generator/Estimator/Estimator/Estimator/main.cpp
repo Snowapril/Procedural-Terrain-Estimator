@@ -3,10 +3,9 @@
 using namespace std;
 
 int main() {
-	freopen("Mapdata.pte", "r", stdin);
+	freopen("outHeight.txt", "r", stdin);
 	int width, height;
 	scanf("%d %d", &height, &width);
-	printf("%d %d\n", height, width);
 	vector < unsigned char > M(height*width, 0);
 
 	for (int i = 0; i < height; i++) {
@@ -17,8 +16,8 @@ int main() {
 
 	Estimator E(M,height,width);
 
-	E.makeCoast(true);
-	freopen("outHeight.txt", "w", stdout);
+	E.makeIsland(true,1000);
+	freopen("outHeight2.txt", "w", stdout);
 
 	E.dumpMapData();
 
