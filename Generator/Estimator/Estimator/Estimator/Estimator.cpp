@@ -69,8 +69,6 @@ int Estimator::descentTabling() {
 	int ret = 0;
 	pii target;
 
-	// ?˜ì •? ê²ƒ : local minimaê°€ ?„ë‹ˆ??global minimaë¥?êµ¬í•˜ê³??ˆìœ¼ë¯€ë¡?descent table????ì±„ìš´ ?¤ìŒ forë¬??Œë©´??ì£¼ë????ê¸°ë³´ë‹¤ ??ê°’ì´ ?†ëŠ” ? ë? local minimaë¡?ì§‘ì–´?£ì–´?¼í•¨
-
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			pii temp = descent(i, j);
@@ -218,8 +216,6 @@ pixel randFill(int areaHeight, int wetDistance, int y,int x) {
 	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
 	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
 
-	// Height : ?¹ì • ?€?¼ì´ ì¡´ìž¬?˜ëŠ” ?’ì´???œìž‘
-
 	int startHeight[DATA_NUM] = { 125,75,75, };
 	const int ROCK_HEIGHT = 100;
 	const int DIRT_HEIGHT = 75;
@@ -261,9 +257,6 @@ void Estimator::blendmapColoring() {
 			//ê·¼ì²˜??local minima?€??ê±°ë¦¬ì°? ?’ì´ì°¨ì— ?°ë¼??ë¬¼ì´ ê³ ì´???•ë„ê°€ ?¬ë¼ì§?
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
-
-			//ê³ ë ¤ ?„ë³´ :  local minima?€??ê±°ë¦¬ì°? local minima?€???’ì´ì°?
-			//wet_distê°€ ì»¤ì§ˆ?˜ë¡ ?”ì„ì§€??
 			
 			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
 
