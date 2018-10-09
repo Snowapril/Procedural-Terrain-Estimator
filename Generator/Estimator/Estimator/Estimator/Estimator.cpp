@@ -212,7 +212,7 @@ vector<unsigned char> Estimator::getBlendMap() {
 	return ret;
 }
 
-pixel randFill(int areaHeight, int wetDistance, int y,int x) {
+pixel randFill(int areaHeight, int wetDistance, int wetHeightGap, int y,int x) {
 
 	const unsigned char DATA_NUM = 4;
 	pixel tile[DATA_NUM];
@@ -224,21 +224,12 @@ pixel randFill(int areaHeight, int wetDistance, int y,int x) {
 	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
 	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
 
-	int startHeight[DATA_NUM] = { 125,75,75, };
-	const int ROCK_HEIGHT = 100;
-	const int DIRT_HEIGHT = 75;
-	const int SAND_HEIGHT = 75;
+	const int dryTable[DATA_NUM] = { 25,50,100,1e9 };
 
-
-	int sum_prob = 0;
-	for (int i = 0; i < DATA_NUM; i++) {
-		sum_prob += prob[i];
-		prob[i] += prob[i - 1];
-	}
-	int prand = rand() % sum_prob;
+	int dryMeter = wetHeightGap * 8 / 10 + wetDistance * 2 / 10;
 
 	for (int i = 0; i < DATA_NUM; i++) {
-		if (prand < prob[i]) {
+		if (dryMeter <= dryTable[i]) {
 			ret = tile[i];
 			break;
 		}
@@ -263,9 +254,10 @@ void Estimator::blendmapColoring() {
 		for (int j = 0; j < width; j++) {
 
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
-			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
+			int wet_dist = (int)sqrt((double) ((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x)));
+			int wet_height = HmapData[i][j] - HmapData[des_y][des_x];
 			
-			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
+			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, wet_height,i, j);
 
 		}
 	}
