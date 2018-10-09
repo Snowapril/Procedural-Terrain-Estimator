@@ -26,10 +26,22 @@ Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : heig
 	}
 }
 
-void Estimator::dumpMapData() {
+void Estimator::dumpHeightMapData() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			printf("%d ", HmapData[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void Estimator::dumpBlendMapData() {
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			printf("%d ", BmapData[i][j].r);
+			printf("%d ", BmapData[i][j].g);
+			printf("%d ", BmapData[i][j].b);
+			//printf("%d ", BmapData[i][j].a);
 		}
 		printf("\n");
 	}
@@ -206,7 +218,7 @@ vector<unsigned char> Estimator::getBlendMap() {
 			ret.push_back(p.r); // R channel
 			ret.push_back(p.g); // G channel
 			ret.push_back(p.b); // B channel
-			ret.push_back(p.a); // A channel
+			//ret.push_back(p.a); // A channel
 		}
 	}
 	return ret;
@@ -240,6 +252,8 @@ pixel randFill(int areaHeight, int wetDistance, int wetHeightGap, int y,int x) {
 
 
 void Estimator::blendmapColoring() {
+
+	descentTabling();
 
 	srand(time(NULL));
 

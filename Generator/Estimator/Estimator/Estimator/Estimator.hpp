@@ -25,7 +25,9 @@ public:
 	Estimator(vector<unsigned char>& data, int _height, int _width);
 
 	
-	void dumpMapData();
+	void dumpHeightMapData();
+
+	void dumpBlendMapData();
 
 	pii descent(int y, int x);
 

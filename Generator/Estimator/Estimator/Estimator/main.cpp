@@ -19,7 +19,13 @@ int main() {
 	E.makeIsland(true,1000);
 	freopen("outHeight2.txt", "w", stdout);
 
-	E.dumpMapData();
+	E.dumpHeightMapData();
+
+	E.blendmapColoring();
+
+	freopen("outBlend.txt", "w", stdout);
+	
+	E.dumpBlendMapData();
 
 	return 0;
 }
