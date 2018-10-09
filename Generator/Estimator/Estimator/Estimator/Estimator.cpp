@@ -1,5 +1,4 @@
-// coding : utf-8
-#include "Estimator.hpp"
+﻿#include "Estimator.hpp"
 #include <queue>
 #include <map>
 #include <cmath>
@@ -155,14 +154,15 @@ void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 		for (int j = 0; j < width; j++) {
 			int y = i - height / 2, x = j - width / 2;
 			if (y*y + x * x > radius*radius) {
-				HmapData[i][j]/=4;
+				HmapData[i][j]/=2;
+				visited[i][j] = true;
 				int prob = rand() % 100;
 				if (prob < probUp) {
-					cut+=20;
+					cut+=10;
 					probUp --;
 				}
 				else if (prob < probDown) {
-					cut-=20;
+					cut-=10;
 					probUp ++;
 				}
 
@@ -171,8 +171,16 @@ void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 					int yy = k - height / 2;
 					if (yy*yy + x * x > radius*radius) continue;
 					if (visited[k][j]) continue;
-					HmapData[k][j] /= 4;
+					HmapData[k][j] /= 2;
 					visited[k][j] = true;
+				}
+				for (int k = j - cut; k <= j + cut; k++) {
+					if (k < 0 || k >= width) continue;
+					int xx = k - width / 2;
+					if (y*y + xx * xx > radius*radius) continue;
+					if (visited[i][k]) continue;
+					HmapData[i][k] /= 2;
+					visited[i][k] = true;
 				}
 			}
 		}
@@ -254,7 +262,6 @@ void Estimator::blendmapColoring() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			//ê·¼ì²˜??local minima?€??ê±°ë¦¬ì°? ?’ì´ì°¨ì— ?°ë¼??ë¬¼ì´ ê³ ì´???•ë„ê°€ ?¬ë¼ì§?
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (i - des_y) * (i - des_y) + (j - des_x) * (j - des_x);
 			
