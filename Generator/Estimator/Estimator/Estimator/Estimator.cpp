@@ -158,11 +158,11 @@ void Estimator::makeIsland(const bool needIsland, int radius = 100) {
 				visited[i][j] = true;
 				int prob = rand() % 100;
 				if (prob < probUp) {
-					cut+=10;
+					cut++;
 					probUp --;
 				}
 				else if (prob < probDown) {
-					cut-=10;
+					cut--;
 					probUp ++;
 				}
 
