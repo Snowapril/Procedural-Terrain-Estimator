@@ -2,7 +2,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "EngineProperty.hpp"
-#include "EngineProfiler.hpp"
 #include "EngineLogger.hpp"
 #include "GLShader.hpp"
 #include "AssetManager.hpp"
@@ -10,6 +9,8 @@
 #include "EngineSkybox.hpp"
 #include "Util.hpp"
 #include <imgui/imgui.h>
+
+#include <NvToolsExt/nvToolsExt.h>
 
 EngineApp::EngineApp()
 	: GLApp(), debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
@@ -26,8 +27,6 @@ EngineApp::~EngineApp()
 */
 void EngineApp::updateScene(float dt)
 {
-	Profile();
-
 	if (enableVsync)
 		glfwSwapInterval(1);
 	else
@@ -76,8 +75,7 @@ void EngineApp::updateGUI(float dt)
 */
 void EngineApp::drawScene(void) 
 {
-	Profile();
-	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
+	nvtxRangePushA("Frame");
 
 	const float totalTime = timer.getTotalTime();
 	const float waterHeight = water.getWaterHeight();
@@ -86,6 +84,8 @@ void EngineApp::drawScene(void)
 	/// draw call here.
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
+	nvtxRangePushA("Gen-Water-Textures");
+	nvtxRangePushA("Gen-Reflection");
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
 		glEnable(GL_CLIP_DISTANCE0);
 		glDisable(GL_CULL_FACE);
@@ -96,48 +96,69 @@ void EngineApp::drawScene(void)
 		skybox->drawScene(camera);
 		
 		camera.flipVertically(waterHeight);
+		nvtxRangePop();
 
+		nvtxRangePushA("Gen-Refraction");
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
 		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
 		//skybox->drawScene(camera);
 	
 		water.unbindCurrentFramebuffer(clientWidth, clientHeight);
+		nvtxRangePop();
+	nvtxRangePop();
 
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
 	// depth pass here.
 
+	nvtxRangePushA("Gen-Shadow-Map");
 	const glm::vec3& scale = terrain.getTerrainScale();
 	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
 
 		terrain.drawScene_DepthPass(camera, lightWrapper, false, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 
 		lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
+		nvtxRangePop();
 	// depth pass end
 
+	nvtxRangePushA("Light-Occlude");
 	godray.bindGodrayBuffer(clientWidth, clientHeight);
 		lightWrapper.renderSun(camera);
 		terrain.drawScene_DepthPass(camera, lightWrapper, true, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 		godray.unbindGodrayBuffer(clientWidth, clientHeight);
+		nvtxRangePop();
 
+	nvtxRangePushA("Main-Render");
 	postprocess.bindPostprocessing(clientWidth, clientHeight);
 
 		//glDepthMask(GL_FALSE);
 		//glBeginQuery(GL_ANY_SAMPLES_PASSED, testQuery);
+		nvtxRangePushA("Terrain-Render");
 		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+		nvtxRangePop();
 		//glEndQuery(GL_ANY_SAMPLES_PASSED);
 		//glDepthMask(GL_TRUE);
 
+		nvtxRangePushA("Skybox-Render");
 		skybox->drawScene(camera);
+		nvtxRangePop();
+		nvtxRangePushA("Water-Render");
 		water.drawWater(camera, lightWrapper);
+		nvtxRangePop();
+		nvtxRangePushA("Sun-Render");
 		lightWrapper.renderSun(camera);
+		nvtxRangePop();
 
 		postprocess.unbindPostprocessing(clientWidth, clientHeight);
+		nvtxRangePop();
+		
 	
+	nvtxRangePushA("Post-processing");
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	postprocess.drawScene(camera, lightWrapper, godray.getColorTexture());
-	   
+	nvtxRangePop();
+
 	if (debuggerMode)
 	{
 		textureViewer.addTextureView(glm::vec2(0.8f, 0.8f), glm::vec2(0.15f, 0.15f), water.getReflectionTexture());
@@ -152,6 +173,8 @@ void EngineApp::drawScene(void)
 	glBindTexture(GL_TEXTURE_2D, 0u);
 
 	GUI.renderGUI();
+
+	nvtxRangePop();
 }
 
 /**

@@ -161,8 +161,6 @@ int GLApp::Run(void)
 	/// at debug mode, this will log any error about opengl context.
 	CheckError();
 
-	EngineProfiler::logging("./logs/performance.txt");
-
 	return EXIT_SUCCESS;
 }
 
