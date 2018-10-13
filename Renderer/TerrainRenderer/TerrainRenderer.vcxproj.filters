@@ -163,9 +163,6 @@
     <ClCompile Include="EngineLogger.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
-    <ClCompile Include="EngineProfiler.cpp">
-      <Filter>Util\private</Filter>
-    </ClCompile>
     <ClCompile Include="GLFramebuffer.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
@@ -259,9 +256,6 @@
       <Filter>Util\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineLogger.hpp">
-      <Filter>Util\public</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineProfiler.hpp">
       <Filter>Util\public</Filter>
     </ClInclude>
     <ClInclude Include="EngineProperty.hpp">

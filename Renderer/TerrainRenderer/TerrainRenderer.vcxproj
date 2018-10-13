@@ -73,6 +73,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>../dependencies;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>../dependencies/Debug/x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>../dependencies;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
@@ -111,7 +114,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>nvToolsExt64_1.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -166,7 +169,6 @@
     <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="EngineHDREnvMap.cpp" />
     <ClCompile Include="EngineLogger.cpp" />
-    <ClCompile Include="EngineProfiler.cpp" />
     <ClCompile Include="EngineSkybox.cpp" />
     <ClCompile Include="EngineTerrain.cpp" />
     <ClCompile Include="EngineTimer.cpp" />
@@ -198,7 +200,6 @@
     <ClInclude Include="EngineGUI.hpp" />
     <ClInclude Include="EngineHDREnvMap.hpp" />
     <ClInclude Include="EngineLogger.hpp" />
-    <ClInclude Include="EngineProfiler.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
     <ClInclude Include="EngineSkybox.hpp" />
     <ClInclude Include="EngineTerrain.hpp" />

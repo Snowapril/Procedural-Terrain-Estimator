@@ -15,8 +15,8 @@
 
 using namespace ImGui;
 
-constexpr uint32_t BRUSH_WIDTH = 50;
-constexpr uint32_t BRUSH_HEIGHT = 50;
+constexpr uint32_t BRUSH_WIDTH = 80;
+constexpr uint32_t BRUSH_HEIGHT = 80;
 
 constexpr uint32_t HALF_BRUSH_WIDTH = BRUSH_WIDTH / 2;
 constexpr uint32_t HALF_BRUSH_HEIGHT = BRUSH_HEIGHT / 2;

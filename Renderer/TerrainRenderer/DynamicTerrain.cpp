@@ -12,8 +12,8 @@
 #include "EngineProperty.hpp"
 
 constexpr std::size_t	MAX_POOL_SIZE		 = 3000;
-constexpr float			MIN_PATCH_LENGTH	 = 4.0f;
-
+constexpr float			MIN_PATCH_LENGTH	 = 32.0f;
+constexpr float			DIVIDE_HUDDLE		 = 2.8f;
 DynamicTerrain::DynamicTerrain()
 	: width(0), height(0), rootPatch(nullptr), tailPatch(nullptr)
 {
@@ -269,7 +269,7 @@ bool DynamicTerrain::checkDivide(const TerrainPatch * node, glm::vec3 cameraPos)
 
 	cameraPos.y = 0.0f;
 
-	const float huddle = 2.7f * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
+	const float huddle = DIVIDE_HUDDLE * std::sqrt(std::pow(node->width * 0.5f, 2.0f) + std::pow(node->height * 0.5f, 2.0f));
 		
 	if (glm::length(cameraPos - node->originPos) > huddle)
 		return false;
