@@ -1,0 +1,5 @@
+<map id="GLApp::keyCallback" name="GLApp::keyCallback">
+<area shape="rect" id="node2" href="$class_engine_timer.html#ab87a28e54277be3cd85832e460842217" title="EngineTimer::isTimerPaused" alt="" coords="195,5,383,32"/>
+<area shape="rect" id="node3" href="$class_engine_timer.html#a1fa60a8a390616839d628e882496e6bd" title="this can be called when user want to start timer if timer is paused. " alt="" coords="225,56,353,83"/>
+<area shape="rect" id="node4" href="$class_engine_timer.html#a69ce688aa10894aab8136a8c659b0a4a" title="this can be called when user want to stop timer if timer is running. " alt="" coords="225,107,352,133"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="Util::clamp" name="Util::clamp">
+<area shape="rect" id="node2" href="$class_engine_camera.html#af812da924cc19bf2445a42922e9957f1" title="EngineCamera::initCamera" alt="" coords="160,5,337,32"/>
+<area shape="rect" id="node4" href="$class_engine_camera.html#a5c248f8c63065c65711a141ca43c0f40" title="EngineCamera::processMousePos" alt="" coords="137,56,360,83"/>
+<area shape="rect" id="node6" href="$class_engine_water.html#ad8a7e5b25d77a05b4ec1b29cb6169959" title="EngineWater::updateGUI" alt="" coords="165,107,332,133"/>
+<area shape="rect" id="node9" href="$class_post_processing.html#a251c1061f4c1c163ba098b5b77f1bff5" title="PostProcessing::updateGUI" alt="" coords="157,157,340,184"/>
+<area shape="rect" id="node10" href="$namespace_util.html#adb2e228709d75936ddafc9624f18d08f" title="Util::interpolate" alt="" coords="194,208,303,235"/>
+<area shape="rect" id="node3" href="$class_engine_camera.html#a260b12a1ab0c2a237229c26b23b765c2" title="EngineCamera::EngineCamera" alt="" coords="411,5,611,32"/>
+<area shape="rect" id="node5" href="$class_engine_app.html#a931ec68b2b5b37fb17baa6ac304876d0" title="EngineApp::mousePosCallback" alt="" coords="408,56,613,83"/>
+<area shape="rect" id="node7" href="$class_engine_app.html#a71644bf5f09dfabd820d4cd0bf4b96e3" title="EngineApp::updateGUI" alt="" coords="433,128,588,155"/>
+<area shape="rect" id="node8" href="$class_engine_app.html#ac867aedac8b7004278fc086dca37f31f" title="EngineApp::updateScene" alt="" coords="661,128,831,155"/>
+<area shape="rect" id="node11" href="$class_automator.html#a268583e6911d72570a0fc97dce5d89e8" title="Automator\&lt; glm::vec3\l \&gt;::getAutomatedValue" alt="" coords="433,201,589,242"/>
+</map>

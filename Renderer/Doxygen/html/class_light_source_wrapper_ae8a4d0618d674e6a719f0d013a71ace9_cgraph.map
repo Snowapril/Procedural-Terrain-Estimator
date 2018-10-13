@@ -1,0 +1,4 @@
+<map id="LightSourceWrapper::renderSun" name="LightSourceWrapper::renderSun">
+<area shape="rect" id="node2" href="$class_engine_camera.html#a4de71c6b29ef65c9660f36c1e5fff9a4" title="EngineCamera::sendVP" alt="" coords="193,5,355,32"/>
+<area shape="rect" id="node3" href="$class_g_l_mesh.html#a5b835cb71f93e005c4d9dc3f621fd25a" title="GLMesh::drawMesh" alt="" coords="205,56,343,83"/>
+</map>
