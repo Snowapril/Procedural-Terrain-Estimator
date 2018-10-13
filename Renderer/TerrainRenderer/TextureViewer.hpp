@@ -1,3 +1,13 @@
+/**
+* @file		TextureViewer.hpp
+* @author	Shinjihong
+* @date		21 September 2018
+* @version	1.0.0
+* @brief	OpenGL Texture Viewer
+* @details	this class is for debugging by viewing textures at run-time. 
+* @see		
+*/
+
 #ifndef TEXTURE_VIEWER_HPP
 #define TEXTURE_VIEWER_HPP
 

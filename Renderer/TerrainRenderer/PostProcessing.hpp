@@ -1,3 +1,12 @@
+/**
+* @file		PostProcessing.hpp
+* @author	Shinjihong
+* @date		06 October 2018
+* @version	1.0.0
+* @brief	OpenGL Post-processing
+* @details	for post-processing screen-texture. at now, provide god-ray effect, gamma correction, motion-blur effect
+*/
+
 #ifndef POST_PROCESSING_HPP
 #define POST_PROCESSING_HPP
 

@@ -1,3 +1,14 @@
+/**
+* @file		EngineCamera.hpp
+* @author	Shinjihong
+* @date		07 October 2018
+* @version	1.0.0
+* @brief	OpenGL Camera class
+* @details	Camera class implemented with euler's degrees (which have gimbal-lock issue). if i have time to spare, this camera class will be replaced to quaternion-based camera class. 
+* @todo		Replace to Quaternion-based camera.
+* @see		
+*/
+
 #ifndef ENGINE_CAMERA_HPP
 #define ENGINE_CAMERA_HPP
 

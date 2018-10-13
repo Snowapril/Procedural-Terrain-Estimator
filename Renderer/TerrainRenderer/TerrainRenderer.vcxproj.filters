@@ -175,9 +175,6 @@
     <ClCompile Include="EngineTerrain.cpp">
       <Filter>Terrain\private</Filter>
     </ClCompile>
-    <ClCompile Include="Util.cpp">
-      <Filter>Util\public</Filter>
-    </ClCompile>
     <ClCompile Include="GLTextureWrapper.cpp">
       <Filter>Assets\private</Filter>
     </ClCompile>
@@ -198,6 +195,9 @@
     </ClCompile>
     <ClCompile Include="..\dependencies\imgui\imgui.cpp">
       <Filter>GUI\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Util\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +285,6 @@
     <ClInclude Include="ViewerShaderCode.hpp">
       <Filter>GUI\shader</Filter>
     </ClInclude>
-    <ClInclude Include="Util.hpp">
-      <Filter>Util\private</Filter>
-    </ClInclude>
     <ClInclude Include="GLTextureWrapper.hpp">
       <Filter>Assets\public</Filter>
     </ClInclude>
@@ -308,6 +305,9 @@
     </ClInclude>
     <ClInclude Include="PostprocessShaderCode.hpp">
       <Filter>Util\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.hpp">
+      <Filter>Util\public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,3 +1,12 @@
+/**
+* @file		LightSourceWrapper.hpp
+* @author	Shinjihong
+* @date		01 October 2018
+* @version	1.0.0
+* @brief	Light sources(direction light only yet)
+* @details	manage light sources information like position, color, etc... also provide features for rendering light sources.
+*/
+
 #ifndef LIGHT_SOURCE_WRAPPER_HPP
 #define LIGHT_SOURCE_WRAPPER_HPP
 

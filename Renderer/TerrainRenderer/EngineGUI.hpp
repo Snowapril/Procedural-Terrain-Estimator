@@ -1,3 +1,13 @@
+/**
+* @file		EngineGUI.hpp
+* @author	Shinjihong
+* @date		04 September 2018
+* @version	1.0.0
+* @brief	OpenGL GUI Wrapper
+* @details	OpenGL Graphics User Interface implemented with imgui open-source api.
+* @see		
+*/
+
 #ifndef ENGINE_GUI_HPP
 #define ENGINE_GUI_HPP
 

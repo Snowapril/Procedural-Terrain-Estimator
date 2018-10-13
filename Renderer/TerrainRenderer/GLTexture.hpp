@@ -1,3 +1,13 @@
+/**
+* @file		GLTexture.hpp
+* @author	Shinjihong
+* @date		31 September 2018
+* @version	1.0.0
+* @brief	OpenGL Texture Wrapper
+* @details	Wrapping OpenGL Texture with texture ID and it's own active index. this will be managed by AssetManager class.
+* @see		AssetManager
+*/
+
 #ifndef GL_TEXTURE_HPP
 #define GL_TEXTURE_HPP
 

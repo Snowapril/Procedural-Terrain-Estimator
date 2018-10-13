@@ -1,3 +1,13 @@
+/**
+* @file		GLFramebuffer.hpp
+* @author	Shinjihong
+* @date		20 September 2018
+* @version	1.0.0
+* @brief	OpenGL Framebuffer Object Wrapper class.
+* @details	manage lify cycle of FBO and it's components(RBO, color attachment, depth attachment). provide method for bind and unbind framebuffer.
+			and also provide getter method for color attachment and depth attachment.
+*/
+
 #ifndef GL_FRAMEBUFFER_HPP
 #define GL_FRAMEBUFFER_HPP
 

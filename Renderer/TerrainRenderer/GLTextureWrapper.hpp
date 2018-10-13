@@ -1,3 +1,13 @@
+/**
+* @file		GLTextureWrapper.hpp
+* @author	Shinjihong
+* @date		01 October 2018
+* @version	1.0.0
+* @brief	OpenGL Texture Wrapper class (multi-texture  version)
+* @details	OpenGL Texture Wrapper class with multi-texture (atalas features) enabled. But, not implemented yet.
+* @see		
+*/
+
 #ifndef GL_TEXTURE_WRAPPER_HPP
 #define GL_TEXTURE_WRAPPER_HPP
 
