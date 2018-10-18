@@ -1,3 +1,14 @@
+/**
+* @file		GLGeometry.hpp
+* @author	Shinjihong
+* @date		31 September 2018
+* @version	1.0.0
+* @brief	OpenGL Geometry Object Wrapper Class
+* @details	Wrapping VAO,VBO,IBO to Geometry. by set geometry information(vertex, indices ...) by calling setGeometry method, 
+			and render them with drawElements method.
+* @see		
+*/
+
 #ifndef GL_GEOMETRY_HPP
 #define GL_GEOMETRY_HPP
 

@@ -1,3 +1,12 @@
+/**
+* @file		Godyrays.hpp
+* @author	Shinjihong
+* @date		04 October 2018
+* @version	1.0.0
+* @brief	OpenGL Volumentric Light Scattering
+* @details	implementing volumentric light scaterring with screen-space method(post-processing)
+*/
+
 #ifndef GOD_RAYS_HPP
 #define GOD_RAYS_HPP
 

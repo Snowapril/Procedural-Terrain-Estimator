@@ -1,0 +1,5 @@
+<map id="EngineTimer::getTotalTime" name="EngineTimer::getTotalTime">
+<area shape="rect" id="node2" href="$class_engine_app.html#a72af44d8cb81d0be138c4280dfeb0b2b" title="EngineApp::drawScene" alt="" coords="246,5,403,32"/>
+<area shape="rect" id="node3" href="$class_g_l_app.html#abd383afcbfa5ed2df72276254dd18ff3" title="GLApp::calculateFrameStats" alt="" coords="229,56,420,83"/>
+<area shape="rect" id="node4" href="$class_g_l_app.html#a4d58775934e1308c088a58625b7e2611" title="this run main loop of terrain renderer and finally return exit code. " alt="" coords="468,56,561,83"/>
+</map>

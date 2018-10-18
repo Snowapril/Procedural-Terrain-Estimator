@@ -1,0 +1,9 @@
+<map id="GLApp::Run" name="GLApp::Run">
+<area shape="rect" id="node2" href="$class_engine_timer.html#a1c74d45c761039a06c914f8f6e18812c" title="when program is initialized, before entering main loop this method must be called once..." alt="" coords="177,5,307,32"/>
+<area shape="rect" id="node3" href="$class_engine_timer.html#ac208487c3bbc31f0fe4210fcc45416d9" title="this must be called every tick of loop. " alt="" coords="181,56,303,83"/>
+<area shape="rect" id="node4" href="$class_g_l_app.html#abd383afcbfa5ed2df72276254dd18ff3" title="GLApp::calculateFrameStats" alt="" coords="147,107,337,133"/>
+<area shape="rect" id="node6" href="$class_g_l_app.html#a85f4f5096d3fa176e53ff06d822e1aaa" title="GLApp::updateScene" alt="" coords="169,157,315,184"/>
+<area shape="rect" id="node7" href="$class_engine_timer.html#aacb9c419c683003f3f22fa67f631cdf5" title="EngineTimer::getDeltaTime" alt="" coords="153,208,331,235"/>
+<area shape="rect" id="node8" href="$class_g_l_app.html#ab6ffbfbb54a126b883469d982a59eb5d" title="GLApp::drawScene" alt="" coords="175,259,309,285"/>
+<area shape="rect" id="node5" href="$class_engine_timer.html#a5023bddd2edc8874bc60dab6aa9df599" title="EngineTimer::getTotalTime" alt="" coords="385,107,561,133"/>
+</map>

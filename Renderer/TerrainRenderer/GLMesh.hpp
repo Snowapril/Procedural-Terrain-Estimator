@@ -1,3 +1,13 @@
+/**
+* @file		GLMesh.hpp
+* @author	Shinjihong
+* @date		03 September 2018
+* @version	1.0.0
+* @brief	OpenGL Geometry Wrapper (life cycle manage)
+* @details	GLMesh class has shared pointer of GLGeometry class. this class manage life cycle of GLGeometry. and also provide method for easy setup.
+* @see		GLGeometry
+*/
+
 #ifndef GL_MESH_HPP
 #define GL_MESH_HPP
 

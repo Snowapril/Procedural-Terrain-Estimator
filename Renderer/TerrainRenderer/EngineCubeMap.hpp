@@ -1,3 +1,14 @@
+/**
+* @file		EngineCubeMap.hpp
+* @author	Shinjihong
+* @date		28 September 2018
+* @version	1.0.0
+* @brief	OpenGL Cube map parent class.
+* @details	this class is for rendering Cube map (skybox or HDR environment map(is also skybox)). provide method for initialize skybox with directory and extension parameter.
+			provide update and render method like other SceneObject classes.
+* @see
+*/
+
 #ifndef ENGINE_CUBEMAP_HPP
 #define ENGINE_CUBEMAP_HPP
 

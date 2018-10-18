@@ -1,0 +1,5 @@
+<map id="EngineCamera::getViewPos" name="EngineCamera::getViewPos">
+<area shape="rect" id="node2" href="$class_engine_app.html#ac867aedac8b7004278fc086dca37f31f" title="EngineApp::updateScene" alt="" coords="237,5,407,32"/>
+<area shape="rect" id="node3" href="$class_engine_water.html#ad07d423bc208870fc7ece94f7f6ca9bf" title="EngineWater::drawWater" alt="" coords="239,56,405,83"/>
+<area shape="rect" id="node4" href="$class_engine_app.html#a72af44d8cb81d0be138c4280dfeb0b2b" title="EngineApp::drawScene" alt="" coords="455,56,612,83"/>
+</map>

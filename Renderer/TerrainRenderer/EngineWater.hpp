@@ -1,3 +1,13 @@
+/**
+* @file		EngineWater.hpp
+* @author	Shinjihong
+* @date		20 September 2018
+* @version	1.0.0
+* @brief	OpenGL Water Rendering
+* @details	Provide several properties and method for rendering water. at first, we need get reflection tetxure by binding reflection FBO and second, get refraction texture
+			by binding refraction FBO. finally we can render perfect water by calling drawWater method.
+*/
+
 #ifndef ENGINE_WATER_HPP
 #define ENGINE_WATER_HPP
 

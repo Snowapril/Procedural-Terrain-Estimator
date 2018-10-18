@@ -1,3 +1,13 @@
+/**
+* @file		EventHandler.hpp
+* @author	Shinjihong
+* @date		01 October 2018
+* @version	1.0.0
+* @brief	OpenGL Callback event handler.
+* @details	many Scene objects which need to process callback inputs. 
+* @see		
+*/
+
 #ifndef EVENT_HANDLER_HPP
 #define EVENT_HANDLER_HPP
 

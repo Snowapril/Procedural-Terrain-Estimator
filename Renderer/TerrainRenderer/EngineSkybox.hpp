@@ -1,3 +1,13 @@
+/**
+* @file		EngineSkybox.hpp
+* @author	Shinjihong
+* @date		28 September 2018
+* @version	1.0.0
+* @brief	OpenGL Skybox Wrapper
+* @details	Wrapping Skybox textures and provide update and render method.
+* @see		EngineCubeMap
+*/
+
 #ifndef ENGINE_SKYBOX_HPP
 #define ENGINE_SKYBOX_HPP
 

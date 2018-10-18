@@ -1,3 +1,13 @@
+/**
+* @file		Automator.hpp
+* @author	Shinjihong
+* @date		02 October 2018
+* @version	1.0.0
+* @brief	return value which is linearly interpolate between elements in vector.
+* @details	traverse vector and return value interpolated between current vector element and next vector element.
+* @see
+*/
+
 #ifndef AUTOMATOR_HPP
 #define AUTOMATOR_HPP
 

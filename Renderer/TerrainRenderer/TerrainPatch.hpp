@@ -1,3 +1,13 @@
+/**
+* @file		TerrainPatch.hpp
+* @author	Shinjihong
+* @date		03 September 2018
+* @version	1.0.0
+* @brief	Quad-tree node class.
+* @details	OpenGL Dynamic Terrain Quad-tree node class.
+* @see		DynamicTerrain
+*/
+
 #ifndef TERRAIN_PATCH_HPP
 #define TERRAIN_PATCH_HPP
 

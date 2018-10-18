@@ -1,3 +1,12 @@
+/**
+* @file		Util.hpp
+* @author	Shinjihong
+* @date		29 September 2018
+* @version	1.0.0
+* @brief	OpenGL Util functions header file 
+* @details	at now, provide clamp, fract, interpolate functions.
+*/
+
 #ifndef UTIL_HPP
 #define UTIL_HPP
 

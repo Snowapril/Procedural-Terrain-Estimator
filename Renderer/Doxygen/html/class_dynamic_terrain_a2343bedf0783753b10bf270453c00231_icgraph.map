@@ -1,0 +1,6 @@
+<map id="DynamicTerrain::findPatch" name="DynamicTerrain::findPatch">
+<area shape="rect" id="node2" href="$class_dynamic_terrain.html#ad697d5c26416d25758b2a5db76caffa6" title="DynamicTerrain::calculate\lTessLevel" alt="" coords="228,5,400,47"/>
+<area shape="rect" id="node3" href="$class_dynamic_terrain.html#aaf2a5a4e16de077b71c30122135b41a7" title="DynamicTerrain::register\lToBufferObject" alt="" coords="448,5,611,47"/>
+<area shape="rect" id="node4" href="$class_dynamic_terrain.html#a2c69f45abeac9d4f2a1e6afbaa7c0a45" title="DynamicTerrain::traverse\lQuadtree" alt="" coords="659,5,824,47"/>
+<area shape="rect" id="node5" href="$class_dynamic_terrain.html#aade5d888bdd4a4e78ab80c3c22551c7e" title="DynamicTerrain::updateTerrain" alt="" coords="872,13,1071,39"/>
+</map>

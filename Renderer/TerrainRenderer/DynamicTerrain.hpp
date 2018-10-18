@@ -1,3 +1,13 @@
+/**
+* @file		DynamicTerrain.hpp
+* @author	Shinjihong
+* @date		13 September 2018
+* @version	1.0.0
+* @brief	Dynamic Terrain Tile ( non-uniform patch primitive )
+* @details	Compose Dynamic Terrain with quad-tree based approach. if camera position is changed, quad-tree is re-constructed with it's position.
+* @see		EngineTerrain
+*/
+
 #ifndef DYNAMIC_TERRAIN_HPP
 #define DYNAMIC_TERRAIN_HPP
 
