@@ -10,10 +10,17 @@
 #include "Util.hpp"
 #include <imgui/imgui.h>
 
+#ifdef _DEBUG
 #include <NvToolsExt/nvToolsExt.h>
+#define NVTX_PUSH(label) nvtxRangePushA((label))
+#define NVTX_POP() nvtxRangePop()
+#else
+#define NVTX_PUSH(label)
+#define NVTX_POP() 
+#endif
 
 EngineApp::EngineApp()
-	: GLApp(), debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
+	: debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
 {
 }
 
@@ -27,6 +34,8 @@ EngineApp::~EngineApp()
 */
 void EngineApp::updateScene(float dt)
 {
+	NVTX_PUSH("Update");
+
 	if (enableVsync)
 		glfwSwapInterval(1);
 	else
@@ -34,19 +43,11 @@ void EngineApp::updateScene(float dt)
 
 	processKeyInput(dt);
 	camera.onUpdate(dt);
-
 	camera.updateProject(getAspectRatio());
 
-	const glm::vec3 cameraPos = camera.getViewPos();
-
-	terrain.updateScene(dt, cameraPos);
-	water.updateWater(dt);
-	
-	skybox->updateScene(dt);
-
-	postprocess.updateScene(dt);
-	
 	updateGUI(dt);
+
+	NVTX_POP();
 }
 
 void EngineApp::updateGUI(float dt)
@@ -73,10 +74,8 @@ void EngineApp::updateGUI(float dt)
 * @ brief		render opengl world!
 * @ details		render opengl world using shaders, other objects and etc ...
 */
-void EngineApp::drawScene(void) 
+void EngineApp::drawScene(void)
 {
-	nvtxRangePushA("Frame");
-
 	const float totalTime = timer.getTotalTime();
 	const float waterHeight = water.getWaterHeight();
 	const float ratio = getAspectRatio();
@@ -84,80 +83,90 @@ void EngineApp::drawScene(void)
 	/// draw call here.
 	glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
 
-	nvtxRangePushA("Gen-Water-Textures");
-	nvtxRangePushA("Gen-Reflection");
+	const glm::vec3 cameraPos = camera.getViewPos();
+	const float dt = timer.getDeltaTime();
+
+	NVTX_PUSH("Frame");
+	terrain.updateScene(dt, cameraPos);
+	skybox->updateScene(dt);
+
+	NVTX_PUSH("Gen-Water-Textures");
+	NVTX_PUSH("Gen-Reflection");
 	water.bindReflectionFramebuffer(clientWidth, clientHeight);
-		glEnable(GL_CLIP_DISTANCE0);
-		glDisable(GL_CULL_FACE);
+	glEnable(GL_CLIP_DISTANCE0);
+	glDisable(GL_CULL_FACE);
 
-		camera.flipVertically(waterHeight);
-		
-		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
-		skybox->drawScene(camera);
-		
-		camera.flipVertically(waterHeight);
-		nvtxRangePop();
+	camera.flipVertically(waterHeight);
 
-		nvtxRangePushA("Gen-Refraction");
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, 1.0f, 0.0f, -waterHeight + 2.0f));
+	skybox->drawScene(camera);
+
+	camera.flipVertically(waterHeight);
+	NVTX_POP();
+
+	NVTX_PUSH("Gen-Refraction");
 	water.bindRefractionFramebuffer(clientWidth, clientHeight);
-		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
-		//skybox->drawScene(camera);
-	
-		water.unbindCurrentFramebuffer(clientWidth, clientHeight);
-		nvtxRangePop();
-	nvtxRangePop();
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, waterHeight));
+	//skybox->drawScene(camera);
+
+	water.unbindCurrentFramebuffer(clientWidth, clientHeight);
+	NVTX_POP();
+	NVTX_POP();
 
 	glDisable(GL_CLIP_DISTANCE0);
 	glEnable(GL_CULL_FACE);
 
 	// depth pass here.
 
-	nvtxRangePushA("Gen-Shadow-Map");
+	NVTX_PUSH("Gen-Shadow-Map");
 	const glm::vec3& scale = terrain.getTerrainScale();
 	lightWrapper.bindDepthPassBuffer(scale.x, scale.z);
 
-		terrain.drawScene_DepthPass(camera, lightWrapper, false, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+	terrain.drawScene_DepthPass(camera, lightWrapper, false, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
 
-		lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
-		nvtxRangePop();
+	lightWrapper.unbindDepthPassBuffer(clientWidth, clientHeight);
+	NVTX_POP();
 	// depth pass end
 
-	nvtxRangePushA("Light-Occlude");
+	NVTX_PUSH("Light-Occlude");
 	godray.bindGodrayBuffer(clientWidth, clientHeight);
-		lightWrapper.renderSun(camera);
-		terrain.drawScene_DepthPass(camera, lightWrapper, true, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-		godray.unbindGodrayBuffer(clientWidth, clientHeight);
-		nvtxRangePop();
+	lightWrapper.renderSun(camera);
+	terrain.drawScene_DepthPass(camera, lightWrapper, true, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+	godray.unbindGodrayBuffer(clientWidth, clientHeight);
+	NVTX_POP();
 
-	nvtxRangePushA("Main-Render");
+	NVTX_PUSH("Main-Render");
+	water.updateWater(dt);
 	postprocess.bindPostprocessing(clientWidth, clientHeight);
 
-		//glDepthMask(GL_FALSE);
-		//glBeginQuery(GL_ANY_SAMPLES_PASSED, testQuery);
-		nvtxRangePushA("Terrain-Render");
-		terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
-		nvtxRangePop();
-		//glEndQuery(GL_ANY_SAMPLES_PASSED);
-		//glDepthMask(GL_TRUE);
+	//glDepthMask(GL_FALSE);
+	//glBeginQuery(GL_ANY_SAMPLES_PASSED, testQuery);
+	NVTX_PUSH("Terrain-Render");
+	terrain.drawScene(camera, lightWrapper, glm::vec4(0.0f, -1.0f, 0.0f, 15000.0f));
+	NVTX_POP();
+	//glEndQuery(GL_ANY_SAMPLES_PASSED);
+	//glDepthMask(GL_TRUE);
 
-		nvtxRangePushA("Skybox-Render");
-		skybox->drawScene(camera);
-		nvtxRangePop();
-		nvtxRangePushA("Water-Render");
-		water.drawWater(camera, lightWrapper);
-		nvtxRangePop();
-		nvtxRangePushA("Sun-Render");
-		lightWrapper.renderSun(camera);
-		nvtxRangePop();
+	NVTX_PUSH("Skybox-Render");
+	skybox->drawScene(camera);
+	NVTX_POP();
+	NVTX_PUSH("Water-Render");
+	water.drawWater(camera, lightWrapper);
+	NVTX_POP();
+	NVTX_PUSH("Sun-Render");
+	lightWrapper.renderSun(camera);
+	NVTX_POP();
 
-		postprocess.unbindPostprocessing(clientWidth, clientHeight);
-		nvtxRangePop();
-		
-	
-	nvtxRangePushA("Post-processing");
+	postprocess.unbindPostprocessing(clientWidth, clientHeight);
+	NVTX_POP();
+
+
+	NVTX_PUSH("Post-processing");
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	postprocess.updateScene(dt);
 	postprocess.drawScene(camera, lightWrapper, godray.getColorTexture());
-	nvtxRangePop();
+	NVTX_POP();
 
 	if (debuggerMode)
 	{
@@ -172,9 +181,11 @@ void EngineApp::drawScene(void)
 	glBindVertexArray(0u);
 	glBindTexture(GL_TEXTURE_2D, 0u);
 
+	NVTX_PUSH("GUI");
 	GUI.renderGUI();
+	NVTX_POP();
 
-	nvtxRangePop();
+	NVTX_POP();
 }
 
 /**

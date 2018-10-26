@@ -12,7 +12,7 @@
 #include "EngineProperty.hpp"
 
 constexpr std::size_t	MAX_POOL_SIZE		 = 3000;
-constexpr float			MIN_PATCH_LENGTH	 = 32.0f;
+constexpr float			MIN_PATCH_LENGTH	 = 16.0f;
 constexpr float			DIVIDE_HUDDLE		 = 2.8f;
 DynamicTerrain::DynamicTerrain()
 	: width(0), height(0), rootPatch(nullptr), tailPatch(nullptr)

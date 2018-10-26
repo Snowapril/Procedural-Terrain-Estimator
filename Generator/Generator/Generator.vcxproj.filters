@@ -54,6 +54,9 @@
     <ClCompile Include="NoiseGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BrushBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineProperty.hpp">
@@ -68,9 +71,6 @@
     <ClInclude Include="GLDebugger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NoiseGenerator.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Util.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NoiseGUI.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushBoard.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

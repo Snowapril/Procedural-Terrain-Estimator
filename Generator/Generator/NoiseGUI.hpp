@@ -1,11 +1,15 @@
 #ifndef NOISE_GUI_HPP
 #define NOISE_GUI_HPP
 
+#include <memory>
+class GLShader;
+
 struct GLFWwindow;
 
 class NoiseGUI
 {
 protected:
+	static bool isInstanciated;
 	bool isGUIOpen;
 	bool isSaveButtonPushed;
 
@@ -29,12 +33,15 @@ protected:
 		float frequency;
 	} fbMConfigure;
 
-protected:
+public:
 	void updateGUI(float height);
-	void rengerGUI(void) const;
+	void sendProperties(std::shared_ptr<GLShader> shader);
+	void renderGUI(void) const;
 public:
 	NoiseGUI();
-	virtual ~NoiseGUI();
+	NoiseGUI(const NoiseGUI& other) = delete;
+	NoiseGUI& operator=(const NoiseGUI& other) = delete;
+	~NoiseGUI();
 public:
 	bool initGUI(GLFWwindow* window);
 };

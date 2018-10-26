@@ -94,6 +94,8 @@ bool GLApp::initGLConfigure(void)
 		glFrontFace(GL_CCW);
 	}
 
+	glfwSwapInterval(0);
+
 	return true;
 }
 

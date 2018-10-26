@@ -140,6 +140,7 @@
     <ClCompile Include="..\dependencies\imgui\imgui.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="BrushBoard.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
@@ -149,12 +150,12 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BrushBoard.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
     <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
     <ClInclude Include="GLShader.hpp" />
-    <ClInclude Include="NoiseGenerator.hpp" />
     <ClInclude Include="NoiseGUI.hpp" />
     <ClInclude Include="Util.hpp" />
   </ItemGroup>

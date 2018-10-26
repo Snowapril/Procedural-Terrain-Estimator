@@ -3,19 +3,26 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw_gl3.h>
 #include <imgui/imgui_internal.h>
+#include "GLShader.hpp"
 
 using namespace ImGui;
+
+bool NoiseGUI::isInstanciated = false;
 
 NoiseGUI::NoiseGUI()
 	: isGUIOpen(true), isSaveButtonPushed(false)
 {
+	assert(!isInstanciated);
+	isInstanciated = true;
+
 	voronoiConfigure = { 1.0f, 2.0f, 0.0f, 0.0f, false, false };
-	simplexConfigure = { 0.0f, 2.0f };
+	simplexConfigure = { 1.0f, 2.0f };
 	fbMConfigure	 = { 5, 0.0f, 2.0f };
 }
 
 NoiseGUI::~NoiseGUI()
 {
+	isInstanciated = false;
 	ImGui_ImplGlfwGL3_Shutdown();
 }
 
@@ -37,7 +44,7 @@ void NoiseGUI::updateGUI(float height)
 	if (ImGui::TreeNode("Simplex Noise"))
 	{
 		ImGui::SliderFloat("Blend", &simplexConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &simplexConfigure.frequency, 1.0f, 30.0f);
+		ImGui::SliderFloat("Frequency", &simplexConfigure.frequency, 0.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
@@ -45,7 +52,7 @@ void NoiseGUI::updateGUI(float height)
 	if (ImGui::TreeNode("Voronoi Noise"))
 	{
 		ImGui::SliderFloat("Blend", &voronoiConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &voronoiConfigure.frequency, 1.0f, 30.0f);
+		ImGui::SliderFloat("Frequency", &voronoiConfigure.frequency, 0.0f, 30.0f);
 		ImGui::SliderFloat("Function", &voronoiConfigure.function, 0.5f, 3.5f);
 		ImGui::SliderFloat("Distance Type", &voronoiConfigure.distance_type, 0.5f, 3.5f);
 		ImGui::Checkbox("Multiply", &voronoiConfigure.multiply_by_F1);
@@ -58,7 +65,7 @@ void NoiseGUI::updateGUI(float height)
 	{
 		ImGui::SliderInt("Num Octaves", &fbMConfigure.numOctaves, 1, 5);
 		ImGui::SliderFloat("Blend", &fbMConfigure.blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &fbMConfigure.frequency, 1.0f, 30.0f);
+		ImGui::SliderFloat("Frequency", &fbMConfigure.frequency, 0.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
@@ -97,7 +104,26 @@ void NoiseGUI::updateGUI(float height)
 	ImGui::End();
 }
 
-void NoiseGUI::rengerGUI(void) const
+void NoiseGUI::renderGUI(void) const
 {
 	ImGui::Render();
+}
+
+void NoiseGUI::sendProperties(std::shared_ptr<GLShader> shader)
+{
+	shader->useProgram();
+
+	shader->sendUniform("simplex.blend", simplexConfigure.blend);
+	shader->sendUniform("simplex.frequency", simplexConfigure.frequency);
+
+	shader->sendUniform("voronoi.blend", voronoiConfigure.blend);
+	shader->sendUniform("voronoi.frequency", voronoiConfigure.frequency);
+	shader->sendUniform("voronoi.function", voronoiConfigure.function);
+	shader->sendUniform("voronoi.distance_type", voronoiConfigure.distance_type);
+	shader->sendUniform("voronoi.multiply_by_F1", voronoiConfigure.multiply_by_F1);
+	shader->sendUniform("voronoi.inverse", voronoiConfigure.inverse);
+
+	shader->sendUniform("fbM.num_octaves", fbMConfigure.numOctaves);
+	shader->sendUniform("fbM.blend", fbMConfigure.blend);
+	shader->sendUniform("fbM.frequency", fbMConfigure.frequency);
 }

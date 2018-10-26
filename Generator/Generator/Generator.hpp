@@ -2,29 +2,28 @@
 #define GENERATOR_HPP
 
 #include "GLApp.hpp"
-#include "NoiseGUI.hpp"
 #include <glm/vec2.hpp>
 #include <vector>
 #include <stdint.h>
+#include <array>
 
+class NoiseGUI;
 class GLShader;
+class BrushBoard;
 
-class Generator : public GLApp, NoiseGUI
+class Generator : public GLApp
 {
 private:
-	bool isScreenClicked;
-	
 	uint32_t VAO;
 	uint32_t VBO;
 	uint32_t framebuffer;
 	uint32_t framebufferTexture;
-	uint32_t brushTexture;
-
-	std::vector<float> brushFilter;
-	std::vector<float> brushBoard;
-
-	std::unique_ptr<GLShader> generatorShader;
+	
+	std::shared_ptr<GLShader> generatorShader;
 	std::unique_ptr<GLShader> screenShader;
+	std::unique_ptr<NoiseGUI> noiseGui;
+
+	std::array<std::shared_ptr<BrushBoard>, 3> paintBoards;
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
@@ -34,9 +33,6 @@ protected:
 	bool initShaders(void);
 
 	bool saveCurrentTexture(const std::string& path, int width, int height) const;
-
-	void updateBrushTexture(void);
-	void applyBrush(double xoffset, double yoffset);
 public:
 	Generator();
 	virtual ~Generator();

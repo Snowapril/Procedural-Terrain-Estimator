@@ -5,9 +5,9 @@
 in vec2 noisePos;
 out vec4 fragColors;
 
-uniform float systemTime;
-
-uniform sampler2D brushBoard;
+uniform sampler2D voronoiBoard;
+uniform sampler2D simplexBoard;
+uniform sampler2D fbMBoard;
 
 struct Voronoi {
 	float frequency;
@@ -50,7 +50,7 @@ float voronoiNoise( vec2 x ){
 			vec2 g = vec2(i,j);
 			vec2 o = hash( n + g );
 
-			o = 0.5 + 0.41*sin( systemTime + 6.2831*o );	
+			o = 0.5 + 0.41*sin( 6.2831*o );	
 			vec2 r = g - f + o;
 
 		    float d = 	voronoi.distance_type < 1.0 ? dot(r,r)  :				// euclidean^2
@@ -137,15 +137,18 @@ vec2 calculateTexCoords(vec2 pos)
 	return pos * 0.5 + 0.5;
 }
 
+const float EPSILON = 1e-8;
+
 void main(void)
 {
-	float brushValue = texture(brushBoard, calculateTexCoords(noisePos)).r;
+	//float brushValue = texture(brushBoard, calculateTexCoords(noisePos)).r;
 
     float voronoiValue = voronoiNoise(noisePos * vec2(voronoi.frequency));
 	float simplexValue = snoise(noisePos * vec2(simplex.frequency));
 	float fbMvalue = fbm(noisePos * vec2(fbM.frequency));
-
-	float combinedNoise = voronoiValue * voronoi.blend * brushValue + simplexValue * simplex.blend + fbMvalue * fbM.blend;
+	
+	float blendSum = fbM.blend + simplex.blend + voronoi.blend + EPSILON;
+	float combinedNoise = (voronoiValue * voronoi.blend + simplexValue * simplex.blend + fbMvalue * fbM.blend) / blendSum;
 
     fragColors = vec4(vec3(combinedNoise) , 1.0);
 }

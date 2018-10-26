@@ -25,7 +25,7 @@ enum CameraKey
 	CAMERA_DOWN		 = 0x08,
 	CAMERA_LEFT_BTN  = 0x10,
 	CAMERA_RIGHT_BTN = 0x20,
-	CAMERA_AUTO  = 0x40,
+	CAMERA_AUTO		 = 0x40,
 };
 
 class GLShader;
