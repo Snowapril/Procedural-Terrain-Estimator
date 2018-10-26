@@ -6,6 +6,7 @@
 #include <vector>
 #include <functional>
 #include <deque>
+#include "EventHandler.hpp"
 
 enum class BrushMode : uint32_t {
 	PLUS  = 0,
@@ -15,7 +16,7 @@ enum class BrushMode : uint32_t {
 	NONE  = 4,
 };
 
-class BrushBoard
+class BrushBoard : public EventHandler
 {
 private:
 	bool isScreenClicked;
@@ -52,9 +53,10 @@ private:
 public:
 	bool initBrushBoard(uint32_t width, uint32_t height);
 
-	void processCursorPos(double xpos, double ypos);
-	void processWheelOffset(double yoffset);
-	void processMouseBtn(int button, int action);
+	void processCursorPos(double xpos, double ypos) override;
+	void processWheelOffset(double yoffset) override;
+	void processMouseBtn(int button, int action) override;
+	void processToggleKey(int key, int scancode, int action) override;
 
 	void updateBrushTexture(uint32_t cycle);
 

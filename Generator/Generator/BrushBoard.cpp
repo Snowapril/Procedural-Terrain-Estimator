@@ -120,6 +120,10 @@ void BrushBoard::processMouseBtn(int button, int action)
 	}
 }
 
+void BrushBoard::processToggleKey(int key, int scancode, int action)
+{
+}
+
 void BrushBoard::setPaintMode(BrushMode mode)
 {
 	this->paintMode = mode;

@@ -6,22 +6,25 @@
 #include <vector>
 #include <stdint.h>
 #include <array>
+#include "GLMesh.hpp"
 
+class EventHandler;
 class NoiseGUI;
 class GLShader;
 class BrushBoard;
+class GLFramebuffer;
 
 class Generator : public GLApp
 {
 private:
-	uint32_t VAO;
-	uint32_t VBO;
-	uint32_t framebuffer;
-	uint32_t framebufferTexture;
+	GLMesh quadMesh;
+	std::unique_ptr<GLFramebuffer> framebuffer;
 	
 	std::shared_ptr<GLShader> generatorShader;
 	std::unique_ptr<GLShader> screenShader;
 	std::unique_ptr<NoiseGUI> noiseGui;
+
+	std::vector<EventHandler*> callbackHandler;
 
 	std::array<std::shared_ptr<BrushBoard>, 3> paintBoards;
 protected:

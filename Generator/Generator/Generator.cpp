@@ -8,10 +8,8 @@
 #include <iostream>
 #include "BrushBoard.hpp"
 #include "NoiseGUI.hpp"
-
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include <stb/stb_image_write.h>
-
+#include "EventHandler.hpp"
+#include "GLFramebuffer.hpp"
 
 Generator::Generator()
 {
@@ -19,15 +17,11 @@ Generator::Generator()
 
 Generator::~Generator()
 {
-	glDeleteBuffers(1, &VBO);
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteTextures(1, &framebufferTexture);
-	glDeleteFramebuffers(1, &framebuffer);
 }
 
 void Generator::updateScene(void)
 {
-	noiseGui->updateGUI(clientHeight);
+	noiseGui->updateGUI(static_cast<float>(clientHeight), framebuffer->getColorTexture());
 
 	noiseGui->sendProperties(generatorShader);
 
@@ -39,41 +33,25 @@ void Generator::updateScene(void)
 
 void Generator::drawScene(void) const
 {
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
-	glViewport(0, 0, 2048, 2048);
+	framebuffer->bindFramebuffer(0, 0, 2048, 2048);
 
 	generatorShader->useProgram();
-	for (size_t i = 0; i < 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, paintBoards[i]->getBrushTexture());
 	}
 
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	quadMesh.drawMesh(GL_TRIANGLE_STRIP);
+		
+	framebuffer->unbindFramebuffer(400, 0, clientWidth - 400, clientHeight);
 
-	//if (isSaveButtonPushed)
-	//	saveCurrentTexture("../resources/noiseMap.png", 2048, 2048);
-	
-	glBindVertexArray(0);
-
-
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(Color::Black[0], Color::Black[1], Color::Black[2], Color::Black[3]);
-	glViewport(400, 0, clientWidth - 400, clientHeight);
 	screenShader->useProgram();
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	glBindVertexArray(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_2D, framebuffer->getColorTexture());
+	quadMesh.drawMesh(GL_TRIANGLE_STRIP);
 
 	glViewport(0, 0, 400, clientHeight);
-	
 	noiseGui->renderGUI();
 }
 
@@ -95,7 +73,7 @@ bool Generator::initShaders(void)
 			"../resources/shader/offscreen_fs.glsl"
 		);
 	}
-	catch (std::exception e)
+	catch (const std::exception& e)
 	{
 		std::cerr << "Initializing Shader Failed" << std::endl;
 		return false;
@@ -108,51 +86,20 @@ bool Generator::initShaders(void)
 
 	screenShader->useProgram();
 	screenShader->sendUniform("framebufferTexture", 0);
-	
-	CheckError();
 
 	return true;
 }
 
 bool Generator::initFramebuffer(int width, int height)
 {
-	GLfloat vertices[] = {
-			-1.0f, -1.0f, 0.0f, 0.0f,
-			-1.0f,  1.0f, 0.0f, 1.0f,
-			 1.0f, -1.0f, 1.0f, 0.0f,
-			 1.0f,  1.0f, 1.0f, 1.0f,
-	};
+	quadMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)0);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
-	glBindVertexArray(0);
-
-	glGenFramebuffers(1, &framebuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-
-	glGenTextures(1, &framebufferTexture);
-	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2048, 2048, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, framebufferTexture, 0);
-
-	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		std::cerr << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	CheckError();
+	framebuffer = std::make_unique<GLFramebuffer>();
+	framebuffer->initFramebuffer();
+	framebuffer->attachColorTexture(2048, 2048, GL_REPEAT, false);
+	
+	if (!framebuffer->configureFramebuffer())
+		return false;
 
 	return true;
 }
@@ -165,8 +112,16 @@ bool Generator::initGenerator(void)
 	noiseGui = std::make_unique<NoiseGUI>();
 	if (!noiseGui->initGUI(window))
 		return false;
-	
-	if (!initFramebuffer(clientWidth - 400, clientHeight))
+
+	callbackHandler.push_back(noiseGui.get());
+
+	quadMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP);
+
+	framebuffer = std::make_unique<GLFramebuffer>();
+	framebuffer->initFramebuffer();
+	framebuffer->attachColorTexture(2048, 2048, GL_REPEAT, false);
+
+	if (!framebuffer->configureFramebuffer())
 		return false;
 
 	if (!initShaders())
@@ -175,6 +130,7 @@ bool Generator::initGenerator(void)
 	for (size_t i = 0; i < 3; ++i)
 	{
 		paintBoards[i] = std::make_shared<BrushBoard>(2048, 2048);
+		callbackHandler.push_back(paintBoards[i].get());
 	}
 
 	return true;
@@ -184,42 +140,25 @@ void Generator::keyCallback(int key, int scancode, int action, int mode)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+
+	for (auto& handler : callbackHandler)
+		handler->processToggleKey(key, scancode, action);
 }
 
 void Generator::mousePosCallback(double xpos, double ypos)
 {
-	for (const auto& board : paintBoards)
-		board->processCursorPos(xpos, ypos);
+	for (auto& handler : callbackHandler)
+		handler->processCursorPos(xpos, ypos);
 }
 
 void Generator::mouseBtnCallback(int btn, int action, int mods)
 {
-	for (const auto& board : paintBoards)
-		board->processMouseBtn(btn, action);
+	for (auto& handler : callbackHandler)
+		handler->processMouseBtn(btn, action);
 }
 
 void Generator::scrollCallback(double xoffset, double yoffset)
 {
-	for (const auto& board : paintBoards)
-		board->processWheelOffset(yoffset);
-}
-
-bool Generator::saveCurrentTexture(const std::string& path, int width, int height) const
-{
-	glBindTexture(GL_TEXTURE_2D, framebufferTexture);
-	std::vector<unsigned char> data(width * height * 3);
-
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)&data[0]);
-	FILE *arrOut = fopen("outHeight.txt", "w");
-	fprintf(arrOut, "%d %d\n", height, width);
-	int cnt = 0;
-	for (const auto p : data) {
-		if (cnt == 0) fprintf(arrOut, "%d ", p);
-		cnt = (cnt+1)%3;
-	}		
-	fclose(arrOut);
-	stbi_write_png(path.c_str(), height, width, 3, &data[0], 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	return true;
+	for (auto& handler : callbackHandler)
+		handler->processWheelOffset(yoffset);
 }

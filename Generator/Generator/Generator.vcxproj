@@ -144,6 +144,9 @@
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLApp.cpp" />
+    <ClCompile Include="GLFramebuffer.cpp" />
+    <ClCompile Include="GLGeometry.cpp" />
+    <ClCompile Include="GLMesh.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NoiseGUI.cpp" />
@@ -152,9 +155,13 @@
   <ItemGroup>
     <ClInclude Include="BrushBoard.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
+    <ClInclude Include="EventHandler.hpp" />
     <ClInclude Include="Generator.hpp" />
     <ClInclude Include="GLApp.hpp" />
     <ClInclude Include="GLDebugger.hpp" />
+    <ClInclude Include="GLFramebuffer.hpp" />
+    <ClInclude Include="GLGeometry.hpp" />
+    <ClInclude Include="GLMesh.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="NoiseGUI.hpp" />
     <ClInclude Include="Util.hpp" />

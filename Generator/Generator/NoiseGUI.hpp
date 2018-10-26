@@ -1,12 +1,14 @@
 #ifndef NOISE_GUI_HPP
 #define NOISE_GUI_HPP
 
+#include "EventHandler.hpp"
 #include <memory>
-class GLShader;
+#include <string>
 
+class GLShader;
 struct GLFWwindow;
 
-class NoiseGUI
+class NoiseGUI : public EventHandler
 {
 protected:
 	static bool isInstanciated;
@@ -34,9 +36,10 @@ protected:
 	} fbMConfigure;
 
 public:
-	void updateGUI(float height);
+	void updateGUI(float height, uint32_t frameTexture);
 	void sendProperties(std::shared_ptr<GLShader> shader);
 	void renderGUI(void) const;
+
 public:
 	NoiseGUI();
 	NoiseGUI(const NoiseGUI& other) = delete;
@@ -44,6 +47,13 @@ public:
 	~NoiseGUI();
 public:
 	bool initGUI(GLFWwindow* window);
+
+	void processCursorPos(double xpos, double ypos) override;
+	void processWheelOffset(double yoffset) override;
+	void processMouseBtn(int button, int action) override;
+	void processToggleKey(int key, int scancode, int action) override;
+
+	static bool saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture);
 };
 
 #endif
