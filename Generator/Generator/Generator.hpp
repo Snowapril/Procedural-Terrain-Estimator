@@ -2,29 +2,31 @@
 #define GENERATOR_HPP
 
 #include "GLApp.hpp"
-#include "NoiseGUI.hpp"
 #include <glm/vec2.hpp>
 #include <vector>
 #include <stdint.h>
+#include <array>
+#include "GLMesh.hpp"
 
+class EventHandler;
+class NoiseGUI;
 class GLShader;
+class BrushBoard;
+class GLFramebuffer;
 
-class Generator : public GLApp, NoiseGUI
+class Generator : public GLApp
 {
 private:
-	bool isScreenClicked;
+	GLMesh quadMesh;
 	
-	uint32_t VAO;
-	uint32_t VBO;
-	uint32_t framebuffer;
-	uint32_t framebufferTexture;
-	uint32_t brushTexture;
+	uint32_t activeBoardIndex;
 
-	std::vector<float> brushFilter;
-	std::vector<float> brushBoard;
-
-	std::unique_ptr<GLShader> generatorShader;
+	std::vector<EventHandler*> callbackHandler;
+	std::unique_ptr<GLFramebuffer> framebuffer;
 	std::unique_ptr<GLShader> screenShader;
+	std::unique_ptr<NoiseGUI> noiseGui;
+	std::shared_ptr<GLShader> generatorShader;
+	std::array<std::shared_ptr<BrushBoard>, 3> paintBoards;
 protected:
 	void updateScene(void);
 	void drawScene(void) const;
@@ -32,11 +34,6 @@ protected:
 
 	bool initFramebuffer(int width, int height);
 	bool initShaders(void);
-
-	bool saveCurrentTexture(const std::string& path, int width, int height) const;
-
-	void updateBrushTexture(void);
-	void applyBrush(double xoffset, double yoffset);
 public:
 	Generator();
 	virtual ~Generator();

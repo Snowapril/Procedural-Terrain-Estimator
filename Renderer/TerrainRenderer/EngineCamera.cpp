@@ -233,4 +233,4 @@ void EngineCamera::updateProject(float aspectRatio)
 void EngineCamera::setViewportSize(int width, int height)
 {
 	viewportSize = glm::vec2(width, height);
-}
+}	
