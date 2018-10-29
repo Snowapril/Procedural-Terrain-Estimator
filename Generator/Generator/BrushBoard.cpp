@@ -246,6 +246,9 @@ void BrushBoard::setCutPoint(double xpos, double ypos)
 		uint32_t uypos = static_cast<uint32_t>(ypos);
 
 		dfsFloodFill(uxpos, uypos);
+		
+		std::fill(visitPixels.begin(), visitPixels.end(), BoolWrapper(false));
+		cutPoints.clear();
 
 		return;
 	}
@@ -268,8 +271,21 @@ void BrushBoard::drawLine(std::pair<float, float> start, std::pair<float, float>
 
 	uint32_t startX = static_cast<uint32_t>(start.first);
 	uint32_t endX = static_cast<uint32_t>(end.first);
+
+	//TODO
 }
 
 void BrushBoard::dfsFloodFill(uint32_t x, uint32_t y)
 {
+	auto boardIndex = ConvertToIndex(x, y, width);
+
+	if (!isInRange(x, y) || visitPixels[boardIndex].b)
+		return;
+
+	board[boardIndex] = 0.0f;
+
+	dfsFloodFill(x + 1, y);
+	dfsFloodFill(x - 1, y);
+	dfsFloodFill(x, y - 1);
+	dfsFloodFill(x, y + 1);
 }

@@ -41,7 +41,10 @@ private:
 
 	struct BoolWrapper {
 		bool b;
+		BoolWrapper(bool _b)
+			: b(_b) {};
 	};
+
 	std::vector<BoolWrapper> visitPixels;
 public:
 	BrushBoard();
