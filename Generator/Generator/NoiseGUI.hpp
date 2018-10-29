@@ -36,7 +36,7 @@ protected:
 	} fbMConfigure;
 
 public:
-	void updateGUI(float height, uint32_t frameTexture);
+	void updateGUI(float height, uint32_t frameTexture, uint32_t activeBoardIndex);
 	void sendProperties(std::shared_ptr<GLShader> shader);
 	void renderGUI(void) const;
 

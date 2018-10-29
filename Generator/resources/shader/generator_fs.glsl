@@ -141,11 +141,15 @@ const float EPSILON = 1e-8;
 
 void main(void)
 {
-	//float brushValue = texture(brushBoard, calculateTexCoords(noisePos)).r;
+	vec2 texCoords = calculateTexCoords(noisePos);
 
-    float voronoiValue = voronoiNoise(noisePos * vec2(voronoi.frequency));
-	float simplexValue = snoise(noisePos * vec2(simplex.frequency));
-	float fbMvalue = fbm(noisePos * vec2(fbM.frequency));
+	float voronoiBrush = texture(voronoiBoard, texCoords).r;
+	float simplexBrush = texture(simplexBoard, texCoords).r;
+	float fbMBrush = texture(fbMBoard, texCoords).r;
+
+    float voronoiValue = voronoiNoise(noisePos * vec2(voronoi.frequency)) * voronoiBrush;
+	float simplexValue = snoise(noisePos * vec2(simplex.frequency)) * simplexBrush;
+	float fbMvalue = fbm(noisePos * vec2(fbM.frequency)) * fbMBrush;
 	
 	float blendSum = fbM.blend + simplex.blend + voronoi.blend + EPSILON;
 	float combinedNoise = (voronoiValue * voronoi.blend + simplexValue * simplex.blend + fbMvalue * fbM.blend) / blendSum;

@@ -12,6 +12,7 @@
 #include "GLFramebuffer.hpp"
 
 Generator::Generator()
+	: activeBoardIndex(1)
 {
 }
 
@@ -21,7 +22,7 @@ Generator::~Generator()
 
 void Generator::updateScene(void)
 {
-	noiseGui->updateGUI(static_cast<float>(clientHeight), framebuffer->getColorTexture());
+	noiseGui->updateGUI(static_cast<float>(clientHeight), framebuffer->getColorTexture(), activeBoardIndex);
 
 	noiseGui->sendProperties(generatorShader);
 
@@ -129,7 +130,7 @@ bool Generator::initGenerator(void)
 
 	for (size_t i = 0; i < 3; ++i)
 	{
-		paintBoards[i] = std::make_shared<BrushBoard>(2048, 2048);
+		paintBoards[i] = std::make_shared<BrushBoard>(clientWidth, clientHeight, 2048, 2048);
 		callbackHandler.push_back(paintBoards[i].get());
 	}
 
@@ -141,24 +142,29 @@ void Generator::keyCallback(int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
-	for (auto& handler : callbackHandler)
-		handler->processToggleKey(key, scancode, action);
+	if (key >= GLFW_KEY_1 && key <= GLFW_KEY_3) 
+	{
+		activeBoardIndex = key - GLFW_KEY_1 + 1;
+	}
+
+	auto& handler = callbackHandler[activeBoardIndex];
+	handler->processToggleKey(key, scancode, action);
 }
 
 void Generator::mousePosCallback(double xpos, double ypos)
 {
-	for (auto& handler : callbackHandler)
-		handler->processCursorPos(xpos, ypos);
+	auto& handler = callbackHandler[activeBoardIndex];
+	handler->processCursorPos(xpos, ypos);
 }
 
 void Generator::mouseBtnCallback(int btn, int action, int mods)
 {
-	for (auto& handler : callbackHandler)
-		handler->processMouseBtn(btn, action);
+	auto& handler = callbackHandler[activeBoardIndex];
+	handler->processMouseBtn(btn, action);
 }
 
 void Generator::scrollCallback(double xoffset, double yoffset)
 {
-	for (auto& handler : callbackHandler)
-		handler->processWheelOffset(yoffset);
+	auto& handler = callbackHandler[activeBoardIndex];
+	handler->processWheelOffset(yoffset);
 }

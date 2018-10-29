@@ -21,7 +21,7 @@ NoiseGUI::NoiseGUI()
 
 	voronoiConfigure = { 1.0f, 2.0f, 0.0f, 0.0f, false, false };
 	simplexConfigure = { 1.0f, 2.0f };
-	fbMConfigure	 = { 5, 0.0f, 2.0f };
+	fbMConfigure	 = { 5, 1.0f, 2.0f };
 }
 
 NoiseGUI::~NoiseGUI()
@@ -55,7 +55,7 @@ void NoiseGUI::processToggleKey(int key, int scancode, int action)
 {
 }
 
-void NoiseGUI::updateGUI(float height, uint32_t frameTexture)
+void NoiseGUI::updateGUI(float height, uint32_t frameTexture, uint32_t activeBoardIndex)
 {
 	ImGui_ImplGlfwGL3_NewFrame();
 
@@ -69,7 +69,6 @@ void NoiseGUI::updateGUI(float height, uint32_t frameTexture)
 
 		ImGui::TreePop();
 	}
-
 	if (ImGui::TreeNode("Voronoi Noise"))
 	{
 		ImGui::SliderFloat("Blend", &voronoiConfigure.blend, 0.0f, 1.0f);
@@ -81,7 +80,6 @@ void NoiseGUI::updateGUI(float height, uint32_t frameTexture)
 
 		ImGui::TreePop();
 	}
-
 	if (ImGui::TreeNode("fbM Noise"))
 	{
 		ImGui::SliderInt("Num Octaves", &fbMConfigure.numOctaves, 1, 5);

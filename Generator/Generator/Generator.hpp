@@ -18,14 +18,14 @@ class Generator : public GLApp
 {
 private:
 	GLMesh quadMesh;
-	std::unique_ptr<GLFramebuffer> framebuffer;
 	
-	std::shared_ptr<GLShader> generatorShader;
-	std::unique_ptr<GLShader> screenShader;
-	std::unique_ptr<NoiseGUI> noiseGui;
+	uint32_t activeBoardIndex;
 
 	std::vector<EventHandler*> callbackHandler;
-
+	std::unique_ptr<GLFramebuffer> framebuffer;
+	std::unique_ptr<GLShader> screenShader;
+	std::unique_ptr<NoiseGUI> noiseGui;
+	std::shared_ptr<GLShader> generatorShader;
 	std::array<std::shared_ptr<BrushBoard>, 3> paintBoards;
 protected:
 	void updateScene(void);
@@ -34,8 +34,6 @@ protected:
 
 	bool initFramebuffer(int width, int height);
 	bool initShaders(void);
-
-	bool saveCurrentTexture(const std::string& path, int width, int height) const;
 public:
 	Generator();
 	virtual ~Generator();
