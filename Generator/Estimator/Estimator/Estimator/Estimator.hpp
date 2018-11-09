@@ -41,17 +41,13 @@ public:
 	int descentTabling();
 	// 모든 점에 대해서 gradient descending을 실행하고 분지의 개수를 반환하는 함수
 
-	void makeCoast(bool needCoast);
-	// 해안선 만들기
-
-	void makeIsland(bool needIsland, int radius);
-	// 섬 만들기
-
 	pixel randFill(int areaHeight, int wetDistance, int wetHeightGap, int y, int x);
 	// descentTabling(); 함수로 얻은 Local Minima(물이 고이는 곳)와의 거리 등의 정보를 인수로 받아서 지형 타일을 배정하는 함수(난수 적용 예정)
 
 	void blendmapColoring();
 	// descentTabling을 실행하여 지형 타일값을 배정하는 함수
+
+	void dumpDescentMapData();
 
 	vector <unsigned char> getHeightMap();
 	vector <unsigned char> getBlendMap();

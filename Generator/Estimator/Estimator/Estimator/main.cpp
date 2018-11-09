@@ -16,15 +16,15 @@ int main() {
 
 	Estimator E(M,height,width);
 
-	E.makeIsland(true,1000);
 	freopen("outHeight2.txt", "w", stdout);
-
 	E.dumpHeightMapData();
 
 	E.blendmapColoring();
 
+	freopen("outDescent.txt", "w", stdout);
+	E.dumpDescentMapData();
+
 	freopen("outBlend.txt", "w", stdout);
-	
 	E.dumpBlendMapData();
 
 	return 0;

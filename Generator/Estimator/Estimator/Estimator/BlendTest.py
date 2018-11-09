@@ -6,7 +6,7 @@ def read_integers(filename):
         return [int(x) for l in f for x in l.split()]
 
 array = read_integers('outBlend.txt')
-array = np.asarray(array).reshape(2048, 2048, 4)
+array = np.asarray(array).reshape(2048, 2048, 3)
 
 plt.imshow(array)
 plt.show()

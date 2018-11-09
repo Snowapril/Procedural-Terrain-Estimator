@@ -33,7 +33,16 @@ void Estimator::dumpBlendMapData() {
 			printf("%d ", BmapData[i][j].r);
 			printf("%d ", BmapData[i][j].g);
 			printf("%d ", BmapData[i][j].b);
-			printf("%d ", BmapData[i][j].a);
+			//printf("%d ", BmapData[i][j].a);
+		}
+		printf("\n");
+	}
+}
+
+void Estimator::dumpDescentMapData() {
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			printf("(%d,%d) ", descentTable[i][j].first, descentTable[i][j].second);
 		}
 		printf("\n");
 	}
@@ -123,89 +132,6 @@ int Estimator::descentTabling() {
 	return ret;
 }
 
-void Estimator::makeCoast(const bool needCoast) {
-
-	const int PROBLEFT_INIT = 40, PROBSTAY_INIT = 60;
-	const int PROB_DIFF = 2, COAST_DIFF = 3;
-
-	if (!needCoast) return;
-	srand(time(NULL));
-	int curCoast = width - width / 10;
-	int probLeft = PROBLEFT_INIT, probStay = PROBSTAY_INIT;
-	for (int i = 0; i < height; i++) {
-		int prob = rand() % 100;
-		if (prob < probLeft) {
-			probLeft -=2 * PROB_DIFF;
-			probStay += PROB_DIFF;
-			curCoast-=COAST_DIFF;
-		}
-		else if (prob < probStay) {
-			probLeft+= PROB_DIFF;
-			probStay -= 2 * PROB_DIFF;
-		}
-		else {
-			probLeft+= PROB_DIFF;
-			probStay+= PROB_DIFF;
-			curCoast+=COAST_DIFF;
-		}
-		for (int j = TERRAIN_SINK_DIVIDER; j > 0; j--) {
-			int k = curCoast - j;
-			HmapData[i][k] = HmapData[i][k] * j / TERRAIN_SINK_DIVIDER;
-		}
-		for (int j = curCoast; j < width; j++) {
-			HmapData[i][j]/=TERRAIN_SINK_DIVIDER;
-		}
-	}	
-}
-
-void Estimator::makeIsland(const bool needIsland, int radius = 100) {
-
-	const int PROBUP_INIT = 20, PROBDOWN_INIT = 40;
-	const int CUT_INIT = radius / 10;
-	const int CUT_DIFF = 1, PROB_DIFF = 1;
-
-	if (!needIsland) return;
-	int probUp = PROBDOWN_INIT, probDown = PROBDOWN_INIT;
-	int cut = CUT_INIT;
-	vector < vector <bool> > visited(height, vector<bool>(width, false));
-	srand(time(NULL));
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
-			int y = i - height / 2, x = j - width / 2;
-			if (y*y + x * x > radius*radius) {
-				HmapData[i][j]/=TERRAIN_SINK_DIVIDER;
-				visited[i][j] = true;
-				int prob = rand() % 100;
-				if (prob < probUp) {
-					cut+= CUT_DIFF;
-					probUp -= PROB_DIFF;
-				}
-				else if (prob < probDown) {
-					cut -= CUT_DIFF;
-					probUp += CUT_DIFF;
-				}
-
-				for (int k = i - cut; k <= i + cut; k++) {
-					if (k < 0 || k >= height) continue;
-					int yy = k - height / 2;
-					if (yy*yy + x * x > radius*radius) continue;
-					if (visited[k][j]) continue;
-					HmapData[k][j] /= TERRAIN_SINK_DIVIDER;
-					visited[k][j] = true;
-				}
-				for (int k = j - cut; k <= j + cut; k++) {
-					if (k < 0 || k >= width) continue;
-					int xx = k - width / 2;
-					if (y*y + xx * xx > radius*radius) continue;
-					if (visited[i][k]) continue;
-					HmapData[i][k] /= TERRAIN_SINK_DIVIDER;
-					visited[i][k] = true;
-				}
-			}
-		}
-	}
-}
-
 vector<unsigned char> Estimator::getHeightMap() {
 	vector <unsigned char> ret;
 	for (auto curVec : HmapData) {
@@ -238,10 +164,10 @@ pixel Estimator::randFill(int areaHeight, int wetDistance, int wetHeightGap, int
 	pixel ret;
 	int prob[DATA_NUM] = { 0, };
 
-	tile[0] = { 255,0,0,0 };// 255 0 0 0 : ROCK
+	tile[0] = { 0,0,255,0 };// 0 0 255 0 : MUD	
 	tile[1] = { 0,255,0,0 };// 0 255 0 0 : DIRT
-	tile[2] = { 0,0,255,0 };// 0 0 255 0 : MUD
-	tile[3] = { 0,0,0,255 };// 0 0 0 255 : SAND
+	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
+	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
 
 	const int dryTable[DATA_NUM] = { 25,50,100,1e9 };
 
