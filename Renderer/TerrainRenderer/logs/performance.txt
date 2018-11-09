@@ -1,0 +1,3 @@
+Function Name                           Trial   Total Time  Average Time   
+EngineApp::updateScene                  405     0           0              
+EngineApp::drawScene                    405     0           0              

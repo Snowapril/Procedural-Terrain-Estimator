@@ -1,0 +1,564 @@
+[2018-10-30 12:56:51.082] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-30 12:56:51.096] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-30 12:56:51.097] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-30 12:56:51.098] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:51.099] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:51.105] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 12:56:51.105] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 12:56:51.106] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-30 12:56:51.106] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-30 12:56:51.107] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-30 12:56:51.109] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:51.109] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:51.113] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 12:56:51.114] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 12:56:51.115] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-30 12:56:51.116] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-30 12:56:51.118] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:51.118] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:51.142] [setup] [info] Load Texture splatMap.png finished
+[2018-10-30 12:56:51.659] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-30 12:56:52.083] [setup] [info] Load Texture rock.jpg finished
+[2018-10-30 12:56:52.562] [setup] [info] Load Texture grass.png finished
+[2018-10-30 12:56:52.729] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-30 12:56:52.750] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-30 12:56:52.751] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-30 12:56:52.753] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:52.753] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:54.214] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-30 12:56:54.280] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-30 12:56:54.282] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-30 12:56:54.283] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:54.285] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:55.221] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-30 12:56:55.229] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 12:56:55.234] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 12:56:55.236] [setup] [info] initializing Water framebuffers finished
+[2018-10-30 12:56:55.264] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-30 12:56:55.266] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-30 12:56:55.274] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:55.276] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:55.403] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-30 12:56:55.526] [setup] [info] Load Texture normalMap.png finished
+[2018-10-30 12:56:55.527] [setup] [info] Initializing Water finished
+[2018-10-30 12:56:55.543] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-30 12:56:55.545] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-30 12:56:55.548] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:55.553] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:55.558] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 12:56:55.567] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 12:56:55.570] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-30 12:56:55.571] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-30 12:56:55.573] [setup] [info] Program Linking finished.
+[2018-10-30 12:56:55.574] [setup] [info] Linking Program Success.
+[2018-10-30 12:56:55.664] [setup] [info] Load Texture sun.png finished
+[2018-10-30 12:56:55.672] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 12:57:08.088] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-30 13:02:41.252] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-30 13:02:41.254] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-30 13:02:41.255] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-30 13:02:41.257] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:41.257] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:41.262] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 13:02:41.263] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 13:02:41.264] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-30 13:02:41.265] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-30 13:02:41.266] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-30 13:02:41.268] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:41.269] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:41.272] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 13:02:41.272] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 13:02:41.273] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-30 13:02:41.274] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-30 13:02:41.275] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:41.276] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:41.297] [setup] [info] Load Texture splatMap.png finished
+[2018-10-30 13:02:41.838] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-30 13:02:42.255] [setup] [info] Load Texture rock.jpg finished
+[2018-10-30 13:02:42.694] [setup] [info] Load Texture grass.png finished
+[2018-10-30 13:02:42.829] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-30 13:02:42.844] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-30 13:02:42.845] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-30 13:02:42.846] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:42.849] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:44.452] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-30 13:02:44.468] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-30 13:02:44.469] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-30 13:02:44.470] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:44.473] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:45.391] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-30 13:02:45.397] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:02:45.401] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:02:45.402] [setup] [info] initializing Water framebuffers finished
+[2018-10-30 13:02:45.408] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-30 13:02:45.409] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-30 13:02:45.414] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:45.415] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:45.515] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-30 13:02:45.643] [setup] [info] Load Texture normalMap.png finished
+[2018-10-30 13:02:45.645] [setup] [info] Initializing Water finished
+[2018-10-30 13:02:45.652] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-30 13:02:45.653] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-30 13:02:45.661] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:45.662] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:45.669] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:02:45.671] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:02:45.672] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-30 13:02:45.676] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-30 13:02:45.677] [setup] [info] Program Linking finished.
+[2018-10-30 13:02:45.680] [setup] [info] Linking Program Success.
+[2018-10-30 13:02:45.751] [setup] [info] Load Texture sun.png finished
+[2018-10-30 13:02:45.757] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:03:11.131] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-30 13:05:06.390] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-30 13:05:06.394] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-30 13:05:06.395] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-30 13:05:06.397] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:06.397] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:06.402] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 13:05:06.403] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 13:05:06.404] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-30 13:05:06.405] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-30 13:05:06.405] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-30 13:05:06.408] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:06.410] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:06.413] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-30 13:05:06.414] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-30 13:05:06.415] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-30 13:05:06.416] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-30 13:05:06.417] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:06.418] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:06.438] [setup] [info] Load Texture splatMap.png finished
+[2018-10-30 13:05:06.941] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-30 13:05:07.338] [setup] [info] Load Texture rock.jpg finished
+[2018-10-30 13:05:07.803] [setup] [info] Load Texture grass.png finished
+[2018-10-30 13:05:07.973] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-30 13:05:07.992] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-30 13:05:07.994] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-30 13:05:07.995] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:07.996] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:09.485] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-30 13:05:09.502] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-30 13:05:09.503] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-30 13:05:09.512] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:09.513] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:10.352] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-30 13:05:10.357] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:05:10.361] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:05:10.363] [setup] [info] initializing Water framebuffers finished
+[2018-10-30 13:05:10.368] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-30 13:05:10.369] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-30 13:05:10.370] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:10.370] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:10.488] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-30 13:05:10.598] [setup] [info] Load Texture normalMap.png finished
+[2018-10-30 13:05:10.599] [setup] [info] Initializing Water finished
+[2018-10-30 13:05:10.607] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-30 13:05:10.610] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-30 13:05:10.614] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:10.616] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:10.622] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:05:10.624] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:05:10.626] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-30 13:05:10.628] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-30 13:05:10.630] [setup] [info] Program Linking finished.
+[2018-10-30 13:05:10.632] [setup] [info] Linking Program Success.
+[2018-10-30 13:05:10.718] [setup] [info] Load Texture sun.png finished
+[2018-10-30 13:05:10.726] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-30 13:05:12.502] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-31 13:28:54.029] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-31 13:28:54.032] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-31 13:28:54.032] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-31 13:28:54.032] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:54.033] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:54.035] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:28:54.035] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:28:54.035] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-31 13:28:54.036] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-31 13:28:54.036] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-31 13:28:54.037] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:54.037] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:54.038] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:28:54.038] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:28:54.038] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-31 13:28:54.038] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-31 13:28:54.039] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:54.041] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:54.776] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-31 13:28:54.794] [setup] [info] Load Texture splatMap.png finished
+[2018-10-31 13:28:55.046] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-31 13:28:55.263] [setup] [info] Load Texture rock.jpg finished
+[2018-10-31 13:28:55.469] [setup] [info] Load Texture grass.png finished
+[2018-10-31 13:28:55.538] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-31 13:28:55.547] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-31 13:28:55.547] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-31 13:28:55.548] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:55.549] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:55.553] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-31 13:28:55.554] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-31 13:28:55.555] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:55.555] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:55.945] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-31 13:28:55.947] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:28:55.950] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:28:55.950] [setup] [info] initializing Water framebuffers finished
+[2018-10-31 13:28:55.952] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-31 13:28:55.952] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-31 13:28:55.953] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:55.953] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:56.005] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-31 13:28:56.061] [setup] [info] Load Texture normalMap.png finished
+[2018-10-31 13:28:56.062] [setup] [info] Initializing Water finished
+[2018-10-31 13:28:56.066] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-31 13:28:56.066] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-31 13:28:56.067] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:56.067] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:56.069] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:28:56.071] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:28:56.072] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-31 13:28:56.074] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-31 13:28:56.075] [setup] [info] Program Linking finished.
+[2018-10-31 13:28:56.075] [setup] [info] Linking Program Success.
+[2018-10-31 13:28:56.107] [setup] [info] Load Texture sun.png finished
+[2018-10-31 13:28:56.110] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:28:57.025] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-31 13:29:54.642] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-31 13:29:54.645] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-31 13:29:54.645] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-31 13:29:54.646] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:54.646] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:54.649] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:29:54.649] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:29:54.650] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-31 13:29:54.650] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-31 13:29:54.650] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-31 13:29:54.651] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:54.652] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:54.654] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:29:54.654] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:29:54.654] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-31 13:29:54.655] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-31 13:29:54.655] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:54.656] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:55.400] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-31 13:29:55.419] [setup] [info] Load Texture splatMap.png finished
+[2018-10-31 13:29:55.678] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-31 13:29:55.877] [setup] [info] Load Texture rock.jpg finished
+[2018-10-31 13:29:56.086] [setup] [info] Load Texture grass.png finished
+[2018-10-31 13:29:56.155] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-31 13:29:56.164] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-31 13:29:56.165] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-31 13:29:56.166] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:56.166] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:56.172] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-31 13:29:56.172] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-31 13:29:56.173] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:56.174] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:56.582] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-31 13:29:56.585] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:29:56.587] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:29:56.588] [setup] [info] initializing Water framebuffers finished
+[2018-10-31 13:29:56.590] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-31 13:29:56.590] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-31 13:29:56.592] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:56.593] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:56.641] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-31 13:29:56.691] [setup] [info] Load Texture normalMap.png finished
+[2018-10-31 13:29:56.692] [setup] [info] Initializing Water finished
+[2018-10-31 13:29:56.697] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-31 13:29:56.697] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-31 13:29:56.699] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:56.699] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:56.702] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:29:56.703] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:29:56.704] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-31 13:29:56.705] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-31 13:29:56.706] [setup] [info] Program Linking finished.
+[2018-10-31 13:29:56.706] [setup] [info] Linking Program Success.
+[2018-10-31 13:29:56.739] [setup] [info] Load Texture sun.png finished
+[2018-10-31 13:29:56.743] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:30:01.319] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-31 13:31:27.507] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-31 13:31:27.509] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-31 13:31:27.509] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-31 13:31:27.510] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:27.510] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:27.512] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:31:27.513] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:31:27.513] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-31 13:31:27.513] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-31 13:31:27.513] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-31 13:31:27.514] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:27.514] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:27.515] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:31:27.515] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:31:27.515] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-31 13:31:27.516] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-31 13:31:27.516] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:27.516] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:27.923] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-31 13:31:27.961] [setup] [info] Load Texture splatMap.png finished
+[2018-10-31 13:31:28.215] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-31 13:31:28.416] [setup] [info] Load Texture rock.jpg finished
+[2018-10-31 13:31:28.631] [setup] [info] Load Texture grass.png finished
+[2018-10-31 13:31:28.698] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-31 13:31:28.709] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-31 13:31:28.709] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-31 13:31:28.710] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:28.711] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:28.715] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-31 13:31:28.715] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-31 13:31:28.716] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:28.717] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:29.163] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-31 13:31:29.166] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:31:29.168] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:31:29.169] [setup] [info] initializing Water framebuffers finished
+[2018-10-31 13:31:29.171] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-31 13:31:29.171] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-31 13:31:29.172] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:29.173] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:29.220] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-31 13:31:29.270] [setup] [info] Load Texture normalMap.png finished
+[2018-10-31 13:31:29.271] [setup] [info] Initializing Water finished
+[2018-10-31 13:31:29.277] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-31 13:31:29.277] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-31 13:31:29.279] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:29.280] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:29.284] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:31:29.286] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:31:29.287] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-31 13:31:29.287] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-31 13:31:29.288] [setup] [info] Program Linking finished.
+[2018-10-31 13:31:29.289] [setup] [info] Linking Program Success.
+[2018-10-31 13:31:29.323] [setup] [info] Load Texture sun.png finished
+[2018-10-31 13:31:29.328] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:31:33.943] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-10-31 13:32:46.666] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-10-31 13:32:46.667] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-10-31 13:32:46.668] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-10-31 13:32:46.669] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:46.670] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:46.671] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:32:46.672] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:32:46.672] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-10-31 13:32:46.672] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-10-31 13:32:46.672] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-10-31 13:32:46.673] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:46.673] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:46.674] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-10-31 13:32:46.675] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-10-31 13:32:46.675] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-10-31 13:32:46.676] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-10-31 13:32:46.676] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:46.676] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:47.465] [setup] [info] Load Texture height16bit2.png finished
+[2018-10-31 13:32:47.485] [setup] [info] Load Texture splatMap.png finished
+[2018-10-31 13:32:47.764] [setup] [info] Load Texture dirt.jpg finished
+[2018-10-31 13:32:47.974] [setup] [info] Load Texture rock.jpg finished
+[2018-10-31 13:32:48.214] [setup] [info] Load Texture grass.png finished
+[2018-10-31 13:32:48.299] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-10-31 13:32:48.311] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-10-31 13:32:48.311] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-10-31 13:32:48.312] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:48.313] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:48.316] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-10-31 13:32:48.317] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-10-31 13:32:48.317] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:48.320] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:48.817] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-10-31 13:32:48.821] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:32:48.824] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:32:48.824] [setup] [info] initializing Water framebuffers finished
+[2018-10-31 13:32:48.827] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-10-31 13:32:48.828] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-10-31 13:32:48.829] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:48.831] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:48.880] [setup] [info] Load Texture dudvMap.png finished
+[2018-10-31 13:32:48.931] [setup] [info] Load Texture normalMap.png finished
+[2018-10-31 13:32:48.931] [setup] [info] Initializing Water finished
+[2018-10-31 13:32:48.935] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-10-31 13:32:48.935] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-10-31 13:32:48.936] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:48.936] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:48.939] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:32:48.940] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:32:48.941] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-10-31 13:32:48.942] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-10-31 13:32:48.944] [setup] [info] Program Linking finished.
+[2018-10-31 13:32:48.944] [setup] [info] Linking Program Success.
+[2018-10-31 13:32:48.977] [setup] [info] Load Texture sun.png finished
+[2018-10-31 13:32:48.982] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-10-31 13:32:53.479] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-11-09 15:28:21.615] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-11-09 15:28:21.626] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-11-09 15:28:21.627] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-11-09 15:28:21.627] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:21.628] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:21.632] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-11-09 15:28:21.633] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-11-09 15:28:21.633] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-11-09 15:28:21.634] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-11-09 15:28:21.634] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-11-09 15:28:21.635] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:21.636] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:21.638] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-11-09 15:28:21.638] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-11-09 15:28:21.638] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-11-09 15:28:21.639] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-11-09 15:28:21.639] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:21.639] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:21.893] [setup] [info] Load Texture height16bit2.png finished
+[2018-11-09 15:28:21.919] [setup] [info] Load Texture splatMap.png finished
+[2018-11-09 15:28:22.194] [setup] [info] Load Texture dirt.jpg finished
+[2018-11-09 15:28:22.430] [setup] [info] Load Texture rock.jpg finished
+[2018-11-09 15:28:22.672] [setup] [info] Load Texture grass.png finished
+[2018-11-09 15:28:22.751] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-11-09 15:28:22.769] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-11-09 15:28:22.770] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-11-09 15:28:22.771] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:22.772] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:22.775] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-11-09 15:28:22.776] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-11-09 15:28:22.776] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:22.776] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:23.269] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-11-09 15:28:23.272] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:23.274] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:23.275] [setup] [info] initializing Water framebuffers finished
+[2018-11-09 15:28:23.277] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-11-09 15:28:23.277] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-11-09 15:28:23.278] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:23.279] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:23.335] [setup] [info] Load Texture dudvMap.png finished
+[2018-11-09 15:28:23.392] [setup] [info] Load Texture normalMap.png finished
+[2018-11-09 15:28:23.393] [setup] [info] Initializing Water finished
+[2018-11-09 15:28:23.397] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-11-09 15:28:23.398] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-11-09 15:28:23.399] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:23.399] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:23.403] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:23.404] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:23.405] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-11-09 15:28:23.407] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-11-09 15:28:23.408] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:23.408] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:23.444] [setup] [info] Load Texture sun.png finished
+[2018-11-09 15:28:23.449] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:27.810] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+
+[2018-11-09 15:28:36.172] [setup] [info] Vendor : NVIDIA Corporation, Renderer : GeForce GTX 1060/PCIe/SSE2
+[2018-11-09 15:28:36.174] [setup] [info] Vertex Shader [../resources/shader/viewer_vs.glsl] Compile finished.
+[2018-11-09 15:28:36.174] [setup] [info] Fragment Shader [../resources/shader/viewer_fs.glsl] Compile finished.
+[2018-11-09 15:28:36.175] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:36.175] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:36.179] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-11-09 15:28:36.180] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-11-09 15:28:36.181] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_tes.glsl] Compile finished.
+[2018-11-09 15:28:36.182] [setup] [info] Geometry Shader [../resources/shader/terrain_gs.glsl] Compile finished.
+[2018-11-09 15:28:36.182] [setup] [info] Fragment Shader [../resources/shader/terrain_fs.glsl] Compile finished.
+[2018-11-09 15:28:36.183] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:36.183] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:36.184] [setup] [info] Vertex Shader [../resources/shader/terrain_vs.glsl] Compile finished.
+[2018-11-09 15:28:36.185] [setup] [info] Tessellation Control Shader [../resources/shader/terrain_tcs.glsl] Compile finished.
+[2018-11-09 15:28:36.185] [setup] [info] Tessellation Evaluation Shader [../resources/shader/terrain_depth_pass_tes.glsl] Compile finished.
+[2018-11-09 15:28:36.185] [setup] [info] Fragment Shader [../resources/shader/terrain_depth_pass_fs.glsl] Compile finished.
+[2018-11-09 15:28:36.186] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:36.186] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:36.434] [setup] [info] Load Texture height16bit2.png finished
+[2018-11-09 15:28:36.453] [setup] [info] Load Texture splatMap.png finished
+[2018-11-09 15:28:36.734] [setup] [info] Load Texture dirt.jpg finished
+[2018-11-09 15:28:36.955] [setup] [info] Load Texture rock.jpg finished
+[2018-11-09 15:28:37.192] [setup] [info] Load Texture grass.png finished
+[2018-11-09 15:28:37.264] [setup] [info] Load Texture wetDirt.jpg finished
+[2018-11-09 15:28:37.273] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-11-09 15:28:37.274] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-11-09 15:28:37.275] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:37.276] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:37.279] [setup] [info] Vertex Shader [../resources/shader/skybox_vs.glsl] Compile finished.
+[2018-11-09 15:28:37.279] [setup] [info] Fragment Shader [../resources/shader/skybox_fs.glsl] Compile finished.
+[2018-11-09 15:28:37.280] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:37.281] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:37.739] [setup] [info] Load Cubemap ../resources/texture/skybox/cloud/ finished
+[2018-11-09 15:28:37.743] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:37.746] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:37.747] [setup] [info] initializing Water framebuffers finished
+[2018-11-09 15:28:37.749] [setup] [info] Vertex Shader [../resources/shader/water_vs.glsl] Compile finished.
+[2018-11-09 15:28:37.749] [setup] [info] Fragment Shader [../resources/shader/water_fs.glsl] Compile finished.
+[2018-11-09 15:28:37.750] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:37.752] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:37.802] [setup] [info] Load Texture dudvMap.png finished
+[2018-11-09 15:28:37.855] [setup] [info] Load Texture normalMap.png finished
+[2018-11-09 15:28:37.856] [setup] [info] Initializing Water finished
+[2018-11-09 15:28:37.861] [setup] [info] Vertex Shader [../resources/shader/postprocess_vs.glsl] Compile finished.
+[2018-11-09 15:28:37.861] [setup] [info] Fragment Shader [../resources/shader/postprocess_fs.glsl] Compile finished.
+[2018-11-09 15:28:37.862] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:37.863] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:37.865] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:37.866] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:28:37.867] [setup] [info] Vertex Shader [../resources/shader/sun_vs.glsl] Compile finished.
+[2018-11-09 15:28:37.869] [setup] [info] Fragment Shader [../resources/shader/sun_fs.glsl] Compile finished.
+[2018-11-09 15:28:37.870] [setup] [info] Program Linking finished.
+[2018-11-09 15:28:37.870] [setup] [info] Linking Program Success.
+[2018-11-09 15:28:37.905] [setup] [info] Load Texture sun.png finished
+[2018-11-09 15:28:37.910] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glframebuffer.cpp ( 113 )
+
+[2018-11-09 15:29:00.059] [setup] [info] Load Texture height16bit2.png finished
+[2018-11-09 15:29:00.075] [setup] [info] Load Texture splatMap.png finished
+[2018-11-09 15:29:00.076] [setup] [info] Vertex Shader [../resources/shader/bakeTerrainMap_vs.glsl] Compile finished.
+[2018-11-09 15:29:00.077] [setup] [info] Fragment Shader [../resources/shader/bakeTerrainMap_fs.glsl] Compile finished.
+[2018-11-09 15:29:00.082] [setup] [info] Program Linking finished.
+[2018-11-09 15:29:00.084] [setup] [info] Linking Program Success.
+[2018-11-09 15:29:04.503] [setup] [debug] NO ERROR at c:\users\user\desktop\github\procedural-terrain-estimator\renderer\terrainrenderer\glapp.cpp ( 162 )
+

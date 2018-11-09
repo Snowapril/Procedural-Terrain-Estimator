@@ -1,0 +1,6 @@
+<map id="EngineCamera::EngineCamera" name="EngineCamera::EngineCamera">
+<area shape="rect" id="node2" href="$class_engine_camera.html#af812da924cc19bf2445a42922e9957f1" title="EngineCamera::initCamera" alt="" coords="253,56,431,83"/>
+<area shape="rect" id="node3" href="$namespace_util.html#ab646b188ca2546d45186494e3ba15557" title="Util::clamp" alt="" coords="525,5,609,32"/>
+<area shape="rect" id="node4" href="$class_automator.html#a6395966b67af5ef97d9c9f16ce82ef55" title="Automator::setDuration" alt="" coords="489,56,645,83"/>
+<area shape="rect" id="node5" href="$class_automator.html#acdae7083f4cc940b3fafc2befd47674f" title="Automator::addAutomation" alt="" coords="479,107,656,133"/>
+</map>

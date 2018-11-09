@@ -1,0 +1,6 @@
+<map id="EngineTerrain::drawScene_DepthPass" name="EngineTerrain::drawScene_DepthPass">
+<area shape="rect" id="node2" href="$class_engine_camera.html#a87b4b1f72184f1c9598f0ecafa11c8a2" title="EngineCamera::getMinDepth" alt="" coords="229,5,417,32"/>
+<area shape="rect" id="node3" href="$class_engine_camera.html#ad48a858dc02c3c197c91313d0586649d" title="EngineCamera::getMaxDepth" alt="" coords="227,56,419,83"/>
+<area shape="rect" id="node4" href="$class_engine_camera.html#a4de71c6b29ef65c9660f36c1e5fff9a4" title="EngineCamera::sendVP" alt="" coords="242,107,403,133"/>
+<area shape="rect" id="node5" href="$class_light_source_wrapper.html#a6c95c1277eb0cc865aae1d5947f025fe" title="LightSourceWrapper\l::getDirLights" alt="" coords="253,158,393,199"/>
+</map>

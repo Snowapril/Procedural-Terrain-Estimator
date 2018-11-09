@@ -1,0 +1,28 @@
+<map id="gladLoadGL" name="gladLoadGL">
+<area shape="rect" id="node2" href="$glad_8c.html#a538b0e09de5780f026ad62462fade0a6" title="open_gl" alt="" coords="176,411,243,437"/>
+<area shape="rect" id="node3" href="$glad_8c.html#af70e4674f75bd3bbfedf7979607c65ef" title="gladLoadGLLoader" alt="" coords="144,461,275,488"/>
+<area shape="rect" id="node26" href="$glad_8c.html#ad63f2bf7c845fd310286b42a454ba71d" title="get_proc" alt="" coords="173,512,245,539"/>
+<area shape="rect" id="node27" href="$glad_8c.html#aa3222c9728bc7f7846f3e684b440a030" title="close_gl" alt="" coords="174,563,245,589"/>
+<area shape="rect" id="node4" href="$glad_8c.html#a1e6b94e667c5087bcd17801e4e4942a3" title="find_coreGL" alt="" coords="359,5,449,32"/>
+<area shape="rect" id="node5" href="$glad_8c.html#ac9cefadc8a6c809297856b3cb546d1d4" title="load_GL_VERSION_1_0" alt="" coords="323,56,485,83"/>
+<area shape="rect" id="node6" href="$glad_8c.html#a35dbc78b11773681adc60e990fef7005" title="load_GL_VERSION_1_1" alt="" coords="323,107,485,133"/>
+<area shape="rect" id="node7" href="$glad_8c.html#a577c4b9e1351249c243b007ecc4a975e" title="load_GL_VERSION_1_2" alt="" coords="323,157,485,184"/>
+<area shape="rect" id="node8" href="$glad_8c.html#a64db1ca3b160134bd85d5121be77ab1c" title="load_GL_VERSION_1_3" alt="" coords="323,208,485,235"/>
+<area shape="rect" id="node9" href="$glad_8c.html#a3fcc343e68a41abbf2aaf2898ba6c662" title="load_GL_VERSION_1_4" alt="" coords="323,259,485,285"/>
+<area shape="rect" id="node10" href="$glad_8c.html#a5b8a4ead1fe41911c78f289e1e099c17" title="load_GL_VERSION_1_5" alt="" coords="323,309,485,336"/>
+<area shape="rect" id="node11" href="$glad_8c.html#ada4838bbc696bf9bd3fee9945ae2fc62" title="load_GL_VERSION_2_0" alt="" coords="323,360,485,387"/>
+<area shape="rect" id="node12" href="$glad_8c.html#a6b1ddad462fc87b8ca81a8228c81bf9f" title="load_GL_VERSION_2_1" alt="" coords="323,411,485,437"/>
+<area shape="rect" id="node13" href="$glad_8c.html#a66fb68f92ff5be9c41e8fd9e3a0f1f22" title="load_GL_VERSION_3_0" alt="" coords="323,461,485,488"/>
+<area shape="rect" id="node14" href="$glad_8c.html#aa0161dc921d58866d5c9384b365bfae7" title="load_GL_VERSION_3_1" alt="" coords="323,512,485,539"/>
+<area shape="rect" id="node15" href="$glad_8c.html#aa4ad9ec346eeec0578169e552b802662" title="load_GL_VERSION_3_2" alt="" coords="323,563,485,589"/>
+<area shape="rect" id="node16" href="$glad_8c.html#a5b35a05be99645aebc78627b564fb0be" title="load_GL_VERSION_3_3" alt="" coords="323,613,485,640"/>
+<area shape="rect" id="node17" href="$glad_8c.html#afd687e92ccc3435db99eb010fc5565a4" title="load_GL_VERSION_4_0" alt="" coords="323,664,485,691"/>
+<area shape="rect" id="node18" href="$glad_8c.html#ab46b2b729425b5bb92c402e7b08c90fa" title="load_GL_VERSION_4_1" alt="" coords="323,715,485,741"/>
+<area shape="rect" id="node19" href="$glad_8c.html#a34c73452306d56278046dd284ec050bd" title="load_GL_VERSION_4_2" alt="" coords="323,765,485,792"/>
+<area shape="rect" id="node20" href="$glad_8c.html#ac96c85fb3086e40f55ecc2a85e88f940" title="load_GL_VERSION_4_3" alt="" coords="323,816,485,843"/>
+<area shape="rect" id="node21" href="$glad_8c.html#a3379f8fef4545548f7508288d9f23d91" title="load_GL_VERSION_4_4" alt="" coords="323,867,485,893"/>
+<area shape="rect" id="node22" href="$glad_8c.html#aec888869187731b49111dfbea5f7cd56" title="find_extensionsGL" alt="" coords="339,917,469,944"/>
+<area shape="rect" id="node23" href="$glad_8c.html#abfb50eb07d43a6e366811edf9feff173" title="get_exts" alt="" coords="535,867,607,893"/>
+<area shape="rect" id="node24" href="$glad_8c.html#abfdc555a06ed44e71045a703a7d43951" title="has_ext" alt="" coords="537,917,605,944"/>
+<area shape="rect" id="node25" href="$glad_8c.html#a250a03ed54f517313be3fb311c1d0929" title="free_exts" alt="" coords="533,968,608,995"/>
+</map>
