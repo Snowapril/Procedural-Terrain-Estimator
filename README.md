@@ -28,10 +28,10 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcac
 * Simplex-noise based height map generator
 * GUI interface
 * Voronoi function
- 
-### To be implemented
 * Noise combination process
 * Weight distribution 
+ 
+### To be implemented
 
 
 ## ESTIMATOR
@@ -39,13 +39,14 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcac
 ### Already Implemented
 
 * Vally / basin distinct function from gradient-descent method and flood fill
-* Coast terrain generation by constant subtraction
-* Island terrain generation by invert function
-
-### To be implemented
 * Terrain type distribution by height and near tiles condition
 * Blend map generation
-* etc...
+
+### To be implemented
+
+* Coastline optimization
+* Normalization
+* Smoothness conversion
 
 ## MEETING
 
