@@ -41,7 +41,7 @@ void NoiseGUI::updateGUI(glm::vec2 rect)
 	ImGui::Begin("Generator & Estimator", &isGUIOpen, ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysUseWindowPadding | ImGuiWindowFlags_NoSavedSettings);
 	ImGui::SetWindowSize(ImVec2(rect.x, rect.y));
 }
-
+//#include "GLResources.hpp"
 void NoiseGUI::endUpdate(uint32_t frameTexture)
 {
 	if (ImGui::CollapsingHeader("Key Support", 0, true, true))
@@ -58,12 +58,14 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		ImGui::Text("F        : Free Form Lasso");
 		ImGui::Text("M        : Move Scroll");
 	}
-
+	
+	//static uint32_t texture = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", false);
 	if (ImGui::CollapsingHeader("Application Info", 0, true, true))
 	{
 		char* glInfos = (char*)glGetString(GL_VERSION);
 		char* hardwareInfos = (char*)glGetString(GL_RENDERER);
-
+		
+		//ImGui::Image((void*)(int*)texture, ImVec2(80.0f, 80.0f));
 		ImGui::Text("OpenGL Version :");
 		ImGui::Text(glInfos);
 		ImGui::Text("Hardware Informations :");

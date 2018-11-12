@@ -49,6 +49,7 @@ private:
 	GLShader* terrainShader;
 	GLShader* depthPassShader;
 	GLTexture* tileTextures;
+	uint32_t heightmap;
 #else
 	uPtr<GLShader> terrainShader;
 	uPtr<GLShader> depthPassShader;
