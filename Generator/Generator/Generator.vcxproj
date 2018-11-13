@@ -144,6 +144,7 @@
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="BrushBoard.cpp" />
     <ClCompile Include="BrushManager.cpp" />
+    <ClCompile Include="Estimator.cpp" />
     <ClCompile Include="fbMNoise.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="glad.c" />
@@ -163,6 +164,7 @@
     <ClInclude Include="BrushBoard.hpp" />
     <ClInclude Include="BrushManager.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
+    <ClInclude Include="Estimator.hpp" />
     <ClInclude Include="EventHandler.hpp" />
     <ClInclude Include="fbMNoise.hpp" />
     <ClInclude Include="Generator.hpp" />
@@ -176,6 +178,7 @@
     <ClInclude Include="NoiseGUI.hpp" />
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="SimplexNoise.hpp" />
+    <ClInclude Include="Singleton.hpp" />
     <ClInclude Include="Util.hpp" />
     <ClInclude Include="VoronoiNoise.hpp" />
   </ItemGroup>

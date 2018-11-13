@@ -5,6 +5,7 @@
 #include <imgui/imgui_internal.h>
 #include "GLShader.hpp"
 #include <vector>
+#include "Estimator.hpp"
 
 using namespace ImGui;
 
@@ -41,7 +42,7 @@ void NoiseGUI::updateGUI(glm::vec2 rect)
 	ImGui::Begin("Generator & Estimator", &isGUIOpen, ImVec2(0, 0), 0.5f, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysUseWindowPadding | ImGuiWindowFlags_NoSavedSettings);
 	ImGui::SetWindowSize(ImVec2(rect.x, rect.y));
 }
-//#include "GLResources.hpp"
+
 void NoiseGUI::endUpdate(uint32_t frameTexture)
 {
 	if (ImGui::CollapsingHeader("Key Support", 0, true, true))
@@ -85,6 +86,15 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		saveCurrentTexture("../resources/texture/terrain/height16bit2.png", 2048, 2048, frameTexture);
 	}
 
+	if (ImGui::Button("BlendMap Coloring")) 
+	{
+		auto& estimator = Estimator::getMutableInstance();
+
+		estimator.initHMapData(frameTexture, 2048, 2048);
+		estimator.blendmapColoring();
+		estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", 2048, 2048);
+	}
+
 	ImGui::End();
 }
 
@@ -94,25 +104,14 @@ void NoiseGUI::renderGUI(void) const
 }
 
 
-bool NoiseGUI::saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture)
+void NoiseGUI::saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture)
 {
-	glBindTexture(GL_TEXTURE_2D, texture);
 	std::vector<unsigned short> data(width * height);
-
+	
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RED, GL_UNSIGNED_SHORT, (void*)&data[0]);
-	FILE *arrOut = fopen("outHeight.txt", "w");
-	fprintf(arrOut, "%d %d\n", height, width);
-	int cnt = 0;
-	for (const auto p : data) {
-		if (cnt == 0) fprintf(arrOut, "%d ", p);
-		cnt = (cnt + 1) % 3;
-	}
-	fclose(arrOut);
-
-	Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&data[0]);
-	imwrite(path, src);
-
 	glBindTexture(GL_TEXTURE_2D, 0);
 	
-	return true;
+	Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&data[0]);
+	imwrite(path, src);
 }

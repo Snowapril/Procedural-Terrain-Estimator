@@ -28,7 +28,7 @@ public:
 public:
 	bool initGUI(GLFWwindow* window);
 
-	static bool saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture);
+	static void saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture);
 };
 
 #endif

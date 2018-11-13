@@ -1,60 +1,113 @@
-#include "Estimator.hpp"
+﻿#include "Estimator.hpp"
 #include <queue>
 #include <map>
+#include <cmath>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+#include <cstring>
+#include <glad/glad.h>
 
+#ifndef STB_IMAGE_WRITE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#endif
+#include <stb/stb_image_write.h>
 using namespace std;
 
-Estimator::Estimator(vector<unsigned char>& data, int _height, int _width) 
-	: height(_height), width(_width) 
-{
-	mapDataInit(data, height, width);
-}
-// operator overloading
-vector < unsigned char >& Estimator::operator [](int i) {
-	return mapData[i];
-}
-vector < unsigned char > const& Estimator::operator[](int i) const {
-	return mapData[i];
-}
+std::shared_ptr<Estimator> Singleton<Estimator>::instance(new Estimator());
 
-// methods
-void Estimator::mapDataInit(vector<unsigned char>& data, const int height, const int width) {
-	mapData.resize(height);
+Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : height(_height), width(_width) {
+	HmapData.resize(height,vector<unsigned char>(width,0));
 	for (int i = 0; i < height; i++) {
-		mapData[i].resize(width);
 		for (int j = 0; j < width; j++) {
-			mapData[i][j] = data[i*width + j * 3];
+			HmapData[i][j] = data[i*width + j];
 		}
 	}
 }
 
-void Estimator::dumpMapData() {
+void Estimator::dumpHeightMapData() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			printf("%d ", mapData[i][j]);
+			printf("%d ", HmapData[i][j]);
 		}
 		printf("\n");
 	}
 }
 
+void Estimator::dumpBlendMapData() {
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			printf("%d ", BmapData[i][j].r);
+			printf("%d ", BmapData[i][j].g);
+			printf("%d ", BmapData[i][j].b);
+			printf("%d ", BmapData[i][j].a);
+		}
+		printf("\n");
+	}
+}
 
-pii Estimator::descent(int y, int x) {
+void Estimator::dumpDescentMapData() {
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			printf("(%d,%d) ", descentTable[i][j].first, descentTable[i][j].second);
+		}
+		printf("\n");
+	}
+}
+
+void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
+	width  = _width;
+	height = _height;
+
+	std::vector<unsigned char> data(width * height);
+
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RED, GL_UNSIGNED_BYTE, (void*)&data[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	HmapData.resize(height, vector<unsigned char>(width, 0));
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			HmapData[i][j] = data[i*width + j];
+		}
+	}
+}
+
+
+void Estimator::generateBlendMap(const char* path, int width, int height) {
+
+	vector<unsigned char> data;
+	data.reserve(width * height * 4);
+
+	for (const auto& row : BmapData) {
+		for (const auto& element : row) {
+			data.push_back(element.r);
+			data.push_back(element.g);
+			data.push_back(element.b);
+			data.push_back(element.a);
+		}
+	}
+
+	stbi_write_png(path, width, height, 4, &data[0], 0);
+}
+
+pii Estimator::descent(int y,int x) {
+
 	pii& ans = descentTable[y][x];
 
 	if (ans.first != -1) return ans;
 
-	const int dy[4] = { -1,1,0,0 }, dx[4] = { 0,0,-1,1 };
-
 	for (int i = 0; i < 4; i++) {
-		int Y = y + dy[i], X = x + dx[i];
+		int Y = y + DY[i], X = x + DX[i];
 		if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
-		if (mapData[Y][X] <= mapData[y][x]) {
+		if (HmapData[Y][X] <= HmapData[y][x]) {
 			pii temp = descent(Y, X);
 			if (ans.first == -1) {
 				ans = temp;
 			}
 			else {
-				if (mapData[ans.first][ans.second] >= mapData[temp.first][temp.second]) {
+				if (HmapData[ans.first][ans.second] >= HmapData[temp.first][temp.second]) {
 					ans = temp;
 				}
 			}
@@ -65,19 +118,135 @@ pii Estimator::descent(int y, int x) {
 	return ans;
 }
 
-bool Estimator::hasCrator() {
+int Estimator::descentTabling() {
+
+	const unsigned char NEAR_GAP_ALLOWED = 3;
+	const unsigned char TOTAL_GAP_ALLOWED = 5;
+	const int MINIMUM_BASIN_AREA = 25;
+
 	descentTable.resize(height, vector<pii>(width, { -1,-1 }));
-	map <pii, int> cnt;
+	vector < vector < int > > cnt(height, vector<int>(width, 0));
+	vector < vector <bool> > visit(height, vector<bool>(width, false));
+	vector < pii> localMinima;
 	int curMax = 0;
+	int ret = 0;
 	pii target;
+
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			int temp = cnt[descent(i, j)]++;
-			if (temp > curMax) {
-				curMax = temp;
-				target = { i,j };
+			pii temp = descent(i, j);
+			cnt[temp.first][temp.second]++;
+			int curVal = cnt[temp.first][temp.second];
+			if ( curVal > curMax) {
+				localMinima.clear();
+				localMinima.push_back(temp);
+				curMax = cnt[temp.first][temp.second];
+			}
+			else if (curVal == curMax) {
+				localMinima.push_back(temp);
 			}
 		}
+	}			
+
+	for (const pii curPoint : localMinima) {
+		int sy = curPoint.first;
+		int sx = curPoint.second;
+		if (visit[sy][sx]) continue;
+		int cnt = 0;
+		visit[sy][sx] = true;
+		queue < pii > Q;
+		Q.push({ sy,sx });
+		while (!Q.empty()) {
+			cnt++;
+			int y = Q.front().first, x = Q.front().second;
+			Q.pop();
+			for (int i = 0; i < 8; i++) {
+				int Y = y + DY[i], X = x + DX[i];
+				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
+				if (!visit[Y][X] && abs(HmapData[Y][X] - HmapData[y][x]) < NEAR_GAP_ALLOWED && abs(HmapData[Y][X] - HmapData[sy][sx]) < TOTAL_GAP_ALLOWED) {
+					Q.push({ Y,X });
+					visit[Y][X] = true;
+				}
+			}
+		}
+		if (cnt > MINIMUM_BASIN_AREA) ret++;
 	}
-	return true;
+	return ret;
+}
+
+vector<unsigned char> Estimator::getHeightMap() {
+	vector <unsigned char> ret;
+	for (auto curVec : HmapData) {
+		for (auto p : curVec) {
+			ret.push_back(p); // R channel
+			ret.push_back(p); // G channel
+			ret.push_back(p); // B channel
+		}
+	}
+	return ret;
+}
+
+vector<unsigned char> Estimator::getBlendMap() {
+	vector <unsigned char> ret;
+	for (auto curVec : BmapData) {
+		for (auto p : curVec) {
+			ret.push_back(p.r); // R channel
+			ret.push_back(p.g); // G channel
+			ret.push_back(p.b); // B channel
+			ret.push_back(p.a); // A channel
+		}
+	}
+	return ret;
+}
+
+pixel Estimator::randFill(int areaHeight, int wetDistance, int wetHeightGap, int y,int x) {
+
+	const unsigned char DATA_NUM = 4;
+	pixel tile[DATA_NUM];
+	pixel ret;
+	int prob[DATA_NUM] = { 0, };
+
+	tile[0] = { 0,0,255,0 };// 0 0 255 0 : MUD	
+	tile[1] = { 0,255,0,0 };// 0 255 0 0 : DIRT
+	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
+	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
+
+	const int dryTable[DATA_NUM] = { 25,50,100,1e9 };
+
+	int dryMeter = wetHeightGap * 8 / 10 + wetDistance * 2 / 10;
+
+	for (int i = 0; i < DATA_NUM; i++) {
+		if (dryMeter <= dryTable[i]) {
+			ret = tile[i];
+			break;
+		}
+	}
+
+	return ret;
+}
+
+
+void Estimator::blendmapColoring() {
+
+	descentTabling();
+
+	srand(time(NULL));
+
+	const pixel ROCK = { 255,0,0,0 };// 255 0 0 0 : ROCK
+	const pixel DIRT = { 0,255,0,0 };	// 0 255 0 0 : DIRT
+	const pixel MUD = { 0,0,255,0 };// 0 0 255 0 : MUD
+	const pixel SAND = { 0,0,0,255 };// 0 0 0 255 : SAND
+
+	BmapData.resize(height, vector<pixel>(width, { 0,0,0,0 }));
+	
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+
+			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
+			int wet_dist = (int)sqrt((double) ((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x)));
+			int wet_height = HmapData[i][j] - HmapData[des_y][des_x];
+			
+			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, wet_height,i, j);
+		}
+	}
 }
