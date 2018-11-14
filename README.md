@@ -48,7 +48,7 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcac
 * Normalization
 * Smoothness conversion
 
-## Schedule Management
+## SCHEDULE / ISSUE MANAGEMENT
 
 https://trello.com/b/N631Wkd3/procedural-terrain-estimator
 
