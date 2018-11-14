@@ -79,6 +79,9 @@ uint32_t GLResources::LoadPresetImage(const std::string& path, int numExtension)
 	const unsigned int size = width * height;
 	extendedData.reserve(size * numExtension);
 
+	// r1 r2 r3 r4 r5 ... 데이터를
+	// r1 g1 b1 r2 g2 b2 r3 g3 b3 .... 이렇게 바꾸는 코드인데
+	// 심각하게 느리다, 어떻게 개선해야하까
 	for (int i = 0; i < size; ++i)
 		extendedData.insert(extendedData.end(), numExtension, data[i]);
 
