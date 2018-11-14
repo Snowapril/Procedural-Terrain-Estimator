@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iostream>
 #include "GLResources.hpp"
+#include "ShaderCode.hpp"
 
 BrushManager::BrushManager()
 	: activeBoardIndex(0), brushMgrMode(BrushManagerMode::NONE), simultaneousApply(false)
@@ -60,10 +61,15 @@ bool BrushManager::init(Util::Rect rect)
 	callbackHandler.push_back(simplex.get());
 
 	try {
+#ifdef _DEBUG
 		toolShader = std::make_shared<GLShader>(
 			"../resources/shader/tool_display_vs.glsl",
 			"../resources/shader/tool_display_fs.glsl"
 		);
+#else
+		toolShader = std::make_shared<GLShader>();
+		toolShader->loadRawAsset(TOOL_DISPLAY_VS, TOOL_DISPLAY_FS);
+#endif
 	}
 	catch (const std::exception& e) {
 		return false;
@@ -111,7 +117,7 @@ void BrushManager::bindBrushTextures(uint32_t offset) const
 {
 	for (int i = 0; i < 3; ++i)
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
+		glActiveTexture(GL_TEXTURE0 + i + offset);
 		glBindTexture(GL_TEXTURE_2D, paintBoards[i]->getBrushTexture());
 	}
 }

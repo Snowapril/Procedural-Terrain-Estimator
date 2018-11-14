@@ -32,6 +32,7 @@ public:
 	~GLShader();
 public:
 	void loadAsset(const char* vs_path, const char* fs_path);
+	void loadRawAsset(const char* vs_source, const char* fs_source);
 
 	void useProgram(void) const;
 	int getUniformLocation(const std::string& varName) const;

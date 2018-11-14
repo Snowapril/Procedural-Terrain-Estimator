@@ -3,6 +3,7 @@
 #include "GLTexture.hpp"
 #include <filesystem>
 
+
 template <> std::shared_ptr<GLShader>  make_shared_from_list(iList<std::string>&& list);
 template <> std::shared_ptr<GLShader>  make_shared_from_list(iList<std::string>&& list);
 template <> std::shared_ptr<GLTexture> make_shared_from_list(iList<std::string>&& list);
@@ -36,6 +37,7 @@ EngineAsset & EngineAsset::operator=(const EngineAsset & other)
 
 	return *this;
 }
+
 
 bool EngineAsset::listenToAssetChange(void)
 {

@@ -321,10 +321,10 @@ bool EngineTerrain::bakeTerrainMap(void)
 	//simple quad for baking
 	GLfloat vertices[] =
 	{
-		-1.0f,  1.0f, 0.0f, 0.01f, 0.99f,
-		-1.0f, -1.0f, 0.0f, 0.01f, 0.01f,
-		1.0f,  1.0f, 0.0f, 0.99f, 0.99f,
-		1.0f, -1.0f, 0.0f, 0.99f, 0.01f,
+		-1.0f,  1.0f, 0.0f, 0.05f, 0.95f,
+		-1.0f, -1.0f, 0.0f, 0.05f, 0.05f,
+		1.0f,  1.0f, 0.0f, 0.95f, 0.95f,
+		1.0f, -1.0f, 0.0f, 0.95f, 0.05f,
 	};
 
 	GLuint quadVAO, quadVBO;

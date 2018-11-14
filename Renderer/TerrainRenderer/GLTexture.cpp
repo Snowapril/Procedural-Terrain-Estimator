@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include "GLResources.hpp"
 #include <filesystem>
+#include <io.h>
+#include <errno.h>
 
 GLTexture::GLTexture()
 {
@@ -48,15 +50,16 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 	{
 		for (const auto& pair : assetPaths)
 		{
-			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
+			const char* path = pair.second.c_str();
+			if (_access(path, 0) == -1 || _access(path, 4) == -1)
+				return;
 
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
 			if (texture == 0)
 				throw std::exception();
 
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
-
 			assetPaths[iter].first = time;
-
 			textures[iter].textureID = texture;
 
 			++iter;

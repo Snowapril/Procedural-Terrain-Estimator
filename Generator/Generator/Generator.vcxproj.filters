@@ -146,6 +146,9 @@
     <ClInclude Include="Estimator.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderCode.hpp">
+      <Filter>shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\generator_fs.glsl">

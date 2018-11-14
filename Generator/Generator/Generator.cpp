@@ -10,6 +10,7 @@
 #include "NoiseGUI.hpp"
 #include "EventHandler.hpp"
 #include "GLFramebuffer.hpp"
+#include "ShaderCode.hpp"
 
 Generator::Generator()
 {
@@ -25,6 +26,9 @@ void Generator::updateScene(void)
 
 	brushMgr->update(generatorShader);
 	
+	generatorShader->useProgram();
+	generatorShader->sendUniform("presetBlend", noiseGui->getPresetBlend());
+
 	noiseGui->endUpdate(framebuffer->getColorTexture());
 }
 
@@ -33,8 +37,15 @@ void Generator::drawScene(void) const
 	framebuffer->bindFramebuffer(0, 0, 2048, 2048);
 
 	generatorShader->useProgram();
+	
+	unsigned int texture = noiseGui->getPresetImage();
+	if (texture != 0)
+	{
+		glActiveTexture(GL_TEXTURE3);
+		glBindTexture(GL_TEXTURE_2D, texture);
+	}
+	
 	brushMgr->bindBrushTextures(0U);
-
 	quadMesh.drawMesh(GL_TRIANGLE_STRIP);
 		
 	framebuffer->unbindFramebuffer(framebufferRect);
@@ -60,6 +71,7 @@ bool Generator::initShaders(void)
 {
 	try
 	{
+#ifdef _DEBUG
 		generatorShader = std::make_shared<GLShader>(
 			"../resources/shader/generator_vs.glsl", 
 			"../resources/shader/generator_fs.glsl"
@@ -68,6 +80,12 @@ bool Generator::initShaders(void)
 			"../resources/shader/offscreen_vs.glsl",
 			"../resources/shader/offscreen_fs.glsl"
 		);
+#else
+		generatorShader = std::make_shared<GLShader>();
+		screenShader    = std::make_unique<GLShader>();
+		generatorShader->loadRawAsset(GENERATOR_VS, GENERATOR_FS);
+		screenShader->loadRawAsset(OFFSCREEN_VS, OFFSCREEN_FS);
+#endif
 	}
 	catch (const std::exception& e)
 	{
@@ -79,6 +97,7 @@ bool Generator::initShaders(void)
 	generatorShader->sendUniform("voronoiBoard", 0);
 	generatorShader->sendUniform("fbMBoard", 1);
 	generatorShader->sendUniform("simplexBoard", 2);
+	generatorShader->sendUniform("preset", 3);
 
 	screenShader->useProgram();
 	screenShader->sendUniform("framebufferTexture", 0);

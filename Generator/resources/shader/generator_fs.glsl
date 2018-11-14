@@ -8,6 +8,8 @@ out vec4 fragColors;
 uniform sampler2D voronoiBoard;
 uniform sampler2D simplexBoard;
 uniform sampler2D fbMBoard;
+uniform sampler2D preset;
+uniform float presetBlend;
 
 struct Voronoi {
 	vec2 viewPoint;
@@ -149,13 +151,14 @@ void main(void)
 	float voronoiBrush = texture(voronoiBoard, texCoords).r;
 	float simplexBrush = texture(simplexBoard, texCoords).r;
 	float fbMBrush = texture(fbMBoard, texCoords).r;
+	float presetValue = texture(preset, texCoords).r;
 
     float voronoiValue = voronoiNoise(noisePos * vec2(voronoi.frequency) + voronoi.viewPoint) * voronoiBrush;
 	float simplexValue = snoise(noisePos * vec2(simplex.frequency) + simplex.viewPoint) * simplexBrush;
 	float fbMvalue = fbm(noisePos * vec2(fbM.frequency) + fbM.viewPoint) * fbMBrush;
-	
-	float blendSum = fbM.blend + simplex.blend + voronoi.blend + EPSILON;
-	float combinedNoise = (voronoiValue * voronoi.blend + simplexValue * simplex.blend + fbMvalue * fbM.blend) / blendSum;
+
+	float blendSum = fbM.blend + simplex.blend + voronoi.blend + presetBlend + EPSILON;
+	float combinedNoise = (voronoiValue * voronoi.blend + simplexValue * simplex.blend + fbMvalue * fbM.blend + presetValue * presetBlend) / blendSum;
 
     fragColors = vec4(vec3(combinedNoise) , 1.0);
 }

@@ -16,6 +16,7 @@ class GLResources
 {
 public:
 	static uint32_t CreateTexture2D(const std::string& path, bool gamma);
+	static uint32_t LoadPresetImage(const std::string& path, int numExtension);
 };
 
 #endif

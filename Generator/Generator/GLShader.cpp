@@ -95,6 +95,55 @@ void GLShader::loadAsset(const char* vs_path, const char* fs_path)
 	std::clog << "Create Shader Program Success" << std::endl;
 }
 
+void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
+{
+	GLuint vs, fs;
+
+	vs = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vs, 1, &vs_source, nullptr);
+	glCompileShader(vs);
+
+	if (checkStatus(vs, CHECK_TARGET::SHADER))
+		std::clog << "Vertex Shader Compile finished" << std::endl;
+	else
+	{
+		std::cerr << "Vertex Shader Compile failed." << std::endl;
+		throw std::exception();
+	}
+
+	fs = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fs, 1, &fs_source, nullptr);
+	glCompileShader(fs);
+
+	if (checkStatus(fs, CHECK_TARGET::SHADER))
+		std::clog << "Fragment Shader Compile finished" << std::endl;
+	else
+	{
+		std::cerr << "Fragment Shader Compile failed." << std::endl;
+		throw std::exception();
+	}
+
+	programID = glCreateProgram();
+	glAttachShader(programID, vs);
+	glAttachShader(programID, fs);
+	glLinkProgram(programID);
+
+	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
+		std::clog << "Program Linking Finished" << std::endl;
+	else
+	{
+		std::cerr << "Program Linking Failed" << std::endl;
+		throw std::exception();
+	}
+
+	glDetachShader(programID, vs);
+	glDeleteShader(vs);
+	glDetachShader(programID, fs);
+	glDeleteShader(fs);
+
+	std::clog << "Create Shader Program Success" << std::endl;
+}
+
 /**
 * @ brief		get string from glsl shader file.
 * @ param		shader file path which you want to get whole string.

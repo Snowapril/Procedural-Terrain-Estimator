@@ -4,8 +4,9 @@
 #include <imgui/imgui_impl_glfw_gl3.h>
 #include <imgui/imgui_internal.h>
 #include "GLShader.hpp"
-#include <vector>
 #include "Estimator.hpp"
+#include "GLResources.hpp"
+#include <experimental/filesystem>
 
 using namespace ImGui;
 
@@ -15,7 +16,7 @@ using namespace cv;
 bool NoiseGUI::isInstanciated = false;
 
 NoiseGUI::NoiseGUI()
-	: isGUIOpen(true), isSaveButtonPushed(false)
+	: presetBlend(0.0f), presetImage(0), isGUIOpen(true), isSaveButtonPushed(false)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -32,6 +33,16 @@ bool NoiseGUI::initGUI(GLFWwindow* window)
 	if (!ImGui_ImplGlfwGL3_Init(window, true))
 		return false;
 
+	namespace fs = std::experimental::filesystem;
+	for (auto& p : fs::directory_iterator("../resources/texture/preset")) 
+	{
+		if (p.path().extension() == ".png")
+		{
+			const std::string filename = p.path().filename().string();
+			presetImages.emplace_back(GLResources::LoadPresetImage(p.path().string(), 3), filename);
+		}
+	}
+
 	return true;
 }
 
@@ -45,6 +56,20 @@ void NoiseGUI::updateGUI(glm::vec2 rect)
 
 void NoiseGUI::endUpdate(uint32_t frameTexture)
 {
+	if (ImGui::TreeNode("Preset Image"))
+	{
+		ImGui::SliderFloat("Blend", &presetBlend, 0.0f, 1.0f);
+		for (const auto& preset : presetImages)
+		{
+			ImGui::Image((void*)preset.texture, ImVec2(80.0f, 80.0f));
+			ImGui::SameLine(150);
+			const char* const label = preset.name.c_str();
+			if (ImGui::Button(label))
+				presetImage = preset.texture;
+		}
+		ImGui::TreePop();
+	}
+
 	if (ImGui::CollapsingHeader("Key Support", 0, true, true))
 	{
 		ImGui::Text("Number 1 : Voronoi");
@@ -60,13 +85,11 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		ImGui::Text("M        : Move Scroll");
 	}
 	
-	//static uint32_t texture = GLResources::CreateTexture2D("../resources/texture/terrain/heightMap.jpg", false);
 	if (ImGui::CollapsingHeader("Application Info", 0, true, true))
 	{
 		char* glInfos = (char*)glGetString(GL_VERSION);
 		char* hardwareInfos = (char*)glGetString(GL_RENDERER);
 		
-		//ImGui::Image((void*)(int*)texture, ImVec2(80.0f, 80.0f));
 		ImGui::Text("OpenGL Version :");
 		ImGui::Text(glInfos);
 		ImGui::Text("Hardware Informations :");
