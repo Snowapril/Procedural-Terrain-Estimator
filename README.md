@@ -48,6 +48,10 @@ glslcache vert.glsl frag.glsl -t tcs.glsl tes.glsl -g gs.glsl -o newname.glslcac
 * Normalization
 * Smoothness conversion
 
+## Schedule Management
+
+https://trello.com/b/N631Wkd3/procedural-terrain-estimator
+
 ## MEETING
 
 매주 금요일 1시 콘텐츠랩 / 토요일 오전10시 온라인 개발
