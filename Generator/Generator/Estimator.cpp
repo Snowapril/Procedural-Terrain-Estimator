@@ -275,7 +275,7 @@ void Estimator::smoothness() {
 			int div = 0;
 
 			for (int k = 0; k < 8; k++) {
-				int Y = i+DY[i], X = j+DX[i];
+				int Y = i+DY[k], X = j+DX[k];
 				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
 				div++;
 				res += HmapData[Y][X];
@@ -287,6 +287,42 @@ void Estimator::smoothness() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			HmapData[i][j] = converted[i][j];
+		}
+	}
+}
+
+void Estimator::bfsCoastlineOptimization() {
+	queue <pii> Q;
+	vector < vector < bool > > visit(height, vector<bool>(width, 0));
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			if (!visit[i][j] && HmapData[i][j] <= DEFAULT_SEA_LEVEL) {
+				visit[i][j] = true;
+				Q.push({ i,j });
+				while (!Q.empty()) {
+					int y = Q.front().first, x = Q.front().second;
+					Q.pop();
+					for (int k = 0; k < 8; k++) {
+						int Y = y + DY[k], X = x+ DX[k];
+						if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
+						if (visit[Y][X]) continue;
+						if (HmapData[Y][X] <= DEFAULT_SEA_LEVEL) {
+							visit[Y][X] = true;
+							Q.push({ Y,X });
+						}
+						else {
+							int prob = rand() % 100;
+							double logVal = log(height) / log(DEFAULT_SEA_LEVEL + 10) * 100;
+							int transitionProbability = (int)(100 - (int)(logVal))/2;
+							if (prob > transitionProbability) {
+								HmapData[Y][X] = (HmapData[Y][X] + HmapData[y][x]) / 2;
+								visit[Y][X] = true;
+								Q.push({ Y,X });
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

@@ -62,6 +62,8 @@ private:
 	// minimumHeight ~ maximumHeight 값으로 재조정
 
 	void smoothness();
+
+	void bfsCoastlineOptimization();
 };
 
 
