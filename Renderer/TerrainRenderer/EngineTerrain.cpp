@@ -22,7 +22,7 @@
 bool EngineTerrain::isInstanciated = false;
 
 EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
-	: enableWireFrame(false), terrainShader(nullptr), prevCameraPos(-1.f)
+	: enableWireFrame(false), enableTriangleNormal(true), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -69,6 +69,7 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 	terrainShader->sendUniform("tileSize", tileSize);
 	terrainShader->sendUniform("gradient", fogGradient);
 	terrainShader->sendUniform("skycolor", skycolor);
+	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
 
 	depthPassShader->useProgram();
 	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
@@ -129,6 +130,7 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	glm::vec2 viewportScale = camera.getViewportSize();
 	terrainShader->sendUniform("viewportSize", viewportScale);
 	terrainShader->sendUniform("enableWireframe", enableWireFrame);
+	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
 
 	glm::vec2 scale = dynamicPatch->getTerrainScale();
 	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
@@ -155,6 +157,7 @@ void EngineTerrain::updateGUI(void)
 		ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
+		ImGui::Checkbox("Triangle Normal", &enableTriangleNormal);
 
 		ImGui::TreePop();
 	}
@@ -321,10 +324,10 @@ bool EngineTerrain::bakeTerrainMap(void)
 	//simple quad for baking
 	GLfloat vertices[] =
 	{
-		-1.0f,  1.0f, 0.0f, 0.05f, 0.95f,
-		-1.0f, -1.0f, 0.0f, 0.05f, 0.05f,
-		1.0f,  1.0f, 0.0f, 0.95f, 0.95f,
-		1.0f, -1.0f, 0.0f, 0.95f, 0.05f,
+		-1.03f,  1.03f, 0.0f, 0.0f, 1.0f,
+		-1.03f, -1.03f, 0.0f, 0.0f, 0.0f,
+		1.03f,  1.03f, 0.0f, 1.0f, 1.0f,
+		1.03f, -1.03f, 0.0f, 1.0f, 0.0f,
 	};
 
 	GLuint quadVAO, quadVBO;

@@ -6,7 +6,7 @@ in vec2 gs_tileCoords;
 in vec3 gs_fragPos;
 in vec3 gs_shadowCoords;
 in vec3 gs_distToEdges;
-
+in vec3 gs_normal;
 in float gs_visibility;
 
 out vec4 fragColor;
@@ -19,6 +19,7 @@ uniform sampler2D grassTexture;
 uniform sampler2D wetDirtTexture;
 uniform sampler2D shadowMap;
 uniform bool enableWireframe;
+uniform bool enableTriangleNormal;
 
 struct DirLight {
 	vec3 direction;
@@ -41,9 +42,15 @@ void main(void)
 	vec4 terrain = texture(terrainMap, gs_texCoords);
 
 	float height = terrain.w;
-	vec3 normal = terrain.xzy;
-	normal.xz = normal.xz * 2.0 - 1.0;
 
+	vec3 normal;
+	if (enableTriangleNormal) {
+		normal = gs_normal;
+	}
+	else {
+		normal = terrain.xzy;
+		normal.xz = normal.xz * 2.0 - 1.0;
+	}
 	normal = normalize(normal);
 
 	vec4 mixmap = texture(splatMap, gs_texCoords);

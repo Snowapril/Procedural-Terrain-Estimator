@@ -20,6 +20,7 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
 		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+
 		return 0;
 	}
 

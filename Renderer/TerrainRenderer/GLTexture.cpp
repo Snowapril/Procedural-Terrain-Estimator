@@ -2,8 +2,6 @@
 #include <glad/glad.h>
 #include "GLResources.hpp"
 #include <filesystem>
-#include <io.h>
-#include <errno.h>
 
 GLTexture::GLTexture()
 {
@@ -46,21 +44,21 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 
 	int iter = 0;
 	
+	std::vector<TEXTURE> loadAssets = textures;
+
 	if (assetPath.size() == 0)
 	{
 		for (const auto& pair : assetPaths)
 		{
-			const char* path = pair.second.c_str();
-			if (_access(path, 0) == -1 || _access(path, 4) == -1)
-				return;
-
 			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
 			if (texture == 0)
-				throw std::exception();
+			{
+				return;
+			}
 
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 			assetPaths[iter].first = time;
-			textures[iter].textureID = texture;
+			loadAssets[iter].textureID = texture;
 
 			++iter;
 		}
@@ -74,17 +72,26 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 
-			if (texture == 0)
-				throw std::exception();
+			if (texture == 0) 
+			{
+				std::string errorMsg = "Cannot load texture from " + pair.second;
+				const char* msgSrc = errorMsg.c_str();
+				MessageBox(NULL, msgSrc, "Resource Load Error", MB_OK);
+			}
 
 			assetPaths[iter].first = time;
 			assetPaths[iter].second = pair.second;
 
-			textures.push_back({ pair.first, texture });
+			loadAssets.push_back({ pair.first, texture });
 
 			++iter;
 		}
 	}
+
+	for (auto& texture : textures)
+		glDeleteTextures(1, &texture.textureID);
+
+	textures.swap(loadAssets);
 }
 
 /**
@@ -93,9 +100,6 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 */
 void GLTexture::reloadAsset(void)
 {
-	for (auto& texture : textures)
-		glDeleteTextures(1, &texture.textureID);
-
 	loadAsset({});
 }
 
