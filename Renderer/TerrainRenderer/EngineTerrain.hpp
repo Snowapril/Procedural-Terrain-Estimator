@@ -60,7 +60,7 @@ private:
 	float maxHeight;
 
 	bool enableWireFrame;
-	
+	bool enableTriangleNormal;
 	static bool isInstanciated;
 protected:
 	bool bakeTerrainMap(void);

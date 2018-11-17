@@ -23,6 +23,7 @@ out float gs_visibility;
 out vec2 gs_texCoords;
 out vec2 gs_tileCoords;
 out vec3 gs_distToEdges;
+out vec3 gs_normal;
 
 const float density = 0.00025;
 uniform float gradient = 2.2;
@@ -36,7 +37,7 @@ vec2 projectToViewportSpace(vec4 position, mat4 vp)
 	return clip.xy;
 }
 
-void emitVertex(int i, vec3 distToEdges)
+void emitVertex(int i, vec3 distToEdges, vec3 normal)
 {
 	gs_fragPos = gl_in[i].gl_Position.xyz;
 	gs_shadowCoords = (sunMVPMatrix * gl_in[i].gl_Position).xyz;
@@ -50,6 +51,7 @@ void emitVertex(int i, vec3 distToEdges)
 	gs_texCoords = tes_texCoords[i];
 	gs_tileCoords = tes_tileCoords[i];
 	gs_distToEdges = distToEdges;
+	gs_normal = normal;
 
 	gl_ClipDistance[0] = dot(gl_in[i].gl_Position, clipPlane);
 	gl_Position = project * positionRelativeToCam;
@@ -69,6 +71,11 @@ void main(void)
 	vec2 e1 = p2 - p1;
 	vec2 e2 = p2 - p0;
 
+
+
+	vec3 normal = normalize(cross(vec3(gl_in[2].gl_Position - gl_in[0].gl_Position), 
+								  vec3(gl_in[1].gl_Position - gl_in[0].gl_Position)));
+
 	// cross((b-a), (c-a)).
 	// cross( (e1 - e0), (e2 - e0) );
 	// ( e1.x - e0.x, e1.y - e0.y, e1.z - e0.z) x (e2.x - e0.x, e2.y - e0.y, e2.z - e0.z)
@@ -80,9 +87,9 @@ void main(void)
 	float h1 = doubleTriangleArea / length(e1);
 	float h2 = doubleTriangleArea / length(e2);
 
-	emitVertex(0, vec3(0, h1, 0));
-	emitVertex(1, vec3(0, 0, h2));
-	emitVertex(2, vec3(h0, 0, 0));
-
+	emitVertex(0, vec3(0, h1, 0), normal);
+	emitVertex(1, vec3(0, 0, h2), normal);
+	emitVertex(2, vec3(h0, 0, 0), normal);
+								
 	EndPrimitive();
 }	
