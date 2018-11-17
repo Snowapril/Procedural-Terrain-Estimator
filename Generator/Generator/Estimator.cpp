@@ -199,11 +199,11 @@ vector<unsigned char> Estimator::getBlendMap() {
 	return ret;
 }
 
-pixel Estimator::randFill(int areaHeight, int wetDistance, int wetHeightGap, int y,int x) {
+pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
-	const unsigned char DATA_NUM = 4;
-	pixel tile[DATA_NUM];
-	pixel ret;
+	const unsigned static char DATA_NUM = 4;
+	static pixel tile[DATA_NUM];
+	static pixel ret;
 	int prob[DATA_NUM] = { 0, };
 
 	tile[0] = { 0,0,255,0 };// 0 0 255 0 : MUD	
@@ -211,16 +211,23 @@ pixel Estimator::randFill(int areaHeight, int wetDistance, int wetHeightGap, int
 	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
 	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
 
-	const int dryTable[DATA_NUM] = { 25,50,100,1e9 };
+	const static int elevationTable[DATA_NUM] = { DEFAULT_SEA_LEVEL * 8 / 10, DEFAULT_SEA_LEVEL, DEFAULT_SEA_LEVEL * 12 / 10, 1e9 };
 
-	int dryMeter = wetHeightGap * 8 / 10 + wetDistance * 2 / 10;
-
+	int select = 0;
 	for (int i = 0; i < DATA_NUM; i++) {
-		if (dryMeter <= dryTable[i]) {
-			ret = tile[i];
+		if (elevation <= elevationTable[i]) {
+			select = i;
 			break;
 		}
 	}
+
+	int transitionPercentage = 50 + exp(dryDistance * 50 / elevationTable[select]);
+	
+	int probabillity = rand()%100;
+
+	if (probabillity > transitionPercentage) select++;
+
+	ret = tile[select];
 
 	return ret;
 }
@@ -244,9 +251,42 @@ void Estimator::blendmapColoring() {
 
 			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
 			int wet_dist = (int)sqrt((double) ((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x)));
-			int wet_height = HmapData[i][j] - HmapData[des_y][des_x];
 			
-			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, wet_height,i, j);
+			BmapData[i][j] = randFill(HmapData[i][j], wet_dist,i, j);
+		}
+	}
+}
+
+void Estimator::normalize(int minimumHeight = 0, int maximumHeight = 512) {
+	DEFAULT_SEA_LEVEL = (minimumHeight + maximumHeight) / 4;
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			HmapData[i][j] = minimumHeight + HmapData[i][j] / 512 * (maximumHeight - minimumHeight);
+		}
+	}
+}
+
+void Estimator::smoothness() {
+	vector < vector < int > > converted(height, vector<int>(width, 0));
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+
+			int res = 0;
+			int div = 0;
+
+			for (int k = 0; k < 8; k++) {
+				int Y = i+DY[i], X = j+DX[i];
+				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
+				div++;
+				res += HmapData[Y][X];
+			}
+
+			converted[i][j] = (HmapData[i][j] + res / div ) / 2;
+		}
+	}
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			HmapData[i][j] = converted[i][j];
 		}
 	}
 }

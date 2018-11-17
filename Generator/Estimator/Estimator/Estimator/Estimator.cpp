@@ -169,7 +169,7 @@ pixel Estimator::randFill(int areaHeight, int wetDistance, int wetHeightGap, int
 	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
 	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
 
-	const int dryTable[DATA_NUM] = { 25,50,100,1e9 };
+	const int dryTable[DATA_NUM] = { 100,200,300,1e9 };
 
 	int dryMeter = wetHeightGap * 8 / 10 + wetDistance * 2 / 10;
 
