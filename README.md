@@ -48,7 +48,7 @@ will be supported ...
 #### Help
 ..
 #### Keys
-1. **Renderer ** :
+1. **Renderer** :
 	* W,A,S,D - Camera movement
 	* Cursor move - Camera rotation
 	* ESC - quit program
