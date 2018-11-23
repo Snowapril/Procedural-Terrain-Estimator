@@ -9,6 +9,7 @@
 	out vec2 TexCoords;
 	uniform mat4 view;
 	uniform mat4 projection;
+	
 	void main(void)
 	{
 		TexCoords = aTexCoords;
@@ -27,15 +28,15 @@
 	
 	void main(void)
 	{
-	float height = texture(heightMap, TexCoords).r;
+		float height = texture(heightMap, TexCoords).r;
 
-	const ivec3 offset = ivec3(-1, 0, 1);
-	const vec2 size = vec2(2.0, 0.0);
+		const ivec3 offset = ivec3(-1, 0, 1);
+		const vec2 size = vec2(2.0, 0.0);
 
-	float hL = textureOffset(heightMap, TexCoords, offset.xy).r * terrainMaxHeight;
-	float hR = textureOffset(heightMap, TexCoords, offset.zy).r * terrainMaxHeight;
-	float hD = textureOffset(heightMap, TexCoords, offset.yx).r * terrainMaxHeight;
-	float hU = textureOffset(heightMap, TexCoords, offset.yz).r * terrainMaxHeight;
+		float hL = textureOffset(heightMap, TexCoords, offset.xy).r * terrainMaxHeight;
+		float hR = textureOffset(heightMap, TexCoords, offset.zy).r * terrainMaxHeight;
+		float hD = textureOffset(heightMap, TexCoords, offset.yx).r * terrainMaxHeight;
+		float hU = textureOffset(heightMap, TexCoords, offset.yz).r * terrainMaxHeight;
 	
 		vec3 normal = normalize(vec3(hR - hL, 2, hU - hD));
 		normal.xz = normal.xz * 0.5 + 0.5;
@@ -58,6 +59,7 @@
 	uniform vec2 terrainScale;
 	
 	uniform float tileSize = 32.0;
+	
 	
 	vec2 calculateTexCoords(vec3 vertex)
 	{
@@ -115,7 +117,6 @@
 		temp |= temp >> 2;
 		temp |= temp >> 4;
 		temp |= temp >> 8;
-		temp |= temp >> 16;
 	
 		t = float(temp + 1);
 	

@@ -47,6 +47,7 @@ public:
 	// BlendMap을 stdout에 출력
 
 	void initHMapData(unsigned int texture, int _width, int _height);
+	void generateHeightMap(const char* path, int width, int height);
 	void generateBlendMap(const char* path, int width, int height);
 private:
 	pii descent(int y, int x);

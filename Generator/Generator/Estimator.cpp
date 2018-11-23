@@ -14,6 +14,10 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #endif
 #include <stb/stb_image_write.h>
+
+#include <opencv2/imgcodecs.hpp>
+
+using namespace cv;
 using namespace std;
 
 std::shared_ptr<Estimator> Singleton<Estimator>::instance(new Estimator());
@@ -75,6 +79,19 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 	}
 }
 
+void Estimator::generateHeightMap(const char* path, int width, int height) {
+	//TODO :
+	//std::vector<unsigned char> data(width * height);
+	//
+	//for (int i = 0; i < height; i++) {
+	//	for (int j = 0; j < width; j++) {
+	//		HmapData[i]
+	//	}
+	//}
+	//
+	//Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&HmapData[0][0]);
+	//imwrite(path, src);
+}
 
 void Estimator::generateBlendMap(const char* path, int width, int height) {
 
