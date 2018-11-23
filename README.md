@@ -7,16 +7,14 @@ PTE consists of two programs, **Renderer and Editing tool**.
 <center><img src="./screenshot_renderer.JPG" width="640"></center>
 
 **Editing tool** consists of two stages, Generator and Estimator.<br/>
-At Generator stage, users can edit height map with several noise functions by controlling several parameters of each noise functions. Also enable to edit output board directly with additive brush / decline brush / lasso (free-form) / lasso (polygonal) / etc ..   <br/>
-At Estimator stage, you can generate blend map associated with height map which you are editing.
+At **Generator** stage, users can edit height map with several noise functions by controlling several parameters of each noise functions. Also enable to edit output board directly with additive brush / decline brush / lasso (free-form) / lasso (polygonal) / etc ..   <br/>
+At **Estimator** stage, you can generate blend map associated with height map which you are editing.
 This will be automatically done using several terrain related algorithms.
 <center><img src="./screenshot_editing_tool.JPG" width="640"></center>
 
-## Screenshot / Demo
+## Demo Video
 
 [![Procedural-Terrain-Estimator-Demo-screenshot](./screenshot.JPG)](https://www.youtube.com/watch?v=1Ated5GNbYY)
-
-<center>**(move to demo video)**</center>
 
 ## Features
 
@@ -47,6 +45,7 @@ This will be automatically done using several terrain related algorithms.
 ## How to build
 will be supported ...
 ## How to Use
+#### Help
 ..
 #### Keys
 1. **Renderer ** :
@@ -82,7 +81,7 @@ will be supported ...
 | i5-? | HD630  | Windows 64bit      | O   | ? |
 
 ## Contributor
-[**@snowapril**](https://github.com/Snowapril) - generator and renderer
+[**@snowapril**](https://github.com/Snowapril) - generator and renderer <br/>
 [**@kkorona**](https://github.com/kkorona) - estimator
 
 ## License
