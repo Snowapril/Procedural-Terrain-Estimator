@@ -15,6 +15,7 @@ This will be automatically done using several terrain related algorithms.
 ## Screenshot / Demo
 
 [![Procedural-Terrain-Estimator-Demo-screenshot](./screenshot.JPG)](https://www.youtube.com/watch?v=1Ated5GNbYY)
+
 <center>**(move to demo video)**</center>
 
 ## Features
