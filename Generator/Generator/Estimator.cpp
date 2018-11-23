@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <cstring>
 #include <glad/glad.h>
+#include "SN_Rombauts.h"
 
 #ifndef STB_IMAGE_WRITE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -118,60 +119,15 @@ pii Estimator::descent(int y,int x) {
 	return ans;
 }
 
-int Estimator::descentTabling() {
-
-	const unsigned char NEAR_GAP_ALLOWED = 3;
-	const unsigned char TOTAL_GAP_ALLOWED = 5;
-	const int MINIMUM_BASIN_AREA = 25;
+void Estimator::descentTabling() {
 
 	descentTable.resize(height, vector<pii>(width, { -1,-1 }));
-	vector < vector < int > > cnt(height, vector<int>(width, 0));
-	vector < vector <bool> > visit(height, vector<bool>(width, false));
-	vector < pii> localMinima;
-	int curMax = 0;
-	int ret = 0;
-	pii target;
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			pii temp = descent(i, j);
-			cnt[temp.first][temp.second]++;
-			int curVal = cnt[temp.first][temp.second];
-			if ( curVal > curMax) {
-				localMinima.clear();
-				localMinima.push_back(temp);
-				curMax = cnt[temp.first][temp.second];
-			}
-			else if (curVal == curMax) {
-				localMinima.push_back(temp);
-			}
 		}
-	}			
-
-	for (const pii curPoint : localMinima) {
-		int sy = curPoint.first;
-		int sx = curPoint.second;
-		if (visit[sy][sx]) continue;
-		int cnt = 0;
-		visit[sy][sx] = true;
-		queue < pii > Q;
-		Q.push({ sy,sx });
-		while (!Q.empty()) {
-			cnt++;
-			int y = Q.front().first, x = Q.front().second;
-			Q.pop();
-			for (int i = 0; i < 8; i++) {
-				int Y = y + DY[i], X = x + DX[i];
-				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
-				if (!visit[Y][X] && abs(HmapData[Y][X] - HmapData[y][x]) < NEAR_GAP_ALLOWED && abs(HmapData[Y][X] - HmapData[sy][sx]) < TOTAL_GAP_ALLOWED) {
-					Q.push({ Y,X });
-					visit[Y][X] = true;
-				}
-			}
-		}
-		if (cnt > MINIMUM_BASIN_AREA) ret++;
 	}
-	return ret;
 }
 
 vector<unsigned char> Estimator::getHeightMap() {
@@ -257,7 +213,7 @@ void Estimator::blendmapColoring() {
 	}
 }
 
-void Estimator::normalize(int minimumHeight = 0, int maximumHeight = 512) {
+void Estimator::normalize(int minimumHeight, int maximumHeight) {
 	DEFAULT_SEA_LEVEL = (minimumHeight + maximumHeight) / 4;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
@@ -267,7 +223,7 @@ void Estimator::normalize(int minimumHeight = 0, int maximumHeight = 512) {
 }
 
 void Estimator::smoothness() {
-	vector < vector < int > > converted(height, vector<int>(width, 0));
+	vector < vector < short > > converted(height, vector<short>(width, 0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
@@ -311,9 +267,9 @@ void Estimator::bfsCoastlineOptimization() {
 							Q.push({ Y,X });
 						}
 						else {
-							int prob = rand() % 100;
+							short prob = rand() % 100;
 							double logVal = log(height) / log(DEFAULT_SEA_LEVEL + 10) * 100;
-							int transitionProbability = (int)(100 - (int)(logVal))/2;
+							short transitionProbability = (int)(100 - (int)(logVal))/2;
 							if (prob > transitionProbability) {
 								HmapData[Y][X] = (HmapData[Y][X] + HmapData[y][x]) / 2;
 								visit[Y][X] = true;
@@ -322,6 +278,40 @@ void Estimator::bfsCoastlineOptimization() {
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+void Estimator::linearCoastlineOptimization() {
+
+	static const short DY1[4] = { -1,-1,-1,0 };
+	static const short DX1[4] = { -1,0,1,1 };
+	static const short DY2[4] = { 1,1,1,0 };
+	static const short DX2[4] = { 1,0,-1,-1 };
+	int ydir, xdir;
+
+	vector < vector < bool > > visit(height, vector<bool>(width, 0));
+
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			if (!visit[i][j] && HmapData[i][j] > DEFAULT_SEA_LEVEL) {
+				visit[i][j] = true;
+				for (int k = 0; k < 4; k++) {
+					int Y1 = i + DY1[k], X1 = j + DX1[k];
+					int Y2 = i + DY2[k], X2 = j + DY2[k];
+					int direction = ((int)(HmapData[Y2][X2] > DEFAULT_SEA_LEVEL) - (int)(HmapData[Y1][X1] > DEFAULT_SEA_LEVEL));
+					ydir += (DY1[k] - DY2[k]) / 2 * direction;
+					xdir += (DX1[k] - DX2[k]) / 2 * direction;
+				}
+				if (ydir == 0 && xdir == 0) continue;
+				ydir = -ydir;
+				xdir = -xdir;
+				int d = (int)sqrt(xdir * xdir + ydir * ydir);
+				int noiseDistance = SN_Rombauts::noise((float)(i+j));
+				/*
+				for(int y = i; )
+				*/
 			}
 		}
 	}

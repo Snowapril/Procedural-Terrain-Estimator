@@ -52,7 +52,7 @@ private:
 	pii descent(int y, int x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수
 
-	int descentTabling();
+	void descentTabling();
 	// 모든 점에 대해서 gradient descending을 실행하고 분지의 개수를 반환하는 함수
 
 	pixel randFill(int elevation, int dryDistance, int y, int x);
@@ -64,6 +64,8 @@ private:
 	void smoothness();
 
 	void bfsCoastlineOptimization();
+	
+	void linearCoastlineOptimization();
 };
 
 

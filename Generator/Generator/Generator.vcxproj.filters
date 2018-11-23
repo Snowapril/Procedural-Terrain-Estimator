@@ -84,6 +84,9 @@
     <ClCompile Include="Estimator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\dependencies\simplex\SN_Rombauts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineProperty.hpp">
@@ -143,11 +146,14 @@
     <ClInclude Include="Singleton.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Estimator.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderCode.hpp">
       <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Estimator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dependencies\simplex\SN_Rombauts.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

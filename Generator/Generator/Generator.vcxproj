@@ -144,6 +144,7 @@
     <ClCompile Include="..\dependencies\imgui\imgui.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="..\dependencies\simplex\SN_Rombauts.cpp" />
     <ClCompile Include="BrushBoard.cpp" />
     <ClCompile Include="BrushManager.cpp" />
     <ClCompile Include="Estimator.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="VoronoiNoise.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\dependencies\simplex\SN_Rombauts.h" />
     <ClInclude Include="BrushBoard.hpp" />
     <ClInclude Include="BrushManager.hpp" />
     <ClInclude Include="EngineProperty.hpp" />
