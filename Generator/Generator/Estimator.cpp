@@ -284,9 +284,9 @@ void Estimator::bfsCoastlineOptimization() {
 							Q.push({ Y,X });
 						}
 						else {
-							short prob = rand() % 100;
+							unsigned short prob = rand() % 100;
 							double logVal = log(height) / log(DEFAULT_SEA_LEVEL + 10) * 100;
-							short transitionProbability = (int)(100 - (int)(logVal))/2;
+							unsigned short transitionProbability = (int)(100 - (int)(logVal))/2;
 							if (prob > transitionProbability) {
 								HmapData[Y][X] = (HmapData[Y][X] + HmapData[y][x]) / 2;
 								visit[Y][X] = true;
@@ -302,10 +302,11 @@ void Estimator::bfsCoastlineOptimization() {
 
 void Estimator::linearCoastlineOptimization() {
 
-	static const short DY1[4] = { -1,-1,-1,0 };
-	static const short DX1[4] = { -1,0,1,1 };
-	static const short DY2[4] = { 1,1,1,0 };
-	static const short DX2[4] = { 1,0,-1,-1 };
+	const short DY1[4] = { -1,-1,-1,0 };
+	const short DX1[4] = { -1,0,1,1 };
+	const short DY2[4] = { 1,1,1,0 };
+	const short DX2[4] = { 1,0,-1,-1 };
+	const short MEASURE = 6;
 	int ydir, xdir;
 
 	vector < vector < bool > > visit(height, vector<bool>(width, 0));
@@ -321,14 +322,40 @@ void Estimator::linearCoastlineOptimization() {
 					ydir += (DY1[k] - DY2[k]) / 2 * direction;
 					xdir += (DX1[k] - DX2[k]) / 2 * direction;
 				}
+
 				if (ydir == 0 && xdir == 0) continue;
+
+				//방향 전환
 				ydir = -ydir;
 				xdir = -xdir;
+
+
 				int d = (int)sqrt(xdir * xdir + ydir * ydir);
 				int noiseDistance = SN_Rombauts::noise((float)(i+j));
-				/*
-				for(int y = i; )
-				*/
+
+				/* 
+				 * 방향 벡터 : (ydir , xdir)
+				 * 방향 거리 : noiseDistance
+				 * SN_Rombauts::noise(x) 의 최대 value : 2.53125
+				 * ydir / d 는 1보다 작음
+				 * -> (ydir / d * noiseDistance, xdir / d * noiseDistance)의 범위
+				 */
+
+				unsigned short COASTLINE_CONST = 2;
+
+				ydir = ydir * noiseDistance * COASTLINE_CONST / d;
+				xdir = xdir * noiseDistance * COASTLINE_CONST / d;
+
+				short ydiff = ydir / MEASURE;
+				short xdiff = xdir / MEASURE;
+
+				for (int y = i, x = j; y != i + ydir && x != j + xdir; y += ydiff, x += xdiff) {
+					if (y < 0 || y >= height || x < 0 || x >= width) continue;
+					if (visit[y][x]) continue;
+					visit[y][x] = true;
+					HmapData[y][x] = (abs(y - i) + abs(x - j)) / 2 ;
+				}
+				
 			}
 		}
 	}
