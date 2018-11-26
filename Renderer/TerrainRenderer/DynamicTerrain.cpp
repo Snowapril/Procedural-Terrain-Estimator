@@ -10,6 +10,7 @@
 #include "TerrainPatch.hpp"
 
 #include "EngineProperty.hpp"
+#include "obfuscator.hpp"
 
 constexpr std::size_t	MAX_POOL_SIZE		 = 3000;
 constexpr float			MIN_PATCH_LENGTH	 = 16.0f;
@@ -40,7 +41,7 @@ bool DynamicTerrain::initDynamicTerrain(const glm::vec3& position)
 	}
 	catch (std::bad_alloc e)
 	{
-		EngineLogger::getConsole()->error("Bad alloc is occurred at pre-instanciate terrain patch. size : {}", sizeof(TerrainPatch) * MAX_POOL_SIZE);
+		EngineLogger::getConsole()->error(OBFUSCATE("Bad alloc is occurred at pre-instanciate terrain patch. size : {}"), sizeof(TerrainPatch) * MAX_POOL_SIZE);
 		return false;
 	}
 

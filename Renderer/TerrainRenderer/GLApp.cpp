@@ -6,9 +6,10 @@
 #include "GLDebugger.hpp"
 #include <sstream>	
 #include "EngineProfiler.hpp"
+#include "obfuscator.hpp"
 
 GLApp::GLApp()
-	: window(nullptr), clientWidth(0), clientHeight(0), fullscreen(FULL_SCREEN), paused(false), WndCaption("Terrain Renderer"), timer()
+	: window(nullptr), clientWidth(0), clientHeight(0), fullscreen(FULL_SCREEN), paused(false), WndCaption(OBFUSCATE("Terrain Renderer")), timer()
 {
 }
 
@@ -28,7 +29,7 @@ bool GLApp::initGLWindow(bool fullscreen)
 {
 	if (!glfwInit())
 	{
-		EngineLogger::getConsole()->error("GLFW initialization failed.");
+		EngineLogger::getConsole()->error(OBFUSCATE("GLFW initialization failed."));
 		return false;
 	}
 	
@@ -60,7 +61,7 @@ bool GLApp::initGLWindow(bool fullscreen)
 	if (!window) 
 	{
 		glfwTerminate();
-		EngineLogger::getConsole()->error("GLFW Window Creating failed.");
+		EngineLogger::getConsole()->error(OBFUSCATE("GLFW Window Creating failed."));
 		return false;
 	}
 
@@ -69,14 +70,14 @@ bool GLApp::initGLWindow(bool fullscreen)
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		glfwTerminate();
-		EngineLogger::getConsole()->error("GLAD loading opengl functions failed.");
+		EngineLogger::getConsole()->error(OBFUSCATE("GLAD loading opengl functions failed."));
 		return false;
 	}
 
 	const GLubyte* vendor = glGetString(GL_VENDOR);
 	const GLubyte* renderer = glGetString(GL_RENDERER);
 
-	EngineLogger::getConsole()->info("Vendor : {:<15}, Renderer : {:<15}", vendor, renderer);
+	EngineLogger::getConsole()->info(OBFUSCATE("Vendor : {:<15}, Renderer : {:<15}"), vendor, renderer);
 
 	return true;
 }
@@ -177,7 +178,7 @@ void GLApp::onResize(int newWidth, int newHeight)
 
 void GLApp::errorCallback(int error, const char * description) const
 {
-	EngineLogger::getConsole()->error("Error code {}, description :\n{}", error, description);
+	EngineLogger::getConsole()->error(OBFUSCATE("Error code {}, description :\n{}"), error, description);
 }
 
 void GLApp::keyCallback(int key, int scancode, int action, int mode)

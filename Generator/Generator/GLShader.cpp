@@ -6,6 +6,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <filesystem>
 #include <iostream>
+#include "obfuscator.hpp"
 
 enum class GLShader::CHECK_TARGET : int
 {
@@ -55,10 +56,10 @@ void GLShader::loadAsset(const char* vs_path, const char* fs_path)
 	glCompileShader(vs);
 
 	if (checkStatus(vs, CHECK_TARGET::SHADER))
-		std::clog << "Vertex Shader [ " << vs_path << " ] Compile finished" << std::endl;
+		std::clog << OBFUSCATE("Vertex Shader [ ") << vs_path << OBFUSCATE(" ] Compile finished") << std::endl;
 	else
 	{
-		std::cerr << "Vertex Shader [ " << vs_path << " ] Compile failed." << std::endl;
+		std::cerr << OBFUSCATE("Vertex Shader [ ") << vs_path << OBFUSCATE(" ] Compile failed.") << std::endl;
 		throw std::exception();
 	}
 
@@ -67,10 +68,10 @@ void GLShader::loadAsset(const char* vs_path, const char* fs_path)
 	glCompileShader(fs);
 
 	if (checkStatus(fs, CHECK_TARGET::SHADER))
-		std::clog << "Fragment Shader [ " << fs_path << " ] Compile finished" << std::endl;
+		std::clog << OBFUSCATE("Fragment Shader [ ") << fs_path << OBFUSCATE(" ] Compile finished") << std::endl;
 	else
 	{
-		std::cerr << "Fragment Shader [ " << fs_path << " ] Compile failed." << std::endl;
+		std::cerr << OBFUSCATE("Fragment Shader [ ") << fs_path << OBFUSCATE(" ] Compile failed.") << std::endl;
 		throw std::exception();
 	}
 
@@ -80,10 +81,10 @@ void GLShader::loadAsset(const char* vs_path, const char* fs_path)
 	glLinkProgram(programID);
 
 	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
-		std::clog << "Program Linking Finished" << std::endl;
+		std::clog << OBFUSCATE("Program Linking Finished") << std::endl;
 	else
 	{
-		std::cerr << "Program Linking Failed" << std::endl;
+		std::cerr << OBFUSCATE("Program Linking Failed") << std::endl;
 		throw std::exception();
 	}
 
@@ -92,7 +93,7 @@ void GLShader::loadAsset(const char* vs_path, const char* fs_path)
 	glDetachShader(programID, fs);
 	glDeleteShader(fs);
 
-	std::clog << "Create Shader Program Success" << std::endl;
+	std::clog << OBFUSCATE("Create Shader Program Success") << std::endl;
 }
 
 void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
@@ -104,10 +105,10 @@ void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
 	glCompileShader(vs);
 
 	if (checkStatus(vs, CHECK_TARGET::SHADER))
-		std::clog << "Vertex Shader Compile finished" << std::endl;
+		std::clog << OBFUSCATE("Vertex Shader Compile finished") << std::endl;
 	else
 	{
-		std::cerr << "Vertex Shader Compile failed." << std::endl;
+		std::cerr << OBFUSCATE("Vertex Shader Compile failed.") << std::endl;
 		throw std::exception();
 	}
 
@@ -116,10 +117,10 @@ void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
 	glCompileShader(fs);
 
 	if (checkStatus(fs, CHECK_TARGET::SHADER))
-		std::clog << "Fragment Shader Compile finished" << std::endl;
+		std::clog << OBFUSCATE("Fragment Shader Compile finished") << std::endl;
 	else
 	{
-		std::cerr << "Fragment Shader Compile failed." << std::endl;
+		std::cerr << OBFUSCATE("Fragment Shader Compile failed.") << std::endl;
 		throw std::exception();
 	}
 
@@ -129,10 +130,10 @@ void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
 	glLinkProgram(programID);
 
 	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
-		std::clog << "Program Linking Finished" << std::endl;
+		std::clog << OBFUSCATE("Program Linking Finished") << std::endl;
 	else
 	{
-		std::cerr << "Program Linking Failed" << std::endl;
+		std::cerr << OBFUSCATE("Program Linking Failed") << std::endl;
 		throw std::exception();
 	}
 
@@ -141,7 +142,7 @@ void GLShader::loadRawAsset(const char* vs_source, const char* fs_source)
 	glDetachShader(programID, fs);
 	glDeleteShader(fs);
 
-	std::clog << "Create Shader Program Success" << std::endl;
+	std::clog << OBFUSCATE("Create Shader Program Success") << std::endl;
 }
 
 /**
@@ -164,7 +165,7 @@ void GLShader::getShaderString(const std::string& path, std::string& ret_string)
 	}
 	catch (std::ifstream::failure e)
 	{
-		std::cerr << "Ifstream failure : " << e.what() << std::endl;
+		std::cerr << OBFUSCATE("Ifstream failure : ") << e.what() << std::endl;
 	}
 }
 
@@ -189,7 +190,7 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				glGetShaderiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
 				glGetShaderInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
-				std::cerr << "Shader Compile Failed. info log :" << std::endl;
+				std::cerr << OBFUSCATE("Shader Compile Failed. info log :") << std::endl;
 				std::cerr << &infoLog[0] << std::endl;
 				
 				return false;
@@ -205,7 +206,7 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 				glGetProgramiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
 				glGetProgramInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
-				std::cerr << "Program Link Failed. info log : " << std::endl;
+				std::cerr << OBFUSCATE("Program Link Failed. info log : ") << std::endl;
 				std::cerr << &infoLog[0] << std::endl;
 				
 				return false;
@@ -214,7 +215,7 @@ bool GLShader::checkStatus(unsigned int  target, CHECK_TARGET targetType)
 		}
 		default :
 		{
-			std::cerr << "Unknown target type is given" << std::endl;
+			std::cerr << OBFUSCATE("Unknown target type is given") << std::endl;
 			return false;
 		}
 	}
@@ -252,7 +253,7 @@ void GLShader::sendUniform(const std::string & varName, int i) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform1i(loc, i);
@@ -269,7 +270,7 @@ void GLShader::sendUniform(const std::string& varName, float f) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform1f(loc, f);
@@ -286,7 +287,7 @@ void GLShader::sendUniform(const std::string & varName, bool b) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform1i(loc, b);
@@ -303,7 +304,7 @@ void GLShader::sendUniform(const std::string& varName, const glm::vec2& vec) con
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform2fv(loc, 1, &vec[0]);
@@ -320,7 +321,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::vec3 & vec) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform3fv(loc, 1, &vec[0]);
@@ -337,7 +338,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::vec4 & vec) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniform4fv(loc, 1, &vec[0]);
@@ -355,7 +356,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::mat4 & mat) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		std::cerr << "Undefined Uniform Variable Name : " << varName << std::endl;
+		std::cerr << OBFUSCATE("Undefined Uniform Variable Name : ") << varName << std::endl;
 	}
 	else {
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mat));

@@ -18,6 +18,7 @@
 #ifndef _DEBUG
 #include "TerrainShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 bool EngineTerrain::isInstanciated = false;
 
@@ -183,18 +184,18 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 	{
 #ifdef _DEBUG
 		terrainShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/terrain_vs.glsl",
-			"../resources/shader/terrain_tcs.glsl",
-			"../resources/shader/terrain_tes.glsl",
-			"../resources/shader/terrain_gs.glsl",
-			"../resources/shader/terrain_fs.glsl",
+			OBFUSCATE("../resources/shader/terrain_vs.glsl"),
+			OBFUSCATE("../resources/shader/terrain_tcs.glsl"),
+			OBFUSCATE("../resources/shader/terrain_tes.glsl"),
+			OBFUSCATE("../resources/shader/terrain_gs.glsl"),
+			OBFUSCATE("../resources/shader/terrain_fs.glsl"),
 		});
 
 		depthPassShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/terrain_vs.glsl",
-			"../resources/shader/terrain_tcs.glsl",
-			"../resources/shader/terrain_depth_pass_tes.glsl",
-			"../resources/shader/terrain_depth_pass_fs.glsl",
+			OBFUSCATE("../resources/shader/terrain_vs.glsl"),
+			OBFUSCATE("../resources/shader/terrain_tcs.glsl"),
+			OBFUSCATE("../resources/shader/terrain_depth_pass_tes.glsl"),
+			OBFUSCATE("../resources/shader/terrain_depth_pass_fs.glsl"),
 		});
 #else
 		terrainShader = std::make_unique<GLShader>();
@@ -206,7 +207,7 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to init EngineTerrain (cannot open shader or compile failed)");
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to init EngineTerrain (cannot open shader or compile failed)"));
 		return false;
 	}
 
@@ -215,30 +216,30 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 	try
 	{
 		terrainTexture = terrainDataManager->addAsset<GLTexture, std::pair<uint32_t, std::string>>({
-			std::make_pair<uint32_t, std::string>(0, "../resources/texture/terrain/height16bit2.png"),
-			std::make_pair<uint32_t, std::string>(1, "../resources/texture/terrain/splatMap.png"),
+			std::make_pair<uint32_t, std::string>(0, OBFUSCATE("../resources/texture/terrain/height16bit2.png")),
+			std::make_pair<uint32_t, std::string>(1, OBFUSCATE("../resources/texture/terrain/splatMap.png")),
 		});
 
 #ifdef _DEBUG
 		tileTextures = assetManager->addAsset<GLTexture, std::pair<uint32_t, std::string>>({
-			std::make_pair<uint32_t, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
-			std::make_pair<uint32_t, std::string>(3, "../resources/texture/terrain/rock.jpg"),
-			std::make_pair<uint32_t, std::string>(4, "../resources/texture/terrain/grass.png"),
-			std::make_pair<uint32_t, std::string>(5, "../resources/texture/terrain/wetDirt.jpg"),
+			std::make_pair<uint32_t, std::string>(2, OBFUSCATE("../resources/texture/terrain/dirt.jpg")),
+			std::make_pair<uint32_t, std::string>(3, OBFUSCATE("../resources/texture/terrain/rock.jpg")),
+			std::make_pair<uint32_t, std::string>(4, OBFUSCATE("../resources/texture/terrain/grass.png")),
+			std::make_pair<uint32_t, std::string>(5, OBFUSCATE("../resources/texture/terrain/wetDirt.jpg")),
 			});
 #else
 		tileTextures = std::make_unique<GLTexture>();
 		tileTextures->loadAsset({
-			std::make_pair<uint32_t, std::string>(2, "../resources/texture/terrain/dirt.jpg"),
-			std::make_pair<uint32_t, std::string>(3, "../resources/texture/terrain/rock.jpg"),
-			std::make_pair<uint32_t, std::string>(4, "../resources/texture/terrain/grass.png"),
-			std::make_pair<uint32_t, std::string>(5, "../resources/texture/terrain/wetDirt.jpg"),
+			std::make_pair<uint32_t, std::string>(2, OBFUSCATE("../resources/texture/terrain/dirt.jpg")),
+			std::make_pair<uint32_t, std::string>(3, OBFUSCATE("../resources/texture/terrain/rock.jpg")),
+			std::make_pair<uint32_t, std::string>(4, OBFUSCATE("../resources/texture/terrain/grass.png")),
+			std::make_pair<uint32_t, std::string>(5, OBFUSCATE("../resources/texture/terrain/wetDirt.jpg")),
 		});
 #endif
 	}	
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to initialize EngineTerrain");
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to initialize EngineTerrain"));
 		return false;
 	}
 
@@ -262,22 +263,22 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 
 #ifndef _DEBUG
 	terrainShader->useProgram();
-	terrainShader->sendUniform("originPos", this->terrainOriginPos);
-	terrainShader->sendUniform("terrainMap", 0);
-	terrainShader->sendUniform("splatMap", 1);
-	terrainShader->sendUniform("dirtTexture", 2);
-	terrainShader->sendUniform("rockTexture", 3);
-	terrainShader->sendUniform("grassTexture", 4);
-	terrainShader->sendUniform("wetDirtTexture", 5);
-	terrainShader->sendUniform("shadowMap", 6);
-	terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
-	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
+	terrainShader->sendUniform(OBFUSCATE("originPos"), this->terrainOriginPos);
+	terrainShader->sendUniform(OBFUSCATE("terrainMap"), 0);
+	terrainShader->sendUniform(OBFUSCATE("splatMap"), 1);
+	terrainShader->sendUniform(OBFUSCATE("dirtTexture"), 2);
+	terrainShader->sendUniform(OBFUSCATE("rockTexture"), 3);
+	terrainShader->sendUniform(OBFUSCATE("grassTexture"), 4);
+	terrainShader->sendUniform(OBFUSCATE("wetDirtTexture"), 5);
+	terrainShader->sendUniform(OBFUSCATE("shadowMap"), 6);
+	terrainShader->sendUniform(OBFUSCATE("terrainScale"), dynamicPatch->getTerrainScale());
+	terrainShader->sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
 
 	depthPassShader->useProgram();
-	depthPassShader->sendUniform("originPos", this->terrainOriginPos);
-	depthPassShader->sendUniform("terrainMap", 0);
-	depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
-	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
+	depthPassShader->sendUniform(OBFUSCATE("originPos"), this->terrainOriginPos);
+	depthPassShader->sendUniform(OBFUSCATE("terrainMap"), 0);
+	depthPassShader->sendUniform(OBFUSCATE("terrainScale"), dynamicPatch->getTerrainScale());
+	depthPassShader->sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
 #endif
 
 	return true;
@@ -298,28 +299,28 @@ bool EngineTerrain::bakeTerrainMap(void)
 	{
 #ifdef _DEBUG
 		bakeTerrainMap.loadAsset({
-			"../resources/shader/bakeTerrainMap_vs.glsl",
-			"../resources/shader/bakeTerrainMap_fs.glsl"
-			});
+			OBFUSCATE("../resources/shader/bakeTerrainMap_vs.glsl"),
+			OBFUSCATE("../resources/shader/bakeTerrainMap_fs.glsl")
+		});
 #else
 		bakeTerrainMap.loadAssetRaw(BAKETERRAINMAP_VS, BAKETERRAINMAP_FS);
 #endif
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to bake terrain map (open shader fail) : {}", e.what());
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to bake terrain map (open shader fail) : {}"), e.what());
 		return false;
 	}
 
 	bakeTerrainMap.useProgram();
-	bakeTerrainMap.sendUniform("heightMap", 0);
+	bakeTerrainMap.sendUniform(OBFUSCATE("heightMap"), 0);
 
 	std::size_t width = 2048, height = 2048;
 
 	dynamicPatch->setTerrainScale(width, height);
 	maxHeight = getProperMaxHeight(width, height);
 	
-	bakeTerrainMap.sendUniform("terrainMaxHeight", maxHeight);
+	bakeTerrainMap.sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
 
 	//simple quad for baking
 	GLfloat vertices[] =
@@ -368,8 +369,8 @@ bool EngineTerrain::bakeTerrainMap(void)
 
 	glViewport(0, 0, width, height);
 	bakeTerrainMap.useProgram();
-	bakeTerrainMap.sendUniform("view", captureView);
-	bakeTerrainMap.sendUniform("projection", captureProjection);
+	bakeTerrainMap.sendUniform(OBFUSCATE("view"), captureView);
+	bakeTerrainMap.sendUniform(OBFUSCATE("projection"), captureProjection);
 
 	glClear(GL_COLOR_BUFFER_BIT);
 

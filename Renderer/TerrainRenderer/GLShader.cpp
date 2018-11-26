@@ -6,6 +6,7 @@
 #include <sstream>
 #include <glm/gtc/type_ptr.hpp>
 #include <filesystem>
+#include "obfuscator.hpp"
 
 enum class GLShader::CHECK_TARGET : int
 {
@@ -91,10 +92,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(vs);
 
 		if (checkStatus(vs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", assetPaths[VS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Vertex Shader [{}] Compile finished."), assetPaths[VS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", assetPaths[VS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Vertex Shader [{}] Compile failed."), assetPaths[VS].second);
 			throw std::exception();
 		}
 	}
@@ -106,10 +107,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(tcs);
 
 		if (checkStatus(tcs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", assetPaths[TCS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Tessellation Control Shader [{}] Compile finished."), assetPaths[TCS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", assetPaths[TCS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Tessellation Control Shader [{}] Compile failed."), assetPaths[TCS].second);
 			throw std::exception();
 		}
 	}
@@ -121,10 +122,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(tes);
 
 		if (checkStatus(tes, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", assetPaths[TES].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Tessellation Evaluation Shader [{}] Compile finished."), assetPaths[TES].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", assetPaths[TES].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Tessellation Evaluation Shader [{}] Compile failed."), assetPaths[TES].second);
 			throw std::exception();
 		}
 	}
@@ -136,10 +137,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(gs);
 
 		if (checkStatus(gs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", assetPaths[GS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Geometry Shader [{}] Compile finished."), assetPaths[GS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", assetPaths[GS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Geometry Shader [{}] Compile failed."), assetPaths[GS].second);
 			throw std::exception();
 		}
 	}
@@ -152,10 +153,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(fs);
 
 		if (checkStatus(fs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Fragment Shader [{}] Compile finished."), assetPaths[FS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Fragment Shader [{}] Compile failed."), assetPaths[FS].second);
 			throw std::exception();
 		}
 	}
@@ -168,10 +169,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glCompileShader(cs);
 
 		if (checkStatus(cs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Compute Shader [{}] Compile finished.", assetPaths[CS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Compute Shader [{}] Compile finished."), assetPaths[CS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Compute Shader [{}] Compile failed.", assetPaths[CS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Compute Shader [{}] Compile failed."), assetPaths[CS].second);
 			throw std::exception();
 		}
 	}
@@ -192,10 +193,10 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 	glLinkProgram(programID);
 
 	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
-		EngineLogger::getConsole()->info("Program Linking finished.");
+		EngineLogger::getConsole()->info(OBFUSCATE("Program Linking finished."));
 	else
 	{
-		EngineLogger::getConsole()->error("Program Linking Failed");
+		EngineLogger::getConsole()->error(OBFUSCATE("Program Linking Failed"));
 		throw std::exception();
 	}
 
@@ -230,7 +231,7 @@ void GLShader::loadAsset(const std::vector<std::string>& assetPath)
 		glDeleteShader(cs);
 	}
 
-	EngineLogger::getConsole()->info("Linking Program Success.");
+	EngineLogger::getConsole()->info(OBFUSCATE("Linking Program Success."));
 }
 
 void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const char* gsSource, const char* tcsSource, const char* tesSource)
@@ -243,10 +244,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glCompileShader(vs);
 
 		if (checkStatus(vs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Vertex Shader [{}] Compile finished.", assetPaths[VS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Vertex Shader [{}] Compile finished."), assetPaths[VS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Vertex Shader [{}] Compile failed.", assetPaths[VS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Vertex Shader [{}] Compile failed."), assetPaths[VS].second);
 			throw std::exception();
 		}
 	}
@@ -257,10 +258,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glCompileShader(tcs);
 
 		if (checkStatus(tcs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Control Shader [{}] Compile finished.", assetPaths[TCS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Tessellation Control Shader [{}] Compile finished."), assetPaths[TCS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Control Shader [{}] Compile failed.", assetPaths[TCS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Tessellation Control Shader [{}] Compile failed."), assetPaths[TCS].second);
 			throw std::exception();
 		}
 	}
@@ -271,10 +272,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glCompileShader(tes);
 
 		if (checkStatus(tes, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Tessellation Evaluation Shader [{}] Compile finished.", assetPaths[TES].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Tessellation Evaluation Shader [{}] Compile finished."), assetPaths[TES].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Tessellation Evaluation Shader [{}] Compile failed.", assetPaths[TES].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Tessellation Evaluation Shader [{}] Compile failed."), assetPaths[TES].second);
 			throw std::exception();
 		}
 	}
@@ -285,10 +286,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glCompileShader(gs);
 
 		if (checkStatus(gs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Geometry Shader [{}] Compile finished.", assetPaths[GS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Geometry Shader [{}] Compile finished."), assetPaths[GS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Geometry Shader [{}] Compile failed.", assetPaths[GS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Geometry Shader [{}] Compile failed."), assetPaths[GS].second);
 			throw std::exception();
 		}
 	}
@@ -300,10 +301,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glCompileShader(fs);
 
 		if (checkStatus(fs, CHECK_TARGET::SHADER))
-			EngineLogger::getConsole()->info("Fragment Shader [{}] Compile finished.", assetPaths[FS].second);
+			EngineLogger::getConsole()->info(OBFUSCATE("Fragment Shader [{}] Compile finished."), assetPaths[FS].second);
 		else
 		{
-			EngineLogger::getConsole()->error("Fragment Shader [{}] Compile failed.", assetPaths[FS].second);
+			EngineLogger::getConsole()->error(OBFUSCATE("Fragment Shader [{}] Compile failed."), assetPaths[FS].second);
 			throw std::exception();
 		}
 	}
@@ -322,10 +323,10 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 	glLinkProgram(programID);
 
 	if (checkStatus(programID, CHECK_TARGET::PROGRAM))
-		EngineLogger::getConsole()->info("Program Linking finished.");
+		EngineLogger::getConsole()->info(OBFUSCATE("Program Linking finished."));
 	else
 	{
-		EngineLogger::getConsole()->error("Program Linking Failed");
+		EngineLogger::getConsole()->error(OBFUSCATE("Program Linking Failed"));
 		throw std::exception();
 	}
 
@@ -355,7 +356,7 @@ void GLShader::loadAssetRaw(const char* vsSource, const char* fsSource, const ch
 		glDeleteShader(fs);
 	}
 
-	EngineLogger::getConsole()->info("Linking Program Success.");
+	EngineLogger::getConsole()->info(OBFUSCATE("Linking Program Success."));
 }
 
 /**
@@ -371,28 +372,28 @@ void GLShader::parseShaderPath(const std::vector<std::string>& assetPath)
 
 	for (const auto& path : assetPath)
 	{
-		const auto shaderTypeIdx = path.find_last_of("_");
+		const auto shaderTypeIdx = path.find_last_of(OBFUSCATE("_"));
 		const std::string typeAndExtension = path.substr(shaderTypeIdx + 1);
-		const auto extensionIdx = typeAndExtension.find_last_of(".");
+		const auto extensionIdx = typeAndExtension.find_last_of(OBFUSCATE("."));
 		const std::string shaderTypeStr = typeAndExtension.substr(0, extensionIdx);
 
 		SHADER_TYPE shaderType;
 
-		if (shaderTypeStr == "vs")
+		if (shaderTypeStr == OBFUSCATE("vs"))
 			shaderType = VS;
-		else if (shaderTypeStr == "tcs")
+		else if (shaderTypeStr == OBFUSCATE("tcs"))
 			shaderType = TCS;
-		else if (shaderTypeStr == "tes")
+		else if (shaderTypeStr == OBFUSCATE("tes"))
 			shaderType = TES;
-		else if (shaderTypeStr == "gs")
+		else if (shaderTypeStr == OBFUSCATE("gs"))
 			shaderType = GS;
-		else if (shaderTypeStr == "fs")
+		else if (shaderTypeStr == OBFUSCATE("fs"))
 			shaderType = FS;
-		else if (shaderTypeStr == "cs")
+		else if (shaderTypeStr == OBFUSCATE("cs"))
 			shaderType = CS;
 		else
 		{
-			EngineLogger::getConsole()->critical("Unknown shader type file is given : {}", path);
+			EngineLogger::getConsole()->critical(OBFUSCATE("Unknown shader type file is given : {}"), path);
 			throw std::exception();
 		}
 
@@ -411,7 +412,7 @@ void GLShader::reloadAsset(void)
 {
 	glDeleteProgram(programID);
 
-	EngineLogger::getConsole()->info("Shader source change is detected");
+	EngineLogger::getConsole()->info(OBFUSCATE("Shader source change is detected"));
 	loadAsset({}); /// with empty initializer list, paths remain unchanged.
 
 	for (auto& pair : uniformLocationMap)
@@ -438,7 +439,7 @@ void GLShader::getShaderString(const std::string& path, std::string& ret_string)
 	}
 	catch (std::ifstream::failure e)
 	{
-		EngineLogger::getConsole()->critical("ifstream Failure : {:<20}", e.what());
+		EngineLogger::getConsole()->critical(OBFUSCATE("ifstream Failure : {:<20}"), e.what());
 	}
 }
 
@@ -463,7 +464,7 @@ bool GLShader::checkStatus(uint32_t  target, CHECK_TARGET targetType)
 				glGetShaderiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
 				glGetShaderInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
-				EngineLogger::getConsole()->critical("Shader Compile Failed. info log :\n{}", &infoLog[0]);
+				EngineLogger::getConsole()->critical(OBFUSCATE("Shader Compile Failed. info log :\n{}"), &infoLog[0]);
 				return false;
 			}
 			break;
@@ -477,14 +478,14 @@ bool GLShader::checkStatus(uint32_t  target, CHECK_TARGET targetType)
 				glGetProgramiv(target, GL_INFO_LOG_LENGTH, &infoLogLength);
 				std::vector<char> infoLog(infoLogLength);
 				glGetProgramInfoLog(target, infoLog.size(), nullptr, &infoLog[0]);
-				EngineLogger::getConsole()->critical("Program Link Failed. info log :\n{}", &infoLog[0]);
+				EngineLogger::getConsole()->critical(OBFUSCATE("Program Link Failed. info log :\n{}"), &infoLog[0]);
 				return false;
 			}
 			break;
 		}
 		default :
 		{
-			EngineLogger::getConsole()->critical("Unknown target type is given.");
+			EngineLogger::getConsole()->critical(OBFUSCATE("Unknown target type is given."));
 			return false;
 		}
 	}
@@ -523,7 +524,7 @@ void GLShader::sendUniform(const std::string & varName, int i) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform1i(loc, i);
@@ -540,7 +541,7 @@ void GLShader::sendUniform(const std::string& varName, float f) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform1f(loc, f);
@@ -557,7 +558,7 @@ void GLShader::sendUniform(const std::string & varName, bool b) const
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform1i(loc, b);
@@ -574,7 +575,7 @@ void GLShader::sendUniform(const std::string& varName, const glm::vec2& vec) con
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform2fv(loc, 1, &vec[0]);
@@ -591,7 +592,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::vec3 & vec) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform3fv(loc, 1, &vec[0]);
@@ -608,7 +609,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::vec4 & vec) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniform4fv(loc, 1, &vec[0]);
@@ -626,7 +627,7 @@ void GLShader::sendUniform(const std::string & varName, const glm::mat4 & mat) c
 	int loc = getUniformLocation(varName);
 
 	if (loc == -1) {
-		EngineLogger::getConsole()->critical("Undefined Uniform Variable Name : {}", varName);
+		EngineLogger::getConsole()->critical(OBFUSCATE("Undefined Uniform Variable Name : {}"), varName);
 	}
 	else {
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mat));

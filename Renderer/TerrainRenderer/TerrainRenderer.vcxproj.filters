@@ -175,9 +175,6 @@
     <ClCompile Include="EngineTerrain.cpp">
       <Filter>Terrain\private</Filter>
     </ClCompile>
-    <ClCompile Include="GLTextureWrapper.cpp">
-      <Filter>Assets\private</Filter>
-    </ClCompile>
     <ClCompile Include="LightSourceWrapper.cpp">
       <Filter>Util\private</Filter>
     </ClCompile>
@@ -285,9 +282,6 @@
     <ClInclude Include="ViewerShaderCode.hpp">
       <Filter>GUI\shader</Filter>
     </ClInclude>
-    <ClInclude Include="GLTextureWrapper.hpp">
-      <Filter>Assets\public</Filter>
-    </ClInclude>
     <ClInclude Include="LightSourceWrapper.hpp">
       <Filter>Util\public</Filter>
     </ClInclude>
@@ -307,6 +301,12 @@
       <Filter>Util\shader</Filter>
     </ClInclude>
     <ClInclude Include="Util.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="meta_random.hpp">
+      <Filter>Util\public</Filter>
+    </ClInclude>
+    <ClInclude Include="obfuscator.hpp">
       <Filter>Util\public</Filter>
     </ClInclude>
   </ItemGroup>

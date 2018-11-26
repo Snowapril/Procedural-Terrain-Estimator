@@ -14,6 +14,7 @@
 #ifndef _DEBUG
 #include "WaterShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 bool EngineWater::isInstanciated = false;
 
@@ -48,13 +49,13 @@ bool EngineWater::initWater(int reflectionWidth, int reflectionHeight, int refra
 	if (!initShaders())
 		return false;
 
-	if ((dudvMap = GLResources::CreateTexture2D("../resources/texture/water/dudvMap.png", false)) == 0)
+	if ((dudvMap = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/water/dudvMap.png"), false)) == 0)
 		return false;
 
-	if ((normalMap = GLResources::CreateTexture2D("../resources/texture/water/normalMap.png", false)) == 0)
+	if ((normalMap = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/water/normalMap.png"), false)) == 0)
 		return false;
 
-	EngineLogger::getConsole()->info("Initializing Water finished");
+	EngineLogger::getConsole()->info(OBFUSCATE("Initializing Water finished"));
 	return true;
 }
 
@@ -140,7 +141,7 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 
 	if (!reflectionFBO.configureFramebuffer())
 	{
-		EngineLogger::getConsole()->error("Reflection Framebuffer is not completed");
+		EngineLogger::getConsole()->error(OBFUSCATE("Reflection Framebuffer is not completed"));
 		return false;
 	}
 
@@ -151,11 +152,11 @@ bool EngineWater::initFramebuffers(int reflectionWidth, int reflectionHeight, in
 
 	if (!refractionFBO.configureFramebuffer())
 	{
-		EngineLogger::getConsole()->error("Refraction Framebuffer is not completed");
+		EngineLogger::getConsole()->error(OBFUSCATE("Refraction Framebuffer is not completed"));
 		return false;
 	}
 
-	EngineLogger::getConsole()->info("initializing Water framebuffers finished");
+	EngineLogger::getConsole()->info(OBFUSCATE("initializing Water framebuffers finished"));
 	return true;
 }
 
@@ -168,8 +169,8 @@ bool EngineWater::initShaders()
 	{
 #ifdef _DEBUG
 		waterShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/water_vs.glsl",
-			"../resources/shader/water_fs.glsl",
+			OBFUSCATE("../resources/shader/water_vs.glsl"),
+			OBFUSCATE("../resources/shader/water_fs.glsl"),
 		});
 #else
 		waterShader = std::make_unique<GLShader>();
@@ -178,16 +179,16 @@ bool EngineWater::initShaders()
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Initializing Shaders at EngineWater Failed.");
+		EngineLogger::getConsole()->error(OBFUSCATE("Initializing Shaders at EngineWater Failed."));
 		return false;
 	}
 
 	waterShader->useProgram();
-	waterShader->sendUniform("reflectionTexture", 0);
-	waterShader->sendUniform("refractionTexture", 1);
-	waterShader->sendUniform("dudvMap", 2);
-	waterShader->sendUniform("normalMap", 3);
-	waterShader->sendUniform("depthMap", 4);
+	waterShader->sendUniform(OBFUSCATE("reflectionTexture"), 0);
+	waterShader->sendUniform(OBFUSCATE("refractionTexture"), 1);
+	waterShader->sendUniform(OBFUSCATE("dudvMap"), 2);
+	waterShader->sendUniform(OBFUSCATE("normalMap"), 3);
+	waterShader->sendUniform(OBFUSCATE("depthMap"), 4);
 
 	if (!waterMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP))
 		return false;

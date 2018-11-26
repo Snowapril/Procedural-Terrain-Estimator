@@ -12,6 +12,7 @@
 #ifndef _DEBUG
 #include "SkyboxShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 constexpr int HDR_RESOLUTION = CLIENT_WIDTH;
 constexpr float ROTATION_SPEED = 1.3f;
@@ -46,8 +47,8 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	{
 #ifdef _DEBUG
 		bakeShader.loadAsset({
-			"../resources/shader/equiRectangularMapToCubemap_vs.glsl",
-			"../resources/shader/equiRectangularMapToCubemap_fs.glsl",
+			OBFUSCATE("../resources/shader/equiRectangularMapToCubemap_vs.glsl"),
+			OBFUSCATE("../resources/shader/equiRectangularMapToCubemap_fs.glsl"),
 		});
 #else
 		bakeShader.loadAssetRaw(EQUIRECTMAPTOCUBEMAP_VS, EQUIRECTMAPTOCUBEMAP_FS);
@@ -55,7 +56,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to load shader (failed to baking hdr environment map to cube map)");
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to load shader (failed to baking hdr environment map to cube map)"));
 		return false;
 	}
 
@@ -63,7 +64,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	
 	if (!cubeMesh.initWithFixedShape(MeshShape::CUBE_TRIANGLES))
 	{
-		EngineLogger::getConsole()->error("Failed to init quad mesh");
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to init quad mesh"));
 		return false;
 	}
 
@@ -103,8 +104,8 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 	glGenerateMipmap(GL_TEXTURE_CUBE_MAP);
 
 	bakeShader.useProgram();
-	bakeShader.sendUniform("equiRectangularMap", 0);
-	bakeShader.sendUniform("projection", captureProjection);
+	bakeShader.sendUniform(OBFUSCATE("equiRectangularMap"), 0);
+	bakeShader.sendUniform(OBFUSCATE("projection"), captureProjection);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, hdrMap);
@@ -114,7 +115,7 @@ bool EngineHDREnvMap::initCubeMap(const std::string& cubeMapDir, const std::stri
 
 	for (uint32_t i = 0; i < 6; ++i)
 	{
-		bakeShader.sendUniform("view", captureViews[i]);
+		bakeShader.sendUniform(OBFUSCATE("view"), captureViews[i]);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, cubeMap, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

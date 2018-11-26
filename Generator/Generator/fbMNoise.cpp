@@ -5,6 +5,7 @@
 #include <imgui/imgui_internal.h>
 using namespace ImGui;
 
+#include "obfuscator.hpp"
 #include "GLShader.hpp"
 
 FBMNoise::FBMNoise()
@@ -19,11 +20,11 @@ FBMNoise::FBMNoise(const Util::Rect & rect)
 
 void FBMNoise::updateGUI(void)
 {
-	if (ImGui::TreeNode("fbM Noise"))
+	if (ImGui::TreeNode(OBFUSCATE("fbM Noise")))
 	{
-		ImGui::SliderInt("Num Octaves", &numOctaves, 1, 5);
-		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &frequency, 0.0f, 30.0f);
+		ImGui::SliderInt(OBFUSCATE("Num Octaves"), &numOctaves, 1, 5);
+		ImGui::SliderFloat(OBFUSCATE("Blend"), &blend, 0.0f, 1.0f);
+		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
@@ -33,8 +34,8 @@ void FBMNoise::sendProperties(std::shared_ptr<GLShader> shader)
 {
 	shader->useProgram();
 
-	shader->sendUniform("fbM.num_octaves", numOctaves);
-	shader->sendUniform("fbM.blend", blend);
-	shader->sendUniform("fbM.frequency", frequency);
-	shader->sendUniform("fbM.viewPoint", getViewPoint());
+	shader->sendUniform(OBFUSCATE("fbM.num_octaves"), numOctaves);
+	shader->sendUniform(OBFUSCATE("fbM.blend"), blend);
+	shader->sendUniform(OBFUSCATE("fbM.frequency"), frequency);
+	shader->sendUniform(OBFUSCATE("fbM.viewPoint"), getViewPoint());
 }

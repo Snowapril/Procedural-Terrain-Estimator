@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#include "obfuscator.hpp"
 
 /// Callback function prototypes
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -21,7 +21,7 @@ int main(void)
 
 	if (!gMainApplication->initGenerator())
 	{
-		std::cerr << "Critical error occurred. program exit." << std::endl;
+		std::cerr << OBFUSCATE("Critical error occurred. program exit.") << std::endl;
 		return EXIT_FAILURE;
 	}
 

@@ -179,8 +179,10 @@
     <ClInclude Include="GLMesh.hpp" />
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
+    <ClInclude Include="meta_random.hpp" />
     <ClInclude Include="NoiseGUI.hpp" />
     <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="obfuscator.hpp" />
     <ClInclude Include="ShaderCode.hpp" />
     <ClInclude Include="SimplexNoise.hpp" />
     <ClInclude Include="Singleton.hpp" />

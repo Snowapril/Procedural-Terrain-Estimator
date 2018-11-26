@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include "GLResources.hpp"
 #include <filesystem>
+#include "obfuscator.hpp"
 
 GLTexture::GLTexture()
 {
@@ -74,9 +75,9 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 
 			if (texture == 0) 
 			{
-				std::string errorMsg = "Cannot load texture from " + pair.second;
+				std::string errorMsg = OBFUSCATE("Cannot load texture from ") + pair.second;
 				const char* msgSrc = errorMsg.c_str();
-				MessageBox(NULL, msgSrc, "Resource Load Error", MB_OK);
+				MessageBox(NULL, msgSrc, OBFUSCATE("Resource Load Error"), MB_OK);
 			}
 
 			assetPaths[iter].first = time;

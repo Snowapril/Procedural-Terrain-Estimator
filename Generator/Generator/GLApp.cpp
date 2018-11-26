@@ -5,9 +5,10 @@
 #include "GLDebugger.hpp"
 #include <sstream>	
 #include <iostream>
+#include "obfuscator.hpp"
 
 GLApp::GLApp()
-	: window(nullptr), clientWidth(0), clientHeight(0), fullscreen(FULL_SCREEN), paused(false), WndCaption("Generator & Estimator")
+	: window(nullptr), clientWidth(0), clientHeight(0), fullscreen(FULL_SCREEN), paused(false), WndCaption(OBFUSCATE("Generator & Estimator"))
 {
 }
 
@@ -27,7 +28,7 @@ bool GLApp::initGLWindow(bool fullscreen)
 {
 	if (!glfwInit())
 	{
-		std::cerr << "GLFW Initialization failed" << std::endl;
+		std::cerr << OBFUSCATE("GLFW Initialization failed") << std::endl;
 		return false;
 	}
 
@@ -58,7 +59,7 @@ bool GLApp::initGLWindow(bool fullscreen)
 	if (!window)
 	{
 		glfwTerminate();
-		std::cerr << "GLFW Window Creating failed." << std::endl;
+		std::cerr << OBFUSCATE("GLFW Window Creating failed.") << std::endl;
 		return false;
 	}
 
@@ -67,14 +68,14 @@ bool GLApp::initGLWindow(bool fullscreen)
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		glfwTerminate();
-		std::cerr << "GLAD loading opengl functions failed." << std::endl;
+		std::cerr << OBFUSCATE("GLAD loading opengl functions failed.") << std::endl;
 		return false;
 	}
 
 	const GLubyte* vendor = glGetString(GL_VENDOR);
 	const GLubyte* renderer = glGetString(GL_RENDERER);
 
-	std::clog << "Vendor : " << vendor << ", Renderer : " << renderer << std::endl;
+	std::clog << OBFUSCATE("Vendor : ") << vendor << OBFUSCATE(", Renderer : ") << renderer << std::endl;
 
 	return true;
 }

@@ -19,6 +19,8 @@
 #define NVTX_POP() 
 #endif
 
+#include "obfuscator.hpp"
+
 EngineApp::EngineApp()
 	: debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
 {
@@ -210,7 +212,7 @@ bool EngineApp::initEngine(void)
 
 	try
 	{
-		skybox = std::make_unique<EngineSkybox>("../resources/texture/skybox/cloud/", "jpg");
+		skybox = std::make_unique<EngineSkybox>(OBFUSCATE("../resources/texture/skybox/cloud/"), OBFUSCATE("jpg"));
 	}
 	catch (std::exception e)
 	{

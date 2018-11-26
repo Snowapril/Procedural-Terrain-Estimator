@@ -9,6 +9,7 @@
 #ifndef _DEBUG
 #include "PostprocessShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 constexpr uint32_t MAX_DIR_LIGHT = 5;
 
@@ -32,8 +33,8 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 
 #ifdef _DEBUG
 	sunShader = make_unique_from_list<GLShader, std::string>({
-		"../resources/shader/sun_vs.glsl",
-		"../resources/shader/sun_fs.glsl",
+		OBFUSCATE("../resources/shader/sun_vs.glsl"),
+		OBFUSCATE("../resources/shader/sun_fs.glsl"),
 	});
 #else
 	sunShader = std::make_unique<GLShader>();
@@ -41,11 +42,11 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 #endif
 
 	sunShader->useProgram();
-	sunShader->sendUniform("effectTexture", 0);
+	sunShader->sendUniform(OBFUSCATE("effectTexture"), 0);
 
 	sunMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 300.0f);
 
-	if ((sunTexture = GLResources::CreateTexture2D("../resources/texture/lensFlare/sun.png", true)) == 0)
+	if ((sunTexture = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/lensFlare/sun.png"), true)) == 0)
 		return false;
 
 	return true;

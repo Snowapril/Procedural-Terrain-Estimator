@@ -10,6 +10,8 @@
 #include "PostprocessShaderCode.hpp"
 #endif
 
+#include "obfuscator.hpp"
+
 bool PostProcessing::initPostProcessing(int width, int height)
 {
 #ifdef _DEBUG
@@ -19,8 +21,8 @@ bool PostProcessing::initPostProcessing(int width, int height)
 	{
 #ifdef _DEBUG
 		postprocessingShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/postprocess_vs.glsl",
-			"../resources/shader/postprocess_fs.glsl",
+			OBFUSCATE("../resources/shader/postprocess_vs.glsl"),
+			OBFUSCATE("../resources/shader/postprocess_fs.glsl"),
 		});
 #else
 		postprocessingShader = std::make_unique<GLShader>();
@@ -33,9 +35,9 @@ bool PostProcessing::initPostProcessing(int width, int height)
 	}
 
 	postprocessingShader->useProgram();
-	postprocessingShader->sendUniform("hdrBuffer", 0);
-	postprocessingShader->sendUniform("depthTexture", 1);
-	postprocessingShader->sendUniform("occludeTexture", 2);
+	postprocessingShader->sendUniform(OBFUSCATE("hdrBuffer"), 0);
+	postprocessingShader->sendUniform(OBFUSCATE("depthTexture"), 1);
+	postprocessingShader->sendUniform(OBFUSCATE("occludeTexture"), 2);
 
 	postprocessingBuffer = std::make_unique<GLFramebuffer>();
 

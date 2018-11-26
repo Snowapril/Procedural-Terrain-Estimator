@@ -11,6 +11,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb/stb_image_write.h>
 
+#include "obfuscator.hpp"
+
 uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
@@ -19,7 +21,7 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+		EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), path);
 
 		return 0;
 	}
@@ -58,10 +60,10 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	stbi_image_free(data);
 	stbi_set_flip_vertically_on_load(false);
 
-	const auto dirIdx = path.find_last_of("/");
+	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);
 
-	EngineLogger::getConsole()->info("Load Texture {} finished", filename);
+	EngineLogger::getConsole()->info(OBFUSCATE("Load Texture {} finished"), filename);
 
 	return texture;
 }
@@ -74,7 +76,7 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, std::size_t& retW
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+		EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), path);
 		return 0;
 	}
 
@@ -115,10 +117,10 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, std::size_t& retW
 	stbi_image_free(data);
 	stbi_set_flip_vertically_on_load(false);
 
-	const auto dirIdx = path.find_last_of("/");
+	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);
 
-	EngineLogger::getConsole()->info("Load Texture {} finished", filename);
+	EngineLogger::getConsole()->info(OBFUSCATE("Load Texture {} finished"), filename);
 
 	return texture;
 }
@@ -132,7 +134,7 @@ uint32_t GLResources::CreateTexture2DApplying3x3AverageFilter(const std::string&
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+		EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), path);
 		return 0;
 	}
 
@@ -205,10 +207,10 @@ uint32_t GLResources::CreateTexture2DApplying3x3AverageFilter(const std::string&
 	stbi_image_free(data);
 	stbi_set_flip_vertically_on_load(false);
 
-	const auto dirIdx = path.find_last_of("/");
+	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);
 
-	EngineLogger::getConsole()->info("Load Texture {} finished", filename);
+	EngineLogger::getConsole()->info(OBFUSCATE("Load Texture {} finished"), filename);
 
 	return texture;
 }
@@ -217,12 +219,12 @@ uint32_t GLResources::CreateTexture2DApplying3x3AverageFilter(const std::string&
 uint32_t GLResources::CreateSkybox(const std::string& skyboxDir, const std::string& extension)
 {	
 	std::string paths[] = {
-		"right.",
-		"left.",
-		"top.",
-		"bottom.",
-		"back.",
-		"front.",
+		OBFUSCATE("right."),
+		OBFUSCATE("left."),
+		OBFUSCATE("top."),
+		OBFUSCATE("bottom."),
+		OBFUSCATE("back."),
+		OBFUSCATE("front."),
 	};
 
 	uint32_t texture;
@@ -238,7 +240,7 @@ uint32_t GLResources::CreateSkybox(const std::string& skyboxDir, const std::stri
 
 		if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 		{
-			EngineLogger::getConsole()->error("Cannot load texture from {}", fullpath);
+			EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), fullpath);
 			stbi_image_free(data);
 
 			return 0;
@@ -254,7 +256,7 @@ uint32_t GLResources::CreateSkybox(const std::string& skyboxDir, const std::stri
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-	EngineLogger::getConsole()->info("Load Cubemap {} finished", skyboxDir);
+	EngineLogger::getConsole()->info(OBFUSCATE("Load Cubemap {} finished"), skyboxDir);
 	
 	return texture;
 }
@@ -273,7 +275,7 @@ uint32_t GLResources::CreateHDREnvMap(const std::string& path)
 
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		EngineLogger::getConsole()->error("Cannot load texture from {}", path);
+		EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), path);
 		stbi_image_free(data);
 
 		return 0;
@@ -288,7 +290,7 @@ uint32_t GLResources::CreateHDREnvMap(const std::string& path)
 
 	stbi_image_free(data);
 
-	EngineLogger::getConsole()->info("Load Cubemap {} finished", path);
+	EngineLogger::getConsole()->info(OBFUSCATE("Load Cubemap {} finished"), path);
 	stbi_set_flip_vertically_on_load(false);
 
 	return texture;

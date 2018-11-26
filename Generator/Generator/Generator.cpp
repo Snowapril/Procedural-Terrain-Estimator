@@ -11,6 +11,7 @@
 #include "EventHandler.hpp"
 #include "GLFramebuffer.hpp"
 #include "ShaderCode.hpp"
+#include "obfuscator.hpp"
 
 Generator::Generator()
 {
@@ -27,7 +28,7 @@ void Generator::updateScene(void)
 	brushMgr->update(generatorShader);
 	
 	generatorShader->useProgram();
-	generatorShader->sendUniform("presetBlend", noiseGui->getPresetBlend());
+	generatorShader->sendUniform(OBFUSCATE("presetBlend"), noiseGui->getPresetBlend());
 
 	noiseGui->endUpdate(framebuffer->getColorTexture());
 }
@@ -73,12 +74,12 @@ bool Generator::initShaders(void)
 	{
 #ifdef _DEBUG
 		generatorShader = std::make_shared<GLShader>(
-			"../resources/shader/generator_vs.glsl", 
-			"../resources/shader/generator_fs.glsl"
+			OBFUSCATE("../resources/shader/generator_vs.glsl"), 
+			OBFUSCATE("../resources/shader/generator_fs.glsl")
 		);
 		screenShader = std::make_unique<GLShader>(
-			"../resources/shader/offscreen_vs.glsl",
-			"../resources/shader/offscreen_fs.glsl"
+			OBFUSCATE("../resources/shader/offscreen_vs.glsl"),
+			OBFUSCATE("../resources/shader/offscreen_fs.glsl")
 		);
 #else
 		generatorShader = std::make_shared<GLShader>();
@@ -89,18 +90,18 @@ bool Generator::initShaders(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Initializing Shader Failed" << std::endl;
+		std::cerr << OBFUSCATE("Initializing Shader Failed") << std::endl;
 		return false;
 	}
 
 	generatorShader->useProgram();
-	generatorShader->sendUniform("voronoiBoard", 0);
-	generatorShader->sendUniform("fbMBoard", 1);
-	generatorShader->sendUniform("simplexBoard", 2);
-	generatorShader->sendUniform("preset", 3);
+	generatorShader->sendUniform(OBFUSCATE("voronoiBoard"), 0);
+	generatorShader->sendUniform(OBFUSCATE("fbMBoard"), 1);
+	generatorShader->sendUniform(OBFUSCATE("simplexBoard"), 2);
+	generatorShader->sendUniform(OBFUSCATE("preset"), 3);
 
 	screenShader->useProgram();
-	screenShader->sendUniform("framebufferTexture", 0);
+	screenShader->sendUniform(OBFUSCATE("framebufferTexture"), 0);
 
 	return true;
 }

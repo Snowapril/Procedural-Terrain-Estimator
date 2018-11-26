@@ -8,6 +8,7 @@
 #endif
 
 #include <stb/stb_image.h>
+#include "obfuscator.hpp"
 
 uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 {
@@ -17,7 +18,7 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		std::cerr << "Cannot load texture from " << path << std::endl;
+		std::cerr << OBFUSCATE("Cannot load texture from ") << path << std::endl;
 		return 0;
 	}
 
@@ -55,10 +56,10 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	stbi_image_free(data);
 	stbi_set_flip_vertically_on_load(false);
 
-	const auto dirIdx = path.find_last_of("/");
+	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);
 
-	std::clog << "Load texture " << filename << " finished" << std::endl;
+	std::clog << OBFUSCATE("Load texture ") << filename << OBFUSCATE(" finished") << std::endl;
 
 	return texture;
 }
@@ -71,7 +72,7 @@ uint32_t GLResources::LoadPresetImage(const std::string& path, int numExtension)
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
 	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
 	{
-		std::cerr << "Cannot load texture from " << path << std::endl;
+		std::cerr << OBFUSCATE("Cannot load texture from ") << path << std::endl;
 		return 0;
 	} 
 
@@ -121,10 +122,10 @@ uint32_t GLResources::LoadPresetImage(const std::string& path, int numExtension)
 	extendedData.clear();
 	stbi_set_flip_vertically_on_load(false);
 
-	const auto dirIdx = path.find_last_of("/");
+	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);
 
-	std::clog << "Load texture " << filename << " finished" << std::endl;
+	std::clog << OBFUSCATE("Load texture ") << filename << OBFUSCATE(" finished") << std::endl;
 
 	return texture;
 }

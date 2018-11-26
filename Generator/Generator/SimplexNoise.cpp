@@ -6,6 +6,7 @@
 using namespace ImGui;
 
 #include "GLShader.hpp"
+#include "obfuscator.hpp"
 
 SimplexNoise::SimplexNoise()
 	: blend(1.0f), frequency(2.0f)
@@ -19,10 +20,10 @@ SimplexNoise::SimplexNoise(const Util::Rect & rect)
 
 void SimplexNoise::updateGUI(void)
 {
-	if (ImGui::TreeNode("Simplex Noise"))
+	if (ImGui::TreeNode(OBFUSCATE("Simplex Noise")))
 	{
-		ImGui::SliderFloat("Blend", &blend, 0.0f, 1.0f);
-		ImGui::SliderFloat("Frequency", &frequency, 0.0f, 30.0f);
+		ImGui::SliderFloat(OBFUSCATE("Blend"), &blend, 0.0f, 1.0f);
+		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 30.0f);
 
 		ImGui::TreePop();
 	}
@@ -32,7 +33,7 @@ void SimplexNoise::sendProperties(std::shared_ptr<GLShader> shader)
 {
 	shader->useProgram();
 
-	shader->sendUniform("simplex.blend", blend);
-	shader->sendUniform("simplex.frequency", frequency);
-	shader->sendUniform("simplex.viewPoint", getViewPoint());
+	shader->sendUniform(OBFUSCATE("simplex.blend"), blend);
+	shader->sendUniform(OBFUSCATE("simplex.frequency"), frequency);
+	shader->sendUniform(OBFUSCATE("simplex.viewPoint"), getViewPoint());
 }

@@ -8,6 +8,7 @@
 #ifndef _DEBUG
 #include "ViewerShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 TextureViewer::TextureViewer()
 {
@@ -23,8 +24,8 @@ bool TextureViewer::initTextureViewer(void)
 	{
 #ifdef _DEBUG
 		viewShader = make_unique_from_list<GLShader, std::string>({
-			"../resources/shader/viewer_vs.glsl",
-			"../resources/shader/viewer_fs.glsl",
+			OBFUSCATE("../resources/shader/viewer_vs.glsl"),
+			OBFUSCATE("../resources/shader/viewer_fs.glsl"),
 		});
 #else
 		viewShader = std::make_unique<GLShader>();
@@ -33,12 +34,12 @@ bool TextureViewer::initTextureViewer(void)
 	}
 	catch(std::exception e)
 	{
-		EngineLogger::getConsole()->error("Failed to initialize view shader");
+		EngineLogger::getConsole()->error(OBFUSCATE("Failed to initialize view shader"));
 		return false;
 	}
 
 	viewShader->useProgram();
-	viewShader->sendUniform("textureView", 0);
+	viewShader->sendUniform(OBFUSCATE("textureView"), 0);
 
 	if (!mesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP))
 		return false;

@@ -9,6 +9,7 @@
 #include <iostream>
 #include "GLResources.hpp"
 #include "ShaderCode.hpp"
+#include "obfuscator.hpp"
 
 BrushManager::BrushManager()
 	: activeBoardIndex(0), brushMgrMode(BrushManagerMode::NONE), simultaneousApply(false)
@@ -63,8 +64,8 @@ bool BrushManager::init(Util::Rect rect)
 	try {
 #ifdef _DEBUG
 		toolShader = std::make_shared<GLShader>(
-			"../resources/shader/tool_display_vs.glsl",
-			"../resources/shader/tool_display_fs.glsl"
+			OBFUSCATE("../resources/shader/tool_display_vs.glsl"),
+			OBFUSCATE("../resources/shader/tool_display_fs.glsl")
 		);
 #else
 		toolShader = std::make_shared<GLShader>();
@@ -76,7 +77,7 @@ bool BrushManager::init(Util::Rect rect)
 	}
 
 	toolShader->useProgram();
-	toolShader->sendUniform("icon", 0);
+	toolShader->sendUniform(OBFUSCATE("icon"), 0);
 	/*
 	toolMeshes[ZOOM_IN] = ...
 	toolMeshes[ZOOM_OUT] = ...
@@ -87,13 +88,13 @@ bool BrushManager::init(Util::Rect rect)
 	toolMeshes[NONE] = ...
 	*/
 	toolUITextures.resize(7);
-	toolUITextures[0] = GLResources::CreateTexture2D("../resources/texture/icons/zoom_in.png", false);
-	toolUITextures[1] = GLResources::CreateTexture2D("../resources/texture/icons/zoom_out.png", false);
-	toolUITextures[2] = GLResources::CreateTexture2D("../resources/texture/icons/move.png", false);
-	toolUITextures[3] = GLResources::CreateTexture2D("../resources/texture/icons/brush.png", false);
-	toolUITextures[4] = GLResources::CreateTexture2D("../resources/texture/icons/brush.png", false);
-	toolUITextures[5] = GLResources::CreateTexture2D("../resources/texture/icons/polygonalLasso.png", false);
-	toolUITextures[6] = GLResources::CreateTexture2D("../resources/texture/icons/freeformLasso.png", false);
+	toolUITextures[0] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/zoom_in.png"), false);
+	toolUITextures[1] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/zoom_out.png"), false);
+	toolUITextures[2] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/move.png"), false);
+	toolUITextures[3] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/brush.png"), false);
+	toolUITextures[4] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/brush.png"), false);
+	toolUITextures[5] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/polygonalLasso.png"), false);
+	toolUITextures[6] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/freeformLasso.png"), false);
 
 	quadMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 0.06f);
 
@@ -110,7 +111,7 @@ void BrushManager::update(std::shared_ptr<GLShader> shader)
 	}
 
 	shader->useProgram();
-	shader->sendUniform("project", orthoProject);
+	shader->sendUniform(OBFUSCATE("project"), orthoProject);
 }
 
 void BrushManager::bindBrushTextures(uint32_t offset) const
@@ -149,7 +150,7 @@ void BrushManager::renderToolUI(void) const
 		model = glm::scale(model, glm::vec3(scaleFactor, 1.0f));
 	}
 
-	toolShader->sendUniform("model", model);
+	toolShader->sendUniform(OBFUSCATE("model"), model);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	quadMesh.drawMesh(GL_TRIANGLE_STRIP);

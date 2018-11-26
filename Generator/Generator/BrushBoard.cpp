@@ -5,6 +5,7 @@
 #include <array>
 #include <glm/gtc/matrix_transform.hpp>
 #include <queue>
+#include "obfuscator.hpp"
 
 BrushBoard::BrushBoard()
 	: isScreenClicked(false), counter(10U), brushTexture(0U), paintFuncPtr(nullptr), paintMode(BrushMode::NONE), viewPoint(0.0f, 0.0f)
@@ -15,7 +16,7 @@ BrushBoard::BrushBoard(const Util::Rect& rect)
 	: isScreenClicked(false), counter(10U), brushTexture(0U), paintFuncPtr(nullptr), paintMode(BrushMode::NONE), viewPoint(0.0f, 0.0f)
 {
 	if (!initBrushBoard(rect))
-		throw std::exception("Failed to initialize brush board");
+		throw std::exception(OBFUSCATE("Failed to initialize brush board"));
 }
 
 BrushBoard::~BrushBoard()

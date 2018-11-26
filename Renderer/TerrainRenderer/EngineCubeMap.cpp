@@ -10,6 +10,7 @@
 #ifndef _DEBUG
 #include "SkyboxShaderCode.hpp"
 #endif
+#include "obfuscator.hpp"
 
 EngineCubeMap::EngineCubeMap()
 	: cubeMap(0)
@@ -58,8 +59,8 @@ bool EngineCubeMap::initCubeMap(const std::string& cubeMapDir, const std::string
 	{
 #ifdef _DEBUG
 		skyboxShader = assetManager->addAsset<GLShader, std::string>({
-			"../resources/shader/skybox_vs.glsl",
-			"../resources/shader/skybox_fs.glsl"
+			OBFUSCATE("../resources/shader/skybox_vs.glsl"),
+			OBFUSCATE("../resources/shader/skybox_fs.glsl")
 			});
 #else
 		skyboxShader = std::make_unique<GLShader>();
@@ -68,12 +69,12 @@ bool EngineCubeMap::initCubeMap(const std::string& cubeMapDir, const std::string
 	}
 	catch (std::exception e)
 	{
-		EngineLogger::getConsole()->error("Intializing Skybox failed. ({})", e.what());
+		EngineLogger::getConsole()->error(OBFUSCATE("Intializing Skybox failed. ({})"), e.what());
 		return false;
 	}
 
 	skyboxShader->useProgram();
-	skyboxShader->sendUniform("cubeMap", 0);
+	skyboxShader->sendUniform(OBFUSCATE("cubeMap"), 0);
 	lowerLimit = 0.0f;
 	upperLimit = 0.1f;
 	skycolor = glm::vec3(0.5f);

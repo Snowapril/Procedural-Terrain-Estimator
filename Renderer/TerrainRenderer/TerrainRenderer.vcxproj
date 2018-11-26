@@ -182,7 +182,6 @@
     <ClCompile Include="GLResources.cpp" />
     <ClCompile Include="GLShader.cpp" />
     <ClCompile Include="GLTexture.cpp" />
-    <ClCompile Include="GLTextureWrapper.cpp" />
     <ClCompile Include="Godrays.cpp" />
     <ClCompile Include="LightSourceWrapper.cpp" />
     <ClCompile Include="main.cpp" />
@@ -215,9 +214,10 @@
     <ClInclude Include="GLResources.hpp" />
     <ClInclude Include="GLShader.hpp" />
     <ClInclude Include="GLTexture.hpp" />
-    <ClInclude Include="GLTextureWrapper.hpp" />
     <ClInclude Include="Godrays.hpp" />
     <ClInclude Include="LightSourceWrapper.hpp" />
+    <ClInclude Include="meta_random.hpp" />
+    <ClInclude Include="obfuscator.hpp" />
     <ClInclude Include="PostProcessing.hpp" />
     <ClInclude Include="PostprocessShaderCode.hpp" />
     <ClInclude Include="SkyboxShaderCode.hpp" />
