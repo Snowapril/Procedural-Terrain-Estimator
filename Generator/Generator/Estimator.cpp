@@ -22,8 +22,8 @@ using namespace std;
 
 std::shared_ptr<Estimator> Singleton<Estimator>::instance(new Estimator());
 
-Estimator::Estimator(vector<unsigned char>& data,int _height, int _width) : height(_height), width(_width) {
-	HmapData.resize(height,vector<unsigned char>(width,0));
+Estimator::Estimator(vector<unsigned short>& data,int _height, int _width) : height(_height), width(_width) {
+	HmapData.resize(height,vector<unsigned short>(width,0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			HmapData[i][j] = data[i*width + j];
@@ -65,13 +65,13 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 	width  = _width;
 	height = _height;
 
-	std::vector<unsigned char> data(width * height);
+	std::vector<unsigned short> data(width * height);
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RED, GL_UNSIGNED_BYTE, (void*)&data[0]);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	HmapData.resize(height, vector<unsigned char>(width, 0));
+	HmapData.resize(height, vector<unsigned short>(width, 0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			HmapData[i][j] = data[i*width + j];
@@ -81,7 +81,7 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 
 void Estimator::generateHeightMap(const char* path, int width, int height) {
 	//TODO :
-	//std::vector<unsigned char> data(width * height);
+	//std::vector<unsigned short> data(width * height);
 	//
 	//for (int i = 0; i < height; i++) {
 	//	for (int j = 0; j < width; j++) {
@@ -110,9 +110,9 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 	stbi_write_png(path, width, height, 4, &data[0], 0);
 }
 
-pii Estimator::descent(int y,int x) {
+pss Estimator::descent(int y,int x) {
 
-	pii& ans = descentTable[y][x];
+	pss& ans = descentTable[y][x];
 
 	if (ans.first != -1) return ans;
 
@@ -120,7 +120,7 @@ pii Estimator::descent(int y,int x) {
 		int Y = y + DY[i], X = x + DX[i];
 		if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
 		if (HmapData[Y][X] <= HmapData[y][x]) {
-			pii temp = descent(Y, X);
+			pss temp = descent(Y, X);
 			if (ans.first == -1) {
 				ans = temp;
 			}
@@ -138,17 +138,17 @@ pii Estimator::descent(int y,int x) {
 
 void Estimator::descentTabling() {
 
-	descentTable.resize(height, vector<pii>(width, { -1,-1 }));
+	descentTable.resize(height, vector<pss>(width, { -1,-1 }));
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			pii temp = descent(i, j);
+			pss temp = descent(i, j);
 		}
 	}
 }
 
-vector<unsigned char> Estimator::getHeightMap() {
-	vector <unsigned char> ret;
+vector<unsigned short> Estimator::getHeightMap() {
+	vector <unsigned short> ret;
 	for (auto curVec : HmapData) {
 		for (auto p : curVec) {
 			ret.push_back(p); // R channel
@@ -240,7 +240,7 @@ void Estimator::normalize(int minimumHeight, int maximumHeight) {
 }
 
 void Estimator::smoothness() {
-	vector < vector < short > > converted(height, vector<short>(width, 0));
+	vector < vector < unsigned short > > converted(height, vector<unsigned short>(width, 0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
@@ -265,8 +265,8 @@ void Estimator::smoothness() {
 }
 
 void Estimator::bfsCoastlineOptimization() {
-	queue <pii> Q;
-	vector < vector < bool > > visit(height, vector<bool>(width, 0));
+	queue <pss> Q;
+	vector < vector < unsigned char > > visit(height, vector< unsigned char>(width, 0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			if (!visit[i][j] && HmapData[i][j] <= DEFAULT_SEA_LEVEL) {
@@ -309,7 +309,7 @@ void Estimator::linearCoastlineOptimization() {
 	const short MEASURE = 6;
 	int ydir, xdir;
 
-	vector < vector < bool > > visit(height, vector<bool>(width, 0));
+	vector < vector < unsigned char > > visit(height, vector< unsigned char>(width, 0));
 
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {

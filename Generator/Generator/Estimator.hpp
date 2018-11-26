@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef pair<int,int> pii;
+typedef pair<unsigned short,unsigned short> pss;
 
 struct pixel {
 	unsigned char r, g, b, a;
@@ -19,15 +19,15 @@ private:
 	const int DY[8] = { -1, -1, -1, 0, 1, 1, 1, 0 }, DX[8] = { -1, 0, 1, 1, 1, 0, -1, -1 };
 	int DEFAULT_SEA_LEVEL = 128;
 	
-	vector < vector < unsigned char > > HmapData;
+	vector < vector < unsigned short > > HmapData;
 	vector < vector < pixel > > BmapData;
-	vector < vector < pii > > descentTable;
+	vector < vector < pss > > descentTable;
 	int height;
 	int width;
 
 public:
 	Estimator() = default;
-	Estimator(vector<unsigned char>& data, int _height, int _width);
+	Estimator(vector<unsigned short>& data, int _height, int _width);
 
 	// methods
 public:
@@ -36,9 +36,9 @@ public:
 
 	void dumpDescentMapData();
 
-	vector <unsigned char> getHeightMap();
+	vector <unsigned short> getHeightMap();
 	vector <unsigned char> getBlendMap();
-	//HeightMap / BlendMap을 png 출력을 위해 vector of unsigned char로 반환하는 함수
+	//HeightMap / BlendMap을 png 출력을 위해 vector of unsigned short로 반환하는 함수
 
 	void dumpHeightMapData();
 	// HeightMap을 stdout에 출력
@@ -50,7 +50,7 @@ public:
 	void generateHeightMap(const char* path, int width, int height);
 	void generateBlendMap(const char* path, int width, int height);
 private:
-	pii descent(int y, int x);
+	pss descent(int y, int x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수
 
 	void descentTabling();
