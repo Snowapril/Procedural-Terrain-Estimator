@@ -207,7 +207,7 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
 
 void Estimator::blendmapColoring() {
-
+	bfsCoastlineOptimization();
 	descentTabling();
 
 	srand(time(NULL));

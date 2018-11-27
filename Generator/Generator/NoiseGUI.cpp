@@ -106,19 +106,20 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 
 	if (ImGui::Button("Save as image"))
 	{
-		saveCurrentTexture("../resources/texture/terrain/height16bit2.png", 2048, 2048, frameTexture);
-		//auto& estimator = Estimator::getMutableInstance();
+		//saveCurrentTexture("../resources/texture/terrain/height16bit2.png", 2048, 2048, frameTexture);
+		auto& estimator = Estimator::getMutableInstance();
 		//
-		//estimator.initHMapData(frameTexture, 2048, 2048);
-		//estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
+		estimator.initHMapData(frameTexture, 2048, 2048);
+		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
 	}
 
 	if (ImGui::Button("BlendMap Coloring")) 
 	{
 		auto& estimator = Estimator::getMutableInstance();
 
-		estimator.initHMapData(frameTexture, 2048, 2048);
+		//estimator.initHMapData(frameTexture, 2048, 2048);
 		estimator.blendmapColoring();
+		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
 		estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", 2048, 2048);
 	}
 
