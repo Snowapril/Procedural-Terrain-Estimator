@@ -104,25 +104,48 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		ImGui::Text("Email: sinjihng@pusan.ac.kr");
 	}
 
-	if (ImGui::Button("Save as image"))
+	if (ImGui::CollapsingHeader("Export Resources"))
 	{
-		//saveCurrentTexture("../resources/texture/terrain/height16bit2.png", 2048, 2048, frameTexture);
-		auto& estimator = Estimator::getMutableInstance();
-		//
-		estimator.initHMapData(frameTexture, 2048, 2048);
-		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
+		ImGui::TextWrapped("Export height-map and blend-map as images to path resources/texture/terrain.");
+		if (ImGui::Button("Export Images..")) 
+		{
+			auto& estimator = Estimator::getMutableInstance();
+			estimator.initHMapData(frameTexture, 2048, 2048);
+			ImGui::OpenPopup("Export Images");
+		}
+		if (ImGui::BeginPopupModal("Export Images"))
+		{
+			auto& estimator = Estimator::getMutableInstance();
+
+			if(ImGui::Button("Save Heightmap"))
+				estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
+			if (ImGui::Button("Save Blendmap"))
+			{
+				estimator.blendmapColoring();
+				estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", 2048, 2048);
+			}
+
+			if (ImGui::Button("Close"))
+				ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
+
+		ImGui::TextWrapped("Export height-map and blend-map as resources which can be used in unreal engine editor");
+		if (ImGui::Button("Export UnrealEngine.."))
+		{
+			auto& estimator = Estimator::getMutableInstance();
+			estimator.initHMapData(frameTexture, 2048, 2048);
+			ImGui::OpenPopup("Export UnrealEngine");
+		}
+		if (ImGui::BeginPopupModal("Export UnrealEngine"))
+		{
+
+			if (ImGui::Button("Close"))
+				ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
 	}
-
-	if (ImGui::Button("BlendMap Coloring")) 
-	{
-		auto& estimator = Estimator::getMutableInstance();
-
-		//estimator.initHMapData(frameTexture, 2048, 2048);
-		estimator.blendmapColoring();
-		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
-		estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", 2048, 2048);
-	}
-
+	
 	ImGui::End();
 }
 

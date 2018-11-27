@@ -317,7 +317,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 
 	std::size_t width = 2048, height = 2048;
 
-	dynamicPatch->setTerrainScale(width, height);
+	dynamicPatch->setTerrainScale(width * 2, height * 2);
 	maxHeight = getProperMaxHeight(width, height);
 	
 	bakeTerrainMap.sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
