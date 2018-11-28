@@ -24,8 +24,8 @@ using namespace std;
 
 std::shared_ptr<Estimator> Singleton<Estimator>::instance(new Estimator());
 
-Estimator::Estimator(vector<unsigned short>& data,int _height, int _width) : height(_height), width(_width) {
-	HmapData.resize(height,vector<unsigned short>(width,0));
+Estimator::Estimator(vector<unsigned short>& data, int _height, int _width) : height(_height), width(_width) {
+	HmapData.resize(height, vector<unsigned short>(width, 0));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			HmapData[i][j] = data[i*width + j];
@@ -64,8 +64,8 @@ void Estimator::dumpDescentMapData() {
 }
 
 void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
-	width  = _width;
-	height = _height;	
+	width = _width;
+	height = _height;
 
 	std::vector<unsigned short> data(width * height);
 
@@ -84,13 +84,13 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 void Estimator::generateHeightMap(const char* path, int _width, int _height) {
 	//TODO :
 	std::vector<unsigned short> data(width * height);
-	
+
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			data[i * width + j] = HmapData[i][j];
 		}
 	}
-	
+
 	Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&data[0]), dst;
 	resize(src, dst, cv::Size(_width, _height));
 	imwrite(path, dst);
@@ -112,7 +112,6 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 
 	stbi_write_png(path, width, height, 4, &data[0], 0);
 }
-
 unsigned int Estimator::getBlendMapTexture(void) const
 {
 	vector<unsigned char> data;
@@ -131,7 +130,7 @@ unsigned int Estimator::getBlendMapTexture(void) const
 	return texture;
 }
 
-pss Estimator::descent(int y,int x) {
+pss Estimator::descent(short y, short x) {
 
 	pss& ans = descentTable[y][x];
 
@@ -193,11 +192,14 @@ vector<unsigned char> Estimator::getBlendMap() {
 	return ret;
 }
 
-pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
+pixel Estimator::randFill(int elevation, int dryDistance, int y, int x) {
 
-	const unsigned static char DATA_NUM = 4;
-	static pixel tile[DATA_NUM];
-	static pixel ret;
+	const int DRY_LOWER_BOUND = (width / 20) * (width / 20);
+	const int DRY_UPPER_BOUND = (width / 10) * (width / 10);
+
+	const unsigned int DATA_NUM = 4;
+	pixel tile[DATA_NUM];
+	pixel ret;
 	int prob[DATA_NUM] = { 0, };
 
 	tile[0] = { 0,0,255,0 };// 0 0 255 0 : MUD	
@@ -205,7 +207,7 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
 	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
 
-	const static int elevationTable[DATA_NUM] = { DEFAULT_SEA_LEVEL * 8 / 10, DEFAULT_SEA_LEVEL, DEFAULT_SEA_LEVEL * 12 / 10, 1e9 };
+	const short elevationTable[DATA_NUM] = { DEFAULT_SEA_LEVEL * 8 / 10, DEFAULT_SEA_LEVEL, DEFAULT_SEA_LEVEL * 12 / 10, 1e9 };
 
 	int select = 0;
 	for (int i = 0; i < DATA_NUM; i++) {
@@ -214,12 +216,12 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 			break;
 		}
 	}
-
-	int transitionPercentage = 50 + exp(dryDistance * 50 / elevationTable[select]);
-	
-	int probabillity = rand()%100;
-
-	if (probabillity > transitionPercentage) select++;
+	if (dryDistance < DRY_LOWER_BOUND && select > 0) {
+		select--;
+	}
+	else if (dryDistance > DRY_UPPER_BOUND && select < 3) {
+		select++;
+	}
 
 	ret = tile[select];
 
@@ -228,7 +230,6 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
 
 void Estimator::blendmapColoring() {
-	//bfsCoastlineOptimization();
 	descentTabling();
 
 	srand(time(NULL));
@@ -239,14 +240,14 @@ void Estimator::blendmapColoring() {
 	const pixel SAND = { 0,0,0,255 };// 0 0 0 255 : SAND
 
 	BmapData.resize(height, vector<pixel>(width, { 0,0,0,0 }));
-	
+
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
-			int wet_dist = (int)sqrt((double) ((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x)));
-			
-			BmapData[i][j] = randFill(HmapData[i][j], wet_dist,i, j);
+			unsigned short des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
+			int wet_dist = (int)((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x));
+
+			BmapData[i][j] = randFill(HmapData[i][j], wet_dist, i, j);
 		}
 	}
 }
@@ -269,13 +270,13 @@ void Estimator::smoothness() {
 			int div = 0;
 
 			for (int k = 0; k < 8; k++) {
-				int Y = i+DY[k], X = j+DX[k];
+				int Y = i + DY[k], X = j + DX[k];
 				if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
 				div++;
 				res += HmapData[Y][X];
 			}
 
-			converted[i][j] = (HmapData[i][j] + res / div ) / 2;
+			converted[i][j] = (HmapData[i][j] + res / div) / 2;
 		}
 	}
 	for (int i = 0; i < height; i++) {
@@ -297,7 +298,7 @@ void Estimator::bfsCoastlineOptimization() {
 					int y = Q.front().first, x = Q.front().second;
 					Q.pop();
 					for (int k = 0; k < 8; k++) {
-						int Y = y + DY[k], X = x+ DX[k];
+						int Y = y + DY[k], X = x + DX[k];
 						if (Y < 0 || Y >= height || X < 0 || X >= width) continue;
 						if (visit[Y][X]) continue;
 						if (HmapData[Y][X] <= DEFAULT_SEA_LEVEL) {
@@ -307,7 +308,7 @@ void Estimator::bfsCoastlineOptimization() {
 						else {
 							unsigned short prob = rand() % 100;
 							double logVal = log(height) / log(DEFAULT_SEA_LEVEL + 10) * 100;
-							unsigned short transitionProbability = (int)(100 - (int)(logVal))/2;
+							unsigned short transitionProbability = (int)(100 - (int)(logVal)) / 2;
 							if (prob > transitionProbability) {
 								HmapData[Y][X] = (HmapData[Y][X] + HmapData[y][x]) / 2;
 								visit[Y][X] = true;
@@ -352,15 +353,15 @@ void Estimator::linearCoastlineOptimization() {
 
 
 				int d = (int)sqrt(xdir * xdir + ydir * ydir);
-				int noiseDistance = SN_Rombauts::noise((float)(i+j));
+				int noiseDistance = SN_Rombauts::noise((float)(i + j));
 
-				/* 
-				 * 방향 벡터 : (ydir , xdir)
-				 * 방향 거리 : noiseDistance
-				 * SN_Rombauts::noise(x) 의 최대 value : 2.53125
-				 * ydir / d 는 1보다 작음
-				 * -> (ydir / d * noiseDistance, xdir / d * noiseDistance)의 범위
-				 */
+				/*
+					* 방향 벡터 : (ydir , xdir)
+					* 방향 거리 : noiseDistance
+					* SN_Rombauts::noise(x) 의 최대 value : 2.53125
+					* ydir / d 는 1보다 작음
+					* -> (ydir / d * noiseDistance, xdir / d * noiseDistance)의 범위
+					*/
 
 				unsigned short COASTLINE_CONST = 2;
 
@@ -374,9 +375,9 @@ void Estimator::linearCoastlineOptimization() {
 					if (y < 0 || y >= height || x < 0 || x >= width) continue;
 					if (visit[y][x]) continue;
 					visit[y][x] = true;
-					HmapData[y][x] = (abs(y - i) + abs(x - j)) / 2 ;
+					HmapData[y][x] = (abs(y - i) + abs(x - j)) / 2;
 				}
-				
+
 			}
 		}
 	}
