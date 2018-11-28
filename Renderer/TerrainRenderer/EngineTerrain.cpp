@@ -19,6 +19,7 @@
 #include "TerrainShaderCode.hpp"
 #endif
 #include "obfuscator.hpp"
+#include "EngineWater.hpp"
 
 bool EngineTerrain::isInstanciated = false;
 
@@ -36,7 +37,7 @@ EngineTerrain::~EngineTerrain()
 	isInstanciated = false;
 }
 
-void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
+void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& cameraPos)
 {
 #ifdef _DEBUG
 	if (assetManager->refreshDirtyAssets())
@@ -63,6 +64,9 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 	if (!terrainDataManager->refreshDirtyAssets())
 	{
 		bakeTerrainMap();
+		glm::vec3 terrainScale = getTerrainScale() * 0.5f;
+		water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+		dynamicPatch->updateTerrain(cameraPos);
 	}
 
 	terrainShader->useProgram();
@@ -71,9 +75,11 @@ void EngineTerrain::updateScene(float dt, const glm::vec3& cameraPos)
 	terrainShader->sendUniform("gradient", fogGradient);
 	terrainShader->sendUniform("skycolor", skycolor);
 	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
+	terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
 	depthPassShader->useProgram();
 	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
+	depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
 	if (cameraPos != prevCameraPos)
 	{
@@ -315,10 +321,10 @@ bool EngineTerrain::bakeTerrainMap(void)
 	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform(OBFUSCATE("heightMap"), 0);
 
-	std::size_t width = 2048, height = 2048;
+	auto textureSize = terrainTexture->getTextureSize(0);
 
-	dynamicPatch->setTerrainScale(width * 2, height * 2);
-	maxHeight = getProperMaxHeight(width, height);
+	dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
+	maxHeight = getProperMaxHeight(textureSize.x, textureSize.y);
 	
 	bakeTerrainMap.sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
 
@@ -358,7 +364,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 	glGenTextures(1u, &terrainMap);
 	glBindTexture(GL_TEXTURE_2D, terrainMap);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width , height, 0, GL_RGBA, GL_FLOAT, nullptr);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, textureSize.x, textureSize.y, 0, GL_RGBA, GL_FLOAT, nullptr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -367,7 +373,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 	glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, terrainMap, 0);
 
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, textureSize.x, textureSize.y);
 	bakeTerrainMap.useProgram();
 	bakeTerrainMap.sendUniform(OBFUSCATE("view"), captureView);
 	bakeTerrainMap.sendUniform(OBFUSCATE("projection"), captureProjection);

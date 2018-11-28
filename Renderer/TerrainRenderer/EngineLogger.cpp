@@ -21,8 +21,8 @@ std::shared_ptr<spdlog::logger> EngineLogger::getConsole(void)
 
 #ifdef _DEBUG
 		
-		constexpr const char* logDir = OBFUSCATE("./logs");
-		constexpr const char* logPath = OBFUSCATE("./logs/setuplog.txt");
+		const char* logDir = OBFUSCATE("./logs");
+		const char* logPath = OBFUSCATE("./logs/setuplog.txt");
 
 		if (!fs::exists(logDir))
 		{

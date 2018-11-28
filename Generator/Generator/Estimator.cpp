@@ -9,6 +9,7 @@
 #include <cstring>
 #include <glad/glad.h>
 #include "SN_Rombauts.h"
+#include "GLResources.hpp"
 
 #ifndef STB_IMAGE_WRITE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -16,6 +17,7 @@
 #include <stb/stb_image_write.h>
 
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 
 using namespace cv;
 using namespace std;
@@ -63,15 +65,15 @@ void Estimator::dumpDescentMapData() {
 
 void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 	width  = _width;
-	height = _height;
+	height = _height;	
 
 	std::vector<unsigned short> data(width * height);
 
 	glBindTexture(GL_TEXTURE_2D, texture);
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RED, GL_UNSIGNED_BYTE, (void*)&data[0]);
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RED, GL_UNSIGNED_SHORT, (void*)&data[0]);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	HmapData.resize(height, vector<unsigned short>(width, 0));
+	HmapData.resize(height, vector<unsigned short>(width));
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			HmapData[i][j] = data[i*width + j];
@@ -79,18 +81,19 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 	}
 }
 
-void Estimator::generateHeightMap(const char* path, int width, int height) {
+void Estimator::generateHeightMap(const char* path, int _width, int _height) {
 	//TODO :
-	//std::vector<unsigned short> data(width * height);
-	//
-	//for (int i = 0; i < height; i++) {
-	//	for (int j = 0; j < width; j++) {
-	//		HmapData[i]
-	//	}
-	//}
-	//
-	//Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&HmapData[0][0]);
-	//imwrite(path, src);
+	std::vector<unsigned short> data(width * height);
+	
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			data[i * width + j] = HmapData[i][j];
+		}
+	}
+	
+	Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&data[0]), dst;
+	resize(src, dst, cv::Size(_width, _height));
+	imwrite(path, dst);
 }
 
 void Estimator::generateBlendMap(const char* path, int width, int height) {
@@ -108,6 +111,24 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 	}
 
 	stbi_write_png(path, width, height, 4, &data[0], 0);
+}
+
+unsigned int Estimator::getBlendMapTexture(void) const
+{
+	vector<unsigned char> data;
+	data.reserve(width * height);
+
+	for (const auto& row : BmapData) {
+		for (const auto& element : row) {
+			data.push_back(element.r);
+			data.push_back(element.g);
+			data.push_back(element.b);
+		}
+	}
+
+	unsigned int texture = GLResources::CreateTexture2D(data, width, height, 3, false);
+
+	return texture;
 }
 
 pss Estimator::descent(int y,int x) {
@@ -207,7 +228,7 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
 
 void Estimator::blendmapColoring() {
-	bfsCoastlineOptimization();
+	//bfsCoastlineOptimization();
 	descentTabling();
 
 	srand(time(NULL));

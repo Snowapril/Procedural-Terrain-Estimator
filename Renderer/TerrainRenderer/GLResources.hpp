@@ -21,7 +21,7 @@ public:
 #ifdef _DEBUG
 	static uint32_t CreateTexture2DApplying3x3AverageFilter(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma);
 #endif
-	static uint32_t CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma);
+	static uint32_t CreateTexture2D(const std::string& path, int& retWidth, int& retHeight, bool gamma);
 	static uint32_t CreateSkybox(const std::string& skyboxDir, const std::string& extension);
 	static uint32_t CreateHDREnvMap(const std::string& path);
 };

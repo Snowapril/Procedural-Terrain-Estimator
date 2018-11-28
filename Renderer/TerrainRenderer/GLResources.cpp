@@ -68,7 +68,7 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 	return texture;
 }
 
-uint32_t GLResources::CreateTexture2D(const std::string& path, std::size_t& retWidth, std::size_t& retHeight, bool gamma)
+uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, int& retHeight, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
 

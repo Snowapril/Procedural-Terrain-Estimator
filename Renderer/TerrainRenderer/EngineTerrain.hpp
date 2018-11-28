@@ -33,6 +33,7 @@ class EngineCamera;
 class AssetManager;
 class GLShader;
 class LightSourceWrapper;
+class EngineWater;
 
 class EngineTerrain
 {
@@ -75,7 +76,7 @@ public:
 
 	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
-	void updateScene(float dt, const glm::vec3& cameraPos);
+	void updateScene(float dt, EngineWater& water, const glm::vec3& cameraPos);
 	void updateGUI(void);
 
 	void drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, bool occludePass, const glm::vec4& clipPlane) const;
