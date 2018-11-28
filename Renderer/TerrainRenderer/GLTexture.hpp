@@ -12,9 +12,11 @@
 #define GL_TEXTURE_HPP
 
 #include "EngineAsset.hpp"
+#include <glm/vec2.hpp>
 
 typedef struct _TEXTURE
 {
+	glm::ivec2 textureSize;
 	uint32_t activeIndex;
 	uint32_t textureID;
 } TEXTURE;
@@ -36,7 +38,7 @@ public:
 	void reloadAsset(void);
 
 	void applyTexture(void) const noexcept;
-
+	glm::ivec2 getTextureSize(uint32_t idx) const;
 	uint32_t getTextrueID(uint32_t idx) const;
 	void setTextureID(uint32_t idx, uint32_t textureID);
 };

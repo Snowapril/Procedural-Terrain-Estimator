@@ -61,5 +61,4 @@ namespace snowapril {
 					      std::get<snowapril::MetaRandom<__COUNTER__, 31>::value>(snowapril::PrimeNumbers), \
 					      snowapril::MetaRandom<__COUNTER__, 127>::value>(str).decrypt())
 
-
 #endif

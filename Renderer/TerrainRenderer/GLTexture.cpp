@@ -43,7 +43,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 {
 	namespace fs = std::experimental::filesystem;
 
-	int iter = 0;
+	int iter = 0, width, height;
 	
 	std::vector<TEXTURE> loadAssets = textures;
 
@@ -51,7 +51,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 	{
 		for (const auto& pair : assetPaths)
 		{
-			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, width, height, true);
 			if (texture == 0)
 			{
 				return;
@@ -60,7 +60,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 			assetPaths[iter].first = time;
 			loadAssets[iter].textureID = texture;
-
+			loadAssets[iter].textureSize = glm::ivec2(width, height);
 			++iter;
 		}
 	}
@@ -70,7 +70,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 
 		for (const auto& pair : assetPath)
 		{
-			const uint32_t texture = GLResources::CreateTexture2D(pair.second, true);
+			const uint32_t texture = GLResources::CreateTexture2D(pair.second, width, height, true);
 			const int64_t time = fs::last_write_time(pair.second).time_since_epoch().count();
 
 			if (texture == 0) 
@@ -83,7 +83,7 @@ void GLTexture::loadAsset(const std::vector<std::pair<uint32_t, std::string>>& a
 			assetPaths[iter].first = time;
 			assetPaths[iter].second = pair.second;
 
-			loadAssets.push_back({ pair.first, texture });
+			loadAssets.push_back({ glm::ivec2(width, height), pair.first, texture});
 
 			++iter;
 		}
@@ -125,4 +125,9 @@ uint32_t GLTexture::getTextrueID(uint32_t idx) const
 void GLTexture::setTextureID(uint32_t idx, uint32_t textureID)
 {
 	textures[idx].textureID = textureID;
+}
+
+glm::ivec2 GLTexture::getTextureSize(uint32_t idx) const
+{
+	return textures[idx].textureSize;
 }

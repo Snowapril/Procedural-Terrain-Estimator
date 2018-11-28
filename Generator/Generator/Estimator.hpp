@@ -46,8 +46,9 @@ public:
 	// BlendMap을 stdout에 출력
 
 	void initHMapData(unsigned int texture, int _width, int _height);
-	void generateHeightMap(const char* path, int width, int height);
+	void generateHeightMap(const char* path, int _width, int _height);
 	void generateBlendMap(const char* path, int width, int height);
+	unsigned int getBlendMapTexture(void) const;
 private:
 	pss descent(short y, short x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수

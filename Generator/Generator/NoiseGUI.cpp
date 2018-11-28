@@ -104,25 +104,73 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		ImGui::Text("Email: sinjihng@pusan.ac.kr");
 	}
 
-	if (ImGui::Button("Save as image"))
+	if (ImGui::CollapsingHeader("Export Resources"))
 	{
-		//saveCurrentTexture("../resources/texture/terrain/height16bit2.png", 2048, 2048, frameTexture);
-		auto& estimator = Estimator::getMutableInstance();
-		//
-		estimator.initHMapData(frameTexture, 2048, 2048);
-		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
+		ImGui::TextWrapped("Export height-map and blend-map as images to path resources/texture/terrain.");
+		if (ImGui::Button("Export Images..")) 
+		{
+			auto& estimator = Estimator::getMutableInstance();
+			estimator.initHMapData(frameTexture, 2048, 2048);
+			ImGui::OpenPopup("Export Images");
+		}
+		if (ImGui::BeginPopupModal("Export Images", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			auto& estimator = Estimator::getMutableInstance();
+			const char* sizeItems[] = { "512", "1024", "2048", "4096" };
+			static unsigned int blendMapTexture = 0;
+
+			ImGui::Text("Height-map");
+			ImGui::SameLine(130);
+			ImGui::Text("Blend-map");
+
+			ImGui::Image((void*)frameTexture, ImVec2(100.0f, 100.0f));
+			ImGui::SameLine(130);
+			ImGui::Image((void*)blendMapTexture, ImVec2(100.0f, 100.0f));
+
+			ImGui::PushItemWidth(80);
+			ImGui::Text("Size of resource:");
+			static int widthCurrentIndex = 2, heightCurrentIndex = 2;
+			ImGui::ListBox("Width", &widthCurrentIndex, sizeItems, IM_ARRAYSIZE(sizeItems));
+			ImGui::SameLine();
+			ImGui::ListBox("Height", &heightCurrentIndex, sizeItems, IM_ARRAYSIZE(sizeItems));
+			ImGui::PopItemWidth();
+
+			if (ImGui::Button("Blend Coloring")) {
+				if (blendMapTexture)
+					glDeleteTextures(1, &blendMapTexture);
+
+				estimator.blendmapColoring();
+				blendMapTexture = estimator.getBlendMapTexture();
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Save Resources"))
+			{
+				int width = stoi(sizeItems[widthCurrentIndex]), height = stoi(sizeItems[heightCurrentIndex]);
+				estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", width, height);
+				estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", width, height);
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Close"))
+				ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
+
+		ImGui::TextWrapped("Export height-map and blend-map as resources which can be used in unreal engine editor");
+		if (ImGui::Button("Export UnrealEngine.."))
+		{
+			auto& estimator = Estimator::getMutableInstance();
+			estimator.initHMapData(frameTexture, 2048, 2048);
+			ImGui::OpenPopup("Export UnrealEngine");
+		}
+		if (ImGui::BeginPopupModal("Export UnrealEngine"))
+		{
+
+			if (ImGui::Button("Close"))
+				ImGui::CloseCurrentPopup();
+			ImGui::EndPopup();
+		}
 	}
-
-	if (ImGui::Button("BlendMap Coloring")) 
-	{
-		auto& estimator = Estimator::getMutableInstance();
-
-		//estimator.initHMapData(frameTexture, 2048, 2048);
-		estimator.blendmapColoring();
-		estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", 2048, 2048);
-		estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", 2048, 2048);
-	}
-
+	
 	ImGui::End();
 }
 

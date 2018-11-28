@@ -89,7 +89,7 @@ void EngineApp::drawScene(void)
 	const float dt = timer.getDeltaTime();
 
 	NVTX_PUSH("Frame");
-	terrain.updateScene(dt, cameraPos);
+	terrain.updateScene(dt, water, cameraPos);
 	skybox->updateScene(dt);
 
 	NVTX_PUSH("Gen-Water-Textures");
