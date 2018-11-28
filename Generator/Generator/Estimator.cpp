@@ -81,16 +81,16 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 
 void Estimator::generateHeightMap(const char* path, int width, int height) {
 	//TODO :
-	//std::vector<unsigned short> data(width * height);
-	//
-	//for (int i = 0; i < height; i++) {
-	//	for (int j = 0; j < width; j++) {
-	//		HmapData[i]
-	//	}
-	//}
-	//
-	//Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&HmapData[0][0]);
-	//imwrite(path, src);
+	std::vector<unsigned short> data(width * height);
+	
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			data[i * width + j] = HmapData[i][j];
+		}
+	}
+	
+	Mat src = Mat(cv::Size(width, height), CV_16UC1, (void*)&data[0]);
+	imwrite(path, src);
 }
 
 void Estimator::generateBlendMap(const char* path, int width, int height) {
@@ -110,7 +110,7 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 	stbi_write_png(path, width, height, 4, &data[0], 0);
 }
 
-pss Estimator::descent(int y,int x) {
+pss Estimator::descent(short y,short x) {
 
 	pss& ans = descentTable[y][x];
 
@@ -174,9 +174,12 @@ vector<unsigned char> Estimator::getBlendMap() {
 
 pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
-	const unsigned static char DATA_NUM = 4;
-	static pixel tile[DATA_NUM];
-	static pixel ret;
+	const int DRY_LOWER_BOUND = (width / 20) * (width / 20);
+	const int DRY_UPPER_BOUND = (width / 10) * (width / 10);
+
+	const unsigned int DATA_NUM = 4;
+	pixel tile[DATA_NUM];
+	pixel ret;
 	int prob[DATA_NUM] = { 0, };
 
 	tile[0] = { 0,0,255,0 };// 0 0 255 0 : MUD	
@@ -184,7 +187,7 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 	tile[2] = { 0,0,0,255 };// 0 0 0 255 : SAND
 	tile[3] = { 255,0,0,0 };// 255 0 0 0 : ROCK
 
-	const static int elevationTable[DATA_NUM] = { DEFAULT_SEA_LEVEL * 8 / 10, DEFAULT_SEA_LEVEL, DEFAULT_SEA_LEVEL * 12 / 10, 1e9 };
+	const short elevationTable[DATA_NUM] = { DEFAULT_SEA_LEVEL * 8 / 10, DEFAULT_SEA_LEVEL, DEFAULT_SEA_LEVEL * 12 / 10, 1e9 };
 
 	int select = 0;
 	for (int i = 0; i < DATA_NUM; i++) {
@@ -193,12 +196,12 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 			break;
 		}
 	}
-
-	int transitionPercentage = 50 + exp(dryDistance * 50 / elevationTable[select]);
-	
-	int probabillity = rand()%100;
-
-	if (probabillity > transitionPercentage) select++;
+	if (dryDistance < DRY_LOWER_BOUND && select > 0) {
+		select--;
+	}
+	else if (dryDistance > DRY_UPPER_BOUND && select < 3) {
+		select++;
+	}
 
 	ret = tile[select];
 
@@ -207,7 +210,6 @@ pixel Estimator::randFill(int elevation, int dryDistance, int y,int x) {
 
 
 void Estimator::blendmapColoring() {
-	bfsCoastlineOptimization();
 	descentTabling();
 
 	srand(time(NULL));
@@ -222,8 +224,8 @@ void Estimator::blendmapColoring() {
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 
-			int des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
-			int wet_dist = (int)sqrt((double) ((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x)));
+			unsigned short des_y = descentTable[i][j].first, des_x = descentTable[i][j].second;
+			int wet_dist = (int)((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x));
 			
 			BmapData[i][j] = randFill(HmapData[i][j], wet_dist,i, j);
 		}

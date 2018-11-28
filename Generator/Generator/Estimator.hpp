@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef pair<unsigned short,unsigned short> pss;
+typedef pair<short,short> pss;
 
 struct pixel {
 	unsigned char r, g, b, a;
@@ -15,9 +15,8 @@ struct pixel {
 class Estimator : public Singleton<Estimator>
 {
 private:
-	const int TERRAIN_SINK_DIVIDER = 4;
 	const int DY[8] = { -1, -1, -1, 0, 1, 1, 1, 0 }, DX[8] = { -1, 0, 1, 1, 1, 0, -1, -1 };
-	int DEFAULT_SEA_LEVEL = 128;
+	unsigned short DEFAULT_SEA_LEVEL = 128;
 	
 	vector < vector < unsigned short > > HmapData;
 	vector < vector < pixel > > BmapData;
@@ -50,7 +49,7 @@ public:
 	void generateHeightMap(const char* path, int width, int height);
 	void generateBlendMap(const char* path, int width, int height);
 private:
-	pss descent(int y, int x);
+	pss descent(short y, short x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수
 
 	void descentTabling();
