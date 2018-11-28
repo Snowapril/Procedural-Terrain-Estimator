@@ -130,9 +130,9 @@ unsigned int Estimator::getBlendMapTexture(void) const
 	return texture;
 }
 
-pss Estimator::descent(int y, int x) {
+pss Estimator::descent(short y, short x) {
 
-		pss& ans = descentTable[y][x];
+	pss& ans = descentTable[y][x];
 
 	if (ans.first != -1) return ans;
 
