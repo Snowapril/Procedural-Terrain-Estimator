@@ -24,6 +24,7 @@ private:
 	TerrainPatch* rootPatch;
 	uint32_t VBO;
 	uint32_t VAO;
+	float divideHuddle;
 
 private:
 	TerrainPatch * createNode(TerrainPatch* parent, const glm::vec3& originPos, float patchWidth, float patchHeight);
@@ -50,6 +51,13 @@ public:
 
 	glm::vec2 getTerrainScale(void) const;
 	void setTerrainScale(std::size_t _width, std::size_t _height);
+
+	inline float getDivideHuddle(void) const {
+		return divideHuddle;
+	}
+	inline void setDivideHuddle(float huddle) {
+		divideHuddle = huddle;
+	}
 public:
 	DynamicTerrain();
 	virtual ~DynamicTerrain();

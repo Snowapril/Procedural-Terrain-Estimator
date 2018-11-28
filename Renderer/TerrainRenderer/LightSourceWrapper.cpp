@@ -46,7 +46,7 @@ bool LightSourceWrapper::initDepthPassBuffer(int width, int height)
 
 	sunMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 300.0f);
 
-	if ((sunTexture = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/lensFlare/sun.png"), true)) == 0)
+	if ((sunTexture = GLResources::CreateTexture2D(("../resources/texture/lensFlare/sun.png"), true)) == 0)
 		return false;
 
 	return true;

@@ -159,13 +159,17 @@ void EngineTerrain::updateGUI(void)
 {
 	if (ImGui::TreeNode("Terrain Setting"))
 	{
+		static float terrainHuddle = dynamicPatch->getDivideHuddle();
+
 		ImGui::SliderFloat("Max Height", &maxHeight, 1.0f, 1000.0f, "Height = %.1f");
 		ImGui::SliderFloat("Tile Size", &tileSize, 1.0f, 64.f, "Size = %.1f");
 		ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
+		ImGui::SliderFloat("Tessellation Huddle", &terrainHuddle, 0.5f, 5.0f, "ratio = %.3f");
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
 		ImGui::Checkbox("Triangle Normal", &enableTriangleNormal);
-
+		
+		dynamicPatch->setDivideHuddle(terrainHuddle);
 		ImGui::TreePop();
 	}
 }
