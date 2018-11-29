@@ -112,7 +112,7 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 
 	stbi_write_png(path, width, height, 4, &data[0], 0);
 }
-unsigned int Estimator::getBlendMapTexture(void) const
+unsigned int Estimator::getBlendMapTexture(void)
 {
 	vector<unsigned char> data;
 	data.reserve(width * height);
@@ -125,9 +125,26 @@ unsigned int Estimator::getBlendMapTexture(void) const
 		}
 	}
 
-	unsigned int texture = GLResources::CreateTexture2D(data, width, height, 3, false);
+	blendMapTexture = GLResources::CreateTexture2D(data, width, height, 3, false);
 
-	return texture;
+	return blendMapTexture;
+}
+
+void Estimator::updateBlendMapTexture(void) {
+	vector<unsigned char> data;
+	data.reserve(width * height);
+
+	for (const auto& row : BmapData) {
+		for (const auto& element : row) {
+			data.push_back(element.r);
+			data.push_back(element.g);
+			data.push_back(element.b);
+		}
+	}
+
+	glBindTexture(GL_TEXTURE_2D, blendMapTexture);
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, &data[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 pss Estimator::descent(short y, short x) {

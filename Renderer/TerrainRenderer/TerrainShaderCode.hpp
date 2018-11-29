@@ -110,7 +110,7 @@
 		float d0 = clamp((abs(p0.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
 		float d1 = clamp((abs(p1.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
 	
-		float t = mix(32, 8, (d0 + d1) * 0.5);
+		float t = mix(64, 32, (d0 + d1) * 0.5);
 		highp int temp = int(t - 1.0);
 	
 		temp |= temp >> 1;
@@ -302,6 +302,7 @@
 	uniform sampler2D shadowMap;
 	uniform bool enableWireframe;
 	uniform bool enableTriangleNormal;
+	uniform bool enableShadowMapping;
 	struct DirLight {
 		vec3 direction;
 		vec3 color;
@@ -346,10 +347,10 @@
 		float diff = max(dot(lightDir, normal), 0.0);
 		vec3 diffuse = dirLight.color * diff * finalColor;
 	
-		float shadow = calculateShadow(gs_shadowCoords);
+		float shadow = enableShadowMapping ? calculateShadow(gs_shadowCoords) : 1.0;
 	
 		fragColor = vec4((ambient + shadow * diffuse), 1.0);
-		fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
+		//fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
 	
 		if (enableWireframe)
 		{

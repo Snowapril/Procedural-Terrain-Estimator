@@ -136,11 +136,11 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			ImGui::PopItemWidth();
 
 			if (ImGui::Button("Blend Coloring")) {
-				if (blendMapTexture)
-					glDeleteTextures(1, &blendMapTexture);
-
 				estimator.blendmapColoring();
-				blendMapTexture = estimator.getBlendMapTexture();
+				if (blendMapTexture)
+					estimator.updateBlendMapTexture();
+				else
+					blendMapTexture = estimator.getBlendMapTexture();
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Save Resources"))

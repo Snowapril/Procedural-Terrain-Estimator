@@ -23,7 +23,7 @@ private:
 	vector < vector < pss > > descentTable;
 	int height;
 	int width;
-
+	unsigned int blendMapTexture;
 public:
 	Estimator() = default;
 	Estimator(vector<unsigned short>& data, int _height, int _width);
@@ -48,7 +48,8 @@ public:
 	void initHMapData(unsigned int texture, int _width, int _height);
 	void generateHeightMap(const char* path, int _width, int _height);
 	void generateBlendMap(const char* path, int width, int height);
-	unsigned int getBlendMapTexture(void) const;
+	unsigned int getBlendMapTexture(void);
+	void updateBlendMapTexture(void);
 private:
 	pss descent(short y, short x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수

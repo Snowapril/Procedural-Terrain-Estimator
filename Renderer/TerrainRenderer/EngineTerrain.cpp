@@ -24,7 +24,7 @@
 bool EngineTerrain::isInstanciated = false;
 
 EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
-	: enableWireFrame(false), enableTriangleNormal(true), terrainShader(nullptr), prevCameraPos(-1.f)
+	: enableWireFrame(false), enableTriangleNormal(true), enableShadowMapping(true), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -62,12 +62,7 @@ void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& c
 #endif
 
 	if (!terrainDataManager->refreshDirtyAssets())
-	{
 		bakeTerrainMap();
-		glm::vec3 terrainScale = getTerrainScale() * 0.5f;
-		water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
-		dynamicPatch->updateTerrain(cameraPos);
-	}
 
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
@@ -75,15 +70,19 @@ void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& c
 	terrainShader->sendUniform("gradient", fogGradient);
 	terrainShader->sendUniform("skycolor", skycolor);
 	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
+	terrainShader->sendUniform("enableShadowMapping", enableShadowMapping);
 	terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
 	depthPassShader->useProgram();
 	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
 	depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
+	
+	glm::vec3 terrainScale = getTerrainScale() * 0.5f;
+	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+	dynamicPatch->updateTerrain(cameraPos);
 
 	if (cameraPos != prevCameraPos)
 	{
-		dynamicPatch->updateTerrain(cameraPos);
 		prevCameraPos = cameraPos;
 	}
 }
@@ -159,17 +158,29 @@ void EngineTerrain::updateGUI(void)
 {
 	if (ImGui::TreeNode("Terrain Setting"))
 	{
-		static float terrainHuddle = dynamicPatch->getDivideHuddle();
+		static int terrainScaleFactor = 1;
+		static int prevTerrainScaleFactor = terrainScaleFactor;
+		auto textureSize = terrainScaleFactor * terrainTexture->getTextureSize(0);
+		float newHeight = getProperMaxHeight(textureSize.x, textureSize.y);;
 
-		ImGui::SliderFloat("Max Height", &maxHeight, 1.0f, 1000.0f, "Height = %.1f");
+		ImGui::SliderFloat("Max Height", &maxHeight, 1.0f, newHeight, "Height = %.1f");
 		ImGui::SliderFloat("Tile Size", &tileSize, 1.0f, 64.f, "Size = %.1f");
 		ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
-		ImGui::SliderFloat("Tessellation Huddle", &terrainHuddle, 0.5f, 5.0f, "ratio = %.3f");
+		ImGui::SliderInt("Terrain Scale x", &terrainScaleFactor, 1, 8, "scale x %d");
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
 		ImGui::Checkbox("Triangle Normal", &enableTriangleNormal);
+		ImGui::Checkbox("Shadow Mapping", &enableShadowMapping);
 		
-		dynamicPatch->setDivideHuddle(terrainHuddle);
+		if (terrainScaleFactor != prevTerrainScaleFactor)
+		{
+			dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
+			maxHeight = newHeight;
+
+			prevTerrainScaleFactor = terrainScaleFactor;
+		}
+		
+
 		ImGui::TreePop();
 	}
 }
@@ -328,7 +339,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 	auto textureSize = terrainTexture->getTextureSize(0);
 
 	dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
-	maxHeight = getProperMaxHeight(textureSize.x, textureSize.y);
+	maxHeight = getProperMaxHeight(textureSize.x,textureSize.y);
 	
 	bakeTerrainMap.sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
 

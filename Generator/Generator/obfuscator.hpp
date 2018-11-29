@@ -8,23 +8,27 @@
 namespace snowapril {
 
 	template <int A, int B>
-	struct ExtendedEuclidian { enum { 
-		d = ExtendedEuclidian<B, A % B>::d,
-		x = ExtendedEuclidian<B, A % B>::y,
-		y = ExtendedEuclidian<B, A % B>::x - (A/B) * ExtendedEuclidian<B, A % B>::y
-	}; };
+	struct ExtendedEuclidian {
+		enum {
+			d = ExtendedEuclidian<B, A % B>::d,
+			x = ExtendedEuclidian<B, A % B>::y,
+			y = ExtendedEuclidian<B, A % B>::x - (A / B) * ExtendedEuclidian<B, A % B>::y
+		};
+	};
 
 	template <int A>
-	struct ExtendedEuclidian<A, 0> { enum { 
-		d = A,
-		x = 1,
-		y = 0
-	}; };
+	struct ExtendedEuclidian<A, 0> {
+		enum {
+			d = A,
+			x = 1,
+			y = 0
+		};
+	};
 
 	constexpr std::array<int, 31> PrimeNumbers = {
-		2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 
+		2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
 		31, 37, 41, 43, 47, 53, 59, 61, 67,
-		71, 73, 79, 83, 89, 97, 101, 103, 
+		71, 73, 79, 83, 89, 97, 101, 103,
 		107, 109, 113, 127
 	};
 
@@ -49,8 +53,8 @@ namespace snowapril {
 			return buffer;
 		}
 	private:
-		constexpr int encrypt(char c) { return (A*(c)+B) % 127; } ;
-		constexpr char decrypt(int c) { return positive_modulo((ExtendedEuclidian<127, A>::y ) *(c-B), 127); } ;
+		constexpr int encrypt(char c) { return (A*(c)+B) % 127; };
+		constexpr char decrypt(int c) { return positive_modulo((ExtendedEuclidian<127, A>::y) *(c - B), 127); };
 	private:
 		char buffer[sizeof...(I) + 1];
 		int  encrypted_buffer[sizeof...(I)];
@@ -58,7 +62,7 @@ namespace snowapril {
 }
 
 #define OBFUSCATE(str) (snowapril::MetaString<std::make_index_sequence<sizeof(str) - 1>, \
-					     67, \
-					      29>(str).decrypt())
+					      std::get<snowapril::MetaRandom<__COUNTER__, 30>::value>(snowapril::PrimeNumbers), \
+					      snowapril::MetaRandom<__COUNTER__, 126>::value>(str).decrypt())
 
 #endif

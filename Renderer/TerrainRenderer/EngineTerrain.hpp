@@ -62,6 +62,7 @@ private:
 
 	bool enableWireFrame;
 	bool enableTriangleNormal;
+	bool enableShadowMapping;
 	static bool isInstanciated;
 protected:
 	bool bakeTerrainMap(void);
