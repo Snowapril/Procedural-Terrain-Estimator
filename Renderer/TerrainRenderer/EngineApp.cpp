@@ -209,7 +209,7 @@ bool EngineApp::initEngine(void)
 		return false;
 
 	onResize(clientWidth, clientHeight);
-	camera.initCamera(glm::vec3(300.0f, 1500.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f), terrain.getTerrainScale());
+	
 	try
 	{
 		skybox = std::make_unique<EngineSkybox>(OBFUSCATE("../resources/texture/skybox/cloud/"), OBFUSCATE("jpg"));
@@ -227,6 +227,7 @@ bool EngineApp::initEngine(void)
 		return false;	
 	
 	glm::vec3 terrainScale = terrain.getTerrainScale() * 0.5f;
+	camera.initCamera(glm::vec3(0.0f, terrainScale.y * 1.5f, terrainScale.z * 0.3f), glm::vec3(0.0f, -0.2f, -0.5f), terrain.getTerrainScale());
 	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
 	if (!postprocess.initPostProcessing(clientWidth, clientHeight))

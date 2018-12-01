@@ -56,7 +56,7 @@ uniform float GAMMA = 2.2;
 
 // god rays
 uniform float decay = 0.96875;
-uniform int godRaysSamples = 100;
+uniform int godRaysSamples = 150;
 uniform float exposure = 0.5;
 uniform float weight = 0.5;
 

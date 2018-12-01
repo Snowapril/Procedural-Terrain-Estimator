@@ -89,7 +89,7 @@ void EngineWater::updateGUI(void)
 {
 	if (ImGui::TreeNode("Water Setting"))
 	{
-		ImGui::SliderFloat3("Transform", &position[0], 0.0f, 500.0f);
+		ImGui::SliderFloat("Position Y", &position[1], 0.0f, 4096.0f);
 		ImGui::SliderFloat("Tiling", &tiling, 0.0f, 30.0f, "Size = %.1f");
 		ImGui::InputFloat("Distortion", &distortionStrength, 0.01f);
 		distortionStrength = Util::clamp(distortionStrength, 0.0f, 1.0f);
