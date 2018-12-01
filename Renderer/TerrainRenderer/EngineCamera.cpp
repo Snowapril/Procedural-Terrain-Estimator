@@ -11,17 +11,10 @@ EngineCamera::EngineCamera()
 	: updateFov(false), toggleZoom(false), cameraAutoMode(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
 		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
-	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1024.0f, 512.0f, 1024.0f));
 }
 
-EngineCamera::EngineCamera(const glm::vec3 & pos, const glm::vec3 & dir)
-	: updateFov(false), toggleZoom(false), cameraAutoMode(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
-		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
-{
-	initCamera(pos, dir);
-}
-
-bool EngineCamera::initCamera(const glm::vec3& position, const  glm::vec3& direction)
+bool EngineCamera::initCamera(const glm::vec3& position, const  glm::vec3& direction, const glm::vec3& terrainScale)
 {
 	this->position  = position;
 	this->direction = glm::normalize(direction);
@@ -34,17 +27,17 @@ bool EngineCamera::initCamera(const glm::vec3& position, const  glm::vec3& direc
 	yaw = glm::degrees(glm::atan(direction.z / (direction.x + EPSILON)));
 	yaw = Util::clamp(yaw, -180.0f, 180.0f);
 
-	posAutomator.setDuration(30.0f);
-	posAutomator.addAutomation(glm::vec3(-294.819f, 286.892f, -64.2064f));
-	posAutomator.addAutomation(glm::vec3(150.45f, 240.167f, -139.416f));
-	posAutomator.addAutomation(glm::vec3(353.321f, 173.672f, 220.698f));
-	posAutomator.addAutomation(glm::vec3(488.665f, 281.219f, -277.539f));
-	posAutomator.addAutomation(glm::vec3(570.037f, 261.345f, -496.412f));
-	posAutomator.addAutomation(glm::vec3(311.954f, 264.521f, -525.097f));
-	posAutomator.addAutomation(glm::vec3(-50.6334f, 215.02f, -396.81f));
-	posAutomator.addAutomation(glm::vec3(-248.504f, 173.338f, -264.229f));
+	posAutomator.setDuration(50.0f);
+	posAutomator.addAutomation(glm::vec3(-0.14395459f,  0.56033594f, - 0.03135078f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(0.07346191f,  0.46907617f, - 0.06807422f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(0.17252002f, 0.33920312f, 0.1077627f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(0.23860596f,  0.54925586f, - 0.13551709f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(0.27833838f,  0.51043945f, - 0.24238867f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(0.15232129f,  0.51664258f, - 0.25639502f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(-0.02472334f,  0.41996094f, - 0.19375488f) * terrainScale * glm::vec3(2.0f));
+	posAutomator.addAutomation(glm::vec3(-0.12133984f,  0.33855078f, - 0.12901807f) * terrainScale * glm::vec3(2.0f));
 
-	dirAutomator.setDuration(30.0f);
+	dirAutomator.setDuration(50.0f);
 	dirAutomator.addAutomation(glm::vec2(234.8f, -23.7f));
 	dirAutomator.addAutomation(glm::vec2(119.3f, -21.4f));
 	dirAutomator.addAutomation(glm::vec2(-13.999f, -16.6f));

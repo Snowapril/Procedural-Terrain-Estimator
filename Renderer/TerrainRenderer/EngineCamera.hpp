@@ -57,7 +57,6 @@ public:
 private:
 public:
 	EngineCamera();
-	EngineCamera(const glm::vec3& pos, const glm::vec3& dir);
 public:
 	void processMousePos(double xpos, double ypos) ;
 	void processKeyCallback(uint32_t keyFlag);
@@ -73,7 +72,7 @@ public:
 	void setViewportSize(int width, int height);
 
 	void updateGUI(void);
-	bool initCamera(const glm::vec3& position, const  glm::vec3& direction);
+	bool initCamera(const glm::vec3& position, const  glm::vec3& direction, const glm::vec3& terrainScale);
 
 	inline glm::vec2 getViewportSize(void) const
 	{

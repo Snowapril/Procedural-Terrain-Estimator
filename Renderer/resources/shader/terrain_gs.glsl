@@ -25,8 +25,8 @@ out vec2 gs_tileCoords;
 out vec3 gs_distToEdges;
 out vec3 gs_normal;
 
-const float density = 0.00025;
-uniform float gradient = 2.2;
+const float density = 0.0001;
+uniform float gradient = 2.0;
 
 vec2 projectToViewportSpace(vec4 position, mat4 vp)
 {

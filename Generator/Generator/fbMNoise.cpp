@@ -22,9 +22,15 @@ void FBMNoise::updateGUI(void)
 {
 	if (ImGui::TreeNode(OBFUSCATE("fbM Noise")))
 	{
-		ImGui::SliderInt(OBFUSCATE("Num Octaves"), &numOctaves, 1, 5);
+		const char* items[] = { "1 step", "2 step", "3 step", "4 step", "5 step" };
+		static int octavesIdx = 4;
+
+		ImGui::PushItemWidth(210);
 		ImGui::SliderFloat(OBFUSCATE("Blend"), &blend, 0.0f, 1.0f);
-		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 30.0f);
+		ImGui::ListBox(OBFUSCATE("Octaves"), &octavesIdx, items, IM_ARRAYSIZE(items));
+		numOctaves = octavesIdx + 1;
+		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 15.0f);
+		ImGui::PopItemWidth();
 
 		ImGui::TreePop();
 	}

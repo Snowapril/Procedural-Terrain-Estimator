@@ -21,8 +21,8 @@ struct Voronoi {
 	vec2 viewPoint;
 	float frequency;
 	float blend;
-    float function 		;//	= mod(t,4.0);
-    float distance_type	 ;//   = mod(t/16.0,4.0);
+    int function 		;//	= mod(t,4.0);
+    int distance_type	 ;//   = mod(t/16.0,4.0);
     bool  multiply_by_F1;//	= mod(t,8.0)  >= 4.0;       
     bool  inverse		;//	= mod(t,16.0) >= 8.0;
 };  
@@ -64,10 +64,10 @@ float voronoiNoise( vec2 x ){
 			o = 0.5 + 0.41*sin( 6.2831*o );	
 			vec2 r = g - f + o;
 
-		    float d = 	voronoi.distance_type < 1.0 ? dot(r,r)  :				// euclidean^2
-		    		  	voronoi.distance_type < 2.0 ? sqrt(dot(r,r)) :			// euclidean
-		    			voronoi.distance_type < 3.0 ? abs(r.x) + abs(r.y) :		// manhattan
-		    			voronoi.distance_type < 4.0 ? max(abs(r.x), abs(r.y)) :	// chebyshev
+		    float d = 	voronoi.distance_type == 0 ? dot(r,r)  :				// euclidean^2
+		    		  	voronoi.distance_type == 1 ? sqrt(dot(r,r)) :			// euclidean
+		    			voronoi.distance_type == 2 ? abs(r.x) + abs(r.y) :		// manhattan
+		    			voronoi.distance_type == 3 ? max(abs(r.x), abs(r.y)) :	// chebyshev
 		    			0.0;
 
 		    if( d<F1 ) { 
@@ -78,10 +78,10 @@ float voronoiNoise( vec2 x ){
 		    }
     }
 	
-	float c = voronoi.function < 1.0 ? F1 : 
-			  voronoi.function < 2.0 ? F2 : 
-			  voronoi.function < 3.0 ? F2-F1 :
-			  voronoi.function < 4.0 ? (F1+F2)/2.0 : 
+	float c = voronoi.function == 0 ? F1 : 
+			  voronoi.function == 1 ? F2 : 
+			  voronoi.function == 2 ? F2-F1 :
+			  voronoi.function == 3 ? (F1+F2)/2.0 : 
 			  0.0;
 		
 	if( voronoi.multiply_by_F1 )	c *= F1;
