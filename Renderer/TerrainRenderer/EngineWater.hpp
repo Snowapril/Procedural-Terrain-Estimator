@@ -80,12 +80,14 @@ public:
 	inline uint32_t getRefractionDepthTexture(void) const {
 		return refractionFBO.getDepthTexture();
 	}
+	inline void setScale(const glm::vec3& scale) {
+		this->scale = scale;
+	}
 
 	void unbindCurrentFramebuffer(int width, int height) const;
 	
 	bool initWater(int reflectionWidth, int reflectionHeight, int refractionWidth, int refractionHeight);
 	void setTransform(glm::vec3 pos, glm::vec3 scale);
-
 	void updateGUI(void);
 	void updateWater(float dt);
 	void drawWater(const EngineCamera& camera, const LightSourceWrapper& lightWrapper) const;

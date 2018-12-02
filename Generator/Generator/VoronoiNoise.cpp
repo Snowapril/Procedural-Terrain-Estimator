@@ -9,12 +9,12 @@ using namespace ImGui;
 #include "obfuscator.hpp"
 
 VoronoiNoise::VoronoiNoise()
-	: blend(1.0f), frequency(2.0f), function(0.0f), distance_type(0.0f), multiply_by_F1(false), inverse(false)
+	: blend(1.0f), frequency(2.0f), function(0), distance_type(0), multiply_by_F1(false), inverse(false)
 {
 }
 
 VoronoiNoise::VoronoiNoise(const Util::Rect & rect)
-	: BrushBoard(rect), blend(1.0f), frequency(2.0f), function(0.0f), distance_type(0.0f), multiply_by_F1(false), inverse(false)
+	: BrushBoard(rect), blend(1.0f), frequency(2.0f), function(0), distance_type(0), multiply_by_F1(false), inverse(false)
 {
 }
 
@@ -22,12 +22,22 @@ void VoronoiNoise::updateGUI(void)
 {
 	if (ImGui::TreeNode(OBFUSCATE("Voronoi Noise")))
 	{
+		ImGui::PushItemWidth(210);
 		ImGui::SliderFloat(OBFUSCATE("Blend"), &blend, 0.0f, 1.0f);
-		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 30.0f);
-		ImGui::SliderFloat(OBFUSCATE("Function"), &function, 0.5f, 3.5f);
-		ImGui::SliderFloat(OBFUSCATE("Distance Type"), &distance_type, 0.5f, 3.5f);
-		ImGui::Checkbox(OBFUSCATE("Multiply"), &multiply_by_F1);
+		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 15.0f);
+		ImGui::Text(OBFUSCATE("Function"));
+		ImGui::RadioButton("f_1", &function, 0); ImGui::SameLine();
+		ImGui::RadioButton("f_2", &function, 1); ImGui::SameLine();
+		ImGui::RadioButton("f_3", &function, 2); ImGui::SameLine();
+		ImGui::RadioButton("f_4", &function, 3); 
+		ImGui::Text(OBFUSCATE("Distance Type"));
+		ImGui::RadioButton("d_1", &distance_type, 0); ImGui::SameLine();
+		ImGui::RadioButton("d_2", &distance_type, 1); ImGui::SameLine();
+		ImGui::RadioButton("d_3", &distance_type, 2); ImGui::SameLine();
+		ImGui::RadioButton("d_4", &distance_type, 3);
+		ImGui::Checkbox(OBFUSCATE("Multiply"), &multiply_by_F1); ImGui::SameLine(150);
 		ImGui::Checkbox(OBFUSCATE("Inverse"), &inverse);
+		ImGui::PopItemWidth();
 
 		ImGui::TreePop();
 	}

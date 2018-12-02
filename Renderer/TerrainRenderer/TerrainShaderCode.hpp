@@ -110,7 +110,7 @@
 		float d0 = clamp((abs(p0.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
 		float d1 = clamp((abs(p1.z) - minDepth) / (maxDepth - minDepth), 0.0, 1.0);
 	
-		float t = mix(64, 32, (d0 + d1) * 0.5);
+		float t = mix(32, 16, (d0 + d1) * 0.5);
 		highp int temp = int(t - 1.0);
 	
 		temp |= temp >> 1;
@@ -215,8 +215,8 @@
 	out vec3 gs_distToEdges;
 	out vec3 gs_normal;
 	
-	const float density = 0.00025;
-	uniform float gradient = 2.2;
+	const float density = 0.0001;
+	uniform float gradient = 2.0;
 	
 	vec2 projectToViewportSpace(vec4 position, mat4 vp)
 	{
@@ -302,7 +302,6 @@
 	uniform sampler2D shadowMap;
 	uniform bool enableWireframe;
 	uniform bool enableTriangleNormal;
-	uniform bool enableShadowMapping;
 	struct DirLight {
 		vec3 direction;
 		vec3 color;
@@ -341,16 +340,16 @@
 		vec3 finalColor = mix(dirt, grass, mixmap.g);
 		finalColor = mix(finalColor, wetDirt, mixmap.b);
 		finalColor = mix(finalColor, rock, mixmap.r);
-		vec3 ambient = 0.005 * finalColor;
+		vec3 ambient = 0.007 * finalColor;
 	
 		vec3 lightDir = normalize(dirLight.direction);
 		float diff = max(dot(lightDir, normal), 0.0);
 		vec3 diffuse = dirLight.color * diff * finalColor;
 	
-		float shadow = enableShadowMapping ? calculateShadow(gs_shadowCoords) : 1.0;
+		float shadow = calculateShadow(gs_shadowCoords);
 	
 		fragColor = vec4((ambient + shadow * diffuse), 1.0);
-		//fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
+		fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
 	
 		if (enableWireframe)
 		{

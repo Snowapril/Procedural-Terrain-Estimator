@@ -22,7 +22,7 @@
 #include "obfuscator.hpp"
 
 EngineApp::EngineApp()
-	: debuggerMode(false), enableVsync(false), polygonMode(GL_FILL), camera(glm::vec3(300.0f, 300.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f))
+	: debuggerMode(false), enableVsync(false), polygonMode(GL_FILL)
 {
 }
 
@@ -209,7 +209,7 @@ bool EngineApp::initEngine(void)
 		return false;
 
 	onResize(clientWidth, clientHeight);
-
+	
 	try
 	{
 		skybox = std::make_unique<EngineSkybox>(OBFUSCATE("../resources/texture/skybox/cloud/"), OBFUSCATE("jpg"));
@@ -227,6 +227,7 @@ bool EngineApp::initEngine(void)
 		return false;	
 	
 	glm::vec3 terrainScale = terrain.getTerrainScale() * 0.5f;
+	camera.initCamera(glm::vec3(0.0f, terrainScale.y * 1.5f, terrainScale.z * 0.3f), glm::vec3(0.0f, -0.2f, -0.5f), terrain.getTerrainScale());
 	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	
 	if (!postprocess.initPostProcessing(clientWidth, clientHeight))
@@ -243,7 +244,7 @@ bool EngineApp::initAssets(void)
 	if (!lightWrapper.initDepthPassBuffer(SHADOW_RESOLUTION_X, SHADOW_RESOLUTION_Y))
 		return false;
 
-	const glm::vec3 sumPosition(0.0f, 800.0f, 5000.0f);
+	const glm::vec3 sumPosition(0.0f, 800.0f, 10000.0f);
 	lightWrapper.addDirLight(-sumPosition, glm::vec3(1.0f, 0.85f, 0.72f) * 1.7f);
 
 	if (!godray.initGodrays(clientWidth, clientHeight))

@@ -6,11 +6,6 @@
 
 using namespace ImGui;
 
-enum class RenderMode : int
-{
-	
-};
-
 EngineGUI::EngineGUI()
 	: isGUIOpen(true)
 {

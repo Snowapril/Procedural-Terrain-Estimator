@@ -15,6 +15,8 @@
 
 #include <imgui/imgui.h>
 
+#include <imgui/imgui_impl_glfw_gl3.h>
+#include <imgui/imgui_internal.h>
 #ifndef _DEBUG
 #include "TerrainShaderCode.hpp"
 #endif
@@ -24,7 +26,7 @@
 bool EngineTerrain::isInstanciated = false;
 
 EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
-	: enableWireFrame(false), enableTriangleNormal(true), enableShadowMapping(true), terrainShader(nullptr), prevCameraPos(-1.f)
+	: enableWireFrame(false), enableTriangleNormal(true), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -61,25 +63,25 @@ void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& c
 	}
 #endif
 
-	if (!terrainDataManager->refreshDirtyAssets())
-		bakeTerrainMap();
-
 	terrainShader->useProgram();
 	terrainShader->sendUniform("terrainMaxHeight", maxHeight);
 	terrainShader->sendUniform("tileSize", tileSize);
 	terrainShader->sendUniform("gradient", fogGradient);
 	terrainShader->sendUniform("skycolor", skycolor);
 	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
-	terrainShader->sendUniform("enableShadowMapping", enableShadowMapping);
 	terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
 	depthPassShader->useProgram();
 	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
 	depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
-	
-	glm::vec3 terrainScale = getTerrainScale() * 0.5f;
-	water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+
 	dynamicPatch->updateTerrain(cameraPos);
+	glm::vec3 terrainScale = getTerrainScale() * 0.5f;
+	water.setScale(glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+	if (!terrainDataManager->refreshDirtyAssets()) {
+		bakeTerrainMap();
+		water.setTransform(glm::vec3(0.0f, terrainScale.y * 0.5f, 0.0f), glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
+	}
 
 	if (cameraPos != prevCameraPos)
 	{
@@ -158,29 +160,20 @@ void EngineTerrain::updateGUI(void)
 {
 	if (ImGui::TreeNode("Terrain Setting"))
 	{
-		static int terrainScaleFactor = 1;
-		static int prevTerrainScaleFactor = terrainScaleFactor;
-		auto textureSize = terrainScaleFactor * terrainTexture->getTextureSize(0);
-		float newHeight = getProperMaxHeight(textureSize.x, textureSize.y);;
+		const char* items[] = { "x 1", "x 2", "x 4", "x 8" };
+		static int scaleFactor = 0;
 
-		ImGui::SliderFloat("Max Height", &maxHeight, 1.0f, newHeight, "Height = %.1f");
+		ImGui::SliderFloat("Max Height", &maxHeight, 100.0f, 4096.0f, "Height = %.1f");
 		ImGui::SliderFloat("Tile Size", &tileSize, 1.0f, 64.f, "Size = %.1f");
 		ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
-		ImGui::SliderInt("Terrain Scale x", &terrainScaleFactor, 1, 8, "scale x %d");
+		ImGui::ListBox("Terrain Scale", &scaleFactor, items, IM_ARRAYSIZE(items));
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
 		ImGui::Checkbox("Triangle Normal", &enableTriangleNormal);
-		ImGui::Checkbox("Shadow Mapping", &enableShadowMapping);
 		
-		if (terrainScaleFactor != prevTerrainScaleFactor)
-		{
-			dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
-			maxHeight = newHeight;
-
-			prevTerrainScaleFactor = terrainScaleFactor;
-		}
+		auto textureSize = static_cast<int>(pow(2, scaleFactor)) * terrainTexture->getTextureSize(0);
+		dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
 		
-
 		ImGui::TreePop();
 	}
 }

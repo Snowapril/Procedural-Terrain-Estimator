@@ -22,8 +22,10 @@ void SimplexNoise::updateGUI(void)
 {
 	if (ImGui::TreeNode(OBFUSCATE("Simplex Noise")))
 	{
+		ImGui::PushItemWidth(210);
 		ImGui::SliderFloat(OBFUSCATE("Blend"), &blend, 0.0f, 1.0f);
-		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 30.0f);
+		ImGui::SliderFloat(OBFUSCATE("Frequency"), &frequency, 0.0f, 15.0f);
+		ImGui::PopItemWidth();
 
 		ImGui::TreePop();
 	}

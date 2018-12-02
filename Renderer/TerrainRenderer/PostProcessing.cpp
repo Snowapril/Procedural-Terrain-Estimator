@@ -51,7 +51,7 @@ bool PostProcessing::initPostProcessing(int width, int height)
 	gamma = 2.2;
 
 	decay = 0.96875;
-	godRaysSamples = 100;
+	godRaysSamples = 150;
 	exposure = 0.5;
 	weight = 0.5;
 

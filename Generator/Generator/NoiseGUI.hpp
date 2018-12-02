@@ -10,6 +10,7 @@
 
 class GLShader;
 struct GLFWwindow;
+struct ImGuiStyle;
 
 class PresetData 
 {
@@ -41,8 +42,8 @@ public:
 	~NoiseGUI();
 public:
 	bool initGUI(GLFWwindow* window);
+	static void StyleColorsDark(ImGuiStyle* dst);
 
-	static void saveCurrentTexture(const std::string& path, int width, int height, uint32_t texture);
 	inline float getPresetBlend(void) const 
 	{
 		return presetBlend;

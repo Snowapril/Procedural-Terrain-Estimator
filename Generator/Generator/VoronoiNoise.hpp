@@ -8,8 +8,8 @@ class VoronoiNoise : public BrushBoard
 private:
 	float blend;
 	float frequency;
-	float function;
-	float distance_type;
+	int function;
+	int distance_type;
 	bool multiply_by_F1;
 	bool inverse;
 public:
