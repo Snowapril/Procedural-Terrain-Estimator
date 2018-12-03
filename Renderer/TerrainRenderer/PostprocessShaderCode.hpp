@@ -52,7 +52,7 @@ uniform mat4 previousVP;
 //motion blur
 uniform float blurStrength = 0.06f;
 uniform int numSamples = 7;
-uniform float GAMMA = 2.2;
+uniform float GAMMA = 1.45;
 
 // god rays
 uniform float decay = 0.96875;

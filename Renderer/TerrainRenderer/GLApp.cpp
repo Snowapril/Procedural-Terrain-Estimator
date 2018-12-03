@@ -102,6 +102,7 @@ bool GLApp::initGLConfigure(void)
 		glEnable(GL_MULTISAMPLE);
 	}
 
+	glEnable(GL_FRAMEBUFFER_SRGB);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 

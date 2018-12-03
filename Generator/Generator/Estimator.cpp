@@ -125,26 +125,10 @@ unsigned int Estimator::getBlendMapTexture(void)
 		}
 	}
 
+	if (blendMapTexture) glDeleteTextures(1, &blendMapTexture);
 	blendMapTexture = GLResources::CreateTexture2D(data, width, height, 3, false);
 
 	return blendMapTexture;
-}
-
-void Estimator::updateBlendMapTexture(void) {
-	vector<unsigned char> data;
-	data.reserve(width * height);
-
-	for (const auto& row : BmapData) {
-		for (const auto& element : row) {
-			data.push_back(element.r);
-			data.push_back(element.g);
-			data.push_back(element.b);
-		}
-	}
-
-	glBindTexture(GL_TEXTURE_2D, blendMapTexture);
-	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, &data[0]);
-	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 pss Estimator::descent(short y, short x) {
@@ -248,6 +232,7 @@ pixel Estimator::randFill(int dryDistance, short y,short x) {
 
 
 void Estimator::blendmapColoring() {
+	bfsCoastlineOptimization();
 	descentTabling();
 
 	srand(time(NULL));
@@ -258,7 +243,6 @@ void Estimator::blendmapColoring() {
 	const pixel SAND = { 0,0,0,255 };// 0 0 0 255 : SAND
 
 	BmapData.resize(height, vector<pixel>(width, { 0,0,0,0 }));
-
 	unsigned short _max = 0;
 	
 	for (short i = 0; i < height; i++) {
@@ -268,11 +252,9 @@ void Estimator::blendmapColoring() {
 			int wet_dist = (int)((i - des_y) * (i - des_y) + (j - des_x) * (j - des_x));
 
 			_max = max(HmapData[i][j], _max);
-
 			BmapData[i][j] = randFill(wet_dist, i, j);
 		}
 	}
-
 	printf("%d\n", _max % 256);
 }
 

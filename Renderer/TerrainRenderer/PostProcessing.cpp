@@ -48,7 +48,7 @@ bool PostProcessing::initPostProcessing(int width, int height)
 
 	blurStrength = 0.06f;
 	numSamples = 7;
-	gamma = 2.2;
+	gamma = 1.20f;
 
 	decay = 0.96875;
 	godRaysSamples = 150;

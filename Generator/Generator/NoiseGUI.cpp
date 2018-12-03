@@ -106,6 +106,8 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 		ImGui::Text("Procedrual Terrain Estimator");
 		ImGui::Text("Map Generator by snowapril");
 		ImGui::Text("Email: sinjihng@pusan.ac.kr");
+		ImGui::Text("Blend map & Post-processor by kkorona");
+		ImGui::Text("Email: high1uck@pusan.ac.kr");
 	}
 
 	if (ImGui::CollapsingHeader("Export Resources"))
@@ -127,24 +129,36 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			ImGui::SameLine(130);
 			ImGui::Text("Blend-map");
 
-			ImGui::Image((void*)frameTexture, ImVec2(100.0f, 100.0f));
-			ImGui::SameLine(130);
-			ImGui::Image((void*)blendMapTexture, ImVec2(100.0f, 100.0f));
+			ImGui::Image((void*)frameTexture, ImVec2(200.0f, 200.0f));
+			ImGui::SameLine(230);
+			ImGui::Image((void*)blendMapTexture, ImVec2(200.0f, 200.0f));
 
-			ImGui::PushItemWidth(80);
+			static int normalize_iter = 0, smoothness_iter = 0;
+			ImGui::PushItemWidth(200);
+			ImGui::Text("normalize");
+			ImGui::SliderInt("normalize iteration", &normalize_iter, 0, 30);
+			ImGui::Text("smoothness");
+			ImGui::SliderInt("smooth iteration", &smoothness_iter, 0, 30);
+			ImGui::PopItemWidth();
+
+			ImGui::PushItemWidth(200);
 			ImGui::Text("Size of resource:");
 			static int widthCurrentIndex = 2, heightCurrentIndex = 2;
 			ImGui::ListBox("Width", &widthCurrentIndex, sizeItems, IM_ARRAYSIZE(sizeItems));
 			ImGui::SameLine();
 			ImGui::ListBox("Height", &heightCurrentIndex, sizeItems, IM_ARRAYSIZE(sizeItems));
 			ImGui::PopItemWidth();
+			//ImGui::ProgressBar()
 
+			if (ImGui::Button("Post-Processing")) {
+				const int max_height = max(stoi(sizeItems[widthCurrentIndex]), stoi(sizeItems[heightCurrentIndex])) * 0.25f;
+				for (int i = 0; i < normalize_iter; ++i)	estimator.normalize(0, max_height);
+				for (int i = 0; i < smoothness_iter; ++i)	estimator.smoothness();
+			}
+			ImGui::SameLine();
 			if (ImGui::Button("Blend Coloring")) {
 				estimator.blendmapColoring();
-				if (blendMapTexture)
-					estimator.updateBlendMapTexture();
-				else
-					blendMapTexture = estimator.getBlendMapTexture();
+				blendMapTexture = estimator.getBlendMapTexture();
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Save Resources"))

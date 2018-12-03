@@ -49,7 +49,9 @@ public:
 	void generateHeightMap(const char* path, int _width, int _height);
 	void generateBlendMap(const char* path, int width, int height);
 	unsigned int getBlendMapTexture(void);
-	void updateBlendMapTexture(void);
+	void normalize(int minimumHeight = 0, int maximumHeight = 512);
+	// minimumHeight ~ maximumHeight 값으로 재조정
+	void smoothness();
 private:
 	pss descent(short y, short x);
 	// 점(y,x)에 대해서 gradient descending을 실행하는 함수
@@ -59,14 +61,7 @@ private:
 
 	pixel randFill(int dryDistance, short y, short x);
 	// descentTabling(); 함수로 얻은 Local Minima(물이 고이는 곳)와의 거리 등의 정보를 인수로 받아서 지형 타일을 배정하는 함수(난수 적용 예정)
-
-	void normalize(int minimumHeight = 0, int maximumHeight = 512);
-	// minimumHeight ~ maximumHeight 값으로 재조정
-
-	void smoothness();
-
 	void bfsCoastlineOptimization();
-	
 	void linearCoastlineOptimization();
 };
 

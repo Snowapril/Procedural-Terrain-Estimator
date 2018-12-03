@@ -25,23 +25,51 @@
 	
 	uniform sampler2D heightMap;
 	uniform float terrainMaxHeight;
-	
+	const float offset = 0.0025333333;	
+
 	void main(void)
 	{
-		float height = texture(heightMap, TexCoords).r;
+		vec2 offsets[9] = vec2[](
+		    vec2(-offset,  offset), // top-left
+		    vec2( 0.0f,    offset), // top-center
+		    vec2( offset,  offset), // top-right
+		    vec2(-offset,  0.0f),   // center-left
+		    vec2( 0.0f,    0.0f),   // center-center
+		    vec2( offset,  0.0f),   // center-right
+		    vec2(-offset, -offset), // bottom-left
+		    vec2( 0.0f,   -offset), // bottom-center
+		    vec2( offset, -offset)  // bottom-right    
+		);
 
+		float kernel[9] = float[](
+		    1.0 / 36, 4.0 / 36, 1.0 / 36,
+		    4.0 / 36, 16.0 / 36, 4.0 / 36,
+		    1.0 / 36, 4.0 / 36, 1.0 / 36  
+		);
+		
+		vec3 sampleTex[9];
 		const ivec3 offset = ivec3(-1, 0, 1);
 		const vec2 size = vec2(2.0, 0.0);
 
-		float hL = textureOffset(heightMap, TexCoords, offset.xy).r * terrainMaxHeight;
-		float hR = textureOffset(heightMap, TexCoords, offset.zy).r * terrainMaxHeight;
-		float hD = textureOffset(heightMap, TexCoords, offset.yx).r * terrainMaxHeight;
-		float hU = textureOffset(heightMap, TexCoords, offset.yz).r * terrainMaxHeight;
+		for(int i = 0; i < 9; i++)
+		{	
+			vec2 texCoords_with_offset = TexCoords.st + offsets[i];
+
+			float hL = textureOffset(heightMap, texCoords_with_offset, offset.xy).r * terrainMaxHeight;
+			float hR = textureOffset(heightMap, texCoords_with_offset, offset.zy).r * terrainMaxHeight;
+			float hD = textureOffset(heightMap, texCoords_with_offset, offset.yx).r * terrainMaxHeight;
+			float hU = textureOffset(heightMap, texCoords_with_offset, offset.yz).r * terrainMaxHeight;
+		    sampleTex[i] = normalize(vec3(hR - hL, 2, hU - hD));
+		}
+		
+		float height = texture(heightMap, TexCoords).r;
+		vec3 total_normal = vec3(0.0);
+		for(int i = 0; i < 9; i++)
+			total_normal += sampleTex[i] * kernel[i];
+
+		total_normal.xz = total_normal.xz * 0.5 + 0.5;
 	
-		vec3 normal = normalize(vec3(hR - hL, 2, hU - hD));
-		normal.xz = normal.xz * 0.5 + 0.5;
-	
-		fragColors = vec4(normal.xzy, height); 
+		fragColors = vec4(total_normal.xzy, height); 
 	}		
 	)glsl";
 	
