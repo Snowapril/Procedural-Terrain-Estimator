@@ -13,6 +13,9 @@
 
 #include "obfuscator.hpp"
 
+#include <opencv2/imgcodecs.hpp>
+using namespace cv;
+
 uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 {
 	stbi_set_flip_vertically_on_load(true);
@@ -70,25 +73,17 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
 
 uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, int& retHeight, bool gamma)
 {
-	stbi_set_flip_vertically_on_load(true);
+	auto resource = imread(path, IMREAD_ANYCOLOR | IMREAD_ANYDEPTH | IMREAD_UNCHANGED);
 
-	int width, height, nChannels;
-	unsigned char *data = stbi_load(path.c_str(), &width, &height, &nChannels, 0);
-	if (data == nullptr || width == 0 || height == 0 || nChannels == 0)
-	{
-		EngineLogger::getConsole()->error(OBFUSCATE("Cannot load texture from {}"), path);
-		return 0;
-	}
-
-	retWidth  = width;
-	retHeight = height;
+	retWidth  = resource.rows;
+	retHeight = resource.cols;
 
 	uint32_t texture;
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
 	GLenum format, internalFormat;
-	switch (nChannels)
+	switch (resource.channels())
 	{
 	case 1:
 		format = GL_RED;
@@ -104,7 +99,10 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, in
 		break;
 	}
 
-	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+	if (resource.depth() == 2) 
+		glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, resource.rows, resource.cols, 0, format, GL_UNSIGNED_SHORT, (unsigned short*)resource.data);
+	else 
+		glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, resource.rows, resource.cols, 0, format, GL_UNSIGNED_BYTE, resource.data);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -113,9 +111,6 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, in
 
 	glGenerateMipmap(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
-
-	stbi_image_free(data);
-	stbi_set_flip_vertically_on_load(false);
 
 	const auto dirIdx = path.find_last_of(OBFUSCATE("/"));
 	const std::string filename = path.substr(dirIdx + 1);

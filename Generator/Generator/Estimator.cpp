@@ -83,6 +83,7 @@ void Estimator::initHMapData(unsigned int texture, int _width, int _height) {
 
 void Estimator::generateHeightMap(const char* path, int _width, int _height) {
 	//TODO :
+	bfsCoastlineOptimization();
 	std::vector<unsigned short> data(width * height);
 
 	for (int i = 0; i < height; i++) {
@@ -232,7 +233,7 @@ pixel Estimator::randFill(int dryDistance, short y,short x) {
 
 
 void Estimator::blendmapColoring() {
-	bfsCoastlineOptimization();
+	
 	descentTabling();
 
 	srand(time(NULL));

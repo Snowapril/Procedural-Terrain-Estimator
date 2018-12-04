@@ -138,7 +138,7 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			ImGui::Text("normalize");
 			ImGui::SliderInt("normalize iteration", &normalize_iter, 0, 30);
 			ImGui::Text("smoothness");
-			ImGui::SliderInt("smooth iteration", &smoothness_iter, 0, 30);
+			ImGui::SliderInt("smooth iteration", &smoothness_iter, 0, 50);
 			ImGui::PopItemWidth();
 
 			ImGui::PushItemWidth(200);
@@ -151,7 +151,7 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			//ImGui::ProgressBar()
 
 			if (ImGui::Button("Post-Processing")) {
-				const int max_height = max(stoi(sizeItems[widthCurrentIndex]), stoi(sizeItems[heightCurrentIndex])) * 0.25f;
+				const int max_height = max(stoi(sizeItems[widthCurrentIndex]), stoi(sizeItems[heightCurrentIndex])) * 0.20f;
 				for (int i = 0; i < normalize_iter; ++i)	estimator.normalize(0, max_height);
 				for (int i = 0; i < smoothness_iter; ++i)	estimator.smoothness();
 			}

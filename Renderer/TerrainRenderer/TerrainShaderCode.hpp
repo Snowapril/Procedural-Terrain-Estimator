@@ -24,7 +24,6 @@
 	out vec4 fragColors;
 	
 	uniform sampler2D heightMap;
-	uniform float terrainMaxHeight;
 	const float offset = 0.0025333333;	
 
 	void main(void)
@@ -42,34 +41,38 @@
 		);
 
 		float kernel[9] = float[](
-		    1.0 / 36, 4.0 / 36, 1.0 / 36,
-		    4.0 / 36, 16.0 / 36, 4.0 / 36,
-		    1.0 / 36, 4.0 / 36, 1.0 / 36  
+		    1.0 / 16, 2.0 / 16, 1.0 / 16,
+		    2.0 / 16, 4.0 / 16, 2.0 / 16,
+		    1.0 / 16, 2.0 / 16, 1.0 / 16  
 		);
 		
 		vec3 sampleTex[9];
-		const ivec3 offset = ivec3(-1, 0, 1);
+		float sampleHeight[9];
+		const ivec3 dx_dz = ivec3(-1, 0, 1);
 		const vec2 size = vec2(2.0, 0.0);
 
 		for(int i = 0; i < 9; i++)
 		{	
 			vec2 texCoords_with_offset = TexCoords.st + offsets[i];
-
-			float hL = textureOffset(heightMap, texCoords_with_offset, offset.xy).r * terrainMaxHeight;
-			float hR = textureOffset(heightMap, texCoords_with_offset, offset.zy).r * terrainMaxHeight;
-			float hD = textureOffset(heightMap, texCoords_with_offset, offset.yx).r * terrainMaxHeight;
-			float hU = textureOffset(heightMap, texCoords_with_offset, offset.yz).r * terrainMaxHeight;
-		    sampleTex[i] = normalize(vec3(hR - hL, 2, hU - hD));
+			sampleHeight[i] = texture(heightMap, texCoords_with_offset).r;
+			
+			float hL = textureOffset(heightMap, texCoords_with_offset, dx_dz.xy).r;
+			float hR = textureOffset(heightMap, texCoords_with_offset, dx_dz.zy).r;
+			float hD = textureOffset(heightMap, texCoords_with_offset, dx_dz.yx).r;
+			float hU = textureOffset(heightMap, texCoords_with_offset, dx_dz.yz).r;
+		    sampleTex[i] = normalize(cross(vec3(2 * offset, hR - hL, 0), vec3(0, hU - hD, 2 * offset)));
 		}
 		
-		float height = texture(heightMap, TexCoords).r;
+		float total_height = 0.0;
 		vec3 total_normal = vec3(0.0);
-		for(int i = 0; i < 9; i++)
+		for(int i = 0; i < 9; i++) {
 			total_normal += sampleTex[i] * kernel[i];
+			total_height += sampleHeight[i] * kernel[i];
+		}
 
 		total_normal.xz = total_normal.xz * 0.5 + 0.5;
 	
-		fragColors = vec4(total_normal.xzy, height); 
+		fragColors = vec4(total_normal.xzy, total_height); 
 	}		
 	)glsl";
 	

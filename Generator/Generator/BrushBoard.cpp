@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <queue>
 #include "obfuscator.hpp"
+#include <limits>
 
 BrushBoard::BrushBoard()
 	: isScreenClicked(false), counter(10U), brushTexture(0U), paintFuncPtr(nullptr), paintMode(BrushMode::NONE), viewPoint(0.0f, 0.0f)
@@ -31,7 +32,7 @@ bool BrushBoard::initBrushBoard(const Util::Rect& rect)
 	this->boardRect = rect;
 
 	for (auto& row : board)
-		std::fill(row.begin(), row.end(), 255);
+		std::fill(row.begin(), row.end(), 65535);
 
 	for (auto& rowPixels : visitPixels)
 		std::fill(rowPixels.begin(), rowPixels.end(), false);
@@ -42,7 +43,7 @@ bool BrushBoard::initBrushBoard(const Util::Rect& rect)
 	glGenTextures(1, &brushTexture);
 	glBindTexture(GL_TEXTURE_2D, brushTexture);
 	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, BOARD_WIDTH, BOARD_HEIGHT, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_R16, BOARD_WIDTH, BOARD_HEIGHT, 0, GL_RED, GL_UNSIGNED_SHORT, nullptr);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -60,7 +61,7 @@ void BrushBoard::update(uint32_t cycle)
 	if (counter >= cycle)
 	{
 		glBindTexture(GL_TEXTURE_2D, brushTexture);	
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, BOARD_WIDTH, BOARD_HEIGHT, GL_RED, GL_UNSIGNED_BYTE, &board[0][0]);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, BOARD_WIDTH, BOARD_HEIGHT, GL_RED, GL_UNSIGNED_SHORT, &board[0][0]);
 		glBindTexture(GL_TEXTURE_2D, 0);
 		counter = 0;
 	}
@@ -142,9 +143,9 @@ void BrushBoard::changeBrushRadius(int newRadius)
 {
 	this->brushRadius = newRadius;
 
-	brush = std::vector<std::vector<unsigned char>>(brushRadius, std::vector<unsigned char>(brushRadius));
+	brush = std::vector<std::vector<unsigned short>>(brushRadius, std::vector<unsigned short>(brushRadius));
 
-	constexpr unsigned char maxValue = ~0;
+	constexpr unsigned short maxValue = ~0;
 	const int radius = brushRadius / 2;
 
 	const int centerX = brushRadius / 2;
@@ -219,10 +220,10 @@ void BrushBoard::writeWorker(int xpos, int ypos, int offsetY)
 	for (int y = offsetY; y < offsetY + assignedWork; ++y)
 		for (int x = 0; x < brushRadius; ++x) {
 			if (isInRange(x - halfSize + xpos, y - halfSize + ypos)) {
-				if (255 - this->board[y - halfSize + ypos][x - halfSize + xpos] >= this->brush[y][x])
+				if (65535 - this->board[y - halfSize + ypos][x - halfSize + xpos] >= this->brush[y][x])
 					this->board[y - halfSize + ypos][x - halfSize + xpos] += this->brush[y][x];
 				else
-					this->board[y - halfSize + ypos][x - halfSize + xpos] = 255;
+					this->board[y - halfSize + ypos][x - halfSize + xpos] = 65535;
 			}
 		}
 }
