@@ -59,9 +59,6 @@
     <Filter Include="GUI\public">
       <UniqueIdentifier>{6214e953-9166-4e93-b025-20c6ac6f0faa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI\shader">
-      <UniqueIdentifier>{69a2a6cf-fdcf-44b6-b439-55a4c6b5608c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Skybox\private">
       <UniqueIdentifier>{67053e5e-39dc-4ef7-8552-b1f2e5cd4e7d}</UniqueIdentifier>
     </Filter>
@@ -100,6 +97,9 @@
     </Filter>
     <Filter Include="EngineFramework\shader">
       <UniqueIdentifier>{dc7570b5-b60b-436e-aa4b-098aef80a8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\shader">
+      <UniqueIdentifier>{69a2a6cf-fdcf-44b6-b439-55a4c6b5608c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -280,7 +280,7 @@
       <Filter>Skybox\shader</Filter>
     </ClInclude>
     <ClInclude Include="ViewerShaderCode.hpp">
-      <Filter>GUI\shader</Filter>
+      <Filter>Assets\shader</Filter>
     </ClInclude>
     <ClInclude Include="LightSourceWrapper.hpp">
       <Filter>Util\public</Filter>
@@ -312,10 +312,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resources\shader\viewer_fs.glsl">
-      <Filter>GUI\shader</Filter>
+      <Filter>Assets\shader</Filter>
     </None>
     <None Include="..\resources\shader\viewer_vs.glsl">
-      <Filter>GUI\shader</Filter>
+      <Filter>Assets\shader</Filter>
     </None>
     <None Include="..\resources\shader\equiRectangularMapToCubemap_fs.glsl">
       <Filter>Skybox\shader</Filter>

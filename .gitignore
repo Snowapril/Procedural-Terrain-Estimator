@@ -331,5 +331,9 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
 
+# Map Data Files
+Generator/resources/texture/terrain/height16bit2.png
+Generator/resources/texture/terrain/splatMap.png
+
 *.dll
 *.DMP

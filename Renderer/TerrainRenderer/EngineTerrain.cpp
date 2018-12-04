@@ -334,8 +334,6 @@ bool EngineTerrain::bakeTerrainMap(void)
 	dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
 	maxHeight = getProperMaxHeight(textureSize.x,textureSize.y);
 	
-	bakeTerrainMap.sendUniform(OBFUSCATE("terrainMaxHeight"), maxHeight);
-
 	//simple quad for baking
 	GLfloat vertices[] =
 	{
@@ -409,7 +407,7 @@ bool EngineTerrain::bakeTerrainMap(void)
 
 float EngineTerrain::getProperMaxHeight(std::size_t width, std::size_t height)
 {
-	return static_cast<float>(min(width, height) * 0.25f);
+	return static_cast<float>(min(width, height) * 0.20f);
 }
 
 glm::vec3 EngineTerrain::getTerrainScale(void) const

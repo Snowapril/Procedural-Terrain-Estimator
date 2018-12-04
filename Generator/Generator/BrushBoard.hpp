@@ -27,18 +27,11 @@ class BrushBoard : public EventHandler
 {
 private:
 	Util::Rect boardRect;
-	std::vector<std::vector<unsigned char>> brush;
+	std::vector<std::vector<unsigned short>> brush;
 	std::vector<glm::vec2> cutPoints;
-	std::array<std::array<unsigned char, BOARD_WIDTH>, BOARD_HEIGHT> board;
+	std::array<std::array<unsigned short, BOARD_WIDTH>, BOARD_HEIGHT> board;
 	std::array<std::array<bool, BOARD_WIDTH>, BOARD_HEIGHT> visitPixels;
 	std::array<std::array<bool, BOARD_WIDTH>, BOARD_HEIGHT> floodPixels;
-
-	struct BoardStorage {
-		std::array<std::array<unsigned char, BOARD_WIDTH>, BOARD_HEIGHT> board;
-		glm::vec2 viewPoint;
-	};
-
-	std::deque<BoardStorage> actionMemory;
 
 	std::function<void(double, double)> paintFuncPtr;
 	BrushMode paintMode;

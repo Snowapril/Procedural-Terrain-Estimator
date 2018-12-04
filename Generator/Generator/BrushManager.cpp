@@ -143,9 +143,10 @@ void BrushManager::renderToolUI(void) const
 	
 	if (brushMgrMode == BrushManagerMode::BRUSH_PLUS || brushMgrMode == BrushManagerMode::BRUSH_MINUS)
 	{
+		constexpr float division_scale = 4.5f; // smaller mean, smaller texture
 		uint32_t radius = paintBoards[activeBoardIndex]->getBrushRadius();
 		glm::vec2 scaleFactor(radius, radius);
-		scaleFactor /= resizedViewport.getScale() / 6.5f;
+		scaleFactor /= resizedViewport.getScale() / division_scale;
 
 		model = glm::scale(model, glm::vec3(scaleFactor, 1.0f));
 	}
