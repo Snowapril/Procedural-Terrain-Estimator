@@ -126,17 +126,27 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			static unsigned int blendMapTexture = 0;
 
 			ImGui::Text("Height-map");
-			ImGui::SameLine(130);
+			ImGui::SameLine(230);
 			ImGui::Text("Blend-map");
 
 			ImGui::Image((void*)frameTexture, ImVec2(200.0f, 200.0f));
 			ImGui::SameLine(230);
 			ImGui::Image((void*)blendMapTexture, ImVec2(200.0f, 200.0f));
 
-			static int normalize_iter = 0, smoothness_iter = 0;
-			ImGui::PushItemWidth(200);
+			static int smoothness_iter = 0;
+			static bool normalize_enable = false;
+			static int min_height = 0;
+			static int max_height = 410;
+
+			ImGui::PushItemWidth(125);
 			ImGui::Text("normalize");
-			ImGui::SliderInt("normalize iteration", &normalize_iter, 0, 30);
+			ImGui::Checkbox("enable", &normalize_enable);
+			if (normalize_enable) {
+				ImGui::SameLine();
+				ImGui::InputInt("min_height", &min_height);
+				ImGui::SameLine();
+				ImGui::InputInt("max_height", &max_height);
+			}
 			ImGui::Text("smoothness");
 			ImGui::SliderInt("smooth iteration", &smoothness_iter, 0, 50);
 			ImGui::PopItemWidth();
@@ -149,23 +159,19 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			ImGui::ListBox("Height", &heightCurrentIndex, sizeItems, IM_ARRAYSIZE(sizeItems));
 			ImGui::PopItemWidth();
 			//ImGui::ProgressBar()
-
-			if (ImGui::Button("Post-Processing")) {
-				const int max_height = max(stoi(sizeItems[widthCurrentIndex]), stoi(sizeItems[heightCurrentIndex])) * 0.20f;
-				for (int i = 0; i < normalize_iter; ++i)	estimator.normalize(0, max_height);
-				for (int i = 0; i < smoothness_iter; ++i)	estimator.smoothness();
-			}
-			ImGui::SameLine();
-			if (ImGui::Button("Blend Coloring")) {
-				estimator.blendmapColoring();
-				blendMapTexture = estimator.getBlendMapTexture();
-			}
-			ImGui::SameLine();
+			//ImGui::BeginTooltip
 			if (ImGui::Button("Save Resources"))
 			{
 				int width = stoi(sizeItems[widthCurrentIndex]), height = stoi(sizeItems[heightCurrentIndex]);
+				if (normalize_enable) {
+					estimator.normalize(min_height, max_height);
+				}
+				estimator.blendmapColoring();
+				blendMapTexture = estimator.getBlendMapTexture();
+				for (int i = 0; i < smoothness_iter; ++i)	estimator.smoothness();
 				estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", width, height);
 				estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", width, height);
+				estimator.initHMapData(frameTexture, 2048, 2048);
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Close"))
