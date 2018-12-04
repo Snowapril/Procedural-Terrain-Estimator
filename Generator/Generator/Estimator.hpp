@@ -16,7 +16,7 @@ class Estimator : public Singleton<Estimator>
 {
 private:
 	const int DY[8] = { -1, -1, -1, 0, 1, 1, 1, 0 }, DX[8] = { -1, 0, 1, 1, 1, 0, -1, -1 };
-	unsigned int DEFAULT_SEA_LEVEL = 64;
+	unsigned int DEFAULT_SEA_LEVEL = 128;
 	
 	vector < vector < unsigned short > > HmapData;
 	vector < vector < pixel > > BmapData;
@@ -62,7 +62,6 @@ private:
 	pixel randFill(int dryDistance, short y, short x);
 	// descentTabling(); 함수로 얻은 Local Minima(물이 고이는 곳)와의 거리 등의 정보를 인수로 받아서 지형 타일을 배정하는 함수(난수 적용 예정)
 	void bfsCoastlineOptimization();
-	void linearCoastlineOptimization();
 };
 
 

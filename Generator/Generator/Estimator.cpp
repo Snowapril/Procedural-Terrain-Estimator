@@ -111,7 +111,7 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 	}
 
 	stbi_write_png(path, width, height, 4, &data[0], 0);
-}
+} 
 unsigned int Estimator::getBlendMapTexture(void)
 {
 	vector<unsigned char> data;
@@ -233,6 +233,7 @@ pixel Estimator::randFill(int dryDistance, short y,short x) {
 
 void Estimator::blendmapColoring() {
 	bfsCoastlineOptimization();
+
 	descentTabling();
 
 	srand(time(NULL));
@@ -242,6 +243,7 @@ void Estimator::blendmapColoring() {
 	const pixel MUD = { 0,0,255,0 };// 0 0 255 0 : MUD
 	const pixel SAND = { 0,0,0,255 };// 0 0 0 255 : SAND
 
+	BmapData.clear();
 	BmapData.resize(height, vector<pixel>(width, { 0,0,0,0 }));
 	unsigned short _max = 0;
 	
@@ -255,14 +257,13 @@ void Estimator::blendmapColoring() {
 			BmapData[i][j] = randFill(wet_dist, i, j);
 		}
 	}
-	printf("%d\n", _max % 256);
 }
 
 void Estimator::normalize(int minimumHeight, int maximumHeight) {
-	DEFAULT_SEA_LEVEL = (minimumHeight + maximumHeight) / 4;
+	DEFAULT_SEA_LEVEL = (minimumHeight + maximumHeight) / 5;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
-			HmapData[i][j] = minimumHeight + HmapData[i][j] / 512 * (maximumHeight - minimumHeight);
+			HmapData[i][j] = minimumHeight + ( HmapData[i][j] * (maximumHeight - minimumHeight) / 512 );
 		}
 	}
 }
@@ -323,67 +324,6 @@ void Estimator::bfsCoastlineOptimization() {
 						}
 					}
 				}
-			}
-		}
-	}
-}
-
-void Estimator::linearCoastlineOptimization() {
-
-	const short DY1[4] = { -1,-1,-1,0 };
-	const short DX1[4] = { -1,0,1,1 };
-	const short DY2[4] = { 1,1,1,0 };
-	const short DX2[4] = { 1,0,-1,-1 };
-	const short MEASURE = 6;
-	int ydir, xdir;
-
-	vector < vector < unsigned char > > visit(height, vector< unsigned char>(width, 0));
-
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
-			if (!visit[i][j] && HmapData[i][j] > DEFAULT_SEA_LEVEL) {
-				visit[i][j] = true;
-				for (int k = 0; k < 4; k++) {
-					int Y1 = i + DY1[k], X1 = j + DX1[k];
-					int Y2 = i + DY2[k], X2 = j + DY2[k];
-					int direction = ((int)(HmapData[Y2][X2] > DEFAULT_SEA_LEVEL) - (int)(HmapData[Y1][X1] > DEFAULT_SEA_LEVEL));
-					ydir += (DY1[k] - DY2[k]) / 2 * direction;
-					xdir += (DX1[k] - DX2[k]) / 2 * direction;
-				}
-
-				if (ydir == 0 && xdir == 0) continue;
-
-				//방향 전환
-				ydir = -ydir;
-				xdir = -xdir;
-
-
-				int d = (int)sqrt(xdir * xdir + ydir * ydir);
-				int noiseDistance = SN_Rombauts::noise((float)(i + j));
-
-				/*
-					* 방향 벡터 : (ydir , xdir)
-					* 방향 거리 : noiseDistance
-					* SN_Rombauts::noise(x) 의 최대 value : 2.53125
-					* ydir / d 는 1보다 작음
-					* -> (ydir / d * noiseDistance, xdir / d * noiseDistance)의 범위
-					*/
-
-				unsigned short COASTLINE_CONST = 2;
-
-				ydir = ydir * noiseDistance * COASTLINE_CONST / d;
-				xdir = xdir * noiseDistance * COASTLINE_CONST / d;
-
-				short ydiff = ydir / MEASURE;
-				short xdiff = xdir / MEASURE;
-
-				for (int y = i, x = j; y != i + ydir && x != j + xdir; y += ydiff, x += xdiff) {
-					if (y < 0 || y >= height || x < 0 || x >= width) continue;
-					if (visit[y][x]) continue;
-					visit[y][x] = true;
-					HmapData[y][x] = (abs(y - i) + abs(x - j)) / 2;
-				}
-
 			}
 		}
 	}
