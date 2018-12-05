@@ -14,6 +14,7 @@
 #include "obfuscator.hpp"
 
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 using namespace cv;
 
 uint32_t GLResources::CreateTexture2D(const std::string& path, bool gamma)
@@ -92,10 +93,12 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, in
 	case 3:
 		format = GL_RGB;
 		internalFormat = gamma ? GL_SRGB : GL_RGB;
+		cvtColor(resource, resource, COLOR_BGR2RGB);
 		break;
 	case 4:
 		format = GL_RGBA;
 		internalFormat = gamma ? GL_SRGB_ALPHA : GL_RGBA;
+		cvtColor(resource, resource, COLOR_BGRA2RGBA);
 		break;
 	}
 

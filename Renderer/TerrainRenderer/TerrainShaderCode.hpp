@@ -404,7 +404,7 @@
 		
 		float shadow = 1.0;
 		if (texture(shadowMap, shadowCoords.xy).z < shadowCoords.z - bias)
-			shadow = 0.6;
+			shadow = 0.5;
 	
 		return shadow;
 	}
