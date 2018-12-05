@@ -246,7 +246,7 @@
 	out vec3 gs_distToEdges;
 	out vec3 gs_normal;
 	
-	const float density = 0.0001;
+	const float density = 0.00016;
 	uniform float gradient = 2.0;
 	
 	vec2 projectToViewportSpace(vec4 position, mat4 vp)

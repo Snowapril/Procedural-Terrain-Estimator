@@ -97,7 +97,7 @@ void Estimator::generateHeightMap(const char* path, int _width, int _height) {
 	imwrite(path, dst);
 }
 
-void Estimator::generateBlendMap(const char* path, int width, int height) {
+void Estimator::generateBlendMap(const char* path, int _width, int _height) {
 
 	vector<unsigned char> data;
 	data.reserve(width * height * 4);
@@ -111,7 +111,9 @@ void Estimator::generateBlendMap(const char* path, int width, int height) {
 		}
 	}
 
-	stbi_write_png(path, width, height, 4, &data[0], 0);
+	Mat src = Mat(cv::Size(width, height), CV_8UC4, (void*)&data[0]), dst;
+	resize(src, dst, cv::Size(_width, _height));
+	imwrite(path, dst);
 } 
 unsigned int Estimator::getBlendMapTexture(void)
 {

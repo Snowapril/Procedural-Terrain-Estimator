@@ -47,7 +47,7 @@ public:
 
 	void initHMapData(unsigned int texture, int _width, int _height);
 	void generateHeightMap(const char* path, int _width, int _height);
-	void generateBlendMap(const char* path, int width, int height);
+	void generateBlendMap(const char* path, int _width, int _height);
 	unsigned int getBlendMapTexture(void);
 	void normalize(int minimumHeight = 0, int maximumHeight = 512);
 	// minimumHeight ~ maximumHeight 값으로 재조정

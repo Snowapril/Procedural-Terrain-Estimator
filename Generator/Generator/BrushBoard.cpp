@@ -193,7 +193,7 @@ void BrushBoard::setPaintMode(BrushMode mode)
 		break;
 	case BrushMode::CLEAR:
 		for (auto& row : board)
-			std::fill(row.begin(), row.end(), 255);
+			std::fill(row.begin(), row.end(), 65535);
 		for (auto& rowPixels : floodPixels)
 			std::fill(rowPixels.begin(), rowPixels.end(), false);
 		for (auto& rowPixels : visitPixels)
