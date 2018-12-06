@@ -89,7 +89,7 @@ void EngineApp::drawScene(void)
 	const float dt = timer.getDeltaTime();
 
 	NVTX_PUSH("Frame");
-	terrain.updateScene(dt, water, cameraPos);
+	terrain.updateScene(dt, water, camera);
 	skybox->updateScene(dt);
 
 	NVTX_PUSH("Gen-Water-Textures");
@@ -263,6 +263,21 @@ void EngineApp::onResize(int newWidth, int newHeight)
 void EngineApp::keyCallback(int key, int scancode, int action, int mode)
 {
 	GLApp::keyCallback(key, scancode, action, mode);
+
+	uint32_t keyFlag = 0;
+
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		keyFlag |= CAMERA_1;
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+		keyFlag |= CAMERA_2;
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		keyFlag |= CAMERA_3;
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+		keyFlag |= CAMERA_4;
+	if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+		keyFlag |= CAMERA_5;
+
+	camera.processKeyCallback(keyFlag);
 
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);

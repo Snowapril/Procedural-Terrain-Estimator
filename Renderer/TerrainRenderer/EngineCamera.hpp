@@ -16,16 +16,21 @@
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
 #include "Automator.hpp"
+#include <array>
 
 enum CameraKey
 {
-	CAMERA_LEFT		 = 0x01,
-	CAMERA_UP		 = 0x02,
-	CAMERA_RIGHT	 = 0x04,
-	CAMERA_DOWN		 = 0x08,
-	CAMERA_LEFT_BTN  = 0x10,
-	CAMERA_RIGHT_BTN = 0x20,
-	CAMERA_AUTO		 = 0x40,
+	CAMERA_LEFT		 = 0x001,
+	CAMERA_UP		 = 0x002,
+	CAMERA_RIGHT	 = 0x004,
+	CAMERA_DOWN		 = 0x008,
+	CAMERA_LEFT_BTN  = 0x010,
+	CAMERA_RIGHT_BTN = 0x020,
+	CAMERA_1		 = 0x040,
+	CAMERA_2		 = 0x080,
+	CAMERA_3		 = 0x100,
+	CAMERA_4		 = 0x200,
+	CAMERA_5		 = 0x400
 };
 
 class GLShader;
@@ -33,12 +38,12 @@ class GLShader;
 class EngineCamera
 {
 public:
+	std::array<glm::vec3, 5> fixedPosition;
+	std::array<glm::vec3, 5> fixedDirection;
 	glm::mat4 previousVP;
 	glm::mat4 project;
 	glm::mat4 view;
 	glm::dvec2 prevMousePos;
-	Automator<glm::vec2> dirAutomator;
-	Automator<glm::vec3> posAutomator;
 	glm::vec3 direction;
 	glm::vec3 position;
 	glm::vec2 viewportSize;
@@ -50,7 +55,6 @@ public:
 	float minDepth;
 	bool updateFov;
 	bool toggleZoom;
-	bool cameraAutoMode;
 	bool isGrabbed;
 	bool isFirstUse;
 
@@ -73,6 +77,10 @@ public:
 
 	void updateGUI(void);
 	bool initCamera(const glm::vec3& position, const  glm::vec3& direction, const glm::vec3& terrainScale);
+	void initCameraView(const glm::vec3& terrainScale);
+
+
+	static std::tuple<float, float> directionToEulerDegrees(const glm::vec3& direction);
 
 	inline glm::vec2 getViewportSize(void) const
 	{

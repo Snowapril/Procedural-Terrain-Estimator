@@ -247,7 +247,7 @@
 	out vec3 gs_normal;
 	
 	const float density = 0.00016;
-	uniform float gradient = 2.0;
+	uniform float gradient = 1.7;
 	
 	vec2 projectToViewportSpace(vec4 position, mat4 vp)
 	{
@@ -332,7 +332,7 @@
 	uniform sampler2D wetDirtTexture;
 	uniform sampler2D shadowMap;
 	uniform bool enableWireframe;
-	uniform bool enableTriangleNormal;
+	uniform bool enableFog;
 	struct DirLight {
 		vec3 direction;
 		vec3 color;
@@ -351,14 +351,8 @@
 	
 		float height = terrain.w;
 		
-		vec3 normal;
-		if (enableTriangleNormal) {
-			normal = gs_normal;
-		}
-		else {
-			normal = terrain.xzy;
-			normal.xz = normal.xz * 2.0 - 1.0;
-		}
+		vec3 normal = terrain.xzy;
+		normal.xz = normal.xz * 2.0 - 1.0;
 		normal = normalize(normal);
 	
 		vec4 mixmap = texture(splatMap, gs_texCoords);
@@ -380,7 +374,8 @@
 		float shadow = calculateShadow(gs_shadowCoords);
 	
 		fragColor = vec4((ambient + shadow * diffuse), 1.0);
-		fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
+		if (enableFog)
+			fragColor = mix(vec4(skycolor, 1.0), fragColor, gs_visibility);
 	
 		if (enableWireframe)
 		{

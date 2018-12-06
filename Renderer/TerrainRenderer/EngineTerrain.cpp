@@ -26,7 +26,7 @@
 bool EngineTerrain::isInstanciated = false;
 
 EngineTerrain::EngineTerrain(const glm::vec3& position, iList<std::string>&& paths)
-	: enableWireFrame(false), enableTriangleNormal(true), terrainShader(nullptr), prevCameraPos(-1.f)
+	: enableWireFrame(false), enableFog(true), terrainShader(nullptr), prevCameraPos(-1.f)
 {
 	assert(!isInstanciated);
 	isInstanciated = true;
@@ -39,7 +39,7 @@ EngineTerrain::~EngineTerrain()
 	isInstanciated = false;
 }
 
-void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& cameraPos)
+void EngineTerrain::updateScene(float dt, EngineWater& water, EngineCamera& camera)
 {
 #ifdef _DEBUG
 	if (assetManager->refreshDirtyAssets())
@@ -68,15 +68,20 @@ void EngineTerrain::updateScene(float dt, EngineWater& water, const glm::vec3& c
 	terrainShader->sendUniform("tileSize", tileSize);
 	terrainShader->sendUniform("gradient", fogGradient);
 	terrainShader->sendUniform("skycolor", skycolor);
-	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
+	terrainShader->sendUniform("enableFog", enableFog);
 	terrainShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
 	depthPassShader->useProgram();
 	depthPassShader->sendUniform("terrainMaxHeight", maxHeight);
 	depthPassShader->sendUniform("terrainScale", dynamicPatch->getTerrainScale());
 
+	const glm::vec3 cameraPos = camera.getViewPos();
+
 	dynamicPatch->updateTerrain(cameraPos);
-	glm::vec3 terrainScale = getTerrainScale() * 0.5f;
+	glm::vec3 terrainScale = getTerrainScale();
+	camera.initCameraView(terrainScale);
+
+	terrainScale *= 0.5f;
 	water.setScale(glm::vec3(terrainScale.x, 1.0f, terrainScale.z));
 	if (!terrainDataManager->refreshDirtyAssets()) {
 		bakeTerrainMap();
@@ -138,7 +143,7 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	glm::vec2 viewportScale = camera.getViewportSize();
 	terrainShader->sendUniform("viewportSize", viewportScale);
 	terrainShader->sendUniform("enableWireframe", enableWireFrame);
-	terrainShader->sendUniform("enableTriangleNormal", enableTriangleNormal);
+	terrainShader->sendUniform("enableFog", enableFog);
 
 	glm::vec2 scale = dynamicPatch->getTerrainScale();
 	glm::mat4 project = glm::ortho(-scale.x * 0.5f, scale.x * 0.5f, -scale.y * 0.5f, scale.y * 0.5f, camera.getMinDepth(), camera.getMaxDepth());
@@ -165,11 +170,12 @@ void EngineTerrain::updateGUI(void)
 
 		ImGui::SliderFloat("Max Height", &maxHeight, 100.0f, 4096.0f, "Height = %.1f");
 		ImGui::SliderFloat("Tile Size", &tileSize, 1.0f, 64.f, "Size = %.1f");
-		ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
+		ImGui::Checkbox("Enable Fog", &enableFog);
+		if (enableFog) 
+			ImGui::SliderFloat("Fog Gradient", &fogGradient, 0.0f, 5.0f, "ratio = %.3f");
 		ImGui::ListBox("Terrain Scale", &scaleFactor, items, IM_ARRAYSIZE(items));
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
-		ImGui::Checkbox("Triangle Normal", &enableTriangleNormal);
 		
 		auto textureSize = static_cast<int>(pow(2, scaleFactor)) * terrainTexture->getTextureSize(0);
 		dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);

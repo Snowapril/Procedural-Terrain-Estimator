@@ -98,7 +98,6 @@ uint32_t GLResources::CreateTexture2D(const std::string& path, int& retWidth, in
 	case 4:
 		format = GL_RGBA;
 		internalFormat = gamma ? GL_SRGB_ALPHA : GL_RGBA;
-		cvtColor(resource, resource, COLOR_BGRA2RGBA);
 		break;
 	}
 

@@ -8,59 +8,52 @@
 #include <imgui/imgui.h>
 
 EngineCamera::EngineCamera()
-	: updateFov(false), toggleZoom(false), cameraAutoMode(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+	: updateFov(false), toggleZoom(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
 		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
 	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1024.0f, 512.0f, 1024.0f));
 }
+
+enum CameraView {
+	TOP_VIEW = 0,
+	LEFT_TO_MIDDLE = 1,
+	RIGHT_TO_MIDDLE = 2,
+	FRONT_TO_MIDDLE = 3,
+	BACK_TO_MIDDLE = 4
+};
 
 bool EngineCamera::initCamera(const glm::vec3& position, const  glm::vec3& direction, const glm::vec3& terrainScale)
 {
 	this->position  = position;
 	this->direction = glm::normalize(direction);
 
-	constexpr float EPSILON = 0.001f;
+	std::tie(pitch, yaw) = directionToEulerDegrees(direction);
 
-	pitch = glm::degrees(glm::asin(direction.y));
-	pitch = Util::clamp(pitch, -89.0f, 89.0f);
-	
-	yaw = glm::degrees(glm::atan(direction.z / (direction.x + EPSILON)));
-	yaw = Util::clamp(yaw, -180.0f, 180.0f);
-
-	posAutomator.setDuration(50.0f);
-	posAutomator.addAutomation(glm::vec3(-0.14395459f,  0.56033594f, - 0.03135078f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(0.07346191f,  0.46907617f, - 0.06807422f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(0.17252002f, 0.33920312f, 0.1077627f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(0.23860596f,  0.54925586f, - 0.13551709f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(0.27833838f,  0.51043945f, - 0.24238867f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(0.15232129f,  0.51664258f, - 0.25639502f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(-0.02472334f,  0.41996094f, - 0.19375488f) * terrainScale * glm::vec3(2.0f));
-	posAutomator.addAutomation(glm::vec3(-0.12133984f,  0.33855078f, - 0.12901807f) * terrainScale * glm::vec3(2.0f));
-
-	dirAutomator.setDuration(50.0f);
-	dirAutomator.addAutomation(glm::vec2(234.8f, -23.7f));
-	dirAutomator.addAutomation(glm::vec2(119.3f, -21.4f));
-	dirAutomator.addAutomation(glm::vec2(-13.999f, -16.6f));
-	dirAutomator.addAutomation(glm::vec2(18.6f, -27.9f));
-	dirAutomator.addAutomation(glm::vec2(-137.5f, -25.9f));
-	dirAutomator.addAutomation(glm::vec2(-59.999f, -32.2f));
-	dirAutomator.addAutomation(glm::vec2(-123.4f, -20.9f));
-	dirAutomator.addAutomation(glm::vec2(-171.7f, -16.5f));
+	initCameraView(terrainScale);
 
 	return true;
 }
 
+void EngineCamera::initCameraView(const glm::vec3& terrainScale) 
+{
+	fixedPosition[TOP_VIEW] = glm::vec3(0.0f, min(terrainScale.x, terrainScale.z) * (glm::radians(fov) + 0.6f), 0.0f);
+	fixedDirection[TOP_VIEW] = glm::vec3(0.0f, -1.0f, 0.0f);
+
+	fixedPosition[LEFT_TO_MIDDLE] = glm::vec3(-terrainScale.x, terrainScale.y, 0.0f);
+	fixedDirection[LEFT_TO_MIDDLE] = glm::vec3(1.0f, 0.0f, 0.0f);
+
+	fixedPosition[RIGHT_TO_MIDDLE] = glm::vec3(terrainScale.x, terrainScale.y, 0.0f);
+	fixedDirection[RIGHT_TO_MIDDLE] = glm::vec3(-1.0f, 0.0f, 0.0f);
+
+	fixedPosition[FRONT_TO_MIDDLE] = glm::vec3(0.0f, terrainScale.y, -terrainScale.z);
+	fixedDirection[FRONT_TO_MIDDLE] = glm::vec3(0.0f, 0.0f, 1.0f);
+
+	fixedPosition[BACK_TO_MIDDLE] = glm::vec3(0.0f, terrainScale.y, terrainScale.z);
+	fixedDirection[BACK_TO_MIDDLE] = glm::vec3(0.0f, 0.0f, -1.0f);
+}
+
 void EngineCamera::onUpdate(float dt)
 {
-	if (cameraAutoMode)
-	{
-		position = posAutomator.getAutomatedValue(dt);
-		
-		glm::vec2 dir = dirAutomator.getAutomatedValue(dt);
-		yaw = dir.x;
-		pitch = dir.y;
-	}
-
 	previousVP = project * view;
 
 	if (!updateFov)
@@ -90,7 +83,7 @@ void EngineCamera::onUpdate(float dt)
 
 void EngineCamera::processMousePos(double xpos, double ypos) 
 {
-	if (cameraAutoMode || !isGrabbed)
+	if (!isGrabbed)
 		return;
 
 	if (isFirstUse)
@@ -140,7 +133,6 @@ void EngineCamera::updateGUI(void)
 {
 	if (ImGui::TreeNode("Camera Settings"))
 	{
-		ImGui::Checkbox("Auto Camera", &cameraAutoMode);
 		ImGui::SliderFloat("Speed", &speed, 30.0f, 500.0f, "%.3f");
 		ImGui::SliderFloat("Z Near", &minDepth, 1.0f, 50.0f, "%.3f");
 		ImGui::SliderFloat("Z Far", &maxDepth, 2000.0f, 10000.0f, "%.3f");
@@ -165,8 +157,31 @@ void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 
 void EngineCamera::processKeyCallback(uint32_t keyFlag)
 {
-	if (keyFlag & CAMERA_AUTO)
-		cameraAutoMode = !cameraAutoMode;
+	if (keyFlag & CAMERA_1) {
+		position = fixedPosition[0];
+		direction = fixedDirection[0];
+		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+	}
+	else if (keyFlag & CAMERA_2) {
+		position = fixedPosition[1];
+		direction = fixedDirection[1];
+		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+	}
+	else if (keyFlag & CAMERA_3) {
+		position = fixedPosition[2];
+		direction = fixedDirection[2];
+		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+	}
+	else if (keyFlag & CAMERA_4) {
+		position = fixedPosition[3];
+		direction = fixedDirection[3];
+		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+	}
+	else if (keyFlag & CAMERA_5) {
+		position = fixedPosition[4];
+		direction = fixedDirection[4];
+		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+	}
 }
 
 void EngineCamera::processScroll(double yoffset) 
@@ -227,3 +242,22 @@ void EngineCamera::setViewportSize(int width, int height)
 {
 	viewportSize = glm::vec2(width, height);
 }	
+
+std::tuple<float, float> EngineCamera::directionToEulerDegrees(const glm::vec3& direction)
+{
+	constexpr float EPSILON = 0.001f;
+	float pitch, yaw;
+
+	pitch = glm::degrees(glm::asin(direction.y));
+	pitch = Util::clamp(pitch, -89.0f, 89.0f);
+
+	if (direction == glm::vec3(-1.0f, 0.0f, 0.0f)) { // direction (1, 0, 0) and (-1, 0, 0) are converted to 0 and -0. 
+		yaw = 180.0f;
+	}
+	else {
+		yaw = glm::degrees(glm::atan(direction.z / (direction.x + EPSILON)));
+	}
+
+
+	return std::make_tuple(pitch, yaw);
+}

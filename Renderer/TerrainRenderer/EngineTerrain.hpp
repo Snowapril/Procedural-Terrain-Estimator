@@ -61,7 +61,7 @@ private:
 	float maxHeight;
 
 	bool enableWireFrame;
-	bool enableTriangleNormal;
+	bool enableFog;
 	static bool isInstanciated;
 protected:
 	bool bakeTerrainMap(void);
@@ -76,7 +76,7 @@ public:
 
 	bool initTerrain(const glm::vec3& position, iList<std::string>&& paths);
 
-	void updateScene(float dt, EngineWater& water, const glm::vec3& cameraPos);
+	void updateScene(float dt, EngineWater& water, EngineCamera& camera);
 	void updateGUI(void);
 
 	void drawScene_DepthPass(const EngineCamera& camera, const LightSourceWrapper& lightWrapper, bool occludePass, const glm::vec4& clipPlane) const;
