@@ -83,6 +83,12 @@ public:
 	inline void setScale(const glm::vec3& scale) {
 		this->scale = scale;
 	}
+	inline void setPosition(const glm::vec3& position) {
+		this->position = position;
+	}
+	inline glm::vec3 getPosition(void) const {
+		return position;
+	}
 
 	void unbindCurrentFramebuffer(int width, int height) const;
 	

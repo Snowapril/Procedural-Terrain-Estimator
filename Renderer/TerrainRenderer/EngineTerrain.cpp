@@ -161,12 +161,15 @@ void EngineTerrain::drawScene(const EngineCamera& camera, const LightSourceWrapp
 	}
 }
 
-void EngineTerrain::updateGUI(void)
+void EngineTerrain::updateGUI(EngineWater& water)
 {
 	if (ImGui::TreeNode("Terrain Setting"))
 	{
 		const char* items[] = { "x 1", "x 2", "x 4", "x 8" };
 		static int scaleFactor = 0;
+		static int previousScaleFactor = 0;
+
+		previousScaleFactor = scaleFactor;
 
 		ImGui::SliderFloat("Max Height", &maxHeight, 100.0f, 4096.0f, "Height = %.1f");
 		ImGui::SliderFloat("Tile Size", &tileSize, 1.0f, 64.f, "Size = %.1f");
@@ -177,8 +180,19 @@ void EngineTerrain::updateGUI(void)
 		ImGui::ColorEdit3("Fog Color", &skycolor[0]);
 		ImGui::Checkbox("Wireframe", &enableWireFrame);
 		
-		auto textureSize = static_cast<int>(pow(2, scaleFactor)) * terrainTexture->getTextureSize(0);
-		dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
+		if (previousScaleFactor != scaleFactor)
+		{
+			auto textureSize = static_cast<int>(pow(2, scaleFactor)) * terrainTexture->getTextureSize(0);
+			dynamicPatch->setTerrainScale(textureSize.x, textureSize.y);
+		
+			auto waterPosition = water.getPosition();
+			float changeDegree = pow(2, scaleFactor - previousScaleFactor);
+
+			maxHeight *= changeDegree;
+			waterPosition.y *= changeDegree;
+			
+			water.setPosition(waterPosition);
+		}		
 		
 		ImGui::TreePop();
 	}

@@ -56,7 +56,7 @@ void EngineApp::updateGUI(float dt)
 {
 	GUI.startUpdateGUI(dt, clientHeight);
 
-	terrain.updateGUI();
+	terrain.updateGUI(water);
 	water.updateGUI();
 	postprocess.updateGUI();
 	skybox->updateGUI();

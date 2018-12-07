@@ -48,23 +48,41 @@ This will be automatically done using several terrain related algorithms.
 will be supported ...
 ## How to Use
 #### Help
-..
+
+* Generate height map and blend map at the first : 
+	1. Open both the Renderer and the Generator .
+	2. Set Renderer parameters as you want.
+	3. With renderer opened, switch to generator program.
+	4. Change noises' parameters and Edit noise board with several brushes as you want.
+	5. If you finished your editing, scroll down GUI and select "Export Images".
+	6. Export your height map and blend map!
+
+* Generate blend map from your own height map. (but, height map must be 16bit single channel)
+	1. Put your height map to resources/texture/preset directory.
+	2. Open the generator.
+	3. At the GUI, set the blend values of whole noises to zero.
+	4. In the "Preset" tree node, select your height map and export it. Done.
+
 #### Keys
 1. **Renderer** :
+	* 1, 2, 3, 4, 5 - Camera view mode (top-view, left-to-middle, right-to-middle ...)
 	* W,A,S,D - Camera movement
-	* Cursor move - Camera rotation
+	* Cursor move with LMB pressed - Camera rotation
+	* RMB - Camera Zoom in/out (automatically and smoothly)
+	* Mouse Wheel - Camera Zoom in/out
+	* Space bar - Renderer Pause
 	* ESC - quit program
 	
 2. **Editing Tool** :
-	* 1, 2, 3 : Swap board for brushwork.
-	* R : reset brush
-	* B : Additive brush
-	* N : Erase
-	* Z : Zoom in
-	* X : Zoom out
-	* C : Lasso (polygonal)
-	* F : Lasso (free-form)
-	* M : move scroll
+	* 1, 2, 3 - Swap board for brushwork.
+	* R - reset brush
+	* B - Additive brush
+	* N - Erase
+	* Z - Zoom in
+	* X - Zoom out
+	* C - Lasso (polygonal)
+	* F - Lasso (free-form)
+	* M - move scroll
 
 ## Dependencies
 * glfw3
