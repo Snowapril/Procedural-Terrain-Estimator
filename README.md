@@ -40,7 +40,7 @@ This will be automatically done using several terrain related algorithms.
 	* load preset images supported
 	
 3. **Estimator** :
-	* Blend map generation with gradient descent and definite height.
+	* Blend map generation by elevation descent mapping.
 	* Height map smoothness control.
 	* Height map normalize.
 
