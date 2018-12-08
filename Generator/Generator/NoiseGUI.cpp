@@ -163,12 +163,12 @@ void NoiseGUI::endUpdate(uint32_t frameTexture)
 			if (ImGui::Button("Save Resources"))
 			{
 				int width = stoi(sizeItems[widthCurrentIndex]), height = stoi(sizeItems[heightCurrentIndex]);
-				if (normalize_enable) {
-					estimator.normalize(min_height, max_height);
-				}
 				estimator.blendmapColoring();
 				blendMapTexture = estimator.getBlendMapTexture();
+
+				if (normalize_enable) estimator.normalize(min_height, max_height);
 				for (int i = 0; i < smoothness_iter; ++i)	estimator.smoothness();
+
 				estimator.generateHeightMap("../resources/texture/terrain/height16bit2.png", width, height);
 				estimator.generateBlendMap("../resources/texture/terrain/splatMap.png", width, height);
 				estimator.initHMapData(frameTexture, 2048, 2048);
