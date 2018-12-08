@@ -250,8 +250,8 @@ bool EngineTerrain::initTerrain(const glm::vec3& position, iList<std::string>&& 
 	try
 	{
 		terrainTexture = terrainDataManager->addAsset<GLTexture, std::pair<uint32_t, std::string>>({
-			std::make_pair<uint32_t, std::string>(0, OBFUSCATE("../resources/texture/terrain/height16bit2.png")),
-			std::make_pair<uint32_t, std::string>(1, OBFUSCATE("../resources/texture/terrain/splatMap.png")),
+			std::make_pair(0, OBFUSCATE("../resources/texture/terrain/height16bit2.png")),
+			std::make_pair(1, OBFUSCATE("../resources/texture/terrain/splatMap.png")),
 		});
 
 #ifdef _DEBUG

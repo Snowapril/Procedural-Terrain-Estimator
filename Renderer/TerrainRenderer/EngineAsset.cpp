@@ -42,14 +42,12 @@ EngineAsset & EngineAsset::operator=(const EngineAsset & other)
 bool EngineAsset::listenToAssetChange(void)
 {
 	namespace fs = std::experimental::filesystem;
-
 	for (auto& file : assetPaths)
 	{
 		if (!file.second.empty())
 		{
 			auto& lastTime = file.first;
 			const auto newLastTime = fs::last_write_time(file.second).time_since_epoch().count();
-
 			if (newLastTime != lastTime)
 			{
 				lastTime = newLastTime;
@@ -57,6 +55,5 @@ bool EngineAsset::listenToAssetChange(void)
 			}
 		}
 	}
-
 	return false;
 }
