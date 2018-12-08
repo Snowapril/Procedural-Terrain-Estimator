@@ -94,7 +94,7 @@ bool GLApp::initGLConfigure(void)
 		glCullFace(GL_BACK);
 		glFrontFace(GL_CCW);
 	}
-
+	glLineWidth(2.0f);
 	glfwSwapInterval(0);
 
 	return true;

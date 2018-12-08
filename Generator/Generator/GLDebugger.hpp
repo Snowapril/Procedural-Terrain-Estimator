@@ -11,8 +11,6 @@
 #ifndef GL_DEBUGGER_HPP
 #define GL_DEBUGGER_HPP
 
-#ifdef _DEBUG
-
 #include <glad/glad.h>
 #include <string>
 #include <iostream>
@@ -44,7 +42,4 @@ public:
 
 /// locate this macro where you want to check whether if error exists or not.
 #define CheckError() GLDebugger::CheckError(__FILE__, __LINE__)
-#else
-#define CheckError()
-#endif
 #endif

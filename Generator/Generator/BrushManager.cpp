@@ -10,9 +10,13 @@
 #include "GLResources.hpp"
 #include "ShaderCode.hpp"
 #include "obfuscator.hpp"
+#include <glm/vec2.hpp>
+#include <vector>
+
+constexpr size_t LINE_SEGMENTS_MAX_CAPACITY = 2500U;
 
 BrushManager::BrushManager()
-	: activeBoardIndex(0), brushMgrMode(BrushManagerMode::NONE), simultaneousApply(false)
+	: activeBoardIndex(0), brushMgrMode(BrushManagerMode::NONE), simultaneousApply(false), lineSegmentsVAO(0), lineSegmentsVBO(0)
 {
 }
 
@@ -26,6 +30,11 @@ BrushManager::BrushManager(Util::Rect rect)
 BrushManager::~BrushManager()
 {
 	glDeleteTextures(toolUITextures.size(), &toolUITextures[0]);
+
+	if (lineSegmentsVAO)
+		glDeleteVertexArrays(1, &lineSegmentsVAO);
+	if (lineSegmentsVBO)
+		glDeleteBuffers(1, &lineSegmentsVBO);
 }
 
 void BrushManager::configureOrthoMatrix(void)
@@ -67,9 +76,15 @@ bool BrushManager::init(Util::Rect rect)
 			OBFUSCATE("../resources/shader/tool_display_vs.glsl"),
 			OBFUSCATE("../resources/shader/tool_display_fs.glsl")
 		);
+		toolLineShader = std::make_unique<GLShader>(
+			OBFUSCATE("../resources/shader/tool_display_vs_line.glsl"),
+			OBFUSCATE("../resources/shader/tool_display_fs_line.glsl")
+		);
 #else
 		toolShader = std::make_shared<GLShader>();
 		toolShader->loadRawAsset(TOOL_DISPLAY_VS, TOOL_DISPLAY_FS);
+		toolLineShader = std::make_unique<GLShader>();
+		toolLineShader->loadRawAsset(TOOL_DISPLAY_VS_LINE, TOOL_DISPLAY_FS_LINE);
 #endif
 	}
 	catch (const std::exception& e) {
@@ -78,15 +93,7 @@ bool BrushManager::init(Util::Rect rect)
 
 	toolShader->useProgram();
 	toolShader->sendUniform(OBFUSCATE("icon"), 0);
-	/*
-	toolMeshes[ZOOM_IN] = ...
-	toolMeshes[ZOOM_OUT] = ...
-	toolMeshes[BRUSH_PLUS] = ...
-	toolMeshes[BRUSH_MINUS] = ...
-	toolMeshes[LASSO_LINE] = ...
-	toolMeshes[BOARD_MOVE] = ...
-	toolMeshes[NONE] = ...
-	*/
+
 	toolUITextures.resize(7);
 	toolUITextures[0] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/zoom_in.png"), false);
 	toolUITextures[1] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/zoom_out.png"), false);
@@ -97,6 +104,19 @@ bool BrushManager::init(Util::Rect rect)
 	toolUITextures[6] = GLResources::CreateTexture2D(OBFUSCATE("../resources/texture/icons/freeformLasso.png"), false);
 
 	quadMesh.initWithFixedShape(MeshShape::QUAD_TRIANGLE_STRIP, 0.06f);
+
+	glGenVertexArrays(1, &lineSegmentsVAO);
+	glGenBuffers(1, &lineSegmentsVBO);
+
+	glBindVertexArray(lineSegmentsVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, lineSegmentsVBO);
+	glBufferData(GL_ARRAY_BUFFER, LINE_SEGMENTS_MAX_CAPACITY * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (void*)0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	return true;
 }
@@ -125,6 +145,10 @@ void BrushManager::bindBrushTextures(uint32_t offset) const
 
 void BrushManager::renderToolUI(void) const
 {
+	std::shared_ptr<BrushBoard> activeBoard = paintBoards[activeBoardIndex];
+	glm::mat4 model(1.0f);
+	glm::vec2 localCursorPos = cursorPos;
+
 	if (brushMgrMode >= toolUITextures.size())
 		return;
 
@@ -133,29 +157,54 @@ void BrushManager::renderToolUI(void) const
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, toolUITextures[brushMgrMode]);
 
-	glm::vec2 localCursorPos = cursorPos;
 	localCursorPos -= originalViewport.getLeftTop();
 	localCursorPos /= originalViewport.getScale();
 	localCursorPos = (localCursorPos - glm::vec2(0.5f, 0.5f)) * glm::vec2(2.0f, 2.0f);
 
-	glm::mat4 model(1.0f);
 	model = glm::translate(model, glm::vec3(localCursorPos, 0.0f));
 	
 	if (brushMgrMode == BrushManagerMode::BRUSH_PLUS || brushMgrMode == BrushManagerMode::BRUSH_MINUS)
 	{
 		constexpr float division_scale = 4.5f; // smaller mean, smaller texture
-		uint32_t radius = paintBoards[activeBoardIndex]->getBrushRadius();
+		uint32_t radius = activeBoard->getBrushRadius();
 		glm::vec2 scaleFactor(radius, radius);
 		scaleFactor /= resizedViewport.getScale() / division_scale;
 
 		model = glm::scale(model, glm::vec3(scaleFactor, 1.0f));
 	}
 
-	toolShader->sendUniform(OBFUSCATE("model"), model);
+	toolShader->sendUniform("model", model);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	quadMesh.drawMesh(GL_TRIANGLE_STRIP);
 	glDisable(GL_BLEND);
+
+	const glm::vec2 resoultion(0.00048828125f, 0.00048828125f);
+
+	model = glm::mat4(1.0f);
+	model = glm::scale(model, glm::vec3(resoultion.x, resoultion.y,  1.0f));
+
+	toolLineShader->useProgram();
+	toolLineShader->sendUniform("model", model);
+
+	const auto& cutPoints = activeBoard->getCutPoints();
+	static std::size_t previousSize = cutPoints.size();
+	if (cutPoints.size() > 1)
+	{
+		if (previousSize != cutPoints.size())
+		{
+			glBindVertexArray(lineSegmentsVAO);
+			glBindBuffer(GL_ARRAY_BUFFER, lineSegmentsVBO);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(glm::vec2) * cutPoints.size(), &cutPoints[0]);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			glBindVertexArray(0);
+			previousSize = cutPoints.size();
+		}
+
+		glBindVertexArray(lineSegmentsVAO);
+		glDrawArrays(GL_LINE_STRIP, 0, previousSize);
+		glBindVertexArray(0);
+	}
 }
 
 void BrushManager::processCursorPos(double xpos, double ypos)

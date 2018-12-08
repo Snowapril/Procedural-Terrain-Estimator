@@ -181,5 +181,11 @@
     <None Include="..\resources\shader\tool_display_vs.glsl">
       <Filter>shader</Filter>
     </None>
+    <None Include="..\resources\shader\tool_display_fs_line.glsl">
+      <Filter>shader</Filter>
+    </None>
+    <None Include="..\resources\shader\tool_display_vs_line.glsl">
+      <Filter>shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

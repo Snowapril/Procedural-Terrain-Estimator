@@ -96,6 +96,10 @@ public:
 		return paintMode;
 	}
 
+	inline std::vector<glm::vec2> const & getCutPoints(void) const {
+		return cutPoints;
+	}
+
 	void setBoardRect(Util::Rect rect);
 	void setPaintMode(BrushMode mode);
 	glm::uvec2 getBoardSize(void) const;

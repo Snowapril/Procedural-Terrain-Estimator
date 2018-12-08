@@ -33,9 +33,11 @@ private:
 	std::vector<std::shared_ptr<BrushBoard>> paintBoards;
 	std::vector<EventHandler*> callbackHandler;
 	std::shared_ptr<GLShader> toolShader;
+	std::unique_ptr<GLShader> toolLineShader;
 	glm::vec2 cursorPos;
 	uint32_t activeBoardIndex;
-
+	uint32_t lineSegmentsVAO;
+	uint32_t lineSegmentsVBO;
 
 	bool simultaneousApply;
 public:

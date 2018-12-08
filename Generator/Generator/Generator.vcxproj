@@ -195,7 +195,9 @@
     <None Include="..\resources\shader\offscreen_fs.glsl" />
     <None Include="..\resources\shader\offscreen_vs.glsl" />
     <None Include="..\resources\shader\tool_display_fs.glsl" />
+    <None Include="..\resources\shader\tool_display_fs_line.glsl" />
     <None Include="..\resources\shader\tool_display_vs.glsl" />
+    <None Include="..\resources\shader\tool_display_vs_line.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
