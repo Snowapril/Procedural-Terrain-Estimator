@@ -75,8 +75,8 @@ bool EngineCubeMap::initCubeMap(const std::string& cubeMapDir, const std::string
 
 	skyboxShader->useProgram();
 	skyboxShader->sendUniform(OBFUSCATE("cubeMap"), 0);
-	lowerLimit = 0.0f;
-	upperLimit = 0.1f;
+	lowerLimit = 0.8f;
+	upperLimit = 0.0f;
 	skycolor = glm::vec3(0.5f);
 
 	if (!skyboxMesh.initWithFixedShape(MeshShape::CUBE_TRIANGLES))

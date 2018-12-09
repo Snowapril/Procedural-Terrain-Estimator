@@ -57,6 +57,7 @@ public:
 	bool toggleZoom;
 	bool isGrabbed;
 	bool isFirstUse;
+	bool isCameraFixed;
 
 private:
 public:

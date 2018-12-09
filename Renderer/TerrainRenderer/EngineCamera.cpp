@@ -8,7 +8,7 @@
 #include <imgui/imgui.h>
 
 EngineCamera::EngineCamera()
-	: updateFov(false), toggleZoom(false), isGrabbed(false), isFirstUse(true), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
+	: updateFov(false), toggleZoom(false), isGrabbed(false), isFirstUse(true), isCameraFixed(false), fov((CAMERA_MIN_FOV + CAMERA_MAX_FOV) / 2.0f),
 		speed(CAMERA_SPEED), minDepth(CAMERA_MIN_DEPTH), maxDepth(CAMERA_MAX_DEPTH)
 {
 	initCamera(glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1024.0f, 512.0f, 1024.0f));
@@ -145,42 +145,55 @@ void EngineCamera::processKeyInput(uint32_t keyFlag, float dt)
 	const float movement = speed * dt;
 	int pressedKey = 0;
 
-	if (keyFlag & CAMERA_LEFT)
-		position -= glm::normalize(glm::cross(direction, glm::vec3(0.0f, 1.0f, 0.0f))) * movement;
-	if (keyFlag & CAMERA_RIGHT)
-		position += glm::normalize(glm::cross(direction, glm::vec3(0.0f, 1.0f, 0.0f))) * movement;
-	if (keyFlag & CAMERA_UP)
-		position += movement * direction;
-	if (keyFlag & CAMERA_DOWN)
-		position -= movement * direction;
+	
+	if (!isCameraFixed) {
+		if (keyFlag & CAMERA_LEFT) {
+			position -= glm::normalize(glm::cross(direction, glm::vec3(0.0f, 1.0f, 0.0f))) * movement;
+		}
+		if (keyFlag & CAMERA_RIGHT) {
+			position += glm::normalize(glm::cross(direction, glm::vec3(0.0f, 1.0f, 0.0f))) * movement;
+		}
+		if (keyFlag & CAMERA_UP) {
+			position += movement * direction;
+		}
+		if (keyFlag & CAMERA_DOWN) {
+			position -= movement * direction;
+		}
+	}
 }
 
 void EngineCamera::processKeyCallback(uint32_t keyFlag)
 {
+	isCameraFixed = false;
 	if (keyFlag & CAMERA_1) {
 		position = fixedPosition[0];
 		direction = fixedDirection[0];
 		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+		isCameraFixed = true;
 	}
 	else if (keyFlag & CAMERA_2) {
 		position = fixedPosition[1];
 		direction = fixedDirection[1];
 		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+		isCameraFixed = true;
 	}
 	else if (keyFlag & CAMERA_3) {
 		position = fixedPosition[2];
 		direction = fixedDirection[2];
 		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+		isCameraFixed = true;
 	}
 	else if (keyFlag & CAMERA_4) {
 		position = fixedPosition[3];
 		direction = fixedDirection[3];
+		isCameraFixed = true;
 		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
 	}
 	else if (keyFlag & CAMERA_5) {
 		position = fixedPosition[4];
 		direction = fixedDirection[4];
 		std::tie(pitch, yaw) = directionToEulerDegrees(direction);
+		isCameraFixed = true;
 	}
 }
 

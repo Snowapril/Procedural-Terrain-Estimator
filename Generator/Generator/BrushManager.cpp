@@ -13,7 +13,7 @@
 #include <glm/vec2.hpp>
 #include <vector>
 
-constexpr size_t LINE_SEGMENTS_MAX_CAPACITY = 2500U;
+constexpr size_t LINE_SEGMENTS_MAX_CAPACITY = 20000U;
 
 BrushManager::BrushManager()
 	: activeBoardIndex(0), brushMgrMode(BrushManagerMode::NONE), simultaneousApply(false), lineSegmentsVAO(0), lineSegmentsVBO(0)
@@ -370,6 +370,8 @@ void BrushManager::processMouseBtn(int button, int action)
 
 void BrushManager::processToggleKey(int key, int scancode, int action)
 {
+	if (key == GLFW_KEY_LEFT_SHIFT && action == GLFW_PRESS)
+		simultaneousApply = true;
 	if (key == GLFW_KEY_LEFT_SHIFT && action == GLFW_RELEASE)
 		simultaneousApply = false;
 
